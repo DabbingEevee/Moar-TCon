@@ -1,0 +1,16 @@
+[
+{
+  "modid": "tconmaterial",
+  "name": "New Materials",
+  "description": "more. MORE. MOAAR!!!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["DabbingEevee"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["tconstruct"]
+}
+]

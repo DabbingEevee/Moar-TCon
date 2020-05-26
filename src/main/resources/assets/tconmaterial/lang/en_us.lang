@@ -1,0 +1,6 @@
+tile.blockfusionite.name=Block of Fusionite
+tile.orefusionite.name=Fusionite Ore
+item.ingotfusionite.name=Fusionite Ingot
+item.nuggetfusionite.name=Fusionite Nugget
+material.materialfusionite.name=Fusionite
+fluid.moltenfusionite=Molten Fusionite

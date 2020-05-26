@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "tconmaterial:blocks/orefusionite",
+    "up": "tconmaterial:blocks/orefusionite",
+    "north": "tconmaterial:blocks/orefusionite",
+    "east": "tconmaterial:blocks/orefusionite",
+    "south": "tconmaterial:blocks/orefusionite",
+    "west": "tconmaterial:blocks/orefusionite",
+    "particle": "tconmaterial:blocks/orefusionite"
+  }
+}

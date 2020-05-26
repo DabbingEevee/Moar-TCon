@@ -1,0 +1,18 @@
+{
+  "group": "coolweaponns",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000",
+    "000",
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "tconmaterial:nuggetfusionite"
+    }
+  },
+  "result": {
+    "item": "tconmaterial:ingotfusionite",
+    "count": 1
+  }
+}

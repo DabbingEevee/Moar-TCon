@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "coolweaponns:blocks/starrock",
+    "up": "coolweaponns:blocks/starrock",
+    "north": "coolweaponns:blocks/starrock",
+    "east": "coolweaponns:blocks/starrock",
+    "south": "coolweaponns:blocks/starrock",
+    "west": "coolweaponns:blocks/starrock",
+    "particle": "coolweaponns:blocks/starrock"
+  }
+}
