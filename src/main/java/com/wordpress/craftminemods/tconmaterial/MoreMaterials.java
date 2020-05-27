@@ -20,14 +20,15 @@ import com.wordpress.craftminemods.tconmaterial.other.SmeltingManager;
 import com.wordpress.craftminemods.tconmaterial.other.Tabs;
 import com.wordpress.craftminemods.tconmaterial.tconstuff.Materials;
 import com.wordpress.craftminemods.tconmaterial.world.OreGen;
-@Mod(modid = VersionInfo.MODID, name = VersionInfo.NAME, version = VersionInfo.VERSION)
+@Mod(modid = VersionInfo.MODID, name = VersionInfo.NAME, version = VersionInfo.VERSION, dependencies = VersionInfo.DEPENDANCY)
 public class MoreMaterials
 {
-	
+	static {
+		FluidRegistry.enableUniversalBucket();
+	}
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		Materials.init();
-		FluidRegistry.enableUniversalBucket();
 		Tabs.init();
 		ModItems.init();
 		ModBlocks.init();

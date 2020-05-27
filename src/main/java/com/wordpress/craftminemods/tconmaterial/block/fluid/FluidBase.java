@@ -19,7 +19,7 @@ public class FluidBase extends Fluid
     protected static Material material = Material.WATER;
     public FluidBase(String fluidName) 
     {
-        super(fluidName.toLowerCase(), new ResourceLocation(VersionInfo.MODID, fluidName.toLowerCase() + "_still"), new ResourceLocation(VersionInfo.MODID, fluidName.toLowerCase() + "_flowing"));  //fluidName + "_still", fluidName + "_still");
+        super(fluidName.toLowerCase(), new ResourceLocation(VersionInfo.MODID, "blocks/" + fluidName.toLowerCase() + "_still"), new ResourceLocation(VersionInfo.MODID, "blocks/" + fluidName.toLowerCase() + "_flowing"));  //fluidName + "_still", fluidName + "_still");
     } 
     public FluidBase(String fluidName, int mapColor) 
     {

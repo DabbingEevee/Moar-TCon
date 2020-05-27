@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.base.Function;
 import com.wordpress.craftminemods.tconmaterial.VersionInfo;
+import com.wordpress.craftminemods.tconmaterial.block.fluid.BlockFluid;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -11,6 +12,7 @@ import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -19,6 +21,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
@@ -55,9 +58,9 @@ public class RegisterHelper {
 		ForgeRegistries.BIOMES.register(biome);
 	}
 
-	public static void registerMaterial(Material material, Fluid fluid) {
+	public static void registerMaterial(Material material, Fluid fluid, String suffix) {
 		if (fluid != null) {
-			integrate(material, fluid);
+			integrate(material, fluid, suffix);
 		} else {
 			TinkerRegistry.addMaterial(material);
 		}
@@ -67,23 +70,26 @@ public class RegisterHelper {
 		String name = fluid.getUnlocalizedName().substring(5);
 		FluidRegistry.registerFluid(fluid);
 		FluidRegistry.addBucketForFluid(fluid);
-		ModelBakery.registerItemVariants(Item.getItemFromBlock(fluid.getBlock()));
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(fluid.getBlock()), new ItemMeshDefinition() {
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return new ModelResourceLocation("tconstruct:fluid_block", name.replace(".", ""));
-			}
-		});
+		Block fluidBlock = fluid.getBlock();
 
-		
+		if (fluidBlock != null) {
+			Item fluidItem = Item.getItemFromBlock(fluidBlock);
+			BlockFluid.FluidStateMapper mapper = new BlockFluid.FluidStateMapper(fluid);
+
+			if (fluidItem != Items.AIR)
+				ModelLoader.setCustomMeshDefinition(fluidItem, mapper);
+
+			ModelLoader.setCustomStateMapper(fluidBlock, mapper);
+
+		}
 	}
 
 	private static MaterialIntegration add(MaterialIntegration integration) {
 		return TinkerRegistry.integrate(integration);
 	}
 
-	private static MaterialIntegration integrate(Material material, Fluid fluid) {
-		return add(new MaterialIntegration(material, fluid));
+	private static MaterialIntegration integrate(Material material, Fluid fluid, String suffix) {
+		return add(new MaterialIntegration(material, fluid, suffix));
 	}
 
 }

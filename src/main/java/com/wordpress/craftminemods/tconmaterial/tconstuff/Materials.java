@@ -6,6 +6,7 @@ import com.wordpress.craftminemods.tconmaterial.other.RegisterHelper;
 
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.ArrowShaftMaterialStats;
@@ -40,24 +41,22 @@ public class Materials {
 		materialFusionite.addStats(new ProjectileMaterialStats());
 	}
 
-	private static void registerMaterials(Material... Material) {
-		for (Material m : Material) {
-			Materials.addMaterial(m, m.getFluid());
-		}
+	private static void registerMaterials(Material Material, String suffix) {
+		
+			Materials.addMaterial(Material, Material.getFluid(), suffix);
+		
 	}
 
 	public static void init() {
-		Materials.registerMaterials(
-		/** ------------------------------------- **/
-				materialFusionite
-		/** ------------------------------------- **/
-
-		);
+		Materials.registerMaterials(materialFusionite, "Fusionite");
+		
+		
+		
 		Logging.Log("Loaded a total of " + totalMaterials + " different TConstruct Materials.");
 	}
 
-	private static void addMaterial(Material material, Fluid fluid) {
-		RegisterHelper.registerMaterial(material, fluid);
+	private static void addMaterial(Material material, Fluid fluid, String suffix) {
+		RegisterHelper.registerMaterial(material, fluid, suffix);
 		totalMaterials++;
 	}
 
