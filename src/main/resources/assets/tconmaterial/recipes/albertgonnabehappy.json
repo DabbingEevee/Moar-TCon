@@ -1,0 +1,17 @@
+{
+  "group": "ieatsquirrels",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "tconstruct:materials",
+    "data": 50,
+    "count": 1
+  }
+}

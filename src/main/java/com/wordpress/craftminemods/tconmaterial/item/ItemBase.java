@@ -30,7 +30,6 @@ public class ItemBase extends Item{
 	
 	public void setupItem(final Item item, final String itemName) {
 		item.setUnlocalizedName(itemName);
-		item.setCreativeTab(Tabs.materials);
 	}
 	
 	

@@ -15,8 +15,9 @@ public class ModItems {
 	public static Item nuggetFusionite = new ItemBase("nuggetFusionite");
 
 	public static Item ingotFusionite = new ItemBase("ingotFusionite");
-/*---------------------------------------*/
 	
+	public static Item spaceTimeDisruptionPowder = new ItemBase("spaceTimeDisruptionPowder");
+
 /*---------------------------------------*/	
 	
 	private static void registerItems(Item... items) {
@@ -28,8 +29,8 @@ public class ModItems {
 		ModItems.registerItems(
 /**-------------------------------------**/
 				ingotFusionite,	
-/**-------------------------------------**/
-				nuggetFusionite
+				nuggetFusionite,
+				spaceTimeDisruptionPowder
 /**-------------------------------------**/
 				);
 		Logging.Log("Loaded a total of " + totalItems + " different items.");

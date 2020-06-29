@@ -12,9 +12,11 @@ public class Tabs {
 	public static void init() {
 		materials = (new CreativeTabs("materials") {
 			@Override 
+			@SideOnly(Side.CLIENT)
 			public ItemStack getTabIconItem() {
 				return new ItemStack(ModItems.ingotFusionite, (int)(1));
 			}
+			
 		});
 	}
 

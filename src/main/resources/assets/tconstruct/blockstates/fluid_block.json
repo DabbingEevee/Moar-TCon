@@ -6,6 +6,9 @@
   "variants": {
     "moltenfusionite": [{
       "custom": { "fluid": "moltenfusionite" }
+    }],
+    "molten_moltenfusionite": [{
+      "custom": { "fluid": "moltenfusionite" }
     }]
   }
 }

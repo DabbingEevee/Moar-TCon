@@ -1,0 +1,19 @@
+{
+  "group": "coolweaponns",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "010"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:nether_star"
+    },
+    "1": {
+      "item": "tconmaterial:blockfusionite"
+    }    
+  },
+  "result": {
+    "item": "tconmaterial:spacetimedisruptionpowder",
+    "count": 2
+  }
+}
