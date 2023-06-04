@@ -1,9 +1,0 @@
-tile.blockfusionite.name=Block of Fusionite
-tile.orefusionite.name=Fusionite Ore
-item.ingotfusionite.name=Fusionite Ingot
-item.nuggetfusionite.name=Fusionite Nugget
-material.materialfusionite.name=Fusionite
-material.materialspacetimedisruption.name=Disruption
-item.spacetimedisruptionpowder.name=Space Time Disruption Powder
-modifier.cold_fire.name=ColdFire
-modifier.cold_fire.desc=Burns your targets and freezes them in place. Freezing does not work on spiders.
