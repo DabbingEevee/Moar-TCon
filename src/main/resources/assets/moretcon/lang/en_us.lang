@@ -256,6 +256,7 @@ text.can_be_composited.name=Can be composited from __s__\nand __l__
 text.err.unique.not_correct_tool=The unique tool part provided cannot be used to create this tool!
 text.err.unique.unobtainable=WARNING: THIS ITEM IS NOT SUPPOSED TO BE OBTAINABLE.
 text.err.unique.only_make=This part can only be used to create a __s__
+text.misc.one_of=a(n) 
 tile.moretcon.betweensludge.name=Between Sludge
 tile.moretcon.blockarkenium.name=Block of Arkenium
 tile.moretcon.blockbloodstone.name=Block of Bloodstone

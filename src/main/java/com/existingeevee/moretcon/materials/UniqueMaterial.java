@@ -79,7 +79,7 @@ public class UniqueMaterial extends Material {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
 			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getLineNumber() == 106) {/* .getMethodName().equals("getLocalizedDesc" */
-				return "a " + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + " " + I18n.translateToLocal(UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(this.partResLoc)).getUnlocalizedName() + ".name");
+				return I18n.translateToLocal("text.misc.one_of") + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + " " + I18n.translateToLocal(UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(this.partResLoc)).getUnlocalizedName() + ".name");
 			}
 			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getLineNumber() == 101/* .equals("getLocalizedName") */) {
 				return I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name");
