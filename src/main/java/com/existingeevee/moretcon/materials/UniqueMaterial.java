@@ -49,21 +49,21 @@ public class UniqueMaterial extends Material {
 
 	public ItemStack getUniqueToolPart() {
 		if (TinkerRegistry.getMaterial(this.identifier) == null) {
-			return null;
+			return ItemStack.EMPTY;
 		}
 		if (TinkerRegistry.getMaterial(this.identifier).getIdentifier().equals(Material.UNKNOWN.getIdentifier())) {
-			return null;
+			return ItemStack.EMPTY;
 		}
 
 		if (UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(toolResLoc)) == null) {
-			return null;
+			return ItemStack.EMPTY;
 		}
 
 		ToolPart part = UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(partResLoc));
 		if (part != null) {
 			return part.getItemstackWithMaterial(this);
 		}
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	//this needs to be reworked
