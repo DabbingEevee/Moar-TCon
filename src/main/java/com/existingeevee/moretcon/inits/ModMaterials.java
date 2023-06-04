@@ -144,6 +144,10 @@ public class ModMaterials implements MaterialTypes {
 
 	public static Material materialAtronium = new Material(Misc.createNonConflictiveName("atronium".toLowerCase()),
 			0xd99857);	
+	
+	public static Material materialEbonite = new Material(Misc.createNonConflictiveName("ebonite".toLowerCase()),
+			0x270339);	
+	
 	public static UniqueMaterial materialPlasma = new UniqueMaterial(
 			Misc.createNonConflictiveName("plasma".toLowerCase()), 0xff0000, "tconstruct:sword_blade",
 			"tconstruct:broadsword");
@@ -200,7 +204,7 @@ public class ModMaterials implements MaterialTypes {
 			materialFusionite.addTrait(ModTraits.coldFire);
 			materialFusionite.addTrait(TinkerTraits.enderference);
 			materialFusionite.addTrait(TinkerTraits.alien);
-			materialFusionite.addTrait(TinkerTraits.dense);
+			materialFusionite.addTrait(TinkerTraits.dense);//TinkerMaterials
 			materialFusionite.addStats(new HeadMaterialStats(500, 5.0f, 8.0f, 6));
 			materialFusionite.addStats(new HandleMaterialStats(3.0f, 20));
 			materialFusionite.addStats(new ExtraMaterialStats(20));
@@ -277,6 +281,26 @@ public class ModMaterials implements MaterialTypes {
 			materialAtronium.addStats(new HandleMaterialStats(3f, 180));
 			materialAtronium.addStats(new ExtraMaterialStats(750));
 			materialAtronium.addStats(new ArrowShaftMaterialStats(2f, 120));
+			
+			materialEbonite.addItem("oreEbonite", 1, Material.VALUE_Ore());
+			materialEbonite.setFluid(ModFluids.liquidEbonite);
+			materialEbonite.addCommonItems("Ebonite");
+			materialEbonite.setCastable(true);
+			materialEbonite.setCraftable(false);
+			materialEbonite.setRepresentativeItem("ingotEbonite");
+			materialEbonite.addTrait(TinkerTraits.dense);
+			materialEbonite.addTrait(ModTraits.darkened);
+			materialEbonite.addTrait(TinkerTraits.established);			
+			materialEbonite.addTrait(TinkerTraits.poisonous);			
+			materialEbonite.addStats(new HeadMaterialStats(750, 6.0f, 9.0f, 7));
+			materialEbonite.addStats(new HandleMaterialStats(2.5f, 60));
+			materialEbonite.addStats(new ExtraMaterialStats(25));
+			materialEbonite.addStats(new ArrowShaftMaterialStats(1.5f, 20));
+			materialEbonite.addStats(new ProjectileMaterialStats());
+			if (CompatManager.plustic) {
+			    materialEbonite.addStats(new LaserMediumMaterialStats(12, 20));
+			    materialEbonite.addStats(new BatteryCellMaterialStats(120000));
+			}
 			
 			materialSpaceTimeDisruption.addItem(ModItems.spaceTimeDisruptionPowder, 1, Material.VALUE_Fragment);
 			materialSpaceTimeDisruption.setCastable(false);
@@ -770,6 +794,8 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialEchostone);
 			ModMaterials.registerMaterial(materialIgniglomerate);
 			ModMaterials.registerMaterial(materialAtronium);
+			ModMaterials.registerMaterial(materialEbonite);
+			
 		}
 		if (CompatManager.twilightforest) {
 			ModMaterials.registerMaterial(materialIronwood);

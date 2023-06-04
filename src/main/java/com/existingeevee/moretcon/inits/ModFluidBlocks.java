@@ -27,6 +27,7 @@ public class ModFluidBlocks {
 	public static Block blockLiquidGravitonium;
 	public static Block blockLiquidTrichromadentium;
 	public static Block blockLiquidAtronium;
+	public static Block blockLiquidEbonite;
 	public static Block blockLiquidSwampSteel;
 	public static Block blockLiquidRotiron;
 	public static Block blockRottenSludge;
@@ -50,6 +51,9 @@ public class ModFluidBlocks {
 			blockLiquidGravitonium = new BlockFluid("liquidgravitonium", ModFluids.liquidGravitonium, Material.LAVA);
 			blockLiquidTrichromadentium = new BlockFluid("liquidtrichromadentium", ModFluids.liquidTrichromadentium, Material.LAVA);
 			blockLiquidAtronium = new BlockFluid("liquidatronium", ModFluids.liquidAtronium, Material.LAVA);
+			blockLiquidEbonite = new BlockFluid("liquidebonite", ModFluids.liquidEbonite, Material.LAVA);
+			
+			
 		    ModFluidBlocks.registerBlocks(
 /* ------------------------------------- */
 				blockLiquidFusionite,
@@ -60,7 +64,8 @@ public class ModFluidBlocks {
 				blockLiquidRuneSteel,
 				blockLiquidGravitonium,
 				blockLiquidTrichromadentium,
-				blockLiquidAtronium
+				blockLiquidAtronium,
+				blockLiquidEbonite
 /* ------------------------------------- */
 				);
 		}

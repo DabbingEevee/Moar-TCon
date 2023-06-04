@@ -68,6 +68,9 @@ public class ModFluids {
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
 	public static Fluid liquidAtronium = new LiquidFluid("liquidatronium").setCColor(0xd99857).setLuminosity(15)
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
+	public static Fluid liquidEbonite = new LiquidFluid("liquidebonite").setCColor(0xffffff).setLuminosity(15)
+			.setDensity(1000).setViscosity(800).setTemperature(1100);
+	
 	
 	public static Fluid liquidSwampSteel = new LiquidFluid("liquidSwampSteel".toLowerCase()).setCColor(0x001100).setLuminosity(13)
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
@@ -101,7 +104,8 @@ public class ModFluids {
 					liquidRuneSteel,
 					liquidGravitonium,
 					liquidTrichromadentium,
-					liquidAtronium
+					liquidAtronium,
+					liquidEbonite
 
 		
 			/** ------------------------------------- **/

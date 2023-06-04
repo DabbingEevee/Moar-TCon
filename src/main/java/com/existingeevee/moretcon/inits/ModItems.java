@@ -63,6 +63,10 @@ public class ModItems {
 	public static Item nuggetAtronium = new ItemBase("nuggetAtronium");
 	public static Item dustAtronium = new ItemBase("dustAtronium");
 	
+	public static Item ingotEbonite = new ItemBase("ingotEbonite");
+	public static Item nuggetEbonite = new ItemBase("nuggetEbonite");
+	public static Item dustEbonite = new ItemBase("dustEbonite");
+	
 	public static Item carbonPile = new ItemBase("carbonPile").setTab(ModTabs.moarTConMisc);;
 	public static Item ingotSteel = new ItemBase("ingotSteel");
 	public static Item nuggetSteel = new ItemBase("nuggetSteel");
@@ -149,6 +153,9 @@ public class ModItems {
 					ingotAtronium,
 					nuggetAtronium,
 					
+					ingotEbonite,
+					nuggetEbonite,
+					
 					gemVoidSpar,
 					gemEnderal,
 					gemGarstone,
@@ -179,7 +186,8 @@ public class ModItems {
 						dustGravitonium,
 						dustRuneSteel,
 						dustTrichromadentium,
-						dustAtronium
+						dustAtronium,
+						dustEbonite
 				);
 			}
 		}

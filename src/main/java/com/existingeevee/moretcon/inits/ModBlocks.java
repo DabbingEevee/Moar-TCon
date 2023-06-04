@@ -5,11 +5,12 @@ import com.existingeevee.moretcon.block.blocktypes.BlockFalling;
 import com.existingeevee.moretcon.block.blocktypes.HotBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.RadiationBlockBase;
 import com.existingeevee.moretcon.block.ore.BlockBedrockOre;
+import com.existingeevee.moretcon.block.ore.BlockBedrockOreMetal;
 import com.existingeevee.moretcon.block.ore.BlockOre;
 import com.existingeevee.moretcon.block.ore.BlockOreMetal;
 import com.existingeevee.moretcon.block.tile.BlockGravitoniumFaucet;
-import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.other.ModTabs;
+import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
@@ -57,6 +58,8 @@ public class ModBlocks {
 	public static Block blockEchostone = ((BlockBase) new BlockBase("blockEchostone", Material.IRON, 6).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static Block oreIgniglomerate = ((BlockBase) new BlockOre("oreIgniglomerate", 5, ModItems.gemIgniglomerate, 1).setCanBurn(false).setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setLightLevel(1);
 	public static Block blockIgniglomerate = ((BlockBase) new HotBlockBase("blockIgniglomerate", Material.IRON, 6).setCanBurn(false).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(1);
+	public static Block oreEbonite = ((BlockBase) new BlockBedrockOreMetal("oreEbonite", 5, ModItems.ingotEbonite).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
+	public static Block blockEbonite = ((BlockBase) new BlockBase("blockEbonite", Material.IRON, 5).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 
 
 
@@ -102,7 +105,9 @@ public class ModBlocks {
 				blockEchostone,
 				oreIgniglomerate,
 				blockIgniglomerate,
-				blockAtronium
+				blockAtronium,
+				oreEbonite,
+				blockEbonite
 /**-------------------------------------**/
 				);		
 		}

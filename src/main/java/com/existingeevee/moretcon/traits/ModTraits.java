@@ -20,6 +20,7 @@ import com.existingeevee.moretcon.traits.traits.BottomsEnd;
 import com.existingeevee.moretcon.traits.traits.Burning;
 import com.existingeevee.moretcon.traits.traits.ColdFire;
 import com.existingeevee.moretcon.traits.traits.Corroding;
+import com.existingeevee.moretcon.traits.traits.Darkened;
 import com.existingeevee.moretcon.traits.traits.Hardcore;
 import com.existingeevee.moretcon.traits.traits.HelpfulRadiation;
 import com.existingeevee.moretcon.traits.traits.HyperGravity;
@@ -95,6 +96,7 @@ public class ModTraits {
 	public static Afterimage afterimage = new Afterimage();
 	public static MagicallyReactive magicallyReactive = new MagicallyReactive();
 	public static Penetrant penetrant = new Penetrant();
+	public static Darkened darkened = new Darkened();
 	
 	static {
 		if (CompatManager.thebetweenlands) {

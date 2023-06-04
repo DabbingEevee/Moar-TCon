@@ -36,21 +36,13 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialRotiron);
 		setCustomRender(ModMaterials.materialSwampSteel);
 		setCustomRender(ModMaterials.materialPenguinite);
+		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
+				+ ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialIgniglomerate
 				.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
 						+ ":other/material" + ModMaterials.materialIgniglomerate.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-
-		// setCustomRender(Materials.materialOctine);
-
-		// Materials.materialSpaceTimeDisruption.setRenderInfo(new AnimatedTexture(new
-		// ResourceLocation(VersionInfo.MODID + ":other/" +
-		// Materials.materialSpaceTimeDisruption.getIdentifier()).toString()));
 		ModMaterials.materialValkyrieMetal.setRenderInfo(new MultiColor(0xdba213, 0xeeffff, 0xeaee57));
 		ModMaterials.materialOctine.setRenderInfo(new Metal(0xff8e3b, 0.7f, 2f, 0f));
-		// this is cool color
-		// Materials.materialOctine.setRenderInfo(new MetalTextured(new
-		// ResourceLocation(VersionInfo.MODID + ":other/" +
-		// Materials.materialOctine.getIdentifier()), 0xfeb04d, 0.4f, 0.4f, 0.1f));
 	}
 
 	private static void setCustomRender(Material mat) {
