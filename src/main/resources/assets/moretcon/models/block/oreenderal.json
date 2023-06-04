@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/oreenderal",
+    "up": "moretcon:blocks/oreenderal",
+    "north": "moretcon:blocks/oreenderal",
+    "east": "moretcon:blocks/oreenderal",
+    "south": "moretcon:blocks/oreenderal",
+    "west": "moretcon:blocks/oreenderal",
+    "particle": "moretcon:blocks/oreenderal"
+  }
+}

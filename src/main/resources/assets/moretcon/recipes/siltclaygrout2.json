@@ -1,0 +1,31 @@
+{
+    "conditions": [
+        {
+            "type": "tconstruct:is_pulse_loaded",
+            "pulse_name": "TinkerSmeltery"
+        },
+        {
+        	"type": "moretcon:thebetweenlands"
+        }
+    ],
+    "type": "forge:ore_shapeless",
+    "group": "tconstruct:grout",
+    "ingredients": [
+        {
+            "item": "moretcon:itemsiltclay"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "gravel"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "sand"
+        }
+    ],
+    "result": {
+        "item": "tconstruct:soil",
+        "count": 2,
+        "data": 0
+    }
+}

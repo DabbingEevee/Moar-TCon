@@ -1,0 +1,8 @@
+{
+	"parent": "item/generated",
+    "textures": {
+        "layer0": "moretcon:items/ring/gem",
+        "layer1": "moretcon:items/ring/base",
+        "broken1": "moretcon:items/ring/broken"
+    }
+}

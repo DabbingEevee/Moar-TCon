@@ -1,0 +1,21 @@
+{
+    "conditions": [
+        {
+        	"type": "moretcon:thebetweenlands"
+        }
+    ],
+    "type": "forge:ore_shapeless",
+    "group": "moretcon",
+    "ingredients": [
+        {
+            "item": "minecraft:bucket"
+        },
+        {
+            "item": "thebetweenlands:sulfur_block"
+        }
+    ],
+    "result": {
+        "item": "moretcon:sulfurbucketsyrmorite",
+        "count": 1
+    }
+}

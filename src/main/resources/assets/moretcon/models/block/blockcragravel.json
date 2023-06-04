@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/blockcragravel",
+    "up": "moretcon:blocks/blockcragravel",
+    "north": "moretcon:blocks/blockcragravel",
+    "east": "moretcon:blocks/blockcragravel",
+    "south": "moretcon:blocks/blockcragravel",
+    "west": "moretcon:blocks/blockcragravel",
+    "particle": "moretcon:blocks/blockcragravel"
+  }
+}

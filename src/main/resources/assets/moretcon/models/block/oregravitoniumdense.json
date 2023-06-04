@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/oregravitoniumdense",
+    "up": "moretcon:blocks/oregravitoniumdense",
+    "north": "moretcon:blocks/oregravitoniumdense",
+    "east": "moretcon:blocks/oregravitoniumdense",
+    "south": "moretcon:blocks/oregravitoniumdense",
+    "west": "moretcon:blocks/oregravitoniumdense",
+    "particle": "moretcon:blocks/oregravitoniumdense"
+  }
+}

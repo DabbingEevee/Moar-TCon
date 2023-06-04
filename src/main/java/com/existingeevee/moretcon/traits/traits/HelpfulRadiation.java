@@ -1,0 +1,26 @@
+package com.existingeevee.moretcon.traits.traits;
+
+import com.existingeevee.moretcon.other.Misc;
+
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import slimeknights.tconstruct.library.traits.AbstractTrait;
+
+
+public class HelpfulRadiation extends AbstractTrait  {
+
+	public HelpfulRadiation() {
+		super(Misc.createNonConflictiveName("helpful_radiation"), 0x00ed00);
+	}
+
+	@Override
+	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
+		target.addPotionEffect(new PotionEffect(MobEffects.GLOWING, Math.round(damageDealt)*8, 1));
+		target.addPotionEffect(new PotionEffect(MobEffects.WITHER, Math.round(damageDealt)*8, 1));
+		target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, Math.round(damageDealt)*8, 1));
+		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, Math.round(damageDealt)*8, 1));
+		super.afterHit(tool, player, target, damageDealt, wasCritical, wasHit);
+	}
+}

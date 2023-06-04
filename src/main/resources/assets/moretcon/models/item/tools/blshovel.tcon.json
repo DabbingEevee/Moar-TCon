@@ -1,0 +1,8 @@
+{
+    "textures": {
+        "layer0": "moretcon:items/betweenshovel/handle",
+        "layer1": "moretcon:items/betweenshovel/head",
+        "layer2": "moretcon:items/betweenshovel/binding",
+		"broken1": "moretcon:items/betweenshovel/broken"
+    }
+}

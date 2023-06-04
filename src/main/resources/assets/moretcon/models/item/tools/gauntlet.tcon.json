@@ -1,0 +1,31 @@
+{
+	"parent": "item/generated",
+    "textures": {
+        "layer0": "moretcon:items/gauntlet/glove",
+        "layer1": "moretcon:items/gauntlet/cuff",
+        "layer2": "moretcon:items/gauntlet/setting",
+        "broken0": "moretcon:items/gauntlet/broken"
+    },
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_lefthand": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        }
+	}
+}

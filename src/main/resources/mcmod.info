@@ -1,0 +1,16 @@
+[
+{
+  "modid": "moretcon",
+  "name": "More TCon",
+  "description": "New materials and tools. That simple",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ExistingEevee"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["tconstruct"]
+}
+]

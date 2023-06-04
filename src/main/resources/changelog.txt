@@ -1,0 +1,76 @@
+#1.9.0
+ - Added rings
+ - Added gauntets
+ 
+
+#1.8.1
+ - Fixed all gem ores unminable
+ - added echostone
+
+#1.8.0_1
+ - Fixed small issue with true damage
+ 
+#1.8.0
+ - Added Crimson Tough Tool Rod 
+   = Cool anime style slash effect on shift right click
+ - Added mandrin translation by Nate_L (Thanks!!)
+ - Added various bedrock ores and bedrock mining
+   = Added Bloodstone
+ - Gave the voidspar material bedrock breaking capabilities
+ - Added various configs
+ - Fixed plasmatic stackoverflow
+ - Various bug fixes
+ - Added betweenified modifier
+ - Added various fluids and resources for the betweenified modifier
+ 
+#1.7.1
+ - Fixed furnace recipes
+ - Fixed TConstruct material "Bone" showing up as registered by More TCon
+ - Made shocking look for IProjectile
+ - Many Interal Chances
+ - Made X Steel be Xsteel
+ - Added nuggets and dust for materials that were missing it
+ - Allowed disabling of recipes of unique toolparts in config
+ - Added Techno's Blade as a unique toolpart in honor of Technoblade
+ 
+#1.7.0_2
+ - Fixed shocking modifier issues
+ - Fixed modifiers using 2 modifier slots
+ - Fixed issues with tarred
+ - Made tarred use 5 tar drips
+ 
+#1.7.0_1
+ - After further investigation, the default value of the max durability has been reduced to 32767
+
+#1.7.0_R-A
+ - Fixed Impactor being able to be applied more than once
+ - Fixed Mirroring not properly using traits.
+ - Lowered particles on Trailblazer
+ - Fixed Mirroring setting fire 
+ - Fixed many modifiers being able to be applied more than once or on wrong tools
+ - Somehow fixed Mirroring causing issues with random materials and losing data as a result
+ - Fixed Gallium not respecting damage properly
+ - Fixed traits being modifiers and using modifier slots when added without a material
+ - Added a config option to cap the max durability of ammo to prevent projectile issues
+ - Added a config option to force the cap to work on every single tool type
+ 
+#1.7.0
+ - Added Trichromic level customization
+ - Added Mirrored Fletching (adds projectile traits from launcher)
+ - Added Trailblazer Knife Blade (rains fire down below the projectile)
+ - Added actual Steel 
+ - Changed a lot of alloying recipes to use steel
+ - Changed how creative tabs are organized
+ - Organized the main materials tab using a sorting function.
+ 
+#1.6.1_1
+ - Fixed issue with tripleshot shooting ghost projectiles
+ - Made tripleshot cooldown the launching stack, and not just tconstruct:shuriken
+ - Fixed wierd issue with impactor
+ - Fixed unique toolparts showing in jei inside illegal tools
+
+#1.6.1
+ - Fixed wierd crash with unique toolparts
+ - Added trichromic customization
+ - Fixed issue with ore dictionary
+ - Added triblade shuriken custom toolpart

@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/oreigniglomerate",
+    "up": "moretcon:blocks/oreigniglomerate",
+    "north": "moretcon:blocks/oreigniglomerate",
+    "east": "moretcon:blocks/oreigniglomerate",
+    "south": "moretcon:blocks/oreigniglomerate",
+    "west": "moretcon:blocks/oreigniglomerate",
+    "particle": "moretcon:blocks/oreigniglomerate"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "tool": "blshovel",
+  "text": [
+    {
+      "text": "The between shovel is an shovel that works well in the betweenlands."
+    }
+  ],
+  "properties": [
+    "Same as a shovel",
+    "No tool efficiency reduction",
+    "Suffers from tool corrosion",
+    "Cast / Pattern can be made in an animator from a shovel blueprint"
+  ]
+}

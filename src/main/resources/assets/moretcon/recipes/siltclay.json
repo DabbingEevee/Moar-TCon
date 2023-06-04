@@ -1,0 +1,29 @@
+{
+    "conditions": [
+        {
+        	"type": "moretcon:thebetweenlands"
+        }
+    ],
+    "type": "forge:ore_shapeless",
+    "group": "moretcon",
+    "ingredients": [
+        {
+            "item": "thebetweenlands:mud"
+        },
+        {
+            "item": "thebetweenlands:silt"
+        },
+        {
+            "item": "thebetweenlands:silt"
+        },
+        {
+            "item": "thebetweenlands:mud"
+        }
+
+    ],
+    "result": {
+        "item": "moretcon:blocksiltclay",
+        "count": 2,
+        "data": 0
+    }
+}

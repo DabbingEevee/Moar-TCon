@@ -1,0 +1,37 @@
+{
+  "group": "moretcon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "030",
+    "141",
+    "252"
+  ],
+  "key": {
+    "0": {
+       "type": "forge:ore_dict",
+       "ore": "ingotSyrmorite"
+    },
+    "1": {
+       "type": "forge:ore_dict",
+       "ore": "blockValonite"
+    },
+    "2": {
+       "type": "forge:ore_dict",
+       "ore": "ingotOctine"
+    },
+    "3": {
+       "item": "thebetweenlands:swamp_talisman",
+       "data": 0
+    },
+    "4": {
+       "item": "thebetweenlands:ancient_greatsword"
+    },
+    "5": {
+       "item": "moretcon:crushedshockwavesword"
+    }
+  },
+  "result": {
+    "item": "moretcon:betweeniccore",
+    "count": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "type": "forge:ore_shapeless",
+    "group": "moretcon:carbon",
+    "ingredients": [
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemCoal"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemCoal"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemCoal"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemCoal"
+        }
+    ],
+    "result": {
+        "item": "moretcon:carbonpile",
+        "count": 1
+    }
+}

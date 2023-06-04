@@ -1,0 +1,17 @@
+{
+  "modifier": "moretcon.modtarred",
+  "text": [
+    {
+      "text": "It'll slow you down a bit, but it'll slow your enemies more in the long run..."
+    }
+  ],
+  "effects": [
+    "Constant mining fatigue when holding tool.",
+    "10% chance to give your opponent blindness.",
+    "75% chance to give your opponent slowness.",
+    "Single level"
+  ],
+  "demoTool": [
+    "moretcon:blsword"
+  ]
+}

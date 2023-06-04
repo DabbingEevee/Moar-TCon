@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/oregravitonium",
+    "up": "moretcon:blocks/oregravitonium",
+    "north": "moretcon:blocks/oregravitonium",
+    "east": "moretcon:blocks/oregravitonium",
+    "south": "moretcon:blocks/oregravitonium",
+    "west": "moretcon:blocks/oregravitonium",
+    "particle": "moretcon:blocks/oregravitonium"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/blockswampsteel_bottom",
+    "up": "moretcon:blocks/blockswampsteel_top",
+    "north": "moretcon:blocks/blockswampsteel_side",
+    "east": "moretcon:blocks/blockswampsteel_side",
+    "south": "moretcon:blocks/blockswampsteel_side",
+    "west": "moretcon:blocks/blockswampsteel_side",
+    "particle": "moretcon:blocks/blockswampsteel_side"
+  }
+}

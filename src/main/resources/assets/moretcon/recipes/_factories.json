@@ -1,0 +1,8 @@
+{
+    "conditions":
+    {
+        "thebetweenlands": "com.existingeevee.moretcon.conditions.ConditionBLInstalled",
+        "twilightforest": "com.existingeevee.moretcon.conditions.ConditionTFInstalled",
+        "aether_legacy": "com.existingeevee.moretcon.conditions.ConditionALInstalled"
+    }
+}

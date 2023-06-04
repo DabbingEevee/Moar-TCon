@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "moretcon:aether_legacy"
+    }
+  ],
+  "group": "moretcon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  0",
+    " 0 ",
+    "1  "
+  ],
+  "key": {
+    "0": {
+       "type": "forge:ore_dict",
+       "ore": "ingotValkyrieMetal"
+    },
+    "1": {
+       "type": "forge:ore_dict",
+       "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "aether_legacy:valkyrie_lance",
+    "count": 1
+  }
+}

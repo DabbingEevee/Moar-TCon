@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/orevoidspar",
+    "up": "moretcon:blocks/orevoidspar",
+    "north": "moretcon:blocks/orevoidspar",
+    "east": "moretcon:blocks/orevoidspar",
+    "south": "moretcon:blocks/orevoidspar",
+    "west": "moretcon:blocks/orevoidspar",
+    "particle": "moretcon:blocks/orevoidspar"
+  }
+}

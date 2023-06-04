@@ -1,0 +1,19 @@
+{
+  "group": "moretcon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "010"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:nether_star"
+    },
+    "1": {
+      "item": "moretcon:blockfusionite"
+    }    
+  },
+  "result": {
+    "item": "moretcon:spacetimedisruptionpowder",
+    "count": 2
+  }
+}

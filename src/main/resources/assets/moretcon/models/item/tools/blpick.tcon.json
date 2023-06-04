@@ -1,0 +1,9 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "moretcon:items/betweenpick/handle",
+        "layer1": "moretcon:items/betweenpick/head",
+		"layer2": "moretcon:items/betweenpick/binding",
+		"broken1": "moretcon:items/betweenpick/broken"
+    }
+}

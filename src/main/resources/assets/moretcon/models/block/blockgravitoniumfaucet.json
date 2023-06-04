@@ -1,0 +1,91 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "moretcon:blocks/blockgravitoniumfaucet",
+		"particle": "moretcon:blocks/blockgravitoniumfaucet"
+	},
+	"elements": [
+		{
+			"name": "The bottom platform, facing south with the dark texture side",
+			"from": [4, 4, 10],
+			"to": [12, 6, 16],
+			"faces": {
+				"north": {"uv": [4, 8, 12, 10], "texture": "#1"},
+				"east": {"uv": [12, 10, 14, 16], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [4, 10, 12, 8], "texture": "#1"},
+				"west": {"uv": [12, 10, 14, 16], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [4, 0, 12, 6], "texture": "#1"},
+				"down": {"uv": [6, 10, 14, 16], "rotation": 180, "texture": "#1"}
+			}
+		},
+		{
+			"name": "Right side from front (west)",
+			"from": [4, 6, 10],
+			"to": [6, 10, 16],
+			"faces": {
+				"north": {"uv": [6, 10, 8, 6], "texture": "#1"},
+				"east": {"uv": [2, 10, 6, 16], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [6, 10, 4, 6], "texture": "#1"},
+				"west": {"uv": [6, 10, 12, 16], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [1, 10, 3, 16], "texture": "#1"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Left side from front (east)",
+			"from": [10, 6, 10],
+			"to": [12, 10, 16],
+			"faces": {
+				"north": {"uv": [6, 10, 8, 6], "texture": "#1"},
+				"east": {"uv": [8, 10, 12, 16], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [6, 10, 8, 6], "texture": "#1"},
+				"west": {"uv": [2, 10, 6, 16], "rotation": 270, "texture": "#1"},
+				"up": {"uv": [5, 10, 7, 16], "texture": "#1"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 3, 0.5],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 3, 0.5],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 135, 0],
+			"translation": [0, 0.5, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 135, 0],
+			"translation": [0, 0.5, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"translation": [0, 3, -1],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [3, -1, 0],
+			"scale": [0.9375, 0.9375, 0.9375]
+		},
+		"fixed": {
+			"translation": [0, 0, -1],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "blockgravitoniumfaucet",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}

@@ -1,0 +1,20 @@
+{
+  "animation": {
+    "interpolate": false,
+    "frametime": 20,
+            "frames": [
+
+            0,
+            1,
+            0,
+            2
+        ]
+
+  },
+  "ctm": {
+    "ctm_version": 1,
+    "extra": {
+      "light": 15
+    }
+  }
+}

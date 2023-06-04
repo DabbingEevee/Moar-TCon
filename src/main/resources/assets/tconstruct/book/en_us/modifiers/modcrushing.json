@@ -1,0 +1,16 @@
+{
+  "modifier": "moretcon.modcrushing",
+  "text": [
+    {
+      "text": "NOW THATS A LOTTA DAMAGE!"
+    }
+  ],
+  "effects": [
+    "On Tool: Converts 10% of damage to true damage.",
+    "True damage bypasses armor, potions, absorption, or any other source of damage reduction.",
+    "Single level"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword"
+  ]
+}

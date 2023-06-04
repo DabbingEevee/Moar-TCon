@@ -1,0 +1,12 @@
+{
+  "compatibilityLevel": "JAVA_8",
+  "package": "com.existingeevee.moretcon.mixin",
+  "refmap": "refmap.moretcon.json",
+  "mixins": [
+  	"MixinLoader"
+  ],
+  "client": [
+  ],
+  "server": [
+  ]
+}

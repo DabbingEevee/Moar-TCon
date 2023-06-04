@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/blockatronium",
+    "up": "moretcon:blocks/blockatronium",
+    "north": "moretcon:blocks/blockatronium",
+    "east": "moretcon:blocks/blockatronium",
+    "south": "moretcon:blocks/blockatronium",
+    "west": "moretcon:blocks/blockatronium",
+    "particle": "moretcon:blocks/blockatronium"
+  }
+}

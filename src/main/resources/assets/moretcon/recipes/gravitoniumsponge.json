@@ -1,0 +1,22 @@
+{
+  "group": "moretcon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 0 ",
+    "010",
+    " 0 "
+  ],
+  "key": {
+    "0": {
+      "item": "moretcon:ingotgravitonium"
+    },
+    "1": {
+      "item": "minecraft:sponge",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "moretcon:gravitoniumsponge",
+    "count": 1
+  }
+}

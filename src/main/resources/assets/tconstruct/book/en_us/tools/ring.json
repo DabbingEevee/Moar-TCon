@@ -1,0 +1,14 @@
+{
+  "tool": "ring",
+  "text": [
+    {
+      "text": "The ring is an accessory that can apply additional passive traits. "
+    }
+  ],
+  "properties": [
+    "Worn in ring slots",
+    "Will activate passive traits applied on the ring",
+    "Will not activate basically anything else",
+    "The rate of activation will decrease the more rings that are equipped"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "tool": "gauntlet",
+  "text": [
+    {
+      "text": "The gauntlet is a hybrid weapon / armor item. "
+    }
+  ],
+  "properties": [
+    "Worn in gauntlet slot",
+    "Attacking something with it equipped will activate its traits"
+  ]
+}

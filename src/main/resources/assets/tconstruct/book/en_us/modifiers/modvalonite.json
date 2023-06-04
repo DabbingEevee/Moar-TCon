@@ -1,0 +1,15 @@
+{
+  "modifier": "moretcon.modvalonite",
+  "text": [
+    {
+      "text": "I hate durability damage and corrosion, this should fix it..."
+    }
+  ],
+  "effects": [
+    "Prevents durability and corrosion half of the time.",
+    "Single level"
+  ],
+  "demoTool": [
+    "moretcon:blsword"
+  ]
+}

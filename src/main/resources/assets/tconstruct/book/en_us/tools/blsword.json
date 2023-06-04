@@ -1,0 +1,14 @@
+{
+  "tool": "blsword",
+  "text": [
+    {
+      "text": "The between sword is an sword that works well in the betweenlands."
+    }
+  ],
+  "properties": [
+    "Same as a broadsword",
+    "No tool efficiency reduction",
+    "Suffers from tool corrosion",
+    "Cast / Pattern can be made in an animator from a broadsword blueprint"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "group": "moretcon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "010",
+    " 0 "
+  ],
+  "key": {
+    "0": {
+      "item": "moretcon:ingotgravitonium"
+    },
+    "1": {
+      "item": "tconstruct:faucet",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "moretcon:blockgravitoniumfaucet",
+    "count": 1
+  }
+}

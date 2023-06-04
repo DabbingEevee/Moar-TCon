@@ -1,0 +1,14 @@
+{
+  "tool": "blpick",
+  "text": [
+    {
+      "text": "The between pickaxe is an pickaxe that works well in the betweenlands."
+    }
+  ],
+  "properties": [
+    "Same as a pickaxe",
+    "No tool efficiency reduction",
+    "Suffers from tool corrosion",
+    "Cast / Pattern can be made in an animator from a pickaxe blueprint"
+  ]
+}

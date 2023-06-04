@@ -1,0 +1,17 @@
+{
+  "modifier": "moretcon.modshocking",
+  "text": [
+    {
+      "text": "Betweenlands lightning sure is nice..."
+    }
+  ],
+  "effects": [
+    "Zaps nearby enemies when a projectile lands",
+    "Single level"
+  ],
+  "demoTool": [
+    "tconstruct:bolt",
+    "tconstruct:shuriken",
+    "tconstruct:arrow"
+  ]
+}

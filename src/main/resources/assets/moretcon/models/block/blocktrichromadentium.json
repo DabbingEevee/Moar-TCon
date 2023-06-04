@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/blocktrichromadentium",
+    "up": "moretcon:blocks/blocktrichromadentium",
+    "north": "moretcon:blocks/blocktrichromadentium",
+    "east": "moretcon:blocks/blocktrichromadentium",
+    "south": "moretcon:blocks/blocktrichromadentium",
+    "west": "moretcon:blocks/blocktrichromadentium",
+    "particle": "moretcon:blocks/blocktrichromadentium"
+  }
+}

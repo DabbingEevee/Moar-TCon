@@ -1,0 +1,12 @@
+{
+	"traits.bloody_arc.slash": {
+	    "category": "entity",
+	    "subtitle": "traits.bloody_arc.slash",
+	    "sounds": [
+	    	{
+	    		"name": "moretcon:traits/bloody_arc/slash",
+	    		"stream": true
+	    	}
+	    ]
+	}
+}

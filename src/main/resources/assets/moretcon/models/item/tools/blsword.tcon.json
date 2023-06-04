@@ -1,0 +1,9 @@
+{
+	"parent": "item/handheld",
+    "textures": {
+        "layer0": "moretcon:items/betweensword/handle",
+        "layer1": "moretcon:items/betweensword/blade",
+        "layer2": "moretcon:items/betweensword/guard",
+        "broken1": "moretcon:items/betweensword/broken"
+    }
+}

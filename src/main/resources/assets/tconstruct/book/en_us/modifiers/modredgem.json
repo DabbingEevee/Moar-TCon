@@ -1,0 +1,17 @@
+{
+  "modifier": "moretcon.modredgem",
+  "text": [
+    {
+      "text": "Crimson Middle Gems seem to work just as well on modular tools..."
+    }
+  ],
+  "effects": [
+    "On Tool: Chance to gain strength when attacking.",
+    "On Armor: Chance to hurt enemy when attacked.",
+    "Not compatible with other middle gem modifiers",
+    "Single level"
+  ],
+  "demoTool": [
+    "moretcon:blsword"
+  ]
+}

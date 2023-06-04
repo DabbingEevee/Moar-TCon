@@ -1,0 +1,16 @@
+{
+  "modifier": "moretcon.modbetweenified",
+  "text": [
+    {
+      "text": "Fine, I'll do it myself."
+    }
+  ],
+  "effects": [
+    "Allows non-betweenlands tools to function in the betweenlands",
+    "Single level"
+    "Uses 3 modifiers"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword"
+  ]
+}

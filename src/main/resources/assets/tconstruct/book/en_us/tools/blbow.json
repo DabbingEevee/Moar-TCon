@@ -1,0 +1,14 @@
+{
+  "tool": "blbow",
+  "text": [
+    {
+      "text": "The between bow is an shortbow that works well in the betweenlands."
+    }
+  ],
+  "properties": [
+    "Same as a shortbow",
+    "No tool efficiency reduction",
+    "Suffers from tool corrosion",
+    "Cast / Pattern can be made in an animator from a shortbow blueprint"
+  ]
+}

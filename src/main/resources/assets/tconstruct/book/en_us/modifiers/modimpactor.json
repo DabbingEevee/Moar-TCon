@@ -1,0 +1,17 @@
+{
+  "modifier": "moretcon.modimpactor",
+  "text": [
+    {
+      "text": "F=MA, More Acceleration = More Damage. "
+    }
+  ],
+  "effects": [
+    "Faster your projectile, more armor penetrating damage it'll do.",
+    "Single level"
+  ],
+  "demoTool": [
+    "tconstruct:bolt",
+    "tconstruct:shuriken",
+    "tconstruct:arrow"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/blockpenguinite",
+    "up": "moretcon:blocks/blockpenguinite",
+    "north": "moretcon:blocks/blockpenguinite",
+    "east": "moretcon:blocks/blockpenguinite",
+    "south": "moretcon:blocks/blockpenguinite",
+    "west": "moretcon:blocks/blockpenguinite",
+    "particle": "moretcon:blocks/blockpenguinite"
+  }
+}

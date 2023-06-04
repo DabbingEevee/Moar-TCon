@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/blockvalkyriemetal",
+    "up": "moretcon:blocks/blockvalkyriemetal",
+    "north": "moretcon:blocks/blockvalkyriemetal",
+    "east": "moretcon:blocks/blockvalkyriemetal",
+    "south": "moretcon:blocks/blockvalkyriemetal",
+    "west": "moretcon:blocks/blockvalkyriemetal",
+    "particle": "moretcon:blocks/blockvalkyriemetal"
+  }
+}

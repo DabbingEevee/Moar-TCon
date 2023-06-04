@@ -1,0 +1,23 @@
+{
+  "conditions": [
+    {
+      "type": "moretcon:aether_legacy"
+    }
+  ],
+  "group": "moretcon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0 0",
+    "0 0"
+  ],
+  "key": {
+    "0": {
+       "type": "forge:ore_dict",
+       "ore": "ingotValkyrieMetal"
+    }
+  },
+  "result": {
+    "item": "aether_legacy:valkyrie_boots",
+    "count": 1
+  }
+}
