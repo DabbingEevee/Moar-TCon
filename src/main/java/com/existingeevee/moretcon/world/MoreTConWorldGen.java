@@ -10,6 +10,7 @@ import com.existingeevee.moretcon.world.generators.AetherOreGenerator;
 import com.existingeevee.moretcon.world.generators.AsteroidGenerator;
 import com.existingeevee.moretcon.world.generators.IgniglomerateGenerator;
 import com.existingeevee.moretcon.world.generators.MainOreGenerator;
+import com.existingeevee.moretcon.world.generators.NetherPrismGenerator;
 import com.existingeevee.moretcon.world.generators.NetherSpikeGenerator;
 
 import net.minecraft.world.World;
@@ -32,6 +33,7 @@ public class MoreTConWorldGen implements IWorldGenerator {
 			modifiers.add(new AsteroidGenerator());
 			modifiers.add(new NetherSpikeGenerator());
 			modifiers.add(new IgniglomerateGenerator());
+			modifiers.add(new NetherPrismGenerator());
 		}
 	}
 	

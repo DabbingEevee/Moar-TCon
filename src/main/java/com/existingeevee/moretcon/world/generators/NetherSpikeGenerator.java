@@ -21,7 +21,7 @@ public class NetherSpikeGenerator extends WorldGenModifier {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
-		if (!(world.provider.getDimensionType().getId() == DimensionType.NETHER.getId())) {
+		if (world.provider.getDimensionType().getId() != DimensionType.NETHER.getId()) {
 			return;
 		}
 		if (!(peekNextInt(random, 25) == 0)) {

@@ -25,7 +25,7 @@ public class OreRecipes {
 		Misc.register9x9Recipes("gemVoidSpar", "blockVoidSpar", event);
 		Misc.register9x9Recipes("gemGarstone", "blockGarstone", event);
 		Misc.register9x9Recipes("gemEnderal", "blockEnderal", event);
-		
+		Misc.register9x9Recipes("gemErythynite", "blockErythynite", event);
 		
 		Misc.registerBlockNuggetIngotRecipeOre("Penguinite", event);
 		
