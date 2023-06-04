@@ -134,7 +134,7 @@ public class ModFluids {
 					);
 		}
 		if (CompatManager.jokes) {
-			//ModFluids.registerFluids(liquidKartik);
+
 		}
 
 

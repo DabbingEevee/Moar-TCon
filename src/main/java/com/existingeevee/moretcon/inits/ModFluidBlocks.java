@@ -20,7 +20,6 @@ public class ModFluidBlocks {
 	public static Block blockLiquidOctine;
 	public static Block blockBurningSulfurFlow;
 	public static Block blockLiquidEmber;
-	//public static Block blockLiquidKartik;
 	public static Block blockLiquidIronwood;
 	public static Block blockLiquidRuneSteel;
 	public static Block blockLiquidArkenium;
@@ -76,7 +75,6 @@ public class ModFluidBlocks {
 					);
 		}
 		if(CompatManager.aether_legacy) {
-			//blockLiquidKartik = new BlockFluid("liquidKartik".toLowerCase(), ModFluids.liquidKartik, Material.LAVA);
 			blockLiquidArkenium = new BlockFluid("liquidarkenium", ModFluids.liquidArkenium, Material.LAVA);
 			blockLiquidValkyrieMetal = new BlockFluid("liquidvalkyriemetal", ModFluids.liquidValkyrieMetal, Material.LAVA);
 			ModFluidBlocks.registerBlocks(

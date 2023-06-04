@@ -800,7 +800,7 @@ public class ModMaterials implements MaterialTypes {
 
 		}
 		if (CompatManager.jokes) {
-			// Materials.registerMaterials(materialKartik, "Kartik");
+
 		}
 		MoreTConLogger.log("Loaded a total of " + totalMaterials + " different TConstruct Materials.");
 	}

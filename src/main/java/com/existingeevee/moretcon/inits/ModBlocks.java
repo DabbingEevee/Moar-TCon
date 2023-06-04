@@ -127,7 +127,7 @@ public class ModBlocks {
 		if(CompatManager.jokes) {
 			ModBlocks.registerBlocks(
 /**-------------------------------------**/
-					//blockKartik
+
 /**-------------------------------------**/
 									);
 		}

@@ -10,15 +10,6 @@ import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.item.Item;
 
-//public static Item ingotKartik = new ItemBase("ingotKartik");
-
-//public static Item nuggetKartik = new ItemBase("nuggetKartik");
-//public static Item ingotFusionDragonSteel = new ItemBase("ingotFusionDragonSteel");
-
-//public static ItemEssence penguinEssence = new ItemEssence("penguinEssence", ingotPenguinite, new FluidStack(TinkerFluids.iron, 144), 100);
-
-//public static ItemEssence fusionDragonEssence = new ItemEssence("fusionionDragonEssence", ingotPenguinite, new FluidStack(ModFluids.liquidFusionite, 288), 500);
-
 public class ModItems {
 	public static int totalItems;
 /*---------------------------------------*/
