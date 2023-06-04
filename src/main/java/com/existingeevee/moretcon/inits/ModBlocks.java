@@ -60,6 +60,8 @@ public class ModBlocks {
 	public static Block blockIgniglomerate = ((BlockBase) new HotBlockBase("blockIgniglomerate", Material.IRON, 6).setCanBurn(false).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(1);
 	public static Block oreEbonite = ((BlockBase) new BlockBedrockOreMetal("oreEbonite", 5, ModItems.ingotEbonite).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static Block blockEbonite = ((BlockBase) new BlockBase("blockEbonite", Material.IRON, 5).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
+	public static Block oreErythynite = ((BlockBase) new BlockOre("oreErythynite", 5, ModItems.gemErythynite, 1).setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setLightLevel(1);
+	public static Block blockErythynite = ((BlockBase) new BlockBase("blockErythynite", Material.IRON, 6).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(3);
 
 
 
@@ -98,7 +100,6 @@ public class ModBlocks {
 				oreGravitoniumDense,
 				blockGravitonium,
 				blockSteel,
-			//	blockDestabilizedBedrock,
 				oreBloodstone,
 				blockBloodstone,
 				oreEchostone,
@@ -107,7 +108,9 @@ public class ModBlocks {
 				blockIgniglomerate,
 				blockAtronium,
 				oreEbonite,
-				blockEbonite
+				blockEbonite,
+				oreErythynite,
+				blockErythynite
 /**-------------------------------------**/
 				);		
 		}

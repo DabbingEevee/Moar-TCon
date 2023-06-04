@@ -55,12 +55,6 @@ public class ModTraits {
 	public static ColdFire coldFire = new ColdFire();
 	public static Tricromatic trichromic = new Tricromatic();
 	public static BloodGodsBlessing bloodGodsBlessing = new BloodGodsBlessing();
-	//public static Annihilating annihilating = new Annihilating();
-	public static Impactor modImpactor;
-	public static RedGem modRedGem;
-	public static GreenGem modGreenGem;
-	public static BlueGem modBlueGem;
-	public static Shocking modShocking;
 	public static HelpfulRadiation radioactive = new HelpfulRadiation();
 	public static Voidic voidic = new Voidic();
 	public static Pulsating pulsation = new Pulsating();
@@ -70,20 +64,12 @@ public class ModTraits {
 	public static Magical magical = new Magical();
 	public static Reaching reaching;
 	public static Aetheric aetheric = new Aetheric();
-	public static Valonite modValonite;
-	public static Tarred modTarred;
-	public static Debug modDebug;
-	public static Shockwaving shockwaving;
-	public static Rotten rotten;
 	public static Rootplicating rootplicating = new Rootplicating();
 	public static Plasmatic plasmatic = new Plasmatic();
 	public static SkysBlessing blessed = new SkysBlessing();
 	public static Treetap treetap = new Treetap();
 	public static Hardcore hardcore = new Hardcore();
-	public static AntiGravity antigravity;
 	public static HyperGravity hypergravity = new HyperGravity();
-	public static MatterReconstructionGel repair;
-	public static Corroding corroding;
 	public static TripleShot tripleshot = new TripleShot();
 	public static Mirroring mirroring = new Mirroring();
 	public static AerialFlame aerialFlames = new AerialFlame();
@@ -91,12 +77,30 @@ public class ModTraits {
 	public static BottomsEnd bottomsEnd = new BottomsEnd();
 	public static Slicing slicing = new Slicing();
 	public static Leeching leeching = new Leeching();
-	public static Crushing crushing;
-	public static Betweenified betweenified;
 	public static Afterimage afterimage = new Afterimage();
 	public static MagicallyReactive magicallyReactive = new MagicallyReactive();
 	public static Penetrant penetrant = new Penetrant();
 	public static Darkened darkened = new Darkened();
+	
+	public static MatterReconstructionGel repair;
+
+	public static AntiGravity antigravity;
+
+	//public static Annihilating annihilating = new Annihilating();
+	public static Impactor modImpactor;
+	public static RedGem modRedGem;
+	public static GreenGem modGreenGem;
+	public static BlueGem modBlueGem;
+	public static Shocking modShocking;
+	
+	public static Corroding corroding;
+	public static Crushing crushing;
+	public static Betweenified betweenified;
+	public static Valonite modValonite;
+	public static Tarred modTarred;
+	public static Debug modDebug;
+	public static Shockwaving shockwaving;
+	public static Rotten rotten;
 	
 	static {
 		if (CompatManager.thebetweenlands) {

@@ -146,7 +146,12 @@ public class ModMaterials implements MaterialTypes {
 			0xd99857);	
 	
 	public static Material materialEbonite = new Material(Misc.createNonConflictiveName("ebonite".toLowerCase()),
-			0x270339);	
+			0x270339);
+	
+	public static Material materialErythynite = new Material(Misc.createNonConflictiveName("erythynite".toLowerCase()),
+			0x00ff00);
+
+	//Erythynite TinkerMaterials
 	
 	public static UniqueMaterial materialPlasma = new UniqueMaterial(
 			Misc.createNonConflictiveName("plasma".toLowerCase()), 0xff0000, "tconstruct:sword_blade",
@@ -176,6 +181,7 @@ public class ModMaterials implements MaterialTypes {
 	public static UniqueMaterial materialCrimson = new UniqueMaterial(
 			Misc.createNonConflictiveName("Crimson".toLowerCase()), 0xaa0000, "tconstruct:tough_tool_rod",
 			"plustic:katana");
+
 	static {
 
 		if (CompatManager.plustic) {
@@ -376,6 +382,24 @@ public class ModMaterials implements MaterialTypes {
 			materialBloodstone.addStats(new ExtraMaterialStats(75));
 			materialBloodstone.addStats(new ArrowShaftMaterialStats(2.35f, 80));
 			materialBloodstone.addStats(new ProjectileMaterialStats());
+			
+			materialErythynite.addItem(ModItems.gemErythynite, 1, Material.VALUE_Ingot);
+			materialErythynite.addItem(Item.getItemFromBlock(ModBlocks.blockErythynite), 1, Material.VALUE_Block);
+			materialErythynite.setCastable(false);
+			materialErythynite.setCraftable(true);
+			materialErythynite.setRepresentativeItem(ModItems.gemErythynite);
+			materialErythynite.addTrait(ModTraits.leeching);
+			materialErythynite.addTrait(ModTraits.hardcore);
+			materialErythynite.addTrait(TinkerTraits.unnatural);
+			materialErythynite.addTrait(TinkerTraits.enderference);
+			materialErythynite.addStats(new HeadMaterialStats(600, 7.5f, 10f, 7));
+			materialErythynite.addStats(new HandleMaterialStats(2.2f, 60));
+			materialErythynite.addStats(new ExtraMaterialStats(30));
+			materialErythynite.addStats(new ArrowShaftMaterialStats(1.5f, 20));
+			materialErythynite.addStats(new ProjectileMaterialStats());
+			if (CompatManager.plustic) {
+			    materialErythynite.addStats(new LaserMediumMaterialStats(12, 20));
+			}
 			
 			materialGravitonium.addItem("oreGravitonium", 1, Material.VALUE_Ore());
 			materialGravitonium.addItem("oreGravitoniumDense", 1, Material.VALUE_Ore() * 4);
@@ -795,6 +819,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialIgniglomerate);
 			ModMaterials.registerMaterial(materialAtronium);
 			ModMaterials.registerMaterial(materialEbonite);
+			ModMaterials.registerMaterial(materialErythynite);
 			
 		}
 		if (CompatManager.twilightforest) {
