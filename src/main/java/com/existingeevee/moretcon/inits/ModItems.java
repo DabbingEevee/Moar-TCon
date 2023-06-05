@@ -102,6 +102,7 @@ public class ModItems {
 	//Representative Items
 	public static Item repItemEnderexamite = new ItemBase("repitemenderexamite").setTab(null);
 	public static Item repItemFerroherb = new ItemBase("repitemferroherb").setTab(null);
+	public static Item repItemShadowglass = new ItemBase("repItemShadowglass").setTab(null);
 
 	//Ingriedients
 	public static Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);;
@@ -172,6 +173,7 @@ public class ModItems {
 					hydrogenRichRedstonePowder,
 					
 					repItemEnderexamite,
+					repItemShadowglass,
 					
 					new ItemDebugTool()
 

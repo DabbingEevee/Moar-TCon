@@ -151,7 +151,8 @@ public class ModMaterials implements MaterialTypes {
 	public static Material materialErythynite = new Material(Misc.createNonConflictiveName("erythynite".toLowerCase()),
 			0x00ff00);
 
-	//Erythynite TinkerMaterials
+	public static Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass".toLowerCase()),
+			0x2a275e);
 	
 	public static UniqueMaterial materialPlasma = new UniqueMaterial(
 			Misc.createNonConflictiveName("plasma".toLowerCase()), 0xff0000, "tconstruct:sword_blade",
@@ -475,6 +476,20 @@ public class ModMaterials implements MaterialTypes {
 			materialEnderexamite.addStats(new ProjectileMaterialStats());
 			CompositeRegistry.registerComposite(materialEnderal, materialEnderexamite, TinkerFluids.knightslime);
 
+			materialShadowglass.setCastable(false);
+			materialShadowglass.setCraftable(false);
+			ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemShadowglass), materialShadowglass);
+			materialShadowglass.addTrait(TinkerTraits.jagged);
+			materialShadowglass.addTrait(TinkerTraits.unnatural);
+			materialShadowglass.addTrait(ModTraits.darkened);
+			materialShadowglass.addTrait(ModTraits.hardcore);
+			materialShadowglass.addStats(new HeadMaterialStats(1500, 8f, 12f, 7));
+			materialShadowglass.addStats(new HandleMaterialStats(2.3f, 20));
+			materialShadowglass.addStats(new ExtraMaterialStats(15));
+			materialShadowglass.addStats(new ArrowShaftMaterialStats(1.2f, 18));
+			materialShadowglass.addStats(new ProjectileMaterialStats());
+			CompositeRegistry.registerComposite(materialErythynite, materialShadowglass, ModFluids.liquidEbonite);
+			
 			materialPlasma.addStats(new HeadMaterialStats(4096, 6f, 12f, 5));
 			materialPlasma.addTrait(ModTraits.plasmatic);
 
@@ -820,6 +835,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialAtronium);
 			ModMaterials.registerMaterial(materialEbonite);
 			ModMaterials.registerMaterial(materialErythynite);
+			ModMaterials.registerMaterial(materialShadowglass);
 			
 		}
 		if (CompatManager.twilightforest) {

@@ -3,7 +3,6 @@ package com.existingeevee.moretcon.world.generators;
 import java.util.Random;
 
 import com.existingeevee.moretcon.inits.ModBlocks;
-import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.world.IBlockStateProvider;
 import com.existingeevee.moretcon.world.WorldGenModifier;
 

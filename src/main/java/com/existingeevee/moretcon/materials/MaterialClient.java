@@ -36,6 +36,7 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialRotiron);
 		setCustomRender(ModMaterials.materialSwampSteel);
 		setCustomRender(ModMaterials.materialPenguinite);
+		setCustomRender(ModMaterials.materialShadowglass);
 		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
 				+ ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialIgniglomerate
