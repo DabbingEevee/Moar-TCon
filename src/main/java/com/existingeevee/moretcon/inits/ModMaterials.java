@@ -154,6 +154,7 @@ public class ModMaterials implements MaterialTypes {
 	public static Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass".toLowerCase()),
 			0x2a275e);
 	
+	
 	public static UniqueMaterial materialPlasma = new UniqueMaterial(
 			Misc.createNonConflictiveName("plasma".toLowerCase()), 0xff0000, "tconstruct:sword_blade",
 			"tconstruct:broadsword");
@@ -180,21 +181,18 @@ public class ModMaterials implements MaterialTypes {
 			"tconstruct:broadsword");
 
 	public static UniqueMaterial materialCrimson = new UniqueMaterial(
-			Misc.createNonConflictiveName("Crimson".toLowerCase()), 0xaa0000, "tconstruct:tough_tool_rod",
+			Misc.createNonConflictiveName("crimson".toLowerCase()), 0xaa0000, "tconstruct:tough_tool_rod",
 			"plustic:katana");
-
+	
 	static {
 
 		if (CompatManager.plustic) {
-			// materialCrimson.addStats(new HeadMaterialStats(4096, 6f, 12f, 5));
-			// materialCrimson.addStats(new ExtraMaterialStats(1000));
 			materialCrimson.addStats(new HandleMaterialStats(4f, 1024));
 			materialCrimson.addTrait(ModTraits.bloodyArc);
 			materialCrimson.addTrait(ModTraits.slicing);
 		}
 
 		if (CompatManager.jokes) {
-
 			// Thank you for everything, old friend
 			materialTechnoblade.addStats(new HeadMaterialStats(12288, 8f, 15f, 5));
 			materialTechnoblade.addTrait(TinkerTraits.baconlicious);
@@ -519,7 +517,6 @@ public class ModMaterials implements MaterialTypes {
 			materialIgniglomerate.addStats(new ExtraMaterialStats(250));
 			materialIgniglomerate.addStats(new ArrowShaftMaterialStats(1f, 10));
 			materialIgniglomerate.addStats(new ProjectileMaterialStats());
-
 		}
 		if (CompatManager.aether_legacy) { // TODO
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -837,8 +834,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialAtronium);
 			ModMaterials.registerMaterial(materialEbonite);
 			ModMaterials.registerMaterial(materialErythynite);
-			ModMaterials.registerMaterial(materialShadowglass);
-			
+			ModMaterials.registerMaterial(materialShadowglass);			
 		}
 		if (CompatManager.twilightforest) {
 			ModMaterials.registerMaterial(materialIronwood);
