@@ -266,11 +266,13 @@ public class ModMaterials implements MaterialTypes {
 			materialTrichromadentium.setCraftable(false);
 			materialTrichromadentium.setRepresentativeItem("ingotTrichromadentium");
 			materialTrichromadentium.addTrait(ModTraits.trichromic);
+			materialTrichromadentium.addTrait(TinkerTraits.unnatural);
+			materialTrichromadentium.addTrait(TinkerTraits.coldblooded);
 			if (CompatManager.plustic) {
 				materialTrichromadentium.addStats(new LaserMediumMaterialStats(15, 20));
 				materialTrichromadentium.addStats(new BatteryCellMaterialStats(2000));
 			}
-			materialTrichromadentium.addStats(new HeadMaterialStats(1800, 20f, 16f, 8));
+			materialTrichromadentium.addStats(new HeadMaterialStats(1800, 20f, 18f, 8));
 			materialTrichromadentium.addStats(new HandleMaterialStats(4f, 60));
 			materialTrichromadentium.addStats(new ExtraMaterialStats(500));
 			materialTrichromadentium.addStats(new ArrowShaftMaterialStats(3f, 75));
