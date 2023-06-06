@@ -34,7 +34,7 @@ public class ModSponges {
 					SpongeRegistry.createSpongeStep("gold", slimeknights.tconstruct.library.materials.Material.VALUE_Block * 8)));
 			//TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidSolarSteel, 4), new FluidStack(ModFluids.liquidFusionite, 1), new FluidStack(ModFluids.liquidHydrogen, 1), new FluidStack(TinkerFluids.steel, 3));
 
-			gravitoniumSpongeSolarsteel = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("solarsteel", "oreSolarSteel", new ItemStack(ModItems.ingotSolarSteel),
+			gravitoniumSpongeSolarsteel = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("solarsteel", "oreSolarsteel", new ItemStack(ModItems.ingotSolarSteel),
 					SpongeRegistry.createSpongeStep("liquidfusionite", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 4),
 					SpongeRegistry.createSpongeStep("liquidhydrogen", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 8),
 					SpongeRegistry.createSpongeStep("steel", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 3)));
