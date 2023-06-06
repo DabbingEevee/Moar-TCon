@@ -8,8 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-
-public class HelpfulRadiation extends AbstractTrait  {
+public class HelpfulRadiation extends AbstractTrait {
 
 	public HelpfulRadiation() {
 		super(Misc.createNonConflictiveName("helpful_radiation"), 0x00ed00);
@@ -17,10 +16,14 @@ public class HelpfulRadiation extends AbstractTrait  {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		target.addPotionEffect(new PotionEffect(MobEffects.GLOWING, Math.round(damageDealt)*8, 1));
-		target.addPotionEffect(new PotionEffect(MobEffects.WITHER, Math.round(damageDealt)*8, 1));
-		target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, Math.round(damageDealt)*8, 1));
-		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, Math.round(damageDealt)*8, 1));
+		if (random.nextBoolean()) {
+			target.addPotionEffect(new PotionEffect(MobEffects.GLOWING, Math.round(damageDealt) * 8, 0));
+			target.addPotionEffect(new PotionEffect(MobEffects.WITHER, Math.round(damageDealt) * 8, 1));
+			target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, Math.round(damageDealt) * 8, 0));
+		}
+		if (random.nextBoolean()) {
+			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, Math.round(damageDealt) * 8, 0));
+		}
 		super.afterHit(tool, player, target, damageDealt, wasCritical, wasHit);
 	}
 }
