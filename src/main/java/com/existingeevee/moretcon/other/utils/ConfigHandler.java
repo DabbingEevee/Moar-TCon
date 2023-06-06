@@ -62,6 +62,8 @@ public class ConfigHandler {
 	
 	public static boolean shouldDurabilityCapNonProjectiles = true;
 	
+	public static int hyperheatMaximumStack = 127;
+	
 	public static ResourceLocation trichromicRed = new ResourceLocation("minecraft:strength");
 	public static ResourceLocation trichromicGreen = new ResourceLocation("none");
 	public static ResourceLocation trichromicBlue = new ResourceLocation("none");
@@ -128,6 +130,9 @@ public class ConfigHandler {
 			ConfigHandler.trichromicBlueLvl = Integer.parseInt(triBlue.split(";")[1]);
 		} catch (NumberFormatException e) {} catch (ArrayIndexOutOfBoundsException e) {}
 
+		
+		hyperheatMaximumStack =  config.getInt("hyperheatmaximumstack", category, 32, 2, 127, "The maximum stack of Hyper Heat that is allowed");
+		
 		category = "Durability Issue Fix";
 		config.addCustomCategoryComment(category, "A category dedicated to fixing the strange behavior of tools with durability greater than (2 ^ 15 - 1)");
 
@@ -152,19 +157,8 @@ public class ConfigHandler {
 	}
 
 	public static void init(FMLPreInitializationEvent event) {
-		/*if (new File(new File(event.getModConfigurationDirectory() + "/" + VersionInfo.MODID), VersionInfo.MODID + ".cfg").exists()) {
-			try {
-				Logging.log("Located old mod config, Attempting to copy it to the new location", Level.INFO);
-				FileUtils.copyFile(new File(new File(event.getModConfigurationDirectory() + "/" + VersionInfo.MODID), VersionInfo.MODID + ".cfg"), new File(new File(event.getModConfigurationDirectory() + "/" + VersionInfo.NEW_MODID), VersionInfo.NEW_MODID + ".cfg"));
-				Logging.log("Successfully copied old config.");
-			} catch (IOException e) {
-				Logging.log("Unable to copy old config. Perhaps is it permission protected?", Level.WARN);
-			}
-		}*/
-
 		configFile = new File(event.getModConfigurationDirectory() + "/" + ModInfo.MODID);
 		configFile.mkdirs();
 		initConfig(new File(configFile.getPath(), ModInfo.MODID + ".cfg"));
-		//config.load();
 	}
 }
