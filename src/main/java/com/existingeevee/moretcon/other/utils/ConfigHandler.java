@@ -62,7 +62,7 @@ public class ConfigHandler {
 	
 	public static boolean shouldDurabilityCapNonProjectiles = true;
 	
-	public static int hyperheatMaximumStack = 127;
+	public static int hyperheatMaximumStack = 4;
 	
 	public static ResourceLocation trichromicRed = new ResourceLocation("minecraft:strength");
 	public static ResourceLocation trichromicGreen = new ResourceLocation("none");
@@ -131,7 +131,7 @@ public class ConfigHandler {
 		} catch (NumberFormatException e) {} catch (ArrayIndexOutOfBoundsException e) {}
 
 		
-		hyperheatMaximumStack =  config.getInt("hyperheatmaximumstack", category, 32, 2, 127, "The maximum stack of Hyper Heat that is allowed");
+		hyperheatMaximumStack =  config.getInt("hyperheatmaximumstack", category, 4, 1, 127, "The maximum stack of Hyper Heat that is allowed");
 		
 		category = "Durability Issue Fix";
 		config.addCustomCategoryComment(category, "A category dedicated to fixing the strange behavior of tools with durability greater than (2 ^ 15 - 1)");
