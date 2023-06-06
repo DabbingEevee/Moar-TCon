@@ -21,7 +21,6 @@ public class SmelteryInit {
 			TinkerRegistry.registerMelting(ModItems.hydrogenRichRedstonePowder, ModFluids.liquidHydrogen, Material.VALUE_Ingot);
 			TinkerRegistry.registerMelting(ModItems.rawSteel, TinkerFluids.steel, Material.VALUE_Ingot);
 			TinkerRegistry.registerMelting(ModBlocks.oreGravitoniumDense, ModFluids.liquidGravitonium, Material.VALUE_Ore() * 4);
-			TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidSolarSteel, 4), new FluidStack(ModFluids.liquidFusionite, 1), new FluidStack(ModFluids.liquidHydrogen, 1), new FluidStack(TinkerFluids.steel, 3));
 			TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidRuneSteel, 1), new FluidStack(TinkerFluids.obsidian, 1), new FluidStack(TinkerFluids.ardite, 9), new FluidStack(TinkerFluids.steel, 9), new FluidStack(TinkerFluids.gold, 2));
 			TinkerRegistry.registerSmelteryFuel(new FluidStack(ModFluids.liquidSolarSteel, 16), 1024);
 			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.matterReconstructionGel, 1), RecipeMatch.of(new ItemStack(ModItems.hydrogenRichRedstonePowder)), TinkerFluids.knightslime, Material.VALUE_Ingot * 4, true, true));

@@ -31,7 +31,7 @@ public class ModFluids {
 	public static Fluid liquidSolarSteel = new LiquidFluid("liquidsolarsteel",
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidsolarsteel_still"),
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidsolarsteel_flowing")).setCColor(0xffad33).setLuminosity(15)
-					.setDensity(8000).setViscosity(1500).setTemperature(6000);
+					.setDensity(8000).setViscosity(1500).setTemperature(2000);
 	public static Fluid liquidGallium = new LiquidFluid("liquidgallium",
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidgallium_still"),
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidgallium_flowing")).setCColor(0xffffff).setLuminosity(0)

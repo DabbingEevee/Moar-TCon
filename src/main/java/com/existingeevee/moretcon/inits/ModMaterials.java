@@ -250,12 +250,12 @@ public class ModMaterials implements MaterialTypes {
 			materialSolarSteel.addTrait(TinkerTraits.autosmelt);
 			if (CompatManager.plustic) {
 				materialSolarSteel.addStats(new LaserMediumMaterialStats(15, 20));
-				materialSolarSteel.addStats(new BatteryCellMaterialStats(2000));
+				materialSolarSteel.addStats(new BatteryCellMaterialStats(750000));
 			}
-			materialSolarSteel.addStats(new HeadMaterialStats(4500, 18f, 14f, 7));
-			materialSolarSteel.addStats(new HandleMaterialStats(4f, 60));
-			materialSolarSteel.addStats(new ExtraMaterialStats(60));
-			materialSolarSteel.addStats(new ArrowShaftMaterialStats(3f, 20));
+			materialSolarSteel.addStats(new HeadMaterialStats(4500, 22f, 20f, 7));
+			materialSolarSteel.addStats(new HandleMaterialStats(4f, 600));
+			materialSolarSteel.addStats(new ExtraMaterialStats(600));
+			materialSolarSteel.addStats(new ArrowShaftMaterialStats(3f, 50));
 
 			materialTrichromadentium.addItem("oreTrichromadentium", 1, Material.VALUE_Ore());
 			materialTrichromadentium.addCommonItems("Trichromadentium");

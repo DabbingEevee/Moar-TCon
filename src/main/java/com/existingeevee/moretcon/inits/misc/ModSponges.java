@@ -13,11 +13,12 @@ public class ModSponges {
 	public static Item gravitoniumSponge;
 	public static Item gravitoniumSpongeTrichromadentium;
 	public static Item gravitoniumSpongeAtronium;
+	public static Item gravitoniumSpongeSolarsteel;
 
 	public static void init() {
 		gravitoniumSponge = new ItemBase("gravitoniumSponge").setTab(ModTabs.moarTConMisc);
 		ModItems.registerItems(gravitoniumSponge);
-		
+
 		if (CompatManager.loadMain) {
 
 			gravitoniumSpongeTrichromadentium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("trichromadentium", "oreTrichromadentium", new ItemStack(ModItems.ingotTrichromadentium),
@@ -27,13 +28,22 @@ public class ModSponges {
 					SpongeRegistry.createSpongeStep("obsidian", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 32)));
 
 			gravitoniumSpongeAtronium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("atronium", "oreAtronium", new ItemStack(ModItems.ingotAtronium),
-					SpongeRegistry.createSpongeStep("liquidfusionite", slimeknights.tconstruct.library.materials.Material.VALUE_Block),
+					SpongeRegistry.createSpongeStep("liquidfusionite", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 2),
 					SpongeRegistry.createSpongeStep("liquidgallium", slimeknights.tconstruct.library.materials.Material.VALUE_Block),
 					SpongeRegistry.createSpongeStep("liquidrunesteel", slimeknights.tconstruct.library.materials.Material.VALUE_Block * 4),
 					SpongeRegistry.createSpongeStep("gold", slimeknights.tconstruct.library.materials.Material.VALUE_Block * 8)));
+			//TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidSolarSteel, 4), new FluidStack(ModFluids.liquidFusionite, 1), new FluidStack(ModFluids.liquidHydrogen, 1), new FluidStack(TinkerFluids.steel, 3));
+
+			gravitoniumSpongeSolarsteel = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("solarsteel", "oreSolarSteel", new ItemStack(ModItems.ingotSolarSteel),
+					SpongeRegistry.createSpongeStep("liquidfusionite", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 4),
+					SpongeRegistry.createSpongeStep("liquidhydrogen", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 8),
+					SpongeRegistry.createSpongeStep("steel", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 3)));
 
 			
-			ModItems.registerItems(gravitoniumSpongeTrichromadentium, gravitoniumSpongeAtronium);
+			ModItems.registerItems(
+					gravitoniumSpongeTrichromadentium,
+					gravitoniumSpongeAtronium,
+					gravitoniumSpongeSolarsteel);
 		}
 
 	}
