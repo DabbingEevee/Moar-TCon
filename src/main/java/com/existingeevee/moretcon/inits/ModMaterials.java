@@ -284,6 +284,7 @@ public class ModMaterials implements MaterialTypes {
 			materialAtronium.addTrait(TinkerTraits.lightweight);
 			materialAtronium.addTrait(ModTraits.magicallyReactive);
 			materialAtronium.addTrait(ModTraits.penetrant);
+			materialAtronium.addTrait(ModTraits.etheralHarvest);
 			materialAtronium.addStats(new HeadMaterialStats(1500, 18f, 17f, 8));
 			materialAtronium.addStats(new HandleMaterialStats(3f, 180));
 			materialAtronium.addStats(new ExtraMaterialStats(750));

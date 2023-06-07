@@ -21,6 +21,7 @@ import com.existingeevee.moretcon.traits.traits.Burning;
 import com.existingeevee.moretcon.traits.traits.ColdFire;
 import com.existingeevee.moretcon.traits.traits.Corroding;
 import com.existingeevee.moretcon.traits.traits.Darkened;
+import com.existingeevee.moretcon.traits.traits.EtheralHarvest;
 import com.existingeevee.moretcon.traits.traits.Hardcore;
 import com.existingeevee.moretcon.traits.traits.HelpfulRadiation;
 import com.existingeevee.moretcon.traits.traits.HyperGravity;
@@ -101,6 +102,8 @@ public class ModTraits {
 	public static Debug modDebug;
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
+	
+	public static EtheralHarvest etheralHarvest = new EtheralHarvest();
 	
 	static {
 		if (CompatManager.thebetweenlands) {

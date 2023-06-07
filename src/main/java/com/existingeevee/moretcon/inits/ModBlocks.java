@@ -1,6 +1,7 @@
 package com.existingeevee.moretcon.inits;
 
 import com.existingeevee.moretcon.block.blocktypes.BlockBase;
+import com.existingeevee.moretcon.block.blocktypes.BlockEtheralBase;
 import com.existingeevee.moretcon.block.blocktypes.BlockFalling;
 import com.existingeevee.moretcon.block.blocktypes.HotBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.RadiationBlockBase;
@@ -50,7 +51,6 @@ public class ModBlocks {
 	public static Block blockGravitonium = ((BlockBase) new BlockBase("blockGravitonium", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials));
 	public static Block blockSwampSteel = ((BlockBase) new BlockBase("blockSwampSteel", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials));
 	public static Block blockRotiron = ((BlockBase) new BlockBase("blockRotiron", Material.IRON, 3).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials));
-//	public static Block blockDestabilizedBedrock = new BlockBreakableBedrock().setResistance(Integer.MAX_VALUE).setHardness(50);
 	public static Block oreNaturalVoidSpar = ((BlockBase) new BlockBedrockOre("oreNaturalVoidSpar", 4, ModItems.gemVoidSpar, 1, 1).setHardness(50).setResistance(Integer.MAX_VALUE).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static Block oreBloodstone = ((BlockBase) new BlockBedrockOre("oreBloodstone", 4, ModItems.gemBloodstone, 1, 1).setHardness(50).setResistance(Integer.MAX_VALUE).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static Block blockBloodstone = ((BlockBase) new BlockBase("blockBloodstone", Material.IRON, 5).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
@@ -63,7 +63,9 @@ public class ModBlocks {
 	public static Block oreErythynite = ((BlockBase) new BlockOre("oreErythynite", 5, ModItems.gemErythynite, 1).setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setLightLevel(1);
 	public static Block blockErythynite = ((BlockBase) new BlockBase("blockErythynite", Material.IRON, 6).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(3);
 
+	public static Block blockEtheralStone = ((BlockBase) new BlockEtheralBase("blockEtheralStone", 1).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMisc)).canBeBeacon(true);
 
+	
 
 	//public static Block oreFakeFluidTest = ((BlockBase) new BlockFakeFluid("blockFakeFluid", Material.IRON, 3).setHardness(12).setResistance(20).setCreativeTab(Tabs.materials)).canBeBeacon(false);
 
@@ -110,8 +112,9 @@ public class ModBlocks {
 				oreEbonite,
 				blockEbonite,
 				oreErythynite,
-				blockErythynite
+				blockErythynite,
 /**-------------------------------------**/
+				blockEtheralStone
 				);		
 		}
 		if(CompatManager.twilightforest) {
