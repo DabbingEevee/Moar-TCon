@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.other.jei;
+package com.existingeevee.moretcon.compat.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;

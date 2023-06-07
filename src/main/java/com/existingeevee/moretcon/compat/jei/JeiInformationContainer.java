@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.other.jei;
+package com.existingeevee.moretcon.compat.jei;
 
 import java.util.function.BooleanSupplier;
 
