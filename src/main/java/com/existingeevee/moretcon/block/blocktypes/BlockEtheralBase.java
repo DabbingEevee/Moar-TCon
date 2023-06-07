@@ -15,6 +15,7 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -35,6 +36,7 @@ public class BlockEtheralBase extends BlockBase {
 	public BlockEtheralBase(String itemName, int harvestLevel) {
 		super(itemName, MAT, harvestLevel);
 		MinecraftForge.EVENT_BUS.register(this);
+		this.translucent = true;
 	}
 
 	@Override
@@ -85,5 +87,16 @@ public class BlockEtheralBase extends BlockBase {
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean isActualState) {
 		// trolled
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false; 
 	}
 }
