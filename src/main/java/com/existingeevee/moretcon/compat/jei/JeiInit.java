@@ -39,6 +39,8 @@ public class JeiInit {
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreGravitoniumDense, 1), "Found astronomically rarely in The End inside of floating asteroids. Asteroids are generated approx. one in 2500 chunks.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreIgniglomerate, 1), "Found rarely in The Nether within the lava lake.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreBloodstone, 1), "Found commonly in The Nether above the bedrock roof.", () -> CompatManager.loadMain));
+		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEbonite, 1), "Found very rarely in all bedrockbearing dimensions in the lower bedrock layer", () -> CompatManager.loadMain));
+		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreErythynite, 1), "Found very rarely in The Nether in nether prisms which generates from y = 160 <-> 224", () -> CompatManager.loadMain));
 		
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreArkenium, 1), "Found rarely in all holystone-bearing dimensions from y = 5 <-> 250.", () -> CompatManager.aether_legacy));
 
