@@ -1,4 +1,4 @@
-package com.existingeevee.math;
+package com.existingeevee.math.noise;
 
 import java.util.Random;
 

@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.world.generators;
 
 import java.util.Random;
 
-import com.existingeevee.math.SimplexNoiseGenerator;
+import com.existingeevee.math.noise.SimplexNoiseGenerator;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.world.WorldGenModifier;
 

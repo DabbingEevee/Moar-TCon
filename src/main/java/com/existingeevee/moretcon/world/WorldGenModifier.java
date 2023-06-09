@@ -93,6 +93,7 @@ public abstract class WorldGenModifier {
 												IBlockState state = worldIn.getBlockState(blockpos);
 												if (state.getBlock().isReplaceableOreGen(state, worldIn, blockpos,
 														blockToReplace)) {
+													//MoreTConLogger.log(blockpos.getX() + " " + blockpos.getY() + " " + blockpos.getZ());
 													worldIn.setBlockState(blockpos, blockToGen.getNextBlock(rand), 2);
 												}
 											}

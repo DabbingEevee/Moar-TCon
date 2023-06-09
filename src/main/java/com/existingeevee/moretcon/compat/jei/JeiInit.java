@@ -41,6 +41,7 @@ public class JeiInit {
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreBloodstone, 1), "Found commonly in The Nether above the bedrock roof.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEbonite, 1), "Found very rarely in all bedrockbearing dimensions in the lower bedrock layer", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreErythynite, 1), "Found very rarely in The Nether in nether prisms which generates from y = 160 <-> 224", () -> CompatManager.loadMain));
+		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.blockEtherstone, 1), "Found rarely in The End in the etheral stone from y = 199 <-> 201", () -> CompatManager.loadMain));
 		
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreArkenium, 1), "Found rarely in all holystone-bearing dimensions from y = 5 <-> 250.", () -> CompatManager.aether_legacy));
 

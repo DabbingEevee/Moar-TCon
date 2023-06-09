@@ -30,12 +30,15 @@ public class MoreTConWorldGen implements IWorldGenerator {
 			modifiers.add(new AetherOreGenerator());
 		}
 		if (CompatManager.loadMain) {
+			//Loaded first
+			modifiers.add(new EtheralToplayerGenerator());
+
+			//Order dosent really matter at this point
 			modifiers.add(new MainOreGenerator());
 			modifiers.add(new AsteroidGenerator());
 			modifiers.add(new NetherSpikeGenerator());
 			modifiers.add(new IgniglomerateGenerator());
 			modifiers.add(new NetherPrismGenerator());
-			modifiers.add(new EtheralToplayerGenerator());
 		}
 	}
 	
