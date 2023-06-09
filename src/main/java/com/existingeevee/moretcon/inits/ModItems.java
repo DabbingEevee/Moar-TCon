@@ -95,7 +95,9 @@ public class ModItems {
 	public static Item gemEchostone = new ItemBase("gemEchostone");
 	public static Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate");
 	public static Item gemErythynite = new ItemBase("gemErythynite");
+	public static Item gemEtherstone = new ItemBase("gemEtherstone");;
 
+	
 	//Internal
 	public static Item iconLightning = new ItemBase("lightning").setTab(null);
 
@@ -116,6 +118,7 @@ public class ModItems {
 
 	//Modifier items
 	public static Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
+
 
 /*---------------------------------------*/
 
@@ -165,6 +168,7 @@ public class ModItems {
 					gemEchostone,
 					gemIgniglomerate,
 					gemErythynite,
+					gemEtherstone,
 					
 					matterReconstructionGel,
 					carbonPile,

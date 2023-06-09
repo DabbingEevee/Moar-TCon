@@ -1,19 +1,12 @@
 package com.existingeevee.moretcon.block.blocktypes;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import com.existingeevee.moretcon.traits.ModTraits;
 
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialTransparent;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -31,12 +24,46 @@ public class BlockEtheralBase extends BlockBase {
 
 	public static final AxisAlignedBB EMPTY_AABB = new AxisAlignedBB(-100.0D, -100.0D, -100.0D, -100.0D, -100.0D, -100.0D);
 
-	public static final Material MAT = new MaterialTransparent(MapColor.AIR);
-
-	public BlockEtheralBase(String itemName, int harvestLevel) {
-		super(itemName, MAT, harvestLevel);
+	public BlockEtheralBase(String itemName, Material material, int harvestLevel) {
+		super(itemName, material, harvestLevel);
 		MinecraftForge.EVENT_BUS.register(this);
 		this.translucent = true;
+	}
+
+	@Override
+	public boolean isTopSolid(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isBlockNormalCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isNormalCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean causesSuffocation(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos) {
+		return true;
+	}
+
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false; 
+	}
+
+	@Override
+	public boolean canSilkHarvest() {
+		return true;
 	}
 
 	@Override
@@ -51,7 +78,7 @@ public class BlockEtheralBase extends BlockBase {
 				return;
 
 			if (ToolHelper.getTraits(event.getEntityPlayer().getHeldItemMainhand()).stream()
-					.anyMatch(t -> t.getIdentifier().equals(ModTraits.bottomsEnd.identifier))) {
+					.anyMatch(t -> t.getIdentifier().equals(ModTraits.etheralHarvest.identifier))) {
 				float speed = event.getNewSpeed();
 				float hardness = (float) Math.max(Math.pow(10, -1000000), this.blockHardness);
 				float overkill = Float.MAX_VALUE * 0.99f;
@@ -85,18 +112,18 @@ public class BlockEtheralBase extends BlockBase {
 	}
 
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean isActualState) {
-		// trolled
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT;
+		return BlockRenderLayer.TRANSLUCENT;
 	}
 
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return false; 
+		return false;
 	}
 }

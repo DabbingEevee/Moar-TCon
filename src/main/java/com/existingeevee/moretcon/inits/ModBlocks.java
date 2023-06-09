@@ -7,6 +7,7 @@ import com.existingeevee.moretcon.block.blocktypes.HotBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.RadiationBlockBase;
 import com.existingeevee.moretcon.block.ore.BlockBedrockOre;
 import com.existingeevee.moretcon.block.ore.BlockBedrockOreMetal;
+import com.existingeevee.moretcon.block.ore.BlockEtheralOre;
 import com.existingeevee.moretcon.block.ore.BlockOre;
 import com.existingeevee.moretcon.block.ore.BlockOreMetal;
 import com.existingeevee.moretcon.block.tile.BlockGravitoniumFaucet;
@@ -63,9 +64,10 @@ public class ModBlocks {
 	public static Block oreErythynite = ((BlockBase) new BlockOre("oreErythynite", 5, ModItems.gemErythynite, 1).setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setLightLevel(1);
 	public static Block blockErythynite = ((BlockBase) new BlockBase("blockErythynite", Material.IRON, 6).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(3);
 
-	public static Block blockEtheralStone = ((BlockBase) new BlockEtheralBase("blockEtheralStone", 1).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMisc)).canBeBeacon(true);
+	public static Block blockEtheralStone = ((BlockBase) new BlockEtheralBase("blockEtheralStone", Material.ROCK, 1).setHardness(30).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
+	public static Block oreEtherstone = ((BlockBase) new BlockEtheralOre("oreEtherstone", 8, ModItems.gemEtherstone).setHardness(40).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
+	public static Block blockEtherstone = ((BlockBase) new BlockBase("blockEtherstone", Material.IRON, 8).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(0.5f);
 
-	
 
 	//public static Block oreFakeFluidTest = ((BlockBase) new BlockFakeFluid("blockFakeFluid", Material.IRON, 3).setHardness(12).setResistance(20).setCreativeTab(Tabs.materials)).canBeBeacon(false);
 
@@ -113,6 +115,8 @@ public class ModBlocks {
 				blockEbonite,
 				oreErythynite,
 				blockErythynite,
+				oreEtherstone,
+				blockEtherstone,
 /**-------------------------------------**/
 				blockEtheralStone
 				);		

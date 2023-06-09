@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/oreetherstone",
+    "up": "moretcon:blocks/oreetherstone",
+    "north": "moretcon:blocks/oreetherstone",
+    "east": "moretcon:blocks/oreetherstone",
+    "south": "moretcon:blocks/oreetherstone",
+    "west": "moretcon:blocks/oreetherstone",
+    "particle": "moretcon:blocks/oreetherstone"
+  }
+}
