@@ -64,7 +64,7 @@ public class ModBlocks {
 	public static Block oreErythynite = ((BlockBase) new BlockOre("oreErythynite", 5, ModItems.gemErythynite, 1).setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setLightLevel(1);
 	public static Block blockErythynite = ((BlockBase) new BlockBase("blockErythynite", Material.IRON, 6).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(3);
 
-	public static Block blockEtheralStone = ((BlockBase) new BlockEtheralBase("blockEtheralStone", Material.ROCK, 1).setHardness(30).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
+	public static Block blockOtherstone = ((BlockBase) new BlockEtheralBase("blockOtherstone", Material.ROCK, 1).setHardness(30).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
 	public static Block oreEtherstone = ((BlockBase) new BlockEtheralOre("oreEtherstone", 8, ModItems.gemEtherstone).setHardness(40).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
 	public static Block blockEtherstone = ((BlockBase) new BlockBase("blockEtherstone", Material.IRON, 8).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(0.5f);
 
@@ -118,7 +118,7 @@ public class ModBlocks {
 				oreEtherstone,
 				blockEtherstone,
 /**-------------------------------------**/
-				blockEtheralStone
+				blockOtherstone
 				);		
 		}
 		if(CompatManager.twilightforest) {

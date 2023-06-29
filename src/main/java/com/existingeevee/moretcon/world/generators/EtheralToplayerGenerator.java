@@ -37,20 +37,20 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 				if (d > 0.5) {
 					BlockPos pos = new BlockPos(i + chunkX * 16, 200, j + chunkZ * 16);
 					if (isAir(world, pos)) {
-						world.setBlockState(pos, ModBlocks.blockEtheralStone.getDefaultState(), 2);
+						world.setBlockState(pos, ModBlocks.blockOtherstone.getDefaultState(), 2);
 					}
 				}
 				if (d > 0.75) {
 					BlockPos pos = new BlockPos(i + chunkX * 16, 201, j + chunkZ * 16);
-					world.setBlockState(new BlockPos(i + chunkX * 16, 201, j + chunkZ * 16), ModBlocks.blockEtheralStone.getDefaultState(), 2);
+					world.setBlockState(new BlockPos(i + chunkX * 16, 201, j + chunkZ * 16), ModBlocks.blockOtherstone.getDefaultState(), 2);
 					if (isAir(world, pos)) {
-						world.setBlockState(pos, ModBlocks.blockEtheralStone.getDefaultState(), 2);
+						world.setBlockState(pos, ModBlocks.blockOtherstone.getDefaultState(), 2);
 					}
 					
 					pos = new BlockPos(i + chunkX * 16, 199, j + chunkZ * 16);
-					world.setBlockState(new BlockPos(i + chunkX * 16, 199, j + chunkZ * 16), ModBlocks.blockEtheralStone.getDefaultState(), 2);
+					world.setBlockState(new BlockPos(i + chunkX * 16, 199, j + chunkZ * 16), ModBlocks.blockOtherstone.getDefaultState(), 2);
 					if (isAir(world, pos)) {
-						world.setBlockState(pos, ModBlocks.blockEtheralStone.getDefaultState(), 2);
+						world.setBlockState(pos, ModBlocks.blockOtherstone.getDefaultState(), 2);
 					}
 				}
 			}

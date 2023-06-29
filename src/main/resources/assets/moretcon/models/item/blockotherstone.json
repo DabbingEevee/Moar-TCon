@@ -1,5 +1,5 @@
 {
-  "parent": "moretcon:block/blocketheralstone",
+  "parent": "moretcon:block/blockotherstone",
   "display": {
     "thirdperson": {
       "rotation": [
