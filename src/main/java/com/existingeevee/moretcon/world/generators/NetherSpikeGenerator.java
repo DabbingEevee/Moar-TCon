@@ -30,7 +30,7 @@ public class NetherSpikeGenerator extends WorldGenModifier {
 		
 		IBlockStateProvider provider = provider(random);
 		
-		BlockPos origin = new BlockPos(random.nextInt(16) + chunkX * 16, 128, random.nextInt(16) + chunkZ * 16);
+		BlockPos origin = new BlockPos(random.nextInt(16) + chunkX * 16 + 8, 128, random.nextInt(16) + chunkZ * 16 + 8);
 
 		BlockPos position = origin.up(random.nextInt(4));
 		int i = random.nextInt(4) + 7;

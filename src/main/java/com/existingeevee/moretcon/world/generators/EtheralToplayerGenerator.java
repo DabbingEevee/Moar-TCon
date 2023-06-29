@@ -26,8 +26,8 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 
 		for (int i = 0; i < 16; i++) {
 			for (int j = 0; j < 16; j++) {
-				int x = i + chunkX * 16;
-				int z = j + chunkZ * 16;
+				int x = i + chunkX * 16 + 8;
+				int z = j + chunkZ * 16 + 8;
 
 				if (x * x + z * z < 4000 * 4000)
 					continue;
@@ -35,7 +35,7 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 				double d = ETHERAL_GENERATOR.generateOctavedSimplexNoise(x, z, world.getSeed());
 				
 				if (d > 0.5) {
-					BlockPos pos = new BlockPos(i + chunkX * 16, 200, j + chunkZ * 16);
+					BlockPos pos = new BlockPos(i + chunkX * 16 + 8, 200, j + chunkZ * 16 + 8);
 					if (isAir(world, pos)) {
 						world.setBlockState(pos, ModBlocks.blockOtherstone.getDefaultState(), 2);
 					}

@@ -29,9 +29,7 @@ public class NetherPrismGenerator extends WorldGenModifier {
 		
 		IBlockStateProvider provider = provider(random);
 		
-		BlockPos origin = new BlockPos(random.nextInt(16) + chunkX * 16, 160 + random.nextInt(64), random.nextInt(16) + chunkZ * 16);
-
-		//MoreTConLogger.log(origin + "");
+		BlockPos origin = new BlockPos(random.nextInt(16) + chunkX * 16 + 8, 160 + random.nextInt(64), random.nextInt(16) + chunkZ * 16 + 8);
 		
 		int size = random.nextInt(8) + 12;
 		
