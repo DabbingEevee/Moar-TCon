@@ -60,7 +60,7 @@ public class SimplexNoiseGenerator {
 			}
 		}
 
-		// Skewing and unskewing factors for 2, 3, and 4 dimensions
+		// Skewing and unskewing factors for 2, and 3 dimensions
 		private static final double F2 = 0.5 * (Math.sqrt(3.0) - 1.0);
 		private static final double G2 = (3.0 - Math.sqrt(3.0)) / 6.0;
 		private static final double F3 = 1.0 / 3.0;
@@ -91,7 +91,7 @@ public class SimplexNoiseGenerator {
 			// Skew the input space to determine which simplex cell we're in
 			double s = (xin + yin) * F2; // Hairy factor for 2D
 			long i = fastfloor(xin + s);
-			long j = fastfloor(yin + s);
+			long j = fastfloor(yin + s); //ItemBow
 			double t = (i + j) * G2;
 			double X0 = i - t; // Unskew the cell origin back to (x,y) space
 			double Y0 = j - t;
@@ -280,8 +280,7 @@ public class SimplexNoiseGenerator {
 		}
 	}
 	private static class Grad {
-		@SuppressWarnings("unused")
-		double x, y, z, w;
+		double x, y, z;
 
 		Grad(double x, double y, double z) {
 			this.x = x;

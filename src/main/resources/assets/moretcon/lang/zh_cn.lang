@@ -9,6 +9,8 @@ tile.moretcon.blockenderal.name=末影晶体块
 tile.moretcon.orevoidspar.name=虚空晶体矿石
 tile.moretcon.orenaturalvoidspar.name=基岩虚空晶体矿石
 tile.moretcon.blockvoidspar.name=虚空晶体块
+tile.moretcon.oreigniglomerate.name=伊格尼格洛米特簇
+tile.moretcon.blockigniglomerate.name=伊格尼格洛米特块
 tile.moretcon.orefusionite.name=聚变矿石
 tile.moretcon.blockfusionite.name=聚变块
 tile.moretcon.liquidfusionite.name=熔融聚变
@@ -54,7 +56,6 @@ tile.moretcon.liquidember.name=液态余烬
 tile.moretcon.liquidhydrogen.name=氢气
 tile.moretcon.mummysludge.name=木乃伊污泥
 tile.moretcon.betweensludge.name=交错淤泥
-tile.moretcon.liquidsyrmorite.name.name=熔融赛摩铜
 tile.moretcon.blockdestabilizedbedrock.name=不稳定基岩
 
 fluid.moretcon.liquidfusionite=熔融聚变
@@ -87,6 +88,7 @@ item.moretcon.repitemenderexamite.name=末影合金
 item.moretcon.repitemferroherb.name=钢叶合金
 item.moretcon.gemechostone.name=回音石
 item.moretcon.gemgarstone.name=过载水晶
+item.moretcon.gemigniglomerate.name=伊格尼格洛米特碎片
 item.moretcon.ingotfusionite.name=聚变锭
 item.moretcon.nuggetfusionite.name=聚变粒
 item.moretcon.dustfusionite.name=聚变粉
@@ -163,9 +165,21 @@ item.moretcon.matterreconstructiongel.name=物质重建凝胶
 item.moretcon.blbowlimb.name=交错弓臂
 item.moretcon.blbow.desc=一个交错弓相当于交错次元的弓。
 item.moretcon.blbow.name=交错弓
+item.moretcon.smallplate.name=小板
+item.moretcon.gauntlet.name=手套
+item.moretcon.gauntlet.desc=手套是一种混合工具/盔甲，可在天境饰品栏中佩戴。它能够激活该工具中材料的工具属性。
+item.moretcon.ring.name=戒指
+item.moretcon.ring.desc=戒指是戒指槽的一种饰品。戴上时。。。它会激活该工具中材料的被动工具属性。戴的戒指越多，激活率就越低。
 
 material.moretcon.bloodstone.name=血石
 material.moretcon.echostone.name=回音石
+material.moretcon.enderal.name=末影晶体
+material.moretcon.enderexamite.name=末影合金
+material.moretcon.garstone.name=过载水晶
+material.moretcon.igniglomerate.name=伊格尼格洛米特
+material.moretcon.fusionite.name=聚变
+material.moretcon.irradium.name=铱镭
+material.moretcon.solarsteel.name=太阳钢
 material.moretcon.gallium.name=镓
 material.moretcon.gravitonium.name=重力鎓
 material.moretcon.skyroot.name=天根
@@ -189,15 +203,9 @@ material.moretcon.runesteel.name=符文钢
 material.moretcon.holystone.name=圣石
 material.moretcon.zanite.name=紫晶
 material.moretcon.gravitite.name=重力晶
-material.moretcon.fusionite.name=聚变
-material.moretcon.enderal.name=末影晶体
-material.moretcon.enderexamite.name=末影合金
-material.moretcon.garstone.name=过载水晶
 material.moretcon.spacetimedisruption.name=时空扰动
 material.moretcon.voidspar.name=虚空晶体
-material.moretcon.irradium.name=铱镭
 material.moretcon.ironwood.name=铁树
-material.moretcon.solarsteel.name=太阳钢
 
 modifier.moretcon.leeching.name=水蛭
 modifier.moretcon.leeching.desc=§o100%转基因血液。残忍的自由式。§r\n你的工具每命中敌人大约3次就会给你治疗你造成的10%的伤害
@@ -223,6 +231,8 @@ modifier.moretcon.treetap.name=木龙头
 modifier.moretcon.treetap.desc=§o琥珀磁铁§r\n你的工具在挖掘金琥珀原木时，将掉落金琥珀。
 modifier.moretcon.hypergravity.name=万有引力
 modifier.moretcon.hypergravity.desc=§oF=G[(m1×m2)/(r²)]§r\n你的工具将能把实体拉近，而不是击退实体。
+modifier.moretcon.hyperheat.name=高温
+modifier.moretcon.hyperheat.desc=火焰，很热,是的。§r\n你的工具会点燃对手。这把火会造成额外的倍增伤害，这取决于你的工具的原始伤害§r\nHands in the fire！
 modifier.moretcon.trichromatic.name=三色性
 modifier.moretcon.trichromatic.desc=§o吃定彩虹§r\n你的工具对不同的方块将有不同的效果，效果取决于方块的颜色
 modifier.moretcon.hardcore.name=坚硬核心
@@ -285,6 +295,7 @@ modifier.moretcon.modcrushing.desc=现在这是一堆伤害！！§r\n你的工�
 modifier.moretcon.bloody_arc.name=血腥之斩
 modifier.moretcon.bloody_arc.desc=*不是真的血，消耗它不安全* §r\n按下Shift+鼠标右键在敌人身上召唤血腥之斩。
 
+uniquetoolpart.moretcon.crimson.name=深红
 uniquetoolpart.moretcon.technoblade.name=Techno的剑刃
 uniquetoolpart.moretcon.test.name=测试
 uniquetoolpart.moretcon.mirrored.name=镜像
@@ -300,6 +311,8 @@ sponge.step.name=步骤
 spongerecipe.test.name=测试
 
 death.attack.pillar_of_fire=%1$s 被火柱冲走了
+death.attack.bleeding=%1$s 失血过多
+death.attack.coldfire=%1$s 的热动能等级有两解
 
 traits.bloody_arc.slash=血腥之斩
 
@@ -307,6 +320,8 @@ itemGroup.uniqueToolParts=独特的工具零件
 itemGroup.moarTconMaterials=更多匠魂材料：材料
 itemGroup.moarTConMaterials=更多匠魂材料：材料
 itemGroup.moarTConMisc=更多匠魂材料：杂项
+
+entity.decaying_effect_moretcon.name=效果
 
 moretcon.coldflames=冷火焰
 moretcon.bloodgodsblessing=血神的祝福
@@ -318,6 +333,5 @@ tooltip.moretcon.betweenify=将它给任何工具进行强化，都可以在交�
 
 text.beta.name=BETA
 text.beta.desc=感谢您游玩测试版！请向ExistingEevee报告任何问题！
-text.misc.one_of=一个
 
 comment Sponges=comment
