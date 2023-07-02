@@ -1,6 +1,7 @@
 package com.existingeevee.moretcon.materials;
 
 import com.existingeevee.moretcon.ModInfo;
+import com.existingeevee.moretcon.client.LightShadingTextureColoredTexture;
 import com.existingeevee.moretcon.client.NoShadingTextureColoredTexture;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.other.Misc;
@@ -37,6 +38,10 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialSwampSteel);
 		setCustomRender(ModMaterials.materialPenguinite);
 		setCustomRender(ModMaterials.materialShadowglass);
+		ModMaterials.materialEtherstone
+		.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
+				+ ":other/material" + ModMaterials.materialEtherstone.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+
 		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
 				+ ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialIgniglomerate

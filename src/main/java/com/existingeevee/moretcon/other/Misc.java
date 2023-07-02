@@ -149,12 +149,10 @@ public class Misc {
 
 	public static BlockTexture createMaterialRenderInfoSafe(Material mat) {
 		try {
-			ClientUtils.createMaterialRenderInfo(mat);
+			return ClientUtils.createMaterialRenderInfo(mat);
 		} catch (NoClassDefFoundError e) {
 			return null;
 		}
-
-		return ClientUtils.createMaterialRenderInfo(mat);
 	}
 
 	public static String fileread(String str) {

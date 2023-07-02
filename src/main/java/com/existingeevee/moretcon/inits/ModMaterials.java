@@ -10,8 +10,8 @@ import org.apache.logging.log4j.Level;
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
-import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
@@ -19,7 +19,6 @@ import com.existingeevee.moretcon.traits.ModTraits;
 
 import landmaster.plustic.tools.stats.BatteryCellMaterialStats;
 import landmaster.plustic.tools.stats.LaserMediumMaterialStats;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import slimeknights.tconstruct.library.TinkerRegistry;
@@ -124,36 +123,30 @@ public class ModMaterials implements MaterialTypes {
 	public static Material materialValkyrieMetal = new Material(
 			Misc.createNonConflictiveName("ValkyrieMetal".toLowerCase()), 0xeaee57);
 
-	public static Material materialGravitonium = new Material(
-			Misc.createNonConflictiveName("Gravitonium".toLowerCase()), 0x00aa00);
+	public static Material materialGravitonium = new Material(Misc.createNonConflictiveName("gravitonium"), 0x00aa00);
 
-	public static Material materialTrichromadentium = new Material(
-			Misc.createNonConflictiveName("trichromadentium".toLowerCase()), 0x777777);
+	public static Material materialTrichromadentium = new Material(Misc.createNonConflictiveName("trichromadentium"),
+			0x777777);
 
-	public static Material materialSwampSteel = new Material(Misc.createNonConflictiveName("swampsteel".toLowerCase()),
-			0x003906);
+	public static Material materialSwampSteel = new Material(Misc.createNonConflictiveName("swampsteel"), 0x003906);
 
-	public static Material materialRotiron = new Material(Misc.createNonConflictiveName("rotiron".toLowerCase()),
-			0x002400);
+	public static Material materialRotiron = new Material(Misc.createNonConflictiveName("rotiron"), 0x002400);
 
-	public static Material materialEchostone = new Material(Misc.createNonConflictiveName("echostone".toLowerCase()),
-			0x00725a);
-	
-	public static Material materialIgniglomerate = new Material(Misc.createNonConflictiveName("igniglomerate".toLowerCase()),
-			0xB33B00);	
+	public static Material materialEchostone = new Material(Misc.createNonConflictiveName("echostone"), 0x00725a);
 
-	public static Material materialAtronium = new Material(Misc.createNonConflictiveName("atronium".toLowerCase()),
-			0xd99857);	
-	
-	public static Material materialEbonite = new Material(Misc.createNonConflictiveName("ebonite".toLowerCase()),
-			0x270339);
-	
-	public static Material materialErythynite = new Material(Misc.createNonConflictiveName("erythynite".toLowerCase()),
-			0x00ff00);
+	public static Material materialIgniglomerate = new Material(Misc.createNonConflictiveName("igniglomerate"),
+			0xB33B00);
 
-	public static Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass".toLowerCase()),
-			0x2a275e);
-	
+	public static Material materialAtronium = new Material(Misc.createNonConflictiveName("atronium"), 0xd99857);
+
+	public static Material materialEbonite = new Material(Misc.createNonConflictiveName("ebonite"), 0x270339);
+
+	public static Material materialErythynite = new Material(Misc.createNonConflictiveName("erythynite"), 0x00ff00);
+
+	public static Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass"), 0x2a275e);
+
+	public static Material materialEtherstone = new Material(Misc.createNonConflictiveName("Etherstone".toLowerCase()),
+			0xf1ea3b);
 	
 	public static UniqueMaterial materialPlasma = new UniqueMaterial(
 			Misc.createNonConflictiveName("plasma".toLowerCase()), 0xff0000, "tconstruct:sword_blade",
@@ -183,7 +176,7 @@ public class ModMaterials implements MaterialTypes {
 	public static UniqueMaterial materialCrimson = new UniqueMaterial(
 			Misc.createNonConflictiveName("crimson".toLowerCase()), 0xaa0000, "tconstruct:tough_tool_rod",
 			"plustic:katana");
-	
+
 	static {
 
 		if (CompatManager.plustic) {
@@ -209,7 +202,7 @@ public class ModMaterials implements MaterialTypes {
 			materialFusionite.addTrait(ModTraits.coldFire);
 			materialFusionite.addTrait(TinkerTraits.enderference);
 			materialFusionite.addTrait(TinkerTraits.alien);
-			materialFusionite.addTrait(TinkerTraits.dense);//TinkerMaterials
+			materialFusionite.addTrait(TinkerTraits.dense);// TinkerMaterials
 			materialFusionite.addStats(new HeadMaterialStats(500, 5.0f, 8.0f, 6));
 			materialFusionite.addStats(new HandleMaterialStats(3.0f, 20));
 			materialFusionite.addStats(new ExtraMaterialStats(20));
@@ -289,7 +282,7 @@ public class ModMaterials implements MaterialTypes {
 			materialAtronium.addStats(new HandleMaterialStats(3f, 180));
 			materialAtronium.addStats(new ExtraMaterialStats(750));
 			materialAtronium.addStats(new ArrowShaftMaterialStats(2f, 120));
-			
+
 			materialEbonite.addItem("oreEbonite", 1, Material.VALUE_Ore());
 			materialEbonite.setFluid(ModFluids.liquidEbonite);
 			materialEbonite.addCommonItems("Ebonite");
@@ -298,18 +291,18 @@ public class ModMaterials implements MaterialTypes {
 			materialEbonite.setRepresentativeItem("ingotEbonite");
 			materialEbonite.addTrait(TinkerTraits.dense);
 			materialEbonite.addTrait(ModTraits.darkened);
-			materialEbonite.addTrait(TinkerTraits.established);			
-			materialEbonite.addTrait(TinkerTraits.poisonous);			
+			materialEbonite.addTrait(TinkerTraits.established);
+			materialEbonite.addTrait(TinkerTraits.poisonous);
 			materialEbonite.addStats(new HeadMaterialStats(750, 6.0f, 9.0f, 7));
 			materialEbonite.addStats(new HandleMaterialStats(2.5f, 60));
 			materialEbonite.addStats(new ExtraMaterialStats(25));
 			materialEbonite.addStats(new ArrowShaftMaterialStats(1.5f, 20));
 			materialEbonite.addStats(new ProjectileMaterialStats());
 			if (CompatManager.plustic) {
-			    materialEbonite.addStats(new LaserMediumMaterialStats(12, 20));
-			    materialEbonite.addStats(new BatteryCellMaterialStats(120000));
+				materialEbonite.addStats(new LaserMediumMaterialStats(12, 20));
+				materialEbonite.addStats(new BatteryCellMaterialStats(120000));
 			}
-			
+
 			materialSpaceTimeDisruption.addItem(ModItems.spaceTimeDisruptionPowder, 1, Material.VALUE_Fragment);
 			materialSpaceTimeDisruption.setCastable(false);
 			materialSpaceTimeDisruption.setCraftable(true);
@@ -328,8 +321,8 @@ public class ModMaterials implements MaterialTypes {
 			materialSpaceTimeDisruption.addStats(new ArrowShaftMaterialStats(3f, 64));
 			materialSpaceTimeDisruption.addStats(new ProjectileMaterialStats());
 
-			materialVoidSpar.addItem(ModItems.gemVoidSpar, 1, Material.VALUE_Ingot);
-			materialVoidSpar.addItem(Item.getItemFromBlock(ModBlocks.blockVoidSpar), 1, Material.VALUE_Block);
+			materialVoidSpar.addItem("gemVoidSpar", 1, Material.VALUE_Ingot);
+			materialVoidSpar.addItem("blockVoidSpar", 1, Material.VALUE_Block);
 			materialVoidSpar.setCastable(false);
 			materialVoidSpar.setCraftable(true);
 			materialVoidSpar.setRepresentativeItem(ModItems.gemVoidSpar);
@@ -343,8 +336,8 @@ public class ModMaterials implements MaterialTypes {
 			materialVoidSpar.addStats(new ArrowShaftMaterialStats(1f, 10));
 			materialVoidSpar.addStats(new ProjectileMaterialStats());
 
-			materialGarstone.addItem(ModItems.gemGarstone, 1, Material.VALUE_Ingot);
-			materialGarstone.addItem(Item.getItemFromBlock(ModBlocks.blockGarstone), 1, Material.VALUE_Block);
+			materialGarstone.addItem("gemGarstone", 1, Material.VALUE_Ingot);
+			materialGarstone.addItem("blockGarstone", 1, Material.VALUE_Block);
 			materialGarstone.setCastable(false);
 			materialGarstone.setCraftable(true);
 			materialGarstone.setRepresentativeItem(ModItems.gemGarstone);
@@ -357,8 +350,8 @@ public class ModMaterials implements MaterialTypes {
 			materialGarstone.addStats(new ArrowShaftMaterialStats(1f, 10));
 			materialGarstone.addStats(new ProjectileMaterialStats());
 
-			materialEchostone.addItem(ModItems.gemEchostone, 1, Material.VALUE_Ingot);
-			materialEchostone.addItem(Item.getItemFromBlock(ModBlocks.blockEchostone), 1, Material.VALUE_Block);
+			materialEchostone.addItem("gemEchostone", 1, Material.VALUE_Ingot);
+			materialEchostone.addItem("blockEchostone", 1, Material.VALUE_Block);
 			materialEchostone.setCastable(false);
 			materialEchostone.setCraftable(true);
 			materialEchostone.setRepresentativeItem(ModItems.gemEchostone);
@@ -369,9 +362,9 @@ public class ModMaterials implements MaterialTypes {
 			materialEchostone.addStats(new ExtraMaterialStats(2));
 			materialEchostone.addStats(new ArrowShaftMaterialStats(1f, 10));
 			materialEchostone.addStats(new ProjectileMaterialStats());
-			
-			materialBloodstone.addItem(ModItems.gemBloodstone, 1, Material.VALUE_Ingot); 
-			materialBloodstone.addItem(Item.getItemFromBlock(ModBlocks.blockBloodstone), 1, Material.VALUE_Block);
+
+			materialBloodstone.addItem("gemBloodstone", 1, Material.VALUE_Ingot);
+			materialBloodstone.addItem("blockBloodstone", 1, Material.VALUE_Block);
 			materialBloodstone.setCastable(false);
 			materialBloodstone.setCraftable(true);
 			materialBloodstone.setRepresentativeItem(ModItems.gemBloodstone);
@@ -384,9 +377,9 @@ public class ModMaterials implements MaterialTypes {
 			materialBloodstone.addStats(new ExtraMaterialStats(75));
 			materialBloodstone.addStats(new ArrowShaftMaterialStats(2.35f, 80));
 			materialBloodstone.addStats(new ProjectileMaterialStats());
-			
-			materialErythynite.addItem(ModItems.gemErythynite, 1, Material.VALUE_Ingot);
-			materialErythynite.addItem(Item.getItemFromBlock(ModBlocks.blockErythynite), 1, Material.VALUE_Block);
+
+			materialErythynite.addItem("gemErythynite", 1, Material.VALUE_Ingot);
+			materialErythynite.addItem("blockErythynite", 1, Material.VALUE_Block);
 			materialErythynite.setCastable(false);
 			materialErythynite.setCraftable(true);
 			materialErythynite.setRepresentativeItem(ModItems.gemErythynite);
@@ -400,9 +393,9 @@ public class ModMaterials implements MaterialTypes {
 			materialErythynite.addStats(new ArrowShaftMaterialStats(1.5f, 20));
 			materialErythynite.addStats(new ProjectileMaterialStats());
 			if (CompatManager.plustic) {
-			    materialErythynite.addStats(new LaserMediumMaterialStats(12, 20));
+				materialErythynite.addStats(new LaserMediumMaterialStats(12, 20));
 			}
-			
+
 			materialGravitonium.addItem("oreGravitonium", 1, Material.VALUE_Ore());
 			materialGravitonium.addItem("oreGravitoniumDense", 1, Material.VALUE_Ore() * 4);
 			materialGravitonium.setFluid(ModFluids.liquidGravitonium);
@@ -447,8 +440,8 @@ public class ModMaterials implements MaterialTypes {
 			materialRuneSteel.addStats(new ArrowShaftMaterialStats(3f, 20));
 			materialRuneSteel.addStats(new ProjectileMaterialStats());
 
-			materialEnderal.addItem(ModItems.gemEnderal, 1, Material.VALUE_Ingot);
-			materialEnderal.addItem(Item.getItemFromBlock(ModBlocks.blockEnderal), 1, Material.VALUE_Block);
+			materialEnderal.addItem("gemEnderal", 1, Material.VALUE_Ingot);
+			materialEnderal.addItem("blockEnderal", 1, Material.VALUE_Block);
 			materialEnderal.setCastable(false);
 			materialEnderal.setCraftable(true);
 			materialEnderal.setRepresentativeItem(ModItems.gemEnderal);
@@ -490,7 +483,7 @@ public class ModMaterials implements MaterialTypes {
 			materialShadowglass.addStats(new ArrowShaftMaterialStats(1.2f, 18));
 			materialShadowglass.addStats(new ProjectileMaterialStats());
 			CompositeRegistry.registerComposite(materialErythynite, materialShadowglass, ModFluids.liquidEbonite);
-			
+
 			materialPlasma.addStats(new HeadMaterialStats(4096, 6f, 12f, 5));
 			materialPlasma.addTrait(ModTraits.plasmatic);
 
@@ -506,9 +499,9 @@ public class ModMaterials implements MaterialTypes {
 			materialTrailblazer.addStats(new HeadMaterialStats(2056 * 2, 6f, 4f, 7));
 			materialTrailblazer.addStats(new ExtraMaterialStats(512 * 2));
 			materialTrailblazer.addTrait(ModTraits.aerialFlames);
-			
-			materialIgniglomerate.addItem(ModItems.gemIgniglomerate, 1, Material.VALUE_Ingot);
-			materialIgniglomerate.addItem(Item.getItemFromBlock(ModBlocks.blockIgniglomerate), 1, Material.VALUE_Block);
+
+			materialIgniglomerate.addItem("gemIgniglomerate", 1, Material.VALUE_Ingot);
+			materialIgniglomerate.addItem("blockIgniglomerate", 1, Material.VALUE_Block);
 			materialIgniglomerate.setCastable(false);
 			materialIgniglomerate.setCraftable(true);
 			materialIgniglomerate.setRepresentativeItem(ModItems.gemIgniglomerate);
@@ -518,6 +511,19 @@ public class ModMaterials implements MaterialTypes {
 			materialIgniglomerate.addStats(new ExtraMaterialStats(250));
 			materialIgniglomerate.addStats(new ArrowShaftMaterialStats(1f, 10));
 			materialIgniglomerate.addStats(new ProjectileMaterialStats());
+			
+			materialEtherstone.addItem("gemEtherstone", 1, Material.VALUE_Ingot);
+			materialEtherstone.addItem("blockEnderal", 1, Material.VALUE_Block);
+			materialEtherstone.setCastable(false);
+			materialEtherstone.setCraftable(true);
+			materialEtherstone.setRepresentativeItem(ModItems.gemEnderal);
+			materialEtherstone.addTrait(ModTraits.etheralHarvest);
+			materialEtherstone.addTrait(ModTraits.darkened);
+			materialEtherstone.addTrait(ModTraits.hardcore);
+			materialEtherstone.addTrait(ModTraits.voidic);
+			materialEtherstone.addStats(new HeadMaterialStats(1450, 17.5f, 18f, 8));
+			materialEtherstone.addStats(new HandleMaterialStats(4f, -50));
+			materialEtherstone.addStats(new ExtraMaterialStats(500));
 		}
 		if (CompatManager.aether_legacy) { // TODO
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -835,7 +841,8 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialAtronium);
 			ModMaterials.registerMaterial(materialEbonite);
 			ModMaterials.registerMaterial(materialErythynite);
-			ModMaterials.registerMaterial(materialShadowglass);			
+			ModMaterials.registerMaterial(materialShadowglass);
+			ModMaterials.registerMaterial(materialEtherstone);
 		}
 		if (CompatManager.twilightforest) {
 			ModMaterials.registerMaterial(materialIronwood);
@@ -885,10 +892,12 @@ public class ModMaterials implements MaterialTypes {
 			Map<String, Material> fieldValue = (Map<String, Material>) mat.get(TinkerRegistry.class);
 			success = fieldValue.entrySet().removeIf(m -> m.getValue().identifier.equals(identifier));
 			if (!success) {
-				MoreTConLogger.log("Unable to remove material \"" + identifier + "\" as it was never registered", Level.ERROR);
+				MoreTConLogger.log("Unable to remove material \"" + identifier + "\" as it was never registered",
+						Level.ERROR);
 			}
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-			MoreTConLogger.log("Unable to remove material \"" + identifier + "\" as an error was encountered", Level.ERROR);
+			MoreTConLogger.log("Unable to remove material \"" + identifier + "\" as an error was encountered",
+					Level.ERROR);
 			e1.printStackTrace();
 		}
 		return success;
@@ -929,10 +938,12 @@ public class ModMaterials implements MaterialTypes {
 			readd.put(entry.getKey(), entry.getValue());
 
 			if (!success) {
-				MoreTConLogger.log("Unable to readd material \"" + identifier + "\" as it was never registered", Level.ERROR);
+				MoreTConLogger.log("Unable to readd material \"" + identifier + "\" as it was never registered",
+						Level.ERROR);
 			}
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-			MoreTConLogger.log("Unable to readd material \"" + identifier + "\" as an error was encountered", Level.ERROR);
+			MoreTConLogger.log("Unable to readd material \"" + identifier + "\" as an error was encountered",
+					Level.ERROR);
 			e1.printStackTrace();
 		}
 		return success;
