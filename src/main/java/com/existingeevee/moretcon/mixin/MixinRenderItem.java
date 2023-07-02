@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class MixinRenderItem {
 
 	@SideOnly(Side.CLIENT)
-	@Inject(at = @At("HEAD"), method = { "renderItemModelIntoGUI", "func_191962_a" }, cancellable = true)
+	@Inject(at = @At("HEAD"), method = "renderItemModelIntoGUI", cancellable = true)
 	protected void mixin$moretcon$renderItemModelIntoGUI(ItemStack stack, int x, int y, IBakedModel bakedmodel,
 			CallbackInfo ci) {
 
