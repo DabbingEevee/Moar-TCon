@@ -94,8 +94,8 @@ public class UniqueMaterial extends Material {
 
 	public static ToolPart getToolPartFromResourceLocation(ResourceLocation res) {
 		for (IToolPart part : TinkerRegistry.getToolParts()) {
-			if (part instanceof Item) {
-				if (((Item) part).getRegistryName().equals(res)) {
+			if (part instanceof ToolPart) {
+				if (((ToolPart) part).getRegistryName().equals(res)) {
 					return (ToolPart) part;
 				}
 			}
