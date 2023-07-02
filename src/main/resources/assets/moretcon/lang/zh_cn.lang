@@ -220,7 +220,7 @@ modifier.moretcon.bloodgodsblessing.desc=§o血祭血神!!!§r\n连续杀戮将�
 modifier.moretcon.bottomsend.name=末路之底
 modifier.moretcon.bottomsend.desc=§o等等，这是非法的§r\n工具将能够破坏和开采基岩和某些基岩矿石的晶体结构。
 modifier.moretcon.liquid.name=液态
-modifier.moretcon.liquid.desc=§o该死，我用剑把自己打翻了§r\n你的工具在高温环境下会更快地损坏，\n但在高温环境中会造成更大的损坏。
+modifier.moretcon.liquid.desc=§o该死，我用剑把自己打翻了§r\n你的工具在高温环境下会更快地损坏，\n但在高温环境中会造成更多的伤害。
 modifier.moretcon.magical.name=魔力
 modifier.moretcon.magical.desc=§o嘶……现在你不是麻瓜了！§r\n你的工具将偶尔造成大量的魔法伤害。
 modifier.moretcon.reaching.name=武神
@@ -232,7 +232,7 @@ modifier.moretcon.treetap.desc=§o琥珀磁铁§r\n你的工具在挖掘金琥�
 modifier.moretcon.hypergravity.name=万有引力
 modifier.moretcon.hypergravity.desc=§oF=G[(m1×m2)/(r²)]§r\n你的工具将能把实体拉近，而不是击退实体。
 modifier.moretcon.hyperheat.name=高温
-modifier.moretcon.hyperheat.desc=火焰，很热,是的。§r\n你的工具会点燃对手。这把火会造成额外的倍增伤害，这取决于你的工具的原始伤害§r\nHands in the fire！
+modifier.moretcon.hyperheat.desc=§o火焰，很热,是的。§r\n你的工具会点燃对手。这把火会造成额外的倍增伤害，这取决于你的工具的原始伤害\nHands in the fire！
 modifier.moretcon.trichromatic.name=三色性
 modifier.moretcon.trichromatic.desc=§o吃定彩虹§r\n你的工具对不同的方块将有不同的效果，效果取决于方块的颜色
 modifier.moretcon.hardcore.name=坚硬核心
