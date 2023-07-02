@@ -71,19 +71,19 @@ public class UniqueMaterial extends Material {
 	public String getLocalizedName() {
 		StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
 		try {
-			if (stacktrace[3].getClassName().equals(AbstractMaterialSectionTransformer.class.getName()) && stacktrace[3].getLineNumber() == 67/* .getMethodName().equals("transform") */) {
+			if (stacktrace[3].getClassName().equals(AbstractMaterialSectionTransformer.class.getName()) && stacktrace[3].getMethodName().equals("transform")) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
-			if (stacktrace[3].getClassName().equals(ContentMaterial.class.getName()) && stacktrace[3].getLineNumber() == 64/* .equals("build") */) {
+			if (stacktrace[3].getClassName().equals(ContentMaterial.class.getName()) && stacktrace[3].getMethodName().equals("build")) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
-			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getLineNumber() == 106) {/* .getMethodName().equals("getLocalizedDesc" */
+			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedDesc")) {
 				return I18n.translateToLocal("text.misc.one_of") + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + " " + I18n.translateToLocal(UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(this.partResLoc)).getUnlocalizedName() + ".name");
 			}
-			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getLineNumber() == 101/* .equals("getLocalizedName") */) {
+			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedName")) {
 				return I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name");
 			}
-			if (stacktrace[3].getClassName().equals(ToolPart.class.getName()) && stacktrace[3].getLineNumber() == 203/* .getMethodName().equals("getItemStackDisplayName") */) {
+			if (stacktrace[3].getClassName().equals(ToolPart.class.getName()) && (stacktrace[3].getMethodName().equals("getItemStackDisplayName") || stacktrace[3].getMethodName().equals("func_77653_i"))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
