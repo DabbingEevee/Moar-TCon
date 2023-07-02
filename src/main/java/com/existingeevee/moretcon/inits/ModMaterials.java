@@ -649,27 +649,6 @@ public class ModMaterials implements MaterialTypes {
 			materialPenguinite.addStats(new ExtraMaterialStats(25));
 			materialPenguinite.addStats(new ArrowShaftMaterialStats(1f, 1));
 			materialPenguinite.addStats(new ProjectileMaterialStats());
-
-			// materialFusionDragonSteel.addItem("oreFusionite", 1, Material.VALUE_Ore());
-			// materialFusionDragonSteel.setFluid(ModFluids.liquidFusionite);
-			// materialFusionDragonSteel.addCommonItems("Fusionite");
-			// materialFusionDragonSteel.setCastable(true);
-			// materialFusionDragonSteel.setCraftable(false);
-			// materialFusionDragonSteel.setRepresentativeItem("ingotFusionite");
-			/*
-			 * materialFusionDragonSteel.addTrait(Traits.coldFire);
-			 * materialFusionDragonSteel.addTrait(TinkerTraits.enderference);
-			 * materialFusionDragonSteel.addTrait(TinkerTraits.alien);
-			 * materialFusionDragonSteel.addTrait(TinkerTraits.dense);
-			 * materialFusionDragonSteel.addStats(new HeadMaterialStats(50, 5f, 8f, 6));
-			 * materialFusionDragonSteel.addStats(new HandleMaterialStats(3f, 20));
-			 * materialFusionDragonSteel.addStats(new ExtraMaterialStats(20));
-			 * materialFusionDragonSteel.addStats(new BowMaterialStats(1f, 1f, 0f)); //
-			 * materialFusionite.addStats(new BowStringMaterialStats(1f));
-			 * materialFusionDragonSteel.addStats(new ArrowShaftMaterialStats(3f, 20)); //
-			 * materialFusionite.addStats(new FletchingMaterialStats(1f, 1f));
-			 * materialFusionDragonSteel.addStats(new ProjectileMaterialStats());
-			 */
 		}
 
 		if (CompatManager.thebetweenlands) {
@@ -963,8 +942,6 @@ public class ModMaterials implements MaterialTypes {
 		} catch (NullPointerException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
 			e1.printStackTrace();
 		}
-		// Logging.log("forceSetRepItem(" + repItem.getItem().getRegistryName() + ", " +
-		// material.identifier + ")");
 		return material;
 	}
 
@@ -979,61 +956,4 @@ public class ModMaterials implements MaterialTypes {
 	private static void addMaterial(Material material, Fluid fluid, String suffix) {
 		addMaterial(material, fluid, suffix, false);
 	}
-
-	/*
-	 * public static void addItems() { if (CompatManager.loadMain) {
-	 * 
-	 * materialFusionite.addItem("oreFusionite", 1, Material.VALUE_Ore());
-	 * materialFusionite.setFluid(ModFluids.liquidFusionite);
-	 * materialFusionite.addCommonItems("Fusionite");
-	 * 
-	 * materialirradium.addItem("oreirradium", 1, Material.VALUE_Ore());
-	 * materialirradium.setFluid(ModFluids.liquidirradium);
-	 * materialirradium.addCommonItems("irradium");
-	 * 
-	 * materialSolarSteel.addCommonItems("SolarSteel");
-	 * 
-	 * materialSpaceTimeDisruption.addItem(ModItems.spaceTimeDisruptionPowder, 1,
-	 * Material.VALUE_Fragment);
-	 * 
-	 * materialVoidSpar.addItem(ModItems.gemVoidSpar, 1, Material.VALUE_Ingot);
-	 * materialVoidSpar.addItem(ModBlocks.blockVoidSpar, Material.VALUE_Block);
-	 * 
-	 * materialGallium.addCommonItems("Gallium");
-	 * 
-	 * materialEnderal.addItem(ModItems.gemEnderal, 1, Material.VALUE_Ingot);
-	 * materialEnderal.addItem(ModBlocks.blockEnderal, Material.VALUE_Block);
-	 * 
-	 * 
-	 * materialIronwood.addCommonItems("Ironwood");
-	 * 
-	 * materialPenguinite.addCommonItems("Penguinite");
-	 * 
-	 * 
-	 * materialSyrmorite.addItem("oreSyrmorite", 1, Material.VALUE_Ore());
-	 * materialSyrmorite.addCommonItems("Syrmorite");
-	 * 
-	 * materialOctine.addItem("oreOctine", 1, Material.VALUE_Ore());
-	 * materialOctine.addCommonItems("Octine");
-	 * 
-	 * materialValonite.addItem("gemValonite", 1, Material.VALUE_Ingot);
-	 * materialValonite.addItem("blockValonite", 1, Material.VALUE_Block);
-	 * materialValonite.addItem("nuggetValonite", 1, Material.VALUE_Nugget);
-	 * 
-	 * materialSlimyBone.addItem("gemSlimyBone", 1, Material.VALUE_Ingot);
-	 * materialSlimyBone.addItem("blockSlimyBone", 1, Material.VALUE_Block);
-	 * 
-	 * materialReedRope.addItem("ropeReed", 1, Material.VALUE_Ingot);
-	 * 
-	 * materialDragonFlyWing.addItem("itemDragonFlyWing", 1, Material.VALUE_Ingot);
-	 * 
-	 * materialAnglerTooth.addItem("itemAnglerTooth", 1, Material.VALUE_Ingot);
-	 * 
-	 * materialWeedwood.addItem("plankWoodWeedwood", 1, Material.VALUE_Ingot);
-	 * materialWeedwood.addItem("logWoodWeedwood", 1, Material.VALUE_Ingot * 4);
-	 * materialWeedwood.addItem("stickWoodWeedwood", 1, Material.VALUE_Ingot / 2);
-	 * 
-	 * }
-	 */
-
 }
