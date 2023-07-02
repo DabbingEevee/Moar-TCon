@@ -6,7 +6,6 @@ import java.util.Map;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.other.BiValue;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
