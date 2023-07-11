@@ -26,7 +26,7 @@ public class ModBlocks {
 	public static Block oreFusionite = ((BlockBase) new BlockOreMetal("oreFusionite", 4, ModItems.ingotFusionite).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static Block blockIrradium = ((BlockBase) new RadiationBlockBase("blockIrradium", Material.IRON, 3).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static Block oreIrradium = ((BlockBase) new BlockOreMetal("oreIrradium", 2, ModItems.ingotIrradium).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
-	public static Block blockSolarSteel = ((BlockBase) new HotBlockBase("blockSolarSteel", Material.IRON, 3).setCanBurn(false).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
+	public static Block blockSolsteel = ((BlockBase) new HotBlockBase("blockSolarSteel", Material.IRON, 3).setCanBurn(false).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static Block blockPenguinite = ((BlockBase) new BlockBase("blockPenguinite", Material.IRON, 3).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static Block oreVoidSpar = ((BlockBase) new BlockOre("oreVoidSpar", 3, ModItems.gemVoidSpar, 1).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static Block blockVoidSpar = ((BlockBase) new BlockBase("blockVoidSpar", Material.IRON, 4).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
@@ -87,7 +87,7 @@ public class ModBlocks {
 				oreFusionite,
 				blockIrradium,
 				oreIrradium,
-				blockSolarSteel,
+				blockSolsteel,
 				oreVoidSpar,
 				blockVoidSpar,
 				oreNaturalVoidSpar,

@@ -28,7 +28,7 @@ public class ModFluids {
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidirradium_still"),
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidirradium_flowing")).setCColor(0x00ed00).setLuminosity(15)
 					.setDensity(1000).setViscosity(4000).setTemperature(1000);
-	public static Fluid liquidSolarSteel = new LiquidFluid("liquidsolarsteel",
+	public static Fluid liquidSolsteel = new LiquidFluid("liquidsolarsteel",
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidsolarsteel_still"),
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidsolarsteel_flowing")).setCColor(0xffad33).setLuminosity(15)
 					.setDensity(8000).setViscosity(1500).setTemperature(2000);
@@ -98,7 +98,7 @@ public class ModFluids {
 			/** ------------------------------------- **/
 					liquidFusionite,
 					liquidIrradium,
-					liquidSolarSteel,
+					liquidSolsteel,
 					liquidHydrogen,
 					liquidGallium,
 					liquidRuneSteel,

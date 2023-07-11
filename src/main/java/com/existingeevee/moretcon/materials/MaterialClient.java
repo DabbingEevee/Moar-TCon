@@ -38,9 +38,11 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialSwampSteel);
 		setCustomRender(ModMaterials.materialPenguinite);
 		setCustomRender(ModMaterials.materialShadowglass);
-		ModMaterials.materialEtherstone
-		.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
+		ModMaterials.materialEtherstone.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
 				+ ":other/material" + ModMaterials.materialEtherstone.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		
+		ModMaterials.materialSolsteel.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
+				+ ":other/material" + ModMaterials.materialSolsteel.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 
 		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
 				+ ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));

@@ -44,7 +44,7 @@ public class ModFluidBlocks {
 		if (CompatManager.loadMain) {
 			blockLiquidFusionite = new BlockFluid("liquidfusionite", ModFluids.liquidFusionite, Material.LAVA);
 			blockLiquidIrradium = new BlockFluid("liquidirradium", ModFluids.liquidIrradium, Material.LAVA);
-			blockLiquidSolarSteel = new BlockFluid("liquidsolarsteel", ModFluids.liquidSolarSteel, Material.LAVA);
+			blockLiquidSolarSteel = new BlockFluid("liquidsolarsteel", ModFluids.liquidSolsteel, Material.LAVA);
 			blockLiquidHydrogen = new BlockFluid("liquidhydrogen", ModFluids.liquidHydrogen, BlockMaterials.GAS);
 			blockLiquidGallium = new BlockFluid("liquidgallium", ModFluids.liquidGallium, Material.LAVA);
 			blockLiquidRuneSteel = new BlockFluid("liquidrunesteel", ModFluids.liquidRuneSteel, Material.LAVA);

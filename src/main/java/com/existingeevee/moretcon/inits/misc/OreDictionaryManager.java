@@ -69,9 +69,9 @@ public class OreDictionaryManager {
 			registerOre("nuggetIrradium", ModItems.nuggetIrradium);
 
 			//SolarSteel
-			registerOre("blockSolarsteel", ModBlocks.blockSolarSteel);
-			registerOre("ingotSolarsteel", ModItems.ingotSolarSteel);
-			registerOre("nuggetSolarsteel", ModItems.nuggetSolarSteel);
+			registerOre("blockSolsteel", ModBlocks.blockSolsteel);
+			registerOre("ingotSolsteel", ModItems.ingotSolsteel);
+			registerOre("nuggetSolsteel", ModItems.nuggetSolsteel);
 			
 			registerOre("blockEbonite", ModBlocks.blockEbonite);
 			registerOre("oreEbonite", ModBlocks.oreEbonite);

@@ -44,8 +44,8 @@ public class ModItems {
 	public static Item dustRuneSteel = new ItemBase("dustRuneSteel");
 	public static Item nuggetRuneSteel = new ItemBase("nuggetRuneSteel");
 
-	public static Item nuggetSolarSteel = new ItemNonflamable("nuggetSolarSteel");
-	public static Item ingotSolarSteel = new ItemNonflamable("ingotSolarSteel");
+	public static Item nuggetSolsteel = new ItemNonflamable("nuggetSolarSteel");
+	public static Item ingotSolsteel = new ItemNonflamable("ingotSolarSteel");
 	public static Item dustSolarSteel = new ItemNonflamable("dustSolarSteel");
 
 	public static Item ingotValkyrieMetal = new ItemBase("ingotValkyrieMetal");
@@ -101,11 +101,6 @@ public class ModItems {
 	//Internal
 	public static Item iconLightning = new ItemBase("lightning").setTab(null);
 
-	//Representative Items
-	// public static Item repItemEnderexamite = new ItemBase("repitemenderexamite").setTab(null);
-	// public static Item repItemFerroherb = new ItemBase("repitemferroherb").setTab(null);
-	// public static Item repItemShadowglass = new ItemBase("repItemShadowglass").setTab(null);
-
 	//Ingriedients
 	public static Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);;
 	public static Item spaceTimeDisruptionPowder = new ItemBase("spaceTimeDisruptionPowder").setTab(ModTabs.moarTConMisc);;
@@ -142,8 +137,8 @@ public class ModItems {
 					ingotIrradium,
 					nuggetIrradium,
 
-					ingotSolarSteel,
-					nuggetSolarSteel,
+					ingotSolsteel,
+					nuggetSolsteel,
 
 					ingotGallium,
 					nuggetGallium,
