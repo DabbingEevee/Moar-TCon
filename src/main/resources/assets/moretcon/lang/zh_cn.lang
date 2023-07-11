@@ -80,12 +80,15 @@ fluid.moretcon.rottensludge=烂泥
 fluid.moretcon.betweensludge=交错淤泥
 fluid.moretcon.mummysludge=木乃伊淤泥
 
+item.moretcon.lightning.desc=让一个交错次元闪电击中你的工具来使用。
+item.moretcon.matterreconstructiongel.desc=将其添加到任何工具中都将修复工具256耐久
+item.moretcon.betweenifiedmodifier.desc=将它给任何工具进行强化，都可以在交错次元/黑暗沼泽中正常使用。
+
+item.moretcon.repitem.name=-{-name-}-
 item.moretcon.gembloodstone.name=血石
 item.moretcon.spacetimedisruptionpowder.name=时空扰乱粉末
 item.moretcon.gemenderal.name=末影晶体
 item.moretcon.gemvoidspar.name=虚空晶体
-item.moretcon.repitemenderexamite.name=末影合金
-item.moretcon.repitemferroherb.name=钢叶合金
 item.moretcon.gemechostone.name=回音石
 item.moretcon.gemgarstone.name=过载水晶
 item.moretcon.gemigniglomerate.name=伊格尼格洛米特碎片
@@ -206,6 +209,7 @@ material.moretcon.gravitite.name=重力晶
 material.moretcon.spacetimedisruption.name=时空扰动
 material.moretcon.voidspar.name=虚空晶体
 material.moretcon.ironwood.name=铁树
+material.moretcon.shadowglass.name=黑影玻璃
 
 modifier.moretcon.leeching.name=水蛭
 modifier.moretcon.leeching.desc=§o100%转基因血液。残忍的自由式。§r\n你的工具每命中敌人大约3次就会给你治疗你造成的10%的伤害
@@ -326,10 +330,7 @@ entity.decaying_effect_moretcon.name=效果
 moretcon.coldflames=冷火焰
 moretcon.bloodgodsblessing=血神的祝福
 
-tooltip.moretcon.lightning=让一个交错次元闪电击中你的工具来使用。
 tooltip.moretcon.repitem=这种材料是一种合金。制作基础工具零件，然后使用铸造台将流体倒在上面。
-tooltip.moretcon.repair=将其添加到任何工具中都将修复工具256耐久
-tooltip.moretcon.betweenify=将它给任何工具进行强化，都可以在交错次元/黑暗沼泽中正常使用。
 
 text.beta.name=BETA
 text.beta.desc=感谢您游玩测试版！请向ExistingEevee报告任何问题！

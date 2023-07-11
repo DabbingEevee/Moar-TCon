@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.ModTabs;
+import com.existingeevee.moretcon.other.utils.TextHelper;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -47,7 +47,12 @@ public class ItemBase extends Item {
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		if (stack.getItem().getRegistryName().toString().equals(ModInfo.MODID + ":lightning")) {
+		if (I18n.canTranslate(stack.getItem().getUnlocalizedName() + ".desc")) {
+			String translation = I18n.translateToLocal(stack.getItem().getUnlocalizedName() + ".desc");
+			if (!translation.contains("--null"))
+				TextHelper.smartSplitString(translation, 35).forEach(tooltip::add);
+		}
+		/*if (stack.getItem().getRegistryName().toString().equals(ModInfo.MODID + ":lightning")) {
 			tooltip.add(I18n.translateToLocal("tooltip.moretcon.lightning")); // "Get a betweenland lightning bolt to
 																				// strike your tool to apply."
 		}
@@ -65,12 +70,12 @@ public class ItemBase extends Item {
 																				// its full efficiency to be used in the
 																				// Betweenlands.");
 		}
+		 */
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
-	
-	//static final Field fire_imm = ObfuscationReflectionHelper.findField(Entity.class, "field_70178_ae");//EntityLivingBase.class.getDeclaredFields()[24];
-	
 
-
+	// static final Field fire_imm =
+	// ObfuscationReflectionHelper.findField(Entity.class,
+	// "field_70178_ae");//EntityLivingBase.class.getDeclaredFields()[24];
 
 }

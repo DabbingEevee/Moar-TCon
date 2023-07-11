@@ -78,15 +78,16 @@ public class MoreTCon {
 		ModFluids.init();
 		ModFluidBlocks.init();
 		ModBlocks.init();
-		ModItems.init();
 		ModMaterials.init();
+		ModItems.init();
 		ModSponges.init();
-		proxy.preInit();
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
 			integration.preInit();
 		}
 		ModMaterials.completeReadds();
 		MinecraftForge.EVENT_BUS.register(CustomFireHelper.class);
+		proxy.preInit();
+
 	}
 	
 	@SubscribeEvent

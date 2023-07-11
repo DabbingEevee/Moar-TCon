@@ -457,7 +457,7 @@ public class ModMaterials implements MaterialTypes {
 
 			materialEnderexamite.setCastable(false);
 			materialEnderexamite.setCraftable(false);
-			ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemEnderexamite), materialEnderexamite);
+			//ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemEnderexamite), materialEnderexamite);
 			materialEnderexamite.addTrait(TinkerTraits.slimeyBlue);
 			materialEnderexamite.addTrait(TinkerTraits.crumbling);
 			materialEnderexamite.addTrait(TinkerTraits.endspeed);
@@ -472,7 +472,7 @@ public class ModMaterials implements MaterialTypes {
 
 			materialShadowglass.setCastable(false);
 			materialShadowglass.setCraftable(false);
-			ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemShadowglass), materialShadowglass);
+			//ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemShadowglass), materialShadowglass);
 			materialShadowglass.addTrait(TinkerTraits.jagged);
 			materialShadowglass.addTrait(TinkerTraits.unnatural);
 			materialShadowglass.addTrait(ModTraits.darkened);
@@ -621,7 +621,7 @@ public class ModMaterials implements MaterialTypes {
 			materialIronwood.addStats(new ArrowShaftMaterialStats(1f, 1));
 			materialIronwood.addStats(new ProjectileMaterialStats());
 
-			ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemFerroherb), materialFerroherb);
+			//ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemFerroherb), materialFerroherb);
 			materialFerroherb.setCastable(false);
 			materialFerroherb.setCraftable(false);
 			CompositeRegistry.registerComposite(TConstruct.steeleaf, materialFerroherb, ModFluids.liquidIronwood);

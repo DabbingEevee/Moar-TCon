@@ -1,6 +1,7 @@
 package com.existingeevee.moretcon.inits;
 
 import com.existingeevee.moretcon.item.ItemBase;
+import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.item.ItemDebugTool;
 import com.existingeevee.moretcon.item.ItemNonflamable;
 import com.existingeevee.moretcon.other.ModTabs;
@@ -12,8 +13,8 @@ import net.minecraft.item.Item;
 
 public class ModItems {
 	public static int totalItems;
-/*---------------------------------------*/
-	
+	/*---------------------------------------*/
+
 	//Metals
 	public static Item nuggetFusionite = new ItemBase("nuggetFusionite");
 	public static Item ingotFusionite = new ItemBase("ingotFusionite");
@@ -62,11 +63,11 @@ public class ModItems {
 	public static Item ingotAtronium = new ItemBase("ingotAtronium");
 	public static Item nuggetAtronium = new ItemBase("nuggetAtronium");
 	public static Item dustAtronium = new ItemBase("dustAtronium");
-	
+
 	public static Item ingotEbonite = new ItemBase("ingotEbonite");
 	public static Item nuggetEbonite = new ItemBase("nuggetEbonite");
 	public static Item dustEbonite = new ItemBase("dustEbonite");
-	
+
 	public static Item carbonPile = new ItemBase("carbonPile").setTab(ModTabs.moarTConMisc);;
 	public static Item ingotSteel = new ItemBase("ingotSteel");
 	public static Item nuggetSteel = new ItemBase("nuggetSteel");
@@ -78,7 +79,7 @@ public class ModItems {
 	public static Item dustTrichromadentium = new ItemBase("dustTrichromadentium");
 
 	public static Item dustIronwood = new ItemBase("dustIronwood");
-	
+
 	public static Item dustFiery = new ItemBase("dustFiery");
 
 	public static Item dustKnightmetal = new ItemBase("dustKnightmetal");
@@ -97,14 +98,13 @@ public class ModItems {
 	public static Item gemErythynite = new ItemBase("gemErythynite");
 	public static Item gemEtherstone = new ItemBase("gemEtherstone");;
 
-	
 	//Internal
 	public static Item iconLightning = new ItemBase("lightning").setTab(null);
 
 	//Representative Items
-	public static Item repItemEnderexamite = new ItemBase("repitemenderexamite").setTab(null);
-	public static Item repItemFerroherb = new ItemBase("repitemferroherb").setTab(null);
-	public static Item repItemShadowglass = new ItemBase("repItemShadowglass").setTab(null);
+	// public static Item repItemEnderexamite = new ItemBase("repitemenderexamite").setTab(null);
+	// public static Item repItemFerroherb = new ItemBase("repitemferroherb").setTab(null);
+	// public static Item repItemShadowglass = new ItemBase("repItemShadowglass").setTab(null);
 
 	//Ingriedients
 	public static Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);;
@@ -119,48 +119,53 @@ public class ModItems {
 	//Modifier items
 	public static Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
 
-
-/*---------------------------------------*/
+	/*---------------------------------------*/
 
 	public static void registerItems(Item... items) {
 		for (Item i : items) {
 			ModItems.addItem(i);
 		}
 	}
+
 	public static void init() {
+		ModItems.registerItems(
+				new ItemCompositeRep(),
+				new ItemDebugTool()
+		);
+		
 		if (CompatManager.loadMain) {
 			ModItems.registerItems(
-/**-------------------------------------**/
+					/**-------------------------------------**/
 					ingotFusionite,
 					nuggetFusionite,
-					
+
 					ingotIrradium,
 					nuggetIrradium,
-					
+
 					ingotSolarSteel,
 					nuggetSolarSteel,
-					
+
 					ingotGallium,
 					nuggetGallium,
-					
+
 					ingotSteel,
 					nuggetSteel,
-					
+
 					ingotGravitonium,
 					nuggetGravitonium,
-					
+
 					ingotRuneSteel,
 					nuggetRuneSteel,
-					
+
 					ingotTrichromadentium,
 					nuggetTrichromadentium,
-					
+
 					ingotAtronium,
 					nuggetAtronium,
-					
+
 					ingotEbonite,
 					nuggetEbonite,
-					
+
 					gemVoidSpar,
 					gemEnderal,
 					gemGarstone,
@@ -169,22 +174,20 @@ public class ModItems {
 					gemIgniglomerate,
 					gemErythynite,
 					gemEtherstone,
-					
+
 					matterReconstructionGel,
 					carbonPile,
 					rawSteel,
 					spaceTimeDisruptionPowder,
-					hydrogenRichRedstonePowder,
-					
-					repItemEnderexamite,
-					repItemShadowglass,
-					
-					new ItemDebugTool()
+					hydrogenRichRedstonePowder
 
-/**-------------------------------------**/
+			//repItemEnderexamite,
+			//repItemShadowglass,
 
-				);
-			if(ConfigHandler.shouldLoadDust) {
+			/**-------------------------------------**/
+
+			);
+			if (ConfigHandler.shouldLoadDust) {
 				ModItems.registerItems(
 						dustFusionite,
 						dustIrradium,
@@ -195,23 +198,20 @@ public class ModItems {
 						dustRuneSteel,
 						dustTrichromadentium,
 						dustAtronium,
-						dustEbonite
-				);
+						dustEbonite);
 			}
 		}
-		if(CompatManager.twilightforest) {
+		if (CompatManager.twilightforest) {
 			ModItems.registerItems(
 					nuggetPenguinite,
-					repItemFerroherb,
-					ingotPenguinite
-					);
+					//repItemFerroherb,
+					ingotPenguinite);
 			if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 				ModItems.registerItems(
 						dustPenguinite,
 						dustIronwood,
 						dustFiery,
-						dustKnightmetal
-				);
+						dustKnightmetal);
 			}
 		}
 
@@ -219,16 +219,16 @@ public class ModItems {
 			ModItems.registerItems(
 					ingotRotiron,
 					nuggetRotiron,
-					
+
 					ingotSwampSteel,
 					nuggetSwampSteel,
-					
+
 					itemSiltClay,
 					crushedShockwaveSword,
 
 					sulfurBucketSyrmorite,
 					sulfurBucketIron,
-					
+
 					iconLightning,
 					betweenifiedModifier,
 					betweenicCore
@@ -239,30 +239,26 @@ public class ModItems {
 						dustOctine,
 						dustSyrmorite,
 						dustRotiron,
-						dustSwampSteel
-				);
+						dustSwampSteel);
 			}
 
 		}
 
-		if(CompatManager.aether_legacy) {
+		if (CompatManager.aether_legacy) {
 			ModItems.registerItems(
 					ingotArkenium,
 					nuggetArkenium,
 					ingotValkyrieMetal,
-					nuggetValkyrieMetal
-					);
+					nuggetValkyrieMetal);
 			if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 				ModItems.registerItems(
 						dustArkenium,
-						dustValkyrieMetal
-				);
+						dustValkyrieMetal);
 			}
 
 		}
 		//Logging.log("Loaded a total of " + totalItems + " different items.");
 	}
-
 
 	private static void addItem(Item item) {
 		RegisterHelper.registerItem(item);

@@ -11,6 +11,7 @@ import com.existingeevee.moretcon.block.ISimpleBlockItemProvider;
 import com.existingeevee.moretcon.block.ore.BlockOre;
 import com.existingeevee.moretcon.block.ore.BlockOreMetal;
 import com.existingeevee.moretcon.item.ItemBase;
+import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.sponge.SpongeRegistry.GravitoniumSpongeItem;
@@ -70,10 +71,8 @@ public class RegisterHelper {
 
 		if (block instanceof BlockOre) {
 			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockOre) block).getOreDrop()));
-			// GameRegistry.addSmelting(block, ((BlockOre) block).getOreDrop(), 10);
 		} else if (block instanceof BlockOreMetal) {
 			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockOreMetal) block).getOreDrop()));
-			// GameRegistry.addSmelting(block, ((BlockOreMetal) block).getOreDrop(), 10);
 		}
 	}
 
@@ -96,6 +95,8 @@ public class RegisterHelper {
 				ModelRegisterUtil.registerPartModel((ToolPart) item);
 			} else if (item instanceof GravitoniumSpongeItem) {
 				RenderHandler.registerSponge((GravitoniumSpongeItem) item);
+			} else if (item instanceof ItemCompositeRep) {
+				//Nothing here. it will be handled later
 			} else {
 				registerItemModel(item);
 			}

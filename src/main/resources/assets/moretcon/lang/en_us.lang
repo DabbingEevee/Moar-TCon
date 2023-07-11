@@ -1,6 +1,7 @@
 death.attack.bleeding=%1$s bled out
 death.attack.coldfire=%1$s's thermal kinetic energy level had two solutions
 death.attack.pillar_of_fire=%1$s was swept away in a pillar of fire
+
 entity.decaying_effect_moretcon.name=Effect
 fluid.moretcon.betweensludge=Between Sludge
 fluid.moretcon.burningsulfurflow=Molten Sulfur
@@ -25,6 +26,13 @@ fluid.moretcon.liquidvalkyriemetal=Molten Valkyrie Metal
 fluid.moretcon.liquidvalkyriemetal=Molten Ebonite
 fluid.moretcon.mummysludge=Mummy Sludge
 fluid.moretcon.rottensludge=Rotten Sludge
+
+item.moretcon.betweenifiedmodifier.desc=Adding this to any tool will allow for its full efficiency to be used in the Betweenlands.
+item.moretcon.lightning=.descGet a betweenland lightning bolt to strike your tool to apply.
+item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage on it.
+item.moretcon.repitem.desc=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
+
+item.moretcon.repitem.name=-{-name-}- Composite
 item.moretcon.betweeniccore.name=Betweenic Core
 item.moretcon.betweenifiedmodifier.name=Betweenified Modifier
 item.moretcon.blaxe.desc=A Between Axe is an equivalent of a hatchet for the betweenlands.
@@ -109,9 +117,6 @@ item.moretcon.nuggettrichromadentium.name=Trichromadentium Nugget
 item.moretcon.nuggetvalkyriemetal.name=Valkyrie Metal Nugget
 item.moretcon.nuggetebonite.name=Ebonite Nugget
 item.moretcon.rawsteel.name=Raw Steel
-item.moretcon.repitemenderexamite.name=Enderexamite Composite
-item.moretcon.repitemshadowglass.name=Shadowglass Composite
-item.moretcon.repitemferroherb.name=Ferroherb Composite
 item.moretcon.ring.name=Ring
 item.moretcon.ring.desc=A Ring is a Bauble Accessory for the Ring Slot. When worn... it can activate passive-like traits from materials. The rate of activation lessens the more rings are worn.
 item.moretcon.gauntlet.name=Gauntlet
@@ -340,10 +345,6 @@ tile.moretcon.oreebonite.name=Ebonite Ore
 tile.moretcon.oreerythynite.name=Erythynite Ore
 tile.moretcon.blockotherstone.name=Otherstone
 tile.moretcon.rottensludge.name=Rotten Sludge
-tooltip.moretcon.betweenify=Adding this to any tool will allow for its full efficiency to be used in the Betweenlands.
-tooltip.moretcon.lightning=Get a betweenland lightning bolt to strike your tool to apply.
-tooltip.moretcon.repair=Adding this to any tool will repair 256 damage on it.
-tooltip.moretcon.repitem=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
 traits.bloody_arc.slash=Bloody slash ka-shing
 uniquetoolpart.moretcon.crimson.name=Crimson
 uniquetoolpart.moretcon.mirrored.name=Mirrored

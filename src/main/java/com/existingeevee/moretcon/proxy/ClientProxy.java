@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.proxy;
 import com.existingeevee.moretcon.compat.betweenlands.BLItems;
 import com.existingeevee.moretcon.entity.EntityInit;
 import com.existingeevee.moretcon.inits.ModTools;
+import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.materials.MaterialClient;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
@@ -28,7 +29,6 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init() {
 		TraitClient.init();
-
 	}
 
 	@Override
@@ -39,6 +39,9 @@ public class ClientProxy extends CommonProxy {
 			BLItems.initBL(true);
 		}
 		ModTools.init(true);
+
+		ItemCompositeRep.updateCompositeRenderer();
+
 	}
 
     @Override
@@ -49,5 +52,5 @@ public class ClientProxy extends CommonProxy {
 
         TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
                 new FileRepository("tconstruct:book"), RegisterHelper.moreTConModifiers));
-    }
+            }
 }
