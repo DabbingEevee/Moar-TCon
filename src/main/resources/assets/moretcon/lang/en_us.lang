@@ -125,16 +125,20 @@ item.moretcon.smallplate.name=Small Plate
 item.moretcon.spacetimedisruptionpowder.name=Space Time Disruption Powder
 item.moretcon.sulfurbucketiron.name=Sulfur Bucket
 item.moretcon.sulfurbucketsyrmorite.name=Syrmorite Bucket (Sulfur)
+
 itemGroup.moarTConMaterials=Moar TCon: Materials
 itemGroup.moarTConMisc=Moar TCon Misc
 itemGroup.uniqueToolParts=Unique Toolparts
+
 material.craft_unique=Can only be uniquely obtained!!
+
 material.moretcon.anglertooth.name=Angler Tooth
 material.moretcon.atronium.name=Atronium
 material.moretcon.arkenium.name=Arkenium
 material.moretcon.bloodstone.name=Bloodstone
 material.moretcon.dragonflywing.name=Dragonfly Wing
 material.moretcon.echostone.name=Echostone
+material.moretcon.emberlight.name=Emberlight
 material.moretcon.enderal.name=Enderal
 material.moretcon.enderexamite.name=Enderexamite
 material.moretcon.ferroherb.name=Ferroherb
@@ -168,7 +172,9 @@ material.moretcon.zanite.name=Zanite
 material.moretcon.ebonite.name=Ebonite
 material.moretcon.erythynite.name=Erythynite
 material.moretcon.shadowglass.name=Shadowglass
+
 material.uniquetoolpart.name=Unique
+
 modifier.moretcon.etheralharvest.desc=§oTo the other side!!\n§rYour tool will be able able to mine non-tangible blocks typically found in the end.
 modifier.moretcon.etheralharvest.name=Etheral Harvest
 modifier.moretcon.aerialflame.desc=§oDEATH FROM ABOVE!!!!!\n§rYour projectile will launch a pillar of flames down at your opponents.

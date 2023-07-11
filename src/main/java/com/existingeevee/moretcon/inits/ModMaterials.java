@@ -59,6 +59,9 @@ public class ModMaterials implements MaterialTypes {
 	public static Material materialOctine = new Material(Misc.createNonConflictiveName("Octine".toLowerCase()),
 			0xff8206);
 
+	public static Material materialEmberlight = new Material(Misc.createNonConflictiveName("Emberlight".toLowerCase()),
+			0xe8926d);
+	
 	public static Material materialReedRope = new Material(Misc.createNonConflictiveName("ReedRope".toLowerCase()),
 			0x000b4e0b);
 
@@ -481,7 +484,7 @@ public class ModMaterials implements MaterialTypes {
 			materialShadowglass.addStats(new ArrowShaftMaterialStats(1.2f, 18));
 			materialShadowglass.addStats(new ProjectileMaterialStats());
 			CompositeRegistry.registerComposite(materialErythynite, materialShadowglass, ModFluids.liquidEbonite);
-
+			
 			materialPlasma.addStats(new HeadMaterialStats(4096, 6f, 12f, 5));
 			materialPlasma.addTrait(ModTraits.plasmatic);
 
@@ -700,7 +703,6 @@ public class ModMaterials implements MaterialTypes {
 			materialOctine.addStats(new HeadMaterialStats(900, 5f, 4f, 2));
 			materialOctine.addStats(new HandleMaterialStats(1.25f, -50));
 			materialOctine.addStats(new ExtraMaterialStats(-25));
-			// materialOctine.addStats(new BowMaterialStats(8f, 0.35f, 1f));
 			materialOctine.addStats(new ProjectileMaterialStats());
 
 			materialValonite.addItem("gemValonite", 1, Material.VALUE_Ingot);
@@ -716,8 +718,21 @@ public class ModMaterials implements MaterialTypes {
 			materialValonite.addStats(new ExtraMaterialStats(-25));
 			materialValonite.addStats(new ProjectileMaterialStats());
 
+			materialEmberlight.setCastable(false);
+			materialEmberlight.setCraftable(false);
+			materialEmberlight.addTrait(TinkerTraits.dense);
+			materialEmberlight.addTrait(TinkerTraits.sharp);
+			materialEmberlight.addTrait(ModTraits.hardcore);
+			materialEmberlight.addTrait(ModTraits.burning);
+			materialEmberlight.addTrait(ModTraits.resilient);
+			materialEmberlight.addStats(new HeadMaterialStats(1200, 7.0f, 10.0f, 4));
+			materialEmberlight.addStats(new HandleMaterialStats(2.0f, 20));
+			materialEmberlight.addStats(new ExtraMaterialStats(12));
+			materialEmberlight.addStats(new ArrowShaftMaterialStats(1.0f, 15));
+			materialEmberlight.addStats(new ProjectileMaterialStats());
+			CompositeRegistry.registerComposite(materialValonite, materialEmberlight, ModFluids.liquidEmber);
+			
 			materialSlimyBone.addItem("gemSlimyBone", 1, Material.VALUE_Ingot);
-			// materialSlimyBone.addItem("itemSlimyBone", 1, Material.VALUE_Ingot);
 			materialSlimyBone.addItem("blockSlimyBone", 1, Material.VALUE_Block);
 			materialSlimyBone.setCastable(false);
 			materialSlimyBone.setCraftable(true);
@@ -846,7 +861,9 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialSlimyBone, "SlimyBone");
 			ModMaterials.registerMaterial(materialSwampSteel);
 			ModMaterials.registerMaterial(materialRotiron);
-			ModMaterials.readdTinkerMaterial(TinkerMaterials.bone.identifier);
+			ModMaterials.registerMaterial(materialEmberlight);
+			
+			ModMaterials.readdTinkerMaterial(TinkerMaterials.bone);
 
 		}
 		if (CompatManager.jokes) {
@@ -897,7 +914,7 @@ public class ModMaterials implements MaterialTypes {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static boolean readdTinkerMaterial(String identifier) {
+	public static boolean readdTinkerMaterial(Material material) {
 		boolean success = false;
 		Field mat = null;
 		try {
@@ -906,7 +923,7 @@ public class ModMaterials implements MaterialTypes {
 			Map<String, Material> fieldValue = (Map<String, Material>) mat.get(TinkerRegistry.class);
 			Entry<String, Material> entry = null;
 			for (Entry<String, Material> e : fieldValue.entrySet()) {
-				if (e.getValue().identifier.equals(identifier)) {
+				if (e.getValue().identifier.equals(material.identifier)) {
 					success = true;
 					entry = e;
 					break;
@@ -915,11 +932,11 @@ public class ModMaterials implements MaterialTypes {
 			readd.put(entry.getKey(), entry.getValue());
 
 			if (!success) {
-				MoreTConLogger.log("Unable to readd material \"" + identifier + "\" as it was never registered",
+				MoreTConLogger.log("Unable to readd material \"" + material.identifier + "\" as it was never registered",
 						Level.ERROR);
 			}
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-			MoreTConLogger.log("Unable to readd material \"" + identifier + "\" as an error was encountered",
+			MoreTConLogger.log("Unable to readd material \"" + material.identifier + "\" as an error was encountered",
 					Level.ERROR);
 			e1.printStackTrace();
 		}
