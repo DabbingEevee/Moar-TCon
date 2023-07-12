@@ -487,10 +487,8 @@ public class ModMaterials implements MaterialTypes {
 			materialSkyroot.addStats(new BowMaterialStats(0.6f, 1.1f, 2f));
 			materialSkyroot.addStats(new ArrowShaftMaterialStats(1.2f, 16));
 
-			//TODO
 			materialAmberwood.setCastable(false);
 			materialAmberwood.setCraftable(false);
-			materialAmberwood.setRepresentativeItem("logWoodSkyroot");
 			materialAmberwood.addTrait(ModTraits.aetheric);
 			materialAmberwood.addTrait(ModTraits.rootplicating);
 			materialAmberwood.addTrait(ModTraits.treetap);
