@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.materials;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
@@ -12,8 +13,10 @@ import net.minecraftforge.fluids.Fluid;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.library.tools.IToolPart;
+import slimeknights.tconstruct.tools.ranged.item.BoltCore;
 
 public class CompositeRegistry {
 
@@ -52,7 +55,21 @@ public class CompositeRegistry {
 				if (!t.canUseMaterial(d.getFrom()) || !t.canUseMaterial(d.getResult())) {
 					continue;
 				}
-
+				
+				if (t instanceof BoltCore) {
+					List<Material> fluidWithHead = TinkerRegistry.getAllMaterials().stream()
+							.filter(mat -> mat.hasStats(MaterialTypes.HEAD))
+							.filter(mat -> mat.hasFluid())
+							.collect(Collectors.toList());
+										
+					for (Material m : fluidWithHead) {
+						RecipeMatch rm = RecipeMatch.ofNBT(BoltCore.getItemstackWithMaterials(d.getFrom(), m));
+						ItemStack output = BoltCore.getItemstackWithMaterials(d.getResult(), m);
+			
+						TinkerRegistry.registerTableCasting(new CastingRecipe(output, rm, d.getCatalyst(), d.onlyOne ? Material.VALUE_Ingot : t.getCost(), true, false));
+					}
+				}
+				
 				ItemStack output = t.getItemstackWithMaterial(d.getResult());
 				
 				if (output == null || output.isEmpty()) {
@@ -65,7 +82,7 @@ public class CompositeRegistry {
 			ModMaterials.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
 		}
 	}
-
+	
 	public static class CompositeData {
 
 		private final boolean onlyOne;
