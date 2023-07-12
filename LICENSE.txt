@@ -1,1 +1,7 @@
-All Rights Reserved unless stated otherwise.
+All Rights Reserved unless stated otherwise:
+
+ - You are allowed to contribute to this project.
+ - You are allowed to make PRIVATE forks to this project.
+ - You are allowed to repost this project provided that:
+   = No file from this project outside of images can be reuploaded.
+   = No direct reposts (Eg. Copying everything from my curseforge page)
