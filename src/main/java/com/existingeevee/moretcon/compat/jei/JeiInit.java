@@ -30,7 +30,7 @@ public class JeiInit {
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreFusionite, 1), "Found extremely rarely in all stonebearing dimensions from y = 1 <-> 3.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreIrradium, 1), "Found more or less commonly in all stonebearing dimensions from y = 12 <-> 32.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreVoidSpar, 1), "Found rare-ish-ly in all stonebearing dimensions or bedrockbearing from y = 1 <-> 3.", () -> CompatManager.loadMain));
-		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreNaturalVoidSpar, 1), "Found rare-ish-ly commonly in all stonebearing or bedrockbearing dimensions from y = 12 <-> 32.", () -> CompatManager.loadMain));
+		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreNaturalVoidSpar, 1), "Found rare-ish-ly commonly in all stonebearing or bedrockbearing dimensions from y = 12 <-> 32. \n\nMust be mined with a tool with \"Bottom's End\"", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEnderal, 1), "Found rare-ish-ly in all endstone-bearing dimensions from y = 12 <-> 32.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreGallium, 1), "Found very rarely in all stonebearing dimensions from y = 12 <-> 24.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEchostone, 1), "Found rare-ish-ly in all endstone-bearing dimensions from y = 12 <-> 48.", () -> CompatManager.loadMain));
@@ -38,10 +38,10 @@ public class JeiInit {
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreGravitonium, 1), "Found astronomically rarely in the end inside of floating asteroids. Asteroids are generated approx. one in 2500 chunks.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreGravitoniumDense, 1), "Found astronomically rarely in The End inside of floating asteroids. Asteroids are generated approx. one in 2500 chunks.", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreIgniglomerate, 1), "Found rarely in The Nether within the lava lake.", () -> CompatManager.loadMain));
-		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreBloodstone, 1), "Found commonly in The Nether above the bedrock roof.", () -> CompatManager.loadMain));
-		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEbonite, 1), "Found very rarely in all bedrockbearing dimensions in the lower bedrock layer", () -> CompatManager.loadMain));
+		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreBloodstone, 1), "Found commonly in The Nether above the bedrock roof. \n\nMust be mined with a tool with \"Bottom's End\"", () -> CompatManager.loadMain));
+		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEbonite, 1), "Found very rarely in all bedrockbearing dimensions in the lower bedrock layer. \n\nMust be mined with a tool with \"Bottom's End\"", () -> CompatManager.loadMain));
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreErythynite, 1), "Found very rarely in The Nether in nether prisms which generates from y = 160 <-> 224", () -> CompatManager.loadMain));
-		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.blockEtherstone, 1), "Found rarely in The End in the etheral stone from y = 199 <-> 201", () -> CompatManager.loadMain));
+		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.blockEtherstone, 1), "Found rarely in The End in the etheral stone from y = 199 <-> 201. \n\nMust be mined with a tool with \"Etheral Harvest\"", () -> CompatManager.loadMain));
 		
 		CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreArkenium, 1), "Found rarely in all holystone-bearing dimensions from y = 5 <-> 250.", () -> CompatManager.aether_legacy));
 
