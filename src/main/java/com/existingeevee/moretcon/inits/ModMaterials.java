@@ -70,6 +70,7 @@ public class ModMaterials implements MaterialTypes {
 	public static Material materialZanite = new Material(Misc.createNonConflictiveName("zanite"), 0x6611dd);
 	public static Material materialGravitite = new Material(Misc.createNonConflictiveName("gravitite"), 0xcc55aa);
 	public static Material materialValkyrieMetal = new Material(Misc.createNonConflictiveName("valkyriemetal"), 0xeaee57);
+	public static Material materialAmberwood = new Material(Misc.createNonConflictiveName("amberwood"), 0xeaee57);
 	public static Material materialGravitonium = new Material(Misc.createNonConflictiveName("gravitonium"), 0x00aa00);
 	public static Material materialTrichromadentium = new Material(Misc.createNonConflictiveName("trichromadentium"), 0x777777);
 	public static Material materialSwampSteel = new Material(Misc.createNonConflictiveName("swampsteel"), 0x003906);
@@ -476,7 +477,7 @@ public class ModMaterials implements MaterialTypes {
 			materialSkyroot.addItem("stickWoodSkyroot", 1, Material.VALUE_Ingot / 2);
 			materialSkyroot.setCastable(false);
 			materialSkyroot.setCraftable(true);
-			materialSkyroot.setRepresentativeItem("logWoodSkyroot");
+			materialSkyroot.setRepresentativeItem("plankWoodSkyroot");
 			materialSkyroot.addTrait(ModTraits.aetheric);
 			materialSkyroot.addTrait(ModTraits.rootplicating);
 			materialSkyroot.addTrait(TinkerTraits.ecological);
@@ -485,6 +486,23 @@ public class ModMaterials implements MaterialTypes {
 			materialSkyroot.addStats(new ExtraMaterialStats(15));
 			materialSkyroot.addStats(new BowMaterialStats(0.6f, 1.1f, 2f));
 			materialSkyroot.addStats(new ArrowShaftMaterialStats(1.2f, 16));
+
+			//TODO
+			materialAmberwood.setCastable(false);
+			materialAmberwood.setCraftable(false);
+			materialAmberwood.setRepresentativeItem("logWoodSkyroot");
+			materialAmberwood.addTrait(ModTraits.aetheric);
+			materialAmberwood.addTrait(ModTraits.rootplicating);
+			materialAmberwood.addTrait(ModTraits.treetap);
+			materialAmberwood.addTrait(TinkerTraits.ecological);
+			materialAmberwood.addTrait(TinkerTraits.established);
+			materialAmberwood.addTrait(TinkerTraits.writable);
+			materialAmberwood.addStats(new HeadMaterialStats(170, 4f, 4f, 2));
+			materialAmberwood.addStats(new HandleMaterialStats(1.2f, 125));
+			materialAmberwood.addStats(new ExtraMaterialStats(75));
+			materialAmberwood.addStats(new BowMaterialStats(0.7f, 1.6f, 4f));
+			materialAmberwood.addStats(new ArrowShaftMaterialStats(1.2f, 32));
+			CompositeRegistry.registerComposite(materialSkyroot, materialAmberwood, ModFluids.liquidGoldenAmber);
 
 			materialArkenium.addCommonItems("Arkenium");
 			materialArkenium.setFluid(ModFluids.liquidArkenium);
@@ -556,7 +574,6 @@ public class ModMaterials implements MaterialTypes {
 			//ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemFerroherb), materialFerroherb);
 			materialFerroherb.setCastable(false);
 			materialFerroherb.setCraftable(false);
-			CompositeRegistry.registerComposite(TConstruct.steeleaf, materialFerroherb, ModFluids.liquidIronwood);
 			materialFerroherb.addTrait(TConstruct.synergy);
 			materialFerroherb.addTrait(TConstruct.twilit);
 			materialFerroherb.addTrait(TinkerTraits.ecological);
@@ -567,6 +584,7 @@ public class ModMaterials implements MaterialTypes {
 			materialFerroherb.addStats(new ExtraMaterialStats(125));
 			materialFerroherb.addStats(new ArrowShaftMaterialStats(1f, 25));
 			materialFerroherb.addStats(new ProjectileMaterialStats());
+			CompositeRegistry.registerComposite(TConstruct.steeleaf, materialFerroherb, ModFluids.liquidIronwood);
 
 			materialPenguinite.addCommonItems("Penguinite");
 			materialPenguinite.setCastable(true);
@@ -707,7 +725,7 @@ public class ModMaterials implements MaterialTypes {
 			materialWeedwood.addItem("stickWoodWeedwood", 1, Material.VALUE_Ingot / 2);
 			materialWeedwood.setCastable(false);
 			materialWeedwood.setCraftable(true);
-			materialWeedwood.setRepresentativeItem("logWoodWeedwood");
+			materialWeedwood.setRepresentativeItem("plankWoodWeedwood");
 			materialWeedwood.addTrait(TinkerTraits.ecological);
 			materialWeedwood.addStats(new HeadMaterialStats(40, 2f, 2f, 0));
 			materialWeedwood.addStats(new HandleMaterialStats(1.2f, 25));
@@ -779,6 +797,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialZanite);
 			ModMaterials.registerMaterial(materialGravitite);
 			ModMaterials.registerMaterial(materialValkyrieMetal, "ValkyrieMetal");
+			ModMaterials.registerMaterial(materialAmberwood);
 		}
 		if (CompatManager.thebetweenlands) {
 			ModMaterials.registerMaterial(materialShockwave);

@@ -83,6 +83,9 @@ public class ModFluids {
 	public static Fluid liquidBetweenSludge = new LiquidFluid("betweenSludge".toLowerCase()).setCColor(0x344a30).setLuminosity(0)
 			.setDensity(1000).setViscosity(800).setTemperature(0);
 	
+	public static Fluid liquidGoldenAmber = new LiquidFluid("liquidGoldenAmber".toLowerCase()).setCColor(0xeaee57).setLuminosity(0)
+			.setDensity(1000).setViscosity(800).setTemperature(0);
+	
 	/** ------------------------------------- **/
 
 	
@@ -134,7 +137,8 @@ public class ModFluids {
 		if (CompatManager.aether_legacy) {
 			ModFluids.registerFluids(
 					liquidArkenium,
-					liquidValkyrieMetal
+					liquidValkyrieMetal,
+					liquidGoldenAmber
 					);
 		}
 		if (CompatManager.jokes) {

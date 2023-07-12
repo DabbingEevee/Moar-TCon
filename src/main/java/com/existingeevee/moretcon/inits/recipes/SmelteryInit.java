@@ -45,7 +45,8 @@ public class SmelteryInit {
 			TinkerRegistry.registerMelting(new ItemStack(ItemsAether.valkyrie_axe, 1, 0), ModFluids.liquidValkyrieMetal, Material.VALUE_Ingot * 3);
 			TinkerRegistry.registerMelting(new ItemStack(ItemsAether.valkyrie_lance, 1, 0), ModFluids.liquidValkyrieMetal, Material.VALUE_Ingot * 2);
 			TinkerRegistry.registerMelting(new ItemStack(ItemsAether.valkyrie_pickaxe, 1, 0), ModFluids.liquidValkyrieMetal, Material.VALUE_Ingot * 3);
-			TinkerRegistry.registerMelting(new ItemStack(ItemsAether.valkyrie_shovel, 1, 0), ModFluids.liquidValkyrieMetal, Material.VALUE_Ingot);
+
+			TinkerRegistry.registerMelting(new ItemStack(ItemsAether.golden_amber, 1, 0), ModFluids.liquidGoldenAmber, Material.VALUE_Ingot);
 		}
 	}
 }

@@ -6,6 +6,7 @@ entity.decaying_effect_moretcon.name=Effect
 fluid.moretcon.betweensludge=Between Sludge
 fluid.moretcon.burningsulfurflow=Molten Sulfur
 fluid.moretcon.liquidarkenium=Molten Arkenium
+fluid.moretcon.liquidgoldenamber=Liquid Golden Amber
 fluid.moretcon.liquidatronium=Molten Atronium
 fluid.moretcon.liquidember=Liquid Embers
 fluid.moretcon.liquidfusionite=Molten Fusionite
@@ -172,6 +173,7 @@ material.moretcon.zanite.name=Zanite
 material.moretcon.ebonite.name=Ebonite
 material.moretcon.erythynite.name=Erythynite
 material.moretcon.shadowglass.name=Shadowglass
+material.moretcon.amberwood.name=Amberwood
 
 material.uniquetoolpart.name=Unique
 
@@ -313,6 +315,7 @@ tile.moretcon.blockatronium.name=Block of Atronium
 tile.moretcon.blockerythynite.name=Block of Erythynite
 tile.moretcon.burningsulfurflow.name=Molten Sulfur
 tile.moretcon.liquidarkenium.name=Molten Arkenium
+tile.moretcon.liquidgoldenamber.name=Liquid Golden Amber
 tile.moretcon.liquidatronium.name=Molten Atronium
 tile.moretcon.liquidember.name=Liquid Embers
 tile.moretcon.liquidfusionite.name=Molten Fusionite

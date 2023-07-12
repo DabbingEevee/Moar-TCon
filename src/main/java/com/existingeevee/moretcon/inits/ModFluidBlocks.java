@@ -33,6 +33,7 @@ public class ModFluidBlocks {
 	public static Block blockRottenSludge;
 	public static Block blockMummySludge;
 	public static Block blockBetweenSludge;
+	public static Block blockLiquidGoldenAmber;
 	/* ------------------------------------- */
 	private static void registerBlocks(Block... block) {
 		for (Block i : block) {
@@ -51,7 +52,7 @@ public class ModFluidBlocks {
 			blockLiquidGravitonium = new BlockFluid("liquidgravitonium", ModFluids.liquidGravitonium, Material.LAVA);
 			blockLiquidTrichromadentium = new BlockFluid("liquidtrichromadentium", ModFluids.liquidTrichromadentium, Material.LAVA);
 			blockLiquidAtronium = new BlockFluid("liquidatronium", ModFluids.liquidAtronium, Material.LAVA);
-			blockLiquidEbonite = new BlockFluid("liquidebonite", ModFluids.liquidEbonite, Material.LAVA);
+			blockLiquidEbonite = new BlockFluid("liquidebonite", ModFluids.liquidEbonite, Material.LAVA);			
 			
 			
 		    ModFluidBlocks.registerBlocks(
@@ -82,10 +83,12 @@ public class ModFluidBlocks {
 		if(CompatManager.aether_legacy) {
 			blockLiquidArkenium = new BlockFluid("liquidarkenium", ModFluids.liquidArkenium, Material.LAVA);
 			blockLiquidValkyrieMetal = new BlockFluid("liquidvalkyriemetal", ModFluids.liquidValkyrieMetal, Material.LAVA);
+			blockLiquidGoldenAmber = new BlockFluid("liquidgoldenamber", ModFluids.liquidGoldenAmber, Material.WATER);
 			ModFluidBlocks.registerBlocks(
 /* ------------------------------------- */
 					blockLiquidArkenium,
-					blockLiquidValkyrieMetal
+					blockLiquidValkyrieMetal,
+					blockLiquidGoldenAmber
 			/* ------------------------------------- */
 					);
 		}
@@ -99,6 +102,7 @@ public class ModFluidBlocks {
 			blockRottenSludge = new BlockFluid("rottensludge", ModFluids.liquidRottenSludge, Material.WATER);
 			blockMummySludge = new BlockFluid("mummysludge", ModFluids.liquidMummySludge, Material.WATER);
 			blockBetweenSludge = new BlockFluid("betweensludge", ModFluids.liquidBetweenSludge, Material.WATER);
+
 			ModFluidBlocks.registerBlocks(
 /* ------------------------------------- */
 					blockBurningSulfurFlow,
