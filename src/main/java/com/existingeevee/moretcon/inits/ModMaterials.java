@@ -807,7 +807,7 @@ public class ModMaterials implements MaterialTypes {
 	}
 	
 	public static void registerMaterial(Material material, String suffix, String... requiredOreDicts) {
-		registerMaterials(material, material.getFluid(), suffix);
+		registerMaterials(material, material.getFluid(), suffix, requiredOreDicts);
 	}
 
 	public static void registerMaterials(Material material, Fluid fluid, String suffix, String... requiredOreDicts) {
