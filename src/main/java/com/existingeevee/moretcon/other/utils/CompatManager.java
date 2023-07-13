@@ -14,6 +14,8 @@ public class CompatManager {
 	public static boolean aether_legacy;
 	public static boolean baubles;
 	public static boolean conarm;
+	public static boolean oredict;
+	public static boolean tic3backport;
 
 	public static void init() {
 		CompatManager.twilightforest = (Loader.isModLoaded("twilightforest") && ConfigHandler.shouldAllowTwilightForest);
@@ -25,6 +27,8 @@ public class CompatManager {
 		CompatManager.conarm = (Loader.isModLoaded("conarm") && ConfigHandler.shouldAllowConstructsArmory);
 		CompatManager.jokes = ConfigHandler.shouldAllowJokeItems;
 		CompatManager.loadMain = ConfigHandler.shouldAllowMainContent;
+		CompatManager.oredict = ConfigHandler.shouldAllowOreDictionary;
+		CompatManager.tic3backport = ConfigHandler.shouldAllowTiC3ContentBackport;
 		//.addStats(new LaserMediumMaterialStats(0, 0));
 	}
 

@@ -27,6 +27,7 @@ public class ConfigHandler {
 	public static boolean shouldAllowAether = true;
 	public static boolean shouldAllowBaubles = true;
 	public static boolean shouldAllowConstructsArmory = true;
+	public static boolean shouldAllowTiC3ContentBackport = true;
 
 	public static boolean shouldLoadDust = false;
 	public static boolean shouldLoadDustForCompatability = true;
@@ -71,16 +72,17 @@ public class ConfigHandler {
 
 		category = "Allow Loading";
 		config.addCustomCategoryComment(category, "Allows the loading of certain mod compatibilities.");
-		ConfigHandler.shouldAllowTwilightForest = config.getBoolean("twilightforest", category, true, "Set to \"false\" if you want to not want to allow Twilight Forest compatibility to load.");
-		ConfigHandler.shouldAllowIceAndFire = config.getBoolean("iceandfire", category, true, "[NYI] Set to \"false\" if you want to not want to allow Ice and Fire compatibility to load.");
-		ConfigHandler.shouldAllowPlusTiC = config.getBoolean("plustic", category, true, "Set to \"false\" if you want to not want to allow PlusTiC compatibility to load.");
-		ConfigHandler.shouldAllowBetweenLands = config.getBoolean("thebetweenlands", category, true, "Set to \"false\" if you want to not want to allow Betweenlands compatibility to load.");
-		ConfigHandler.shouldAllowJokeItems = config.getBoolean("jokes", category, true, "Set to \"false\" if you want to not want to allow Easter Eggs and Jokes to load.");
-		ConfigHandler.shouldAllowCrossCompat = config.getBoolean("crosscompat", category, true, "[NYI] Set to \"false\" if you want to not want to allow cross compatibility between mods to load.");
-		ConfigHandler.shouldAllowMainContent = config.getBoolean("main", category, true, "Set to \"false\" if you want to not want to allow things from the main mod to load.");
-		ConfigHandler.shouldAllowAether = config.getBoolean("aether_legacy", category, true, "Set to \"false\" if you want to not want to allow Aether compatibility to load.");
-		ConfigHandler.shouldAllowBaubles = config.getBoolean("baubles", category, true, "Set to \"false\" if you want to not want to allow Baubles compatibility to load.");
-		ConfigHandler.shouldAllowOreDictionary = config.getBoolean("oredict", category, true, "Set to \"false\" if you want to not want to allow oredict compatibility to load.");
+		ConfigHandler.shouldAllowTwilightForest = config.getBoolean("twilightforest", category, true, "Set to \"false\" if you don't want to allow Twilight Forest compatibility to load.");
+		ConfigHandler.shouldAllowIceAndFire = config.getBoolean("iceandfire", category, true, "[NYI] Set to \"false\" if you don't want to allow Ice and Fire compatibility to load.");
+		ConfigHandler.shouldAllowPlusTiC = config.getBoolean("plustic", category, true, "Set to \"false\" if you don't want to allow PlusTiC compatibility to load.");
+		ConfigHandler.shouldAllowBetweenLands = config.getBoolean("thebetweenlands", category, true, "Set to \"false\" if you don't want to allow Betweenlands compatibility to load.");
+		ConfigHandler.shouldAllowJokeItems = config.getBoolean("jokes", category, true, "Set to \"false\" if you don't want to allow Easter Eggs and Jokes to load.");
+		ConfigHandler.shouldAllowCrossCompat = config.getBoolean("crosscompat", category, true, "[NYI] Set to \"false\" if you don't want to allow cross compatibility between mods to load.");
+		ConfigHandler.shouldAllowMainContent = config.getBoolean("main", category, true, "Set to \"false\" if you don't want to allow things from the main mod to load.");
+		ConfigHandler.shouldAllowAether = config.getBoolean("aether_legacy", category, true, "Set to \"false\" if you don't want to allow Aether compatibility to load.");
+		ConfigHandler.shouldAllowBaubles = config.getBoolean("baubles", category, true, "Set to \"false\" if you don't want to allow Baubles compatibility to load.");
+		ConfigHandler.shouldAllowOreDictionary = config.getBoolean("oredict", category, true, "[NYI] Set to \"false\" if you don't want to allow oredict compatibility to load.");
+		ConfigHandler.shouldAllowTiC3ContentBackport = config.getBoolean("tic3backport", category, true, "Set to \"false\" if you don't want to allow backported content from TinkersConstruct 3 to load.");
 
 		category = "Misc";
 		config.addCustomCategoryComment(category, "Tweak the miscellaneous values/content of the mod");

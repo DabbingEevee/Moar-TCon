@@ -2,6 +2,7 @@ package com.existingeevee.moretcon.inits;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
+import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.MoreTConLogger;
@@ -76,6 +77,19 @@ public class ModMaterials implements MaterialTypes {
 	public static Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass"), 0x2a275e);
 	public static Material materialEtherstone = new Material(Misc.createNonConflictiveName("etherstone"), 0xf1ea3b);
 
+	public static Material materialNahuatl = new Material(Misc.createNonConflictiveName("nahuatl"), 0x271e3d); //Need custom
+	public static Material materialSlimewood = new Material(Misc.createNonConflictiveName("slimewood"), 0x96dd8f);
+
+	//TODO
+	// public static Material materialQueensslime = new Material(Misc.createNonConflictiveName("queensslime"), 0x565808); //Need Custom
+	// public static Material materialHepatizon = new Material(Misc.createNonConflictiveName("hepatizon"), 0xf1ea3b);
+	// public static Material materialSlimesteel = new Material(Misc.createNonConflictiveName("slimesteel"), 0x47efea);
+	// public static Material materialSearedStone = new Material(Misc.createNonConflictiveName("searedstone"), 0x4f4a47);
+	// public static Material materialScorchedStone = new Material(Misc.createNonConflictiveName("scorchedstone"), 0x53453c);
+	// public static Material materialBloodbone = new Material(Misc.createNonConflictiveName("bloodbone"), 0xb80000);
+	// public static Material materialNecroticBone = new Material(Misc.createNonConflictiveName("necrobone"), 0x343434);
+	// public static Material materialBlazingBone = new Material(Misc.createNonConflictiveName("blazingbone"), 0xefc62f);
+
 	public static UniqueMaterial materialPlasma = new UniqueMaterial(
 			Misc.createNonConflictiveName("plasma"), 0xff0000, "tconstruct:sword_blade",
 			"tconstruct:broadsword");
@@ -106,6 +120,34 @@ public class ModMaterials implements MaterialTypes {
 			"plustic:katana");
 
 	static {
+
+		if (CompatManager.tic3backport) {
+			materialNahuatl.setCastable(false);
+			materialNahuatl.setCraftable(false);
+			materialNahuatl.addTrait(ModTraits.slicing, HEAD);
+			materialNahuatl.addTrait(ModTraits.darkened, HEAD);
+			materialNahuatl.addTrait(TinkerTraits.ecological, HEAD);
+			materialNahuatl.addTrait(TinkerTraits.dense, HEAD);
+			materialNahuatl.addTrait(TinkerTraits.ecological);
+			materialNahuatl.addTrait(TinkerTraits.dense);
+			materialNahuatl.addStats(new HeadMaterialStats(350, 4.5f, 3f, 3));
+			materialNahuatl.addStats(new HandleMaterialStats(0.9f, 125));
+			materialNahuatl.addStats(new ExtraMaterialStats(75));
+			materialNahuatl.addStats(new BowMaterialStats(0.7f, 0.85f, 4f));
+			materialNahuatl.addStats(new ArrowShaftMaterialStats(1.2f, 32));
+			CompositeRegistry.registerComposite(new CompositeData(() -> TinkerMaterials.wood, () -> materialNahuatl, () -> TinkerFluids.obsidian, false).setMultiplier(2));
+
+			/*materialSlimewood.setCastable(false);
+			materialSlimewood.setCraftable(false);
+			materialSlimewood.addTrait(TinkerTraits.slimeyGreen);
+			materialSlimewood.addTrait(TinkerTraits.ecological);
+			materialSlimewood.addStats(new HeadMaterialStats(350, 4.5f, 3f, 3));
+			materialSlimewood.addStats(new HandleMaterialStats(0.9f, 125));
+			materialSlimewood.addStats(new ExtraMaterialStats(75));
+			materialSlimewood.addStats(new BowMaterialStats(0.7f, 0.85f, 4f));
+			materialSlimewood.addStats(new ArrowShaftMaterialStats(1.2f, 32));
+			CompositeRegistry.registerComposite(() -> TinkerMaterials.wood, () -> materialNahuatl, () -> TinkerFluids.obsidian);*/
+		}
 
 		if (CompatManager.plustic) {
 			materialCrimson.addStats(new HandleMaterialStats(4f, 1024));
@@ -395,7 +437,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEnderexamite.addStats(new ExtraMaterialStats(12));
 			materialEnderexamite.addStats(new ArrowShaftMaterialStats(1f, 15));
 			materialEnderexamite.addStats(new ProjectileMaterialStats());
-			CompositeRegistry.registerComposite(materialEnderal, materialEnderexamite, TinkerFluids.knightslime);
+			CompositeRegistry.registerComposite(() -> materialEnderal, () -> materialEnderexamite, () -> TinkerFluids.knightslime);
 
 			materialShadowglass.setCastable(false);
 			materialShadowglass.setCraftable(false);
@@ -408,7 +450,7 @@ public class ModMaterials implements MaterialTypes {
 			materialShadowglass.addStats(new ExtraMaterialStats(15));
 			materialShadowglass.addStats(new ArrowShaftMaterialStats(1.2f, 18));
 			materialShadowglass.addStats(new ProjectileMaterialStats());
-			CompositeRegistry.registerComposite(materialErythynite, materialShadowglass, ModFluids.liquidEbonite);
+			CompositeRegistry.registerComposite(() -> materialErythynite, () -> materialShadowglass, () -> ModFluids.liquidEbonite);
 
 			materialPlasma.addStats(new HeadMaterialStats(4096, 6f, 12f, 5));
 			materialPlasma.addTrait(ModTraits.plasmatic);
@@ -439,10 +481,10 @@ public class ModMaterials implements MaterialTypes {
 			materialIgniglomerate.addStats(new ProjectileMaterialStats());
 
 			materialEtherstone.addItem("gemEtherstone", 1, Material.VALUE_Ingot);
-			materialEtherstone.addItem("blockEnderal", 1, Material.VALUE_Block);
+			materialEtherstone.addItem("blockEtherstone", 1, Material.VALUE_Block);
 			materialEtherstone.setCastable(false);
 			materialEtherstone.setCraftable(true);
-			materialEtherstone.setRepresentativeItem("gemEnderal");
+			materialEtherstone.setRepresentativeItem("gemEtherstone");
 			materialEtherstone.addTrait(ModTraits.etheralHarvest);
 			materialEtherstone.addTrait(ModTraits.darkened);
 			materialEtherstone.addTrait(ModTraits.hardcore);
@@ -493,7 +535,7 @@ public class ModMaterials implements MaterialTypes {
 			materialAmberwood.addStats(new ExtraMaterialStats(75));
 			materialAmberwood.addStats(new BowMaterialStats(0.7f, 1.6f, 4f));
 			materialAmberwood.addStats(new ArrowShaftMaterialStats(1.2f, 32));
-			CompositeRegistry.registerComposite(materialSkyroot, materialAmberwood, ModFluids.liquidGoldenAmber);
+			CompositeRegistry.registerComposite(() -> materialSkyroot, () -> materialAmberwood, () -> ModFluids.liquidGoldenAmber);
 
 			materialArkenium.addCommonItems("Arkenium");
 			materialArkenium.setFluid(ModFluids.liquidArkenium);
@@ -575,7 +617,7 @@ public class ModMaterials implements MaterialTypes {
 			materialFerroherb.addStats(new ExtraMaterialStats(125));
 			materialFerroherb.addStats(new ArrowShaftMaterialStats(1f, 25));
 			materialFerroherb.addStats(new ProjectileMaterialStats());
-			CompositeRegistry.registerComposite(TConstruct.steeleaf, materialFerroherb, ModFluids.liquidIronwood);
+			CompositeRegistry.registerComposite(() -> TConstruct.steeleaf, () -> materialFerroherb, () -> ModFluids.liquidIronwood);
 
 			materialPenguinite.addCommonItems("Penguinite");
 			materialPenguinite.setCastable(true);
@@ -670,7 +712,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEmberlight.addStats(new ExtraMaterialStats(12));
 			materialEmberlight.addStats(new ArrowShaftMaterialStats(1.0f, 15));
 			materialEmberlight.addStats(new ProjectileMaterialStats());
-			CompositeRegistry.registerComposite(materialValonite, materialEmberlight, ModFluids.liquidEmber);
+			CompositeRegistry.registerComposite(() -> materialValonite, () -> materialEmberlight, () -> ModFluids.liquidEmber);
 
 			materialSlimyBone.addItem("gemSlimyBone", 1, Material.VALUE_Ingot);
 			materialSlimyBone.addItem("blockSlimyBone", 1, Material.VALUE_Block);
@@ -762,6 +804,11 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialShadowglass);
 			ModMaterials.registerMaterial(materialEtherstone);
 		}
+		if (CompatManager.tic3backport) {
+			ModMaterials.registerMaterial(materialNahuatl);
+
+		}
+
 		if (CompatManager.twilightforest) {
 			ModMaterials.registerMaterial(materialIronwood);
 			ModMaterials.registerMaterial(materialPenguinite);
@@ -803,15 +850,15 @@ public class ModMaterials implements MaterialTypes {
 	}
 
 	public static void registerMaterial(Material material, String suffix) {
-		registerMaterials(material, material.getFluid(), suffix);
+		registerMaterials(material, material.getFluid(), suffix, "ingot" + suffix);
 	}
-	
+
 	public static void registerMaterial(Material material, String suffix, String... requiredOreDicts) {
 		registerMaterials(material, material.getFluid(), suffix, requiredOreDicts);
 	}
 
 	public static void registerMaterials(Material material, Fluid fluid, String suffix, String... requiredOreDicts) {
-		MaterialIntegration integration = new MaterialIntegration(material, fluid, suffix, requiredOreDicts);
+		MaterialIntegration integration = new MaterialIntegration(material, fluid, suffix, requiredOreDicts.length == 0 ? new String[1] : requiredOreDicts);
 		if (RegisterHelper.registerMaterial(integration, false)) {
 			totalMaterials++;
 		}

@@ -22,7 +22,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ModTabs {
 
 	public static void init() {
-		moarTConMaterials = (new CreativeTabs("moarTconMaterials") {
+		moarTConMaterials = (new CreativeTabs("moarTConMaterials") {
 			@Override
 			public ItemStack getTabIconItem() {
 				return new ItemStack(ModItems.ingotFusionite, (int) (1));

@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.materials;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import com.existingeevee.moretcon.item.ItemCompositeRep;
@@ -26,12 +27,12 @@ public class CompositeRegistry {
 		return new ArrayList<>(data);
 	}
 
-	public static void registerComposite(Material from, Material to, Fluid catalyst) {
-		registerComposite(from, to, catalyst, true);
+	public static void registerComposite(CompositeData compData) {
+		data.add(compData);
 	}
 
-	public static void registerComposite(Material from, Material to, Fluid catalyst, boolean onlyOne) {
-		data.add(new CompositeData(from, to, catalyst, onlyOne));
+	public static void registerComposite(Supplier<Material> from, Supplier<Material> to, Supplier<Fluid> catalyst) {
+		data.add(new CompositeData(from, to, catalyst, false));
 	}
 
 	public static Optional<CompositeData> getComposite(Material mat) {
@@ -87,15 +88,17 @@ public class CompositeRegistry {
 	public static class CompositeData {
 
 		private final boolean onlyOne;
-		private final Material from;
-		private final Material result;
-		private final Fluid catalyst;
+		private final Supplier<Material> from;
+		private final Supplier<Material> result;
+		private final Supplier<Fluid> catalyst;
 
-		public CompositeData(Material from, Material result, Fluid catalyst) {
+		private double multiplier = Material.VALUE_Ingot;
+		
+		public CompositeData(Supplier<Material> from, Supplier<Material> result, Supplier<Fluid> catalyst) {
 			this(from, result, catalyst, true);
 		}
 
-		public CompositeData(Material from, Material result, Fluid catalyst, boolean onlyOne) {
+		public CompositeData(Supplier<Material> from, Supplier<Material> result, Supplier<Fluid> catalyst, boolean onlyOne) {
 			this.onlyOne = onlyOne;
 			this.from = from;
 			this.result = result;
@@ -107,16 +110,24 @@ public class CompositeRegistry {
 		}
 
 		public Material getFrom() {
-			return from;
+			return from.get();
 		}
 
 		public Material getResult() {
-			return result;
+			return result.get();
 		}
 
 		public Fluid getCatalyst() {
-			return catalyst;
+			return catalyst.get();
 		}
 
+		public double getMultiplier() {
+			return multiplier;
+		}
+		
+		public CompositeData setMultiplier(double multiplier) {
+			this.multiplier = multiplier;
+			return this;
+		}
 	}
 }
