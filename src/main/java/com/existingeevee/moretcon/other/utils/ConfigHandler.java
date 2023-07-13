@@ -16,54 +16,38 @@ public class ConfigHandler {
 
 	public static Configuration config;
 
-	//public static boolean shouldForceLoadDust;
-
-	public static boolean useLegacyModID = false;
-
 	public static boolean shouldAllowJokeItems = true;
-
 	public static boolean shouldAllowTwilightForest = true;
-
 	public static boolean shouldAllowIceAndFire = false;//true;
-
 	public static boolean shouldAllowPlusTiC = true;
-
 	public static boolean shouldAllowBetweenLands = true;
+	public static boolean shouldAllowMainContent = true;
+	public static boolean shouldAllowOreDictionary = true;
+	public static boolean shouldAllowCrossCompat = true;
+	public static boolean shouldAllowAether = true;
+	public static boolean shouldAllowBaubles = true;
+	public static boolean shouldAllowConstructsArmory = true;
 
 	public static boolean shouldLoadDust = false;
-
 	public static boolean shouldLoadDustForCompatability = true;
 
 	public static boolean disableOreGen = false;
 
 	public static boolean weakenToolsInBetweenLands = true;
-
 	public static boolean registerBetweenTinkerTools = true;
 
-	public static String[] blacklist = {"moretcon.example"};
-
-	public static boolean shouldAllowMainContent = true;
-
-	public static boolean shouldAllowOreDictionary = true;
-
-	public static boolean shouldAllowCrossCompat = true;
-
-	public static boolean shouldAllowAether = true;
-	
-	public static boolean shouldAllowBaubles = true;
-
-	public static boolean shouldAllowConstructsArmory = true;
+	public static String[] blacklist = { "moretcon.example" };
 
 	public static boolean middleGemsRequireModifierSlots = true;
 
 	public static int maxToolDurability = (int) Math.pow(2, 15) - 1;
 
 	public static int decayingEffectEntityID = 8690001;
-	
+
 	public static boolean shouldDurabilityCapNonProjectiles = true;
-	
+
 	public static int hyperheatMaximumStack = 4;
-	
+
 	public static ResourceLocation trichromicRed = new ResourceLocation("minecraft:strength");
 	public static ResourceLocation trichromicGreen = new ResourceLocation("none");
 	public static ResourceLocation trichromicBlue = new ResourceLocation("none");
@@ -73,17 +57,12 @@ public class ConfigHandler {
 	public static int trichromicBlueLvl = 1;
 
 	public static String[] removeUniqueToolpartRecipes = { "moretcon.uniqueexample" };
-	
+
 	public static boolean enableGauntlet = true;
 
 	public static boolean enableRing = true;
-	
-	/*public static int trichromicRedLevel = 0;
-	public static int trichromicGreenLevel = 0;
-	public static int trichromicBlueLevel = 0;*/
 
-	public static void initConfig(File file)
-	{
+	public static void initConfig(File file) {
 		config = new Configuration(file, ModInfo.VERSION);
 
 		config.load();
@@ -101,6 +80,7 @@ public class ConfigHandler {
 		ConfigHandler.shouldAllowMainContent = config.getBoolean("main", category, true, "Set to \"false\" if you want to not want to allow things from the main mod to load.");
 		ConfigHandler.shouldAllowAether = config.getBoolean("aether_legacy", category, true, "Set to \"false\" if you want to not want to allow Aether compatibility to load.");
 		ConfigHandler.shouldAllowBaubles = config.getBoolean("baubles", category, true, "Set to \"false\" if you want to not want to allow Baubles compatibility to load.");
+		ConfigHandler.shouldAllowOreDictionary = config.getBoolean("oredict", category, true, "Set to \"false\" if you want to not want to allow oredict compatibility to load.");
 
 		category = "Misc";
 		config.addCustomCategoryComment(category, "Tweak the miscellaneous values/content of the mod");
@@ -118,39 +98,42 @@ public class ConfigHandler {
 		try {
 			ConfigHandler.trichromicRed = new ResourceLocation(triRed.split(";")[0]);
 			ConfigHandler.trichromicRedLvl = Integer.parseInt(triRed.split(";")[1]);
-		} catch (NumberFormatException e) {} catch (ArrayIndexOutOfBoundsException e) {}
+		} catch (NumberFormatException e) {
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
 
 		try {
 			ConfigHandler.trichromicGreen = new ResourceLocation(triGreen.split(";")[0]);
 			ConfigHandler.trichromicGreenLvl = Integer.parseInt(triGreen.split(";")[1]);
-		} catch (NumberFormatException e) {} catch (ArrayIndexOutOfBoundsException e) {}
-		
+		} catch (NumberFormatException e) {
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+
 		try {
 			ConfigHandler.trichromicBlue = new ResourceLocation(triBlue.split(";")[0]);
 			ConfigHandler.trichromicBlueLvl = Integer.parseInt(triBlue.split(";")[1]);
-		} catch (NumberFormatException e) {} catch (ArrayIndexOutOfBoundsException e) {}
+		} catch (NumberFormatException e) {
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
 
-		
-		hyperheatMaximumStack =  config.getInt("hyperheatmaximumstack", category, 4, 1, 127, "The maximum stack of Hyper Heat that is allowed");
-		
+		hyperheatMaximumStack = config.getInt("hyperheatmaximumstack", category, 4, 1, 127, "The maximum stack of Hyper Heat that is allowed");
+
 		category = "Durability Issue Fix";
 		config.addCustomCategoryComment(category, "A category dedicated to fixing the strange behavior of tools with durability greater than (2 ^ 15 - 1)");
 
-		
 		ConfigHandler.maxToolDurability = config.getInt("maxtooldurability", category, (int) Math.pow(2, 15) - 1, -1, Integer.MAX_VALUE, "Set to \"-1\" if you do not want to cap tool durability. Values higher than 32767 may cause tool durability issues upon relog, values higher than 65535 will break projectiles entities.");
 		ConfigHandler.shouldDurabilityCapNonProjectiles = config.getBoolean("shoulddurabilitycapnonprojectiles", category, true, "Set to \"false\" if you do not want the durability cap to affect non-projectile tools.");
-		
+
 		category = "Blacklist";
 		config.addCustomCategoryComment(category, "Remove some of the added materials. Example: \"" + Misc.createNonConflictiveName("fusionite") + "\"");
-		ConfigHandler.blacklist = config.getStringList("blacklist", category, new String[] {Misc.createNonConflictiveName("example")}, "Add materials to blacklist");
+		ConfigHandler.blacklist = config.getStringList("blacklist", category, new String[] { Misc.createNonConflictiveName("example") }, "Add materials to blacklist");
 
-		ConfigHandler.removeUniqueToolpartRecipes = config.getStringList("uniquereciperemoval", category, new String[] {Misc.createNonConflictiveName("unqiueexample")}, "Add Unique Toolpart recipe to blacklist");
+		ConfigHandler.removeUniqueToolpartRecipes = config.getStringList("uniquereciperemoval", category, new String[] { Misc.createNonConflictiveName("unqiueexample") }, "Add Unique Toolpart recipe to blacklist");
 
 		category = "IDs";
 		config.addCustomCategoryComment(category, "A category dedicated to a list of ID's of various things which may cause errors if they are not unique");
 		ConfigHandler.decayingEffectEntityID = config.getInt("decayingEffectEntityID".toLowerCase(), category, 8690001, Integer.MIN_VALUE, Integer.MAX_VALUE, "Decaying Effect Entity ID");
 
-		
 		config.save();
 
 		MoreTConLogger.log("Finished Reading Config.");

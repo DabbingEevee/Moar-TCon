@@ -3,8 +3,8 @@ package com.existingeevee.moretcon.materials;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.other.BiValue;
+import com.existingeevee.moretcon.other.utils.MaterialUtils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -114,7 +114,7 @@ public class UniqueMaterial extends Material {
 	public static void onPostInit() {
 		for (BiValue<UniqueMaterial, String> mat : uniqueMaterials.values()) {
 			if (mat.getA() instanceof UniqueMaterial && !TinkerRegistry.getMaterial(mat.getA().getIdentifier()).getIdentifier().equals(Material.UNKNOWN.getIdentifier())) {
-				ModMaterials.forceSetRepItem(((UniqueMaterial) mat.getA()).getUniqueToolPart(), mat.getA());
+				MaterialUtils.forceSetRepItem(((UniqueMaterial) mat.getA()).getUniqueToolPart(), mat.getA());
 			}
 		}
 	}

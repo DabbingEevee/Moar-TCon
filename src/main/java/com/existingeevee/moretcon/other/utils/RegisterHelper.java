@@ -35,7 +35,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
 import slimeknights.tconstruct.library.MaterialIntegration;
-import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.ToolCore;
@@ -107,11 +106,11 @@ public class RegisterHelper {
 		ForgeRegistries.BIOMES.register(biome);
 	}
 
-	public static boolean registerMaterial(Material material, Fluid fluid, String suffix, boolean bypassCheck) {
+	public static boolean registerMaterial(MaterialIntegration integration, boolean bypassCheck) {
 		// material.addTrait(Traits.modDebug);
 		List<String> list = Arrays.asList(ConfigHandler.blacklist);
-		if (!list.contains(material.getIdentifier()) || bypassCheck) {
-			integrate(material, fluid, suffix);
+		if (!list.contains(integration.material.getIdentifier()) || bypassCheck) {
+			integrate(integration);
 			return true;
 		}
 		return false;
@@ -134,42 +133,14 @@ public class RegisterHelper {
 		moreTConModifiers.add((Modifier) modifier);
 	}
 
-	/*
-	 * public static void registerTrait(AbstractTrait trait) {
-	 *
-	 * }
-	 */
-
-	/*
-	 * public static void registerFluid(Fluid fluid) { String name =
-	 * fluid.getUnlocalizedName().substring(5); FluidRegistry.registerFluid(fluid);
-	 * FluidRegistry.addBucketForFluid(fluid); Block fluidBlock = fluid.getBlock();
-	 *
-	 * if (fluidBlock != null) { Item fluidItem = Item.getItemFromBlock(fluidBlock);
-	 * BlockFluid.FluidStateMapper mapper = new BlockFluid.FluidStateMapper(fluid);
-	 *
-	 * if (fluidItem != Items.AIR) ModelLoader.setCustomMeshDefinition(fluidItem,
-	 * mapper);
-	 *
-	 * ModelLoader.setCustomStateMapper(fluidBlock, mapper);
-	 *
-	 * } }
-	 */
-
-	/*
-	 * private static MaterialIntegration add(MaterialIntegration integration) {
-	 * return TinkerRegistry.integrate(integration); }
-	 */
-
-	private static void integrate(Material material, Fluid fluid, String suffix) {
-		// new MaterialIntegration(material, fluid, suffix).preInit();
-		// new MaterialIntegration(material, fluid, suffix).integrate();
-		moreTConIntegrations.add(new MaterialIntegration(material, fluid, suffix));
+	private static void integrate(MaterialIntegration integration) {
+		moreTConIntegrations.add(integration);
 	}
 
 	public static void registerFluid(Fluid fluid) {
 		FluidRegistry.registerFluid(fluid);
 		FluidRegistry.addBucketForFluid(fluid);
 	}
-
+	/*Material material, Fluid fluid, String suffix*/
+	//TinkerRegistry.integrate(new MaterialIntegration(null, TinkerFluids.alubrass, "Alubrass", "ingotCopper", "ingotAluminum")).toolforge();
 }

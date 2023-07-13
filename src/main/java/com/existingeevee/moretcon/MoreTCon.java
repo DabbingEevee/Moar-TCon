@@ -25,6 +25,7 @@ import com.existingeevee.moretcon.other.fixes.ExtremeToolDurabilityFix;
 import com.existingeevee.moretcon.other.sponge.SpongeRegistry;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.ConfigHandler;
+import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 import com.existingeevee.moretcon.proxy.CommonProxy;
@@ -84,7 +85,7 @@ public class MoreTCon {
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
 			integration.preInit();
 		}
-		ModMaterials.completeReadds();
+		MaterialUtils.completeReadds();
 		MinecraftForge.EVENT_BUS.register(CustomFireHelper.class);
 		proxy.preInit();
 

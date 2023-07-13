@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
+import com.existingeevee.moretcon.other.utils.MaterialUtils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -80,7 +80,7 @@ public class CompositeRegistry {
 				RecipeMatch rm = RecipeMatch.ofNBT(t.getItemstackWithMaterial(d.getFrom()));
 				TinkerRegistry.registerTableCasting(new CastingRecipe(output, rm, d.getCatalyst(), d.onlyOne ? Material.VALUE_Ingot : t.getCost(), true, false));
 			}
-			ModMaterials.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
+			MaterialUtils.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
 		}
 	}
 	

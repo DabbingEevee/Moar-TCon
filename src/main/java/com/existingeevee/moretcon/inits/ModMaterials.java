@@ -1,12 +1,5 @@
 package com.existingeevee.moretcon.inits;
 
-import java.lang.reflect.Field;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import org.apache.logging.log4j.Level;
-
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
@@ -14,14 +7,14 @@ import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.ConfigHandler;
+import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.traits.ModTraits;
 
 import landmaster.plustic.tools.stats.BatteryCellMaterialStats;
 import landmaster.plustic.tools.stats.LaserMediumMaterialStats;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
-import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.materials.ArrowShaftMaterialStats;
 import slimeknights.tconstruct.library.materials.BowMaterialStats;
 import slimeknights.tconstruct.library.materials.BowStringMaterialStats;
@@ -50,7 +43,7 @@ public class ModMaterials implements MaterialTypes {
 	public static Material materialEmberlight = new Material(Misc.createNonConflictiveName("emberlight"), 0xe8926d);
 	public static Material materialReedRope = new Material(Misc.createNonConflictiveName("reedrope"), 0x000b4e0b);
 	public static Material materialAnglerTooth = new Material(Misc.createNonConflictiveName("anglertooth"), 0x00cfcf99);
-	public static Material materialDragonFlyWing = new Material( Misc.createNonConflictiveName("dragonflywing"), 0x00bed6db);
+	public static Material materialDragonFlyWing = new Material(Misc.createNonConflictiveName("dragonflywing"), 0x00bed6db);
 	public static Material materialSpaceTimeDisruption = new Material(Misc.createNonConflictiveName("spacetimedisruption"), 0x400080);
 	public static Material materialIrradium = new Material(Misc.createNonConflictiveName("irradium"), 0x00ed00);
 	public static Material materialSolsteel = new Material(Misc.createNonConflictiveName("solarsteel"), 0xffad33);
@@ -416,7 +409,7 @@ public class ModMaterials implements MaterialTypes {
 			materialShadowglass.addStats(new ArrowShaftMaterialStats(1.2f, 18));
 			materialShadowglass.addStats(new ProjectileMaterialStats());
 			CompositeRegistry.registerComposite(materialErythynite, materialShadowglass, ModFluids.liquidEbonite);
-			
+
 			materialPlasma.addStats(new HeadMaterialStats(4096, 6f, 12f, 5));
 			materialPlasma.addTrait(ModTraits.plasmatic);
 
@@ -444,7 +437,7 @@ public class ModMaterials implements MaterialTypes {
 			materialIgniglomerate.addStats(new ExtraMaterialStats(250));
 			materialIgniglomerate.addStats(new ArrowShaftMaterialStats(1f, 10));
 			materialIgniglomerate.addStats(new ProjectileMaterialStats());
-			
+
 			materialEtherstone.addItem("gemEtherstone", 1, Material.VALUE_Ingot);
 			materialEtherstone.addItem("blockEnderal", 1, Material.VALUE_Block);
 			materialEtherstone.setCastable(false);
@@ -678,7 +671,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEmberlight.addStats(new ArrowShaftMaterialStats(1.0f, 15));
 			materialEmberlight.addStats(new ProjectileMaterialStats());
 			CompositeRegistry.registerComposite(materialValonite, materialEmberlight, ModFluids.liquidEmber);
-			
+
 			materialSlimyBone.addItem("gemSlimyBone", 1, Material.VALUE_Ingot);
 			materialSlimyBone.addItem("blockSlimyBone", 1, Material.VALUE_Block);
 			materialSlimyBone.setCastable(false);
@@ -734,20 +727,6 @@ public class ModMaterials implements MaterialTypes {
 			materialShockwave.addStats(new HeadMaterialStats(1256, 6f, 6.125f, 3));
 			materialShockwave.addTrait(ModTraits.shockwaving);
 		}
-	}
-
-	public static void registerMaterial(Material material) {
-		ModMaterials.addMaterial(material, material.getFluid(),
-				material.getIdentifier().replaceFirst(ModInfo.MODID + ".", "").substring(0, 1).toUpperCase()
-						+ material.getIdentifier().replaceFirst(ModInfo.MODID + ".", "").substring(1));
-	}
-
-	public static void registerMaterial(Material material, String suffix) {
-		ModMaterials.addMaterial(material, material.getFluid(), suffix);
-	}
-
-	public static void registerMaterials(Material material, String suffix, boolean bypassCheck) {
-		ModMaterials.addMaterial(material, material.getFluid(), suffix, bypassCheck);
 	}
 
 	public static void init() {
@@ -810,113 +789,31 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialSwampSteel);
 			ModMaterials.registerMaterial(materialRotiron);
 			ModMaterials.registerMaterial(materialEmberlight);
-			
-			ModMaterials.readdTinkerMaterial(TinkerMaterials.bone);
 
-		}
-		if (CompatManager.jokes) {
+			MaterialUtils.readdTinkerMaterial(TinkerMaterials.bone);
 
 		}
 		MoreTConLogger.log("Loaded a total of " + totalMaterials + " different TConstruct Materials.");
 	}
 
-	public static boolean removeTinkerMaterial(Material material) {
-		return removeTinkerMaterial(material.getIdentifier());
+	public static void registerMaterial(Material material) {
+		String mat = material.getIdentifier().replaceFirst(ModInfo.MODID + ".", "");
+
+		registerMaterials(material, material.getFluid(), mat.substring(0, 1).toUpperCase() + mat.substring(1));
 	}
 
-	@SuppressWarnings("unchecked")
-	public static boolean removeTinkerMaterial(String identifier) {
-		boolean success = false;
-		Field mat = null;
-		try {
-			mat = TinkerRegistry.class.getDeclaredField("materials");
-			mat.setAccessible(true);
-			Map<String, Material> fieldValue = (Map<String, Material>) mat.get(TinkerRegistry.class);
-			success = fieldValue.entrySet().removeIf(m -> m.getValue().identifier.equals(identifier));
-			if (!success) {
-				MoreTConLogger.log("Unable to remove material \"" + identifier + "\" as it was never registered",
-						Level.ERROR);
-			}
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-			MoreTConLogger.log("Unable to remove material \"" + identifier + "\" as an error was encountered",
-					Level.ERROR);
-			e1.printStackTrace();
+	public static void registerMaterial(Material material, String suffix) {
+		registerMaterials(material, material.getFluid(), suffix);
+	}
+	
+	public static void registerMaterial(Material material, String suffix, String... requiredOreDicts) {
+		registerMaterials(material, material.getFluid(), suffix);
+	}
+
+	public static void registerMaterials(Material material, Fluid fluid, String suffix, String... requiredOreDicts) {
+		MaterialIntegration integration = new MaterialIntegration(material, fluid, suffix, requiredOreDicts);
+		if (RegisterHelper.registerMaterial(integration, false)) {
+			totalMaterials++;
 		}
-		return success;
-	}
-
-	public static Map<String, Material> readd = new LinkedHashMap<>();
-
-	public static void completeReadds() {
-		try {
-			Field mat = TinkerRegistry.class.getDeclaredField("materials");
-			mat.setAccessible(true);
-			@SuppressWarnings("unchecked")
-			Map<String, Material> fieldValue = (Map<String, Material>) mat.get(TinkerRegistry.class);
-			readd.forEach((s, m) -> fieldValue.remove(s));
-			fieldValue.putAll(readd);
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-
-		}
-
-	}
-
-	@SuppressWarnings("unchecked")
-	public static boolean readdTinkerMaterial(Material material) {
-		boolean success = false;
-		Field mat = null;
-		try {
-			mat = TinkerRegistry.class.getDeclaredField("materials");
-			mat.setAccessible(true);
-			Map<String, Material> fieldValue = (Map<String, Material>) mat.get(TinkerRegistry.class);
-			Entry<String, Material> entry = null;
-			for (Entry<String, Material> e : fieldValue.entrySet()) {
-				if (e.getValue().identifier.equals(material.identifier)) {
-					success = true;
-					entry = e;
-					break;
-				}
-			}
-			readd.put(entry.getKey(), entry.getValue());
-
-			if (!success) {
-				MoreTConLogger.log("Unable to readd material \"" + material.identifier + "\" as it was never registered",
-						Level.ERROR);
-			}
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-			MoreTConLogger.log("Unable to readd material \"" + material.identifier + "\" as an error was encountered",
-					Level.ERROR);
-			e1.printStackTrace();
-		}
-		return success;
-	}
-
-	public static Material forceSetRepItem(ItemStack repItem, Material material) {
-		Field f = null;
-		try {
-			for (Field pF : Material.class.getDeclaredFields()) {
-				if (pF.getName().equals("representativeItem")) {
-					f = pF;
-					break;
-				}
-			}
-			f.setAccessible(true);
-			f.set(material, repItem);
-		} catch (NullPointerException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-			e1.printStackTrace();
-		}
-		return material;
-	}
-
-	private static void addMaterial(Material material, Fluid fluid, String suffix, boolean bypassCheck) {
-		if (RegisterHelper.registerMaterial(material, fluid, suffix, bypassCheck)) {
-			if (!bypassCheck) {
-				totalMaterials++;
-			}
-		}
-	}
-
-	private static void addMaterial(Material material, Fluid fluid, String suffix) {
-		addMaterial(material, fluid, suffix, false);
 	}
 }
