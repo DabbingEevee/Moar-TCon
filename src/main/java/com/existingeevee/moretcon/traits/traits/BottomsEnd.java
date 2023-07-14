@@ -42,18 +42,4 @@ public class BottomsEnd extends AbstractTrait {
     	}
     	return false;
     }
-    
-	/*
-	@SubscribeEvent
-	public void destabilize(PlayerInteractEvent.LeftClickBlock e) {
-		if (ToolHelper.getTraits(e.getItemStack()).contains(this)) {
-			if (ToolHelper.isBroken(e.getItemStack())) return;
-			if (e.getWorld().getBlockState(e.getPos()).getBlock().getRegistryName().equals(Blocks.BEDROCK.getRegistryName())) {
-				e.getWorld().setBlockState(e.getPos(), ModBlocks.blockDestabilizedBedrock.getDefaultState());
-			}
-			if (e.getWorld().getBlockState(e.getPos()).getBlock().getRegistryName().equals(ModBlocks.blockDestabilizedBedrock.getRegistryName())) {
-				ModBlocks.blockDestabilizedBedrock.onBlockAdded(e.getWorld(), e.getPos(), e.getWorld().getBlockState(e.getPos()));
-			}
-		}
-	}*/
 }

@@ -77,7 +77,7 @@ public class ModMaterials implements MaterialTypes {
 	public static Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass"), 0x2a275e);
 	public static Material materialEtherstone = new Material(Misc.createNonConflictiveName("etherstone"), 0xf1ea3b);
 
-	public static Material materialNahuatl = new Material(Misc.createNonConflictiveName("nahuatl"), 0x271e3d); //Need custom
+	public static Material materialNahuatl = new Material(Misc.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static Material materialSlimewood = new Material(Misc.createNonConflictiveName("slimewood"), 0x96dd8f);
 
 	//TODO
@@ -130,23 +130,40 @@ public class ModMaterials implements MaterialTypes {
 			materialNahuatl.addTrait(TinkerTraits.dense, HEAD);
 			materialNahuatl.addTrait(TinkerTraits.ecological);
 			materialNahuatl.addTrait(TinkerTraits.dense);
-			materialNahuatl.addStats(new HeadMaterialStats(350, 4.5f, 3f, 3));
+			materialNahuatl.addStats(new HeadMaterialStats(350, 4.5f, 3f, 2));
 			materialNahuatl.addStats(new HandleMaterialStats(0.9f, 125));
 			materialNahuatl.addStats(new ExtraMaterialStats(75));
 			materialNahuatl.addStats(new BowMaterialStats(0.7f, 0.85f, 4f));
 			materialNahuatl.addStats(new ArrowShaftMaterialStats(1.2f, 32));
 			CompositeRegistry.registerComposite(new CompositeData(() -> TinkerMaterials.wood, () -> materialNahuatl, () -> TinkerFluids.obsidian, false).setMultiplier(2));
 
-			/*materialSlimewood.setCastable(false);
+			materialSlimewood.setCastable(false);
 			materialSlimewood.setCraftable(false);
+			materialSlimewood.addTrait(ModTraits.overgrowth, HEAD);
+			materialSlimewood.addTrait(ModTraits.overslime, HEAD);
+			materialSlimewood.addTrait(TinkerTraits.ecological, HEAD);
+			materialSlimewood.addTrait(TinkerTraits.crumbling, HEAD);
 			materialSlimewood.addTrait(TinkerTraits.slimeyGreen);
-			materialSlimewood.addTrait(TinkerTraits.ecological);
-			materialSlimewood.addStats(new HeadMaterialStats(350, 4.5f, 3f, 3));
-			materialSlimewood.addStats(new HandleMaterialStats(0.9f, 125));
+			materialSlimewood.addTrait(ModTraits.overslime);
+			materialSlimewood.addStats(new HeadMaterialStats(375, 4f, 1f, 1));
+			materialSlimewood.addStats(new HandleMaterialStats(1.3f, 125));
 			materialSlimewood.addStats(new ExtraMaterialStats(75));
-			materialSlimewood.addStats(new BowMaterialStats(0.7f, 0.85f, 4f));
-			materialSlimewood.addStats(new ArrowShaftMaterialStats(1.2f, 32));
-			CompositeRegistry.registerComposite(() -> TinkerMaterials.wood, () -> materialNahuatl, () -> TinkerFluids.obsidian);*/
+			materialSlimewood.addStats(new BowMaterialStats(1f, 0.95f, 2f));
+			materialSlimewood.addStats(new ArrowShaftMaterialStats(1.2f, 28));
+			CompositeRegistry.registerComposite(() -> TinkerMaterials.wood, () -> materialSlimewood, () -> TinkerFluids.blueslime);
+			
+			//Overslime for the win!
+			TinkerMaterials.slime.addTrait(ModTraits.overslime, HEAD);
+			TinkerMaterials.blueslime.addTrait(ModTraits.overslime, HEAD);
+			TinkerMaterials.knightslime.addTrait(ModTraits.overslime, HEAD);
+			
+			TinkerMaterials.knightslime.addTrait(ModTraits.overcast, HEAD);
+			
+			TinkerMaterials.slime.addTrait(ModTraits.overgrowth2, HEAD);
+			TinkerMaterials.slime.addTrait(ModTraits.overgrowth);
+
+			TinkerMaterials.blueslime.addTrait(ModTraits.overgrowth2, HEAD);
+			TinkerMaterials.blueslime.addTrait(ModTraits.overgrowth);
 		}
 
 		if (CompatManager.plustic) {
@@ -806,6 +823,8 @@ public class ModMaterials implements MaterialTypes {
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);
+			ModMaterials.registerMaterial(materialSlimewood);
+			
 
 		}
 

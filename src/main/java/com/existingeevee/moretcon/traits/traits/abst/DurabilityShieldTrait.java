@@ -5,7 +5,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
@@ -18,7 +19,7 @@ public abstract class DurabilityShieldTrait extends AbstractTrait {
 	}
 
 	public abstract int getShieldMax(ItemStack stack);
-	
+
 	public abstract int getShieldRemaining(ItemStack stack);
 
 	public abstract int setShieldRemaining(ItemStack stack, int amount);
@@ -54,16 +55,25 @@ public abstract class DurabilityShieldTrait extends AbstractTrait {
 			sb.append(" ");
 			sb.append(TinkerUtil.getRomanNumeral(data.level));
 		}
-		sb.append(": -{-toreplace.moretcon.shield." + this.getIdentifier() + "-}-");
+		if (!detailed)
+			sb.append(": -{-toreplace.moretcon.shield." + this.getIdentifier() + "-}-");
 
 		return sb.toString();
 	}
-	
-	@EventHandler
+
+	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onItemTooltipEvent(ItemTooltipEvent event) {
 		ItemStack tool = event.getItemStack();
-		if (!this.isToolWithTrait(tool)) 
+		if (!this.isToolWithTrait(tool))
 			return;
-		
+		for (int i = 0; i < event.getToolTip().size(); i++) {
+			String str = event.getToolTip().get(i);
+			String[] splitString = str.split(": ");
+			if (splitString.length >= 2 && splitString[1].equals("-{-toreplace.moretcon.shield." + this.getIdentifier() + "-}-")) {
+				splitString[1] = getShieldRemaining(tool) + "/" + getShieldMax(tool);
+				event.getToolTip().set(i, String.join(": ", splitString));
+				return;
+			}
+		}
 	}
 }

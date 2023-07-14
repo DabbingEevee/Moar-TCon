@@ -174,9 +174,17 @@ material.moretcon.ebonite.name=Ebonite
 material.moretcon.erythynite.name=Erythynite
 material.moretcon.shadowglass.name=Shadowglass
 material.moretcon.amberwood.name=Amberwood
+material.moretcon.nahuatl.name=Nahuatl
+material.moretcon.slimewood.name=Slimewood
 
 material.uniquetoolpart.name=Unique
 
+modifier.moretcon.overgrowth.desc=§oFungal!\n§rTools slowly regenerate overslime durability.
+modifier.moretcon.overgrowth.name=Overgrowth
+modifier.moretcon.overcast.desc=§oThick Coverage!\n§rOverslime provides twice as much durability with this trait.
+modifier.moretcon.overcast.name=Overcast
+modifier.moretcon.overslime.desc=§oSlimy!\n§rTool consumes overslime instead of durability, until it runs out! Not friendly towards tools lacking slime.
+modifier.moretcon.overslime.name=Overslime
 modifier.moretcon.etheralharvest.desc=§oTo the other side!!\n§rYour tool will be able able to mine non-tangible blocks typically found in the end.
 modifier.moretcon.etheralharvest.name=Etheral Harvest
 modifier.moretcon.aerialflame.desc=§oDEATH FROM ABOVE!!!!!\n§rYour projectile will launch a pillar of flames down at your opponents.

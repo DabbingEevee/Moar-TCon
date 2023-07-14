@@ -39,21 +39,16 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialPenguinite);
 		setCustomRender(ModMaterials.materialShadowglass);
 		setCustomRender(ModMaterials.materialEmberlight);
-		
-		ModMaterials.materialAmberwood.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
-				+ ":other/material" + ModMaterials.materialAmberwood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-		
-		ModMaterials.materialEtherstone.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
-				+ ":other/material" + ModMaterials.materialEtherstone.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-		
-		ModMaterials.materialSolsteel.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
-				+ ":other/material" + ModMaterials.materialSolsteel.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 
-		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
-				+ ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-		ModMaterials.materialIgniglomerate
-				.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID
-						+ ":other/material" + ModMaterials.materialIgniglomerate.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		//tinkers is rgba other is argb imma shoot myself
+		
+		ModMaterials.materialNahuatl.setRenderInfo(new MultiColor(0x100c1c, 0x271e3d, 0x49332e));
+		ModMaterials.materialAmberwood.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAmberwood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialSlimewood.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialSlimewood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialEtherstone.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialEtherstone.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialSolsteel.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialSolsteel.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialIgniglomerate.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialIgniglomerate.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialValkyrieMetal.setRenderInfo(new MultiColor(0xdba213, 0xeeffff, 0xeaee57));
 		ModMaterials.materialOctine.setRenderInfo(new Metal(0xff8e3b, 0.7f, 2f, 0f));
 	}
@@ -64,5 +59,5 @@ public class MaterialClient {
 
 	public static void init() {
 
-	}
+	} 
 }

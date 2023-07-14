@@ -21,7 +21,7 @@ import com.existingeevee.moretcon.traits.traits.Burning;
 import com.existingeevee.moretcon.traits.traits.ColdFire;
 import com.existingeevee.moretcon.traits.traits.Corroding;
 import com.existingeevee.moretcon.traits.traits.Darkened;
-import com.existingeevee.moretcon.traits.traits.EtheralHarvest;
+import com.existingeevee.moretcon.traits.traits.DummyTrait;
 import com.existingeevee.moretcon.traits.traits.Hardcore;
 import com.existingeevee.moretcon.traits.traits.HelpfulRadiation;
 import com.existingeevee.moretcon.traits.traits.HyperGravity;
@@ -30,6 +30,8 @@ import com.existingeevee.moretcon.traits.traits.Leeching;
 import com.existingeevee.moretcon.traits.traits.Liquid;
 import com.existingeevee.moretcon.traits.traits.Magical;
 import com.existingeevee.moretcon.traits.traits.MagicallyReactive;
+import com.existingeevee.moretcon.traits.traits.Overgrowth;
+import com.existingeevee.moretcon.traits.traits.Overslime;
 import com.existingeevee.moretcon.traits.traits.Penetrant;
 import com.existingeevee.moretcon.traits.traits.Pulsating;
 import com.existingeevee.moretcon.traits.traits.Reaching;
@@ -82,6 +84,13 @@ public class ModTraits {
 	public static MagicallyReactive magicallyReactive = new MagicallyReactive();
 	public static Penetrant penetrant = new Penetrant();
 	public static Darkened darkened = new Darkened();
+	public static DummyTrait etheralHarvest = new DummyTrait("etheralharvest", 0);
+
+	public static Overslime overslime = new Overslime();
+	public static DummyTrait overcast = new DummyTrait("overcast", 0);
+	public static Overgrowth overgrowth = new Overgrowth(1);
+	public static Overgrowth overgrowth2 = new Overgrowth(2);
+	
 	
 	public static MatterReconstructionGel repair;
 
@@ -102,9 +111,7 @@ public class ModTraits {
 	public static Debug modDebug;
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
-	
-	public static EtheralHarvest etheralHarvest = new EtheralHarvest();
-	
+		
 	static {
 		if (CompatManager.thebetweenlands) {
 			shockwaving = new Shockwaving();
