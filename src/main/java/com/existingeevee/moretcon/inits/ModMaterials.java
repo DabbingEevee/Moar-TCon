@@ -671,9 +671,10 @@ public class ModMaterials implements MaterialTypes {
 			materialRotiron.setCastable(true);
 			materialRotiron.setCraftable(false);
 			materialRotiron.setRepresentativeItem("ingotRotiron");
+			materialRotiron.addTrait(ModTraits.oxide, HEAD);
+			materialRotiron.addTrait(ModTraits.rotten, HEAD);
 			materialRotiron.addTrait(TinkerTraits.dense);
 			materialRotiron.addTrait(TinkerTraits.magnetic);
-			materialRotiron.addTrait(ModTraits.rotten);
 			materialRotiron.addStats(new HeadMaterialStats(850, 5.25f, 5f, 2));
 			materialRotiron.addStats(new HandleMaterialStats(1.125f, -35));
 			materialRotiron.addStats(new ExtraMaterialStats(-20));
@@ -684,8 +685,10 @@ public class ModMaterials implements MaterialTypes {
 			materialSwampSteel.setCastable(true);
 			materialSwampSteel.setCraftable(false);
 			materialSwampSteel.setRepresentativeItem("ingotSwampsteel");
-			materialSwampSteel.addTrait(TinkerTraits.dense);
-			materialSwampSteel.addTrait(ModTraits.corroding);
+			materialSwampSteel.addTrait(ModTraits.corroding, HEAD);
+			materialSwampSteel.addTrait(TinkerTraits.dense, HEAD);
+			materialSwampSteel.addTrait(TinkerTraits.established);
+			materialSwampSteel.addTrait(TinkerTraits.heavy);
 			materialSwampSteel.addStats(new HeadMaterialStats(1200, 5.25f, 4.5f, 3));
 			materialSwampSteel.addStats(new HandleMaterialStats(1.5f, -25));
 			materialSwampSteel.addStats(new ExtraMaterialStats(-12));

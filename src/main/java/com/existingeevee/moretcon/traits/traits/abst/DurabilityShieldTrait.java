@@ -13,6 +13,8 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 public abstract class DurabilityShieldTrait extends AbstractTrait {
 
+	protected boolean showShieldRemaining = true;
+	
 	public DurabilityShieldTrait(String identifier, int color) {
 		super(identifier, color);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -46,6 +48,9 @@ public abstract class DurabilityShieldTrait extends AbstractTrait {
 
 	@Override
 	public String getTooltip(NBTTagCompound modifierTag, boolean detailed) {
+		if (!showShieldRemaining) 
+			return super.getTooltip(modifierTag, detailed);
+		
 		StringBuilder sb = new StringBuilder();
 
 		ModifierNBT data = ModifierNBT.readTag(modifierTag);
@@ -63,6 +68,8 @@ public abstract class DurabilityShieldTrait extends AbstractTrait {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onItemTooltipEvent(ItemTooltipEvent event) {
+		if (!showShieldRemaining) 
+			return;
 		ItemStack tool = event.getItemStack();
 		if (!this.isToolWithTrait(tool))
 			return;

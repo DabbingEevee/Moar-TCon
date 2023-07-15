@@ -32,6 +32,7 @@ import com.existingeevee.moretcon.traits.traits.Magical;
 import com.existingeevee.moretcon.traits.traits.MagicallyReactive;
 import com.existingeevee.moretcon.traits.traits.Overgrowth;
 import com.existingeevee.moretcon.traits.traits.Overslime;
+import com.existingeevee.moretcon.traits.traits.Oxide;
 import com.existingeevee.moretcon.traits.traits.Penetrant;
 import com.existingeevee.moretcon.traits.traits.Pulsating;
 import com.existingeevee.moretcon.traits.traits.Reaching;
@@ -111,13 +112,16 @@ public class ModTraits {
 	public static Debug modDebug;
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
-		
+	public static Oxide oxide;
+	
+	
 	static {
 		if (CompatManager.thebetweenlands) {
 			shockwaving = new Shockwaving();
 			rotten = new Rotten();
 			corroding = new Corroding();
 			betweenified = new Betweenified();
+			oxide = new Oxide();
 		}
 		if (CompatManager.aether_legacy) {
 			antigravity = new AntiGravity();
