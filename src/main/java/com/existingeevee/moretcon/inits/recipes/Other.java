@@ -50,18 +50,17 @@ public class Other {
 				ItemStack fireWoodKnifeBlade = UniqueMaterial
 						.getToolPartFromResourceLocation(new ResourceLocation("tconstruct", "knife_blade"))
 						.getItemstackWithMaterial(TinkerMaterials.firewood);
-				///Logging.log("???");
 				event.getRegistry().register(new ShapedRecipes(ModInfo.MODID, 3, 3,
 						NonNullList.from(
 								Ingredient.EMPTY, 
 								
 								Ingredient.EMPTY, 
-								new OreIngredient("blockSolarsteel"), 
+								new OreIngredient("blockSolsteel"), 
 								new OreIngredient("blockFusionite"), 
 								new TinkerPartIngredient(TinkerMaterials.firewood, fireWoodKnifeBlade.copy()), 
 								//Ingredient.EMPTY, 
 								new TinkerPartIngredient(ModMaterials.materialPlasma, ModMaterials.materialPlasma.getUniqueToolPart()), 
-								new OreIngredient("blockSolarsteel"), 
+								new OreIngredient("blockSolsteel"), 
 								Ingredient.fromStacks(new ItemStack(Blocks.BEACON)),
 								new TinkerPartIngredient(TinkerMaterials.firewood, fireWoodKnifeBlade.copy()),
 								Ingredient.EMPTY),
