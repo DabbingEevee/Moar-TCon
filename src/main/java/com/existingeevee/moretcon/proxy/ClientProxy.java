@@ -34,7 +34,6 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	@SubscribeEvent
 	public void itemRegistry(Register<Item> event) {
-		//super.itemRegistry(event);
 		if (CompatManager.thebetweenlands) {
 			BLItems.initBL(true);
 		}
@@ -44,13 +43,13 @@ public class ClientProxy extends CommonProxy {
 
 	}
 
-    @Override
-    public void postInit() {
-        super.postInit();
-        TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendTools(
-                new FileRepository("tconstruct:book"), RegisterHelper.moreTConTools));
+	@Override
+	public void postInit() {
+		super.postInit();
+		TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendTools(
+				new FileRepository("tconstruct:book"), RegisterHelper.moreTConTools));
 
-        TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
-                new FileRepository("tconstruct:book"), RegisterHelper.moreTConModifiers));
-            }
+		TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
+				new FileRepository("tconstruct:book"), RegisterHelper.moreTConModifiers));
+	}
 }

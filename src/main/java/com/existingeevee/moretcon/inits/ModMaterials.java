@@ -150,14 +150,14 @@ public class ModMaterials implements MaterialTypes {
 			materialSlimewood.addStats(new BowMaterialStats(1f, 0.95f, 2f));
 			materialSlimewood.addStats(new ArrowShaftMaterialStats(1.2f, 28));
 			CompositeRegistry.registerComposite(() -> TinkerMaterials.wood, () -> materialSlimewood, () -> TinkerFluids.blueslime);
-			
+
 			//Overslime for the win!
 			TinkerMaterials.slime.addTrait(ModTraits.overslime, HEAD);
 			TinkerMaterials.blueslime.addTrait(ModTraits.overslime, HEAD);
 			TinkerMaterials.knightslime.addTrait(ModTraits.overslime, HEAD);
-			
+
 			TinkerMaterials.knightslime.addTrait(ModTraits.overcast, HEAD);
-			
+
 			TinkerMaterials.slime.addTrait(ModTraits.overgrowth2, HEAD);
 			TinkerMaterials.slime.addTrait(ModTraits.overgrowth);
 
@@ -185,10 +185,10 @@ public class ModMaterials implements MaterialTypes {
 			materialFusionite.setCastable(true);
 			materialFusionite.setCraftable(false);
 			materialFusionite.setRepresentativeItem("ingotFusionite");
-			materialFusionite.addTrait(ModTraits.coldFire);
-			materialFusionite.addTrait(TinkerTraits.enderference);
+			materialFusionite.addTrait(ModTraits.coldFire, HEAD);
+			materialFusionite.addTrait(TinkerTraits.enderference, HEAD);
 			materialFusionite.addTrait(TinkerTraits.alien);
-			materialFusionite.addTrait(TinkerTraits.dense);// TinkerMaterials
+			materialFusionite.addTrait(TinkerTraits.dense);
 			materialFusionite.addStats(new HeadMaterialStats(500, 5.0f, 8.0f, 6));
 			materialFusionite.addStats(new HandleMaterialStats(3.0f, 20));
 			materialFusionite.addStats(new ExtraMaterialStats(20));
@@ -205,7 +205,8 @@ public class ModMaterials implements MaterialTypes {
 			materialIrradium.setCastable(true);
 			materialIrradium.setCraftable(false);
 			materialIrradium.setRepresentativeItem("ingotIrradium");
-			materialIrradium.addTrait(ModTraits.radioactive);
+			materialIrradium.addTrait(ModTraits.radioactive, HANDLE);
+			materialIrradium.addTrait(ModTraits.radioactive, EXTRA);
 			materialIrradium.addTrait(TinkerTraits.momentum);
 			materialIrradium.addStats(new HeadMaterialStats(700, 6f, 4f, 5));
 			if (CompatManager.plustic) {
@@ -223,10 +224,10 @@ public class ModMaterials implements MaterialTypes {
 			materialSolsteel.setCastable(true);
 			materialSolsteel.setCraftable(false);
 			materialSolsteel.setRepresentativeItem("ingotSolsteel");
-			materialSolsteel.addTrait(TinkerTraits.flammable);
+			materialSolsteel.addTrait(TinkerTraits.flammable, HEAD);
+			materialSolsteel.addTrait(TinkerTraits.autosmelt, HEAD);
 			materialSolsteel.addTrait(TinkerTraits.superheat);
 			materialSolsteel.addTrait(TinkerTraits.dense);
-			materialSolsteel.addTrait(TinkerTraits.autosmelt);
 			if (CompatManager.plustic) {
 				materialSolsteel.addStats(new LaserMediumMaterialStats(15, 20));
 				materialSolsteel.addStats(new BatteryCellMaterialStats(750000));
@@ -263,7 +264,10 @@ public class ModMaterials implements MaterialTypes {
 			materialAtronium.addTrait(TinkerTraits.lightweight);
 			materialAtronium.addTrait(ModTraits.magicallyReactive);
 			materialAtronium.addTrait(ModTraits.penetrant);
-			materialAtronium.addTrait(ModTraits.etheralHarvest);
+			materialAtronium.addTrait(ModTraits.etheralHarvest, HEAD);
+			materialAtronium.addTrait(TinkerTraits.lightweight, HEAD);
+			materialAtronium.addTrait(ModTraits.magicallyReactive, HEAD);
+			materialAtronium.addTrait(ModTraits.penetrant, HEAD);
 			materialAtronium.addStats(new HeadMaterialStats(1500, 18f, 17f, 8));
 			materialAtronium.addStats(new HandleMaterialStats(3f, 180));
 			materialAtronium.addStats(new ExtraMaterialStats(750));
@@ -275,10 +279,11 @@ public class ModMaterials implements MaterialTypes {
 			materialEbonite.setCastable(true);
 			materialEbonite.setCraftable(false);
 			materialEbonite.setRepresentativeItem("ingotEbonite");
+			materialEbonite.addTrait(ModTraits.darkened, HEAD);
+			materialEbonite.addTrait(TinkerTraits.poisonous, HEAD);
+			materialEbonite.addTrait(ModTraits.bottomsEnd, HEAD);
 			materialEbonite.addTrait(TinkerTraits.dense);
-			materialEbonite.addTrait(ModTraits.darkened);
 			materialEbonite.addTrait(TinkerTraits.established);
-			materialEbonite.addTrait(TinkerTraits.poisonous);
 			materialEbonite.addStats(new HeadMaterialStats(750, 6.0f, 9.0f, 7));
 			materialEbonite.addStats(new HandleMaterialStats(2.5f, 60));
 			materialEbonite.addStats(new ExtraMaterialStats(25));
@@ -289,6 +294,7 @@ public class ModMaterials implements MaterialTypes {
 				materialEbonite.addStats(new BatteryCellMaterialStats(120000));
 			}
 
+			//TODO rework
 			materialSpaceTimeDisruption.addItem(ModItems.spaceTimeDisruptionPowder, 1, Material.VALUE_Fragment);
 			materialSpaceTimeDisruption.setCastable(false);
 			materialSpaceTimeDisruption.setCraftable(true);
@@ -312,8 +318,8 @@ public class ModMaterials implements MaterialTypes {
 			materialVoidSpar.setCastable(false);
 			materialVoidSpar.setCraftable(true);
 			materialVoidSpar.setRepresentativeItem("gemVoidSpar");
-			materialVoidSpar.addTrait(ModTraits.voidic);
-			materialVoidSpar.addTrait(ModTraits.bottomsEnd);
+			materialVoidSpar.addTrait(ModTraits.voidic, HEAD);
+			materialVoidSpar.addTrait(ModTraits.bottomsEnd, HEAD);
 			materialVoidSpar.addTrait(TinkerTraits.dense);
 			materialVoidSpar.addTrait(TinkerTraits.ecological);
 			materialVoidSpar.addStats(new HeadMaterialStats(300, 6f, 10f, 5));
@@ -327,8 +333,8 @@ public class ModMaterials implements MaterialTypes {
 			materialGarstone.setCastable(false);
 			materialGarstone.setCraftable(true);
 			materialGarstone.setRepresentativeItem("gemGarstone");
-			materialGarstone.addTrait(TinkerTraits.coldblooded);
-			materialGarstone.addTrait(TinkerTraits.jagged);
+			materialGarstone.addTrait(TinkerTraits.coldblooded, HEAD);
+			materialGarstone.addTrait(TinkerTraits.jagged, HEAD);
 			materialGarstone.addTrait(TinkerTraits.unnatural);
 			materialGarstone.addStats(new HeadMaterialStats(500, 6f, 10f, 5));
 			materialGarstone.addStats(new HandleMaterialStats(2f, -50));
@@ -354,9 +360,9 @@ public class ModMaterials implements MaterialTypes {
 			materialBloodstone.setCastable(false);
 			materialBloodstone.setCraftable(true);
 			materialBloodstone.setRepresentativeItem("gemBloodstone");
-			materialBloodstone.addTrait(TinkerTraits.coldblooded);
-			materialBloodstone.addTrait(ModTraits.bottomsEnd);
-			materialBloodstone.addTrait(ModTraits.slicing);
+			materialBloodstone.addTrait(TinkerTraits.coldblooded, HEAD);
+			materialBloodstone.addTrait(ModTraits.bottomsEnd, HEAD);
+			materialBloodstone.addTrait(ModTraits.slicing, HEAD);
 			materialBloodstone.addTrait(ModTraits.leeching);
 			materialBloodstone.addStats(new HeadMaterialStats(750, 7f, 12f, 6));
 			materialBloodstone.addStats(new HandleMaterialStats(1.125f, -35));
@@ -432,9 +438,10 @@ public class ModMaterials implements MaterialTypes {
 			materialEnderal.setCraftable(true);
 			materialEnderal.setRepresentativeItem("gemEnderal");
 			materialEnderal.addTrait(TinkerTraits.enderference);
-			materialEnderal.addTrait(TinkerTraits.endspeed);
-			materialEnderal.addTrait(TinkerTraits.jagged);
-			materialEnderal.addTrait(ModTraits.pulsation);
+			materialEnderal.addTrait(TinkerTraits.endspeed, PROJECTILE);
+			materialEnderal.addTrait(TinkerTraits.enderference, HEAD);
+			materialEnderal.addTrait(TinkerTraits.jagged, HEAD);
+			materialEnderal.addTrait(ModTraits.pulsation, HEAD);
 			materialEnderal.addStats(new HeadMaterialStats(390, 6f, 10f, 5));
 			materialEnderal.addStats(new HandleMaterialStats(2f, -50));
 			materialEnderal.addStats(new ExtraMaterialStats(2));
@@ -443,10 +450,10 @@ public class ModMaterials implements MaterialTypes {
 
 			materialEnderexamite.setCastable(false);
 			materialEnderexamite.setCraftable(false);
-			materialEnderexamite.addTrait(TinkerTraits.slimeyBlue);
+			materialEnderexamite.addTrait(TinkerTraits.slimeyBlue, HEAD);
+			materialEnderexamite.addTrait(ModTraits.pulsation, HEAD);
 			materialEnderexamite.addTrait(TinkerTraits.crumbling);
-			materialEnderexamite.addTrait(TinkerTraits.endspeed);
-			materialEnderexamite.addTrait(ModTraits.pulsation);
+			materialEnderexamite.addTrait(TinkerTraits.endspeed, PROJECTILE);
 			materialEnderexamite.addTrait(ModTraits.resilient);
 			materialEnderexamite.addStats(new HeadMaterialStats(1300, 7f, 11f, 5));
 			materialEnderexamite.addStats(new HandleMaterialStats(2.25f, 20));
@@ -457,9 +464,9 @@ public class ModMaterials implements MaterialTypes {
 
 			materialShadowglass.setCastable(false);
 			materialShadowglass.setCraftable(false);
-			materialShadowglass.addTrait(TinkerTraits.jagged);
+			materialShadowglass.addTrait(TinkerTraits.jagged, HEAD);
+			materialShadowglass.addTrait(ModTraits.darkened, HEAD);
 			materialShadowglass.addTrait(TinkerTraits.unnatural);
-			materialShadowglass.addTrait(ModTraits.darkened);
 			materialShadowglass.addTrait(ModTraits.hardcore);
 			materialShadowglass.addStats(new HeadMaterialStats(1500, 8f, 12f, 7));
 			materialShadowglass.addStats(new HandleMaterialStats(2.3f, 20));
@@ -489,7 +496,7 @@ public class ModMaterials implements MaterialTypes {
 			materialIgniglomerate.setCastable(false);
 			materialIgniglomerate.setCraftable(true);
 			materialIgniglomerate.setRepresentativeItem("gemIgniglomerate");
-			materialIgniglomerate.addTrait(ModTraits.hyperheat);
+			materialIgniglomerate.addTrait(ModTraits.hyperheat, HEAD);
 			materialIgniglomerate.addStats(new HeadMaterialStats(700, 6f, 7f, 7));
 			materialIgniglomerate.addStats(new HandleMaterialStats(1.25f, -10));
 			materialIgniglomerate.addStats(new ExtraMaterialStats(250));
@@ -501,8 +508,8 @@ public class ModMaterials implements MaterialTypes {
 			materialEtherstone.setCastable(false);
 			materialEtherstone.setCraftable(true);
 			materialEtherstone.setRepresentativeItem("gemEtherstone");
-			materialEtherstone.addTrait(ModTraits.etheralHarvest);
-			materialEtherstone.addTrait(ModTraits.darkened);
+			materialEtherstone.addTrait(ModTraits.etheralHarvest, HEAD);
+			materialEtherstone.addTrait(ModTraits.darkened, HEAD);
 			materialEtherstone.addTrait(ModTraits.hardcore);
 			materialEtherstone.addTrait(ModTraits.voidic);
 			materialEtherstone.addStats(new HeadMaterialStats(1450, 17.5f, 18f, 8));
@@ -516,9 +523,10 @@ public class ModMaterials implements MaterialTypes {
 			materialZanite.setCraftable(true);
 			materialZanite.setRepresentativeItem("gemZanite");
 			materialZanite.addTrait(ModTraits.aetheric);
-			materialZanite.addTrait(ModTraits.treetap);
-			materialZanite.addTrait(TinkerTraits.jagged);
-			materialZanite.addTrait(ModTraits.hardcore);
+			materialZanite.addTrait(ModTraits.aetheric, HEAD);
+			materialZanite.addTrait(ModTraits.treetap, HEAD);
+			materialZanite.addTrait(TinkerTraits.jagged, HEAD);
+			materialZanite.addTrait(ModTraits.hardcore, HEAD);
 			materialZanite.addStats(new HeadMaterialStats(210, 2.00f, 4.00f, 2));
 			materialZanite.addStats(new HandleMaterialStats(0.9f, 65));
 			materialZanite.addStats(new ExtraMaterialStats(50));
@@ -530,8 +538,9 @@ public class ModMaterials implements MaterialTypes {
 			materialSkyroot.setCraftable(true);
 			materialSkyroot.setRepresentativeItem("plankWoodSkyroot");
 			materialSkyroot.addTrait(ModTraits.aetheric);
-			materialSkyroot.addTrait(ModTraits.rootplicating);
-			materialSkyroot.addTrait(TinkerTraits.ecological);
+			materialSkyroot.addTrait(ModTraits.rootplicating, HEAD);
+			materialSkyroot.addTrait(TinkerTraits.ecological, HEAD);
+			materialSkyroot.addTrait(ModTraits.aetheric, HEAD);
 			materialSkyroot.addStats(new HeadMaterialStats(40, 2f, 2f, 0));
 			materialSkyroot.addStats(new HandleMaterialStats(1.2f, 25));
 			materialSkyroot.addStats(new ExtraMaterialStats(15));
@@ -541,10 +550,10 @@ public class ModMaterials implements MaterialTypes {
 			materialAmberwood.setCastable(false);
 			materialAmberwood.setCraftable(false);
 			materialAmberwood.addTrait(ModTraits.aetheric);
-			materialAmberwood.addTrait(ModTraits.rootplicating);
-			materialAmberwood.addTrait(ModTraits.treetap);
+			materialAmberwood.addTrait(ModTraits.rootplicating, HEAD);
+			materialAmberwood.addTrait(ModTraits.treetap, HEAD);
+			materialAmberwood.addTrait(TinkerTraits.established, HEAD);
 			materialAmberwood.addTrait(TinkerTraits.ecological);
-			materialAmberwood.addTrait(TinkerTraits.established);
 			materialAmberwood.addTrait(TinkerTraits.writable);
 			materialAmberwood.addStats(new HeadMaterialStats(170, 4f, 4f, 2));
 			materialAmberwood.addStats(new HandleMaterialStats(1.2f, 125));
@@ -558,8 +567,9 @@ public class ModMaterials implements MaterialTypes {
 			materialArkenium.setCastable(true);
 			materialArkenium.setCraftable(false);
 			materialArkenium.addTrait(TinkerTraits.lightweight);
-			materialArkenium.addTrait(TinkerTraits.holy);
-			materialArkenium.addTrait(TinkerTraits.sharp);
+			materialArkenium.addTrait(TinkerTraits.holy, HEAD);
+			materialArkenium.addTrait(TinkerTraits.sharp, HEAD);
+			materialArkenium.addTrait(ModTraits.aetheric, HEAD);
 			materialArkenium.addTrait(ModTraits.aetheric);
 			materialArkenium.setRepresentativeItem("ingotArkenium");
 			materialArkenium.addStats(new HeadMaterialStats(1250, 10.0f, 5.25f, 4));
@@ -572,8 +582,8 @@ public class ModMaterials implements MaterialTypes {
 			materialValkyrieMetal.setFluid(ModFluids.liquidValkyrieMetal);
 			materialValkyrieMetal.setCastable(true);
 			materialValkyrieMetal.setCraftable(false);
-			materialValkyrieMetal.addTrait(ModTraits.reaching);
-			materialValkyrieMetal.addTrait(ModTraits.treetap);
+			materialValkyrieMetal.addTrait(ModTraits.reaching, HEAD);
+			materialValkyrieMetal.addTrait(ModTraits.treetap, HEAD);
 			materialValkyrieMetal.addTrait(ModTraits.aetheric);
 			materialValkyrieMetal.setRepresentativeItem("ingotValkyrieMetal");
 			materialValkyrieMetal.addStats(new HeadMaterialStats(1250, 10.0f, 5.25f, 4));
@@ -586,9 +596,12 @@ public class ModMaterials implements MaterialTypes {
 			materialHolystone.setCastable(false);
 			materialHolystone.setCraftable(true);
 			materialHolystone.setRepresentativeItem("holystone");
-			materialHolystone.addTrait(TinkerTraits.cheapskate);
+			materialHolystone.addTrait(TinkerTraits.cheapskate, HEAD);
+			materialHolystone.addTrait(ModTraits.aetheric, HEAD);
+			materialHolystone.addTrait(ModTraits.blessed, HEAD);
 			materialHolystone.addTrait(ModTraits.aetheric);
-			materialHolystone.addTrait(ModTraits.blessed);
+			materialHolystone.addTrait(TinkerTraits.cheapskate);
+
 			materialHolystone.addStats(new HeadMaterialStats(130, 3f, 3f, 1));
 			materialHolystone.addStats(new HandleMaterialStats(0.25f, -50));
 			materialHolystone.addStats(new ExtraMaterialStats(30));
@@ -598,7 +611,7 @@ public class ModMaterials implements MaterialTypes {
 			materialGravitite.setCastable(false);
 			materialGravitite.setCraftable(true);
 			materialGravitite.setRepresentativeItem("gemGravitite");
-			materialGravitite.addTrait(TinkerTraits.insatiable);
+			materialGravitite.addTrait(TinkerTraits.insatiable, HEAD);
 			materialGravitite.addTrait(ModTraits.antigravity);
 			materialGravitite.addTrait(ModTraits.treetap);
 			materialGravitite.addStats(new HeadMaterialStats(950, 7.50f, 5.00f, 3));
@@ -620,14 +633,15 @@ public class ModMaterials implements MaterialTypes {
 			materialIronwood.addStats(new ArrowShaftMaterialStats(1f, 1));
 			materialIronwood.addStats(new ProjectileMaterialStats());
 
-			//ModMaterials.forceSetRepItem(new ItemStack(ModItems.repItemFerroherb), materialFerroherb);
 			materialFerroherb.setCastable(false);
 			materialFerroherb.setCraftable(false);
 			materialFerroherb.addTrait(TConstruct.synergy);
 			materialFerroherb.addTrait(TConstruct.twilit);
 			materialFerroherb.addTrait(TinkerTraits.ecological);
-			materialFerroherb.addTrait(TinkerTraits.sharp);
-			materialFerroherb.addTrait(TinkerTraits.splintering);
+			materialFerroherb.addTrait(TConstruct.twilit, HEAD);
+			materialFerroherb.addTrait(TinkerTraits.ecological, HEAD);
+			materialFerroherb.addTrait(TinkerTraits.sharp, HEAD);
+			materialFerroherb.addTrait(TinkerTraits.splintering, HEAD);
 			materialFerroherb.addStats(new HeadMaterialStats(200, 10f, 7f, 4));
 			materialFerroherb.addStats(new HandleMaterialStats(1.125f, 100));
 			materialFerroherb.addStats(new ExtraMaterialStats(125));
@@ -826,7 +840,6 @@ public class ModMaterials implements MaterialTypes {
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);
 			ModMaterials.registerMaterial(materialSlimewood);
-			
 
 		}
 

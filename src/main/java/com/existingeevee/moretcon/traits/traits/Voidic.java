@@ -17,7 +17,7 @@ public class Voidic extends AbstractTrait {
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		if (player.getPosition().getY() < 7) {
-			newDamage += damage;
+			newDamage += damage * 0.25;
 		}
 		return super.damage(tool, player, target, damage, newDamage, isCritical);
 	}
@@ -25,7 +25,7 @@ public class Voidic extends AbstractTrait {
 	@Override
 	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
 
-		if (Math.random() < 0.05 && world.isRemote && entity instanceof EntityLivingBase) {
+		if (Math.random() < 0.025 && world.isRemote && entity instanceof EntityLivingBase) {
 			if (entity.getPosition().getY() < 4) {
 				tool.damageItem(-1, (EntityLivingBase) entity);
 			}

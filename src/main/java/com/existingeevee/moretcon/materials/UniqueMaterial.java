@@ -11,7 +11,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.book.content.ContentMaterial;
+import slimeknights.tconstruct.library.book.content.ContentSingleStatMultMaterial;
 import slimeknights.tconstruct.library.book.sectiontransformer.AbstractMaterialSectionTransformer;
+import slimeknights.tconstruct.library.book.sectiontransformer.BowMaterialSectionTransformer;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
@@ -65,12 +67,10 @@ public class UniqueMaterial extends Material {
 		return ItemStack.EMPTY;
 	}
 
-	//this needs to be reworked
-	
 	@Override
 	public String getLocalizedName() {
-		StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
 		try {
+			StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
 			if (stacktrace[3].getClassName().equals(AbstractMaterialSectionTransformer.class.getName()) && stacktrace[3].getMethodName().equals("transform")) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
@@ -84,6 +84,12 @@ public class UniqueMaterial extends Material {
 				return I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name");
 			}
 			if (stacktrace[3].getClassName().equals(ToolPart.class.getName()) && (stacktrace[3].getMethodName().equals("getItemStackDisplayName") || stacktrace[3].getMethodName().equals("func_77653_i"))) {
+				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
+			}
+			if (stacktrace[3].getClassName().equals(BowMaterialSectionTransformer.class.getName()) && (stacktrace[3].getMethodName().equals("generateContent"))) {
+				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
+			}
+			if (stacktrace[3].getClassName().equals(ContentSingleStatMultMaterial.class.getName()) && (stacktrace[3].getMethodName().equals("build"))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
