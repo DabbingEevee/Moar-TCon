@@ -52,30 +52,6 @@ public class ItemBase extends Item {
 			if (!translation.contains("--null"))
 				TextHelper.smartSplitString(translation, 35).forEach(tooltip::add);
 		}
-		/*if (stack.getItem().getRegistryName().toString().equals(ModInfo.MODID + ":lightning")) {
-			tooltip.add(I18n.translateToLocal("tooltip.moretcon.lightning")); // "Get a betweenland lightning bolt to
-																				// strike your tool to apply."
-		}
-		if (stack.getItem().getRegistryName().getResourcePath().toLowerCase().startsWith("repitem")) {
-			tooltip.add(I18n.translateToLocal("tooltip.moretcon.repitem"));// "This material is a composite. Craft the
-																			// base toolparts and pour the catalyst on
-																			// using a casting table.");
-		}
-		if (stack.getItem().getRegistryName().toString().equals(ModInfo.MODID + ":matterreconstructiongel")) {
-			tooltip.add(I18n.translateToLocal("tooltip.moretcon.repair"));// "Adding this to any tool will repair 256
-																			// damage on the tool.");
-		}
-		if (stack.getItem().getRegistryName().toString().equals(ModInfo.MODID + ":betweenifiedmodifier")) {
-			tooltip.add(I18n.translateToLocal("tooltip.moretcon.betweenify"));// "Adding this to any tool will allow for
-																				// its full efficiency to be used in the
-																				// Betweenlands.");
-		}
-		 */
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
-
-	// static final Field fire_imm =
-	// ObfuscationReflectionHelper.findField(Entity.class,
-	// "field_70178_ae");//EntityLivingBase.class.getDeclaredFields()[24];
-
 }

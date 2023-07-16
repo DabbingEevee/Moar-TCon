@@ -120,7 +120,6 @@ public class ModMaterials implements MaterialTypes {
 			"plustic:katana");
 
 	static {
-
 		if (CompatManager.tic3backport) {
 			materialNahuatl.setCastable(false);
 			materialNahuatl.setCraftable(false);

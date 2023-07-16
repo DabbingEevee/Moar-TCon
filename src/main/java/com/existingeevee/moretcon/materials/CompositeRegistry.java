@@ -6,11 +6,16 @@ import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
@@ -49,6 +54,18 @@ public class CompositeRegistry {
 		return Optional.empty();
 	}
 
+	@SideOnly(Side.CLIENT)
+	public static void updateCompositeRenderer() {
+		//this will get registered later than other renderers. Add-ons will need to run this again after theyre done registering composites or it wont render right
+
+		List<CompositeData> data = CompositeRegistry.getData();
+
+		for (int i = 0; i < data.size(); i++) {
+			ModelLoader.setCustomModelResourceLocation(ItemCompositeRep.getItemInstance(), i, new ModelResourceLocation(
+					ModInfo.MODID + ":" + "repitem" + data.get(i).getResult().identifier, "inventory"));
+		}
+	}
+	
 	//DO NOT CALL
 	public static void onPostInit() {
 		for (CompositeData d : data) {
@@ -82,6 +99,8 @@ public class CompositeRegistry {
 				TinkerRegistry.registerTableCasting(new CastingRecipe(output, rm, d.getCatalyst(), d.onlyOne ? Material.VALUE_Ingot : t.getCost(), true, false));
 			}
 			MaterialUtils.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
+			d.getResult().setCastable(false);
+			d.getResult().setCraftable(false);
 		}
 	}
 	

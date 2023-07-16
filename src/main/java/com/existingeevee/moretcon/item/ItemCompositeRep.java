@@ -3,18 +3,18 @@ package com.existingeevee.moretcon.item;
 import java.util.List;
 import java.util.Optional;
 
-import com.existingeevee.moretcon.ModInfo;
+import javax.annotation.Nullable;
+
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
+import com.existingeevee.moretcon.other.utils.TextHelper;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.translation.I18n;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.world.World;
 import slimeknights.tconstruct.library.materials.Material;
 
 @SuppressWarnings("deprecation")
@@ -71,6 +71,11 @@ public class ItemCompositeRep extends ItemBase {
 		}
 	}
 
+	@Override
+	protected boolean isInCreativeTab(CreativeTabs targetTab) {
+		return targetTab == CreativeTabs.SEARCH;
+	}
+
 	public static ItemStack getItem(Material type) {
 		Optional<Integer> optional = CompositeRegistry.getCompositeIndex(type);
 
@@ -81,20 +86,16 @@ public class ItemCompositeRep extends ItemBase {
 		return ItemStack.EMPTY;
 	}
 
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (I18n.canTranslate(stack.getItem().getUnlocalizedName() + ".desc")) {
+			String translation = I18n.translateToLocal(stack.getItem().getUnlocalizedName() + ".desc");
+			tooltip.add(translation);
+		}
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+	}
+	
 	public static ItemCompositeRep getItemInstance() {
 		return itemInstance;
 	}
-
-	@SideOnly(Side.CLIENT)
-	public static void updateCompositeRenderer() {
-		//this will get registered later than other renderers. Add-ons will need to run this again after theyre done registering composites or it wont render right
-		
-		List<CompositeData> data = CompositeRegistry.getData();
-
-		for (int i = 0; i < data.size(); i++) {
-			ModelLoader.setCustomModelResourceLocation(itemInstance, i, new ModelResourceLocation(
-					ModInfo.MODID + ":" + "repitem" + data.get(i).getResult().identifier, "inventory"));	
-		}
-	}
-
 }
