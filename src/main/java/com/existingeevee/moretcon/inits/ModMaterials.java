@@ -800,29 +800,29 @@ public class ModMaterials implements MaterialTypes {
 		}
 		if (CompatManager.loadMain) {
 			ModMaterials.registerMaterial(materialPlasma);
-			ModMaterials.registerMaterial(materialFusionite);
+			ModMaterials.registerMaterial(materialFusionite).toolforge();
 			ModMaterials.registerMaterial(materialSpaceTimeDisruption, "SpaceTimeDisruption");
 			ModMaterials.registerMaterial(materialVoidSpar, "VoidSpar");
-			ModMaterials.registerMaterial(materialEnderal);
-			ModMaterials.registerMaterial(materialIrradium);
-			ModMaterials.registerMaterial(materialSolsteel);
-			ModMaterials.registerMaterial(materialGallium);
+			ModMaterials.registerMaterial(materialEnderal).toolforge();
+			ModMaterials.registerMaterial(materialIrradium).toolforge();
+			ModMaterials.registerMaterial(materialSolsteel).toolforge();
+			ModMaterials.registerMaterial(materialGallium).toolforge();
 			ModMaterials.registerMaterial(materialEnderexamite);
-			ModMaterials.registerMaterial(materialGarstone);
-			ModMaterials.registerMaterial(materialRuneSteel);
-			ModMaterials.registerMaterial(materialGravitonium);
-			ModMaterials.registerMaterial(materialTrichromadentium);
+			ModMaterials.registerMaterial(materialGarstone).toolforge();
+			ModMaterials.registerMaterial(materialRuneSteel).toolforge();
+			ModMaterials.registerMaterial(materialGravitonium).toolforge();
+			ModMaterials.registerMaterial(materialTrichromadentium).toolforge();
 			ModMaterials.registerMaterial(materialTriblade);
 			ModMaterials.registerMaterial(materialMirrored);
 			ModMaterials.registerMaterial(materialTrailblazer);
-			ModMaterials.registerMaterial(materialBloodstone);
-			ModMaterials.registerMaterial(materialEchostone);
-			ModMaterials.registerMaterial(materialIgniglomerate);
-			ModMaterials.registerMaterial(materialAtronium);
-			ModMaterials.registerMaterial(materialEbonite);
-			ModMaterials.registerMaterial(materialErythynite);
+			ModMaterials.registerMaterial(materialBloodstone).toolforge();
+			ModMaterials.registerMaterial(materialEchostone).toolforge();
+			ModMaterials.registerMaterial(materialIgniglomerate).toolforge();
+			ModMaterials.registerMaterial(materialAtronium).toolforge();
+			ModMaterials.registerMaterial(materialEbonite).toolforge();
+			ModMaterials.registerMaterial(materialErythynite).toolforge();
 			ModMaterials.registerMaterial(materialShadowglass);
-			ModMaterials.registerMaterial(materialEtherstone);
+			ModMaterials.registerMaterial(materialEtherstone).toolforge();
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);
@@ -832,31 +832,31 @@ public class ModMaterials implements MaterialTypes {
 		}
 
 		if (CompatManager.twilightforest) {
-			ModMaterials.registerMaterial(materialIronwood);
-			ModMaterials.registerMaterial(materialPenguinite);
+			ModMaterials.registerMaterial(materialIronwood).toolforge();
+			ModMaterials.registerMaterial(materialPenguinite).toolforge();
 			ModMaterials.registerMaterial(materialFerroherb);
 		}
 		if (CompatManager.aether_legacy) {
-			ModMaterials.registerMaterial(materialArkenium);
+			ModMaterials.registerMaterial(materialArkenium).toolforge();
 			ModMaterials.registerMaterial(materialSkyroot);
 			ModMaterials.registerMaterial(materialHolystone);
-			ModMaterials.registerMaterial(materialZanite);
-			ModMaterials.registerMaterial(materialGravitite);
-			ModMaterials.registerMaterial(materialValkyrieMetal, "ValkyrieMetal");
+			ModMaterials.registerMaterial(materialZanite).toolforge();
+			ModMaterials.registerMaterial(materialGravitite).toolforge();
+			ModMaterials.registerMaterial(materialValkyrieMetal, "ValkyrieMetal").toolforge();
 			ModMaterials.registerMaterial(materialAmberwood);
 		}
 		if (CompatManager.thebetweenlands) {
 			ModMaterials.registerMaterial(materialShockwave);
-			ModMaterials.registerMaterial(materialSyrmorite);
-			ModMaterials.registerMaterial(materialOctine);
-			ModMaterials.registerMaterial(materialValonite);
+			ModMaterials.registerMaterial(materialSyrmorite).toolforge();
+			ModMaterials.registerMaterial(materialOctine).toolforge();
+			ModMaterials.registerMaterial(materialValonite).toolforge();
 			ModMaterials.registerMaterial(materialReedRope, "ReedRope");
 			ModMaterials.registerMaterial(materialDragonFlyWing, "DragonFlyWing");
 			ModMaterials.registerMaterial(materialAnglerTooth, "AnglerTooth");
 			ModMaterials.registerMaterial(materialWeedwood, "WeedWood");
-			ModMaterials.registerMaterial(materialSlimyBone, "SlimyBone");
-			ModMaterials.registerMaterial(materialSwampSteel);
-			ModMaterials.registerMaterial(materialRotiron);
+			ModMaterials.registerMaterial(materialSlimyBone, "SlimyBone").toolforge();
+			ModMaterials.registerMaterial(materialSwampSteel).toolforge();
+			ModMaterials.registerMaterial(materialRotiron).toolforge();
 			ModMaterials.registerMaterial(materialEmberlight);
 
 			MaterialUtils.readdTinkerMaterial(TinkerMaterials.bone);
@@ -865,24 +865,24 @@ public class ModMaterials implements MaterialTypes {
 		MoreTConLogger.log("Loaded a total of " + totalMaterials + " different TConstruct Materials.");
 	}
 
-	public static void registerMaterial(Material material) {
+	public static MaterialIntegration registerMaterial(Material material) {
 		String mat = material.getIdentifier().replaceFirst(ModInfo.MODID + ".", "");
-
-		registerMaterials(material, material.getFluid(), mat.substring(0, 1).toUpperCase() + mat.substring(1));
+		return registerMaterials(material, material.getFluid(), mat.substring(0, 1).toUpperCase() + mat.substring(1));
 	}
 
-	public static void registerMaterial(Material material, String suffix) {
-		registerMaterials(material, material.getFluid(), suffix, "ingot" + suffix);
+	public static MaterialIntegration registerMaterial(Material material, String suffix) {
+		return registerMaterials(material, material.getFluid(), suffix, "ingot" + suffix);
 	}
 
-	public static void registerMaterial(Material material, String suffix, String... requiredOreDicts) {
-		registerMaterials(material, material.getFluid(), suffix, requiredOreDicts);
+	public static MaterialIntegration registerMaterial(Material material, String suffix, String... requiredOreDicts) {
+		return registerMaterials(material, material.getFluid(), suffix, requiredOreDicts);
 	}
 
-	public static void registerMaterials(Material material, Fluid fluid, String suffix, String... requiredOreDicts) {
+	public static MaterialIntegration registerMaterials(Material material, Fluid fluid, String suffix, String... requiredOreDicts) {
 		MaterialIntegration integration = new MaterialIntegration(material, fluid, suffix, requiredOreDicts.length == 0 ? new String[1] : requiredOreDicts);
 		if (RegisterHelper.registerMaterial(integration, false)) {
 			totalMaterials++;
 		}
+		return integration;
 	}
 }
