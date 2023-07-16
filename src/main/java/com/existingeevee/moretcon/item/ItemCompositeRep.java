@@ -92,7 +92,6 @@ public class ItemCompositeRep extends ItemBase {
 			String translation = I18n.translateToLocal(stack.getItem().getUnlocalizedName() + ".desc");
 			tooltip.add(translation);
 		}
-		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	
 	public static ItemCompositeRep getItemInstance() {
