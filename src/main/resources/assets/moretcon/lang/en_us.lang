@@ -284,7 +284,7 @@ modifier.moretcon.darkened.desc=§oEmbrace the darkness§r\nYour Tool is more ef
 modifier.moretcon.darkened.name=Darkened
 
 moretcon.bloodgodsblessing=Blood God's Blessing
-moretcon.coldflames=Cold Flames
+moretcon.hyperflames=Hyperflames
 text.beta.desc=Thank you for testing out the beta! Please report any issues to ExistingEevee!
 text.beta.name=BETA
 text.can_be_composited.name=Can be composited from __s__\nand __l__

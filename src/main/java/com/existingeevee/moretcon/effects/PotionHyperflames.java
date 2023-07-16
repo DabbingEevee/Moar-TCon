@@ -22,8 +22,8 @@ public class PotionHyperflames extends Potion {
 
 	public PotionHyperflames() {
 		super(true, 0xff7777);
-		setRegistryName("coldflames");
-		setPotionName(Misc.createNonConflictiveName("coldflames"));
+		setRegistryName("hyperflames");
+		setPotionName(Misc.createNonConflictiveName("hyperflames"));
 		potionIcon = new ResourceLocation(ModInfo.MODID + ":textures/other/coldflames.png");
 		MinecraftForge.EVENT_BUS.register(this);
 	}

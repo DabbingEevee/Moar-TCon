@@ -5,9 +5,7 @@ import com.existingeevee.moretcon.other.utils.CompatManager;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-public class ModPotions {
-	public static Potion coldflames;
-	
+public class ModPotions {	
 	public static Potion corrosive;
 	public static Potion bloodgodsblessing;
 
