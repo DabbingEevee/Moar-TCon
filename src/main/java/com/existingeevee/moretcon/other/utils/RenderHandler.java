@@ -35,7 +35,6 @@ public class RenderHandler {
 	}
 
 	public static void registerSponge(GravitoniumSpongeItem item) {
-		
 		ResourceLocation gsLocation = ModSponges.gravitoniumSponge.getRegistryName();
 		
 		for (int i = 2; i <= item.recipe.steps.length; i++) {
