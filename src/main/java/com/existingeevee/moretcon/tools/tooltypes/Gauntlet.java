@@ -3,9 +3,9 @@ package com.existingeevee.moretcon.tools.tooltypes;
 import java.util.List;
 
 import com.existingeevee.moretcon.compat.ConarmSupport;
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModTools;
 import com.existingeevee.moretcon.other.Misc;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 import com.gildedgames.the_aether.api.AetherAPI;
 import com.gildedgames.the_aether.api.accessories.AccessoryType;
 import com.gildedgames.the_aether.api.accessories.AetherAccessory;

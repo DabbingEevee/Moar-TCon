@@ -1,8 +1,8 @@
 package com.existingeevee.moretcon.traits.traits;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.effects.ModPotions;
 import com.existingeevee.moretcon.other.Misc;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;

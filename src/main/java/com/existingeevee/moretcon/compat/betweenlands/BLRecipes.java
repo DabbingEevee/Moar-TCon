@@ -3,11 +3,11 @@ package com.existingeevee.moretcon.compat.betweenlands;
 import java.util.Arrays;
 
 import com.existingeevee.moretcon.ModInfo;
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModFluids;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;

@@ -2,8 +2,8 @@ package com.existingeevee.moretcon.traits.traits;
 
 import java.util.Random;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.other.Misc;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

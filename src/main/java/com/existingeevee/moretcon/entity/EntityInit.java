@@ -2,9 +2,9 @@ package com.existingeevee.moretcon.entity;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.MoreTCon;
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect;
 import com.existingeevee.moretcon.entity.renderers.RenderDecayingEffect;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;

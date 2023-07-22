@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.google.common.base.Predicate;
 
 import net.minecraft.block.state.IBlockState;

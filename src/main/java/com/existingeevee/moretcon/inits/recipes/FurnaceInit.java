@@ -1,10 +1,10 @@
 package com.existingeevee.moretcon.inits.recipes;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.block.Block;

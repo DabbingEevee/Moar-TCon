@@ -1,12 +1,12 @@
 package com.existingeevee.moretcon.inits;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.item.ItemDebugTool;
 import com.existingeevee.moretcon.item.ItemNonflamable;
 import com.existingeevee.moretcon.other.ModTabs;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.item.Item;

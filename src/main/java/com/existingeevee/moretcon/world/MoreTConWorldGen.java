@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 import com.existingeevee.moretcon.world.generators.AetherOreGenerator;
 import com.existingeevee.moretcon.world.generators.AsteroidGenerator;
 import com.existingeevee.moretcon.world.generators.EtheralToplayerGenerator;

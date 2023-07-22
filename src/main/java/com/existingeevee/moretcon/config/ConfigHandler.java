@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.other.utils;
+package com.existingeevee.moretcon.config;
 
 import java.io.File;
 
@@ -18,7 +18,7 @@ public class ConfigHandler {
 
 	public static boolean shouldAllowJokeItems = true;
 	public static boolean shouldAllowTwilightForest = true;
-	public static boolean shouldAllowIceAndFire = false;//true;
+	public static boolean shouldAllowIceAndFire = false;
 	public static boolean shouldAllowPlusTiC = true;
 	public static boolean shouldAllowBetweenLands = true;
 	public static boolean shouldAllowMainContent = true;
@@ -60,7 +60,6 @@ public class ConfigHandler {
 	public static String[] removeUniqueToolpartRecipes = { "moretcon.uniqueexample" };
 
 	public static boolean enableGauntlet = true;
-
 	public static boolean enableRing = true;
 
 	public static void initConfig(File file) {

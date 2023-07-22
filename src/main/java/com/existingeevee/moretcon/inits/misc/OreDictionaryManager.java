@@ -1,9 +1,9 @@
 package com.existingeevee.moretcon.inits.misc;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 import com.gildedgames.the_aether.blocks.BlocksAether;
 import com.gildedgames.the_aether.items.ItemsAether;
 

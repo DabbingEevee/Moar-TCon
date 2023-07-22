@@ -1,8 +1,8 @@
 package com.existingeevee.moretcon.inits;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.item.ItemStack;

@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.other.fixes;
 
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
+import com.existingeevee.moretcon.config.ConfigHandler;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

@@ -1,7 +1,7 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.other.Misc;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

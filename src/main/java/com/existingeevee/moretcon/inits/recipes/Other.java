@@ -3,11 +3,11 @@ package com.existingeevee.moretcon.inits.recipes;
 import java.util.Arrays;
 
 import com.existingeevee.moretcon.ModInfo;
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.TinkerPartIngredient;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

@@ -1,13 +1,13 @@
 package com.existingeevee.moretcon.inits;
 
 import com.existingeevee.moretcon.ModInfo;
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.traits.ModTraits;

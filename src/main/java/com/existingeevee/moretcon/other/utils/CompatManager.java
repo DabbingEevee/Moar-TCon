@@ -1,5 +1,7 @@
 package com.existingeevee.moretcon.other.utils;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
+
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
