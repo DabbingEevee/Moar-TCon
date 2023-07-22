@@ -35,7 +35,7 @@ public class RenderHandler {
 	}
 
 	public static void registerSponge(GravitoniumSpongeItem item) {
-		for (int i=1; i < item.recipe.steps.length; i++) {
+		for (int i = 1; i <= item.recipe.steps.length; i++) {
 			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(new ResourceLocation(ModSponges.gravitoniumSponge.getRegistryName().getResourceDomain(), "partial" + ModSponges.gravitoniumSponge.getRegistryName().getResourcePath()), "inventory"));
 		}
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(new ResourceLocation(ModSponges.gravitoniumSponge.getRegistryName().getResourceDomain(), "complete" + ModSponges.gravitoniumSponge.getRegistryName().getResourcePath()), "inventory"));

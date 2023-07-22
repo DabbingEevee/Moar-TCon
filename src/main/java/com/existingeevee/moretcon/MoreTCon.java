@@ -108,6 +108,8 @@ public class MoreTCon {
 		OreRecipes.init(event);
 		Other.init(event);
 		
+		SpongeRegistry.registerRecipes(event);
+		
 		// add the tool forge recipes from all integrations
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
 			integration.registerToolForgeRecipe(registry);

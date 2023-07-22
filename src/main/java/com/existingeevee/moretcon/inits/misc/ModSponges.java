@@ -1,5 +1,6 @@
 package com.existingeevee.moretcon.inits.misc;
 
+import com.existingeevee.moretcon.inits.ModFluids;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.other.ModTabs;
@@ -8,6 +9,8 @@ import com.existingeevee.moretcon.other.utils.CompatManager;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.shared.TinkerFluids;
 
 public class ModSponges {
 	public static Item gravitoniumSponge;
@@ -21,23 +24,22 @@ public class ModSponges {
 
 		if (CompatManager.loadMain) {
 
-			gravitoniumSpongeTrichromadentium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("trichromadentium", "oreTrichromadentium", new ItemStack(ModItems.ingotTrichromadentium),
-					SpongeRegistry.createSpongeStep("iron", slimeknights.tconstruct.library.materials.Material.VALUE_Block * 8),
-					SpongeRegistry.createSpongeStep("liquidirradium", slimeknights.tconstruct.library.materials.Material.VALUE_Block * 8),
-					SpongeRegistry.createSpongeStep("cobalt", slimeknights.tconstruct.library.materials.Material.VALUE_Block * 8),
-					SpongeRegistry.createSpongeStep("obsidian", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 32)));
+			gravitoniumSpongeTrichromadentium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("trichromadentium", "oreTrichromadentium", new ItemStack(ModItems.ingotTrichromadentium), new ItemStack(ModItems.gemEnderal),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.iron, Material.VALUE_Block * 8),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidIrradium, Material.VALUE_Block * 8),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.cobalt, Material.VALUE_Block * 8),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.obsidian, Material.VALUE_Ingot * 32)));
 
-			gravitoniumSpongeAtronium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("atronium", "oreAtronium", new ItemStack(ModItems.ingotAtronium),
-					SpongeRegistry.createSpongeStep("liquidfusionite", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 2),
-					SpongeRegistry.createSpongeStep("liquidgallium", slimeknights.tconstruct.library.materials.Material.VALUE_Block),
-					SpongeRegistry.createSpongeStep("liquidrunesteel", slimeknights.tconstruct.library.materials.Material.VALUE_Block * 4),
-					SpongeRegistry.createSpongeStep("gold", slimeknights.tconstruct.library.materials.Material.VALUE_Block * 8)));
-			//TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidSolarSteel, 4), new FluidStack(ModFluids.liquidFusionite, 1), new FluidStack(ModFluids.liquidHydrogen, 1), new FluidStack(TinkerFluids.steel, 3));
+			gravitoniumSpongeAtronium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("atronium", "oreAtronium", new ItemStack(ModItems.ingotAtronium), new ItemStack(ModItems.gemErythynite), 
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidGallium, Material.VALUE_Ingot * 2),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidFusionite, Material.VALUE_Block),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidRuneSteel, Material.VALUE_Block * 4),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.gold, Material.VALUE_Block * 8)));
 
-			gravitoniumSpongeSolarsteel = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("solarsteel", "oreSolarsteel", new ItemStack(ModItems.ingotSolsteel),
-					SpongeRegistry.createSpongeStep("liquidfusionite", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 4),
-					SpongeRegistry.createSpongeStep("liquidhydrogen", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 8),
-					SpongeRegistry.createSpongeStep("steel", slimeknights.tconstruct.library.materials.Material.VALUE_Ingot * 3)));
+			gravitoniumSpongeSolarsteel = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("solarsteel", "oreSolarsteel", new ItemStack(ModItems.ingotSolsteel), new ItemStack(ModItems.gemIgniglomerate),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidFusionite, Material.VALUE_Ingot * 4),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidHydrogen, Material.VALUE_Ingot * 8),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.steel, Material.VALUE_Ingot * 3)));
 
 			
 			ModItems.registerItems(
