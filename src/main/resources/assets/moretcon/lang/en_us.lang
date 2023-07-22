@@ -378,6 +378,7 @@ comment Sponges=comment
 
 spongestatus.completed.name=Filled
 spongestatus.partial.name=Partially Filled
+spongestatus.empty.name=Empty
 sponge.step.name=Step
 item.moretcon.gravitoniumsponge.name=Gravitonium Sponge
 spongerecipe.test.name=Test
