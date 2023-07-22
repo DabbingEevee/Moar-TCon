@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
-import com.existingeevee.moretcon.other.utils.TextHelper;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
