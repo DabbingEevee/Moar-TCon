@@ -36,6 +36,8 @@ public class CommonProxy {
 
 	}
 
-
+	public void clientRun(Runnable r) {
+		
+	}
 
 }

@@ -52,4 +52,9 @@ public class ClientProxy extends CommonProxy {
 		TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
 				new FileRepository("tconstruct:book"), RegisterHelper.moreTConModifiers));
 	}
+	
+	@Override
+	public void clientRun(Runnable r) {
+		r.run();
+	}
 }

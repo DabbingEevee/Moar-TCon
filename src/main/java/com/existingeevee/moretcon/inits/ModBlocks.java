@@ -6,6 +6,7 @@ import com.existingeevee.moretcon.block.blocktypes.BlockFalling;
 import com.existingeevee.moretcon.block.blocktypes.HotBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.RadiationBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.unique.BlockGravitoniumFaucet;
+import com.existingeevee.moretcon.block.blocktypes.unique.BlockVoidPrismTop;
 import com.existingeevee.moretcon.block.ore.BlockBedrockOre;
 import com.existingeevee.moretcon.block.ore.BlockBedrockOreMetal;
 import com.existingeevee.moretcon.block.ore.BlockEtheralOre;
@@ -68,6 +69,8 @@ public class ModBlocks {
 	public static Block blockCragravel = ((BlockBase) new BlockFalling("blockCragravel", Material.GROUND, 0).setHardness(0.6f).setResistance(0.6f).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
 	public static Block blockSiltClay = ((BlockBase) new BlockBase("blockSiltClay", Material.CLAY ,5).setHardness(0.6f).setResistance(0.6f).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
 
+	public static Block blockVoidPrismTop = new BlockVoidPrismTop();
+	
 	//public static Block oreFakeFluidTest = ((BlockBase) new BlockFakeFluid("blockFakeFluid", Material.IRON, 3).setHardness(12).setResistance(20).setCreativeTab(Tabs.materials)).canBeBeacon(false);
 
 	/*---------------------------------------*/
@@ -79,6 +82,11 @@ public class ModBlocks {
 		}
 	}
 	public static void init() {
+		ModBlocks.registerBlocks(
+
+				blockVoidPrismTop
+				);
+		
 		if (CompatManager.loadMain) {
 		ModBlocks.registerBlocks(
 /**-------------------------------------**/
