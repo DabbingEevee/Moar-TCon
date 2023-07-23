@@ -99,8 +99,6 @@ public class CompositeRegistry {
 				TinkerRegistry.registerTableCasting(new CastingRecipe(output, rm, d.getCatalyst(), d.onlyOne ? Material.VALUE_Ingot : t.getCost(), true, false));
 			}
 			MaterialUtils.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
-			d.getResult().setCastable(false);
-			d.getResult().setCraftable(false);
 		}
 	}
 	

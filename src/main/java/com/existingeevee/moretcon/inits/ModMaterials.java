@@ -4,6 +4,7 @@ import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
+import com.existingeevee.moretcon.materials.MTMaterialIntegration;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.MoreTConLogger;
@@ -891,7 +892,7 @@ public class ModMaterials implements MaterialTypes {
 	}
 
 	public static MaterialIntegration registerMaterials(Material material, Fluid fluid, String suffix, String... requiredOreDicts) {
-		MaterialIntegration integration = new MaterialIntegration(material, fluid, suffix, requiredOreDicts.length == 0 ? new String[1] : requiredOreDicts);
+		MaterialIntegration integration = new MTMaterialIntegration(material, fluid, suffix, requiredOreDicts.length == 0 ? new String[1] : requiredOreDicts);
 		if (RegisterHelper.registerMaterial(integration, false)) {
 			totalMaterials++;
 		}
