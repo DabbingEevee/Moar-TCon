@@ -53,26 +53,29 @@ public class ParticleBeamDust extends ParticleRedstone {
 		return j | k << 16;
 	}
 
+	@Override
 	public void onUpdate() {
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
 
 		Block block = this.world.getBlockState(new BlockPos(this.posX, this.posY, this.posZ)).getBlock();
-		
+
 		boolean flag = block == ModBlocks.blockVoidColumn || block instanceof VoidConductor;
-		
-		if (this.particleAge++ >= this.particleMaxAge) {
+		boolean flag2 = !flag && block.getDefaultState().getMaterial().blocksMovement();
+
+		if (this.particleAge++ >= this.particleMaxAge || flag2) {
 			this.setExpired();
 		}
-		
+
 		if (!flag) {
 			this.particleAge += 119;
 		}
-		
+
 		this.setParticleTextureIndex(7 - this.particleAge * 8 / this.particleMaxAge);
 		this.move(this.motionX, this.motionY, this.motionZ);
 	}
+
 
 	public void addMotion(double x, double y, double z) {
 		this.motionX += x;

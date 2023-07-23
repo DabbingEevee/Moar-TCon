@@ -10,10 +10,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockVoidPrismBottom extends BlockBase implements VoidConductor  {
+public class BlockVoidPrismBottom extends BlockBase {
 
 	public BlockVoidPrismBottom() {
-		super("blockvoidprismbottom", Material.IRON, 2);
+		super("blockvoidprismbottom", Material.ANVIL, 2);
 	}
 
 	@Override
@@ -24,6 +24,12 @@ public class BlockVoidPrismBottom extends BlockBase implements VoidConductor  {
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
-		new VoidPrismBottomAction().run(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+		IBlockState above = worldIn.getBlockState(pos.up());
+		if (isActive(worldIn, pos) && state.getBlock().isAir(above, worldIn, pos.up()))
+			new VoidPrismBottomAction().run(worldIn, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5);
+	}
+	
+	public boolean isActive(World worldIn, BlockPos pos) {
+		return pos.getY() <= 0 && worldIn.provider.getDimension() == -1;
 	}
 }

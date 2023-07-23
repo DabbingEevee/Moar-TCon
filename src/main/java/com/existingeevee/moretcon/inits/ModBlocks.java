@@ -6,6 +6,7 @@ import com.existingeevee.moretcon.block.blocktypes.BlockFalling;
 import com.existingeevee.moretcon.block.blocktypes.HotBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.RadiationBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.unique.BlockGravitoniumFaucet;
+import com.existingeevee.moretcon.block.blocktypes.unique.BlockVoidColumn;
 import com.existingeevee.moretcon.block.blocktypes.unique.BlockVoidPrismBottom;
 import com.existingeevee.moretcon.block.blocktypes.unique.BlockVoidPrismTop;
 import com.existingeevee.moretcon.block.ore.BlockBedrockOre;
@@ -72,7 +73,7 @@ public class ModBlocks {
 
 	public static Block blockVoidPrismTop = new BlockVoidPrismTop().setHardness(10).setResistance(20);
 	public static Block blockVoidPrismBottom = new BlockVoidPrismBottom().setHardness(10).setResistance(20);
-	public static Block blockVoidColumn = ((BlockBase) new BlockBase("blockVoidColumn", Material.IRON, 2).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMisc)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
+	public static Block blockVoidColumn = new BlockVoidColumn().setHardness(10).setResistance(20);// ((BlockBase) new BlockBase("blockVoidColumn", Material.IRON, 2).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMisc)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
 
 	//public static Block oreFakeFluidTest = ((BlockBase) new BlockFakeFluid("blockFakeFluid", Material.IRON, 3).setHardness(12).setResistance(20).setCreativeTab(Tabs.materials)).canBeBeacon(false);
 
