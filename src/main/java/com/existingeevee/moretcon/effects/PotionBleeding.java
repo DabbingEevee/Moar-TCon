@@ -175,6 +175,5 @@ public class PotionBleeding extends Potion {
 			buf.writeDouble(y);
 			buf.writeDouble(z);
 		}
-
 	}
 }

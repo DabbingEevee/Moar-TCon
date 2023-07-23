@@ -57,4 +57,9 @@ public class ClientProxy extends CommonProxy {
 	public void clientRun(Runnable r) {
 		r.run();
 	}
+	
+	@Override 
+	public boolean isClient() {
+		return true;
+	}
 }

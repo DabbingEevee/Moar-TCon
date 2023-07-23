@@ -1,24 +1,31 @@
 package com.existingeevee.moretcon.particle;
 
+import com.existingeevee.moretcon.block.blocktypes.unique.VoidConductor;
+import com.existingeevee.moretcon.inits.ModBlocks;
+
+import net.minecraft.block.Block;
 import net.minecraft.client.particle.ParticleRedstone;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class ParticleDustLuminous extends ParticleRedstone {
+public class ParticleBeamDust extends ParticleRedstone {
 
-	public ParticleDustLuminous(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale,
+	public ParticleBeamDust(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, int life,
 			float red, float green, float blue, float alpha) {
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, red, green, blue);
 		this.particleAlpha = alpha;
+		if (life >= 0)
+			this.particleMaxAge = life;
 		this.commonSetup();
 	}
 
-	public ParticleDustLuminous(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float p_i46349_8_,
+	public ParticleBeamDust(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float p_i46349_8_,
 			float p_i46349_9_, float p_i46349_10_, float alpha) {
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, p_i46349_8_, p_i46349_9_, p_i46349_10_);
 		this.particleAlpha = alpha;
 		this.commonSetup();
-		
+
 	}
 
 	private void commonSetup() {
@@ -29,7 +36,7 @@ public class ParticleDustLuminous extends ParticleRedstone {
 		this.particleGravity = 0;
 
 	}
-	
+
 	@Override
 	public int getBrightnessForRender(float partialTick) {
 		float f = 1;
@@ -51,10 +58,18 @@ public class ParticleDustLuminous extends ParticleRedstone {
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
 
+		Block block = this.world.getBlockState(new BlockPos(this.posX, this.posY, this.posZ)).getBlock();
+		
+		boolean flag = block == ModBlocks.blockVoidColumn || block instanceof VoidConductor;
+		
 		if (this.particleAge++ >= this.particleMaxAge) {
 			this.setExpired();
 		}
-
+		
+		if (!flag) {
+			this.particleAge += 119;
+		}
+		
 		this.setParticleTextureIndex(7 - this.particleAge * 8 / this.particleMaxAge);
 		this.move(this.motionX, this.motionY, this.motionZ);
 	}
@@ -64,5 +79,5 @@ public class ParticleDustLuminous extends ParticleRedstone {
 		this.motionY += y;
 		this.motionZ += z;
 	}
-	
+
 }
