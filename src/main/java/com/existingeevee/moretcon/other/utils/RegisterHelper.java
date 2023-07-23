@@ -108,7 +108,6 @@ public class RegisterHelper {
 	}
 
 	public static boolean registerMaterial(MaterialIntegration integration, boolean bypassCheck) {
-		// material.addTrait(Traits.modDebug);
 		List<String> list = Arrays.asList(ConfigHandler.blacklist);
 		if (!list.contains(integration.material.getIdentifier()) || bypassCheck) {
 			integrate(integration);
@@ -142,6 +141,4 @@ public class RegisterHelper {
 		FluidRegistry.registerFluid(fluid);
 		FluidRegistry.addBucketForFluid(fluid);
 	}
-	/*Material material, Fluid fluid, String suffix*/
-	//TinkerRegistry.integrate(new MaterialIntegration(null, TinkerFluids.alubrass, "Alubrass", "ingotCopper", "ingotAluminum")).toolforge();
 }
