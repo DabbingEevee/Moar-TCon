@@ -112,6 +112,7 @@ public class CompositeRegistry {
 		private final Supplier<Fluid> catalyst;
 
 		private double multiplier = Material.VALUE_Ingot;
+		private boolean genIcon = true;
 		
 		public CompositeData(Supplier<Material> from, Supplier<Material> result, Supplier<Fluid> catalyst) {
 			this(from, result, catalyst, true);
@@ -147,6 +148,15 @@ public class CompositeRegistry {
 		public CompositeData setMultiplier(double multiplier) {
 			this.multiplier = multiplier;
 			return this;
+		}
+		
+		public CompositeData setGenIcon(boolean genIcon) {
+			this.genIcon = genIcon;
+			return this;
+		}
+
+		public boolean shouldGenIcon() {
+			return genIcon;
 		}
 	}
 }
