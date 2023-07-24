@@ -32,6 +32,10 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 		IBlockState above = worldIn.getBlockState(pos.up());
 		IBlockState below = worldIn.getBlockState(pos.down());
 		
+		if (!above.getBlock().isAir(above, worldIn, pos.up()) && !below.getBlock().isAir(above, worldIn, pos.down())) {
+			return; //No need to check if both is filled.
+		}
+		
 		boolean topActive = isTopActive(worldIn, pos);
 		boolean bottomActive = isBottomActive(worldIn, pos);
 
