@@ -16,103 +16,103 @@ public class ModItems {
 	/*---------------------------------------*/
 
 	//Metals
-	public static Item nuggetFusionite = new ItemBase("nuggetFusionite");
-	public static Item ingotFusionite = new ItemBase("ingotFusionite");
-	public static Item dustFusionite = new ItemBase("dustFusionite");
+	public static final Item nuggetFusionite = new ItemBase("nuggetFusionite");
+	public static final Item ingotFusionite = new ItemBase("ingotFusionite");
+	public static final Item dustFusionite = new ItemBase("dustFusionite");
 
-	public static Item nuggetRotiron = new ItemBase("nuggetRotiron");
-	public static Item ingotRotiron = new ItemBase("ingotRotiron");
-	public static Item dustRotiron = new ItemBase("dustRotiron");
+	public static final Item nuggetRotiron = new ItemBase("nuggetRotiron");
+	public static final Item ingotRotiron = new ItemBase("ingotRotiron");
+	public static final Item dustRotiron = new ItemBase("dustRotiron");
 
-	public static Item nuggetSwampSteel = new ItemBase("nuggetSwampSteel");
-	public static Item ingotSwampSteel = new ItemBase("ingotSwampSteel");
-	public static Item dustSwampSteel = new ItemBase("dustSwampSteel");
+	public static final Item nuggetSwampSteel = new ItemBase("nuggetSwampSteel");
+	public static final Item ingotSwampSteel = new ItemBase("ingotSwampSteel");
+	public static final Item dustSwampSteel = new ItemBase("dustSwampSteel");
 
-	public static Item ingotGallium = new ItemBase("ingotGallium");
-	public static Item nuggetGallium = new ItemBase("nuggetGallium");
-	public static Item dustGallium = new ItemBase("dustGallium");
+	public static final Item ingotGallium = new ItemBase("ingotGallium");
+	public static final Item nuggetGallium = new ItemBase("nuggetGallium");
+	public static final Item dustGallium = new ItemBase("dustGallium");
 
-	public static Item nuggetIrradium = new ItemBase("nuggetIrradium");
-	public static Item dustIrradium = new ItemBase("dustIrradium");
-	public static Item ingotIrradium = new ItemBase("ingotIrradium");
+	public static final Item nuggetIrradium = new ItemBase("nuggetIrradium");
+	public static final Item dustIrradium = new ItemBase("dustIrradium");
+	public static final Item ingotIrradium = new ItemBase("ingotIrradium");
 
-	public static Item ingotGravitonium = new ItemBase("ingotGravitonium");
-	public static Item nuggetGravitonium = new ItemBase("nuggetGravitonium");
-	public static Item dustGravitonium = new ItemBase("dustGravitonium");
+	public static final Item ingotGravitonium = new ItemBase("ingotGravitonium");
+	public static final Item nuggetGravitonium = new ItemBase("nuggetGravitonium");
+	public static final Item dustGravitonium = new ItemBase("dustGravitonium");
 
-	public static Item ingotRuneSteel = new ItemBase("ingotRuneSteel");
-	public static Item dustRuneSteel = new ItemBase("dustRuneSteel");
-	public static Item nuggetRuneSteel = new ItemBase("nuggetRuneSteel");
+	public static final Item ingotRuneSteel = new ItemBase("ingotRuneSteel");
+	public static final Item dustRuneSteel = new ItemBase("dustRuneSteel");
+	public static final Item nuggetRuneSteel = new ItemBase("nuggetRuneSteel");
 
-	public static Item nuggetSolsteel = new ItemNonflamable("nuggetSolarSteel");
-	public static Item ingotSolsteel = new ItemNonflamable("ingotSolarSteel");
-	public static Item dustSolarSteel = new ItemNonflamable("dustSolarSteel");
+	public static final Item nuggetSolsteel = new ItemNonflamable("nuggetSolarSteel");
+	public static final Item ingotSolsteel = new ItemNonflamable("ingotSolarSteel");
+	public static final Item dustSolarSteel = new ItemNonflamable("dustSolarSteel");
 
-	public static Item ingotValkyrieMetal = new ItemBase("ingotValkyrieMetal");
-	public static Item nuggetValkyrieMetal = new ItemBase("nuggetValkyrieMetal");
-	public static Item dustValkyrieMetal = new ItemBase("dustValkyrieMetal");
+	public static final Item ingotValkyrieMetal = new ItemBase("ingotValkyrieMetal");
+	public static final Item nuggetValkyrieMetal = new ItemBase("nuggetValkyrieMetal");
+	public static final Item dustValkyrieMetal = new ItemBase("dustValkyrieMetal");
 
-	public static Item nuggetPenguinite = new ItemBase("nuggetPenguinite");
-	public static Item ingotPenguinite = new ItemBase("ingotPenguinite");
-	public static Item dustPenguinite = new ItemBase("dustPenguinite");
+	public static final Item nuggetPenguinite = new ItemBase("nuggetPenguinite");
+	public static final Item ingotPenguinite = new ItemBase("ingotPenguinite");
+	public static final Item dustPenguinite = new ItemBase("dustPenguinite");
 
-	public static Item ingotArkenium = new ItemBase("ingotArkenium");
-	public static Item nuggetArkenium = new ItemBase("nuggetArkenium");
-	public static Item dustArkenium = new ItemBase("dustArkenium");
+	public static final Item ingotArkenium = new ItemBase("ingotArkenium");
+	public static final Item nuggetArkenium = new ItemBase("nuggetArkenium");
+	public static final Item dustArkenium = new ItemBase("dustArkenium");
 
-	public static Item ingotAtronium = new ItemBase("ingotAtronium");
-	public static Item nuggetAtronium = new ItemBase("nuggetAtronium");
-	public static Item dustAtronium = new ItemBase("dustAtronium");
+	public static final Item ingotAtronium = new ItemBase("ingotAtronium");
+	public static final Item nuggetAtronium = new ItemBase("nuggetAtronium");
+	public static final Item dustAtronium = new ItemBase("dustAtronium");
 
-	public static Item ingotEbonite = new ItemBase("ingotEbonite");
-	public static Item nuggetEbonite = new ItemBase("nuggetEbonite");
-	public static Item dustEbonite = new ItemBase("dustEbonite");
+	public static final Item ingotEbonite = new ItemBase("ingotEbonite");
+	public static final Item nuggetEbonite = new ItemBase("nuggetEbonite");
+	public static final Item dustEbonite = new ItemBase("dustEbonite");
 
-	public static Item carbonPile = new ItemBase("carbonPile").setTab(ModTabs.moarTConMisc);;
-	public static Item ingotSteel = new ItemBase("ingotSteel");
-	public static Item nuggetSteel = new ItemBase("nuggetSteel");
-	public static Item dustSteel = new ItemBase("dustSteel");
-	public static Item rawSteel = new ItemBase("rawSteel").setTab(ModTabs.moarTConMisc);
+	public static final Item carbonPile = new ItemBase("carbonPile").setTab(ModTabs.moarTConMisc);;
+	public static final Item ingotSteel = new ItemBase("ingotSteel");
+	public static final Item nuggetSteel = new ItemBase("nuggetSteel");
+	public static final Item dustSteel = new ItemBase("dustSteel");
+	public static final Item rawSteel = new ItemBase("rawSteel").setTab(ModTabs.moarTConMisc);
 
-	public static Item ingotTrichromadentium = new ItemBase("ingotTrichromadentium");
-	public static Item nuggetTrichromadentium = new ItemBase("nuggetTrichromadentium");
-	public static Item dustTrichromadentium = new ItemBase("dustTrichromadentium");
+	public static final Item ingotTrichromadentium = new ItemBase("ingotTrichromadentium");
+	public static final Item nuggetTrichromadentium = new ItemBase("nuggetTrichromadentium");
+	public static final Item dustTrichromadentium = new ItemBase("dustTrichromadentium");
 
-	public static Item dustIronwood = new ItemBase("dustIronwood");
+	public static final Item dustIronwood = new ItemBase("dustIronwood");
 
-	public static Item dustFiery = new ItemBase("dustFiery");
+	public static final Item dustFiery = new ItemBase("dustFiery");
 
-	public static Item dustKnightmetal = new ItemBase("dustKnightmetal");
+	public static final Item dustKnightmetal = new ItemBase("dustKnightmetal");
 
-	public static Item dustOctine = new ItemBase("dustOctine");
+	public static final Item dustOctine = new ItemBase("dustOctine");
 
-	public static Item dustSyrmorite = new ItemBase("dustSyrmorite");
+	public static final Item dustSyrmorite = new ItemBase("dustSyrmorite");
 
 	//Gems
-	public static Item gemVoidSpar = new ItemBase("gemVoidSpar");
-	public static Item gemEnderal = new ItemBase("gemEnderal");
-	public static Item gemGarstone = new ItemBase("gemGarstone");
-	public static Item gemBloodstone = new ItemBase("gemBloodstone");
-	public static Item gemEchostone = new ItemBase("gemEchostone");
-	public static Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate");
-	public static Item gemErythynite = new ItemBase("gemErythynite");
-	public static Item gemEtherstone = new ItemBase("gemEtherstone");;
+	public static final Item gemVoidSpar = new ItemBase("gemVoidSpar");
+	public static final Item gemEnderal = new ItemBase("gemEnderal");
+	public static final Item gemGarstone = new ItemBase("gemGarstone");
+	public static final Item gemBloodstone = new ItemBase("gemBloodstone");
+	public static final Item gemEchostone = new ItemBase("gemEchostone");
+	public static final Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate");
+	public static final Item gemErythynite = new ItemBase("gemErythynite");
+	public static final Item gemEtherstone = new ItemBase("gemEtherstone");;
 
 	//Internal
-	public static Item iconLightning = new ItemBase("lightning").setTab(null);
+	public static final Item iconLightning = new ItemBase("lightning").setTab(null);
 
 	//Ingriedients
-	public static Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);;
-	public static Item spaceTimeDisruptionPowder = new ItemBase("spaceTimeDisruptionPowder").setTab(ModTabs.moarTConMisc);;
-	public static Item hydrogenRichRedstonePowder = new ItemBase("hydrogenRichRedstonePowder").setTab(ModTabs.moarTConMisc);;
-	public static Item crushedShockwaveSword = new ItemBase("crushedShockwaveSword").setTab(ModTabs.moarTConMisc);
-	public static Item matterReconstructionGel = new ItemBase("matterReconstructionGel").setTab(ModTabs.moarTConMisc);
-	public static Item sulfurBucketSyrmorite = new ItemBase("sulfurBucketSyrmorite").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
-	public static Item sulfurBucketIron = new ItemBase("sulfurBucketIron").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
-	public static Item betweenicCore = new ItemBase("betweenicCore").setTab(ModTabs.moarTConMisc);
+	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);;
+	public static final Item spaceTimeDisruptionPowder = new ItemBase("spaceTimeDisruptionPowder").setTab(ModTabs.moarTConMisc);;
+	public static final Item hydrogenRichRedstonePowder = new ItemBase("hydrogenRichRedstonePowder").setTab(ModTabs.moarTConMisc);;
+	public static final Item crushedShockwaveSword = new ItemBase("crushedShockwaveSword").setTab(ModTabs.moarTConMisc);
+	public static final Item matterReconstructionGel = new ItemBase("matterReconstructionGel").setTab(ModTabs.moarTConMisc);
+	public static final Item sulfurBucketSyrmorite = new ItemBase("sulfurBucketSyrmorite").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
+	public static final Item sulfurBucketIron = new ItemBase("sulfurBucketIron").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
+	public static final Item betweenicCore = new ItemBase("betweenicCore").setTab(ModTabs.moarTConMisc);
 
 	//Modifier items
-	public static Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
+	public static final Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
 
 	/*---------------------------------------*/
 
