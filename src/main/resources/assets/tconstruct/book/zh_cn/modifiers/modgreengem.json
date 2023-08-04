@@ -1,0 +1,17 @@
+{
+  "modifier": "moretcon.modgreengem",
+  "text": [
+    {
+      "text": "翠绿元素宝石似乎在匠魂工具上也能很好地工作。。。"
+    }
+  ],
+  "effects": [
+    "在工具上：攻击时有机会削弱敌人",
+    "在护甲上：受到攻击时有几率吸收伤害",
+    "与其他中间宝石强化不兼容",
+    "单个等级"
+  ],
+  "demoTool": [
+    "moretcon:blsword"
+  ]
+}

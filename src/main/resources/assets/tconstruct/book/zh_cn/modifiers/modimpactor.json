@@ -1,0 +1,17 @@
+{
+  "modifier": "moretcon.modimpactor",
+  "text": [
+    {
+      "text": "F=MA，更多加速度=更多伤害。 "
+    }
+  ],
+  "effects": [
+    "你的弹射物越快，就会造成越多的穿甲伤害",
+    "单个等级"
+  ],
+  "demoTool": [
+    "tconstruct:bolt",
+    "tconstruct:shuriken",
+    "tconstruct:arrow"
+  ]
+}

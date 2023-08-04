@@ -1,0 +1,16 @@
+{
+  "modifier": "moretcon.modcrushing",
+  "text": [
+    {
+      "text": "现在这是一堆伤害！"
+    }
+  ],
+  "effects": [
+    "使用工具：将10%的攻击伤害转化为真实伤害",
+    "真正伤害忽略护甲、药水效果、伤害吸收或任何其他减少伤害的来源",
+    "单个等级"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword"
+  ]
+}
