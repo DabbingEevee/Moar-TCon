@@ -1,0 +1,16 @@
+{
+  "modifier": "moretcon.modbetweenified",
+  "text": [
+    {
+      "text": "好吧，我会自己完成它。"
+    }
+  ],
+  "effects": [
+    "允许非交错次元/黑暗沼泽的工具在交错次元/黑暗沼泽中正常使用",
+    "单个等级"
+    "需要3个强化槽"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword"
+  ]
+}
