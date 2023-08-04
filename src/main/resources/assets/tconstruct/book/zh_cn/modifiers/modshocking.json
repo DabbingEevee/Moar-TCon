@@ -1,0 +1,17 @@
+{
+  "modifier": "moretcon.modshocking",
+  "text": [
+    {
+      "text": "交错次元/黑暗沼泽的闪电确实很好。。。"
+    }
+  ],
+  "effects": [
+    "当弹射物落地时，击中附近的敌人",
+    "单个等级"
+  ],
+  "demoTool": [
+    "tconstruct:bolt",
+    "tconstruct:shuriken",
+    "tconstruct:arrow"
+  ]
+}
