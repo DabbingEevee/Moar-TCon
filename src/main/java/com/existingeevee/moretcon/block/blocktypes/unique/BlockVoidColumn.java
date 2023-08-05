@@ -5,12 +5,11 @@ import java.util.Random;
 import com.existingeevee.moretcon.block.blocktypes.BlockBase;
 import com.existingeevee.moretcon.client.actions.VoidPrismBottomAction;
 import com.existingeevee.moretcon.client.actions.VoidPrismTopAction;
+import com.existingeevee.moretcon.inits.ModBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -32,7 +31,7 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 		IBlockState above = worldIn.getBlockState(pos.up());
 		IBlockState below = worldIn.getBlockState(pos.down());
 		
-		if (!above.getBlock().isAir(above, worldIn, pos.up()) && !below.getBlock().isAir(above, worldIn, pos.down())) {
+		if (!above.getBlock().isAir(above, worldIn, pos.up()) && !below.getBlock().isAir(below, worldIn, pos.down())) {
 			return; //No need to check if both is filled.
 		}
 		
@@ -47,14 +46,8 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 			new VoidPrismBottomAction().run(worldIn, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5);
 		}
 		
-		if (topActive && bottomActive) {
-			worldIn.spawnParticle(EnumParticleTypes.VILLAGER_ANGRY, pos.getX() + Math.random(),
-					pos.getY() + Math.random(), pos.getZ() + Math.random(), (Math.random() - 0.5) / 8,
-					(Math.random() - 0.5) / 8, (Math.random() - 0.5) / 8);
-			return;
-		}
 		if (bottomActive && checkForTop(worldIn, pos)) {
-			worldIn.setBlockState(pos.up(3), Blocks.OBSIDIAN.getDefaultState());
+			worldIn.setBlockState(pos.up(3), ModBlocks.blockVoidCore.getDefaultState());
 		}
 	}
 
@@ -65,7 +58,7 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 			IBlockState state = worldIn.getBlockState(ipos);
 			Block block = state.getBlock();
 
-			if (block == Blocks.OBSIDIAN && i == 3) { // TODO
+			if (block == ModBlocks.blockVoidCore && i == 3) { 
 				continue;
 			} else if (!block.isAir(state, worldIn, ipos)) {
 				return false;

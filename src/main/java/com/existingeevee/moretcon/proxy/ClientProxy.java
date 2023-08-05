@@ -1,5 +1,6 @@
 package com.existingeevee.moretcon.proxy;
 
+import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.compat.betweenlands.BLItems;
 import com.existingeevee.moretcon.entity.EntityInit;
 import com.existingeevee.moretcon.inits.ModTools;
@@ -12,6 +13,7 @@ import com.existingeevee.moretcon.traits.TraitClient;
 import com.existingeevee.moretcon.traits.book.BookTransformerAppendModifiers;
 
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.mantle.client.book.repository.FileRepository;
@@ -24,6 +26,8 @@ public class ClientProxy extends CommonProxy {
 		super.preInit();
 		MaterialClient.init();
 		EntityInit.initClient();
+		
+		OBJLoader.INSTANCE.addDomain(ModInfo.MODID);
 	}
 
 	@Override

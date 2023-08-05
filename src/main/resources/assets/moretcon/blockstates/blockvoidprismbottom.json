@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "moretcon:blockvoidprismbottom.obj",
+    "custom": {
+      "flip-v": true
+    },
+    "textures": {
+      "#material": "moretcon:blocks/blockvoidprismbottom"
+    }
+  },
+  "variants": {
+    "normal": {
+      "model": "moretcon:blockvoidprismbottom.obj"
+    }
+  }
+}

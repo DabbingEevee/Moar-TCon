@@ -75,6 +75,7 @@ public class ModBlocks {
 	public static final Block blockVoidPrismTop = new BlockVoidPrismTop().setHardness(10).setResistance(20);
 	public static final Block blockVoidPrismBottom = new BlockVoidPrismBottom().setHardness(10).setResistance(20);
 	public static final Block blockVoidColumn = new BlockVoidColumn().setHardness(10).setResistance(20);
+	public static final Block blockVoidCore = new BlockVoidCore();
 
 	/*---------------------------------------*/
 
