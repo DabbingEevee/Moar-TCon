@@ -2,17 +2,22 @@ package com.existingeevee.moretcon.block.blocktypes.unique;
 
 import java.util.Random;
 
-import com.existingeevee.moretcon.block.blocktypes.BlockBase;
+import com.existingeevee.moretcon.client.actions.VoidCoreAction;
+import com.existingeevee.moretcon.other.Misc;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockVoidCore extends BlockBase {
+public class BlockVoidCore extends Block {
 
 	public BlockVoidCore() {
-		super("blockvoidcore", Material.BARRIER, 0);
+		super(Material.BARRIER);
+		
+		this.setUnlocalizedName(Misc.createNonConflictiveName("blockvoidcore"));
+		this.setHarvestLevel("pickaxe", 0);
 		this.setBlockUnbreakable();
 		this.setResistance(Float.POSITIVE_INFINITY);
 	}
@@ -28,9 +33,9 @@ public class BlockVoidCore extends BlockBase {
 			worldIn.setBlockToAir(pos);
 		} else {
 			worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+			new VoidCoreAction().run(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, null);
 		}
 	}
-	
 	
 	public boolean isValid(World worldIn, BlockPos pos) {
 		if (!isAir(worldIn, pos.up(1)) || !isAir(worldIn, pos.up(2)) || !isAir(worldIn, pos.down(1)) || !isAir(worldIn, pos.down(2))) {

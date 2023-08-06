@@ -12,6 +12,11 @@
   "variants": {
     "normal": {
       "model": "moretcon:blockvoidprismtop.obj"
-    }
+    },
+    "inventory": [
+      {
+        "transform": "forge:default-block"
+      }
+    ]
   }
 }

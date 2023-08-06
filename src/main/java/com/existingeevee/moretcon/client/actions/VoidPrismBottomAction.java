@@ -5,6 +5,7 @@ import com.existingeevee.moretcon.particle.ParticleSpawner;
 import com.existingeevee.moretcon.particle.ParticleSpawner.ParticleProvider;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -27,9 +28,9 @@ public class VoidPrismBottomAction extends ClientAction {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void runAsClient(World world, double x, double y, double z) {
+	public void runAsClient(World world, double x, double y, double z, NBTBase data) {
 		Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleSpawner(world, x, y, z, 10, outerSupplier));
-		Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleSpawner(world, x, y, z, 10, innerSupplier));		
+		Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleSpawner(world, x, y, z, 10, innerSupplier));	
 	}
 
 }

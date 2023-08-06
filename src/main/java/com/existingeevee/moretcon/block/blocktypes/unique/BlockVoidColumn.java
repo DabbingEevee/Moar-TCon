@@ -9,9 +9,15 @@ import com.existingeevee.moretcon.inits.ModBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockVoidColumn extends BlockBase implements VoidConductor {
 
@@ -21,7 +27,7 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		worldIn.scheduleUpdate(pos, this, 1);
+		worldIn.scheduleUpdate(pos, this, 1); 
 	}
 
 	@Override
@@ -39,11 +45,11 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 		boolean bottomActive = isBottomActive(worldIn, pos);
 
 		if (topActive && below.getBlock().isAir(below, worldIn, pos.down())) {
-			new VoidPrismTopAction().run(worldIn, pos.getX() + 0.5, pos.getY() - .1, pos.getZ() + 0.5);
+			new VoidPrismTopAction().run(worldIn, pos.getX() + 0.5, pos.getY() - .1, pos.getZ() + 0.5, null);
 		}
 
 		if (bottomActive && above.getBlock().isAir(above, worldIn, pos.up())) {
-			new VoidPrismBottomAction().run(worldIn, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5);
+			new VoidPrismBottomAction().run(worldIn, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5, null);
 		}
 		
 		if (bottomActive && checkForTop(worldIn, pos)) {
@@ -111,4 +117,24 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 		return false;
 	}
 
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
+	}
 }

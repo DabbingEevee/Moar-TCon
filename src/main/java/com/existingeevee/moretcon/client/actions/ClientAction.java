@@ -7,8 +7,10 @@ import com.existingeevee.moretcon.NetworkHandler;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.JsonToNBT;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -18,17 +20,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class ClientAction {
 
 	@SideOnly(Side.CLIENT)
-	public abstract void runAsClient(World world, double x, double y, double z);
-	
-	public void run(World world, double x, double y, double z) {
+	public abstract void runAsClient(World world, double x, double y, double z, NBTBase data);
+
+	public void run(World world, double x, double y, double z, NBTBase data) {
 		if (MoreTCon.proxy.isClient()) {
-			Runnable r = () -> this.runAsClient(world, x, y, z);;
+			Runnable r = () -> this.runAsClient(world, x, y, z, data);
 			r.run();
 		} else {
-			NetworkHandler.HANDLER.sendToAllAround(new SentClientActionMessage(this.getClass().getName(), x, y ,z), new TargetPoint(world.provider.getDimension(), x, y, z, 200));
+			NetworkHandler.HANDLER.sendToDimension(new SentClientActionMessage(this.getClass().getName(), x, y, z, data), world.provider.getDimension());
 		}
 	}
-	
+
 	public static class SentClientActionMessage implements IMessage, IMessageHandler<SentClientActionMessage, IMessage> {
 
 		private String classPath = "";
@@ -36,17 +38,20 @@ public abstract class ClientAction {
 		private double x;
 		private double y;
 		private double z;
-		
+
+		private NBTBase tag;
+
 		public SentClientActionMessage() {
 
 		}
 
-		public SentClientActionMessage(String classPath, double x, double y, double z) {
+		public SentClientActionMessage(String classPath, double x, double y, double z, NBTBase tag) {
 			if (classPath != null) {
 				this.classPath = classPath;
 				this.x = x;
 				this.y = y;
 				this.z = z;
+				this.tag = tag;
 			}
 		}
 
@@ -56,7 +61,7 @@ public abstract class ClientAction {
 			Minecraft.getMinecraft().addScheduledTask(() -> {
 				try {
 					Class<? extends ClientAction> c = (Class<? extends ClientAction>) Class.forName(message.classPath);
-					c.newInstance().run(Minecraft.getMinecraft().world, message.x, message.y, message.z);
+					c.newInstance().run(Minecraft.getMinecraft().world, message.x, message.y, message.z, message.tag);
 				} catch (Throwable e) {
 					e.printStackTrace();
 				}
@@ -69,10 +74,16 @@ public abstract class ClientAction {
 			this.x = buf.readDouble();
 			this.y = buf.readDouble();
 			this.z = buf.readDouble();
-			
-			int len = buf.readInt();
-			
-			this.classPath = buf.readCharSequence(len, StandardCharsets.UTF_8).toString();
+			try {
+				int len = buf.readInt();
+				this.classPath = buf.readCharSequence(len, StandardCharsets.UTF_8).toString();
+
+				len = buf.readInt();
+				String tag = buf.readCharSequence(len, StandardCharsets.UTF_8).toString();
+				this.tag = JsonToNBT.getTagFromJson(tag).getTag("data");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		@Override
@@ -80,11 +91,17 @@ public abstract class ClientAction {
 			buf.writeDouble(this.x);
 			buf.writeDouble(this.y);
 			buf.writeDouble(this.z);
-			
-			buf.writeInt(this.classPath.length());
 
+			buf.writeInt(this.classPath.length());
 			buf.writeCharSequence(this.classPath, StandardCharsets.UTF_8);
+
+			NBTTagCompound payload = new NBTTagCompound();
+			if (this.tag != null)
+				payload.setTag("data", this.tag);
+			String payloadString = payload.toString();
+			buf.writeInt(payloadString.length());
+			buf.writeCharSequence(payloadString, StandardCharsets.UTF_8);
 		}
 	}
-	
+
 }
