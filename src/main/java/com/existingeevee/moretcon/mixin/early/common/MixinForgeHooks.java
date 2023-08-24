@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.mixin;
+package com.existingeevee.moretcon.mixin.early.common;
 
 import javax.annotation.Nonnull;
 
@@ -21,7 +21,7 @@ import net.minecraftforge.common.ForgeHooks;
 public abstract class MixinForgeHooks {
 
 	@Inject(method = "blockStrength", at = @At("HEAD"), cancellable = true, remap = false)
-	private static void mixin$moretcon$blockStrength$InjectHEAD(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world, @Nonnull BlockPos pos, CallbackInfoReturnable<Float> ci) {
+	private static void moretcon$HEAD_Inject$blockStrength(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world, @Nonnull BlockPos pos, CallbackInfoReturnable<Float> ci) {
 		try {
 			if (ModTraits.bottomsEnd.getToolCoreClass().isInstance(player.getHeldItemMainhand().getItem())) {
 				float hardness = state.getBlockHardness(world, pos);

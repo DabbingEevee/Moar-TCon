@@ -7,8 +7,11 @@ import javax.annotation.Nullable;
 import org.spongepowered.asm.launch.MixinBootstrap;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.MCVersion;
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.Name;
 
-@IFMLLoadingPlugin.Name("MoreTConCore")
+@MCVersion("1.12.2")
+@Name("MoreTConCore")
 public class MoreTConCoreMod implements IFMLLoadingPlugin {
 
 	public MoreTConCoreMod() {

@@ -60,13 +60,17 @@ public class UniqueMaterial extends Material {
 			return ItemStack.EMPTY;
 		}
 
-		ToolPart part = UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(partResLoc));
+		ToolPart part = getPartType();
 		if (part != null) {
 			return part.getItemstackWithMaterial(this);
 		}
 		return ItemStack.EMPTY;
 	}
 
+	public ToolPart getPartType() {
+		return UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(partResLoc));
+	}
+	
 	@Override
 	public String getLocalizedName() {
 		try {

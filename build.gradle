@@ -183,6 +183,7 @@ processResources {
 
 mixin {
     add sourceSets.main, mod_mixin_refmap.replace('${mod_id}', mod_id)
+    //add sourceSets.main, mod_mixin_refmap.replace('${mod_id}', mod_id + ".late")
 }
 
 jar {

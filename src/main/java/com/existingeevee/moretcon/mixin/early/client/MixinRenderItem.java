@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.mixin;
+package com.existingeevee.moretcon.mixin.early.client;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,7 +25,7 @@ public abstract class MixinRenderItem {
 
 	@SideOnly(Side.CLIENT)
 	@Inject(at = @At("HEAD"), method = "renderItemModelIntoGUI", cancellable = true)
-	protected void mixin$moretcon$renderItemModelIntoGUI(ItemStack stack, int x, int y, IBakedModel bakedmodel,
+	protected void moretcon$HEAD_Inject$renderItemModelIntoGUI(ItemStack stack, int x, int y, IBakedModel bakedmodel,
 			CallbackInfo ci) {
 
 		ICustomSlotRenderer renderer = SlotRendererRegistry.get(stack.getItem());
