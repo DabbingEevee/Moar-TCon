@@ -98,10 +98,10 @@ def getVersionFromJava() {
 repositories {
     mavenCentral()
     maven { url = "https://repo.spongepowered.org/maven" }
-    maven {
-        name 'DVS1 Maven FS'
-        url 'http://dvs1.progwml6.com/files/maven/'
-    }
+    //maven {
+    //    name 'DVS1 Maven FS'
+    //    url 'http://dvs1.progwml6.com/files/maven/'
+    //}
     maven {
         name "CurseMaven"
         url "https://www.cursemaven.com"
@@ -132,8 +132,12 @@ dependencies {
         exclude module: 'gson'
     }
 
-    deobfCompile 'slimeknights.mantle:Mantle:1.12-1.3.3.55'
-    deobfCompile 'slimeknights:TConstruct:1.12.2-2.13.0.190'
+    //deobfCompile 'slimeknights.mantle:Mantle:1.12-1.3.3.55'
+    //deobfCompile 'slimeknights:TConstruct:1.12.2-2.13.0.190'
+    deobfCompile 'curse.maven:constructs-armory-287683:3174535'
+    deobfCompile 'curse.maven:mantle-74924:2713386'
+    deobfCompile 'curse.maven:tinkers-construct-74072:2902483'
+
 
     deobfProvided 'com.azanor.baubles:Baubles:1.12-1.5.2'
     deobfCompile 'curse.maven:plusticminusbad-376903:3648592'
@@ -146,8 +150,8 @@ dependencies {
     provided 'curse.maven:tinkers-evolution-384589:3362723'
     provided 'curse.maven:constructs-armory-287683:3174535'
 
-
-    provided "mezz.jei:jei_1.12.2:4.15.0.268"
+    deobfProvided 'curse.maven:jei-238222:4538010'
+    //provided "mezz.jei:jei_1.12.2:4.15.0.268"
     /*
     note that to properly build this, the following jars will need to be placed in the ./run/mods/ folder
     
