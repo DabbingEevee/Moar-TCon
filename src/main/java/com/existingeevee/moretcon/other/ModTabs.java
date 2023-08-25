@@ -77,11 +77,10 @@ public class ModTabs {
 			@Override
 			@SideOnly(Side.CLIENT)
 			public void displayAllRelevantItems(NonNullList<ItemStack> list) {
-				for (Entry<String, BiValue<UniqueMaterial, String>> matObj : UniqueMaterial.uniqueMaterials
-						.entrySet()) {
+				for (Entry<String, BiValue<UniqueMaterial, String>> matObj : UniqueMaterial.uniqueMaterials.entrySet()) {
 					if (matObj.getValue().getA() != null) {
 						ItemStack toolpart = matObj.getValue().getA().getUniqueToolPart();
-						if (toolpart != null) {
+						if (toolpart != null && !toolpart.isEmpty()) {
 							list.add(toolpart);
 						}
 					}
