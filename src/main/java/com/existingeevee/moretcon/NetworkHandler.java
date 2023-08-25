@@ -18,7 +18,6 @@ public class NetworkHandler {
 		HANDLER.registerMessage(AfterimageMessage.class, AfterimageMessage.class, i++, Side.CLIENT);
 		HANDLER.registerMessage(SyncCustomFiresMessage.class, SyncCustomFiresMessage.class, i++, Side.CLIENT);
 		HANDLER.registerMessage(SentClientActionMessage.class, SentClientActionMessage.class, i++, Side.CLIENT);
-		//ItemStack
 	}
 	
 }
