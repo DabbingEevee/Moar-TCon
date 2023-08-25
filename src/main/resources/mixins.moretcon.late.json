@@ -6,6 +6,7 @@
   	"late.common.MixinToolPart"
   ],
   "client": [
+  	"late.client.MixinContentMaterial"
   ],
   "server": [
   ]
