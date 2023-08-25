@@ -6,11 +6,12 @@ import com.existingeevee.moretcon.traits.ModTraits;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -62,11 +63,19 @@ public class EventWatcherMain {
 	public void sendBeta(WorldTickEvent e) {
 		if (ModInfo.BETA && !sent && Minecraft.getMinecraft().player != null) {
 			sent = true;
-			Minecraft.getMinecraft().player.sendStatusMessage(
-					new TextComponentString("[" + "\u00A7" + ChatFormatting.BLUE.getChar() + ModInfo.NAME + "\u00A7"
-							+ ChatFormatting.RED.getChar() + " " + I18n.translateToLocal("text.beta.name") + "\u00A7"
-							+ ChatFormatting.WHITE.getChar() + "] " + I18n.translateToLocal("text.beta.desc")),
-					false);
+			TextComponentString linkComponent = new TextComponentString(ModInfo.ISSUE_TRACKER);
+			linkComponent.setStyle(linkComponent.getStyle().setUnderlined(true).setColor(TextFormatting.BLUE).setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ModInfo.ISSUE_TRACKER)));
+
+			String[] strings = ("[" + "\u00A7" + ChatFormatting.BLUE.getChar() + ModInfo.NAME + "\u00A7"
+					+ ChatFormatting.RED.getChar() + " " + I18n.translateToLocal("text.beta.name") + "\u00A7"
+					+ ChatFormatting.WHITE.getChar() + "] " + I18n.translateToLocal("text.beta.desc")).split("__n__");
+			
+			for (int i = 0; i < strings.length - 1; i++) {
+				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentString(strings[i]), false);
+			}
+			if (strings.length >= 1) {
+				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentString(strings[strings.length - 1]).appendSibling(linkComponent), false);
+			}
 		}
 	}
 
@@ -93,9 +102,9 @@ public class EventWatcherMain {
 						event.getToolTip().add(i++, "");
 
 						if (!(mat.getPartResLoc().equals(event.getItemStack().getItem().getRegistryName().toString()))) {
-							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable")); 
+							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable"));
 							event.getToolTip().add(i++, "");
-						}   
+						}
 						event.getToolTip().add(i++, "§7" + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial
 								.getToolFromResourceLocation(new ResourceLocation(mat.getToolResLoc())).getLocalizedName()));
 						event.getToolTip().add(i++, "");

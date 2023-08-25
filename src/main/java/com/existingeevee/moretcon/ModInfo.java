@@ -13,4 +13,7 @@ public class ModInfo {
     		"after:iceandfire;" +
     		"after:plustic;" +
     		"after:crafttweaker";
+    
+    public static final String ISSUE_TRACKER = "https://github.com/DabbingEevee/Moar-TCon/issues";
+
 }
