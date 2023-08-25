@@ -32,7 +32,7 @@ public class JeiHideBadToolparts extends JeiCustomContainer {
 				blacklist.addIngredientToBlacklist(part.getItemstackWithMaterial(mat.getValue().getA()));
 			}
 			blacklist.removeIngredientFromBlacklist(UniqueMaterial
-					.getToolPartFromResourceLocation(new ResourceLocation(mat.getValue().getA().partResLoc))
+					.getToolPartFromResourceLocation(new ResourceLocation(mat.getValue().getA().getPartResLoc()))
 					.getItemstackWithMaterial(mat.getValue().getA()));
 
 			for (ToolCore tool : TinkerRegistry.getTools()) {

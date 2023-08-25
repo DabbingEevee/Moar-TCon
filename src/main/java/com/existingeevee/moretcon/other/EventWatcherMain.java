@@ -38,7 +38,7 @@ public class EventWatcherMain {
 		for (ItemStack part : event.getToolParts()) {
 			if (TinkerUtil.getMaterialFromStack(part) instanceof UniqueMaterial
 					&& !event.getItemStack().getItem().getRegistryName().toString()
-							.equals(((UniqueMaterial) TinkerUtil.getMaterialFromStack(part)).toolResLoc)) {
+							.equals(((UniqueMaterial) TinkerUtil.getMaterialFromStack(part)).getToolResLoc())) {
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));// "You can only use unique tool parts on the correct tool.");
 			}
 		}
@@ -49,37 +49,11 @@ public class EventWatcherMain {
 		for (ItemStack part : event.getToolParts()) {
 			if (TinkerUtil.getMaterialFromStack(part) instanceof UniqueMaterial
 					&& !event.getItemStack().getItem().getRegistryName().toString()
-							.equals(((UniqueMaterial) TinkerUtil.getMaterialFromStack(part)).toolResLoc)) {
+							.equals(((UniqueMaterial) TinkerUtil.getMaterialFromStack(part)).getToolResLoc())) {
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
 			}
 		}
 	}
-
-	/*
-	 * @SubscribeEvent public void fishTest(ItemFishedEvent event) { if
-	 * (event.getEntityPlayer().dimension == 1 && !event.getDrops().isEmpty()) {
-	 * event.setCanceled(true);
-	 * 
-	 * ItemStack toGive = new ItemStack(ModItems.dustFusionite);
-	 * 
-	 * fakeFish(toGive, event.getHookEntity()); } }
-	 * 
-	 * private static void fakeFish(ItemStack toGive, EntityFishHook fishHook) { if
-	 * (toGive == null || fishHook == null || fishHook.getAngler() == null) return;
-	 * 
-	 * EntityItem toHook = new EntityItem(fishHook.world, fishHook.posX,
-	 * fishHook.posY, fishHook.posZ, toGive); double d0 = fishHook.getAngler().posX
-	 * - fishHook.posX; double d1 = fishHook.getAngler().posY - fishHook.posY;
-	 * double d2 = fishHook.getAngler().posZ - fishHook.posZ; double d3 =
-	 * MathHelper.sqrt(d0 * d0 + d1 * d1 + d2 * d2); double d4 = 0.1D;
-	 * toHook.motionX = d0 * 0.1D; toHook.motionY = d1 * 0.1D +
-	 * (double)MathHelper.sqrt(d3) * 0.08D; toHook.motionZ = d2 * 0.1D;
-	 * fishHook.world.spawnEntity(toHook);
-	 * fishHook.getAngler().world.spawnEntity(new
-	 * EntityXPOrb(fishHook.getAngler().world, fishHook.getAngler().posX,
-	 * fishHook.getAngler().posY + 0.5D, fishHook.getAngler().posZ + 0.5D, new
-	 * Random().nextInt(6) + 1)); }
-	 */
 
 	public static boolean sent = false;
 
@@ -101,7 +75,7 @@ public class EventWatcherMain {
 		Material pre = Misc.getUniqueEmbossment(event.getToolBeforeModification());
 		Material post = Misc.getUniqueEmbossment(event.getItemStack());
 		if (pre == null && (post instanceof UniqueMaterial)) {
-			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(((UniqueMaterial) post).toolResLoc))
+			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(((UniqueMaterial) post).getToolResLoc()))
 					.getRegistryName().equals(event.getItemStack().getItem().getRegistryName()))
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
 		}
@@ -114,16 +88,16 @@ public class EventWatcherMain {
 			if (event.getItemStack().getItem() instanceof ToolPart) {
 				if (TinkerUtil.getMaterialFromStack(event.getItemStack()) instanceof UniqueMaterial) {
 					UniqueMaterial mat = (UniqueMaterial) TinkerUtil.getMaterialFromStack(event.getItemStack());
-					if (UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(mat.toolResLoc)) != null) {
+					if (UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(mat.getToolResLoc())) != null) {
 						int i = 1;
 						event.getToolTip().add(i++, "");
 
-						if (!(mat.partResLoc.equals(event.getItemStack().getItem().getRegistryName().toString()))) {
+						if (!(mat.getPartResLoc().equals(event.getItemStack().getItem().getRegistryName().toString()))) {
 							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable")); // ");
 							event.getToolTip().add(i++, "");
 						}   
 						event.getToolTip().add(i++, "§7" + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial
-								.getToolFromResourceLocation(new ResourceLocation(mat.toolResLoc)).getLocalizedName()));
+								.getToolFromResourceLocation(new ResourceLocation(mat.getToolResLoc())).getLocalizedName()));
 						event.getToolTip().add(i++, "");
 
 					}

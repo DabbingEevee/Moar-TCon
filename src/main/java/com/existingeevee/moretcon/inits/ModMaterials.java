@@ -15,6 +15,7 @@ import com.existingeevee.moretcon.traits.ModTraits;
 
 import landmaster.plustic.tools.stats.BatteryCellMaterialStats;
 import landmaster.plustic.tools.stats.LaserMediumMaterialStats;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.materials.ArrowShaftMaterialStats;
@@ -30,6 +31,7 @@ import slimeknights.tconstruct.library.materials.ProjectileMaterialStats;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerTraits;
+import thebetweenlands.common.registries.BlockRegistry;
 import twilightforest.compat.TConstruct;
 
 public class ModMaterials implements MaterialTypes {
@@ -98,7 +100,9 @@ public class ModMaterials implements MaterialTypes {
 	public static UniqueMaterial materialShockwave = new UniqueMaterial(
 			Misc.createNonConflictiveName("shockwave"), 0xa1ddd8,
 			ConfigHandler.registerBetweenTinkerTools ? "moretcon:blswordblade" : "tconstruct:sword_blade",
-			ConfigHandler.registerBetweenTinkerTools ? "moretcon:blsword" : "tconstruct:broadsword");
+			ConfigHandler.registerBetweenTinkerTools ? "moretcon:blsword" : "tconstruct:broadsword",
+			() -> new ItemStack(BlockRegistry.ANIMATOR), "shockwave"		
+			);
 
 	public static UniqueMaterial materialTriblade = new UniqueMaterial(
 			Misc.createNonConflictiveName("triblade"), 0x6d6d6d, "tconstruct:knife_blade",
