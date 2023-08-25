@@ -93,7 +93,7 @@ public class EventWatcherMain {
 						event.getToolTip().add(i++, "");
 
 						if (!(mat.getPartResLoc().equals(event.getItemStack().getItem().getRegistryName().toString()))) {
-							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable")); // ");
+							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable")); 
 							event.getToolTip().add(i++, "");
 						}   
 						event.getToolTip().add(i++, "§7" + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial
@@ -119,9 +119,6 @@ public class EventWatcherMain {
 				for (int i = 1; i < event.getToolTip().size() + 1; i++) {
 					String last = StringUtils.stripControlCodes(event.getToolTip().get(event.getToolTip().size() - i));
 					boolean found = false;
-					// tooltip.bl.circlegem.green=§aGreen Gem§r
-					// tooltip.bl.circlegem.crimson=§cCrimson Gem§r
-					// tooltip.bl.circlegem.aqua=§9Aqua Gem§r
 					for (String str : new String[] {
 							StringUtils.stripControlCodes(I18n.translateToLocal("tooltip.bl.circlegem.green")),
 							StringUtils.stripControlCodes(I18n.translateToLocal("tooltip.bl.circlegem.crimson")),
