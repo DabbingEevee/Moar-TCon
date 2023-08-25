@@ -3,8 +3,7 @@
   "package": "com.existingeevee.moretcon.mixin",
   "refmap": "refmap.moretcon.json",
   "mixins": [
-  	"late.common.MixinToolPart",
-  	"late.common.MixinSharpeningKit"
+  	"late.common.MixinToolPart"
   ],
   "client": [
   ],
