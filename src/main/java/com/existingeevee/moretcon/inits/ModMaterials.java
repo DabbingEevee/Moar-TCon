@@ -123,6 +123,10 @@ public class ModMaterials implements MaterialTypes {
 	public static final UniqueMaterial materialCrimson = new UniqueMaterial(
 			Misc.createNonConflictiveName("crimson"), 0xaa0000, "tconstruct:tough_tool_rod",
 			"plustic:katana");
+	
+	public static final UniqueMaterial materialEssencore = new UniqueMaterial(
+			Misc.createNonConflictiveName("essencore"), 0x65c9ff, "tconstruct:pick_head",
+			"tconstruct:pickaxe");
 
 	static {
 		if (CompatManager.tic3backport) {
@@ -520,6 +524,9 @@ public class ModMaterials implements MaterialTypes {
 			materialEtherstone.addStats(new HeadMaterialStats(1450, 17.5f, 18f, 8));
 			materialEtherstone.addStats(new HandleMaterialStats(4f, -50));
 			materialEtherstone.addStats(new ExtraMaterialStats(500));
+			
+			materialEssencore.addStats(new HeadMaterialStats(4096, 10f, 12f, 5));
+			materialEssencore.addTrait(ModTraits.essentialObliteration);
 		}
 		if (CompatManager.aether_legacy) { // TODO
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -841,6 +848,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialErythynite).toolforge();
 			ModMaterials.registerMaterial(materialShadowglass);
 			ModMaterials.registerMaterial(materialEtherstone).toolforge();
+			ModMaterials.registerMaterial(materialEssencore);
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);
