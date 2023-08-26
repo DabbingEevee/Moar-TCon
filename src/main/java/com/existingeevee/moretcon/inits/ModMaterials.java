@@ -38,89 +38,89 @@ public class ModMaterials implements MaterialTypes {
 
 	public static int totalMaterials;
 
-	public static Material materialWeedwood = new Material(Misc.createNonConflictiveName("weedwood"), 0xcc9900);
-	public static Material materialIronwood = new Material(Misc.createNonConflictiveName("ironwood"), 0xcc9900);
-	public static Material materialFusionite = new Material(Misc.createNonConflictiveName("fusionite"), 0x3399ff);
-	public static Material materialSyrmorite = new Material(Misc.createNonConflictiveName("syrmorite"), 0x234187);
-	public static Material materialValonite = new Material(Misc.createNonConflictiveName("valonite"), 0xcab1ca);
-	public static Material materialOctine = new Material(Misc.createNonConflictiveName("octine"), 0xff8206);
-	public static Material materialEmberlight = new Material(Misc.createNonConflictiveName("emberlight"), 0xe8926d);
-	public static Material materialReedRope = new Material(Misc.createNonConflictiveName("reedrope"), 0x000b4e0b);
-	public static Material materialAnglerTooth = new Material(Misc.createNonConflictiveName("anglertooth"), 0x00cfcf99);
-	public static Material materialDragonFlyWing = new Material(Misc.createNonConflictiveName("dragonflywing"), 0x00bed6db);
-	public static Material materialSpaceTimeDisruption = new Material(Misc.createNonConflictiveName("spacetimedisruption"), 0x400080);
-	public static Material materialIrradium = new Material(Misc.createNonConflictiveName("irradium"), 0x00ed00);
-	public static Material materialSolsteel = new Material(Misc.createNonConflictiveName("solarsteel"), 0xffad33);
-	public static Material materialPenguinite = new Material(Misc.createNonConflictiveName("penguinite"), 0xe6e6ffff);
-	public static Material materialVoidSpar = new Material(Misc.createNonConflictiveName("voidspar"), 0xb37e15ff);
-	public static Material materialGarstone = new Material(Misc.createNonConflictiveName("garstone"), 0xff0a0a);
-	public static Material materialBloodstone = new Material(Misc.createNonConflictiveName("bloodstone"), 0x660a0a);
-	public static Material materialGallium = new Material(Misc.createNonConflictiveName("gallium"), 0xffffff);
-	public static Material materialSlimyBone = new Material(Misc.createNonConflictiveName("slimybone"), 0xede6bf);
-	public static Material materialEnderal = new Material(Misc.createNonConflictiveName("enderal"), 0xb32d0080);
-	public static Material materialEnderexamite = new Material(Misc.createNonConflictiveName("enderexamite"), 0x8e3acf);
-	public static Material materialFerroherb = new Material(Misc.createNonConflictiveName("ferroherb"), 0x4c5e3a);
-	public static Material materialRuneSteel = new Material(Misc.createNonConflictiveName("runeSteel"), 0xb6905e);
-	public static Material materialArkenium = new Material(Misc.createNonConflictiveName("arkenium"), 0x595959);
-	public static Material materialSkyroot = new Material(Misc.createNonConflictiveName("skyroot"), 0x6c633e);
-	public static Material materialHolystone = new Material(Misc.createNonConflictiveName("holystone"), 0xa3a3a3);
-	public static Material materialZanite = new Material(Misc.createNonConflictiveName("zanite"), 0x6611dd);
-	public static Material materialGravitite = new Material(Misc.createNonConflictiveName("gravitite"), 0xcc55aa);
-	public static Material materialValkyrieMetal = new Material(Misc.createNonConflictiveName("valkyriemetal"), 0xeaee57);
-	public static Material materialAmberwood = new Material(Misc.createNonConflictiveName("amberwood"), 0xeaee57);
-	public static Material materialGravitonium = new Material(Misc.createNonConflictiveName("gravitonium"), 0x00aa00);
-	public static Material materialTrichromadentium = new Material(Misc.createNonConflictiveName("trichromadentium"), 0x777777);
-	public static Material materialSwampSteel = new Material(Misc.createNonConflictiveName("swampsteel"), 0x003906);
-	public static Material materialRotiron = new Material(Misc.createNonConflictiveName("rotiron"), 0x002400);
-	public static Material materialEchostone = new Material(Misc.createNonConflictiveName("echostone"), 0x00725a);
-	public static Material materialIgniglomerate = new Material(Misc.createNonConflictiveName("igniglomerate"), 0xB33B00);
-	public static Material materialAtronium = new Material(Misc.createNonConflictiveName("atronium"), 0xd99857);
-	public static Material materialEbonite = new Material(Misc.createNonConflictiveName("ebonite"), 0x270339);
-	public static Material materialErythynite = new Material(Misc.createNonConflictiveName("erythynite"), 0x00ff00);
-	public static Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass"), 0x2a275e);
-	public static Material materialEtherstone = new Material(Misc.createNonConflictiveName("etherstone"), 0xf1ea3b);
+	public static final Material materialWeedwood = new Material(Misc.createNonConflictiveName("weedwood"), 0xcc9900);
+	public static final Material materialIronwood = new Material(Misc.createNonConflictiveName("ironwood"), 0xcc9900);
+	public static final Material materialFusionite = new Material(Misc.createNonConflictiveName("fusionite"), 0x3399ff);
+	public static final Material materialSyrmorite = new Material(Misc.createNonConflictiveName("syrmorite"), 0x234187);
+	public static final Material materialValonite = new Material(Misc.createNonConflictiveName("valonite"), 0xcab1ca);
+	public static final Material materialOctine = new Material(Misc.createNonConflictiveName("octine"), 0xff8206);
+	public static final Material materialEmberlight = new Material(Misc.createNonConflictiveName("emberlight"), 0xe8926d);
+	public static final Material materialReedRope = new Material(Misc.createNonConflictiveName("reedrope"), 0x000b4e0b);
+	public static final Material materialAnglerTooth = new Material(Misc.createNonConflictiveName("anglertooth"), 0x00cfcf99);
+	public static final Material materialDragonFlyWing = new Material(Misc.createNonConflictiveName("dragonflywing"), 0x00bed6db);
+	public static final Material materialSpaceTimeDisruption = new Material(Misc.createNonConflictiveName("spacetimedisruption"), 0x400080);
+	public static final Material materialIrradium = new Material(Misc.createNonConflictiveName("irradium"), 0x00ed00);
+	public static final Material materialSolsteel = new Material(Misc.createNonConflictiveName("solarsteel"), 0xffad33);
+	public static final Material materialPenguinite = new Material(Misc.createNonConflictiveName("penguinite"), 0xe6e6ffff);
+	public static final Material materialVoidSpar = new Material(Misc.createNonConflictiveName("voidspar"), 0xb37e15ff);
+	public static final Material materialGarstone = new Material(Misc.createNonConflictiveName("garstone"), 0xff0a0a);
+	public static final Material materialBloodstone = new Material(Misc.createNonConflictiveName("bloodstone"), 0x660a0a);
+	public static final Material materialGallium = new Material(Misc.createNonConflictiveName("gallium"), 0xffffff);
+	public static final Material materialSlimyBone = new Material(Misc.createNonConflictiveName("slimybone"), 0xede6bf);
+	public static final Material materialEnderal = new Material(Misc.createNonConflictiveName("enderal"), 0xb32d0080);
+	public static final Material materialEnderexamite = new Material(Misc.createNonConflictiveName("enderexamite"), 0x8e3acf);
+	public static final Material materialFerroherb = new Material(Misc.createNonConflictiveName("ferroherb"), 0x4c5e3a);
+	public static final Material materialRuneSteel = new Material(Misc.createNonConflictiveName("runeSteel"), 0xb6905e);
+	public static final Material materialArkenium = new Material(Misc.createNonConflictiveName("arkenium"), 0x595959);
+	public static final Material materialSkyroot = new Material(Misc.createNonConflictiveName("skyroot"), 0x6c633e);
+	public static final Material materialHolystone = new Material(Misc.createNonConflictiveName("holystone"), 0xa3a3a3);
+	public static final Material materialZanite = new Material(Misc.createNonConflictiveName("zanite"), 0x6611dd);
+	public static final Material materialGravitite = new Material(Misc.createNonConflictiveName("gravitite"), 0xcc55aa);
+	public static final Material materialValkyrieMetal = new Material(Misc.createNonConflictiveName("valkyriemetal"), 0xeaee57);
+	public static final Material materialAmberwood = new Material(Misc.createNonConflictiveName("amberwood"), 0xeaee57);
+	public static final Material materialGravitonium = new Material(Misc.createNonConflictiveName("gravitonium"), 0x00aa00);
+	public static final Material materialTrichromadentium = new Material(Misc.createNonConflictiveName("trichromadentium"), 0x777777);
+	public static final Material materialSwampSteel = new Material(Misc.createNonConflictiveName("swampsteel"), 0x003906);
+	public static final Material materialRotiron = new Material(Misc.createNonConflictiveName("rotiron"), 0x002400);
+	public static final Material materialEchostone = new Material(Misc.createNonConflictiveName("echostone"), 0x00725a);
+	public static final Material materialIgniglomerate = new Material(Misc.createNonConflictiveName("igniglomerate"), 0xB33B00);
+	public static final Material materialAtronium = new Material(Misc.createNonConflictiveName("atronium"), 0xd99857);
+	public static final Material materialEbonite = new Material(Misc.createNonConflictiveName("ebonite"), 0x270339);
+	public static final Material materialErythynite = new Material(Misc.createNonConflictiveName("erythynite"), 0x00ff00);
+	public static final Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass"), 0x2a275e);
+	public static final Material materialEtherstone = new Material(Misc.createNonConflictiveName("etherstone"), 0xf1ea3b);
 
-	public static Material materialNahuatl = new Material(Misc.createNonConflictiveName("nahuatl"), 0x3B2754);
-	public static Material materialSlimewood = new Material(Misc.createNonConflictiveName("slimewood"), 0x96dd8f);
+	public static final Material materialNahuatl = new Material(Misc.createNonConflictiveName("nahuatl"), 0x3B2754);
+	public static final Material materialSlimewood = new Material(Misc.createNonConflictiveName("slimewood"), 0x96dd8f);
 
 	//TODO
-	// public static Material materialQueensslime = new Material(Misc.createNonConflictiveName("queensslime"), 0x565808); //Need Custom
-	// public static Material materialHepatizon = new Material(Misc.createNonConflictiveName("hepatizon"), 0xf1ea3b);
-	// public static Material materialSlimesteel = new Material(Misc.createNonConflictiveName("slimesteel"), 0x47efea);
-	// public static Material materialSearedStone = new Material(Misc.createNonConflictiveName("searedstone"), 0x4f4a47);
-	// public static Material materialScorchedStone = new Material(Misc.createNonConflictiveName("scorchedstone"), 0x53453c);
-	// public static Material materialBloodbone = new Material(Misc.createNonConflictiveName("bloodbone"), 0xb80000);
-	// public static Material materialNecroticBone = new Material(Misc.createNonConflictiveName("necrobone"), 0x343434);
-	// public static Material materialBlazingBone = new Material(Misc.createNonConflictiveName("blazingbone"), 0xefc62f);
+	// public static final Material materialQueensslime = new Material(Misc.createNonConflictiveName("queensslime"), 0x565808); //Need Custom
+	// public static final Material materialHepatizon = new Material(Misc.createNonConflictiveName("hepatizon"), 0xf1ea3b);
+	// public static final Material materialSlimesteel = new Material(Misc.createNonConflictiveName("slimesteel"), 0x47efea);
+	// public static final Material materialSearedStone = new Material(Misc.createNonConflictiveName("searedstone"), 0x4f4a47);
+	// public static final Material materialScorchedStone = new Material(Misc.createNonConflictiveName("scorchedstone"), 0x53453c);
+	// public static final Material materialBloodbone = new Material(Misc.createNonConflictiveName("bloodbone"), 0xb80000);
+	// public static final Material materialNecroticBone = new Material(Misc.createNonConflictiveName("necrobone"), 0x343434);
+	// public static final Material materialBlazingBone = new Material(Misc.createNonConflictiveName("blazingbone"), 0xefc62f);
 
-	public static UniqueMaterial materialPlasma = new UniqueMaterial(
+	public static final UniqueMaterial materialPlasma = new UniqueMaterial(
 			Misc.createNonConflictiveName("plasma"), 0xff0000, "tconstruct:sword_blade",
 			"tconstruct:broadsword");
 
-	public static UniqueMaterial materialShockwave = new UniqueMaterial(
+	public static final UniqueMaterial materialShockwave = new UniqueMaterial(
 			Misc.createNonConflictiveName("shockwave"), 0xa1ddd8,
 			ConfigHandler.registerBetweenTinkerTools ? "moretcon:blswordblade" : "tconstruct:sword_blade",
 			ConfigHandler.registerBetweenTinkerTools ? "moretcon:blsword" : "tconstruct:broadsword",
 			() -> new ItemStack(BlockRegistry.ANIMATOR), "shockwave"		
 			);
 
-	public static UniqueMaterial materialTriblade = new UniqueMaterial(
+	public static final UniqueMaterial materialTriblade = new UniqueMaterial(
 			Misc.createNonConflictiveName("triblade"), 0x6d6d6d, "tconstruct:knife_blade",
 			"tconstruct:shuriken");
 
-	public static UniqueMaterial materialTrailblazer = new UniqueMaterial(
+	public static final UniqueMaterial materialTrailblazer = new UniqueMaterial(
 			Misc.createNonConflictiveName("trailblazer"), 0xff6c00, "tconstruct:knife_blade",
 			"tconstruct:shuriken");
 
-	public static UniqueMaterial materialMirrored = new UniqueMaterial(
+	public static final UniqueMaterial materialMirrored = new UniqueMaterial(
 			Misc.createNonConflictiveName("mirrored"), 0xfafaff, "tconstruct:fletching",
 			"tconstruct:arrow");
 
-	public static UniqueMaterial materialTechnoblade = new UniqueMaterial(
+	public static final UniqueMaterial materialTechnoblade = new UniqueMaterial(
 			Misc.createNonConflictiveName("technoblade"), 0xea8f8c, "tconstruct:sword_blade",
 			"tconstruct:broadsword");
 
-	public static UniqueMaterial materialCrimson = new UniqueMaterial(
+	public static final UniqueMaterial materialCrimson = new UniqueMaterial(
 			Misc.createNonConflictiveName("crimson"), 0xaa0000, "tconstruct:tough_tool_rod",
 			"plustic:katana");
 
