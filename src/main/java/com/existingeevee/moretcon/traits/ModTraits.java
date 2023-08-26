@@ -44,13 +44,13 @@ import com.existingeevee.moretcon.traits.traits.Slicing;
 import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
-import com.existingeevee.moretcon.traits.unique.AerialFlame;
-import com.existingeevee.moretcon.traits.unique.BloodGodsBlessing;
-import com.existingeevee.moretcon.traits.unique.BloodyArc;
-import com.existingeevee.moretcon.traits.unique.Mirroring;
-import com.existingeevee.moretcon.traits.unique.Plasmatic;
-import com.existingeevee.moretcon.traits.unique.Shockwaving;
-import com.existingeevee.moretcon.traits.unique.TripleShot;
+import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
+import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
+import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
+import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
+import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
+import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
+import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
 
 import slimeknights.tconstruct.library.modifiers.IModifier;
 

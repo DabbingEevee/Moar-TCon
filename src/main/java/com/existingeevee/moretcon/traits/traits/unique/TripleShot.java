@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.traits.unique;
+package com.existingeevee.moretcon.traits.traits.unique;
 
 import com.existingeevee.moretcon.other.Misc;
 

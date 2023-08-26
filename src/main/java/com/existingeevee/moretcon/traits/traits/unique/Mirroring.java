@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.traits.unique;
+package com.existingeevee.moretcon.traits.traits.unique;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
