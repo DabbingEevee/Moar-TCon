@@ -281,7 +281,8 @@ modifier.moretcon.penetrant.desc=§obigger they are, harder they fall§r\nYour T
 modifier.moretcon.penetrant.name=Penetrant
 modifier.moretcon.darkened.desc=§oEmbrace the darkness§r\nYour Tool is more effective whilst in darkness.
 modifier.moretcon.darkened.name=Darkened
-
+modifier.moretcon.essential_obliteration.desc=§oLazy miner...§r\nSneaking while mining will increase the mining time significantly, however will charge up your tool. When your tool has charge, It can mine 20 additional blocks away as well as being significantly faster.
+modifier.moretcon.essential_obliteration.name=Essential Obliteration
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
 
@@ -375,6 +376,7 @@ uniquetoolpart.moretcon.technoblade.name=Techno's Blade
 uniquetoolpart.moretcon.test.name=Test
 uniquetoolpart.moretcon.trailblazer.name=Trailblazer
 uniquetoolpart.moretcon.triblade.name=Triblade
+uniquetoolpart.moretcon.essencore.name=Essencore
 
 comment Sponges=comment
 

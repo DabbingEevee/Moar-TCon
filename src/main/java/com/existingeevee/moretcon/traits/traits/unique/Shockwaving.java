@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.OverrideItemUseEvent;
+import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -19,11 +20,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import slimeknights.tconstruct.library.traits.AbstractTrait;
 import thebetweenlands.common.entity.EntityShockwaveBlock;
 import thebetweenlands.common.registries.SoundRegistry;
 
-public class Shockwaving extends AbstractTrait {
+public class Shockwaving extends NumberTrackerTrait {
 
 	// public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Shockwaving() {
@@ -127,5 +127,21 @@ public class Shockwaving extends AbstractTrait {
 				stack.getTagCompound().setInteger("uses", 0);
 			}
 		}
+	}
+
+	@Override
+	public int getNumberMax(ItemStack stack) {
+		return 3;
+	}
+
+	@Override
+	public int getNumberRemaining(ItemStack stack) {
+		return 3 - stack.getTagCompound().getInteger("uses");
+	}
+
+	@Override
+	public int setNumberRemaining(ItemStack stack, int amount) {
+		stack.getTagCompound().setInteger("uses", 3 - amount);
+		return getNumberRemaining(stack);
 	}
 }

@@ -37,7 +37,8 @@ public class Reaching extends AbstractTrait {
     public void onPlayerJoin(EntityJoinWorldEvent event) {
         if ((event.getEntity() instanceof EntityPlayer)) {
             EntityPlayer player = (EntityPlayer) event.getEntity();
-            player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).removeAllModifiers();
+            if (player.world.isRemote)
+            	player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).removeModifier(reachModifier);;
         }
     }
 
