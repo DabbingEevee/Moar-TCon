@@ -1,6 +1,8 @@
-package com.existingeevee.moretcon.other;
+package com.existingeevee.moretcon.other.ingredient;
 
 import javax.annotation.Nullable;
+
+import com.existingeevee.moretcon.materials.UniqueMaterial;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -10,6 +12,14 @@ import slimeknights.tconstruct.library.tinkering.IMaterialItem;
 public class TinkerPartIngredient extends Ingredient {
 	
 	private Material mat = null;
+	
+	public TinkerPartIngredient(Material mat, String item) {
+		this(mat, UniqueMaterial.getToolPart(item));
+	}
+	
+	public TinkerPartIngredient(Material mat, IMaterialItem item) {
+		this(mat, item.getItemstackWithMaterial(mat));
+	}
 	
 	public TinkerPartIngredient(Material mat, ItemStack...stacks) {
 	    super(stacks);

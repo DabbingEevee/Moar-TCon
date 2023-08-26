@@ -1,13 +1,12 @@
 package com.existingeevee.moretcon.compat.betweenlands;
 
-import java.util.Arrays;
-
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModFluids;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.inits.ModTools;
+import com.existingeevee.moretcon.inits.recipes.OtherRecipes;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -45,7 +44,7 @@ public class BLRecipes {
 		}
 
 		blAPI.registerPestleAndMortarRecipe(new BLCrushedShockwaveRecipe());
-		if (ModMaterials.materialShockwave != null && ModMaterials.materialShockwave.getUniqueToolPart() != null && !Arrays.asList(ConfigHandler.removeUniqueToolpartRecipes).contains(ModMaterials.materialShockwave.getIdentifier())) {
+		if (OtherRecipes.canRegisterUniqueRecipe(ModMaterials.materialShockwave)) {
 			blAPI.registerAnimatorRecipe(new BLShockwaveBladeRecipe());
 			blAPI.registerAnimatorRecipe(new BLSwampSteelRecipe());
 		}

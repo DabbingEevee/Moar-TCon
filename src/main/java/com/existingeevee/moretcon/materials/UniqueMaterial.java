@@ -118,6 +118,10 @@ public class UniqueMaterial extends Material {
 		return I18n.translateToLocal("material.uniquetoolpart.name");
 	}
 
+	public static ToolPart getToolPart(String res) {
+		return getToolPartFromResourceLocation(new ResourceLocation(res));
+	}
+	
 	public static ToolPart getToolPartFromResourceLocation(ResourceLocation res) {
 		for (IToolPart part : TinkerRegistry.getToolParts()) {
 			if (part instanceof ToolPart) {

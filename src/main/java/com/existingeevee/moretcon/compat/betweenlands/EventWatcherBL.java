@@ -30,7 +30,7 @@ public class EventWatcherBL {
 	public void onWorldStarted(WorldEvent.Load e) {
 		lightningInstances = new ArrayList<EntityBLLightningBolt>();
 	}
-	
+
 	@SubscribeEvent
 	public void onWorldTick(WorldTickEvent w) {
 		for (Entity e : new ArrayList<>(w.world.loadedEntityList)) {
@@ -55,9 +55,9 @@ public class EventWatcherBL {
 									item.setEntityInvulnerable(true);
 									ToolNBT toolnbt = TagUtil.getToolStats(stack);
 									toolnbt.modifiers--;
-								    TagUtil.setToolTag(stack.serializeNBT().getCompoundTag("tag"), toolnbt.get());
-								    stack.serializeNBT().getCompoundTag("tag").getCompoundTag("TinkerData").getTagList("Modifiers", 8).appendTag(new NBTTagString(ModTraits.modShocking.getModifierIdentifier()));
-								    ToolBuilder.addTrait(stack.serializeNBT().getCompoundTag("tag"), ModTraits.modShocking, ModTraits.modShocking.getColor());
+									TagUtil.setToolTag(stack.serializeNBT().getCompoundTag("tag"), toolnbt.get());
+									stack.serializeNBT().getCompoundTag("tag").getCompoundTag("TinkerData").getTagList("Modifiers", 8).appendTag(new NBTTagString(ModTraits.modShocking.getModifierIdentifier()));
+									ToolBuilder.addTrait(stack.serializeNBT().getCompoundTag("tag"), ModTraits.modShocking, ModTraits.modShocking.getColor());
 								}
 							}
 						}
@@ -65,6 +65,7 @@ public class EventWatcherBL {
 					EventWatcherBL.lightningInstances.remove(e);
 				}
 			}
-		} catch(ConcurrentModificationException e) {}
+		} catch (ConcurrentModificationException e) {
+		}
 	}
 }
