@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.inits.ModFluids;
-import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 
 import mezz.jei.api.IModRegistry;
