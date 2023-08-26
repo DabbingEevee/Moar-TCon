@@ -18,7 +18,7 @@ import net.minecraftforge.oredict.OreIngredient;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 
-public class OtherRecipes {
+public class UniqueToolpartRecipes {
 
 	public static void init(Register<IRecipe> event) {
 		if (ConfigHandler.shouldAllowMainContent) {
@@ -91,33 +91,33 @@ public class OtherRecipes {
 								Pair.of('D', new OreIngredient("blockDiamond")),
 								Pair.of('P', new TinkerPartIngredient(TinkerMaterials.pigiron, "tconstruct:sword_blade"))));
 			}
-		}
-		if (canRegisterUniqueRecipe(ModMaterials.materialCrimson)) {
-			event.getRegistry().register(
-					RecipeHelper.createRecipe("crimson_recipe", ModMaterials.materialCrimson.getUniqueToolPart(),
-							new String[] {
-									"ACG",
-									"CBC",
-									"OCA"
-							},
-							Pair.of('A', new OreIngredient("ingotGallium")),
-							Pair.of('G', new OreIngredient("gemGarstone")),
-							Pair.of('C', new OreIngredient("slimeballBlood")),
-							Pair.of('B', new TinkerPartIngredient(ModMaterials.materialBloodstone, "tconstruct:tough_tool_rod")),
-							Pair.of('O', new TinkerPartIngredient(TinkerMaterials.bone, "tconstruct:tough_tool_rod"))));
-		}
-		if (canRegisterUniqueRecipe(ModMaterials.materialEssencore)) {
-			event.getRegistry().register(
-					RecipeHelper.createRecipe("essencore_recipe", ModMaterials.materialEssencore.getUniqueToolPart(),
-							new String[] {
-									"GFN",
-									"FRF",
-									"NFG"
-							},
-							Pair.of('G', new OreIngredient("ingotGallium")),
-							Pair.of('F', new OreIngredient("ingotFusionite")),
-							Pair.of('N', new OreIngredient("nuggetFusionite")),
-							Pair.of('R', new OreIngredient("ingotRunesteel"))));
+			if (canRegisterUniqueRecipe(ModMaterials.materialCrimson)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("crimson_recipe", ModMaterials.materialCrimson.getUniqueToolPart(),
+								new String[] {
+										"ACG",
+										"CBC",
+										"OCA"
+								},
+								Pair.of('A', new OreIngredient("ingotGallium")),
+								Pair.of('G', new OreIngredient("gemGarstone")),
+								Pair.of('C', new OreIngredient("slimeballBlood")),
+								Pair.of('B', new TinkerPartIngredient(ModMaterials.materialBloodstone, "tconstruct:tough_tool_rod")),
+								Pair.of('O', new TinkerPartIngredient(TinkerMaterials.bone, "tconstruct:tough_tool_rod"))));
+			}
+			if (canRegisterUniqueRecipe(ModMaterials.materialEssencore)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("essencore_recipe", ModMaterials.materialEssencore.getUniqueToolPart(),
+								new String[] {
+										"GFN",
+										"FRF",
+										"NFG"
+								},
+								Pair.of('G', new OreIngredient("ingotGallium")),
+								Pair.of('F', new OreIngredient("ingotFusionite")),
+								Pair.of('N', new OreIngredient("nuggetFusionite")),
+								Pair.of('R', new OreIngredient("ingotRunesteel"))));
+			}
 		}
 	}
 

@@ -51,6 +51,7 @@ import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
 import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
 import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
+import com.existingeevee.moretcon.traits.traits.unique.Wormed;
 
 import slimeknights.tconstruct.library.modifiers.IModifier;
 
@@ -113,6 +114,7 @@ public class ModTraits {
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
 	public static Oxide oxide;
+	public static Wormed wormed;
 	
 	
 	static {
@@ -122,6 +124,7 @@ public class ModTraits {
 			corroding = new Corroding();
 			betweenified = new Betweenified();
 			oxide = new Oxide();
+			wormed = new Wormed();
 		}
 		if (CompatManager.aether_legacy) {
 			antigravity = new AntiGravity();

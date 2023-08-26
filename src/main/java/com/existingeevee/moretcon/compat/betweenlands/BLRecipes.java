@@ -1,19 +1,25 @@
 package com.existingeevee.moretcon.compat.betweenlands;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModFluids;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.inits.recipes.OtherRecipes;
+import com.existingeevee.moretcon.inits.recipes.UniqueToolpartRecipes;
+import com.existingeevee.moretcon.other.RecipeHelper;
+import com.existingeevee.moretcon.other.ingredient.TinkerPartIngredient;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -23,6 +29,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
+import slimeknights.tconstruct.tools.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerTools;
 import thebetweenlands.api.IBetweenlandsAPI;
 import thebetweenlands.common.BetweenlandsAPI;
@@ -33,7 +40,7 @@ import thebetweenlands.common.registries.ItemRegistry;
 
 public class BLRecipes {
 
-	public static void init() {
+	public static void init(Register<IRecipe> event) {
 		IBetweenlandsAPI blAPI = BetweenlandsAPI.getInstance();
 		if (ConfigHandler.registerBetweenTinkerTools) {
 			blAPI.registerAnimatorRecipe(new BLPatternRecipe(TinkerTools.axeHead, ModTools.betweenAxeHead));
@@ -44,10 +51,22 @@ public class BLRecipes {
 		}
 
 		blAPI.registerPestleAndMortarRecipe(new BLCrushedShockwaveRecipe());
-		if (OtherRecipes.canRegisterUniqueRecipe(ModMaterials.materialShockwave)) {
+		if (UniqueToolpartRecipes.canRegisterUniqueRecipe(ModMaterials.materialShockwave)) {
 			blAPI.registerAnimatorRecipe(new BLShockwaveBladeRecipe());
 			blAPI.registerAnimatorRecipe(new BLSwampSteelRecipe());
 		}
+		if (UniqueToolpartRecipes.canRegisterUniqueRecipe(ModMaterials.materialWormed)) {
+			event.getRegistry().register(
+					RecipeHelper.createRecipe("crimson_recipe", ModMaterials.materialWormed.getUniqueToolPart(),
+							new String[] {
+									"WWW",
+									"WAW",
+									"WWW"
+							},
+							Pair.of('W', Ingredient.fromStacks(new ItemStack(ItemRegistry.SLUDGE_WORM_ARROW))),
+							Pair.of('A', new TinkerPartIngredient(ModMaterials.materialSwampSteel, "tconstruct:arrow_head"))));
+		}
+
 		GameRegistry.addSmelting(new ItemStack(ModItems.sulfurBucketSyrmorite, (int) (1)), new ItemStack(BLItems.blFilledMoltenSulfur, 1, 1), 0f);
 		GameRegistry.addSmelting(new ItemStack(ModItems.sulfurBucketIron, (int) (1)), FluidUtil.getFilledBucket(new FluidStack(ModFluids.liquidBurningSulfurFlow, 1000)), 0F);
 		TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidRotiron, 1), new FluidStack(ModFluids.liquidRottenSludge, 1), new FluidStack(ModFluids.liquidSyrmorite, 3));

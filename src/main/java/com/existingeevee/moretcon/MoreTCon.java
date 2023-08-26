@@ -14,7 +14,7 @@ import com.existingeevee.moretcon.inits.misc.ModSponges;
 import com.existingeevee.moretcon.inits.misc.OreDictionaryManager;
 import com.existingeevee.moretcon.inits.recipes.FurnaceInit;
 import com.existingeevee.moretcon.inits.recipes.OreRecipes;
-import com.existingeevee.moretcon.inits.recipes.OtherRecipes;
+import com.existingeevee.moretcon.inits.recipes.UniqueToolpartRecipes;
 import com.existingeevee.moretcon.inits.recipes.SmelteryInit;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
@@ -106,9 +106,13 @@ public class MoreTCon {
 		IForgeRegistry<IRecipe> registry = event.getRegistry();
 		
 		OreRecipes.init(event);
-		OtherRecipes.init(event);
+		UniqueToolpartRecipes.init(event);
 		
 		SpongeRegistry.registerRecipes(event);
+		
+		if (CompatManager.thebetweenlands) {
+			BLRecipes.init(event);
+		}
 		
 		// add the tool forge recipes from all integrations
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
@@ -121,10 +125,6 @@ public class MoreTCon {
 
 		FurnaceInit.init();
 		SpongeRegistry.postInit();
-		
-		if (CompatManager.thebetweenlands) {
-			BLRecipes.init();
-		}
 		
 		ModTraits.init();
 		proxy.init();

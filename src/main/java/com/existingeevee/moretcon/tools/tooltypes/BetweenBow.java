@@ -47,8 +47,7 @@ import thebetweenlands.api.item.CorrosionHelper;
 import thebetweenlands.api.item.IAnimatorRepairable;
 import thebetweenlands.api.item.ICorrodible;
 
-public class BetweenBow extends BowCore
-		implements ICorrodible, IAnimatorRepairable, IBetweenTinkerTool, ICustomCrosshairUser {
+public class BetweenBow extends BowCore implements ICorrodible, IAnimatorRepairable, IBetweenTinkerTool, ICustomCrosshairUser {
 
 	public static final float DURABILITY_MODIFIER = 1.1f;
 
@@ -155,33 +154,32 @@ public class BetweenBow extends BowCore
 		return getDrawbackProgress(itemStack, player);
 	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        boolean shift = Util.isShiftKeyDown();
-        boolean ctrl = Util.isCtrlKeyDown();
-    	if (!shift && !ctrl) {
-    		CorrosionHelper.addCorrosionTooltips(stack, tooltip, flagIn.isAdvanced());
-    		tooltip.add("");
-    	}
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-    }
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		boolean shift = Util.isShiftKeyDown();
+		boolean ctrl = Util.isCtrlKeyDown();
+		if (!shift && !ctrl) {
+			CorrosionHelper.addCorrosionTooltips(stack, tooltip, flagIn.isAdvanced());
+			tooltip.add("");
+		}
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+	}
 
-    @Override
-    public int getMinRepairFuelCost(ItemStack stack) {
+	@Override
+	public int getMinRepairFuelCost(ItemStack stack) {
 		return Math.round(stack.getMaxDamage() / 120) + 1;
-    }
+	}
 
-    @Override
-    public int getFullRepairFuelCost(ItemStack stack) {
+	@Override
+	public int getFullRepairFuelCost(ItemStack stack) {
 		return Math.round(stack.getMaxDamage() / 75) + 1;
-    }
+	}
 
 	@Override
 	public int getFullRepairLifeCost(ItemStack arg0) {
 		return Math.round(arg0.getMaxDamage() / 75) + 1;
 	}
-
 
 	@Override
 	public int getMinRepairLifeCost(ItemStack arg0) {
@@ -189,62 +187,60 @@ public class BetweenBow extends BowCore
 	}
 
 	@Override
-	  public void shootProjectile(@Nonnull ItemStack ammoIn, @Nonnull ItemStack bow, World worldIn, EntityPlayer player, int useTime) {
-	    float progress = getDrawbackProgress(bow, useTime);
-	    float power = ItemBow.getArrowVelocity((int)(progress * 20f)) * progress * baseProjectileSpeed();
-	    power *= ProjectileLauncherNBT.from(bow).range;
-	    power *= Math.pow(CorrosionHelper.getModifier(bow), 2.117904);
+	public void shootProjectile(@Nonnull ItemStack ammoIn, @Nonnull ItemStack bow, World worldIn, EntityPlayer player, int useTime) {
+		float progress = getDrawbackProgress(bow, useTime);
+		float power = ItemBow.getArrowVelocity((int) (progress * 20f)) * progress * baseProjectileSpeed();
+		power *= ProjectileLauncherNBT.from(bow).range;
+		power *= Math.pow(CorrosionHelper.getModifier(bow), 2.117904);
 
-	    if(!worldIn.isRemote) {
-	      TinkerToolEvent.OnBowShoot event = TinkerToolEvent.OnBowShoot.fireEvent(bow, ammoIn, player, useTime, baseInaccuracy());
+		if (!worldIn.isRemote) {
+			TinkerToolEvent.OnBowShoot event = TinkerToolEvent.OnBowShoot.fireEvent(bow, ammoIn, player, useTime, baseInaccuracy());
 
-	      // copied because consumeAmmo can delete vanilla stacks
-	      ItemStack ammoStackToShoot = ammoIn.copy();
+			// copied because consumeAmmo can delete vanilla stacks
+			ItemStack ammoStackToShoot = ammoIn.copy();
 
-	      for(int i = 0; i < event.projectileCount; i++) {
-	        boolean usedAmmo = false;
-	        if(i == 0 || event.consumeAmmoPerProjectile) {
-	          usedAmmo = consumeAmmo(ammoIn, player);
-	        }
-	        float inaccuracy = event.getBaseInaccuracy();
-	        if(i > 0) {
-	          inaccuracy += event.bonusInaccuracy;
-	        }
-	        inaccuracy /= Math.pow(CorrosionHelper.getModifier(bow), 2);
-	        EntityArrow projectile = getProjectileEntity(ammoStackToShoot, bow, worldIn, player, power, inaccuracy, progress*progress, usedAmmo);
+			for (int i = 0; i < event.projectileCount; i++) {
+				boolean usedAmmo = false;
+				if (i == 0 || event.consumeAmmoPerProjectile) {
+					usedAmmo = consumeAmmo(ammoIn, player);
+				}
+				float inaccuracy = event.getBaseInaccuracy();
+				if (i > 0) {
+					inaccuracy += event.bonusInaccuracy;
+				}
+				inaccuracy /= Math.pow(CorrosionHelper.getModifier(bow), 2);
+				EntityArrow projectile = getProjectileEntity(ammoStackToShoot, bow, worldIn, player, power, inaccuracy, progress * progress, usedAmmo);
 
-	        if(projectile != null && ProjectileEvent.OnLaunch.fireEvent(projectile, bow, player)) {
-	          if(progress >= 1f) {
-	            projectile.setIsCritical(true);
-	          }
-	          if(!player.capabilities.isCreativeMode) {
-	            ToolHelper.damageTool(bow, 1, player);
-	          }
-	          worldIn.spawnEntity(projectile);
-	        }
-	      }
-	    }
+				if (projectile != null && ProjectileEvent.OnLaunch.fireEvent(projectile, bow, player)) {
+					if (progress >= 1f) {
+						projectile.setIsCritical(true);
+					}
+					if (!player.capabilities.isCreativeMode) {
+						ToolHelper.damageTool(bow, 1, player);
+					}
+					worldIn.spawnEntity(projectile);
+				}
+			}
+		}
 
-	    playShootSound(power, worldIn, player);
-	  }
+		playShootSound(power, worldIn, player);
+	}
 
-	  public EntityArrow getProjectileEntity(ItemStack ammo, ItemStack bow, World world, EntityPlayer player, float power, float inaccuracy, float progress, boolean usedAmmo) {
-	    if(ammo.getItem() instanceof IAmmo) {
-	      return ((IAmmo) ammo.getItem()).getProjectile(ammo, bow, world, player, power, inaccuracy, progress, usedAmmo);
-	    }
-	    else if(ammo.getItem() instanceof ItemArrow) {
-	      EntityArrow projectile = ((ItemArrow) ammo.getItem()).createArrow(world, ammo, player);
-	      projectile.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, power, inaccuracy);
-	      if(player.capabilities.isCreativeMode) {
-	        projectile.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
-	      }
-	      else if(!usedAmmo) {
-	        projectile.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
-	      }
-	      return projectile;
-	    }
-	    // shizzle-foo, this fizzles too!
-	    return null;
-	  }
+	public EntityArrow getProjectileEntity(ItemStack ammo, ItemStack bow, World world, EntityPlayer player, float power, float inaccuracy, float progress, boolean usedAmmo) {
+		if (ammo.getItem() instanceof IAmmo) {
+			return ((IAmmo) ammo.getItem()).getProjectile(ammo, bow, world, player, power, inaccuracy, progress, usedAmmo);
+		} else if (ammo.getItem() instanceof ItemArrow) {
+			EntityArrow projectile = ((ItemArrow) ammo.getItem()).createArrow(world, ammo, player);
+			projectile.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, power, inaccuracy);
+			if (player.capabilities.isCreativeMode) {
+				projectile.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
+			} else if (!usedAmmo) {
+				projectile.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
+			}
+			return projectile;
+		}
+		// shizzle-foo, this fizzles too!
+		return null;
+	}
 
 }

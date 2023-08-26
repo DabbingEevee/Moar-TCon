@@ -3,7 +3,10 @@
   "package": "com.existingeevee.moretcon.mixin",
   "refmap": "refmap.moretcon.json",
   "mixins": [
-  	"late.common.MixinToolPart"
+  	"late.common.MixinToolPart",
+  	"late.common.MixinProjectileCore",
+  	"late.common.MixinTinkerProjectileHandler",
+  	"late.common.MixinEntityProjectileBase"
   ],
   "client": [
   	"late.client.MixinContentMaterial"

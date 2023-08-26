@@ -101,8 +101,7 @@ public class ModMaterials implements MaterialTypes {
 			Misc.createNonConflictiveName("shockwave"), 0xa1ddd8,
 			ConfigHandler.registerBetweenTinkerTools ? "moretcon:blswordblade" : "tconstruct:sword_blade",
 			ConfigHandler.registerBetweenTinkerTools ? "moretcon:blsword" : "tconstruct:broadsword",
-			() -> new ItemStack(BlockRegistry.ANIMATOR), "shockwave"		
-			);
+			() -> new ItemStack(BlockRegistry.ANIMATOR), "shockwave");
 
 	public static final UniqueMaterial materialTriblade = new UniqueMaterial(
 			Misc.createNonConflictiveName("triblade"), 0x6d6d6d, "tconstruct:knife_blade",
@@ -123,11 +122,15 @@ public class ModMaterials implements MaterialTypes {
 	public static final UniqueMaterial materialCrimson = new UniqueMaterial(
 			Misc.createNonConflictiveName("crimson"), 0xaa0000, "tconstruct:tough_tool_rod",
 			"plustic:katana");
-	
+
 	public static final UniqueMaterial materialEssencore = new UniqueMaterial(
 			Misc.createNonConflictiveName("essencore"), 0x65c9ff, "tconstruct:pick_head",
 			"tconstruct:pickaxe");
 
+	public static final UniqueMaterial materialWormed = new UniqueMaterial(
+			Misc.createNonConflictiveName("wormed"), 0xd99857, "tconstruct:arrow_head",
+			"tconstruct:arrow",
+			() -> new ItemStack(BlockRegistry.WEEDWOOD_WORKBENCH), "crafting_table");
 	static {
 		if (CompatManager.tic3backport) {
 			materialNahuatl.setCastable(false);
@@ -524,8 +527,9 @@ public class ModMaterials implements MaterialTypes {
 			materialEtherstone.addStats(new HeadMaterialStats(1450, 17.5f, 18f, 8));
 			materialEtherstone.addStats(new HandleMaterialStats(4f, -50));
 			materialEtherstone.addStats(new ExtraMaterialStats(500));
-			
-			materialEssencore.addStats(new HeadMaterialStats(4096, 10f, 12f, 5));
+			materialIgniglomerate.addStats(new ProjectileMaterialStats());
+
+			materialEssencore.addStats(new HeadMaterialStats(4096, 10f, 12f, 7));
 			materialEssencore.addTrait(ModTraits.essentialObliteration);
 		}
 		if (CompatManager.aether_legacy) { // TODO
@@ -813,6 +817,10 @@ public class ModMaterials implements MaterialTypes {
 
 			materialShockwave.addStats(new HeadMaterialStats(1256, 6f, 6.125f, 3));
 			materialShockwave.addTrait(ModTraits.shockwaving);
+
+			materialWormed.addStats(new HeadMaterialStats(1024, 1f, 4f, 1));
+			materialWormed.addStats(new ProjectileMaterialStats());
+			materialWormed.addTrait(ModTraits.wormed);
 		}
 	}
 
@@ -883,6 +891,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialSwampSteel).toolforge();
 			ModMaterials.registerMaterial(materialRotiron).toolforge();
 			ModMaterials.registerMaterial(materialEmberlight);
+			ModMaterials.registerMaterial(materialWormed);
 
 			MaterialUtils.readdTinkerMaterial(TinkerMaterials.bone);
 
