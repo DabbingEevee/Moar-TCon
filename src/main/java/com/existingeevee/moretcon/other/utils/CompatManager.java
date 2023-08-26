@@ -31,7 +31,6 @@ public class CompatManager {
 		CompatManager.loadMain = ConfigHandler.shouldAllowMainContent;
 		CompatManager.oredict = ConfigHandler.shouldAllowOreDictionary;
 		CompatManager.tic3backport = ConfigHandler.shouldAllowTiC3ContentBackport;
-		//.addStats(new LaserMediumMaterialStats(0, 0));
 	}
 
 	public static boolean isOredictLoaded(String dictEntry) {

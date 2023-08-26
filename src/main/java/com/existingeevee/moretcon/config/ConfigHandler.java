@@ -79,7 +79,7 @@ public class ConfigHandler {
 		ConfigHandler.shouldAllowCrossCompat = config.getBoolean("crosscompat", category, true, "[NYI] Set to \"false\" if you don't want to allow cross compatibility between mods to load.");
 		ConfigHandler.shouldAllowMainContent = config.getBoolean("main", category, true, "Set to \"false\" if you don't want to allow things from the main mod to load.");
 		ConfigHandler.shouldAllowAether = config.getBoolean("aether_legacy", category, true, "Set to \"false\" if you don't want to allow Aether compatibility to load.");
-		ConfigHandler.shouldAllowBaubles = config.getBoolean("baubles", category, true, "Set to \"false\" if you don't want to allow Baubles compatibility to load.");
+		ConfigHandler.shouldAllowBaubles = config.getBoolean("baubles", category, true, "Set to \"false\" if you don't want to allow Baubles compatibility to load. (FYI disabling this may leave leave some items without recipes)");
 		ConfigHandler.shouldAllowOreDictionary = config.getBoolean("oredict", category, true, "[NYI] Set to \"false\" if you don't want to allow oredict compatibility to load.");
 		ConfigHandler.shouldAllowTiC3ContentBackport = config.getBoolean("tic3backport", category, true, "Set to \"false\" if you don't want to allow backported content from TinkersConstruct 3 to load.");
 
