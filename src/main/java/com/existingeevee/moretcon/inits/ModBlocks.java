@@ -87,11 +87,11 @@ public class ModBlocks {
 	}
 	public static void init() {
 		ModBlocks.registerBlocks(
-				blockGravitoniumFaucet,
-				blockVoidPrismTop,
-				blockVoidPrismBottom,
-				blockVoidColumn,
-				blockVoidCore
+				blockGravitoniumFaucet
+				//blockVoidPrismTop,
+				//blockVoidPrismBottom,
+				//blockVoidColumn,
+				//blockVoidCore
 				);
 		
 		if (CompatManager.loadMain) {
