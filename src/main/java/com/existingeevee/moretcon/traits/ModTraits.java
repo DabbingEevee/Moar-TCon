@@ -7,7 +7,6 @@ import com.existingeevee.moretcon.traits.modifiers.BlueGem;
 import com.existingeevee.moretcon.traits.modifiers.Crushing;
 import com.existingeevee.moretcon.traits.modifiers.Debug;
 import com.existingeevee.moretcon.traits.modifiers.GreenGem;
-import com.existingeevee.moretcon.traits.modifiers.Impactor;
 import com.existingeevee.moretcon.traits.modifiers.MatterReconstructionGel;
 import com.existingeevee.moretcon.traits.modifiers.RedGem;
 import com.existingeevee.moretcon.traits.modifiers.Shocking;
@@ -100,7 +99,6 @@ public class ModTraits {
 	public static AntiGravity antigravity;
 
 	//public static Annihilating annihilating = new Annihilating();
-	public static Impactor modImpactor;
 	public static RedGem modRedGem;
 	public static GreenGem modGreenGem;
 	public static BlueGem modBlueGem;
@@ -146,12 +144,10 @@ public class ModTraits {
 
 	public static void init() {
 		if (CompatManager.loadMain) {
-			modImpactor = new Impactor();
 			modDebug = new Debug();
 			repair = new MatterReconstructionGel();
 			crushing = new Crushing();
 			registerModifier(
-					modImpactor,
 					crushing
 					);
 		}
