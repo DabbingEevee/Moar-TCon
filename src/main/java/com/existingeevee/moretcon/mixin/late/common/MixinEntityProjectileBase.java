@@ -20,7 +20,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 @Mixin(EntityProjectileBase.class)
 public class MixinEntityProjectileBase {
 
-	@Inject(at = @At(value = "TAIL"), method = { "onCollideWithPlayer", "func_70100_b_" })
+	@Inject(at = @At(value = "TAIL"), method = { "onCollideWithPlayer", "func_70100_b_" }, remap = false)
 	public void onCollideWithPlayer(@Nonnull EntityPlayer player, CallbackInfo ci) {
 		EntityProjectileBase $this = (EntityProjectileBase) (Object) this;
 		if ($this.isDead && !StaticVars.lastPickedUpArrow.isEmpty()) {

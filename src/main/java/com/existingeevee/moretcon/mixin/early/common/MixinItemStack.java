@@ -20,15 +20,15 @@ import net.minecraftforge.fml.common.eventhandler.Event.Result;
 
 @Mixin(ItemStack.class)
 public class MixinItemStack {
-
-	@Redirect(method = "onItemUse", at = @At(value = "INVOKE", target = "onItemUse", ordinal = 0))
+//(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/EnumHand;Lnet/minecraft/util/EnumFacing;FFF)Lnet/minecraft/util/EnumActionResult;
+	@Redirect(method = "onItemUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onItemUse(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/EnumHand;Lnet/minecraft/util/EnumFacing;FFF)Lnet/minecraft/util/EnumActionResult;", ordinal = 0))
 	public EnumActionResult moretcon$INVOKE_Redirect$onItemUse(Item item, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		OverrideItemUseEvent event = new OverrideItemUseEvent(player, hand, pos, side, new Vec3d(hitX, hitY, hitZ));
 		MinecraftForge.EVENT_BUS.post(event);
 		if (event.getUseItem() == Result.ALLOW) {
 			return EnumActionResult.SUCCESS;
 		}
-		if (event.getUseItem() == Result.DENY) {
+		if (event.getUseItem() == Result.DENY) { 
 			return EnumActionResult.FAIL;
 		}
 		return item.onItemUse(player, worldIn, pos, hand, side, hitX, hitY, hitZ);
