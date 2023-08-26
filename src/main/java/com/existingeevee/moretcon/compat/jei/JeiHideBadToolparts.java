@@ -17,6 +17,7 @@ import net.minecraftforge.common.util.Constants.NBT;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
+import slimeknights.tconstruct.library.tools.ToolPart;
 
 public class JeiHideBadToolparts extends JeiCustomContainer {
 
@@ -31,9 +32,10 @@ public class JeiHideBadToolparts extends JeiCustomContainer {
 			for (IToolPart part : TinkerRegistry.getToolParts()) {
 				blacklist.addIngredientToBlacklist(part.getItemstackWithMaterial(mat.getValue().getA()));
 			}
-			blacklist.removeIngredientFromBlacklist(UniqueMaterial
-					.getToolPartFromResourceLocation(new ResourceLocation(mat.getValue().getA().getPartResLoc()))
-					.getItemstackWithMaterial(mat.getValue().getA()));
+
+			ToolPart part = UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(mat.getValue().getA().getPartResLoc()));
+			if (part != null)
+				blacklist.removeIngredientFromBlacklist(part.getItemstackWithMaterial(mat.getValue().getA()));
 
 			for (ToolCore tool : TinkerRegistry.getTools()) {
 				NonNullList<ItemStack> stacks = NonNullList.create();
