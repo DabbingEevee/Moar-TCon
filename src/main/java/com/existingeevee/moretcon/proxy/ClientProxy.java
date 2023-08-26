@@ -6,6 +6,7 @@ import com.existingeevee.moretcon.entity.EntityInit;
 import com.existingeevee.moretcon.inits.ModTools;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.MaterialClient;
+import com.existingeevee.moretcon.other.ContentLigntningModifier;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.tools.BookTransformerAppendTools;
@@ -16,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.mantle.client.book.BookLoader;
 import slimeknights.mantle.client.book.repository.FileRepository;
 import slimeknights.tconstruct.library.book.TinkerBook;
 
@@ -50,6 +52,9 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void postInit() {
 		super.postInit();
+		
+		BookLoader.registerPageType(ContentLigntningModifier.ID, ContentLigntningModifier.class);
+		
 		TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendTools(
 				new FileRepository("tconstruct:book"), RegisterHelper.moreTConTools));
 

@@ -98,9 +98,6 @@ public class ModItems {
 	public static final Item gemErythynite = new ItemBase("gemErythynite");
 	public static final Item gemEtherstone = new ItemBase("gemEtherstone");;
 
-	//Internal
-	public static final Item iconLightning = new ItemBase("lightning").setTab(null);
-
 	//Ingriedients
 	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);;
 	public static final Item spaceTimeDisruptionPowder = new ItemBase("spaceTimeDisruptionPowder").setTab(ModTabs.moarTConMisc);;
@@ -113,6 +110,7 @@ public class ModItems {
 
 	//Modifier items
 	public static final Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
+	public static final Item crushingModifier = new ItemBase("crushingModifier").setTab(ModTabs.moarTConMisc);
 
 	/*---------------------------------------*/
 
@@ -170,14 +168,12 @@ public class ModItems {
 					gemErythynite,
 					gemEtherstone,
 
+					crushingModifier,
 					matterReconstructionGel,
 					carbonPile,
 					rawSteel,
 					spaceTimeDisruptionPowder,
 					hydrogenRichRedstonePowder
-
-			//repItemEnderexamite,
-			//repItemShadowglass,
 
 			/**-------------------------------------**/
 
@@ -199,7 +195,6 @@ public class ModItems {
 		if (CompatManager.twilightforest) {
 			ModItems.registerItems(
 					nuggetPenguinite,
-					//repItemFerroherb,
 					ingotPenguinite);
 			if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 				ModItems.registerItems(
@@ -224,7 +219,6 @@ public class ModItems {
 					sulfurBucketSyrmorite,
 					sulfurBucketIron,
 
-					iconLightning,
 					betweenifiedModifier,
 					betweenicCore
 

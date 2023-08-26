@@ -26,11 +26,3 @@ public class ExtremeToolDurabilityFix {
 		}
 	}
 }
-
-
-/*@SideOnly(value = Side.CLIENT)
-public ExtremeToolDurabilityFix() {
-	for (TinkerRegistry.tabTools.gett) {
-		
-	}
-}*/

@@ -1,6 +1,5 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
-import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.other.Misc;
 
 import net.minecraft.client.Minecraft;
@@ -26,8 +25,6 @@ public class Shocking extends ProjectileModifierTrait {
 
 	public Shocking() {
 		super(Misc.createNonConflictiveName("modshocking"), 0x0099e6);
-		this.addItem(ModItems.iconLightning, 1, 1);
-
 		this.addAspects(ModifierAspect.projectileOnly);//, new ModifierAspect.SingleAspect(this), new ModifierAspect.DataAspect(this), ModifierAspect.freeModifier);
 	}
 

@@ -164,9 +164,9 @@ public class ModTraits {
 					modRedGem,
 					modGreenGem,
 					modBlueGem,
-					modShocking,
 					modValonite,
-					modTarred
+					modTarred,
+					modShocking
 					);
 
 		}

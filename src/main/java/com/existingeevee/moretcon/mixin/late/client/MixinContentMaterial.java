@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.existingeevee.moretcon.materials.CompositeRegistry;
@@ -20,6 +21,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import net.minecraft.client.resources.I18n;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
@@ -50,9 +52,22 @@ public abstract class MixinContentMaterial {
 	@Unique
 	private static final Field field$neededPart = ObfuscationReflectionHelper.findField(PartMaterialType.class, "neededPart");
 
+	@Redirect(method = "addStatsDisplay", at = @At(value = "INVOKE", ordinal = 0, target = "Lslimeknights/tconstruct/library/tools/IToolPart;hasUseForStat(Ljava/lang/String;)Z"), remap = false)
+	private boolean moretcon$INVOKE_Redirect$addStatsDisplay(IToolPart tp, String string) {
+		if (material instanceof UniqueMaterial) {
+			UniqueMaterial unique = (UniqueMaterial) material;
+			if (((Item) tp).getRegistryName().toString().equals(unique.getPartResLoc())) {
+				return true;
+			}
+			return false;
+		}
+
+		return tp.hasUseForStat(string);
+	}
+	
 	@SuppressWarnings({ "unchecked", "unlikely-arg-type" })
 	@Inject(method = "addDisplayItems", at = @At("HEAD"), remap = false, cancellable = true)
-	private void addDisplayItems(ArrayList<BookElement> list, int x, CallbackInfo ci) throws IllegalAccessException {
+	private void moretcon$HEAD_Inject$addDisplayItems(ArrayList<BookElement> list, int x, CallbackInfo ci) throws IllegalAccessException {
 		ContentMaterial $this = (ContentMaterial) (Object) this;
 
 		int y = 10;

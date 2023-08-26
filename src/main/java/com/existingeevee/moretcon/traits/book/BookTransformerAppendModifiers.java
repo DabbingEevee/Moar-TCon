@@ -2,6 +2,8 @@ package com.existingeevee.moretcon.traits.book;
 
 import java.util.List;
 
+import com.existingeevee.moretcon.traits.modifiers.Shocking;
+
 import slimeknights.mantle.client.book.data.BookData;
 import slimeknights.mantle.client.book.data.PageData;
 import slimeknights.mantle.client.book.data.SectionData;
@@ -29,7 +31,7 @@ public class BookTransformerAppendModifiers extends SectionTransformer {
         	PageData page = new PageData();
         	page.source = source;
         	page.parent = section;
-        	page.type = "modifier";
+        	page.type = mod instanceof Shocking ? "lightning_modifier" : "modifier";
         	page.data = "modifiers/" + mod.identifier.replaceFirst("moretcon.", "") + ".json";
         	section.pages.add(page);
         	page.load();

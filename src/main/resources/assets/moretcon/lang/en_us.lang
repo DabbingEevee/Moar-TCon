@@ -29,12 +29,13 @@ fluid.moretcon.mummysludge=Mummy Sludge
 fluid.moretcon.rottensludge=Rotten Sludge
 
 item.moretcon.betweenifiedmodifier.desc=Adding this to any tool will allow for its full efficiency to be used in the Betweenlands.
-item.moretcon.lightning=.descGet a betweenland lightning bolt to strike your tool to apply.
+item.moretcon.crushingmodifier.desc=Adding this to any tool will convert 5% of its damage to become armor penetrating.
 item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage on it.
 item.moretcon.repitem.desc=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
 
 item.moretcon.repitem.name=-{-name-}- Composite
 item.moretcon.betweeniccore.name=Betweenic Core
+item.moretcon.crushingmodifier.name=Crushing Modifier
 item.moretcon.betweenifiedmodifier.name=Betweenified Modifier
 item.moretcon.blaxe.desc=A Between Axe is an equivalent of a hatchet for the betweenlands.
 item.moretcon.blaxe.name=Between Axe
@@ -228,7 +229,7 @@ modifier.moretcon.modbetweenified.desc=Fine, I'll do it myself.§r\nYour tool wi
 modifier.moretcon.modbetweenified.name=Betweenified
 modifier.moretcon.modbluegem.desc=§oOoh Shiny§r\nYour tool occasionally weakens opponents when you attack.
 modifier.moretcon.modbluegem.name=Aqua Gem
-modifier.moretcon.modcrushing.desc=NOW THATS A LOTTA DAMAGE!!§r\nYour tool will have 10% of its normal damage be armor penetration damage
+modifier.moretcon.modcrushing.desc=NOW THATS A LOTTA DAMAGE!!§r\nYour tool will have 5% of its normal damage be armor penetration damage
 modifier.moretcon.modcrushing.name=Crushing
 modifier.moretcon.moddebug.desc=§o§kwhyareyouhere§r\nYour tool logs info about itself in the chat. Typically used by ExistingEevee to debug tools.
 modifier.moretcon.moddebug.name=Debug

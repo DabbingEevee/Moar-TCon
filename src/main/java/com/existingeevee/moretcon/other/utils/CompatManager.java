@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class CompatManager {
-	//CompatManager.twilightforest
+
 	public static boolean twilightforest;
 	public static boolean iceandfire;
 	public static boolean plustic;
