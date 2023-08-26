@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.ModClassLoader;
 import net.minecraftforge.fml.common.ModContainer;
 
 @Mixin(value = LoadController.class, remap = false)
-public class LoadControllerMixin {
+public class MixinLoadController {
 
     @Shadow private Loader loader;
 

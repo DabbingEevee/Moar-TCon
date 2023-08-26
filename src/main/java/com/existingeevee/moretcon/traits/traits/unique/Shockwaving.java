@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.OverrideItemUseEvent;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import thebetweenlands.common.entity.EntityShockwaveBlock;
@@ -32,21 +32,15 @@ public class Shockwaving extends AbstractTrait {
 	}
 
 	@SubscribeEvent
-	public void onRightClick(RightClickBlock event) {
+	public void onRightClick(OverrideItemUseEvent event) {
 		ItemStack stack = event.getItemStack();
 
-		if (!isToolWithTrait(stack) || !event.getCancellationResult().equals(EnumActionResult.PASS))
+		if (!isToolWithTrait(stack))
 			return;
-
-		if (!stack.hasTagCompound()) {
-			stack.setTagCompound(new NBTTagCompound());
-			event.setCancellationResult(EnumActionResult.PASS);
-			return;
-		}
 
 		if (stack.getItemDamage() == stack.getMaxDamage()) {
 			stack.getTagCompound().setInteger("cooldown", 0);
-			event.setCancellationResult(EnumActionResult.PASS);
+			event.setResult(Result.DENY);
 			return;
 		}
 
@@ -109,10 +103,10 @@ public class Shockwaving extends AbstractTrait {
 				}
 			}
 			event.getEntityPlayer().swingArm(event.getHand());
-			event.setCancellationResult(EnumActionResult.SUCCESS);
+			event.setResult(Result.ALLOW);
 			return;
 		}
-		event.setCancellationResult(EnumActionResult.PASS);
+		event.setResult(Result.DENY);
 		return;
 	}
 
