@@ -2,6 +2,7 @@ package com.existingeevee.moretcon.mixin.early.common;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.Mixin;
@@ -47,12 +48,22 @@ public class MixinLoadController {
 				selectMethod.setAccessible(true);
 				selectMethod.invoke(transformer, MixinEnvironment.getCurrentEnvironment());
 			} catch (NoSuchMethodException t) {
-				Method getProcessorMethod = transformer.getClass().getDeclaredMethod("getProcessor");
-				getProcessorMethod.setAccessible(true);
-				Object processor = getProcessorMethod.invoke(transformer);
+				Object processor = null;
+				try {
+					System.out.println(Arrays.toString(transformer.getClass().getDeclaredMethods()));
+					System.out.println(Arrays.toString(transformer.getClass().getDeclaredFields()));
+					Method getProcessorMethod = transformer.getClass().getDeclaredMethod("getProcessor");
+					getProcessorMethod.setAccessible(true);
+					processor = getProcessorMethod.invoke(transformer);
+				} catch (NoSuchMethodException t2) {
+					Field processorField = transformer.getClass().getDeclaredField("processor");
+					processorField.setAccessible(true);
+					processor = processorField.get(transformer);
+				}
+
 				Method selectMethod = processor.getClass().getDeclaredMethod("select", MixinEnvironment.class);
-	            selectMethod.setAccessible(true);
-	            selectMethod.invoke(processor, MixinEnvironment.getCurrentEnvironment());
+				selectMethod.setAccessible(true);
+				selectMethod.invoke(processor, MixinEnvironment.getCurrentEnvironment());
 			}
 		}
 	}
