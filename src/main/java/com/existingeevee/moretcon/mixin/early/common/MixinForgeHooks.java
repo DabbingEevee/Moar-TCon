@@ -29,7 +29,7 @@ import net.minecraftforge.fml.common.eventhandler.Event.Result;
 @Mixin(ForgeHooks.class)
 public abstract class MixinForgeHooks {
 
-	@Redirect(method = "onPlaceItemIntoWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onItemUse(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/EnumHand;Lnet/minecraft/util/EnumFacing;FFF)Lnet/minecraft/util/EnumActionResult;", ordinal = 0), remap = false)
+	@Redirect(method = "onPlaceItemIntoWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;onItemUse(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/EnumHand;Lnet/minecraft/util/EnumFacing;FFF)Lnet/minecraft/util/EnumActionResult;", ordinal = 0, remap = true), remap = false)
 	private static EnumActionResult moretcon$INVOKE_Redirect$onPlaceItemIntoWorld(Item item, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		OverrideItemUseEvent event = new OverrideItemUseEvent(player, hand, pos, facing, new Vec3d(hitX, hitY, hitZ));
 		MinecraftForge.EVENT_BUS.post(event);
