@@ -50,8 +50,6 @@ public class MixinLoadController {
 			} catch (NoSuchMethodException t) {
 				Object processor = null;
 				try {
-					System.out.println(Arrays.toString(transformer.getClass().getDeclaredMethods()));
-					System.out.println(Arrays.toString(transformer.getClass().getDeclaredFields()));
 					Method getProcessorMethod = transformer.getClass().getDeclaredMethod("getProcessor");
 					getProcessorMethod.setAccessible(true);
 					processor = getProcessorMethod.invoke(transformer);
