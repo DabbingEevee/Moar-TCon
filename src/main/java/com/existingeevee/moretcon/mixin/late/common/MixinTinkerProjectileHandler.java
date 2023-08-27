@@ -18,7 +18,7 @@ import slimeknights.tconstruct.library.tools.ranged.IAmmo;
 public class MixinTinkerProjectileHandler {
 
 	@Inject(at = @At(value = "RETURN"), method = "pickup", remap = false, locals = LocalCapture.CAPTURE_FAILHARD)
-	public void pickup(EntityLivingBase entity, boolean simulate, CallbackInfoReturnable<Boolean> ci, ItemStack stack) {
+	public void moretcon$RETURN_Redirect$pickup(EntityLivingBase entity, boolean simulate, CallbackInfoReturnable<Boolean> ci, ItemStack stack) {
 		if (!simulate && stack.getItem() instanceof IAmmo) {
 			StaticVars.lastPickedUpArrow = stack;
 		}
