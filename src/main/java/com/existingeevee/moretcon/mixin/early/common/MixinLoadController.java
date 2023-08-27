@@ -2,7 +2,6 @@ package com.existingeevee.moretcon.mixin.early.common;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.Mixin;
