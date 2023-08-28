@@ -8,7 +8,6 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class Liquid extends AbstractTrait {
 
-	//public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Liquid() {
 		super(Misc.createNonConflictiveName("liquid"), 0);
 	}
@@ -22,6 +21,4 @@ public class Liquid extends AbstractTrait {
 		newDamage += (player.world.getBiome(player.getPosition()).getTemperature(player.getPosition()) + 2);
 		return super.damage(tool, player, target, damage, newDamage, isCritical);
 	}
-
-
 }

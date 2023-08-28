@@ -27,6 +27,7 @@ import com.existingeevee.moretcon.traits.traits.HyperGravity;
 import com.existingeevee.moretcon.traits.traits.Hyperheat;
 import com.existingeevee.moretcon.traits.traits.Leeching;
 import com.existingeevee.moretcon.traits.traits.Liquid;
+import com.existingeevee.moretcon.traits.traits.Luminescent;
 import com.existingeevee.moretcon.traits.traits.Magical;
 import com.existingeevee.moretcon.traits.traits.MagicallyReactive;
 import com.existingeevee.moretcon.traits.traits.Overgrowth;
@@ -87,6 +88,7 @@ public class ModTraits {
 	public static Penetrant penetrant = new Penetrant();
 	public static Darkened darkened = new Darkened();
 	public static DummyTrait etheralHarvest = new DummyTrait("etheralharvest", 0);
+	public static Luminescent luminescent = new Luminescent("luminescent", 0);
 
 	public static Overslime overslime = new Overslime();
 	public static DummyTrait overcast = new DummyTrait("overcast", 0);
@@ -99,7 +101,6 @@ public class ModTraits {
 
 	public static AntiGravity antigravity;
 
-	//public static Annihilating annihilating = new Annihilating();
 	public static RedGem modRedGem;
 	public static GreenGem modGreenGem;
 	public static BlueGem modBlueGem;

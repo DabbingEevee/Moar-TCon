@@ -20,7 +20,7 @@ public abstract class MixinRenderItem {
 	@SideOnly(Side.CLIENT)
 	@Inject(at = @At("HEAD"), method = "renderItemModelIntoGUI", cancellable = true)
 	protected void moretcon$HEAD_Inject$renderItemModelIntoGUI(ItemStack stack, int x, int y, IBakedModel bakedmodel, CallbackInfo ci) {
-		ICustomSlotRenderer renderer = SlotRendererRegistry.get(stack.getItem());
+		ICustomSlotRenderer renderer = SlotRendererRegistry.get(stack);
 
 		if (renderer != null && renderer.shouldRender(stack)) {
 			renderer.render(stack, x, y, bakedmodel);

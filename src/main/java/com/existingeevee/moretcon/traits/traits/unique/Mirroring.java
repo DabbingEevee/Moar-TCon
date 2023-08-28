@@ -44,8 +44,6 @@ public class Mirroring extends AbstractProjectileTrait {
 
 	@Override
 	public void onProjectileUpdate(EntityProjectileBase entity, World world, ItemStack toolStat) {
-		//entity.inTile
-		//Logging.log(entity.serializeNBT().toString());
 		if (entity.world.isRemote) {
 			Vec3d position = entity.getPositionVector();
 			boolean inGround = entity.serializeNBT().getBoolean("inGround");

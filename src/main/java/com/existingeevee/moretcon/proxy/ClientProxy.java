@@ -8,9 +8,13 @@ import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.MaterialClient;
 import com.existingeevee.moretcon.other.ContentLigntningModifier;
+import com.existingeevee.moretcon.other.ICustomSlotRenderer;
+import com.existingeevee.moretcon.other.ICustomSlotRenderer.GlowType;
+import com.existingeevee.moretcon.other.SlotRendererRegistry;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.tools.BookTransformerAppendTools;
+import com.existingeevee.moretcon.traits.ModTraits;
 import com.existingeevee.moretcon.traits.TraitClient;
 import com.existingeevee.moretcon.traits.book.BookTransformerAppendModifiers;
 
@@ -25,6 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.client.book.BookLoader;
 import slimeknights.mantle.client.book.repository.FileRepository;
 import slimeknights.tconstruct.library.book.TinkerBook;
+import slimeknights.tconstruct.library.tinkering.MaterialItem;
 
 public class ClientProxy extends CommonProxy {
 
@@ -46,6 +51,9 @@ public class ClientProxy extends CommonProxy {
 		EntityInit.initClient();
 		
 		OBJLoader.INSTANCE.addDomain(ModInfo.MODID);
+		
+		SlotRendererRegistry.register(ModTraits.luminescent::isToolWithTrait, (stack, x, y, bakedmodel) -> ICustomSlotRenderer.simpleRender(stack, x, y, bakedmodel, GlowType.CIRCLE_BIG, ModTraits.luminescent.calculateColor(stack)));
+		SlotRendererRegistry.register(s -> s.getItem() instanceof MaterialItem && ((MaterialItem) s.getItem()).getMaterial(s).getAllTraits().contains(ModTraits.luminescent), (stack, x, y, bakedmodel) -> ICustomSlotRenderer.simpleRender(stack, x, y, bakedmodel, GlowType.CIRCLE_BIG, ModTraits.luminescent.calculateColor(stack)));
 	}
 
 	@Override
