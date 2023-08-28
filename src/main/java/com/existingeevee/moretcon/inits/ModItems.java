@@ -45,9 +45,9 @@ public class ModItems {
 	public static final Item dustRuneSteel = new ItemBase("dustRuneSteel");
 	public static final Item nuggetRuneSteel = new ItemBase("nuggetRuneSteel");
 
-	public static final Item nuggetSolsteel = new ItemNonflamable("nuggetSolarSteel").withColor(0xffb200);
-	public static final Item ingotSolsteel = new ItemNonflamable("ingotSolarSteel").withColor(0xffb200).withType(GlowType.OVAL);
-	public static final Item dustSolarSteel = new ItemNonflamable("dustSolarSteel").withColor(0xffb200).withType(GlowType.CIRCLE_BIG);
+	public static final Item nuggetSolsteel = new ItemNonflamable("nuggetSolarSteel").withColor(0xffb200).withType(GlowType.EXTREME);
+	public static final Item ingotSolsteel = new ItemNonflamable("ingotSolarSteel").withColor(0xffb200).withType(GlowType.EXTREME);
+	public static final Item dustSolarSteel = new ItemNonflamable("dustSolarSteel").withColor(0xffb200).withType(GlowType.EXTREME);
 
 	public static final Item ingotValkyrieMetal = new ItemBase("ingotValkyrieMetal");
 	public static final Item nuggetValkyrieMetal = new ItemBase("nuggetValkyrieMetal");
@@ -75,9 +75,9 @@ public class ModItems {
 	public static final Item dustSteel = new ItemBase("dustSteel");
 	public static final Item rawSteel = new ItemBase("rawSteel").setTab(ModTabs.moarTConMisc);
 
-	public static final Item ingotTrichromadentium = new ItemBase("ingotTrichromadentium");
-	public static final Item nuggetTrichromadentium = new ItemBase("nuggetTrichromadentium");
-	public static final Item dustTrichromadentium = new ItemBase("dustTrichromadentium");
+	public static final Item ingotTrichromadentium = new ItemBase("ingotTrichromadentium", GlowType.OVAL, 0xffffff);
+	public static final Item nuggetTrichromadentium = new ItemBase("nuggetTrichromadentium", 0xffffff);
+	public static final Item dustTrichromadentium = new ItemBase("dustTrichromadentium", GlowType.CIRCLE_BIG, 0xffffff);
 
 	public static final Item dustIronwood = new ItemBase("dustIronwood");
 
@@ -90,25 +90,25 @@ public class ModItems {
 	public static final Item dustSyrmorite = new ItemBase("dustSyrmorite");
 
 	//Gems
-	public static final Item gemVoidSpar = new ItemBase("gemVoidSpar");
-	public static final Item gemEnderal = new ItemBase("gemEnderal");
-	public static final Item gemGarstone = new ItemBase("gemGarstone");
+	public static final Item gemVoidSpar = new ItemBase("gemVoidSpar", 0x7e15ff);
+	public static final Item gemEnderal = new ItemBase("gemEnderal", 0x2b0082);
+	public static final Item gemGarstone = new ItemBase("gemGarstone", 0xff0000);
 	public static final Item gemBloodstone = new ItemBase("gemBloodstone");
-	public static final Item gemEchostone = new ItemBase("gemEchostone");
+	public static final Item gemEchostone = new ItemBase("gemEchostone", 0x00725a);
 	public static final Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate").withColor(0xda6540).withType(GlowType.EXTREME);
-	public static final Item gemErythynite = new ItemBase("gemErythynite");
-	public static final Item gemEtherstone = new ItemBase("gemEtherstone");;
+	public static final Item gemErythynite = new ItemBase("gemErythynite", GlowType.CIRCLE_BIG, 0x32ff00);
+	public static final Item gemEtherstone = new ItemBase("gemEtherstone", GlowType.CIRCLE_BIG, 0xffff00);;
 
 	//Ingriedients
-	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);;
-	public static final Item spaceTimeDisruptionPowder = new ItemBase("spaceTimeDisruptionPowder").setTab(ModTabs.moarTConMisc);;
-	public static final Item hydrogenRichRedstonePowder = new ItemBase("hydrogenRichRedstonePowder").setTab(ModTabs.moarTConMisc);;
+	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);
+	public static final Item spaceTimeDisruptionPowder = new ItemBase("spaceTimeDisruptionPowder", GlowType.CIRCLE_BIG, 0).setTab(ModTabs.moarTConMisc);
+	public static final Item hydrogenRichRedstonePowder = new ItemBase("hydrogenRichRedstonePowder", GlowType.CIRCLE_BIG, 0xff0000).setTab(ModTabs.moarTConMisc);
 	public static final Item crushedShockwaveSword = new ItemBase("crushedShockwaveSword").setTab(ModTabs.moarTConMisc);
 	public static final Item matterReconstructionGel = new ItemBase("matterReconstructionGel").setTab(ModTabs.moarTConMisc);
 	public static final Item sulfurBucketSyrmorite = new ItemBase("sulfurBucketSyrmorite").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item sulfurBucketIron = new ItemBase("sulfurBucketIron").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
-	public static final Item betweenicCore = new ItemBase("betweenicCore").setTab(ModTabs.moarTConMisc);
-
+	public static final Item betweenicCore = new ItemBase("betweenicCore", 0x3a2f24).setTab(ModTabs.moarTConMisc);
+//
 	//Modifier items
 	public static final Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
 	public static final Item crushingModifier = new ItemBase("crushingModifier").setTab(ModTabs.moarTConMisc);

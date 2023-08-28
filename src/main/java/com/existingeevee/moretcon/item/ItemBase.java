@@ -92,10 +92,15 @@ public class ItemBase extends Item implements ICustomSlotRenderer {
 
 	private GlowType type = GlowType.CIRCLE;
 	private int hex = -1;
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void render(ItemStack stack, int x, int y, IBakedModel bakedmodel) {
+		render(stack, x, y, bakedmodel, type, hex);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void render(ItemStack stack, int x, int y, IBakedModel bakedmodel, GlowType type, int hex) {
 		float ticks = (float) ((Minecraft.getMinecraft().world.getTotalWorldTime()
 				+ Minecraft.getMinecraft().getRenderPartialTicks()) % (40 * Math.PI));
 
