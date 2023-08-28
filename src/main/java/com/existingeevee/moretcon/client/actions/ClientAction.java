@@ -30,7 +30,11 @@ public abstract class ClientAction {
 			NetworkHandler.HANDLER.sendToDimension(new SentClientActionMessage(this.getClass().getName(), x, y, z, data), world.provider.getDimension());
 		}
 	}
-
+	
+	public void run(double x, double y, double z, NBTBase data) {
+		run(Minecraft.getMinecraft().world, x, y, z, data);
+	}
+	
 	public static class SentClientActionMessage implements IMessage, IMessageHandler<SentClientActionMessage, IMessage> {
 
 		private String classPath = "";
@@ -61,7 +65,7 @@ public abstract class ClientAction {
 			Minecraft.getMinecraft().addScheduledTask(() -> {
 				try {
 					Class<? extends ClientAction> c = (Class<? extends ClientAction>) Class.forName(message.classPath);
-					c.newInstance().run(Minecraft.getMinecraft().world, message.x, message.y, message.z, message.tag);
+					c.newInstance().run(message.x, message.y, message.z, message.tag);
 				} catch (Throwable e) {
 					e.printStackTrace();
 				}

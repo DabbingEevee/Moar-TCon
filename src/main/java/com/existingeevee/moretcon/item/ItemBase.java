@@ -61,6 +61,7 @@ public class ItemBase extends Item implements ICustomSlotRenderer {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public boolean shouldRender(ItemStack stack) {
 		return hex >= 0;
 	}
