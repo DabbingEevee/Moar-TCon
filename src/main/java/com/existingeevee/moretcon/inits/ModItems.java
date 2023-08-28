@@ -2,6 +2,7 @@ package com.existingeevee.moretcon.inits;
 
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.item.ItemBase;
+import com.existingeevee.moretcon.item.ItemBase.GlowType;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.item.ItemDebugTool;
 import com.existingeevee.moretcon.item.ItemNonflamable;
@@ -16,9 +17,9 @@ public class ModItems {
 	/*---------------------------------------*/
 
 	//Metals
-	public static final Item nuggetFusionite = new ItemBase("nuggetFusionite");
-	public static final Item ingotFusionite = new ItemBase("ingotFusionite");
-	public static final Item dustFusionite = new ItemBase("dustFusionite");
+	public static final Item nuggetFusionite = new ItemBase("nuggetFusionite", 0x0000ff);
+	public static final Item ingotFusionite = new ItemBase("ingotFusionite", GlowType.OVAL, 0x0000ff);
+	public static final Item dustFusionite = new ItemBase("dustFusionite", GlowType.CIRCLE_BIG, 0x0000ff);
 
 	public static final Item nuggetRotiron = new ItemBase("nuggetRotiron");
 	public static final Item ingotRotiron = new ItemBase("ingotRotiron");
@@ -32,21 +33,21 @@ public class ModItems {
 	public static final Item nuggetGallium = new ItemBase("nuggetGallium");
 	public static final Item dustGallium = new ItemBase("dustGallium");
 
-	public static final Item nuggetIrradium = new ItemBase("nuggetIrradium");
-	public static final Item dustIrradium = new ItemBase("dustIrradium");
-	public static final Item ingotIrradium = new ItemBase("ingotIrradium");
+	public static final Item nuggetIrradium = new ItemBase("nuggetIrradium", 0x00ff00);
+	public static final Item dustIrradium = new ItemBase("dustIrradium", GlowType.CIRCLE_BIG, 0x00ff00);
+	public static final Item ingotIrradium = new ItemBase("ingotIrradium", GlowType.OVAL, 0x00ff00);
 
-	public static final Item ingotGravitonium = new ItemBase("ingotGravitonium");
-	public static final Item nuggetGravitonium = new ItemBase("nuggetGravitonium");
-	public static final Item dustGravitonium = new ItemBase("dustGravitonium");
+	public static final Item ingotGravitonium = new ItemBase("ingotGravitonium", GlowType.OVAL, 0x00a000);
+	public static final Item nuggetGravitonium = new ItemBase("nuggetGravitonium", 0x00a000);
+	public static final Item dustGravitonium = new ItemBase("dustGravitonium", GlowType.CIRCLE_BIG, 0x00a000);
 
 	public static final Item ingotRuneSteel = new ItemBase("ingotRuneSteel");
 	public static final Item dustRuneSteel = new ItemBase("dustRuneSteel");
 	public static final Item nuggetRuneSteel = new ItemBase("nuggetRuneSteel");
 
-	public static final Item nuggetSolsteel = new ItemNonflamable("nuggetSolarSteel");
-	public static final Item ingotSolsteel = new ItemNonflamable("ingotSolarSteel");
-	public static final Item dustSolarSteel = new ItemNonflamable("dustSolarSteel");
+	public static final Item nuggetSolsteel = new ItemNonflamable("nuggetSolarSteel").withColor(0xffb200);
+	public static final Item ingotSolsteel = new ItemNonflamable("ingotSolarSteel").withColor(0xffb200).withType(GlowType.OVAL);
+	public static final Item dustSolarSteel = new ItemNonflamable("dustSolarSteel").withColor(0xffb200).withType(GlowType.CIRCLE_BIG);
 
 	public static final Item ingotValkyrieMetal = new ItemBase("ingotValkyrieMetal");
 	public static final Item nuggetValkyrieMetal = new ItemBase("nuggetValkyrieMetal");
@@ -64,9 +65,9 @@ public class ModItems {
 	public static final Item nuggetAtronium = new ItemBase("nuggetAtronium");
 	public static final Item dustAtronium = new ItemBase("dustAtronium");
 
-	public static final Item ingotEbonite = new ItemBase("ingotEbonite");
-	public static final Item nuggetEbonite = new ItemBase("nuggetEbonite");
-	public static final Item dustEbonite = new ItemBase("dustEbonite");
+	public static final Item ingotEbonite = new ItemBase("ingotEbonite", GlowType.OVAL, 0x000000);
+	public static final Item nuggetEbonite = new ItemBase("nuggetEbonite", 0x000000);
+	public static final Item dustEbonite = new ItemBase("dustEbonite", GlowType.CIRCLE_BIG, 0x000000);
 
 	public static final Item carbonPile = new ItemBase("carbonPile").setTab(ModTabs.moarTConMisc);;
 	public static final Item ingotSteel = new ItemBase("ingotSteel");
@@ -94,7 +95,7 @@ public class ModItems {
 	public static final Item gemGarstone = new ItemBase("gemGarstone");
 	public static final Item gemBloodstone = new ItemBase("gemBloodstone");
 	public static final Item gemEchostone = new ItemBase("gemEchostone");
-	public static final Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate");
+	public static final Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate").withColor(0xda6540).withType(GlowType.EXTREME);
 	public static final Item gemErythynite = new ItemBase("gemErythynite");
 	public static final Item gemEtherstone = new ItemBase("gemEtherstone");;
 

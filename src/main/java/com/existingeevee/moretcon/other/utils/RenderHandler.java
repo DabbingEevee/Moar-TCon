@@ -1,5 +1,6 @@
 package com.existingeevee.moretcon.other.utils;
 
+import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.inits.misc.ModSponges;
 import com.existingeevee.moretcon.other.sponge.SpongeRegistry.GravitoniumSpongeItem;
 
@@ -12,8 +13,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class RenderHandler {
+	
+	@SideOnly(Side.CLIENT)
 	public static void registerFluidCustomMeshesAndStates(Block blockIn) {
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(blockIn), new ItemMeshDefinition() {
 
@@ -34,6 +39,7 @@ public class RenderHandler {
 		});
 	}
 
+	@SideOnly(Side.CLIENT)
 	public static void registerSponge(GravitoniumSpongeItem item) {
 		ResourceLocation gsLocation = ModSponges.gravitoniumSponge.getRegistryName();
 		
@@ -43,4 +49,17 @@ public class RenderHandler {
 		ModelLoader.setCustomModelResourceLocation(item, 1, new ModelResourceLocation(new ResourceLocation(gsLocation.getResourceDomain(), gsLocation.getResourcePath()), "inventory"));
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(new ResourceLocation(gsLocation.getResourceDomain(), "complete" + gsLocation.getResourcePath()), "inventory"));
 	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void registerItemModel(Item item) {
+		ModelResourceLocation model = new ModelResourceLocation(ModInfo.MODID + ":" + item.getUnlocalizedName().replaceFirst(("item." + ModInfo.MODID + "."), ""), "inventory");
+		ModelLoader.setCustomModelResourceLocation(item, 0, model);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static void registerBlockModel(Block block) {
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
+				ModInfo.MODID + ":" + block.getUnlocalizedName().replaceFirst(("tile." + ModInfo.MODID + "."), ""), "inventory"));
+	}
+
 }

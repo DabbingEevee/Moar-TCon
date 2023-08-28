@@ -19,21 +19,17 @@ import com.existingeevee.moretcon.other.sponge.SpongeRegistry.GravitoniumSpongeI
 import com.google.common.base.Function;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.modifiers.IModifier;
@@ -62,7 +58,7 @@ public class RegisterHelper {
 		if (itemBlock != null) {
 			ForgeRegistries.ITEMS.register(itemBlock.apply(block).setRegistryName(block.getRegistryName()));
 			if (Misc.isClient()) {
-				registerBlockModel(block);
+				RenderHandler.registerBlockModel(block);
 				if (block instanceof BlockFluidClassic) {
 					RenderHandler.registerFluidCustomMeshesAndStates(block);
 				}
@@ -90,7 +86,7 @@ public class RegisterHelper {
 		if (Misc.isClient()) {
 			if (item instanceof ToolCore) {
 				ModelRegisterUtil.registerToolModel((ToolCore) item);
-				moreTConTools.add((ToolCore) item);
+				moreTConTools.add((ToolCore) item); //we dont use this on the server anyways
 			} else if (item instanceof ToolPart) {
 				ModelRegisterUtil.registerPartModel((ToolPart) item);
 			} else if (item instanceof GravitoniumSpongeItem) {
@@ -98,7 +94,7 @@ public class RegisterHelper {
 			} else if (item instanceof ItemCompositeRep) {
 				//Nothing here. it will be handled later
 			} else {
-				registerItemModel(item);
+				RenderHandler.registerItemModel(item);
 			}
 		}
 	}
@@ -116,19 +112,6 @@ public class RegisterHelper {
 		return false;
 
 	}
-
-	@SideOnly(Side.CLIENT)
-	public static void registerItemModel(Item item) {
-		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(
-				ModInfo.MODID + ":" + item.getUnlocalizedName().replaceFirst(("item." + ModInfo.MODID + "."), ""), "inventory"));
-	}
-
-	@SideOnly(Side.CLIENT)
-	public static void registerBlockModel(Block block) {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
-				ModInfo.MODID + ":" + block.getUnlocalizedName().replaceFirst(("tile." + ModInfo.MODID + "."), ""), "inventory"));
-	}
-
 	public static void registerModifier(IModifier modifier) {
 		moreTConModifiers.add((Modifier) modifier);
 	}
