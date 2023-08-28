@@ -91,8 +91,8 @@ public class ModItems {
 
 	//Gems
 	public static final Item gemVoidSpar = new ItemBase("gemVoidSpar", 0x7e15ff);
-	public static final Item gemEnderal = new ItemBase("gemEnderal", 0x2b0082);
-	public static final Item gemGarstone = new ItemBase("gemGarstone", 0xff0000);
+	public static final Item gemEnderal = new ItemBase("gemEnderal", GlowType.CIRCLE_BIG, 0x2b0082);
+	public static final Item gemGarstone = new ItemBase("gemGarstone", GlowType.OVAL, 0xff0000);
 	public static final Item gemBloodstone = new ItemBase("gemBloodstone");
 	public static final Item gemEchostone = new ItemBase("gemEchostone", 0x00725a);
 	public static final Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate").withColor(0xda6540).withType(GlowType.EXTREME);
