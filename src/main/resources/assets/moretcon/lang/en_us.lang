@@ -27,9 +27,10 @@ fluid.moretcon.liquidvalkyriemetal=Molten Valkyrie Metal
 fluid.moretcon.liquidvalkyriemetal=Molten Ebonite
 fluid.moretcon.mummysludge=Mummy Sludge
 fluid.moretcon.rottensludge=Rotten Sludge
+fluid.moretcon.liquidebonite=Molten Ebonite
 
 item.moretcon.betweenifiedmodifier.desc=Adding this to any tool will allow for its full efficiency to be used in the Betweenlands.
-item.moretcon.lightning=.descGet a betweenland lightning bolt to strike your tool to apply.
+item.moretcon.lightning.desc=Get a betweenland lightning bolt to strike your tool to apply.
 item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage on it.
 item.moretcon.repitem.desc=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
 
@@ -385,6 +386,3 @@ spongerecipe.test.name=Test
 spongerecipe.trichromadentium.name=Trichromadentium
 spongerecipe.atronium.name=Atronium
 spongerecipe.solarsteel.name=Solsteel
-
-
-
