@@ -117,5 +117,4 @@ public abstract class WorldGenModifier {
 			}
 		}
 	}
-
 }
