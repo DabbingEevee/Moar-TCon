@@ -87,7 +87,8 @@ public class ModBlocks {
 
 	public static void init() {
 		ModBlocks.registerBlocks(
-				blockGravitoniumFaucet //FYI these will be back in the future. just not now.
+				blockGravitoniumFaucet
+		//FYI these will be back in the future. just not now.
 		//blockVoidPrismTop,
 		//blockVoidPrismBottom,
 		//blockVoidColumn,

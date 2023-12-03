@@ -27,9 +27,10 @@ fluid.moretcon.liquidvalkyriemetal=Molten Valkyrie Metal
 fluid.moretcon.liquidebonite=Molten Ebonite
 fluid.moretcon.mummysludge=Mummy Sludge
 fluid.moretcon.rottensludge=Rotten Sludge
+fluid.moretcon.liquidfusionlava=Fusion Lava
 
 item.moretcon.betweenifiedmodifier.desc=Adding this to any tool will allow for its full efficiency to be used in the Betweenlands.
-item.moretcon.crushingmodifier.desc=Adding this to any tool will convert 5% of its damage to become armor penetrating.
+item.moretcon.crushingmodifier.desc=Adding this to any tool will convert 5% of its damage to true damage.
 item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage on it.
 item.moretcon.repitem.desc=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
 
@@ -281,6 +282,8 @@ modifier.moretcon.essential_obliteration.desc=§oLazy miner...§r\nSneaking whil
 modifier.moretcon.essential_obliteration.name=Essential Obliteration
 modifier.moretcon.wormed.desc=§oWriggle Warfare!!§r\nSneaking while firing this tool will cause it to shoot an projectile that turns into a Sludge Worm that attacks whatever the projectile hits. There are 10 charges of this ability that slowly regenerate over time.
 modifier.moretcon.wormed.name=Wormed
+modifier.moretcon.luminescent.desc=§oProbably not radioactive..§r\nThis tool will glow. Purely decorative.
+modifier.moretcon.luminescent.name=Luminescent
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
@@ -347,6 +350,7 @@ tile.moretcon.liquidsyrmorite.name=Molten Syrmorite
 tile.moretcon.liquidtrichromadentium.name=Molten Trichromadentium
 tile.moretcon.liquidvalkyriemetal.name=Molten Valkyrie Metal
 tile.moretcon.liquidebonite.name=Molten Ebonite
+tile.moretcon.liquidfusionlava.name=Fusion Lava
 tile.moretcon.mummysludge.name=Mummy Sludge
 tile.moretcon.orearkenium.name=Arkenium Ore
 tile.moretcon.orebloodstone.name=Bloodstone Ore

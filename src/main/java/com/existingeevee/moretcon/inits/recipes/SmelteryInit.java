@@ -7,6 +7,7 @@ import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.gildedgames.the_aether.items.ItemsAether;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
@@ -22,7 +23,8 @@ public class SmelteryInit {
 			TinkerRegistry.registerMelting(ModItems.rawSteel, TinkerFluids.steel, Material.VALUE_Ingot);
 			TinkerRegistry.registerMelting(ModBlocks.oreGravitoniumDense, ModFluids.liquidGravitonium, Material.VALUE_Ore() * 4);
 			TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidRuneSteel, 1), new FluidStack(TinkerFluids.obsidian, 1), new FluidStack(TinkerFluids.ardite, 9), new FluidStack(TinkerFluids.steel, 9), new FluidStack(TinkerFluids.gold, 2));
-			TinkerRegistry.registerSmelteryFuel(new FluidStack(ModFluids.liquidSolsteel, 16), 1024);
+			TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidFusionLava, 1), new FluidStack(ModFluids.liquidFusionite, 18), new FluidStack(FluidRegistry.LAVA, 125), new FluidStack(TinkerFluids.ardite, 9));
+			TinkerRegistry.registerSmelteryFuel(new FluidStack(ModFluids.liquidFusionLava, 16), 1024);
 			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.matterReconstructionGel, 1), RecipeMatch.of(new ItemStack(ModItems.hydrogenRichRedstonePowder)), TinkerFluids.knightslime, Material.VALUE_Ingot * 4, true, true));
 			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.rawSteel, 1), RecipeMatch.of(new ItemStack(ModItems.carbonPile)), TinkerFluids.iron, Material.VALUE_Ingot, true, true));
 		}

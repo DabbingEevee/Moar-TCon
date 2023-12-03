@@ -6,7 +6,7 @@ import net.minecraft.block.material.MapColor;
 
 public class MapHelper {
 	
-	public static MapColor GetMapColor(int color) {
+	public static MapColor getMapColor(int color) {
 		int i;
 		for (i = 0; i < 64; i ++) {
 			if (MapColor.COLORS[i] == null) {

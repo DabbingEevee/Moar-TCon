@@ -72,6 +72,11 @@ public class ModFluids {
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
 	
 	
+	public static Fluid liquidFusionLava = new LiquidFluid("liquidfusionlava",
+			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidfusionlava_still"), //were gonna just use the solsteel textures for now until i have more time
+			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidfusionlava_flowing")).setCColor(0x00ffff).setLuminosity(15)
+					.setDensity(8000).setViscosity(1500).setTemperature(2000);
+	
 	public static Fluid liquidSwampSteel = new LiquidFluid("liquidSwampSteel".toLowerCase()).setCColor(0x001100).setLuminosity(13)
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
 	public static Fluid liquidRotiron = new LiquidFluid("liquidRotiron".toLowerCase()).setCColor(0x001100).setLuminosity(13)
@@ -108,8 +113,8 @@ public class ModFluids {
 					liquidGravitonium,
 					liquidTrichromadentium,
 					liquidAtronium,
-					liquidEbonite
-
+					liquidEbonite,
+					liquidFusionLava
 		
 			/** ------------------------------------- **/
 			);
@@ -149,7 +154,6 @@ public class ModFluids {
 	}
 
 	private static void addFluid(Fluid fluid) {
-
 		RegisterHelper.registerFluid(fluid);
 	}
 
