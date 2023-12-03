@@ -181,11 +181,11 @@ material.uniquetoolpart.name=Unique
 
 modifier.moretcon.oxide.desc=§ofree durability*!\n§rYour between-tools will consume corrosion instead of durability, until it runs out. Not friendly towards non between-tools.
 modifier.moretcon.oxide.name=Oxide
-modifier.moretcon.overgrowth.desc=§oFungal!\n§rYour tool will use corrosion as durability.
+modifier.moretcon.overgrowth.desc=§oFungal!\n§rYour tool regenerate overslime overtime.
 modifier.moretcon.overgrowth.name=Overgrowth
 modifier.moretcon.overcast.desc=§oThick Coverage!\n§rOverslime provides twice as much durability with this trait.
 modifier.moretcon.overcast.name=Overcast
-modifier.moretcon.overslime.desc=§oSlimy!\n§rrYour tool consumes overslime instead of durability, until it runs out! Not friendly towards tools lacking slime.
+modifier.moretcon.overslime.desc=§oSlimy!\n§rYour tool consumes overslime instead of durability, until it runs out! Not friendly towards tools lacking slime.
 modifier.moretcon.overslime.name=Overslime
 modifier.moretcon.etheralharvest.desc=§oTo the other side!!\n§rYour tool will be able able to mine non-tangible blocks typically found in the end.
 modifier.moretcon.etheralharvest.name=Etheral Harvest

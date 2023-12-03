@@ -10,11 +10,11 @@ public class Oxide extends DurabilityShieldTrait {
 
 	public Oxide() {
 		super(Misc.createNonConflictiveName("oxide"), 0);
-		this.showShieldRemaining = false;
+		this.showNumberRemaining = false;
 	}
 
 	@Override
-	public int getShieldMax(ItemStack stack) {
+	public int getNumberMax(ItemStack stack) {
 		if (!(stack.getItem() instanceof ICorrodible)) {
 			return 0;
 		}
@@ -23,7 +23,7 @@ public class Oxide extends DurabilityShieldTrait {
 	}
 
 	@Override
-	public int getShieldRemaining(ItemStack stack) {
+	public int getNumberRemaining(ItemStack stack) {
 		if (!(stack.getItem() instanceof ICorrodible)) {
 			return 0;
 		}
@@ -32,7 +32,7 @@ public class Oxide extends DurabilityShieldTrait {
 	}
 
 	@Override
-	public int setShieldRemaining(ItemStack stack, int amount) {
+	public int setNumberRemaining(ItemStack stack, int amount) {
 		if (!(stack.getItem() instanceof ICorrodible)) {
 			return 0;
 		}
