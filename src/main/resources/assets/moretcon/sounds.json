@@ -8,5 +8,15 @@
 	    		"stream": true
 	    	}
 	    ]
+	},
+	"traits.kinetic_battery.swoosh_explosion": {
+	    "category": "entity",
+	    "subtitle": "traits.kinetic_battery.swoosh_explosion",
+	    "sounds": [
+	    	{
+	    		"name": "moretcon:traits/kinetic_battery/swoosh_explosion",
+	    		"stream": true
+	    	}
+	    ]
 	}
 }

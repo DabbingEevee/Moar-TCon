@@ -25,6 +25,7 @@ import com.existingeevee.moretcon.traits.traits.Hardcore;
 import com.existingeevee.moretcon.traits.traits.HelpfulRadiation;
 import com.existingeevee.moretcon.traits.traits.HyperGravity;
 import com.existingeevee.moretcon.traits.traits.Hyperheat;
+import com.existingeevee.moretcon.traits.traits.KineticBattery;
 import com.existingeevee.moretcon.traits.traits.Leeching;
 import com.existingeevee.moretcon.traits.traits.Liquid;
 import com.existingeevee.moretcon.traits.traits.Luminescent;
@@ -57,6 +58,7 @@ import com.existingeevee.moretcon.traits.traits.unique.Wormed;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 
 public class ModTraits {
+	public static KineticBattery kineticBattery = new KineticBattery();
 	public static Hyperheat hyperheat = new Hyperheat();
 	public static ColdFire coldFire = new ColdFire();
 	public static Tricromatic trichromic = new Tricromatic();

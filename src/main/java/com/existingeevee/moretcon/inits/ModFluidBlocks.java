@@ -11,6 +11,7 @@ import net.minecraft.block.material.Material;
 public class ModFluidBlocks {
 	/* ------------------------------------- */
 	public static Block blockLiquidFusionite;
+	public static Block blockLiquidValasium;
 	public static Block blockLiquidIrradium;
 	public static Block blockLiquidGallium;
 	public static Block blockLiquidPenguinite;
@@ -54,6 +55,7 @@ public class ModFluidBlocks {
 			blockLiquidTrichromadentium = new BlockFluid("liquidtrichromadentium", ModFluids.liquidTrichromadentium, Material.LAVA);
 			blockLiquidAtronium = new BlockFluid("liquidatronium", ModFluids.liquidAtronium, Material.LAVA);
 			blockLiquidEbonite = new BlockFluid("liquidebonite", ModFluids.liquidEbonite, Material.LAVA);			
+			blockLiquidValasium = new BlockFluid("liquidvalasium", ModFluids.liquidValasium, Material.LAVA);			
 			blockLiquidFusionLava = new BlockFluid("liquidfusionlava", ModFluids.liquidFusionLava, Material.LAVA);			
 			
 			
@@ -69,7 +71,8 @@ public class ModFluidBlocks {
 				blockLiquidTrichromadentium,
 				blockLiquidAtronium,
 				blockLiquidEbonite,
-				blockLiquidFusionLava
+				blockLiquidFusionLava,
+				blockLiquidValasium
 /* ------------------------------------- */
 				);
 		}

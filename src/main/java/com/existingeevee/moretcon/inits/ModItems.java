@@ -21,6 +21,10 @@ public class ModItems {
 	public static final Item ingotFusionite = new ItemBase("ingotFusionite", GlowType.OVAL, 0x0000ff);
 	public static final Item dustFusionite = new ItemBase("dustFusionite", GlowType.CIRCLE_BIG, 0x0000ff);
 
+	public static final Item nuggetValasium = new ItemBase("nuggetValasium");
+	public static final Item ingotValasium = new ItemBase("ingotValasium");
+	public static final Item dustValasium = new ItemBase("dustValasium");
+	
 	public static final Item nuggetRotiron = new ItemBase("nuggetRotiron");
 	public static final Item ingotRotiron = new ItemBase("ingotRotiron");
 	public static final Item dustRotiron = new ItemBase("dustRotiron");
@@ -133,6 +137,9 @@ public class ModItems {
 					ingotFusionite,
 					nuggetFusionite,
 
+					ingotValasium,
+					nuggetValasium,
+					
 					ingotIrradium,
 					nuggetIrradium,
 
@@ -182,6 +189,7 @@ public class ModItems {
 			if (ConfigHandler.shouldLoadDust) {
 				ModItems.registerItems(
 						dustFusionite,
+						dustValasium,
 						dustIrradium,
 						dustSolarSteel,
 						dustGallium,

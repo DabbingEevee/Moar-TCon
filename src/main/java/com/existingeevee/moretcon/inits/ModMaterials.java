@@ -79,6 +79,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialErythynite = new Material(Misc.createNonConflictiveName("erythynite"), 0x00ff00);
 	public static final Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass"), 0x2a275e);
 	public static final Material materialEtherstone = new Material(Misc.createNonConflictiveName("etherstone"), 0xf1ea3b);
+	public static final Material materialValasium = new Material(Misc.createNonConflictiveName("valasium"), 0x9ab7d6);
 
 	public static final Material materialNahuatl = new Material(Misc.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(Misc.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -213,6 +214,25 @@ public class ModMaterials implements MaterialTypes {
 				materialFusionite.addStats(new BatteryCellMaterialStats(100000));
 			}
 
+			materialValasium.addItem("oreValasium", 1, Material.VALUE_Ore());
+			materialValasium.setFluid(ModFluids.liquidValasium);
+			materialValasium.addCommonItems("Valasium");
+			materialValasium.setCastable(true);
+			materialValasium.setCraftable(false);
+			materialValasium.setRepresentativeItem("ingotValasium");
+			materialValasium.addTrait(ModTraits.kineticBattery, HEAD);
+			materialValasium.addTrait(TinkerTraits.alien, HEAD);
+			materialValasium.addTrait(TinkerTraits.alien);
+			materialValasium.addTrait(TinkerTraits.dense);
+			if (CompatManager.plustic) {
+				materialValasium.addStats(new LaserMediumMaterialStats(15, 20));
+				materialValasium.addStats(new BatteryCellMaterialStats(2000));
+			}
+			materialValasium.addStats(new HeadMaterialStats(1600, 20f, 16f, 8));
+			materialValasium.addStats(new HandleMaterialStats(4f, 60));
+			materialValasium.addStats(new ExtraMaterialStats(500));
+			materialValasium.addStats(new ArrowShaftMaterialStats(3f, 75));
+			
 			materialIrradium.addItem("oreIrradium", 1, Material.VALUE_Ore());
 			materialIrradium.setFluid(ModFluids.liquidIrradium);
 			materialIrradium.addCommonItems("Irradium");
@@ -867,6 +887,7 @@ public class ModMaterials implements MaterialTypes {
 		if (CompatManager.loadMain) {
 			ModMaterials.registerMaterial(materialPlasma);
 			ModMaterials.registerMaterial(materialFusionite).toolforge();
+			ModMaterials.registerMaterial(materialValasium).toolforge();
 			ModMaterials.registerMaterial(materialSpaceTimeDisruption, "SpaceTimeDisruption");
 			ModMaterials.registerMaterial(materialVoidSpar, "VoidSpar");
 			ModMaterials.registerMaterial(materialEnderal).toolforge();

@@ -9,8 +9,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class ChaosVeil extends AbstractTrait {
 
-	//public static final Trait hammer_sickle = new Trait(identifier, color);
-	public ChaosVeil() {
+	public ChaosVeil() { //TODO
 		super(Misc.createNonConflictiveName("aetheric"), 0);
 	}
 

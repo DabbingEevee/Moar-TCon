@@ -28,7 +28,7 @@ public abstract class NumberTrackerTrait extends AbstractTrait {
 	public abstract int setNumberRemaining(ItemStack stack, int amount);
 
 	public int addNumberRemaining(ItemStack stack, int amount) {
-		return setNumberRemaining(stack, getNumberRemaining(stack) + amount);
+		return setNumberRemaining(stack, Math.max(0, Math.min(this.getNumberMax(stack), getNumberRemaining(stack) + amount)));
 	}
 
 	public int subtractNumberRemaining(ItemStack stack, int amount) {

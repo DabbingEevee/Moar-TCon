@@ -16,6 +16,10 @@ public class ModFluids {
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidfusionite_still"),
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidfusionite_flowing")).setCColor(0x3399ff).setLuminosity(15)
 					.setDensity(1000).setViscosity(2000).setTemperature(1000);
+	public static Fluid liquidValasium = new LiquidFluid("liquidvalasium",
+			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidvalasium_still"),
+			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidvalasium_flowing")).setCColor(0x93c4c4).setLuminosity(15)
+					.setDensity(1000).setViscosity(2000).setTemperature(1000);
 	public static Fluid liquidSyrmorite = new LiquidFluid("liquidsyrmorite",
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidsyrmorite_still"),
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidsyrmorite_flowing")).setCColor(0x234187).setLuminosity(10)
@@ -114,8 +118,8 @@ public class ModFluids {
 					liquidTrichromadentium,
 					liquidAtronium,
 					liquidEbonite,
-					liquidFusionLava
-		
+					liquidFusionLava,
+					liquidValasium
 			/** ------------------------------------- **/
 			);
 		}
