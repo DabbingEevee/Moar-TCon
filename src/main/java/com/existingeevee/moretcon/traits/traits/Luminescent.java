@@ -49,6 +49,7 @@ public class Luminescent extends AbstractTrait {
 			int sumRed = 0;
 			int sumGreen = 0;
 			int sumBlue = 0;
+			int sumTotal = 0;
 			Set<Material> materials = new HashSet<>();
 
 			materials.addAll(Misc.getMaterials(stack));
@@ -64,8 +65,9 @@ public class Luminescent extends AbstractTrait {
 				sumRed += (col & 0xFF0000) >> 16;
 				sumGreen += (col & 0xFF00) >> 8;
 				sumBlue += (col & 0xFF);
+				sumTotal += 1;
 			}
-			Color color = new Color(sumRed, sumGreen, sumBlue);
+			Color color = new Color(sumRed / sumTotal, sumGreen / sumTotal, sumBlue / sumTotal);
 			map.put(nbt, color.getRGB());
 			return calculateColor(stack);
 		}
