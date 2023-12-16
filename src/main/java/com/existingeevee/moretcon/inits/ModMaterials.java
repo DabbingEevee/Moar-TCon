@@ -427,6 +427,7 @@ public class ModMaterials implements MaterialTypes {
 			materialErythynite.addTrait(ModTraits.hardcore, HEAD);
 			materialErythynite.addTrait(ModTraits.luminescent, HEAD);
 			materialErythynite.addTrait(ModTraits.leeching);
+			materialErythynite.addTrait(ModTraits.weightless);
 			materialErythynite.addTrait(TinkerTraits.enderference);
 			materialErythynite.addTrait(ModTraits.luminescent);
 			materialErythynite.addStats(new HeadMaterialStats(600, 7.5f, 10f, 7));

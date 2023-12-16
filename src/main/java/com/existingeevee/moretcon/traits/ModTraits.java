@@ -46,6 +46,7 @@ import com.existingeevee.moretcon.traits.traits.Slicing;
 import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
+import com.existingeevee.moretcon.traits.traits.Weightless;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
 import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
 import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
@@ -92,6 +93,7 @@ public class ModTraits {
 	public static Darkened darkened = new Darkened();
 	public static DummyTrait etheralHarvest = new DummyTrait("etheralharvest", 0);
 	public static Luminescent luminescent = new Luminescent("luminescent", 0);
+	public static Weightless weightless = new Weightless();
 
 	public static Overdrive overdrive = new Overdrive();
 	
