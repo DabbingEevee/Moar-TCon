@@ -23,7 +23,7 @@ public class Oxide extends DurabilityShieldTrait {
 	}
 
 	@Override
-	public int getNumberRemaining(ItemStack stack) {
+	public int getNumber(ItemStack stack) {
 		if (!(stack.getItem() instanceof ICorrodible)) {
 			return 0;
 		}
@@ -32,7 +32,7 @@ public class Oxide extends DurabilityShieldTrait {
 	}
 
 	@Override
-	public int setNumberRemaining(ItemStack stack, int amount) {
+	public int setNumber(ItemStack stack, int amount) {
 		if (!(stack.getItem() instanceof ICorrodible)) {
 			return 0;
 		}

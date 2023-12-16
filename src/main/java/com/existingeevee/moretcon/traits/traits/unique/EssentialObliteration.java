@@ -30,13 +30,13 @@ public class EssentialObliteration extends NumberTrackerTrait {
 	}
 
 	@Override
-	public int getNumberRemaining(ItemStack stack) {
+	public int getNumber(ItemStack stack) {
 		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
 		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : 0;
 	}
 
 	@Override
-	public int setNumberRemaining(ItemStack stack, int amount) {
+	public int setNumber(ItemStack stack, int amount) {
 		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
 		comp.setInteger("remaining", amount);
 		return amount;
@@ -51,7 +51,7 @@ public class EssentialObliteration extends NumberTrackerTrait {
 	public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
 		if (event.getEntityLiving().isSneaking()) {
 			event.setNewSpeed(event.getNewSpeed() * 0.0625f);
-		} else if (this.getNumberRemaining(tool) > 0) {
+		} else if (this.getNumber(tool) > 0) {
 			event.setNewSpeed(event.getNewSpeed() * 20f);
 		}
 	}
@@ -59,10 +59,10 @@ public class EssentialObliteration extends NumberTrackerTrait {
 	@Override
 	public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective) {
 		if (player.isSneaking()) {
-			int maxToAdd = this.getNumberMax(tool) - this.getNumberRemaining(tool);
-			this.addNumberRemaining(tool, Math.min(5, maxToAdd));
-		} else if (this.getNumberRemaining(tool) > 0) {
-			this.subtractNumberRemaining(tool, 1);
+			int maxToAdd = this.getNumberMax(tool) - this.getNumber(tool);
+			this.addNumber(tool, Math.min(5, maxToAdd));
+		} else if (this.getNumber(tool) > 0) {
+			this.removeNumber(tool, 1);
 		}
 	}
 

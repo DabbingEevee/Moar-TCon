@@ -26,17 +26,17 @@ public class KineticBattery extends NumberTrackerTrait {
 
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
-		if (this.getNumberRemaining(tool) > 0 && player.isSneaking()) {
-			newDamage *= 1 + 1f * this.getNumberRemaining(tool) / this.getNumberMax(tool);
+		if (this.getNumber(tool) > 0 && player.isSneaking()) {
+			newDamage *= 1 + 1f * this.getNumber(tool) / this.getNumberMax(tool);
 		}
 		return newDamage;
 	}
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (this.getNumberRemaining(tool) > 0 && player.isSneaking()) {
+		if (this.getNumber(tool) > 0 && player.isSneaking()) {
 			player.world.playSound(null, player.getPosition(), SoundHandler.SWOOSH_EXPLOSION, SoundCategory.PLAYERS, 1, 1);
-			this.setNumberRemaining(tool, 0);
+			this.setNumber(tool, 0);
 			
 			if (player.world instanceof WorldServer) {
 				SPacketParticles spacketparticles = new SPacketParticles(EnumParticleTypes.EXPLOSION_LARGE, true, (float) target.getPositionVector().x, (float) target.getPositionVector().y, (float) target.getPositionVector().z, 0, 0, 0, 0, 1);
@@ -51,8 +51,8 @@ public class KineticBattery extends NumberTrackerTrait {
 
 	@Override
 	public float knockBack(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float knockback, float newKnockback, boolean isCritical) {
-		if (this.getNumberRemaining(tool) > 0 && player.isSneaking()) {
-			newKnockback += 4f * this.getNumberRemaining(tool) / this.getNumberMax(tool);
+		if (this.getNumber(tool) > 0 && player.isSneaking()) {
+			newKnockback += 4f * this.getNumber(tool) / this.getNumberMax(tool);
 		}
 		return newKnockback;
 	}
@@ -63,13 +63,13 @@ public class KineticBattery extends NumberTrackerTrait {
 	}
 
 	@Override
-	public int getNumberRemaining(ItemStack stack) {
+	public int getNumber(ItemStack stack) {
 		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
 		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : 0;
 	}
 
 	@Override
-	public int setNumberRemaining(ItemStack stack, int amount) {
+	public int setNumber(ItemStack stack, int amount) {
 		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
 		comp.setInteger("remaining", amount);
 		return amount;
@@ -80,7 +80,7 @@ public class KineticBattery extends NumberTrackerTrait {
 		for (EnumHand hand : EnumHand.values()) {
 			ItemStack stack = event.getEntityLiving().getHeldItem(hand);
 			if (ToolHelper.getTraits(stack).contains(this)) {
-				this.addNumberRemaining(stack, Math.round(event.getAmount()));
+				this.addNumber(stack, Math.round(event.getAmount()));
 				return;
 			}
 		}

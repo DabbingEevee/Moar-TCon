@@ -24,13 +24,13 @@ public class Overslime extends DurabilityShieldTrait {
 	}
 
 	@Override
-	public int getNumberRemaining(ItemStack stack) {
+	public int getNumber(ItemStack stack) {
 		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
 		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : 0;
 	}
 
 	@Override
-	public int setNumberRemaining(ItemStack stack, int amount) {
+	public int setNumber(ItemStack stack, int amount) {
 		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
 		comp.setInteger("remaining", amount);
 		return amount;

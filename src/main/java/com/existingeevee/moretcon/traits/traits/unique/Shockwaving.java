@@ -135,13 +135,13 @@ public class Shockwaving extends NumberTrackerTrait {
 	}
 
 	@Override
-	public int getNumberRemaining(ItemStack stack) {
+	public int getNumber(ItemStack stack) {
 		return 3 - stack.getTagCompound().getInteger("uses");
 	}
 
 	@Override
-	public int setNumberRemaining(ItemStack stack, int amount) {
+	public int setNumber(ItemStack stack, int amount) {
 		stack.getTagCompound().setInteger("uses", 3 - amount);
-		return getNumberRemaining(stack);
+		return getNumber(stack);
 	}
 }

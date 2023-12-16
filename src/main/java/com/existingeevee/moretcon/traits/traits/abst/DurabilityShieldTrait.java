@@ -11,8 +11,8 @@ public abstract class DurabilityShieldTrait extends NumberTrackerTrait {
 	
 	@Override
 	public int onToolDamage(ItemStack tool, int damage, int newDamage, EntityLivingBase entity) {
-		int damageNegated = Math.min(getNumberRemaining(tool), newDamage);
-		subtractNumberRemaining(tool, damageNegated);
+		int damageNegated = Math.min(getNumber(tool), newDamage);
+		removeNumber(tool, damageNegated);
 		return newDamage - damageNegated;
 	}
 

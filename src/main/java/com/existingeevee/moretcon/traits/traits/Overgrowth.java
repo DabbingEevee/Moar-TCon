@@ -23,11 +23,11 @@ public class Overgrowth extends AbstractTraitLeveled {
 			if (living.getActiveItemStack() == tool || !ModTraits.overslime.isToolWithTrait(tool)) 
 				return;
 
-			int current = ModTraits.overslime.getNumberRemaining(tool);
+			int current = ModTraits.overslime.getNumber(tool);
 			int cap = ModTraits.overslime.getNumberMax(tool);
 		
 			if (current < cap && random.nextFloat() < (this.levels * 0.05)) {
-				ModTraits.overslime.addNumberRemaining(tool, 1);
+				ModTraits.overslime.addNumber(tool, 1);
 			}
 		}
 	}
