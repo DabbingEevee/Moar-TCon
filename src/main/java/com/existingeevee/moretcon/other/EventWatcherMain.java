@@ -29,11 +29,9 @@ import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-@SuppressWarnings({ "deprecation", "unused" })
+@SuppressWarnings("deprecation")
 public class EventWatcherMain {
-
-	private Object begoneWarning = null;
-
+	
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void handleUniqueToolParts(ToolCraftingEvent event) {
 		for (ItemStack part : event.getToolParts()) {
@@ -154,43 +152,3 @@ public class EventWatcherMain {
 		}
 	}
 }
-
-/*
- * ArrayList<UniqueMaterial> postChange = new ArrayList<UniqueMaterial>();
- * NBTTagList tagList =
- * event.getItemStack().serializeNBT().getCompoundTag("tag").getCompoundTag(
- * "TinkerData").getTagList("Modifiers", NBT.TAG_STRING); for (NBTBase tag :
- * tagList) { if
- * (!((NBTTagString)tag).getString().toString().startsWith("extratrait"))
- * continue; String tagString =
- * ((NBTTagString)tag).getString().toString().replaceFirst("extratrait", "");
- * for (Material mat : TinkerRegistry.getAllMaterials()) { if
- * ((TinkerRegistry.getTrait(tagString.replaceFirst(mat.getIdentifier(), "")) !=
- * null) && mat instanceof UniqueMaterial) { postChange.add((UniqueMaterial)
- * mat); } } } ArrayList<UniqueMaterial> preChange = new
- * ArrayList<UniqueMaterial>();
- * 
- * NBTTagList tagListPre =
- * event.getToolBeforeModification().serializeNBT().getCompoundTag("tag").
- * getCompoundTag("TinkerData").getTagList("Modifiers", NBT.TAG_STRING); for
- * (NBTBase tag : tagListPre) { //Logging.log(tag.toString()); if
- * (!((NBTTagString)tag).getString().toString().startsWith("extratrait"))
- * continue; String tagString =
- * ((NBTTagString)tag).getString().toString().replaceFirst("extratrait", "");
- * for (Material mat : TinkerRegistry.getAllMaterials()) { if
- * ((TinkerRegistry.getTrait(tagString.replaceFirst(mat.getIdentifier(), "")) !=
- * null) && mat instanceof UniqueMaterial) { preChange.add((UniqueMaterial)
- * mat); } } }
- * 
- * ArrayList<UniqueMaterial> changes = new ArrayList<UniqueMaterial>();
- * 
- * for (UniqueMaterial mat : postChange) { boolean shouldContinue = false; for
- * (UniqueMaterial mat2 : preChange) { if
- * (mat.getIdentifier().equals(mat2.getIdentifier())) shouldContinue = true;
- * break; } if (shouldContinue) continue; changes.add(mat); } if (changes.size()
- * != 0) { if (!UniqueMaterial.getToolFromResourceLocation(new
- * ResourceLocation(changes.get(0).toolResLoc)).getRegistryName().equals(event.
- * getItemStack().getItem().getRegistryName()))
- * event.setCanceled("You can only use unique tool parts on the correct tool.");
- * }
- */
