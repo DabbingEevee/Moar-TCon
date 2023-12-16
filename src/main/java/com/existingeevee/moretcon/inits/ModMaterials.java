@@ -256,10 +256,10 @@ public class ModMaterials implements MaterialTypes {
 			materialIrradium.addStats(new ProjectileMaterialStats());
 
 			materialSolsteel.setFluid(ModFluids.liquidSolsteel);
-			materialSolsteel.addCommonItems("Solsteel");
+			materialSolsteel.addCommonItems("Solarsteel");
 			materialSolsteel.setCastable(true);
 			materialSolsteel.setCraftable(false);
-			materialSolsteel.setRepresentativeItem("ingotSolsteel");
+			materialSolsteel.setRepresentativeItem("ingotSolarsteel");
 			materialSolsteel.addTrait(TinkerTraits.flammable, HEAD);
 			materialSolsteel.addTrait(TinkerTraits.autosmelt, HEAD);
 			materialSolsteel.addTrait(ModTraits.luminescent, HEAD);
