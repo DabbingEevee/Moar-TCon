@@ -571,6 +571,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEtherstone.setRepresentativeItem("gemEtherstone");
 			materialEtherstone.addTrait(ModTraits.etheralHarvest, HEAD);
 			materialEtherstone.addTrait(ModTraits.darkened, HEAD);
+			materialEtherstone.addTrait(ModTraits.overdrive);
 			materialEtherstone.addTrait(ModTraits.hardcore);
 			materialEtherstone.addTrait(ModTraits.voidic);
 			materialEtherstone.addTrait(ModTraits.luminescent, HEAD);
