@@ -31,6 +31,7 @@ import com.existingeevee.moretcon.traits.traits.Liquid;
 import com.existingeevee.moretcon.traits.traits.Luminescent;
 import com.existingeevee.moretcon.traits.traits.Magical;
 import com.existingeevee.moretcon.traits.traits.MagicallyReactive;
+import com.existingeevee.moretcon.traits.traits.Overdrive;
 import com.existingeevee.moretcon.traits.traits.Overgrowth;
 import com.existingeevee.moretcon.traits.traits.Overslime;
 import com.existingeevee.moretcon.traits.traits.Oxide;
@@ -92,6 +93,8 @@ public class ModTraits {
 	public static DummyTrait etheralHarvest = new DummyTrait("etheralharvest", 0);
 	public static Luminescent luminescent = new Luminescent("luminescent", 0);
 
+	public static Overdrive overdrive = new Overdrive();
+	
 	public static Overslime overslime = new Overslime();
 	public static DummyTrait overcast = new DummyTrait("overcast", 0);
 	public static Overgrowth overgrowth = new Overgrowth(1);

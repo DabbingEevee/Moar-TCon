@@ -294,6 +294,8 @@ modifier.moretcon.wormed.desc=§oWriggle Warfare!!§r\nSneaking while firing thi
 modifier.moretcon.wormed.name=Wormed
 modifier.moretcon.luminescent.desc=§oProbably not radioactive..§r\nThis tool will glow. Purely decorative.
 modifier.moretcon.luminescent.name=Luminescent
+modifier.moretcon.overdrive.desc=§o299,792,458 m/s§r\nThis tool does not apply invulnerability frames. 
+modifier.moretcon.overdrive.name=Overdrive
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
