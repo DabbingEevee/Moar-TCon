@@ -43,25 +43,26 @@ public interface ICustomSlotRenderer {
 				(hex & 0x0000FF) / 255f, b);
 		GlStateManager.disableDepth();
 		GlStateManager.depthMask(false);
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-				GlStateManager.DestFactor.ZERO);
+		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);
 		GlStateManager.disableAlpha();
-
+		
+		GlStateManager.disableLighting();
+		
 		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
 		TextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(CIRCLE_GLOW.toString());
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 		Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect(x, y, textureatlassprite, 16, 16);
 
 		if (type != GlowType.CIRCLE) {
-			//System.out.println(new ResourceLocation(ModInfo.MODID + ":other/bg_glow_" + type.toString().toLowerCase()).toString());
 			textureatlassprite = texturemap.getAtlasSprite(ModInfo.MODID + ":other/bg_glow_" + type.toString().toLowerCase());
 			Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 			Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect(x - 8, y - 8, textureatlassprite, 32, 32);
 		}
 
+		GlStateManager.enableLighting();
+		
 		GlStateManager.enableAlpha();
 		GlStateManager.depthMask(true);
 		GlStateManager.enableDepth();
