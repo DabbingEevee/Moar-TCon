@@ -150,6 +150,8 @@ public class MoreTCon {
 		}
 		UniqueMaterial.onPostInit();
 		CompositeRegistry.onPostInit();
+		
+		ModTraits.postInit();
 	}
 
 	private static void blackListTinkerTools() {

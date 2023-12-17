@@ -1,0 +1,18 @@
+{
+  "modifier": "moretcon.extratrait2",
+  "text": [
+    {
+      "text": "This is like a regular embossment, but you can do it again."
+    }
+  ],
+  "effects": [
+    "Adds traits of another part",
+    "Traits are equal to swapping the part",
+    "The embossment is final and can't be changed",
+    "Requires no modifier",
+    "Compatible with regular embossments"
+  ],
+  "demoTool": [
+    "tconstruct:pickaxe"
+  ]
+}

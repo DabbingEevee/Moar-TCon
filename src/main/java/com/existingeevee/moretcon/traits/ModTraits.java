@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.existingeevee.moretcon.MoreTCon;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.traits.modifiers.Betweenified;
@@ -19,6 +20,7 @@ import com.existingeevee.moretcon.traits.modifiers.RedGem;
 import com.existingeevee.moretcon.traits.modifiers.Shocking;
 import com.existingeevee.moretcon.traits.modifiers.Tarred;
 import com.existingeevee.moretcon.traits.modifiers.Valonite;
+import com.existingeevee.moretcon.traits.modifiers.internal.ModExtraTraitDisplay2;
 import com.existingeevee.moretcon.traits.traits.Aetheric;
 import com.existingeevee.moretcon.traits.traits.Afterimage;
 import com.existingeevee.moretcon.traits.traits.AntiGravity;
@@ -164,12 +166,17 @@ public class ModTraits {
 	}
 
 	public static void init() {
+		if (MoreTCon.proxy.isClient()) {
+			registerModifier(new ModExtraTraitDisplay2());
+		}
+		
 		if (CompatManager.loadMain) {
 			modDebug = new Debug();
 			repair = new MatterReconstructionGel();
 			crushing = new Crushing();
 			registerModifier(
-					crushing);
+					crushing
+					);
 		}
 		if (CompatManager.thebetweenlands) {
 			modRedGem = new RedGem();
@@ -184,9 +191,47 @@ public class ModTraits {
 					modBlueGem,
 					modValonite,
 					modTarred,
-					modShocking
-					);
+					modShocking);
 
+		}
+	}
+
+	public static void postInit() {
+		registerExtraTraitModifiers();
+	}
+
+	
+	private static Map<String, ModExtraTrait2> extraTraitLookup = new HashMap<>();
+	public static List<Modifier> extraTraitMods;
+
+	private static void registerExtraTraitModifiers() {
+		TinkerRegistry.getAllMaterials().forEach(ModTraits::registerExtraTraitModifiers);
+		extraTraitMods = Lists.newArrayList(extraTraitLookup.values());
+	}
+
+	private static void registerExtraTraitModifiers(Material material) {
+		TinkerRegistry.getTools().forEach(tool -> registerExtraTraitModifiers(material, tool));
+	}
+
+	private static void registerExtraTraitModifiers(Material material, ToolCore tool) {
+		tool.getRequiredComponents().forEach(pmt -> registerExtraTraitModifiers(material, tool, pmt));
+	}
+
+	private static void registerExtraTraitModifiers(Material material, ToolCore tool, PartMaterialType partMaterialType) {
+		partMaterialType.getPossibleParts().forEach(part -> registerExtraTraitModifiers(material, tool, partMaterialType, part));
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T extends Item & IToolPart> void registerExtraTraitModifiers(Material material, ToolCore tool, PartMaterialType partMaterialType, IToolPart toolPart) {
+		if (toolPart instanceof Item) {
+			Collection<ITrait> traits = partMaterialType.getApplicableTraitsForMaterial(material);
+			if (!traits.isEmpty()) {
+				// we turn it into a set to remove duplicates, reducing the total amount of modifiers created by roughly 25%!
+				final Collection<ITrait> traits2 = ImmutableSet.copyOf(traits);
+				String identifier = ModExtraTrait2.generateIdentifier(material, traits2);
+				ModExtraTrait2 mod = extraTraitLookup.computeIfAbsent(identifier, id -> new ModExtraTrait2(material, traits2, identifier));
+				mod.addCombination(tool, (T) toolPart);
+			}
 		}
 	}
 }
