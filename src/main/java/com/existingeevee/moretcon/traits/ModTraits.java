@@ -1,5 +1,11 @@
 package com.existingeevee.moretcon.traits;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.traits.modifiers.Betweenified;
@@ -8,6 +14,7 @@ import com.existingeevee.moretcon.traits.modifiers.Crushing;
 import com.existingeevee.moretcon.traits.modifiers.Debug;
 import com.existingeevee.moretcon.traits.modifiers.GreenGem;
 import com.existingeevee.moretcon.traits.modifiers.MatterReconstructionGel;
+import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
 import com.existingeevee.moretcon.traits.modifiers.RedGem;
 import com.existingeevee.moretcon.traits.modifiers.Shocking;
 import com.existingeevee.moretcon.traits.modifiers.Tarred;
@@ -15,6 +22,7 @@ import com.existingeevee.moretcon.traits.modifiers.Valonite;
 import com.existingeevee.moretcon.traits.traits.Aetheric;
 import com.existingeevee.moretcon.traits.traits.Afterimage;
 import com.existingeevee.moretcon.traits.traits.AntiGravity;
+import com.existingeevee.moretcon.traits.traits.AttributeTrait;
 import com.existingeevee.moretcon.traits.traits.BottomsEnd;
 import com.existingeevee.moretcon.traits.traits.Burning;
 import com.existingeevee.moretcon.traits.traits.ColdFire;
@@ -46,7 +54,6 @@ import com.existingeevee.moretcon.traits.traits.Slicing;
 import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
-import com.existingeevee.moretcon.traits.traits.Weightless;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
 import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
 import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
@@ -56,8 +63,20 @@ import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
 import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
 import com.existingeevee.moretcon.traits.traits.unique.Wormed;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.item.Item;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.modifiers.IModifier;
+import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.tinkering.PartMaterialType;
+import slimeknights.tconstruct.library.tools.IToolPart;
+import slimeknights.tconstruct.library.tools.ToolCore;
+import slimeknights.tconstruct.library.traits.ITrait;
 
 public class ModTraits {
 	public static KineticBattery kineticBattery = new KineticBattery();
@@ -93,17 +112,16 @@ public class ModTraits {
 	public static Darkened darkened = new Darkened();
 	public static DummyTrait etheralHarvest = new DummyTrait("etheralharvest", 0);
 	public static Luminescent luminescent = new Luminescent("luminescent", 0);
-	public static Weightless weightless = new Weightless();
-
+	public static AttributeTrait weightless = new AttributeTrait("weightless", 0, new AttributeModifier(UUID.fromString("aed073df-79af-4de9-b62c-44b5fcc4df1d"), "weightless", 1.00, 2), SharedMonsterAttributes.ATTACK_SPEED);
+	public static AttributeTrait shielding = new AttributeTrait("shielding", 0, new AttributeModifier(UUID.fromString("aed073df-79af-4de9-b62c-44b5fcc44fef"), "shielding", 4, 0), SharedMonsterAttributes.ARMOR).setWorksInOffhand(true);
 	public static Overdrive overdrive = new Overdrive();
-	
 	public static Overslime overslime = new Overslime();
 	public static DummyTrait overcast = new DummyTrait("overcast", 0);
 	public static Overgrowth overgrowth = new Overgrowth(1);
 	public static Overgrowth overgrowth2 = new Overgrowth(2);
-	
+
 	public static EssentialObliteration essentialObliteration = new EssentialObliteration();
-	
+
 	public static MatterReconstructionGel repair;
 
 	public static AntiGravity antigravity;
@@ -112,7 +130,7 @@ public class ModTraits {
 	public static GreenGem modGreenGem;
 	public static BlueGem modBlueGem;
 	public static Shocking modShocking;
-	
+
 	public static Corroding corroding;
 	public static Crushing crushing;
 	public static Betweenified betweenified;
@@ -123,8 +141,7 @@ public class ModTraits {
 	public static Rotten rotten;
 	public static Oxide oxide;
 	public static Wormed wormed;
-	
-	
+
 	static {
 		if (CompatManager.thebetweenlands) {
 			shockwaving = new Shockwaving();
@@ -139,13 +156,6 @@ public class ModTraits {
 			reaching = new Reaching();
 		}
 	}
-//	public static Gleaming gleaming_1 = new Gleaming(1);
-//  public static Gleaming gleaming_2 = new Gleaming(2);
-//	public static Gleaming gleaming_3 = new Gleaming(3);
-//	public static Gleaming gleaming_4 = new Gleaming(4);
-//	public static Gleaming gleaming_5 = new Gleaming(5);
-//	public static Gleaming gleaming_6 = new Gleaming(6);
-
 
 	private static void registerModifier(IModifier... mod) {
 		for (IModifier i : mod) {
@@ -159,8 +169,7 @@ public class ModTraits {
 			repair = new MatterReconstructionGel();
 			crushing = new Crushing();
 			registerModifier(
-					crushing
-					);
+					crushing);
 		}
 		if (CompatManager.thebetweenlands) {
 			modRedGem = new RedGem();

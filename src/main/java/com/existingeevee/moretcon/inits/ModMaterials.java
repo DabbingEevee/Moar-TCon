@@ -191,7 +191,7 @@ public class ModMaterials implements MaterialTypes {
 			materialTechnoblade.addTrait(ModTraits.bloodGodsBlessing);
 		}
 
-		if (CompatManager.loadMain) {
+		if (CompatManager.loadMain) {			
 			materialFusionite.addItem("oreFusionite", 1, Material.VALUE_Ore());
 			materialFusionite.setFluid(ModFluids.liquidFusionite);
 			materialFusionite.addCommonItems("Fusionite");
@@ -221,6 +221,7 @@ public class ModMaterials implements MaterialTypes {
 			materialValasium.setCraftable(false);
 			materialValasium.setRepresentativeItem("ingotValasium");
 			materialValasium.addTrait(ModTraits.kineticBattery, HEAD);
+			materialValasium.addTrait(ModTraits.shielding, HEAD);
 			materialValasium.addTrait(TinkerTraits.alien, HEAD);
 			materialValasium.addTrait(TinkerTraits.alien);
 			materialValasium.addTrait(TinkerTraits.dense);
@@ -477,6 +478,7 @@ public class ModMaterials implements MaterialTypes {
 			materialRuneSteel.setCastable(true);
 			materialRuneSteel.setCraftable(false);
 			materialRuneSteel.addTrait(ModTraits.magical);
+			materialRuneSteel.addTrait(ModTraits.shielding);
 			materialRuneSteel.setRepresentativeItem("ingotRunesteel");
 			materialRuneSteel.addStats(new HeadMaterialStats(900, 18f, 14f, 7));
 			materialRuneSteel.addStats(new HandleMaterialStats(4f, 60));
@@ -506,6 +508,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEnderexamite.setCraftable(false);
 			materialEnderexamite.addTrait(TinkerTraits.slimeyBlue, HEAD);
 			materialEnderexamite.addTrait(ModTraits.pulsation, HEAD);
+			materialEnderexamite.addTrait(ModTraits.shielding, HEAD);
 			materialEnderexamite.addTrait(TinkerTraits.crumbling);
 			materialEnderexamite.addTrait(TinkerTraits.endspeed, PROJECTILE);
 			materialEnderexamite.addTrait(ModTraits.resilient);
@@ -697,6 +700,7 @@ public class ModMaterials implements MaterialTypes {
 			materialIronwood.setCraftable(false);
 			materialIronwood.setRepresentativeItem("ingotIronwood");
 			materialIronwood.addTrait(TConstruct.twilit);
+			materialIronwood.addTrait(ModTraits.shielding);
 			materialIronwood.addTrait(TinkerTraits.ecological);
 			materialIronwood.addStats(new HeadMaterialStats(100, 10f, 5f, 4));
 			materialIronwood.addStats(new HandleMaterialStats(1f, 25));
@@ -798,6 +802,7 @@ public class ModMaterials implements MaterialTypes {
 			materialValonite.setCraftable(true);
 			materialValonite.setRepresentativeItem("gemValonite");
 			materialValonite.addTrait(TinkerTraits.dense);
+			materialValonite.addTrait(ModTraits.shielding);
 			materialValonite.addTrait(TinkerTraits.sharp);
 			materialValonite.addStats(new HeadMaterialStats(975, 6f, 6.125f, 3));
 			materialValonite.addStats(new HandleMaterialStats(1f, -75));

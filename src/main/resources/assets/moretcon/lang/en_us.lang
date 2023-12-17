@@ -298,6 +298,8 @@ modifier.moretcon.overdrive.desc=§o299,792,458 m/s§r\nThis tool does not apply
 modifier.moretcon.overdrive.name=Overdrive
 modifier.moretcon.weightless.desc=§oas light as a feather§r\nThis tool can be swung extremely fast. 
 modifier.moretcon.weightless.name=Weightless
+modifier.moretcon.shielding.desc=§oArmor on tools? Lets gooooo!!!§r\nThis tool provides +4 armor when held.
+modifier.moretcon.shielding.name=Shielding
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
