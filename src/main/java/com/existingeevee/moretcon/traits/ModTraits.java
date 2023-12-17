@@ -163,7 +163,7 @@ public class ModTraits {
 		for (IModifier i : mod) {
 			RegisterHelper.registerModifier(i);
 		}
-	}
+	} 
 
 	public static void init() {
 		if (MoreTCon.proxy.isClient()) {
