@@ -59,6 +59,8 @@ public class Misc {
 	}
 
 	public static void trueDamage(EntityLivingBase entity, float amount, DamageSource src, boolean bypassChecks) {
+		if (entity.getHealth() <= 0)
+			return;
 		if (!bypassChecks) {
 			if (entity.getIsInvulnerable())
 				return;

@@ -19,11 +19,14 @@ public class Crushing extends ModifierTrait {
 	}
 
 	@Override
-	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage,
-			boolean isCritical) {
-		DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player)
-				: DamageSource.causeMobDamage(player);
-		Misc.executeInNTicks(() -> Misc.trueDamage(target, newDamage * 0.05f, source, true), 1);
+	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
+		DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
+		Misc.executeInNTicks(() -> Misc.trueDamage(target, newDamage * 0.05f, source, false), 1);
 		return super.damage(tool, player, target, damage, newDamage * 0.95f, isCritical);
+	}
+
+	@Override
+	public int getPriority() {
+		return 9000;
 	}
 }
