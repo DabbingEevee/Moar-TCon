@@ -14,6 +14,6 @@ public class Overdrive extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		target.hurtResistantTime = 0;
+		target.hurtResistantTime /= 2;
 	}
 }
