@@ -2,6 +2,8 @@ package com.existingeevee.moretcon.other;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,11 +14,8 @@ import com.existingeevee.moretcon.other.utils.ClientUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
@@ -25,17 +24,16 @@ import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -58,61 +56,40 @@ public class Misc {
 		}
 	}
 
+	public static final Method getDeathSound$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_184615_bR", SoundEvent.class);
+	public static final Method getSoundVolume$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_70599_aP", float.class);
+	public static final Method getSoundPitch$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_70647_i", float.class);
+	public static final Method checkTotemDeathProtection$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_190628_d", boolean.class, DamageSource.class);
+	
 	public static void trueDamage(EntityLivingBase entity, float amount, DamageSource src, boolean bypassChecks) {
-		if (entity.getHealth() <= 0)
+		if (entity.getHealth() <= 0 || ((entity instanceof EntityPlayer) && ((EntityPlayer) entity).capabilities.isCreativeMode))
 			return;
 		if (!bypassChecks) {
 			if (entity.getIsInvulnerable())
 				return;
 			if (entity.isEntityInvulnerable(src))
 				return;
-			if (entity.hurtResistantTime > 0)	
+			if (entity.hurtResistantTime > 0)
 				return;
 		}
 		float health = entity.getHealth();
 		entity.getCombatTracker().trackDamage(src, health, amount);
 		entity.setHealth(health - amount);
 		if (entity.getHealth() <= 0) {
-			if (!checkTotemDeathProtection(entity, src)) {
-				entity.onDeath(src);
+			try {
+				if (!((Boolean) checkTotemDeathProtection$EntityLivingBase.invoke(entity, src))) {
+					SoundEvent soundevent = (SoundEvent) getDeathSound$EntityLivingBase.invoke(entity);
+					if (soundevent != null) {
+						entity.playSound(soundevent, (Float) getSoundVolume$EntityLivingBase.invoke(entity), (Float) getSoundPitch$EntityLivingBase.invoke(entity));
+					}
+					entity.onDeath(src);
+				}
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				e.printStackTrace();
 			}
 		}
 	}
-
-	public static boolean checkTotemDeathProtection(EntityLivingBase e, DamageSource p_190628_1_) {
-		if (p_190628_1_.canHarmInCreative()) {
-			return false;
-		} else {
-			ItemStack itemstack = null;
-
-			for (EnumHand enumhand : EnumHand.values()) {
-				ItemStack itemstack1 = e.getHeldItem(enumhand);
-
-				if (itemstack1.getItem() == Items.TOTEM_OF_UNDYING) {
-					itemstack = itemstack1.copy();
-					itemstack1.shrink(1);
-					break;
-				}
-			}
-
-			if (itemstack != null) {
-				if (e instanceof EntityPlayerMP) {
-					EntityPlayerMP entityplayermp = (EntityPlayerMP) e;
-					entityplayermp.addStat(StatList.getObjectUseStats(Items.TOTEM_OF_UNDYING));
-					CriteriaTriggers.USED_TOTEM.trigger(entityplayermp, itemstack);
-				}
-
-				e.setHealth(1.0F);
-				e.clearActivePotions();
-				e.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 900, 1));
-				e.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 100, 1));
-				e.world.setEntityState(e, (byte) 35);
-			}
-
-			return itemstack != null;
-		}
-	}
-
+	
 	public static void penetratingDamage(EntityLivingBase entity, int amount, DamageSource src, boolean bypassChecks) {
 		int iframe = entity.hurtResistantTime;
 
