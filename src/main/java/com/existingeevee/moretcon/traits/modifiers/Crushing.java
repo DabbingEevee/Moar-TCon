@@ -30,7 +30,6 @@ public class Crushing extends ModifierTrait {
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
 		if (wasHit) {
-			System.out.println(target.getEntityData().getFloat(this.getIdentifier()) * 0.05f);
 			DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
 			Misc.trueDamage(target, target.getEntityData().getFloat(this.getIdentifier()) * 0.05f, source, false);
 		}
