@@ -300,7 +300,6 @@ modifier.moretcon.weightless.desc=§oas light as a feather§r\nThis tool can be 
 modifier.moretcon.weightless.name=Weightless
 modifier.moretcon.shielding.desc=§oArmor on tools? Lets gooooo!!!§r\nThis tool provides +4 armor when held.
 modifier.moretcon.shielding.name=Shielding
-modifier.moretcon.shielding.desc=§oArmor on tools? Lets gooooo!!!§r\nThis tool provides +4 armor when held.
 modifier.moretcon.extratrait2.name=Embossment II
 modifier.moretcon.extratrait2.desc=§oIf embossment is so good why isn't there an embossment 2§r\nEmbossed with the power of %s, obtaining some of its traits
 
