@@ -60,16 +60,12 @@ public class Misc {
 	public static final Method getSoundVolume$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_70599_aP", float.class);
 	public static final Method getSoundPitch$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_70647_i", float.class);
 	public static final Method checkTotemDeathProtection$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_190628_d", boolean.class, DamageSource.class);
-	
+
 	public static void trueDamage(EntityLivingBase entity, float amount, DamageSource src, boolean bypassChecks) {
 		if (entity.getHealth() <= 0 || ((entity instanceof EntityPlayer) && ((EntityPlayer) entity).capabilities.isCreativeMode))
 			return;
 		if (!bypassChecks) {
-			if (entity.getIsInvulnerable())
-				return;
 			if (entity.isEntityInvulnerable(src))
-				return;
-			if (entity.hurtResistantTime > 0)
 				return;
 		}
 		float health = entity.getHealth();
@@ -89,7 +85,7 @@ public class Misc {
 			}
 		}
 	}
-	
+
 	public static void penetratingDamage(EntityLivingBase entity, int amount, DamageSource src, boolean bypassChecks) {
 		int iframe = entity.hurtResistantTime;
 

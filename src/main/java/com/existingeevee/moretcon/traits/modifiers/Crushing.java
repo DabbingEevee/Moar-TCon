@@ -20,9 +20,20 @@ public class Crushing extends ModifierTrait {
 
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
-		DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
-		Misc.executeInNTicks(() -> Misc.trueDamage(target, newDamage * 0.05f, source, false), 1);
+		float actualDMG = newDamage;
+		if (player instanceof EntityPlayer) 
+			actualDMG *= ((EntityPlayer) player).getCooledAttackStrength(0.5f);
+		target.getEntityData().setFloat(this.getIdentifier(), actualDMG);
 		return super.damage(tool, player, target, damage, newDamage * 0.95f, isCritical);
+	}
+
+	@Override
+	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
+		if (wasHit) {
+			System.out.println(target.getEntityData().getFloat(this.getIdentifier()) * 0.05f);
+			DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
+			Misc.trueDamage(target, target.getEntityData().getFloat(this.getIdentifier()) * 0.05f, source, true);
+		}
 	}
 
 	@Override
@@ -30,3 +41,9 @@ public class Crushing extends ModifierTrait {
 		return 9000;
 	}
 }
+
+//Misc.executeInNTicks(() -> {
+//int d = target.hurtResistantTime;
+//target.hurtResistantTime = 0;
+//target.hurtResistantTime = d;
+//}, 1);
