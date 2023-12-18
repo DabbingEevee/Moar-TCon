@@ -302,7 +302,7 @@ modifier.moretcon.shielding.desc=§oArmor on tools? Lets gooooo!!!§r\nThis tool
 modifier.moretcon.shielding.name=Shielding
 modifier.moretcon.shielding.desc=§oArmor on tools? Lets gooooo!!!§r\nThis tool provides +4 armor when held.
 modifier.moretcon.extratrait2.name=Embossment II
-modifier.moretcon.extratrait2.desc=§oIt's even funnier the second time§r\nEmbossed with the power of %s, obtaining some of its traits
+modifier.moretcon.extratrait2.desc=§oIf embossment is so good why isn't there an embossment 2§r\nEmbossed with the power of %s, obtaining some of its traits
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
