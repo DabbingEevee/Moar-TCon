@@ -2,14 +2,12 @@ package com.existingeevee.moretcon.compat.jei;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.existingeevee.moretcon.other.BreakApartBoltCoreRecipe;
 import com.google.common.collect.Lists;
 
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
-import mezz.jei.api.gui.IGuiIngredientGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
@@ -19,17 +17,13 @@ import mezz.jei.api.recipe.IStackHelper;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import mezz.jei.api.recipe.wrapper.ICustomCraftingRecipeWrapper;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
-import slimeknights.tconstruct.plugin.jei.JEIPlugin;
-import slimeknights.tconstruct.shared.block.BlockTable;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerTools;
-import slimeknights.tconstruct.tools.common.item.ItemBlockTable;
 import slimeknights.tconstruct.tools.ranged.item.BoltCore;
 
 public class JeiAddBoltCoreBreakingContainer extends JeiCustomContainer {
