@@ -10,6 +10,7 @@ import com.existingeevee.moretcon.inits.ModFluidBlocks;
 import com.existingeevee.moretcon.inits.ModFluids;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
+import com.existingeevee.moretcon.inits.misc.MiscRecipes;
 import com.existingeevee.moretcon.inits.misc.ModSponges;
 import com.existingeevee.moretcon.inits.misc.OreDictionaryManager;
 import com.existingeevee.moretcon.inits.recipes.FurnaceInit;
@@ -118,6 +119,8 @@ public class MoreTCon {
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
 			integration.registerToolForgeRecipe(registry);
 		}
+		
+		MiscRecipes.init(event);
 	}
 
 	@EventHandler

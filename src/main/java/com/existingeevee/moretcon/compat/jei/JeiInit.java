@@ -21,7 +21,8 @@ public class JeiInit {
 		IIngredientType<ItemStack> itemstack = registry.getIngredientRegistry().getIngredientType(ItemStack.class);
 
 		CUSTOM.add(new JeiHideBadToolparts());
-
+		CUSTOM.add(new JeiAddBoltCoreBreakingContainer());
+		
 		if (CompatManager.thebetweenlands) {
 			CUSTOM.add(new JeiInformationContainer<FluidStack>(fluidstack, new FluidStack(ModFluids.liquidMummySludge, 1000), "Obtained by melting down a Dreadful Peat Mummy.", () -> CompatManager.thebetweenlands));
 		}

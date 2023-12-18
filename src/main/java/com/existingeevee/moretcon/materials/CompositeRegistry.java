@@ -22,6 +22,7 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.library.tools.IToolPart;
+import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.ranged.item.BoltCore;
 
 public class CompositeRegistry {
@@ -74,6 +75,10 @@ public class CompositeRegistry {
 					continue;
 				}
 
+				if (t == TinkerTools.arrowShaft) {
+					continue;
+				}
+				
 				if (t instanceof BoltCore) {
 					List<Material> fluidWithHead = TinkerRegistry.getAllMaterials().stream()
 							.filter(mat -> mat.hasStats(MaterialTypes.HEAD))
