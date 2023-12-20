@@ -10,13 +10,11 @@ import com.existingeevee.moretcon.MoreTCon;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.traits.modifiers.Betweenified;
-import com.existingeevee.moretcon.traits.modifiers.BlueGem;
 import com.existingeevee.moretcon.traits.modifiers.Crushing;
 import com.existingeevee.moretcon.traits.modifiers.Debug;
-import com.existingeevee.moretcon.traits.modifiers.GreenGem;
+import com.existingeevee.moretcon.traits.modifiers.Gem;
 import com.existingeevee.moretcon.traits.modifiers.MatterReconstructionGel;
 import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
-import com.existingeevee.moretcon.traits.modifiers.RedGem;
 import com.existingeevee.moretcon.traits.modifiers.Shocking;
 import com.existingeevee.moretcon.traits.modifiers.Tarred;
 import com.existingeevee.moretcon.traits.modifiers.Valonite;
@@ -79,6 +77,8 @@ import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.traits.ITrait;
+import thebetweenlands.common.capability.circlegem.CircleGemType;
+import thebetweenlands.common.registries.ItemRegistry;
 
 public class ModTraits {
 	public static KineticBattery kineticBattery = new KineticBattery();
@@ -90,7 +90,6 @@ public class ModTraits {
 	public static Voidic voidic = new Voidic();
 	public static Pulsating pulsation = new Pulsating();
 	public static Liquid liquid = new Liquid();
-	public static Burning burning = new Burning();
 	public static Resilient resilient = new Resilient();
 	public static Magical magical = new Magical();
 	public static Reaching reaching;
@@ -128,9 +127,9 @@ public class ModTraits {
 
 	public static AntiGravity antigravity;
 
-	public static RedGem modRedGem;
-	public static GreenGem modGreenGem;
-	public static BlueGem modBlueGem;
+	public static Gem modRedGem;
+	public static Gem modGreenGem;
+	public static Gem modBlueGem;
 	public static Shocking modShocking;
 
 	public static Corroding corroding;
@@ -143,6 +142,7 @@ public class ModTraits {
 	public static Rotten rotten;
 	public static Oxide oxide;
 	public static Wormed wormed;
+	public static Burning burning;
 
 	static {
 		if (CompatManager.thebetweenlands) {
@@ -152,6 +152,7 @@ public class ModTraits {
 			betweenified = new Betweenified();
 			oxide = new Oxide();
 			wormed = new Wormed();
+			burning = new Burning();
 		}
 		if (CompatManager.aether_legacy) {
 			antigravity = new AntiGravity();
@@ -179,9 +180,9 @@ public class ModTraits {
 					);
 		}
 		if (CompatManager.thebetweenlands) {
-			modRedGem = new RedGem();
-			modGreenGem = new GreenGem();
-			modBlueGem = new BlueGem();
+			modRedGem = new Gem(CircleGemType.CRIMSON, ItemRegistry.CRIMSON_MIDDLE_GEM, 0xFF0000);
+			modGreenGem = new Gem(CircleGemType.GREEN, ItemRegistry.GREEN_MIDDLE_GEM, 0x00FF00);
+			modBlueGem = new Gem(CircleGemType.AQUA, ItemRegistry.AQUA_MIDDLE_GEM, 0x0000FF);
 			modShocking = new Shocking();
 			modValonite = new Valonite();
 			modTarred = new Tarred();
