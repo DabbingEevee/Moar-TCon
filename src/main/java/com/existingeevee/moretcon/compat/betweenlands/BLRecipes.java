@@ -115,10 +115,10 @@ public class BLRecipes {
 
 		TinkerRegistry.registerMelting(new MeltingRecipe(new RecipeMatch.ItemCombination(Material.VALUE_Ingot / 8, EnumItemMisc.UNDYING_EMBER.create(1)), ModFluids.liquidEmber, 0));
 		
-		if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
+		/*if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustOctine, 1), new ItemStack(ItemRegistry.OCTINE_INGOT, 1), 0F);
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustSyrmorite, 1), EnumItemMisc.SYRMORITE_INGOT.create(1), 0F);
-		}
+		}*/
 		blAPI.registerPestleAndMortarRecipe(new BLCragravelRecipe());
 	}
 }
