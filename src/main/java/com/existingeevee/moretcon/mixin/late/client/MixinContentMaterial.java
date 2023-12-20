@@ -74,7 +74,7 @@ public abstract class MixinContentMaterial {
 		List<ElementItem> displayTools = Lists.newArrayList();
 
 		if (!material.getRepresentativeItem().isEmpty()) {
-			displayTools.add(new ElementTinkerItem(material.getRepresentativeItem()));
+			displayTools.add(new ElementTinkerItem(material.getRepresentativeItem())); //ToolModel
 		}
 
 		if (material instanceof UniqueMaterial) {

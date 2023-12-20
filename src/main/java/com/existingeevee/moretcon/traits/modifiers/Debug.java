@@ -17,15 +17,15 @@ public class Debug extends ModifierTrait {
 		super(Misc.createNonConflictiveName("moddebug"), 0xFFFFFF);
 		this.addItem(Item.getItemFromBlock(Blocks.COMMAND_BLOCK));
 		
-		this.addAspects(new ModifierAspect.SingleAspect(this), new ModifierAspect.DataAspect(this), ModifierAspect.freeModifier);
+		this.addAspects(new ModifierAspect.SingleAspect(this), new ModifierAspect.DataAspect(this));
 	}
 
 	@Override
 	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
 		if (isSelected && tool.serializeNBT().getCompoundTag("tag").getBoolean("logIt")) {
-			//if (!world.isRemote) {
-			entity.sendMessage(new TextComponentString(tool.serializeNBT().toString()));
-			//}
+			if (!world.isRemote) {
+				entity.sendMessage(new TextComponentString(tool.serializeNBT().toString()));
+			}
 			tool.serializeNBT().getCompoundTag("tag").setBoolean("logIt", false);
 		}
 		if (!isSelected && !tool.serializeNBT().getCompoundTag("tag").getBoolean("logIt")) {

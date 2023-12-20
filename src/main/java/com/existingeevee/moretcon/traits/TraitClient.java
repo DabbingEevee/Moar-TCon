@@ -1,15 +1,19 @@
 package com.existingeevee.moretcon.traits;
 
-import com.existingeevee.moretcon.other.utils.CompatManager;
+import com.existingeevee.moretcon.ModInfo;
+import com.existingeevee.moretcon.other.utils.RegisterHelper;
+
+import net.minecraft.util.ResourceLocation;
+import slimeknights.tconstruct.common.ModelRegisterUtil;
+import slimeknights.tconstruct.library.modifiers.IModifier;
 
 public class TraitClient {
 
 	public static void init() {
-		if(CompatManager.thebetweenlands) {
-			//ModelRegisterUtil.registerModifierModel(ModTraits.modRedGem, new ResourceLocation(VersionInfo.MODID + ":other/" + ModTraits.modRedGem.getIdentifier()));
-			//ModelRegisterUtil.registerModifierModel(ModTraits.modGreenGem, new ResourceLocation(VersionInfo.MODID + ":other/" + ModTraits.modGreenGem.getIdentifier()));
-			//ModelRegisterUtil.registerModifierModel(ModTraits.modBlueGem, new ResourceLocation(VersionInfo.MODID + ":other/" + ModTraits.modBlueGem.getIdentifier()));
+		RegisterHelper.moreTConModifiers.forEach(TraitClient::register);
+	}
 
-		}
+	private static void register(IModifier mod) {
+		ModelRegisterUtil.registerModifierModel(mod, new ResourceLocation(ModInfo.MODID + ":other/" + mod.getIdentifier().replaceFirst("." + ModInfo.MODID, "")));
 	}
 }
