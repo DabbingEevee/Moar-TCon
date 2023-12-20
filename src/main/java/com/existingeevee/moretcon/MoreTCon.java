@@ -88,6 +88,7 @@ public class MoreTCon {
 		}
 		MaterialUtils.completeReadds();
 		MinecraftForge.EVENT_BUS.register(CustomFireHelper.class);
+		ModTraits.init();
 		proxy.preInit();
 
 	}
@@ -129,7 +130,6 @@ public class MoreTCon {
 		FurnaceInit.init();
 		SpongeRegistry.postInit();
 		
-		ModTraits.init();
 		proxy.init();
 	}
 

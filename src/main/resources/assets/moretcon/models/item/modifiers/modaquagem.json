@@ -1,0 +1,10 @@
+{
+    "textures": {
+        "broadsword": "moretcon:other/modifier/modaquagem/normal",
+        "longsword": "moretcon:other/modifier/modaquagem/normal",
+        "cleaver": "moretcon:other/modifier/modaquagem/normal",
+        "katana": "moretcon:other/modifier/modaquagem/normal",
+        "blsword": "moretcon:other/modifier/modaquagem/normal",
+        "rapier": "moretcon:other/modifier/modaquagem/normal"
+    }
+}

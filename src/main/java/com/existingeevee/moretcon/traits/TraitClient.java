@@ -2,6 +2,7 @@ package com.existingeevee.moretcon.traits;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
+import com.existingeevee.moretcon.traits.modifiers.internal.ModExtraTraitDisplay2;
 
 import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
@@ -14,6 +15,11 @@ public class TraitClient {
 	}
 
 	private static void register(IModifier mod) {
-		ModelRegisterUtil.registerModifierModel(mod, new ResourceLocation(ModInfo.MODID + ":other/" + mod.getIdentifier().replaceFirst("." + ModInfo.MODID, "")));
+		if (mod instanceof ModExtraTraitDisplay2) {
+			return; //nope
+		}
+		ResourceLocation rl = new ResourceLocation(ModInfo.MODID, "models/item/modifiers/" + mod.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""));
+		System.out.println(rl);
+		ModelRegisterUtil.registerModifierModel(mod, rl);
 	}
 }

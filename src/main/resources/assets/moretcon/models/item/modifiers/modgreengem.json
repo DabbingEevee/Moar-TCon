@@ -1,0 +1,10 @@
+{
+    "textures": {
+        "broadsword": "moretcon:other/modifier/modgreengem/normal",
+        "longsword": "moretcon:other/modifier/modgreengem/normal",
+        "cleaver": "moretcon:other/modifier/modgreengem/normal",
+        "katana": "moretcon:other/modifier/modgreengem/normal",
+        "blsword": "moretcon:other/modifier/modgreengem/normal",
+        "rapier": "moretcon:other/modifier/modgreengem/normal"
+    }
+}

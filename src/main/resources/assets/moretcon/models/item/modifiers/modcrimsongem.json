@@ -1,0 +1,10 @@
+{
+    "textures": {
+        "broadsword": "moretcon:other/modifier/modcrimsongem/normal",
+        "longsword": "moretcon:other/modifier/modcrimsongem/normal",
+        "cleaver": "moretcon:other/modifier/modcrimsongem/normal",
+        "katana": "moretcon:other/modifier/modcrimsongem/normal",
+        "blsword": "moretcon:other/modifier/modcrimsongem/normal",
+        "rapier": "moretcon:other/modifier/modcrimsongem/normal"
+    }
+}
