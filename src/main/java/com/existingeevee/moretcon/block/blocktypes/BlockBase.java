@@ -101,18 +101,3 @@ public class BlockBase extends Block implements ISimpleBlockItemProvider {
 		};
 	}
 }
-
-/*
- * public static class ItemBlockBase extends ItemBlock {
- * 
- * public ItemBlockBase(Block block) { super(block); }
- * 
- * @Override public boolean onEntityItemUpdate(EntityItem entityItem) { if (
- * this.getBlock().getRegistryName().equals(ModBlocks.oreIgniglomerate.
- * getRegistryName()) ||
- * this.getBlock().getRegistryName().equals(ModBlocks.blockIgniglomerate.
- * getRegistryName()) ) { FireproofItemUtil.onUpdateSafe(entityItem); return
- * true; }
- * 
- * return false; } }
- */

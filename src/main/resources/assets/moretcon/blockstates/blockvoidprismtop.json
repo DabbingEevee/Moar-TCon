@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "moretcon:blockvoidprismtop.obj",
+    "custom": {
+      "flip-v": true
+    },
+    "textures": {
+      "#material": "moretcon:blocks/blockvoidprismtop"
+    }
+  },
+  "variants": {
+    "normal": {
+      "model": "moretcon:blockvoidprismtop.obj"
+    },
+    "inventory": [
+      {
+        "transform": "forge:default-block"
+      }
+    ]
+  }
+}

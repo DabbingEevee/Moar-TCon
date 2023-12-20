@@ -31,6 +31,10 @@ public class OreDictionaryManager {
 			registerOre("ingotTrichromadentium", ModItems.ingotTrichromadentium);
 			registerOre("nuggetTrichromadentium", ModItems.nuggetTrichromadentium);
 			
+			registerOre("blockValasium", ModBlocks.blockValasium);
+			registerOre("ingotValasium", ModItems.ingotValasium);
+			registerOre("nuggetValasium", ModItems.nuggetValasium);
+			
 			registerOre("blockAtronium", ModBlocks.blockAtronium);
 			registerOre("ingotAtronium", ModItems.ingotAtronium);
 			registerOre("nuggetAtronium", ModItems.nuggetAtronium);
@@ -62,22 +66,24 @@ public class OreDictionaryManager {
 			registerOre("oreEnderal", ModBlocks.oreEnderal);
 			registerOre("gemEnderal", ModItems.gemEnderal);
 
-			//radium
 			registerOre("blockIrradium", ModBlocks.blockIrradium);
 			registerOre("oreIrradium", ModBlocks.oreIrradium);
 			registerOre("ingotIrradium", ModItems.ingotIrradium);
 			registerOre("nuggetIrradium", ModItems.nuggetIrradium);
 
-			//SolarSteel
 			registerOre("blockSolsteel", ModBlocks.blockSolsteel);
 			registerOre("ingotSolsteel", ModItems.ingotSolsteel);
 			registerOre("nuggetSolsteel", ModItems.nuggetSolsteel);
+			
+			registerOre("blockSolarsteel", ModBlocks.blockSolsteel);
+			registerOre("ingotSolarsteel", ModItems.ingotSolsteel);
+			registerOre("nuggetSolarsteel", ModItems.nuggetSolsteel);
 			
 			registerOre("blockEbonite", ModBlocks.blockEbonite);
 			registerOre("oreEbonite", ModBlocks.oreEbonite);
 			registerOre("ingotEbonite", ModItems.ingotEbonite);
 			registerOre("nuggetEbonite", ModItems.nuggetEbonite);
-			//
+
 			registerOre("blockVoidSpar", ModBlocks.blockVoidSpar);
 			registerOre("gemVoidSpar", ModItems.gemVoidSpar);
 			registerOre("oreVoidSpar", ModBlocks.oreVoidSpar);
@@ -105,7 +111,9 @@ public class OreDictionaryManager {
 			
 			if(ConfigHandler.shouldLoadDust) {
 				registerOre("dustIrradium", ModItems.dustIrradium);
-				registerOre("dustSolarSteel", ModItems.dustSolarSteel);
+				registerOre("dustValasium", ModItems.dustValasium);
+				registerOre("dustSolarsteel", ModItems.dustSolarSteel);
+				registerOre("dustSolsteel", ModItems.dustSolarSteel);
 				registerOre("dustFusionite", ModItems.dustFusionite);
 				registerOre("dustGallium", ModItems.dustGallium);
 				registerOre("dustRuneSteel", ModItems.dustRuneSteel);

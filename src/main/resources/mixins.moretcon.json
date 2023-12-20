@@ -3,10 +3,12 @@
   "package": "com.existingeevee.moretcon.mixin",
   "refmap": "refmap.moretcon.json",
   "mixins": [
-  	"MixinForgeHooks"
+  	"early.common.MixinLoadController",
+  	"early.common.MixinForgeHooks",
+   	"early.common.MixinItemStack"
   ],
   "client": [
-    "MixinRenderItem"
+    "early.client.MixinRenderItem",
   ],
   "server": [
   ]

@@ -31,6 +31,7 @@ public class FurnaceInit {
 		if (CompatManager.loadMain) {
 			if (ConfigHandler.shouldLoadDust) {
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustFusionite, 1), new ItemStack(ModItems.ingotFusionite, 1), 0F);
+				GameRegistry.addSmelting(new ItemStack(ModItems.dustValasium, 1), new ItemStack(ModItems.ingotValasium, 1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustIrradium, 1), new ItemStack(ModItems.ingotIrradium, 1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustSolarSteel, 1), new ItemStack(ModItems.ingotSolsteel, 1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustGallium, 1), new ItemStack(ModItems.ingotGallium, 1), 0F);

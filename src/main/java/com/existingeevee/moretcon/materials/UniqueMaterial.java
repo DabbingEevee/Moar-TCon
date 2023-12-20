@@ -2,10 +2,12 @@ package com.existingeevee.moretcon.materials;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
@@ -25,9 +27,24 @@ public class UniqueMaterial extends Material {
 
 	public static final Map<String, BiValue<UniqueMaterial, String>> uniqueMaterials = new HashMap<String, BiValue<UniqueMaterial, String>>();
 
-	public String toolResLoc;
-	public String partResLoc;
+	private String toolResLoc;
+	private String partResLoc;
 
+	private Supplier<ItemStack> crafterSupplier = () -> new ItemStack(Blocks.CRAFTING_TABLE);
+	private String craftingDescKey = "crafting_table";
+	
+	public UniqueMaterial(String identifier, int color, ToolPart part, ToolCore tool, Supplier<ItemStack> crafterSupplier, String craftingDescKey) {
+		this(identifier, color, part, tool);
+		this.crafterSupplier = crafterSupplier;
+		this.craftingDescKey = craftingDescKey;
+	}
+
+	public UniqueMaterial(String identifier, int color, String part, String tool, Supplier<ItemStack> crafterSupplier, String craftingDescKey) {
+		this(identifier, color, part, tool);
+		this.crafterSupplier = crafterSupplier;
+		this.craftingDescKey = craftingDescKey;
+	}
+	
 	public UniqueMaterial(String identifier, int color, ToolPart part, ToolCore tool) {
 		this(identifier, color);
 		this.partResLoc = part.getRegistryName().toString();
@@ -60,13 +77,17 @@ public class UniqueMaterial extends Material {
 			return ItemStack.EMPTY;
 		}
 
-		ToolPart part = UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(partResLoc));
+		ToolPart part = getPartType();
 		if (part != null) {
 			return part.getItemstackWithMaterial(this);
 		}
 		return ItemStack.EMPTY;
 	}
 
+	public ToolPart getPartType() {
+		return UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(partResLoc));
+	}
+	
 	@Override
 	public String getLocalizedName() {
 		try {
@@ -97,6 +118,10 @@ public class UniqueMaterial extends Material {
 		return I18n.translateToLocal("material.uniquetoolpart.name");
 	}
 
+	public static ToolPart getToolPart(String res) {
+		return getToolPartFromResourceLocation(new ResourceLocation(res));
+	}
+	
 	public static ToolPart getToolPartFromResourceLocation(ResourceLocation res) {
 		for (IToolPart part : TinkerRegistry.getToolParts()) {
 			if (part instanceof ToolPart) {
@@ -133,4 +158,19 @@ public class UniqueMaterial extends Material {
 		return false;
 	}
 
+	public ItemStack getCrafter() {
+		return crafterSupplier.get();
+	}
+	
+	public String getCrafterString() {
+		return craftingDescKey;
+	}
+
+	public String getToolResLoc() {
+		return toolResLoc;
+	}
+
+	public String getPartResLoc() {
+		return partResLoc;
+	}
 }

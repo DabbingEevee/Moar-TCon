@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/blockvalasium",
+    "up": "moretcon:blocks/blockvalasium",
+    "north": "moretcon:blocks/blockvalasium",
+    "east": "moretcon:blocks/blockvalasium",
+    "south": "moretcon:blocks/blockvalasium",
+    "west": "moretcon:blocks/blockvalasium",
+    "particle": "moretcon:blocks/blockvalasium"
+  }
+}

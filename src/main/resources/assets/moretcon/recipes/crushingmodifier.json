@@ -1,0 +1,27 @@
+{
+  "group": "moretcon",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "010",
+    "121",
+    "010"
+  ],
+  "key": {
+    "0": {
+       "type": "forge:ore_dict",
+       "ore": "obsidian"
+    },
+    "1": {
+       "type": "forge:ore_dict",
+       "ore": "blockIron"
+    },
+    "2": {
+       "type": "forge:ore_dict",
+       "ore": "ingotGallium"
+    }
+  },
+  "result": {
+    "item": "moretcon:crushingmodifier",
+    "count": 1
+  }
+}

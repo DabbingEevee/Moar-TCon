@@ -22,6 +22,7 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.library.tools.IToolPart;
+import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.ranged.item.BoltCore;
 
 public class CompositeRegistry {
@@ -43,14 +44,14 @@ public class CompositeRegistry {
 	public static Optional<CompositeData> getComposite(Material mat) {
 		return data.stream().filter(d -> d.getResult().equals(mat)).findFirst();
 	}
-	
-	public static Optional<Integer> getCompositeIndex(Material mat) {		
+
+	public static Optional<Integer> getCompositeIndex(Material mat) {
 		for (int i = 0; i < data.size(); i++) {
 			if (data.get(i).getResult().equals(mat)) {
 				return Optional.of(i);
 			}
 		}
-		
+
 		return Optional.empty();
 	}
 
@@ -65,12 +66,16 @@ public class CompositeRegistry {
 					ModInfo.MODID + ":" + "repitem" + data.get(i).getResult().identifier, "inventory"));
 		}
 	}
-	
+
 	//DO NOT CALL
 	public static void onPostInit() {
 		for (CompositeData d : data) {
 			for (IToolPart t : TinkerRegistry.getToolParts()) {
 				if (!t.canUseMaterial(d.getFrom()) || !t.canUseMaterial(d.getResult())) {
+					continue;
+				}
+
+				if (t == TinkerTools.arrowShaft) {
 					continue;
 				}
 				
@@ -79,31 +84,31 @@ public class CompositeRegistry {
 							.filter(mat -> mat.hasStats(MaterialTypes.HEAD))
 							.filter(mat -> mat.hasFluid())
 							.collect(Collectors.toList());
-										
+
 					for (Material m : fluidWithHead) {
 						RecipeMatch rm = RecipeMatch.ofNBT(BoltCore.getItemstackWithMaterials(d.getFrom(), m));
 						ItemStack output = BoltCore.getItemstackWithMaterials(d.getResult(), m);
-			
+
 						TinkerRegistry.registerTableCasting(new CastingRecipe(output, rm, d.getCatalyst(), d.onlyOne ? Material.VALUE_Ingot : t.getCost(), true, false));
 					}
 					continue;
 				}
-				
+
 				ItemStack output = t.getItemstackWithMaterial(d.getResult());
-				
+
 				if (output == null || output.isEmpty()) {
 					continue;
 				}
-				
+
 				RecipeMatch rm = RecipeMatch.ofNBT(t.getItemstackWithMaterial(d.getFrom()));
 				TinkerRegistry.registerTableCasting(new CastingRecipe(output, rm, d.getCatalyst(), d.onlyOne ? Material.VALUE_Ingot : t.getCost(), true, false));
 			}
-			MaterialUtils.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
-			d.getResult().setCastable(false);
-			d.getResult().setCraftable(false);
+
+			if (d.shouldGenIcon())
+				MaterialUtils.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
 		}
 	}
-	
+
 	public static class CompositeData {
 
 		private final boolean onlyOne;
@@ -112,7 +117,8 @@ public class CompositeRegistry {
 		private final Supplier<Fluid> catalyst;
 
 		private double multiplier = Material.VALUE_Ingot;
-		
+		private boolean genIcon = true;
+
 		public CompositeData(Supplier<Material> from, Supplier<Material> result, Supplier<Fluid> catalyst) {
 			this(from, result, catalyst, true);
 		}
@@ -143,10 +149,19 @@ public class CompositeRegistry {
 		public double getMultiplier() {
 			return multiplier;
 		}
-		
+
 		public CompositeData setMultiplier(double multiplier) {
 			this.multiplier = multiplier;
 			return this;
+		}
+
+		public CompositeData setGenIcon(boolean genIcon) {
+			this.genIcon = genIcon;
+			return this;
+		}
+
+		public boolean shouldGenIcon() {
+			return genIcon;
 		}
 	}
 }

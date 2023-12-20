@@ -9,6 +9,7 @@
     "Zaps nearby enemies when a projectile lands",
     "Single level"
   ],
+  "instruction": "Strike with Betweenlands lightning to apply.",
   "demoTool": [
     "tconstruct:bolt",
     "tconstruct:shuriken",

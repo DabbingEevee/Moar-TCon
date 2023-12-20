@@ -153,19 +153,10 @@ dependencies {
     deobfProvided 'curse.maven:jei-238222:4538010'
     //provided "mezz.jei:jei_1.12.2:4.15.0.268"
     /*
-    note that to properly build this, the following jars will need to be placed in the ./libs/ folder
+    note that to properly build this, the following jars will need to be placed in the ./run/mods/ folder
     
-//    aether-1.12.2-v1.5.3.2.jar
-//	Baubles-1.12-1.5.2.jar
-//	conarm-1.12.2-1.2.5.10.jar
-//	jei_1.12.2-4.16.1.302.jar
-//	libnine-1.12.2-1.2.1.jar
-//	Mantle-1.12-1.3.3.55.jar
-//	plustic-8.0.1.0.jar
-//	tconevo-1.12.2-1.0.44.jar
-//	TConstruct-1.12.2-2.13.0.183.jar
-//	TheBetweenlands-3.8.1-universal.jar
-//	twilightforest-1.12.2-3.11.1021-universal.jar
+    TheBetweenlands-3.8.1-core.jar - this can be obtained from extracting the betweenlands jar
+
     */
 }
 
@@ -192,6 +183,7 @@ processResources {
 
 mixin {
     add sourceSets.main, mod_mixin_refmap.replace('${mod_id}', mod_id)
+    //add sourceSets.main, mod_mixin_refmap.replace('${mod_id}', mod_id + ".late")
 }
 
 jar {

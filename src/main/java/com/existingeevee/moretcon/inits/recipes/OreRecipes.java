@@ -15,9 +15,11 @@ public class OreRecipes {
 		Misc.registerBlockNuggetIngotRecipeOre("Steel", event);
 		Misc.registerBlockNuggetIngotRecipeOre("Trichromadentium", event);
 		Misc.registerBlockNuggetIngotRecipeOre("Gravitonium", event);
-		Misc.registerBlockNuggetIngotRecipeOre("Solarsteel", event);
+		Misc.registerBlockNuggetIngotRecipeOre("Solsteel", event);
+		Misc.registerBlockNuggetIngotRecipeOre("Fusionite", event);
 		Misc.registerBlockNuggetIngotRecipeOre("Runesteel", event);
 		Misc.registerBlockNuggetIngotRecipeOre("Ebonite", event);
+		Misc.registerBlockNuggetIngotRecipeOre("Valasium", event);
 		
 		Misc.register9x9Recipes("gemBloodstone", "blockBloodstone", event);
 		Misc.register9x9Recipes("gemEchostone", "blockEchostone", event);

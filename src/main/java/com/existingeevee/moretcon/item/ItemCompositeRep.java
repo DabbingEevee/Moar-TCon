@@ -2,6 +2,7 @@ package com.existingeevee.moretcon.item;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
@@ -47,7 +48,7 @@ public class ItemCompositeRep extends ItemBase {
 
 	@Override
 	public String getItemStackDisplayName(ItemStack stack) {
-		List<CompositeData> data = CompositeRegistry.getData();
+		List<CompositeData> data = CompositeRegistry.getData().stream().filter(d -> d.shouldGenIcon()).collect(Collectors.toList());
 
 		Material mat = Material.UNKNOWN;
 		if (stack.getItemDamage() < data.size()) {
@@ -63,8 +64,10 @@ public class ItemCompositeRep extends ItemBase {
 
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+		List<CompositeData> data = CompositeRegistry.getData().stream().filter(d -> d.shouldGenIcon()).collect(Collectors.toList());
+		
 		if (this.isInCreativeTab(tab)) {
-			for (int i = 0; i < CompositeRegistry.getData().size(); i++) {
+			for (int i = 0; i < data.size(); i++) {
 				items.add(new ItemStack(this, 1, i));
 			}
 		}

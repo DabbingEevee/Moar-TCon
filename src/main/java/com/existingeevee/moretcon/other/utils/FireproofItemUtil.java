@@ -134,7 +134,7 @@ public class FireproofItemUtil {
 			}
 
 			entity.motionX *= (double) f;
-			entity.motionY *= 0.9800000190734863D;
+			entity.motionY *= 0.98D;
 			entity.motionZ *= (double) f;
 
 			if (entity.onGround) {
@@ -311,7 +311,7 @@ public class FireproofItemUtil {
 			if (isInWeb.getBoolean(en)) {
 				isInWeb.setBoolean(en, false);
 				x *= 0.25D;
-				y *= 0.05000000074505806D;
+				y *= 0.05D;
 				z *= 0.25D;
 				en.motionX = 0.0D;
 				en.motionY = 0.0D;
@@ -510,7 +510,7 @@ public class FireproofItemUtil {
 			en.onGround = en.collidedVertically && d3 < 0.0D;
 			en.collided = en.collidedHorizontally || en.collidedVertically;
 			int j6 = MathHelper.floor(en.posX);
-			int i1 = MathHelper.floor(en.posY - 0.20000000298023224D);
+			int i1 = MathHelper.floor(en.posY - 0.2D);
 			int k6 = MathHelper.floor(en.posZ);
 			BlockPos blockpos = new BlockPos(j6, i1, k6);
 			IBlockState iblockstate = en.world.getBlockState(blockpos);
@@ -571,8 +571,8 @@ public class FireproofItemUtil {
 								: en;
 						float f = entity == en ? 0.35F : 0.4F;
 						float f1 = MathHelper.sqrt(
-								entity.motionX * entity.motionX * 0.20000000298023224D + entity.motionY * entity.motionY
-										+ entity.motionZ * entity.motionZ * 0.20000000298023224D)
+								entity.motionX * entity.motionX * 0.2D + entity.motionY * entity.motionY
+										+ entity.motionZ * entity.motionZ * 0.2D)
 								* f;
 
 						if (f1 > 1.0F) {

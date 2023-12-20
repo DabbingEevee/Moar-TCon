@@ -22,7 +22,7 @@ public class CommonProxy {
 	}
 
 	public void postInit() {
-		//MinecraftForge.EVENT_BUS.register(new UniqueToolpartRenderer());
+
 	}
 
 	@SubscribeEvent
@@ -36,6 +36,12 @@ public class CommonProxy {
 
 	}
 
-
+	public void clientRun(Runnable r) {
+		
+	}
+	
+	public boolean isClient() {
+		return false;
+	}
 
 }

@@ -30,7 +30,7 @@ public class ComplexDouble extends Number implements Comparable<Number> {
 	@Override
 	public double doubleValue() {
 		return real;
-	}
+	} 
 
 	public int imaginaryIntValue() {
 		return (int) imaginary;
@@ -53,7 +53,11 @@ public class ComplexDouble extends Number implements Comparable<Number> {
 		return Double.compare(real, o.doubleValue());
 	}
 	
-	public int compareComplexPlane(ComplexDouble o) {
+	public int compareToImaginary(ComplexDouble o) {
 		return Double.compare(imaginary, o.imaginary);
+	}
+	
+	public int compareToMagnitude(ComplexDouble o) {
+		return Double.compare(imaginary * imaginary + real * real, o.imaginary * o.imaginary + o.real * o.real);
 	}
 }

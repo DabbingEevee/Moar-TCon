@@ -4,8 +4,12 @@ import com.existingeevee.moretcon.traits.ModTraits;
 
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -27,6 +31,16 @@ public class BlockBedrockOre extends BlockOre {
 	@Override
 	public EnumPushReaction getMobilityFlag(IBlockState state) {
 		return EnumPushReaction.BLOCK;
+	}
+
+	@Override
+	public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) {
+		if (entity instanceof net.minecraft.entity.boss.EntityDragon) {
+			return false;
+		} else if ((entity instanceof EntityWither) || (entity instanceof EntityWitherSkull)) {
+			return false;
+		}
+		return true;
 	}
 
 	@SubscribeEvent

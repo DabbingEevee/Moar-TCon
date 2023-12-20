@@ -6,11 +6,12 @@ import com.existingeevee.moretcon.traits.ModTraits;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -28,17 +29,15 @@ import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-@SuppressWarnings({ "deprecation", "unused" })
+@SuppressWarnings("deprecation")
 public class EventWatcherMain {
-
-	private Object begoneWarning = null;
-
+	
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void handleUniqueToolParts(ToolCraftingEvent event) {
 		for (ItemStack part : event.getToolParts()) {
 			if (TinkerUtil.getMaterialFromStack(part) instanceof UniqueMaterial
 					&& !event.getItemStack().getItem().getRegistryName().toString()
-							.equals(((UniqueMaterial) TinkerUtil.getMaterialFromStack(part)).toolResLoc)) {
+							.equals(((UniqueMaterial) TinkerUtil.getMaterialFromStack(part)).getToolResLoc())) {
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));// "You can only use unique tool parts on the correct tool.");
 			}
 		}
@@ -49,37 +48,11 @@ public class EventWatcherMain {
 		for (ItemStack part : event.getToolParts()) {
 			if (TinkerUtil.getMaterialFromStack(part) instanceof UniqueMaterial
 					&& !event.getItemStack().getItem().getRegistryName().toString()
-							.equals(((UniqueMaterial) TinkerUtil.getMaterialFromStack(part)).toolResLoc)) {
+							.equals(((UniqueMaterial) TinkerUtil.getMaterialFromStack(part)).getToolResLoc())) {
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
 			}
 		}
 	}
-
-	/*
-	 * @SubscribeEvent public void fishTest(ItemFishedEvent event) { if
-	 * (event.getEntityPlayer().dimension == 1 && !event.getDrops().isEmpty()) {
-	 * event.setCanceled(true);
-	 * 
-	 * ItemStack toGive = new ItemStack(ModItems.dustFusionite);
-	 * 
-	 * fakeFish(toGive, event.getHookEntity()); } }
-	 * 
-	 * private static void fakeFish(ItemStack toGive, EntityFishHook fishHook) { if
-	 * (toGive == null || fishHook == null || fishHook.getAngler() == null) return;
-	 * 
-	 * EntityItem toHook = new EntityItem(fishHook.world, fishHook.posX,
-	 * fishHook.posY, fishHook.posZ, toGive); double d0 = fishHook.getAngler().posX
-	 * - fishHook.posX; double d1 = fishHook.getAngler().posY - fishHook.posY;
-	 * double d2 = fishHook.getAngler().posZ - fishHook.posZ; double d3 =
-	 * MathHelper.sqrt(d0 * d0 + d1 * d1 + d2 * d2); double d4 = 0.1D;
-	 * toHook.motionX = d0 * 0.1D; toHook.motionY = d1 * 0.1D +
-	 * (double)MathHelper.sqrt(d3) * 0.08D; toHook.motionZ = d2 * 0.1D;
-	 * fishHook.world.spawnEntity(toHook);
-	 * fishHook.getAngler().world.spawnEntity(new
-	 * EntityXPOrb(fishHook.getAngler().world, fishHook.getAngler().posX,
-	 * fishHook.getAngler().posY + 0.5D, fishHook.getAngler().posZ + 0.5D, new
-	 * Random().nextInt(6) + 1)); }
-	 */
 
 	public static boolean sent = false;
 
@@ -88,11 +61,19 @@ public class EventWatcherMain {
 	public void sendBeta(WorldTickEvent e) {
 		if (ModInfo.BETA && !sent && Minecraft.getMinecraft().player != null) {
 			sent = true;
-			Minecraft.getMinecraft().player.sendStatusMessage(
-					new TextComponentString("[" + "\u00A7" + ChatFormatting.BLUE.getChar() + ModInfo.NAME + "\u00A7"
-							+ ChatFormatting.RED.getChar() + " " + I18n.translateToLocal("text.beta.name") + "\u00A7"
-							+ ChatFormatting.WHITE.getChar() + "] " + I18n.translateToLocal("text.beta.desc")),
-					false);
+			TextComponentString linkComponent = new TextComponentString(ModInfo.ISSUE_TRACKER);
+			linkComponent.setStyle(linkComponent.getStyle().setUnderlined(true).setColor(TextFormatting.BLUE).setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ModInfo.ISSUE_TRACKER)));
+
+			String[] strings = ("[" + "\u00A7" + ChatFormatting.BLUE.getChar() + ModInfo.NAME + "\u00A7"
+					+ ChatFormatting.RED.getChar() + " " + I18n.translateToLocal("text.beta.name") + "\u00A7"
+					+ ChatFormatting.WHITE.getChar() + "] " + I18n.translateToLocal("text.beta.desc")).split("__n__");
+			
+			for (int i = 0; i < strings.length - 1; i++) {
+				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentString(strings[i]), false);
+			}
+			if (strings.length >= 1) {
+				Minecraft.getMinecraft().player.sendStatusMessage(new TextComponentString(strings[strings.length - 1]).appendSibling(linkComponent), false);
+			}
 		}
 	}
 
@@ -101,7 +82,7 @@ public class EventWatcherMain {
 		Material pre = Misc.getUniqueEmbossment(event.getToolBeforeModification());
 		Material post = Misc.getUniqueEmbossment(event.getItemStack());
 		if (pre == null && (post instanceof UniqueMaterial)) {
-			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(((UniqueMaterial) post).toolResLoc))
+			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(((UniqueMaterial) post).getToolResLoc()))
 					.getRegistryName().equals(event.getItemStack().getItem().getRegistryName()))
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
 		}
@@ -114,16 +95,16 @@ public class EventWatcherMain {
 			if (event.getItemStack().getItem() instanceof ToolPart) {
 				if (TinkerUtil.getMaterialFromStack(event.getItemStack()) instanceof UniqueMaterial) {
 					UniqueMaterial mat = (UniqueMaterial) TinkerUtil.getMaterialFromStack(event.getItemStack());
-					if (UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(mat.toolResLoc)) != null) {
+					if (UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(mat.getToolResLoc())) != null) {
 						int i = 1;
 						event.getToolTip().add(i++, "");
 
-						if (!(mat.partResLoc.equals(event.getItemStack().getItem().getRegistryName().toString()))) {
-							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable")); // ");
+						if (!(mat.getPartResLoc().equals(event.getItemStack().getItem().getRegistryName().toString()))) {
+							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable"));
 							event.getToolTip().add(i++, "");
-						}   
+						}
 						event.getToolTip().add(i++, "§7" + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial
-								.getToolFromResourceLocation(new ResourceLocation(mat.toolResLoc)).getLocalizedName()));
+								.getToolFromResourceLocation(new ResourceLocation(mat.getToolResLoc())).getLocalizedName()));
 						event.getToolTip().add(i++, "");
 
 					}
@@ -145,9 +126,6 @@ public class EventWatcherMain {
 				for (int i = 1; i < event.getToolTip().size() + 1; i++) {
 					String last = StringUtils.stripControlCodes(event.getToolTip().get(event.getToolTip().size() - i));
 					boolean found = false;
-					// tooltip.bl.circlegem.green=§aGreen Gem§r
-					// tooltip.bl.circlegem.crimson=§cCrimson Gem§r
-					// tooltip.bl.circlegem.aqua=§9Aqua Gem§r
 					for (String str : new String[] {
 							StringUtils.stripControlCodes(I18n.translateToLocal("tooltip.bl.circlegem.green")),
 							StringUtils.stripControlCodes(I18n.translateToLocal("tooltip.bl.circlegem.crimson")),
@@ -174,43 +152,3 @@ public class EventWatcherMain {
 		}
 	}
 }
-
-/*
- * ArrayList<UniqueMaterial> postChange = new ArrayList<UniqueMaterial>();
- * NBTTagList tagList =
- * event.getItemStack().serializeNBT().getCompoundTag("tag").getCompoundTag(
- * "TinkerData").getTagList("Modifiers", NBT.TAG_STRING); for (NBTBase tag :
- * tagList) { if
- * (!((NBTTagString)tag).getString().toString().startsWith("extratrait"))
- * continue; String tagString =
- * ((NBTTagString)tag).getString().toString().replaceFirst("extratrait", "");
- * for (Material mat : TinkerRegistry.getAllMaterials()) { if
- * ((TinkerRegistry.getTrait(tagString.replaceFirst(mat.getIdentifier(), "")) !=
- * null) && mat instanceof UniqueMaterial) { postChange.add((UniqueMaterial)
- * mat); } } } ArrayList<UniqueMaterial> preChange = new
- * ArrayList<UniqueMaterial>();
- * 
- * NBTTagList tagListPre =
- * event.getToolBeforeModification().serializeNBT().getCompoundTag("tag").
- * getCompoundTag("TinkerData").getTagList("Modifiers", NBT.TAG_STRING); for
- * (NBTBase tag : tagListPre) { //Logging.log(tag.toString()); if
- * (!((NBTTagString)tag).getString().toString().startsWith("extratrait"))
- * continue; String tagString =
- * ((NBTTagString)tag).getString().toString().replaceFirst("extratrait", "");
- * for (Material mat : TinkerRegistry.getAllMaterials()) { if
- * ((TinkerRegistry.getTrait(tagString.replaceFirst(mat.getIdentifier(), "")) !=
- * null) && mat instanceof UniqueMaterial) { preChange.add((UniqueMaterial)
- * mat); } } }
- * 
- * ArrayList<UniqueMaterial> changes = new ArrayList<UniqueMaterial>();
- * 
- * for (UniqueMaterial mat : postChange) { boolean shouldContinue = false; for
- * (UniqueMaterial mat2 : preChange) { if
- * (mat.getIdentifier().equals(mat2.getIdentifier())) shouldContinue = true;
- * break; } if (shouldContinue) continue; changes.add(mat); } if (changes.size()
- * != 0) { if (!UniqueMaterial.getToolFromResourceLocation(new
- * ResourceLocation(changes.get(0).toolResLoc)).getRegistryName().equals(event.
- * getItemStack().getItem().getRegistryName()))
- * event.setCanceled("You can only use unique tool parts on the correct tool.");
- * }
- */
