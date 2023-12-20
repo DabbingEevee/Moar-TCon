@@ -80,6 +80,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialShadowglass = new Material(Misc.createNonConflictiveName("shadowglass"), 0x2a275e);
 	public static final Material materialEtherstone = new Material(Misc.createNonConflictiveName("etherstone"), 0xf1ea3b);
 	public static final Material materialValasium = new Material(Misc.createNonConflictiveName("valasium"), 0x9ab7d6);
+	public static final Material materialElectarite = new Material(Misc.createNonConflictiveName("electarite"), 0x6666FF);
 
 	public static final Material materialNahuatl = new Material(Misc.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(Misc.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -588,6 +589,21 @@ public class ModMaterials implements MaterialTypes {
 			materialEssencore.addStats(new HeadMaterialStats(4096, 10f, 12f, 7));
 			materialEssencore.addTrait(ModTraits.essentialObliteration);
 			materialEssencore.addTrait(ModTraits.luminescent);
+			
+			materialElectarite.addItem("gemElectarite", 1, Material.VALUE_Ingot);
+			materialElectarite.addItem("blockElectarite", 1, Material.VALUE_Block);
+			materialElectarite.setCastable(false);
+			materialElectarite.setCraftable(true);
+			materialElectarite.setRepresentativeItem("gemElectarite");
+			materialElectarite.addTrait(ModTraits.luminescent, HEAD);
+			materialElectarite.addTrait(ModTraits.electrified, HEAD);
+			materialElectarite.addTrait(ModTraits.luminescent);
+			materialElectarite.addStats(new HeadMaterialStats(620, 6f, 7f, 5));
+			materialElectarite.addStats(new HandleMaterialStats(2.2f, 10));
+			materialElectarite.addStats(new ExtraMaterialStats(70));
+			materialElectarite.addStats(new ArrowShaftMaterialStats(1.2f, 10));
+			materialElectarite.addStats(new ProjectileMaterialStats());
+
 		}
 		if (CompatManager.aether_legacy) { // TODO
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -920,6 +936,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialShadowglass);
 			ModMaterials.registerMaterial(materialEtherstone).toolforge();
 			ModMaterials.registerMaterial(materialEssencore);
+			ModMaterials.registerMaterial(materialElectarite);
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);

@@ -107,7 +107,7 @@ public abstract class MixinContentMaterial {
 			displayTools.add(elementItem);
 		}
 
-		if (material instanceof UniqueMaterial) { //Tools
+		if (material instanceof UniqueMaterial) { 
 			UniqueMaterial unique = (UniqueMaterial) material;
 			ToolCore tool = UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(unique.getToolResLoc()));
 			if (tool != null) {

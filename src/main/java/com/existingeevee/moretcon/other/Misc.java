@@ -27,6 +27,7 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.MinecraftForge;
@@ -240,6 +241,11 @@ public class Misc {
 						large.getUnlocalizedName().toLowerCase() + "_to_" + small.getUnlocalizedName().toLowerCase()));
 	}
 
+	
+	public static Vec3d getCenter(AxisAlignedBB bb) {
+		return new Vec3d(bb.minX + (bb.maxX - bb.minX) * 0.5D, bb.minY + (bb.maxY - bb.minY) * 0.5D, bb.minZ + (bb.maxZ - bb.minZ) * 0.5D);
+	}
+
 	public static void register9x9Recipes(String odSmall, String odLarge, Register<IRecipe> event) {
 		if (OreDictionary.getOres(odSmall).size() == 0 || OreDictionary.getOres(odLarge).size() == 0) {
 			return;
@@ -298,6 +304,10 @@ public class Misc {
 	@FunctionalInterface
 	public static interface Executor {
 		void execute();
+	}
+
+	public static double randomN1T1() {
+		return Math.random() * 2 - 1;		
 	}
 
 	/*
