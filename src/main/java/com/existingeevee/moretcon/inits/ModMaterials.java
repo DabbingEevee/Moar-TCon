@@ -685,9 +685,11 @@ public class ModMaterials implements MaterialTypes {
 			materialGravitite.setCastable(false);
 			materialGravitite.setCraftable(true);
 			materialGravitite.setRepresentativeItem("gemGravitite");
-			materialGravitite.addTrait(TinkerTraits.insatiable, HEAD);
-			materialGravitite.addTrait(ModTraits.antigravity);
-			materialGravitite.addTrait(ModTraits.treetap);
+			materialGravitite.addTrait(TinkerTraits.insatiable);
+			materialGravitite.addTrait(ModTraits.aetheric, HEAD);
+			materialGravitite.addTrait(ModTraits.aetheric);
+			materialGravitite.addTrait(ModTraits.antigravity, HEAD);
+			materialGravitite.addTrait(ModTraits.treetap, HEAD);
 			materialGravitite.addStats(new HeadMaterialStats(950, 7.50f, 5.00f, 3));
 			materialGravitite.addStats(new HandleMaterialStats(0.9f, 90));
 			materialGravitite.addStats(new ExtraMaterialStats(90));
