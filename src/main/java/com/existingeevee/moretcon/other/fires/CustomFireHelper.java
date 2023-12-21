@@ -3,8 +3,10 @@ package com.existingeevee.moretcon.other.fires;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.NetworkHandler;
@@ -31,22 +33,13 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-/*
- * 	if (e instanceof EntityPig) {
-		setAblaze(entity, new CustomFireInfo(CustomFireEffect.FUSIONITE_FLAME, 2));
-	}
- */
-
 public class CustomFireHelper {
 
 	private static Map<Integer, CustomFireInfo> customBurning = new HashMap<Integer, CustomFireInfo>();
-	
+
 	private static boolean dirty = false;
 
 	public static void setAblaze(EntityLivingBase entity, CustomFireInfo info) {
-		if (entity.getHealth() <= 0 || entity.isDead) {
-			return;
-		}
 		customBurning.put(entity.getEntityId(), info);
 		entity.extinguish();
 		if (!entity.world.isRemote) {
@@ -64,9 +57,6 @@ public class CustomFireHelper {
 	public static void onRenderLivingEvent(RenderLivingEvent.Pre<?> event) {
 		if (event.getEntity().world.isRemote) {
 			if (customBurning.get(event.getEntity().getEntityId()) != null) {
-				if (event.getEntity().getHealth() <= 0 || event.getEntity().isDead) {
-					return;
-				}
 				CustomFireInfo info = customBurning.get(event.getEntity().getEntityId());
 				if (info == null || info.isInvalid())
 					return;
@@ -99,16 +89,11 @@ public class CustomFireHelper {
 					Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect(-posX / 2, posY, textureatlassprite, (int) (posX * 1.25), posY);
 					Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect((int) (posX / 2), (int) (posY * 0.75), textureatlassprite, (int) (posX * 1.25), (int) (posY * 1.5));
 					Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect((int) (posX * 1.5), posY, textureatlassprite, (int) (posX * 1.25), posY);
-
-//					textureatlassprite = texturemap.getAtlasSprite(info.effect.two.toString());
-//					Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-//					Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect(0, (int) (posY * 0.75), textureatlassprite, posX * 2, posY);
-
 					GlStateManager.depthMask(true);
 					GlStateManager.enableDepth();
 					GlStateManager.enableAlpha();
 					GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-					
+
 				}
 			}
 		}
@@ -122,9 +107,6 @@ public class CustomFireHelper {
 				if (e instanceof EntityLivingBase) {
 					EntityLivingBase entity = (EntityLivingBase) e;
 					if (customBurning.get(entity.getEntityId()) != null) {
-						if (entity.getHealth() <= 0 || entity.isDead) {
-							continue;
-						}
 						CustomFireInfo info = customBurning.get(entity.getEntityId());
 						if (info == null || info.effect == null)
 							continue;
@@ -154,16 +136,29 @@ public class CustomFireHelper {
 			dirty = true;
 		}
 	}
+	
+	private static Set<Integer> validList = new HashSet<>();
+
+	@SubscribeEvent
+	public static void finishTicking(TickEvent.ServerTickEvent event) {
+		if (event.phase != Phase.END)
+			return;
+		
+		System.out.println(customBurning);
+		
+		customBurning.keySet().retainAll(validList);
+		validList = new HashSet<>();
+	}
 
 	@SubscribeEvent
 	public static void onEntityTick(TickEvent.WorldTickEvent event) {
+		if (event.phase != Phase.END)
+			return;
+
 		for (Entity e : new ArrayList<>(event.world.loadedEntityList)) {
 			if (e instanceof EntityLivingBase) {
 				EntityLivingBase entity = (EntityLivingBase) e;
 				if (customBurning.get(entity.getEntityId()) != null) {
-					if (entity.getHealth() <= 0 || entity.isDead) {
-						continue;
-					}
 					CustomFireInfo info = customBurning.get(entity.getEntityId());
 					if (info.effect == null)
 						continue;
@@ -177,8 +172,6 @@ public class CustomFireHelper {
 		if (event.world.isRemote)
 			return;
 
-		// customBurning = new HashMap<Integer, CustomFireInfo>();
-
 		for (Entity e : new ArrayList<>(event.world.loadedEntityList)) {
 			if (e instanceof EntityLivingBase) {
 				EntityLivingBase entity = (EntityLivingBase) e;
@@ -186,12 +179,13 @@ public class CustomFireHelper {
 					try {
 						CustomFireInfo info = new CustomFireInfo(
 								e.getEntityData().getCompoundTag(ModInfo.MODID + ".fire")).decrementTime();
-						if (entity.isBurning() || info.isInvalid() || (customBurning.get(entity.getEntityId()) != null && customBurning.get(entity.getEntityId()).isInvalid()) || entity.getHealth() <= 0 || entity.isDead) {
+						if (entity.isBurning() || info.isInvalid() || (customBurning.get(entity.getEntityId()) != null && customBurning.get(entity.getEntityId()).isInvalid())) {
 							customBurning.remove(entity.getEntityId());
 							entity.getEntityData().removeTag(ModInfo.MODID + ".fire");
 							dirty = true;
 							continue;
 						}
+						validList.add(entity.getEntityId());
 						setAblaze(entity, info);
 						dirty = true;
 					} catch (NullPointerException npe) {
@@ -200,19 +194,17 @@ public class CustomFireHelper {
 				}
 			}
 		}
+
+
 		if (dirty) {
 			dirty = false;
 			SyncCustomFiresMessage msg = new SyncCustomFiresMessage();
 			msg.customBurningData = customBurning;
 			NetworkHandler.HANDLER.sendToAll(msg);
-			// Logging.log("pointa");
 		}
 	}
 
 	public static CustomFireInfo getBurningInfo(EntityLivingBase entity) {
-		if (entity.getHealth() <= 0 || entity.isDead) {
-			return null;
-		}
 		if (customBurning.get(entity.getEntityId()) != null) {
 			return customBurning.get(entity.getEntityId());
 		}
@@ -234,8 +226,7 @@ public class CustomFireHelper {
 		@Override
 		public IMessage onMessage(SyncCustomFiresMessage message, MessageContext ctx) {
 			customBurning = message.customBurningData;
-			// Logging.log("c -> " + customBurning);
-			return null; 
+			return null;
 		}
 
 		@Override
