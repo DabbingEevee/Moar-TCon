@@ -4,7 +4,7 @@ import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.client.LightShadingTextureColoredTexture;
 import com.existingeevee.moretcon.client.NoShadingTextureColoredTexture;
 import com.existingeevee.moretcon.inits.ModMaterials;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo.Metal;
@@ -13,7 +13,6 @@ import slimeknights.tconstruct.library.materials.Material;
 
 public class MaterialClient {
 
-	// s@SideOnly(Side.CLIENT)
 	static {
 		setCustomRender(ModMaterials.materialFusionite);
 		setCustomRender(ModMaterials.materialIrradium);
@@ -54,7 +53,7 @@ public class MaterialClient {
 	}
 
 	private static void setCustomRender(Material mat) {
-		mat.setRenderInfo(Misc.createMaterialRenderInfoSafe(mat));
+		mat.setRenderInfo(MiscUtils.createMaterialRenderInfoSafe(mat));
 	}
 
 	public static void init() {
