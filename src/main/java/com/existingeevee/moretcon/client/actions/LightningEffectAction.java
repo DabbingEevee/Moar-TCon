@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.client.actions;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleFirework.Overlay;
@@ -36,7 +36,7 @@ public class LightningEffectAction extends ClientAction {
 			}
 		} else {
 			for (int i = 0; i < 50 * speedModifier; i++) {
-				Minecraft.getMinecraft().effectRenderer.addEffect(new Spark(world, x, y, z, Misc.randomN1T1() * speedModifier, Misc.randomN1T1() * speedModifier, Misc.randomN1T1() * speedModifier, Minecraft.getMinecraft().effectRenderer));
+				Minecraft.getMinecraft().effectRenderer.addEffect(new Spark(world, x, y, z, MiscUtils.randomN1T1() * speedModifier, MiscUtils.randomN1T1() * speedModifier, MiscUtils.randomN1T1() * speedModifier, Minecraft.getMinecraft().effectRenderer));
 			}
 		}
 	}

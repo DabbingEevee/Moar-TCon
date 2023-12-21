@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class Resilient extends AbstractTrait {
 
 	public Resilient() {
-		super(Misc.createNonConflictiveName("resilient"), 0x8e3acf);
+		super(MiscUtils.createNonConflictiveName("resilient"), 0x8e3acf);
 	}
 	@Override
 	public int onToolDamage(ItemStack tool, int damage, int newDamage, EntityLivingBase entity) {

@@ -1,7 +1,7 @@
 package com.existingeevee.moretcon.traits.traits;
 
 import com.existingeevee.moretcon.client.actions.LightningEffectAction;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class Electrified extends AbstractTrait {
 	public Electrified() {
-		super(Misc.createNonConflictiveName("electrified"), 0);
+		super(MiscUtils.createNonConflictiveName("electrified"), 0);
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class Electrified extends AbstractTrait {
 		}
 
 		if (!target.world.isRemote) {
-			Vec3d center = Misc.getCenter(target.getEntityBoundingBox());
+			Vec3d center = MiscUtils.getCenter(target.getEntityBoundingBox());
 			
 			NBTTagCompound tagCompound = new NBTTagCompound();
 			tagCompound.setBoolean("big", amount >= 10);

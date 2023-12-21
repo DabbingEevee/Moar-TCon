@@ -3,9 +3,9 @@ package com.existingeevee.moretcon.effects;
 import java.lang.reflect.Method;
 
 import com.existingeevee.moretcon.ModInfo;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.fires.CustomFireEffect;
 import com.existingeevee.moretcon.other.fires.CustomFireHelper;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -29,7 +29,7 @@ public class PotionColdFlames extends Potion {
 	public PotionColdFlames() {
 		super(true, -1);
 		setRegistryName("coldflames");
-		setPotionName(Misc.createNonConflictiveName("coldflames"));
+		setPotionName(MiscUtils.createNonConflictiveName("coldflames"));
 		potionIcon = new ResourceLocation(ModInfo.MODID + ":textures/other/coldflames.png");
 		//MinecraftForge.EVENT_BUS.register(this);
 	}

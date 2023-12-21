@@ -1,7 +1,7 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
 import com.existingeevee.moretcon.inits.ModItems;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,7 +15,7 @@ import thebetweenlands.common.handler.OverworldItemHandler;
 public class Betweenified extends ToolModifier {
 
 	public Betweenified() {
-		super(Misc.createNonConflictiveName("modBetweenified"), 0x0b2e05);
+		super(MiscUtils.createNonConflictiveName("modBetweenified"), 0x0b2e05);
 		this.addItem(ModItems.betweenifiedModifier);
 		this.addAspects(new ModifierAspect.SingleAspect(this), new ModifierAspect.DataAspect(this),
 				ModifierAspect.freeModifier, ModifierAspect.freeModifier, ModifierAspect.freeModifier);

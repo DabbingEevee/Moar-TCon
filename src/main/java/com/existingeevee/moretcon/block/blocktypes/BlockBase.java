@@ -7,8 +7,8 @@ import javax.annotation.Nullable;
 import com.existingeevee.moretcon.block.ISimpleBlockItemProvider;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.inits.ModItems;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.utils.FireproofItemUtil;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -30,7 +30,7 @@ public class BlockBase extends Block implements ISimpleBlockItemProvider {
 	public BlockBase(String itemName, Material material, int harvestLevel) {
 
 		super(material);
-		setUnlocalizedName(Misc.createNonConflictiveName(itemName.toLowerCase()));
+		setUnlocalizedName(MiscUtils.createNonConflictiveName(itemName.toLowerCase()));
 		setHarvestLevel("pickaxe", harvestLevel);
 	}
 

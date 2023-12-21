@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 import com.existingeevee.moretcon.effects.ModPotions;
 import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect;
 import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect.EnumDecayingEffectType;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -21,7 +21,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 public class BloodyArc extends AbstractTrait {
 	
 	public BloodyArc() {
-		super(Misc.createNonConflictiveName("bloody_arc"), -1);
+		super(MiscUtils.createNonConflictiveName("bloody_arc"), -1);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

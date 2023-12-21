@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.gildedgames.the_aether.Aether;
 
 import net.minecraft.block.properties.PropertyBool;
@@ -19,7 +19,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class Rootplicating extends AbstractTrait {
 
 	public Rootplicating() {
-		super(Misc.createNonConflictiveName("rootplicating"), 0);
+		super(MiscUtils.createNonConflictiveName("rootplicating"), 0);
 	}
 
 	@Override

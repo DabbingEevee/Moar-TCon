@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits;
 
 import java.util.Random;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -15,7 +15,7 @@ import thebetweenlands.api.item.ICorrodible;
 public class Corroding extends AbstractTrait {
 
 	public Corroding() {
-		super(Misc.createNonConflictiveName("corroding"), 0);
+		super(MiscUtils.createNonConflictiveName("corroding"), 0);
         MinecraftForge.EVENT_BUS.register(this);
 	}
 

@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 import java.util.List;
 
 import com.existingeevee.moretcon.effects.ModPotions;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
 import com.google.common.collect.Lists;
 
@@ -16,7 +16,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class BloodGodsBlessing extends AbstractTrait implements IAdditionalTraitMethods {
 
 	public BloodGodsBlessing() {
-		super(Misc.createNonConflictiveName("bloodgodsblessing"), 0);
+		super(MiscUtils.createNonConflictiveName("bloodgodsblessing"), 0);
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
 import com.existingeevee.moretcon.inits.ModItems;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 public class Crushing extends ModifierTrait {
 
 	public Crushing() {
-		super(Misc.createNonConflictiveName("modcrushing"), 0x555555);
+		super(MiscUtils.createNonConflictiveName("modcrushing"), 0x555555);
 		this.addItem(ModItems.crushingModifier);
 		this.addAspects(new ModifierAspect.SingleAspect(this));
 	}
@@ -31,7 +31,7 @@ public class Crushing extends ModifierTrait {
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
 		if (wasHit) {
 			DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
-			Misc.trueDamage(target, target.getEntityData().getFloat(this.getIdentifier()) * 0.05f, source, false);
+			MiscUtils.trueDamage(target, target.getEntityData().getFloat(this.getIdentifier()) * 0.05f, source, false);
 		}
 	}
 

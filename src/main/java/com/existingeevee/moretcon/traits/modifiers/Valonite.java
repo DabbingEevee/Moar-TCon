@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -14,7 +14,7 @@ import thebetweenlands.api.item.ICorrodible;
 public class Valonite extends ModifierTrait {
 
 	public Valonite() {
-		super(Misc.createNonConflictiveName("modValonite"), 0xcab1ca);
+		super(MiscUtils.createNonConflictiveName("modValonite"), 0xcab1ca);
 		this.addItem("gemValonite");
 		
 		this.addAspects(new ModifierAspect.SingleAspect(this));

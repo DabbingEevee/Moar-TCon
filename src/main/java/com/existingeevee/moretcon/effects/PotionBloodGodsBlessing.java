@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.effects;
 import java.util.UUID;
 
 import com.existingeevee.moretcon.ModInfo;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -21,7 +21,7 @@ public class PotionBloodGodsBlessing extends PotionAttackDamage {
 		super(false, 0xea8f8c, 2);
 		this.setBeneficial();
 		this.setRegistryName("bloodgodsblessing");
-		this.setPotionName(Misc.createNonConflictiveName("bloodgodsblessing"));
+		this.setPotionName(MiscUtils.createNonConflictiveName("bloodgodsblessing"));
 		this.registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, UUID.nameUUIDFromBytes("bloodgodsblessing".getBytes()).toString(), 2.0D, 0);
 		potionIcon = new ResourceLocation(ModInfo.MODID + ":textures/other/bloodgodsblessing.png");
 	}

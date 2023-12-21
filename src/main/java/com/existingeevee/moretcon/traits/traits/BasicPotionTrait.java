@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits;
 
 import com.existingeevee.math.Equation;
 import com.existingeevee.math.Monomial;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ public class BasicPotionTrait extends AbstractTrait {
 	private Potion potion = null;
 	
 	public BasicPotionTrait(Equation amplifierCalc, Equation durationCalc, Potion pot, String id, int col) {
-		super(Misc.createNonConflictiveName(id), col);
+		super(MiscUtils.createNonConflictiveName(id), col);
 		if (amplifierCalc != null) this.amplifier = amplifierCalc;
 		if (durationCalc != null) this.duration = durationCalc;
 		this.potion = pot;

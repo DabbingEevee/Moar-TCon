@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 public class Tarred extends ModifierTrait  {
 
 	public Tarred() {
-		super(Misc.createNonConflictiveName("modtarred"), 0x333333);
+		super(MiscUtils.createNonConflictiveName("modtarred"), 0x333333);
 		this.addItem("dripTar", 5, 1);
 		
 		this.addAspects(new ModifierAspect.SingleAspect(this));

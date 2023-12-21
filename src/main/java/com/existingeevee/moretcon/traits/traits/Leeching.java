@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits;
 
 import java.util.Random;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class Leeching extends AbstractTrait {
 
 	public Leeching() {
-		super(Misc.createNonConflictiveName("leeching"), -1);
+		super(MiscUtils.createNonConflictiveName("leeching"), -1);
 	}
 
 	@Override

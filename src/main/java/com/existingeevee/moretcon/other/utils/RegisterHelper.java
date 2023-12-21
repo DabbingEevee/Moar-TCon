@@ -16,7 +16,6 @@ import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.other.BiValue;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.sponge.SpongeRegistry.GravitoniumSpongeItem;
 import com.google.common.base.Function;
 
@@ -59,7 +58,7 @@ public class RegisterHelper {
 
 		if (itemBlock != null) {
 			ForgeRegistries.ITEMS.register(itemBlock.apply(block).setRegistryName(block.getRegistryName()));
-			if (Misc.isClient()) {
+			if (MiscUtils.isClient()) {
 				RenderHandler.registerBlockModel(block);
 				if (block instanceof BlockFluidClassic) {
 					RenderHandler.registerFluidCustomMeshesAndStates(block);
@@ -89,7 +88,7 @@ public class RegisterHelper {
 		}
 		item.setRegistryName(name);
 		ForgeRegistries.ITEMS.register(item);
-		if (Misc.isClient()) {
+		if (MiscUtils.isClient()) {
 			if (item instanceof ToolCore) {
 				ModelRegisterUtil.registerToolModel((ToolCore) item);
 				moreTConTools.add((ToolCore) item); //we dont use this on the server anyways

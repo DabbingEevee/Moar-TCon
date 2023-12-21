@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -10,7 +10,7 @@ import thebetweenlands.api.item.ICorrodible;
 public class Rotten extends AbstractTrait {
 
 	public Rotten() {
-		super(Misc.createNonConflictiveName("rotten"), 0);
+		super(MiscUtils.createNonConflictiveName("rotten"), 0);
 	}
 
 	@Override

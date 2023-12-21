@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.block.blocktypes.unique;
 import java.util.Random;
 
 import com.existingeevee.moretcon.client.actions.VoidCoreAction;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -16,7 +16,7 @@ public class BlockVoidCore extends Block {
 	public BlockVoidCore() {
 		super(Material.BARRIER);
 		
-		this.setUnlocalizedName(Misc.createNonConflictiveName("blockvoidcore"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blockvoidcore"));
 		this.setHarvestLevel("pickaxe", 0);
 		this.setBlockUnbreakable();
 		this.setResistance(Float.POSITIVE_INFINITY);

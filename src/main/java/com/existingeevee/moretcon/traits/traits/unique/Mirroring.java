@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -36,7 +36,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 public class Mirroring extends AbstractProjectileTrait {
 
 	public Mirroring() {
-		super(Misc.createNonConflictiveName("mirroring"), 0);
+		super(MiscUtils.createNonConflictiveName("mirroring"), 0);
         MinecraftForge.EVENT_BUS.register(this);
 	}
 	
@@ -95,8 +95,8 @@ public class Mirroring extends AbstractProjectileTrait {
 			
 			List<Material> materials = new ArrayList<Material>();
 
-			materials.addAll(Misc.getMaterials(launcher));
-			Material embossment = Misc.getEmbossment(launcher);
+			materials.addAll(MiscUtils.getMaterials(launcher));
+			Material embossment = MiscUtils.getEmbossment(launcher);
 			if (embossment != null) {
 				materials.add(embossment);
 			}
@@ -168,7 +168,7 @@ public class Mirroring extends AbstractProjectileTrait {
 			ArrayList<ITrait> finalTraits = new ArrayList<ITrait>(traits);
 			float hp = e.getEntityLiving().getHealth();
 			boolean crit = isCritical;
-			Misc.executeInNTicks(() -> {
+			MiscUtils.executeInNTicks(() -> {
 				float finalDamage = hp - e.getEntityLiving().getHealth();
 			    for(ITrait trait : finalTraits) {
 			    	trait.afterHit(arrow, player, e.getEntityLiving(), finalDamage, crit, true); // hit is always true
@@ -186,8 +186,8 @@ public class Mirroring extends AbstractProjectileTrait {
 		
 		List<Material> materials = new ArrayList<Material>();
 
-		materials.addAll(Misc.getMaterials(launcherStack));
-		Material embossment = Misc.getEmbossment(launcherStack);
+		materials.addAll(MiscUtils.getMaterials(launcherStack));
+		Material embossment = MiscUtils.getEmbossment(launcherStack);
 		if (embossment != null) {
 			materials.add(embossment);
 		}

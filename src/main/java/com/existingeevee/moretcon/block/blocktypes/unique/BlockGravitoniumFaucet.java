@@ -7,8 +7,8 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.block.ISimpleBlockItemProvider;
 import com.existingeevee.moretcon.block.tile.TileGravitoniumFaucet;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.ModTabs;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
@@ -25,7 +25,7 @@ public class BlockGravitoniumFaucet extends BlockFaucet implements ISimpleBlockI
 	public BlockGravitoniumFaucet() {
 		super();
 	    this.setCreativeTab(ModTabs.moarTConMisc);
-	    this.setUnlocalizedName(Misc.createNonConflictiveName("blockgravitoniumfaucet"));
+	    this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blockgravitoniumfaucet"));
 	}
 
 	@Nonnull

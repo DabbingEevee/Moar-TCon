@@ -5,7 +5,7 @@ import java.util.List;
 import com.existingeevee.moretcon.compat.ConarmSupport;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
@@ -34,7 +34,7 @@ public class Ring extends TinkerToolCore implements IBauble {
 	public Ring() {
 		super(HEAD, HANDLE);
 		TinkerRegistry.registerToolCrafting(this);
-		this.setUnlocalizedName(Misc.createNonConflictiveName("ring"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("ring"));
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 public class Debug extends ModifierTrait {
 
 	public Debug() {
-		super(Misc.createNonConflictiveName("moddebug"), 0xFFFFFF);
+		super(MiscUtils.createNonConflictiveName("moddebug"), 0xFFFFFF);
 		this.addItem(Item.getItemFromBlock(Blocks.COMMAND_BLOCK));
 		
 		this.addAspects(new ModifierAspect.SingleAspect(this), new ModifierAspect.DataAspect(this));

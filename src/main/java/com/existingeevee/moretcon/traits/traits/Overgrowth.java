@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.ModTraits;
 
 import net.minecraft.entity.Entity;
@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.traits.AbstractTraitLeveled;
 public class Overgrowth extends AbstractTraitLeveled {
 
 	public Overgrowth(int levels) {
-		super(Misc.createNonConflictiveName("overgrowth"), 0, 3, levels);
+		super(MiscUtils.createNonConflictiveName("overgrowth"), 0, 3, levels);
 	}
 
 	@Override

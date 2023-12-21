@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.gildedgames.the_aether.AetherConfig;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -11,7 +11,7 @@ public class Aetheric extends AbstractTrait {
 
 	//public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Aetheric() {
-		super(Misc.createNonConflictiveName("aetheric"), 0);
+		super(MiscUtils.createNonConflictiveName("aetheric"), 0);
 	}
 
 	@Override

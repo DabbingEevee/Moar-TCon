@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 
 import java.util.UUID;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 
 import net.minecraft.block.state.IBlockState;
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EssentialObliteration extends NumberTrackerTrait {
 
 	public EssentialObliteration() {
-		super(Misc.createNonConflictiveName("essential_obliteration"), 0);
+		super(MiscUtils.createNonConflictiveName("essential_obliteration"), 0);
 	}
 
 	@Override

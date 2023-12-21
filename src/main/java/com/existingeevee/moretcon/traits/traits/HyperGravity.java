@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 public class HyperGravity extends AbstractTrait {
 
 	public HyperGravity() {
-		super(Misc.createNonConflictiveName("hypergravity"), 0);
+		super(MiscUtils.createNonConflictiveName("hypergravity"), 0);
 	}
 
     @Override

@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 
@@ -21,7 +21,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 public class KineticBattery extends NumberTrackerTrait {
 
 	public KineticBattery() {
-		super(Misc.createNonConflictiveName("kinetic_battery"), 0);
+		super(MiscUtils.createNonConflictiveName("kinetic_battery"), 0);
 	}
 
 	@Override

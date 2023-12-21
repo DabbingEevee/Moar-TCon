@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits;
 
 import java.util.List;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.google.common.collect.ImmutableList;
 
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 public class Hardcore extends AbstractTrait {
 
 	public Hardcore() {
-		super(Misc.createNonConflictiveName("hardcore"), 0);
+		super(MiscUtils.createNonConflictiveName("hardcore"), 0);
 	}
 
     private int multiplier(ItemStack tool) {

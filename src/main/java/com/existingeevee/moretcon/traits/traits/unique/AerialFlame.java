@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 import java.util.List;
 import java.util.Random;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -21,7 +21,7 @@ import slimeknights.tconstruct.library.traits.AbstractProjectileTrait;
 public class AerialFlame extends AbstractProjectileTrait {
 	
 	public AerialFlame() {
-		super(Misc.createNonConflictiveName("AerialFlame".toLowerCase()), 0);
+		super(MiscUtils.createNonConflictiveName("AerialFlame".toLowerCase()), 0);
 	}
 	
 	private static final Random rand = new Random();

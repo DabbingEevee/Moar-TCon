@@ -1,7 +1,7 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
 import com.existingeevee.moretcon.config.ConfigHandler;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,7 +30,7 @@ public class Gem extends ToolModifier {
 	private static boolean registered = false;
 	
 	public Gem(CircleGemType type, Item item, int color) {
-		super(Misc.createNonConflictiveName("mod" + type.name().toLowerCase() + "gem"), color);
+		super(MiscUtils.createNonConflictiveName("mod" + type.name().toLowerCase() + "gem"), color);
 		this.addItem(item);
 		if (ConfigHandler.middleGemsRequireModifierSlots) {
 			this.addAspects(new ModifierAspect.SingleAspect(this), new ModifierAspect.DataAspect(this), ModifierAspect.freeModifier);

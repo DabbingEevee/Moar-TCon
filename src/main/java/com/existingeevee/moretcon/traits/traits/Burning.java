@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import thebetweenlands.common.capability.circlegem.CircleGemType;
 public class Burning extends AbstractTrait {
 
 	public Burning() {
-		super(Misc.createNonConflictiveName("burning"), 0x00ed00);
+		super(MiscUtils.createNonConflictiveName("burning"), 0x00ed00);
 	}
 
 	@Override

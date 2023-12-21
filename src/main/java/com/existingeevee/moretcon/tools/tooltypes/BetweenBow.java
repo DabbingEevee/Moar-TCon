@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -54,7 +54,7 @@ public class BetweenBow extends BowCore implements ICorrodible, IAnimatorRepaira
 	public BetweenBow() {
 		super(PartMaterialType.bow(ModTools.betweenBowLimb), PartMaterialType.bow(ModTools.betweenBowLimb),
 				PartMaterialType.bowstring(TinkerTools.bowString));
-		this.setUnlocalizedName(Misc.createNonConflictiveName("blbow"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blbow"));
 		this.addPropertyOverride(PROPERTY_PULL_PROGRESS, pullProgressPropertyGetter);
 		this.addPropertyOverride(PROPERTY_IS_PULLING, isPullingPropertyGetter);
 		TinkerRegistry.registerToolCrafting(this);

@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 
 import javax.annotation.Nullable;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
 
 import net.minecraft.entity.Entity;
@@ -27,7 +27,7 @@ import thebetweenlands.common.entity.mobs.EntityTinySludgeWormHelper;
 public class Wormed extends AbstractProjectileTrait implements IAdditionalTraitMethods {
 
 	public Wormed() {
-		super(Misc.createNonConflictiveName("wormed"), 0);
+		super(MiscUtils.createNonConflictiveName("wormed"), 0);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

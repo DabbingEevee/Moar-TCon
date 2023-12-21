@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -10,7 +10,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class ChaosVeil extends AbstractTrait {
 
 	public ChaosVeil() { 
-		super(Misc.createNonConflictiveName("chaos_veil"), 0);
+		super(MiscUtils.createNonConflictiveName("chaos_veil"), 0);
 	}
 
 	@Override

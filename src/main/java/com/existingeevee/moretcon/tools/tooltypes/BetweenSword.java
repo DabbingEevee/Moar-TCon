@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.google.common.collect.Multimap;
 
 import net.minecraft.block.state.IBlockState;
@@ -44,7 +44,7 @@ public class BetweenSword extends SwordCore implements ICorrodible, IAnimatorRep
 		super(PartMaterialType.handle(
 				TinkerTools.toolRod), PartMaterialType.head(ModTools.betweenSwordBlade),
 				PartMaterialType.extra(TinkerTools.wideGuard));
-		this.setUnlocalizedName(Misc.createNonConflictiveName("blsword"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blsword"));
 		TinkerRegistry.registerToolCrafting(this);
 		CorrosionHelper.addCorrosionPropertyOverrides(this);
 

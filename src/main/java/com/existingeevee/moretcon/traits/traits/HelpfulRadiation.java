@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class HelpfulRadiation extends AbstractTrait {
 
 	public HelpfulRadiation() {
-		super(Misc.createNonConflictiveName("helpful_radiation"), 0x00ed00);
+		super(MiscUtils.createNonConflictiveName("helpful_radiation"), 0x00ed00);
 	}
 
 	@Override

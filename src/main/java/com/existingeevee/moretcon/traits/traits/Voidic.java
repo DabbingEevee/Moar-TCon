@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class Voidic extends AbstractTrait {
 
 	public Voidic() {
-		super(Misc.createNonConflictiveName("voidic"), 0);
+		super(MiscUtils.createNonConflictiveName("voidic"), 0);
 	}
 
 	@Override

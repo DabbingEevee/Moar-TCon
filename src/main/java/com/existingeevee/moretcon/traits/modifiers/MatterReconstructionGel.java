@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.traits.modifiers;
 import java.util.ArrayList;
 
 import com.existingeevee.moretcon.inits.ModItems;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
@@ -20,7 +20,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 public class MatterReconstructionGel extends Modifier {
 
 	public MatterReconstructionGel() {
-		super(Misc.createNonConflictiveName("MatterReconstructionGel".toLowerCase()));
+		super(MiscUtils.createNonConflictiveName("MatterReconstructionGel".toLowerCase()));
 		this.addItem(ModItems.matterReconstructionGel);
 		MinecraftForge.EVENT_BUS.register(this);
 	}

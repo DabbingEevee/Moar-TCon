@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.other.ICustomSlotRenderer;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.ModTabs;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.TextHelper;
 
 import net.minecraft.client.renderer.block.model.IBakedModel;
@@ -54,7 +54,7 @@ public class ItemBase extends Item implements ICustomSlotRenderer {
 	}
 
 	public void setupItem(final Item item, final String itemName) {
-		item.setUnlocalizedName(Misc.createNonConflictiveName(itemName));
+		item.setUnlocalizedName(MiscUtils.createNonConflictiveName(itemName));
 	}
 
 	public CreativeTabs getTab() {

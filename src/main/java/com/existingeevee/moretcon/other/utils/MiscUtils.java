@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.other;
+package com.existingeevee.moretcon.other.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
-import com.existingeevee.moretcon.other.utils.ClientUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -45,7 +44,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo.BlockTexture;
 import slimeknights.tconstruct.library.materials.Material;
 
-public class Misc {
+public class MiscUtils {
 	private static final Gson GSON = new GsonBuilder().create();
 
 	public static boolean isClass(String className) {

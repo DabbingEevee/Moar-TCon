@@ -4,7 +4,7 @@ import java.io.File;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.other.MoreTConLogger;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
@@ -126,10 +126,10 @@ public class ConfigHandler {
 		ConfigHandler.shouldDurabilityCapNonProjectiles = config.getBoolean("shoulddurabilitycapnonprojectiles", category, true, "Set to \"false\" if you do not want the durability cap to affect non-projectile tools.");
 
 		category = "Blacklist";
-		config.addCustomCategoryComment(category, "Remove some of the added materials. Example: \"" + Misc.createNonConflictiveName("fusionite") + "\"");
-		ConfigHandler.blacklist = config.getStringList("blacklist", category, new String[] { Misc.createNonConflictiveName("example") }, "Add materials to blacklist");
+		config.addCustomCategoryComment(category, "Remove some of the added materials. Example: \"" + MiscUtils.createNonConflictiveName("fusionite") + "\"");
+		ConfigHandler.blacklist = config.getStringList("blacklist", category, new String[] { MiscUtils.createNonConflictiveName("example") }, "Add materials to blacklist");
 
-		ConfigHandler.removeUniqueToolpartRecipes = config.getStringList("uniquereciperemoval", category, new String[] { Misc.createNonConflictiveName("unqiueexample") }, "Add Unique Toolpart recipe to blacklist");
+		ConfigHandler.removeUniqueToolpartRecipes = config.getStringList("uniquereciperemoval", category, new String[] { MiscUtils.createNonConflictiveName("unqiueexample") }, "Add Unique Toolpart recipe to blacklist");
 
 		category = "IDs";
 		config.addCustomCategoryComment(category, "A category dedicated to a list of ID's of various things which may cause errors if they are not unique");

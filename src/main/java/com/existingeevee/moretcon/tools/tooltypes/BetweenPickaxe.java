@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
@@ -61,7 +61,7 @@ public class BetweenPickaxe extends AoeToolCore implements ICorrodible, IAnimato
 		this(PartMaterialType.handle(TinkerTools.toolRod), PartMaterialType.head(ModTools.betweenPickHead),
 				PartMaterialType.extra(TinkerTools.binding));
 
-		this.setUnlocalizedName(Misc.createNonConflictiveName("blpick"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blpick"));
 		TinkerRegistry.registerToolCrafting(this);
 		CorrosionHelper.addCorrosionPropertyOverrides(this);
 	}

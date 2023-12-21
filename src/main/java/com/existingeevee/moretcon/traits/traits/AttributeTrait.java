@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -22,7 +22,7 @@ public class AttributeTrait extends AbstractTrait {
 	private boolean worksInOffhand = false;
 	
 	public AttributeTrait(String id, int color, AttributeModifier modifier, IAttribute type) {
-		super(Misc.createNonConflictiveName(id), color);
+		super(MiscUtils.createNonConflictiveName(id), color);
 		this.modifier = modifier.setSaved(false);
 		this.type = type;
 		MinecraftForge.EVENT_BUS.register(this);

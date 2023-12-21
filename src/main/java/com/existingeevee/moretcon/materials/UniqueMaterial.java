@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import com.existingeevee.moretcon.other.BiValue;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -206,8 +206,8 @@ public class UniqueMaterial extends Material {
 	
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void handleToolModifyEvent(ToolModifyEvent event) {
-		Material pre = Misc.getUniqueEmbossment(event.getToolBeforeModification());
-		Material post = Misc.getUniqueEmbossment(event.getItemStack());
+		Material pre = MiscUtils.getUniqueEmbossment(event.getToolBeforeModification());
+		Material post = MiscUtils.getUniqueEmbossment(event.getItemStack());
 		if (pre == null && post == this) {
 			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getRegistryName().equals(event.getItemStack().getItem().getRegistryName()))
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));

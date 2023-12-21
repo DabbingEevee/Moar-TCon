@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.ModTraits;
 import com.existingeevee.moretcon.traits.traits.abst.DurabilityShieldTrait;
 
@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 public class Overslime extends DurabilityShieldTrait {
 
 	public Overslime() {
-		super(Misc.createNonConflictiveName("overslime"), 0);
+		super(MiscUtils.createNonConflictiveName("overslime"), 0);
 	}
 
 	@Override

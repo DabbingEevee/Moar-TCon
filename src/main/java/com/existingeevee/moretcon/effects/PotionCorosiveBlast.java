@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.effects;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -21,7 +21,7 @@ public class PotionCorosiveBlast extends Potion {
 		public PotionCorosiveBlast() {
 			super(false, -1);
 			setRegistryName("corrosiveblast");
-			setPotionName(Misc.createNonConflictiveName("corrosiveblast"));
+			setPotionName(MiscUtils.createNonConflictiveName("corrosiveblast"));
 			potionIcon = new ResourceLocation("tconmaterial:textures/other/coldflames.png");
 		}
 

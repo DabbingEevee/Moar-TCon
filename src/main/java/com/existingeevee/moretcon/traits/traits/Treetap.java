@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.gildedgames.the_aether.blocks.BlocksAether;
 import com.gildedgames.the_aether.blocks.util.EnumLogType;
 import com.gildedgames.the_aether.items.ItemsAether;
@@ -17,7 +17,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class Treetap extends AbstractTrait {
 
 	public Treetap() {
-		super(Misc.createNonConflictiveName("treetap"), 0);
+		super(MiscUtils.createNonConflictiveName("treetap"), 0);
 	}
 
     @Override

@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
@@ -61,7 +61,7 @@ public class BetweenShovel extends AoeToolCore implements ICorrodible, IAnimator
 	public BetweenShovel() {
 		this(PartMaterialType.handle(TinkerTools.toolRod), PartMaterialType.head(ModTools.betweenShovelHead),
 				PartMaterialType.extra(TinkerTools.binding));
-		this.setUnlocalizedName(Misc.createNonConflictiveName("blshovel"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blshovel"));
 		TinkerRegistry.registerToolCrafting(this);
 		CorrosionHelper.addCorrosionPropertyOverrides(this);
 
