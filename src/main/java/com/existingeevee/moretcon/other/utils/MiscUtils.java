@@ -308,19 +308,4 @@ public class MiscUtils {
 	public static double randomN1T1() {
 		return Math.random() * 2 - 1;		
 	}
-
-	/*
-	 * public static boolean isOldModid() { boolean isOld = false; try { File myObj
-	 * = new File(new
-	 * File(ClassLoader.getSystemClassLoader().getResource(".").getPath())
-	 * .getAbsolutePath().replace("%20", " ") + "/config/" + VersionInfo.MODID + "/"
-	 * + VersionInfo.NEW_MODID + ".cfg"); Scanner myReader = new Scanner(myObj);
-	 * while (myReader.hasNextLine()) { String data = myReader.nextLine(); if
-	 * (data.trim().startsWith("B:uselegacymodid")) { isOld =
-	 * data.trim().split("=")[1].equals("true"); }
-	 * 
-	 * } myReader.close(); } catch (FileNotFoundException e) {} return isOld;
-	 * 
-	 * }
-	 */
 }
