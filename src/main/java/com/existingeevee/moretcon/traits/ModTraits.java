@@ -171,10 +171,6 @@ public class ModTraits {
 	} 
 
 	public static void init() {
-		if (MoreTCon.proxy.isClient()) {
-			registerModifier(new ModExtraTraitDisplay2());
-		}
-		
 		if (CompatManager.loadMain) {
 			modDebug = new Debug();
 			repair = new MatterReconstructionGel();
@@ -203,6 +199,9 @@ public class ModTraits {
 
 	public static void postInit() {
 		registerExtraTraitModifiers();
+		if (MoreTCon.proxy.isClient()) {
+			registerModifier(new ModExtraTraitDisplay2());
+		}
 	}
 
 	

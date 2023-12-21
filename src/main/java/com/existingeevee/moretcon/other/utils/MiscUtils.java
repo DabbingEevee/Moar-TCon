@@ -2,14 +2,20 @@ package com.existingeevee.moretcon.other.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
+import com.existingeevee.moretcon.traits.ModTraits;
+import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -30,7 +36,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -43,6 +48,10 @@ import net.minecraftforge.oredict.OreIngredient;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo.BlockTexture;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.utils.TagUtil;
+import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.modifiers.ModExtraTrait;
 
 public class MiscUtils {
 	private static final Gson GSON = new GsonBuilder().create();
@@ -153,58 +162,62 @@ public class MiscUtils {
 		return ModInfo.MODID + "." + str;
 	}
 
-	public static Material getUniqueEmbossment(ItemStack stack) {
-		NBTTagList tagList = stack.serializeNBT().getCompoundTag("tag").getCompoundTag("TinkerData")
-				.getTagList("Modifiers", NBT.TAG_STRING);
-		for (NBTBase tag : tagList) {
-			if (!((NBTTagString) tag).getString().toString().startsWith("extratrait"))
-				continue;
-			String tagString = ((NBTTagString) tag).getString().toString().replaceFirst("extratrait", "");
-			for (Material mat : TinkerRegistry.getAllMaterials()) {
-				if ((TinkerRegistry.getTrait(tagString.replaceFirst(mat.getIdentifier(), "")) != null)
-						&& mat instanceof UniqueMaterial) {
-					return mat;
-				}
-			}
+	private static Map<String, ModExtraTrait> extratrait = new HashMap<>();
+	private static Map<String, ModExtraTrait2> extratrait2 = new HashMap<>();
+
+	public static void init() { //we have to init this
+		for (Modifier m : TinkerModifiers.extraTraitMods) {
+			extratrait.put(m.getIdentifier(), (ModExtraTrait) m);
 		}
-		return null;
+		for (Modifier m : ModTraits.extraTraitMods) {
+			extratrait2.put(m.getIdentifier(), (ModExtraTrait2) m);
+		}
 	}
 
-	public static Material getEmbossment(ItemStack stack) {
-		NBTTagList tagList = stack.serializeNBT().getCompoundTag("tag").getCompoundTag("TinkerData")
-				.getTagList("Modifiers", NBT.TAG_STRING);
-		for (NBTBase tag : tagList) {
-			if (!((NBTTagString) tag).getString().toString().startsWith("extratrait"))
-				continue;
-			String tagString = ((NBTTagString) tag).getString().toString().replaceFirst("extratrait", "");
-			for (Material mat : TinkerRegistry.getAllMaterials()) {
-				if ((TinkerRegistry.getTrait(tagString.replaceFirst(mat.getIdentifier(), "")) != null)) {
-					return mat;
+	private static final Field material$ModExtraTrait = ObfuscationReflectionHelper.findField(ModExtraTrait.class, "material");
+
+	public static List<UniqueMaterial> getUniqueEmbossments(ItemStack stack) {
+		return getEmbossments(stack).stream().filter(m -> m instanceof UniqueMaterial).map(m -> ((UniqueMaterial) m)).collect(Collectors.toList());
+	}
+	
+	public static List<Material> getEmbossments(ItemStack stack) {
+		List<Material> material = new ArrayList<>();
+
+		NBTTagList modifiers = TagUtil.getBaseModifiersTagList(stack);
+
+		for (NBTBase tag : modifiers) {
+			String identifier = ((NBTTagString) tag).getString();
+			if (identifier.startsWith(ModExtraTrait2.EXTRA_TRAIT_IDENTIFIER)) {
+				ModExtraTrait2 mod = extratrait2.get(identifier);
+				if (mod != null) {
+					material.add(mod.material);
+				}
+			} else if (identifier.startsWith(ModExtraTrait.EXTRA_TRAIT_IDENTIFIER)) {
+				ModExtraTrait mod = extratrait.get(identifier);
+				if (mod != null) {
+					try {
+						material.add((Material) material$ModExtraTrait.get(mod));
+					} catch (IllegalAccessException ignored) {
+					}
 				}
 			}
 		}
-		return null;
+
+		return material;
 	}
 
 	public static List<Material> getMaterials(ItemStack stack) {
-		if (stack.getTagCompound() == null)
-			return new ArrayList<Material>();
+		NBTTagList list = TagUtil.getBaseMaterialsTagList(stack);
 
-		try {
-			NBTTagList list = stack.getTagCompound().getCompoundTag("TinkerData").getTagList("Materials",
-					NBT.TAG_STRING);
-			List<Material> retList = new ArrayList<Material>();
-			for (NBTBase base : list) {
-				NBTTagString string = (NBTTagString) base;
-				Material mat = TinkerRegistry.getMaterial(string.getString());
-				if (mat != null) {
-					retList.add(mat);
-				}
+		List<Material> retList = new ArrayList<Material>();
+		for (NBTBase base : list) {
+			NBTTagString string = (NBTTagString) base;
+			Material mat = TinkerRegistry.getMaterial(string.getString());
+			if (mat != null) {
+				retList.add(mat);
 			}
-			return retList;
-		} catch (ClassCastException e) {
 		}
-		return new ArrayList<Material>();
+		return retList;
 	}
 
 	public static void registerBlockNuggetIngotRecipeOre(String suffix, Register<IRecipe> event) {
@@ -240,7 +253,6 @@ public class MiscUtils {
 						large.getUnlocalizedName().toLowerCase() + "_to_" + small.getUnlocalizedName().toLowerCase()));
 	}
 
-	
 	public static Vec3d getCenter(AxisAlignedBB bb) {
 		return new Vec3d(bb.minX + (bb.maxX - bb.minX) * 0.5D, bb.minY + (bb.maxY - bb.minY) * 0.5D, bb.minZ + (bb.maxZ - bb.minZ) * 0.5D);
 	}
@@ -306,6 +318,6 @@ public class MiscUtils {
 	}
 
 	public static double randomN1T1() {
-		return Math.random() * 2 - 1;		
+		return Math.random() * 2 - 1;
 	}
 }

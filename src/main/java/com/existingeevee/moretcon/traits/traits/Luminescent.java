@@ -53,10 +53,7 @@ public class Luminescent extends AbstractTrait {
 			Set<Material> materials = new HashSet<>();
 
 			materials.addAll(MiscUtils.getMaterials(stack));
-			Material embossment = MiscUtils.getEmbossment(stack);
-			if (embossment != null) {
-				materials.add(embossment);
-			}
+			materials.addAll(MiscUtils.getEmbossments(stack));
 
 			materials.removeIf(m -> !m.getAllTraits().contains(this));
 

@@ -22,6 +22,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.capability.projectile.TinkerProjectileHandler;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
@@ -78,7 +79,8 @@ public class Mirroring extends AbstractProjectileTrait {
 		traits.forEach(t -> ((IProjectileTrait) t).onLaunch(projectileBase, world, shooter));
 	}
 	
-	@SuppressWarnings("unchecked")
+	private static final Method getStatTraits$Material = ObfuscationReflectionHelper.findMethod(Material.class, "getStatTraits", List.class, String.class);
+
 	@SubscribeEvent
 	public void onLivingAttackEvent(LivingHurtEvent e) {
 		DamageSource source = e.getSource();
@@ -96,28 +98,10 @@ public class Mirroring extends AbstractProjectileTrait {
 			List<Material> materials = new ArrayList<Material>();
 
 			materials.addAll(MiscUtils.getMaterials(launcher));
-			Material embossment = MiscUtils.getEmbossment(launcher);
-			if (embossment != null) {
-				materials.add(embossment);
-			}
+			materials.addAll(MiscUtils.getEmbossments(launcher));
 			
 			materials = new ArrayList<>(new HashSet<>(materials));
-			List<ITrait> traits = new ArrayList<ITrait>();
-			for (Material material : materials) {
-				Class<Material> c = Material.class;
-				try {
-					Method f = c.getDeclaredMethod("getStatTraits", String.class);
-					f.setAccessible(true);
-					traits.addAll((List<ITrait>) f.invoke(material, MaterialTypes.PROJECTILE));
-					traits.addAll(material.getDefaultTraits());
-				} catch (NoSuchMethodException err) { //e.printStackTrace();
-				} catch (IllegalAccessException err) { //e.printStackTrace();
-				} catch (IllegalArgumentException err) { //e.printStackTrace();
-				} catch (InvocationTargetException err) { //e.printStackTrace();
-				}
-			}
-			traits = new ArrayList<>(new HashSet<>(traits));
-			traits.removeAll(ToolHelper.getTraits(arrow));
+			List<ITrait> traits = getNeededTraits(((EntityProjectileBase) source.getImmediateSource()));
 			// players base damage (includes tools damage stat)
 			float baseDamage = (float) player.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
 
@@ -176,34 +160,26 @@ public class Mirroring extends AbstractProjectileTrait {
 			}, 1);
 		}
 	}
-	
+		
 	@SuppressWarnings("unchecked")
 	private static List<ITrait> getNeededTraits(EntityProjectileBase projectileBase) {
+		List<ITrait> traits = new ArrayList<ITrait>();
+
 		TinkerProjectileHandler projectile = projectileBase.tinkerProjectile;
 		
 		ItemStack launcherStack = projectile.getLaunchingStack();
 		ItemStack arrowStack = projectile.getItemStack();
 		
 		List<Material> materials = new ArrayList<Material>();
-
 		materials.addAll(MiscUtils.getMaterials(launcherStack));
-		Material embossment = MiscUtils.getEmbossment(launcherStack);
-		if (embossment != null) {
-			materials.add(embossment);
-		}
-		
+		materials.addAll(MiscUtils.getEmbossments(launcherStack));
+
 		materials = new ArrayList<>(new HashSet<>(materials));
-		List<ITrait> traits = new ArrayList<ITrait>();
 		for (Material material : materials) {
-			Class<Material> c = Material.class;
 			try {
-				Method f = c.getDeclaredMethod("getStatTraits", String.class);
-				f.setAccessible(true);
-				traits.addAll((List<ITrait>) f.invoke(material, MaterialTypes.PROJECTILE));
+				traits.addAll((List<ITrait>) getStatTraits$Material.invoke(material, MaterialTypes.PROJECTILE));
 				traits.addAll(material.getDefaultTraits());
-			} catch (NoSuchMethodException e) { //e.printStackTrace();
-			} catch (IllegalAccessException e) { //e.printStackTrace();
-			} catch (InvocationTargetException e) { //e.printStackTrace();
+			} catch (IllegalAccessException | InvocationTargetException ignored) { 
 			}
 		}
 		traits = new ArrayList<>(new HashSet<>(traits));
@@ -211,93 +187,3 @@ public class Mirroring extends AbstractProjectileTrait {
 		return traits;
 	}
 }
-
-
-
-/*
-ItemStack launcherStack = projectile.getLaunchingStack();
-
-List<Material> materials = new ArrayList<Material>();
-
-materials.addAll(Misc.getMaterials(launcherStack));
-Material embossment = Misc.getEmbossment(launcherStack);
-if (embossment != null) {
-	materials.add(embossment);
-}
-
-materials = new ArrayList<>(new HashSet<>(materials));
-List<ITrait> traits = new ArrayList<ITrait>();
-for (Material material : materials) {
-	Class<Material> c = Material.class;
-	try {
-		Method f = c.getDeclaredMethod("getStatTraits", String.class);
-		f.setAccessible(true);
-		traits.addAll((List<ITrait>) f.invoke(material, MaterialTypes.PROJECTILE));
-		traits.addAll(material.getDefaultTraits());
-	} catch (NoSuchMethodException e) { //e.printStackTrace();
-	} catch (IllegalAccessException e) { //e.printStackTrace();
-	} catch (IllegalArgumentException e) { //e.printStackTrace();
-	} catch (InvocationTargetException e) { //e.printStackTrace();
-	}
-}
-traits = new ArrayList<>(new HashSet<>(traits));*/
-/*@SuppressWarnings("unchecked")
-public void afterHit(EntityProjectileBase projectileBase, World world, ItemStack ammoStack, EntityLivingBase attacker, Entity target, double impactSpeed) {
-	if (!(target instanceof EntityLivingBase)) return;
-	
-	TinkerProjectileHandler projectile = projectileBase.tinkerProjectile;
-	
-	ItemStack launcherStack = projectile.getLaunchingStack();
-	
-	List<Material> materials = new ArrayList<Material>();
-
-	materials.addAll(Misc.getMaterials(launcherStack));
-	Material embossment = Misc.getEmbossment(launcherStack);
-	if (embossment != null) {
-		materials.add(embossment);
-	}
-	
-	materials = new ArrayList<>(new HashSet<>(materials));
-	List<ITrait> traits = new ArrayList<ITrait>();
-	for (Material material : materials) {
-		Class<Material> c = Material.class;
-		try {
-			Method f = c.getDeclaredMethod("getStatTraits", String.class);
-			f.setAccessible(true);
-			traits.addAll((List<ITrait>) f.invoke(material, MaterialTypes.PROJECTILE));
-			traits.addAll(material.getDefaultTraits());
-		} catch (NoSuchMethodException e) { //e.printStackTrace();
-		} catch (IllegalAccessException e) { //e.printStackTrace();
-		} catch (IllegalArgumentException e) { //e.printStackTrace();
-		} catch (InvocationTargetException e) { //e.printStackTrace();
-		}
-	}
-	traits = new ArrayList<>(new HashSet<>(traits));
-	
-	traits.removeAll(ToolHelper.getTraits(ammoStack));
-	
-	traits.forEach(t -> t.onHit(ammoStack, attacker, (EntityLivingBase) target, ((EntityLivingBase) target), isHidden()));
-}*/
-
-/*Class<TinkerProjectileHandler> c = TinkerProjectileHandler.class;
-List<IProjectileTrait> modified = new ArrayList<IProjectileTrait>(projectile.getProjectileTraits());
-for (ITrait t : traits) {
-	modified.add((IProjectileTrait) t);
-}
-modified = new ArrayList<>(new HashSet<>(modified));
-List<IProjectileTrait> toAdd = new ArrayList<>(modified);
-toAdd.removeAll(projectile.getProjectileTraits());
-if (toAdd.isEmpty()) return;
-
-
-Misc.executeInNTicks(() -> {
-	try {
-		Field f = c.getDeclaredField("projectileTraitList");
-		f.setAccessible(true);
-		((List<IProjectileTrait>) f.get(projectile)).addAll(toAdd);
-	} catch (SecurityException e) { 
-	} catch (IllegalArgumentException e) {
-	} catch (NoSuchFieldException e) { 
-	} catch (IllegalAccessException e) { 
-	}
-}, 1);*/

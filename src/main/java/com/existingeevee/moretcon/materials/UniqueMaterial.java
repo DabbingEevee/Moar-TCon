@@ -1,6 +1,7 @@
 package com.existingeevee.moretcon.materials;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -206,9 +207,10 @@ public class UniqueMaterial extends Material {
 	
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void handleToolModifyEvent(ToolModifyEvent event) {
-		Material pre = MiscUtils.getUniqueEmbossment(event.getToolBeforeModification());
-		Material post = MiscUtils.getUniqueEmbossment(event.getItemStack());
-		if (pre == null && post == this) {
+		List<UniqueMaterial> pre = MiscUtils.getUniqueEmbossments(event.getToolBeforeModification());
+		List<UniqueMaterial> post = MiscUtils.getUniqueEmbossments(event.getItemStack());
+		
+		if (!pre.contains(this) && post.contains(this)) {
 			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getRegistryName().equals(event.getItemStack().getItem().getRegistryName()))
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
 		}

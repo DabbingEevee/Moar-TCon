@@ -15,8 +15,8 @@ import com.existingeevee.moretcon.inits.misc.ModSponges;
 import com.existingeevee.moretcon.inits.misc.OreDictionaryManager;
 import com.existingeevee.moretcon.inits.recipes.FurnaceInit;
 import com.existingeevee.moretcon.inits.recipes.OreRecipes;
-import com.existingeevee.moretcon.inits.recipes.UniqueToolpartRecipes;
 import com.existingeevee.moretcon.inits.recipes.SmelteryInit;
+import com.existingeevee.moretcon.inits.recipes.UniqueToolpartRecipes;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.EventWatcherMain;
@@ -27,6 +27,7 @@ import com.existingeevee.moretcon.other.fixes.ExtremeToolDurabilityFix;
 import com.existingeevee.moretcon.other.sponge.SpongeRegistry;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 import com.existingeevee.moretcon.proxy.CommonProxy;
@@ -44,6 +45,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -135,7 +137,6 @@ public class MoreTCon {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-
 		proxy.postInit();
 		if (CompatManager.thebetweenlands && ConfigHandler.weakenToolsInBetweenLands) {
 			blackListTinkerTools();
@@ -157,6 +158,11 @@ public class MoreTCon {
 		ModTraits.postInit();
 	}
 
+	@EventHandler
+	public void loadComplete(FMLLoadCompleteEvent event) {
+		MiscUtils.init();
+	}
+	
 	private static void blackListTinkerTools() {
 		OverworldItemHandler.TOOL_BLACKLIST.put(new ResourceLocation(ModInfo.MODID, "tinker_blacklist"), stack -> {
 			if (stack.getItem() instanceof ToolCore) {
