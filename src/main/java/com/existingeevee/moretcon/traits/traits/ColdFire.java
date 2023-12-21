@@ -17,6 +17,6 @@ public class ColdFire extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		CustomFireHelper.setAblaze(target, CustomFireEffect.COLD_FLAMES, Math.max(Math.round(damageDealt * 5) + 100, 40));
+		CustomFireHelper.setAblaze(target, CustomFireEffect.COLD_FIRE, Math.max(Math.round(damageDealt * 5) + 100, 40));
 	}
 }

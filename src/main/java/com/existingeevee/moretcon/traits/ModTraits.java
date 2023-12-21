@@ -31,6 +31,7 @@ import com.existingeevee.moretcon.traits.traits.Darkened;
 import com.existingeevee.moretcon.traits.traits.DummyTrait;
 import com.existingeevee.moretcon.traits.traits.Electrified;
 import com.existingeevee.moretcon.traits.traits.Hardcore;
+import com.existingeevee.moretcon.traits.traits.Haunted;
 import com.existingeevee.moretcon.traits.traits.HelpfulRadiation;
 import com.existingeevee.moretcon.traits.traits.HyperGravity;
 import com.existingeevee.moretcon.traits.traits.Hyperheat;
@@ -122,6 +123,7 @@ public class ModTraits {
 	public static Overgrowth overgrowth = new Overgrowth(1);
 	public static Overgrowth overgrowth2 = new Overgrowth(2);
 	public static Electrified electrified = new Electrified();
+	public static Haunted haunted = new Haunted();
 
 	public static EssentialObliteration essentialObliteration = new EssentialObliteration();
 

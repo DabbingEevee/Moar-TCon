@@ -81,6 +81,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialEtherstone = new Material(MiscUtils.createNonConflictiveName("etherstone"), 0xf1ea3b);
 	public static final Material materialValasium = new Material(MiscUtils.createNonConflictiveName("valasium"), 0x9ab7d6);
 	public static final Material materialElectarite = new Material(MiscUtils.createNonConflictiveName("electarite"), 0x6666FF);
+	public static final Material materialHallowsite = new Material(MiscUtils.createNonConflictiveName("hallowsite"), 0x34eb98);
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -604,6 +605,17 @@ public class ModMaterials implements MaterialTypes {
 			materialElectarite.addStats(new ArrowShaftMaterialStats(1.2f, 10));
 			materialElectarite.addStats(new ProjectileMaterialStats());
 
+			materialHallowsite.addCommonItems("Hallowsite");
+			materialHallowsite.setCastable(false);
+			materialHallowsite.setCraftable(true);
+			materialHallowsite.setRepresentativeItem("ingotHallowsite");
+			materialHallowsite.addTrait(ModTraits.haunted);
+			materialHallowsite.addStats(new HeadMaterialStats(620, 6f, 7f, 5));
+			materialHallowsite.addStats(new HandleMaterialStats(2.2f, 10));
+			materialHallowsite.addStats(new ExtraMaterialStats(70));
+			materialHallowsite.addStats(new ArrowShaftMaterialStats(1.2f, 10));
+			materialHallowsite.addStats(new ProjectileMaterialStats());
+			
 		}
 		if (CompatManager.aether_legacy) { // TODO
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -914,7 +926,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialFusionite).toolforge();
 			ModMaterials.registerMaterial(materialValasium).toolforge();
 			ModMaterials.registerMaterial(materialSpaceTimeDisruption, "SpaceTimeDisruption");
-			ModMaterials.registerMaterial(materialVoidSpar, "VoidSpar");
+			ModMaterials.registerMaterial(materialVoidSpar, "VoidSpar").toolforge();
 			ModMaterials.registerMaterial(materialEnderal).toolforge();
 			ModMaterials.registerMaterial(materialIrradium).toolforge();
 			ModMaterials.registerMaterial(materialSolsteel).toolforge();
@@ -936,7 +948,8 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialShadowglass);
 			ModMaterials.registerMaterial(materialEtherstone).toolforge();
 			ModMaterials.registerMaterial(materialEssencore);
-			ModMaterials.registerMaterial(materialElectarite);
+			ModMaterials.registerMaterial(materialElectarite).toolforge();
+			ModMaterials.registerMaterial(materialHallowsite).toolforge();
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);
