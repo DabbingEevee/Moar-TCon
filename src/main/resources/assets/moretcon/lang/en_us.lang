@@ -88,7 +88,10 @@ item.moretcon.gemigniglomerate.name=Igniglomerate Shard
 item.moretcon.gemerythynite.name=Erythynite
 item.moretcon.gemetherstone.name=Etherstone
 item.moretcon.gemvoidspar.name=Void Spar
+item.moretcon.gemelectarite.name=Electarite
+
 item.moretcon.hydrogenrichredstonepowder.name=Hydrogen Rich Redstone Powder
+
 item.moretcon.ingotarkenium.name=Arkenium Ingot
 item.moretcon.ingotatronium.name=Atronium Ingot
 item.moretcon.ingotfusionite.name=Fusionite Ingot
@@ -354,6 +357,8 @@ tile.moretcon.blockvalkyriemetal.name=Block of Valkyrie Metal
 tile.moretcon.blockvoidspar.name=Block of Void Spar
 tile.moretcon.blockatronium.name=Block of Atronium
 tile.moretcon.blockerythynite.name=Block of Erythynite
+tile.moretcon.blockelectarite.name=Block of Electarite
+
 tile.moretcon.burningsulfurflow.name=Molten Sulfur
 tile.moretcon.liquidarkenium.name=Molten Arkenium
 tile.moretcon.liquidgoldenamber.name=Liquid Golden Amber
@@ -395,6 +400,8 @@ tile.moretcon.orenaturalvoidspar.name=Bedrock Void Spar Ore
 tile.moretcon.orevoidspar.name=Void Spar Ore
 tile.moretcon.oreebonite.name=Ebonite Ore
 tile.moretcon.oreerythynite.name=Erythynite Ore
+tile.moretcon.oreelectarite.name=Electarite Ore
+
 tile.moretcon.blockotherstone.name=Otherstone
 tile.moretcon.rottensludge.name=Rotten Sludge
 

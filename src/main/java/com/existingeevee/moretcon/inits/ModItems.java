@@ -102,6 +102,7 @@ public class ModItems {
 	public static final Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate").withColor(0xda6540).withType(GlowType.EXTREME);
 	public static final Item gemErythynite = new ItemBase("gemErythynite", GlowType.CIRCLE_BIG, 0x32ff00);
 	public static final Item gemEtherstone = new ItemBase("gemEtherstone", GlowType.CIRCLE_BIG, 0xffff00);;
+	public static final Item gemElectarite = new ItemBase("gemElectarite", GlowType.CIRCLE_BIG, 0x6666ff);;
 
 	//Ingriedients
 	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);
@@ -112,7 +113,7 @@ public class ModItems {
 	public static final Item sulfurBucketSyrmorite = new ItemBase("sulfurBucketSyrmorite").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item sulfurBucketIron = new ItemBase("sulfurBucketIron").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item betweenicCore = new ItemBase("betweenicCore", 0x3a2f24).setTab(ModTabs.moarTConMisc);
-//
+
 	//Modifier items
 	public static final Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
 	public static final Item crushingModifier = new ItemBase("crushingModifier").setTab(ModTabs.moarTConMisc);
@@ -175,7 +176,8 @@ public class ModItems {
 					gemIgniglomerate,
 					gemErythynite,
 					gemEtherstone,
-
+					gemElectarite,
+					
 					crushingModifier,
 					matterReconstructionGel,
 					carbonPile,

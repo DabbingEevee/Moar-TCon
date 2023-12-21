@@ -109,6 +109,10 @@ public class OreDictionaryManager {
 			registerOre("gemEtherstone", ModItems.gemEtherstone);
 			registerOre("oreEtherstone", ModBlocks.oreEtherstone);
 			
+			registerOre("blockElectarite", ModBlocks.blockElectarite);
+			registerOre("gemElectarite", ModItems.gemElectarite);
+			registerOre("oreElectarite", ModBlocks.oreElectarite);
+			
 			if(ConfigHandler.shouldLoadDust) {
 				registerOre("dustIrradium", ModItems.dustIrradium);
 				registerOre("dustValasium", ModItems.dustValasium);
