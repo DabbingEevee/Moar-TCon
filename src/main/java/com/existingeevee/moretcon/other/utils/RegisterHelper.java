@@ -8,6 +8,8 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.block.ISimpleBlockItemProvider;
+import com.existingeevee.moretcon.block.ore.BlockEtheralOre;
+import com.existingeevee.moretcon.block.ore.BlockEtheralOreMetal;
 import com.existingeevee.moretcon.block.ore.BlockOre;
 import com.existingeevee.moretcon.block.ore.BlockOreMetal;
 import com.existingeevee.moretcon.config.ConfigHandler;
@@ -69,6 +71,10 @@ public class RegisterHelper {
 			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockOre) block).getOreDrop()));
 		} else if (block instanceof BlockOreMetal) {
 			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockOreMetal) block).getOreDrop()));
+		} else if (block instanceof BlockEtheralOre) {
+			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockEtheralOre) block).getOreDrop()));
+		} else if (block instanceof BlockEtheralOreMetal) {
+			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockEtheralOreMetal) block).getOreDrop()));
 		}
 	}
 
