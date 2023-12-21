@@ -9,6 +9,7 @@ import akka.japi.Predicate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -37,7 +38,7 @@ public class CustomFireEffect {
 
 	public static final Map<String, CustomFireEffect> registeredEffects = new HashMap<>();
 
-	public static final CustomFireEffect COLD_FLAMES = new CustomFireEffect("cold_flames",
+	public static final CustomFireEffect COLD_FIRE = new CustomFireEffect("cold_fire",
 			new ResourceLocation(ModInfo.MODID, "other/fire/cold_0"),
 			new ResourceLocation(ModInfo.MODID, "other/fire/cold_1"), e -> {
 				e.motionX *= 0.25D;
@@ -50,34 +51,35 @@ public class CustomFireEffect {
 				return true;
 			});
 
-	/*public static final CustomFireEffect HYPER_FLAMES = new CustomFireEffect("hyper_flames",
-			new ResourceLocation(ModInfo.MODID, "other/fire/hyper_0"),
-			new ResourceLocation(ModInfo.MODID, "other/fire/hyper_1"), e -> {
-				if (e.world.getBlockState(e.getPosition()).getMaterial().equals(Material.WATER)
-						|| (e.world.canBlockSeeSky(e.getPosition()) && e.getEntityWorld().isRaining()) || e.isInWater()) {
-					e.world.playSound(null, e.posX, e.posY, e.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 1, 1);
-					return false;
-				}
-
-				if (!e.world.isRemote && (e.world.getWorldTime() + e.getUniqueID().hashCode()) % 10 == 0) {
-					e.attackEntityFrom(new DamageSource("hyperflames").setFireDamage(), 2);
+	public static final CustomFireEffect SPIRIT_FIRE = new CustomFireEffect("spirit_fire",
+			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_0"),
+			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_1"), e -> {
+				e.rotationYaw += Math.sin((e.world.getWorldTime() + e.getUniqueID().hashCode()) * 20 / Math.PI) * 0.1;
+				
+				if (!e.world.isRemote && (e.world.getWorldTime() + e.getUniqueID().hashCode()) % 20 == 0) {
+					e.attackEntityFrom(new DamageSource("haunted").setFireDamage(), 8);
 				}
 				return true;
-			});*/
+			});
+	
+	final String id;
 
-	String id = "";
+	final ResourceLocation one;
+	final ResourceLocation two;
 
-	ResourceLocation one = new ResourceLocation(ModInfo.MODID, "");
-	ResourceLocation two = new ResourceLocation(ModInfo.MODID, "");
+	final Predicate<EntityLivingBase> effect;
 
-	Predicate<EntityLivingBase> effect = e -> true;
+	boolean fullbright = true;
+
+	public CustomFireEffect(String id, ResourceLocation one, ResourceLocation two) {
+		this(id, one, two, e -> true);
+	}
 
 	public CustomFireEffect(String id, ResourceLocation one, ResourceLocation two, Predicate<EntityLivingBase> effect) {
 		this.one = one;
 		this.two = two;
 		this.id = id;
 		this.effect = effect;
-		// getTextureExtry
 		MinecraftForge.EVENT_BUS.register(this);
 
 		registeredEffects.put(id, this);
@@ -87,6 +89,15 @@ public class CustomFireEffect {
 		return effect.test(entity);
 	}
 
+	public boolean isFullbright() {
+		return fullbright;
+	}
+
+	public CustomFireEffect setFullbright(boolean fullbright) {
+		this.fullbright = fullbright;
+		return this;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof CustomFireEffect) {
@@ -144,6 +155,9 @@ public class CustomFireEffect {
 			f5 += 0.03F;
 			++i;
 		}
+		if (fullbright)
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
+
 		tessellator.draw();
 		GlStateManager.popMatrix();
 		GlStateManager.enableLighting();
