@@ -13,13 +13,15 @@ import com.existingeevee.moretcon.NetworkHandler;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -65,36 +67,44 @@ public class CustomFireHelper {
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void onRenderTickEvent(RenderGameOverlayEvent e) {
+	public static void hookRenderCustomFire(float partialTick) {
 		if (Minecraft.getMinecraft().player != null && Minecraft.getMinecraft().world != null) {
-			if (e.getType() == RenderGameOverlayEvent.ElementType.HELMET) {
-				if (customBurning.get(Minecraft.getMinecraft().player.getEntityId()) != null) {
-					CustomFireInfo info = customBurning.get(Minecraft.getMinecraft().player.getEntityId());
-					if (info.isInvalid())
-						return;
-					int posX = (e.getResolution().getScaledWidth()) / 2;
-					int posY = (e.getResolution().getScaledHeight()) / 2;
-					GlStateManager.disableDepth();
-					GlStateManager.depthMask(false);
-					GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-							GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-							GlStateManager.DestFactor.ZERO);
-					GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-					GlStateManager.disableAlpha();
-					TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
-					TextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(info.effect.one.toString());
-					Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-					Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect(-posX / 2, posY, textureatlassprite, (int) (posX * 1.25), posY);
-					Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect((int) (posX / 2), (int) (posY * 0.75), textureatlassprite, (int) (posX * 1.25), (int) (posY * 1.5));
-					Minecraft.getMinecraft().ingameGUI.drawTexturedModalRect((int) (posX * 1.5), posY, textureatlassprite, (int) (posX * 1.25), posY);
-					GlStateManager.depthMask(true);
-					GlStateManager.enableDepth();
-					GlStateManager.enableAlpha();
-					GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+			if (customBurning.get(Minecraft.getMinecraft().player.getEntityId()) != null) {
+				CustomFireInfo info = customBurning.get(Minecraft.getMinecraft().player.getEntityId());
+				if (info.isInvalid())
+					return;
 
+				Tessellator tessellator = Tessellator.getInstance();
+				BufferBuilder bufferbuilder = tessellator.getBuffer();
+				GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
+				GlStateManager.depthFunc(519);
+				GlStateManager.depthMask(false);
+				GlStateManager.enableBlend();
+				GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+
+				for (int i = 0; i < 2; ++i) {
+					GlStateManager.pushMatrix();
+					TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(info.effect.two.toString());
+					Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+					float f1 = textureatlassprite.getMinU();
+					float f2 = textureatlassprite.getMaxU();
+					float f3 = textureatlassprite.getMinV();
+					float f4 = textureatlassprite.getMaxV();
+					GlStateManager.translate((float) (-(i * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+					GlStateManager.rotate((float) (i * 2 - 1) * 10.0F, 0.0F, 1.0F, 0.0F);
+					bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
+					bufferbuilder.pos(-0.5D, -0.5D, -0.5D).tex((double) f2, (double) f4).endVertex();
+					bufferbuilder.pos(0.5D, -0.5D, -0.5D).tex((double) f1, (double) f4).endVertex();
+					bufferbuilder.pos(0.5D, 0.5D, -0.5D).tex((double) f1, (double) f3).endVertex();
+					bufferbuilder.pos(-0.5D, 0.5D, -0.5D).tex((double) f2, (double) f3).endVertex();
+					tessellator.draw();
+					GlStateManager.popMatrix();
 				}
+
+				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+				GlStateManager.disableBlend();
+				GlStateManager.depthMask(true);
+				GlStateManager.depthFunc(515);
 			}
 		}
 	}
@@ -136,16 +146,14 @@ public class CustomFireHelper {
 			dirty = true;
 		}
 	}
-	
+
 	private static Set<Integer> validList = new HashSet<>();
 
 	@SubscribeEvent
 	public static void finishTicking(TickEvent.ServerTickEvent event) {
 		if (event.phase != Phase.END)
 			return;
-		
-		System.out.println(customBurning);
-		
+
 		customBurning.keySet().retainAll(validList);
 		validList = new HashSet<>();
 	}
@@ -194,7 +202,6 @@ public class CustomFireHelper {
 				}
 			}
 		}
-
 
 		if (dirty) {
 			dirty = false;

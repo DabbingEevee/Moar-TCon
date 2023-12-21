@@ -9,6 +9,7 @@
   ],
   "client": [
     "early.client.MixinRenderItem",
+    "early.client.MixinItemRenderer"
   ],
   "server": [
   ]
