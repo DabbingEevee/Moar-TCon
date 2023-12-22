@@ -138,15 +138,6 @@ public class CustomFireHelper {
 		}
 	}
 
-	@SubscribeEvent
-	public static void onEntityOof(LivingDeathEvent event) {
-		if (customBurning.get(event.getEntity().getEntityId()) != null) {
-			event.getEntity().getEntityData().removeTag(ModInfo.MODID + ".fire");
-			customBurning.remove(event.getEntity().getEntityId());
-			dirty = true;
-		}
-	}
-
 	private static Set<Integer> validList = new HashSet<>();
 
 	@SubscribeEvent

@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -54,7 +55,10 @@ public class CustomFireEffect {
 	public static final CustomFireEffect SPIRIT_FIRE = new CustomFireEffect("spirit_fire",
 			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_0"),
 			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_1"), e -> {
-				e.rotationYaw += Math.sin((e.world.getWorldTime() + e.getUniqueID().hashCode()) * 20 / Math.PI) * 0.1;
+				if (e.isInWater()) {
+					e.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 1);
+					return false;
+				}
 				
 				if (!e.world.isRemote && (e.world.getWorldTime() + e.getUniqueID().hashCode()) % 20 == 0) {
 					int hurt = e.hurtResistantTime;
