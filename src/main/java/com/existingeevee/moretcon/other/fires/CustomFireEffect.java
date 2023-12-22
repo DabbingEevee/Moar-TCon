@@ -57,7 +57,10 @@ public class CustomFireEffect {
 				e.rotationYaw += Math.sin((e.world.getWorldTime() + e.getUniqueID().hashCode()) * 20 / Math.PI) * 0.1;
 				
 				if (!e.world.isRemote && (e.world.getWorldTime() + e.getUniqueID().hashCode()) % 20 == 0) {
-					e.attackEntityFrom(new DamageSource("haunted").setFireDamage(), 8);
+					int hurt = e.hurtResistantTime;
+					e.hurtResistantTime = 0;
+					e.attackEntityFrom(new DamageSource("haunted").setFireDamage(), 4);
+					e.hurtResistantTime = hurt;
 				}
 				return true;
 			});
