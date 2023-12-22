@@ -497,7 +497,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEnderal.addTrait(TinkerTraits.endspeed, PROJECTILE);
 			materialEnderal.addTrait(TinkerTraits.enderference, HEAD);
 			materialEnderal.addTrait(TinkerTraits.jagged, HEAD);
-			materialEnderal.addTrait(ModTraits.pulsation, HEAD);
+			materialEnderal.addTrait(ModTraits.pulsating, HEAD);
 			materialEnderal.addTrait(ModTraits.luminescent, HEAD);
 			materialEnderal.addTrait(ModTraits.luminescent);
 			materialEnderal.addStats(new HeadMaterialStats(390, 6f, 10f, 5));
@@ -509,7 +509,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEnderexamite.setCastable(false);
 			materialEnderexamite.setCraftable(false);
 			materialEnderexamite.addTrait(TinkerTraits.slimeyBlue, HEAD);
-			materialEnderexamite.addTrait(ModTraits.pulsation, HEAD);
+			materialEnderexamite.addTrait(ModTraits.pulsating, HEAD);
 			materialEnderexamite.addTrait(ModTraits.shielding, HEAD);
 			materialEnderexamite.addTrait(TinkerTraits.crumbling);
 			materialEnderexamite.addTrait(TinkerTraits.endspeed, PROJECTILE);

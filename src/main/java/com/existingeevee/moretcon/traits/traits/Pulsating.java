@@ -14,7 +14,7 @@ public class Pulsating extends AbstractTrait {
 
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
-		float x = tool.getOrCreateSubCompound("moretcon.pulsating").getFloat("x");
+		float x = tool.getOrCreateSubCompound(this.getIdentifier()).getFloat("x");
 		float ed = (Math.round(20 * Math.sin(x += 0.2)) + 20) / 10;
 		tool.getOrCreateSubCompound("moretcon.pulsating").setFloat("x", Math.round(x * 10f) / 10f);
 		return super.damage(tool, player, target, damage, newDamage + ed, isCritical);

@@ -90,7 +90,7 @@ public class ModTraits {
 	public static BloodGodsBlessing bloodGodsBlessing = new BloodGodsBlessing();
 	public static HelpfulRadiation radioactive = new HelpfulRadiation();
 	public static Voidic voidic = new Voidic();
-	public static Pulsating pulsation = new Pulsating();
+	public static Pulsating pulsating = new Pulsating();
 	public static Liquid liquid = new Liquid();
 	public static Resilient resilient = new Resilient();
 	public static Magical magical = new Magical();
