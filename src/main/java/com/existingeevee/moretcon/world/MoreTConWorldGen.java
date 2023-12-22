@@ -43,9 +43,11 @@ public class MoreTConWorldGen implements IWorldGenerator {
 	}
 	
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
-			IChunkProvider chunkProvider) {
-		if (ConfigHandler.disableOreGen) return;
-		modifiers.forEach(w -> w.generate(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider));
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+		WorldgenContext ctx = new WorldgenContext(world, chunkX, chunkZ, random);
+		
+		if (ConfigHandler.disableOreGen) 
+			return;
+		modifiers.forEach(w -> w.generate(chunkGenerator, chunkProvider, ctx));
 	}
 }

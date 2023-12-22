@@ -5,6 +5,7 @@ import java.util.Random;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.world.IBlockStateProvider;
 import com.existingeevee.moretcon.world.WorldGenModifier;
+import com.existingeevee.moretcon.world.WorldgenContext;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
@@ -19,10 +20,13 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 
 public class AsteroidGenerator extends WorldGenModifier {
 
-	
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
-			IChunkProvider chunkProvider) {
+	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {
+		World world = ctx.world;
+		Random random = ctx.rand;
+		int chunkX = ctx.chunkX;
+		int chunkZ = ctx.chunkZ;
+		
 		if (!(world.provider.getDimensionType().getId() == DimensionType.THE_END.getId())) {
 			return;
 		}
@@ -110,7 +114,7 @@ public class AsteroidGenerator extends WorldGenModifier {
 		}
 
 	}
-	
+
 	private static IBlockStateProvider provider(Random random) {
 		return new IBlockStateProvider.RandomBlockStateProvider(
 				new IBlockStateProvider.ConstantBlockStateProvider(Blocks.END_STONE.getDefaultState()),
