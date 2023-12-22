@@ -111,7 +111,7 @@ public class CustomFireHelper {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void onClientTickEvent(TickEvent.ClientTickEvent event) {
-		if (Minecraft.getMinecraft().world != null && event.phase == Phase.END)
+		if (Minecraft.getMinecraft().world != null && event.phase == Phase.END) {
 			for (Entity e : new ArrayList<>(Minecraft.getMinecraft().world.loadedEntityList)) {
 				if (e instanceof EntityLivingBase) {
 					EntityLivingBase entity = (EntityLivingBase) e;
@@ -125,6 +125,7 @@ public class CustomFireHelper {
 					}
 				}
 			}
+		}
 
 	}
 
@@ -175,8 +176,7 @@ public class CustomFireHelper {
 				EntityLivingBase entity = (EntityLivingBase) e;
 				if (e.getEntityData().hasKey(ModInfo.MODID + ".fire", NBT.TAG_COMPOUND)) {
 					try {
-						CustomFireInfo info = new CustomFireInfo(
-								e.getEntityData().getCompoundTag(ModInfo.MODID + ".fire")).decrementTime();
+						CustomFireInfo info = new CustomFireInfo(e.getEntityData().getCompoundTag(ModInfo.MODID + ".fire")).decrementTime();
 						if (entity.isBurning() || info.isInvalid() || (customBurning.get(entity.getEntityId()) != null && customBurning.get(entity.getEntityId()).isInvalid())) {
 							customBurning.remove(entity.getEntityId());
 							entity.getEntityData().removeTag(ModInfo.MODID + ".fire");
@@ -235,11 +235,9 @@ public class CustomFireHelper {
 					int eid = buf.readInt();
 					int time = buf.readInt();
 					int strLen = buf.readByte();
-					String effect = new StringBuilder(strLen)
-							.append(buf.readCharSequence(strLen, StandardCharsets.UTF_8)).toString();
+					String effect = new StringBuilder(strLen) .append(buf.readCharSequence(strLen, StandardCharsets.UTF_8)).toString();
 					if (CustomFireEffect.registeredEffects.get(effect) != null) {
-						newCustomBurningData.put(eid,
-								new CustomFireInfo(CustomFireEffect.registeredEffects.get(effect), time, false));
+						newCustomBurningData.put(eid, new CustomFireInfo(CustomFireEffect.registeredEffects.get(effect), time, false));
 					}
 				}
 			} catch (Throwable t) {
@@ -250,8 +248,7 @@ public class CustomFireHelper {
 
 		@Override
 		public void toBytes(ByteBuf buf) {
-			int len = customBurningData.entrySet().stream().filter(p -> !p.getValue().isInvalid()).mapToInt(i -> 1)
-					.sum();
+			int len = customBurningData.entrySet().stream().filter(p -> !p.getValue().isInvalid()).mapToInt(i -> 1) .sum();
 			buf.writeInt(len);
 			for (Entry<Integer, CustomFireInfo> e : customBurningData.entrySet()) {
 				if (e.getValue().isInvalid())
