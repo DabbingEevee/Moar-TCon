@@ -24,6 +24,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
 //adapted from tinkers aether
+//TODO, improve algorithm and use own packet handler
 public class Reaching extends AbstractTrait {
     public static final AttributeModifier reachModifier = new AttributeModifier(UUID.fromString("df6eabe7-ffff-0000-9099-002f90370708"), "Reaching Modifier", 2D, 0);
 
