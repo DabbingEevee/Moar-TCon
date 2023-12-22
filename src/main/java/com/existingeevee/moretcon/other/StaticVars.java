@@ -8,6 +8,11 @@ import net.minecraft.item.ItemStack;
 @Deprecated
 public class StaticVars {
 
-	public static ItemStack lastPickedUpArrow = ItemStack.EMPTY;
+	public static ItemStack itemstack1 = ItemStack.EMPTY;
+	public static ItemStack itemstack2 = ItemStack.EMPTY;
+	public static ItemStack itemstack3 = ItemStack.EMPTY;
 	
+	public static double double1 = 0;
+	public static double double2 = 0;
+	public static double double3 = 0;
 }

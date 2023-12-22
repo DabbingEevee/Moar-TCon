@@ -20,7 +20,7 @@ public class MixinTinkerProjectileHandler {
 	@Inject(at = @At(value = "RETURN"), method = "pickup", remap = false, locals = LocalCapture.CAPTURE_FAILHARD)
 	public void moretcon$RETURN_Redirect$pickup(EntityLivingBase entity, boolean simulate, CallbackInfoReturnable<Boolean> ci, ItemStack stack) {
 		if (!simulate && stack.getItem() instanceof IAmmo) {
-			StaticVars.lastPickedUpArrow = stack;
+			StaticVars.itemstack1 = stack;
 		}
 	}
 }

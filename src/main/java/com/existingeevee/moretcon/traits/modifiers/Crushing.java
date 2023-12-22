@@ -37,7 +37,7 @@ public class Crushing extends ModifierTrait {
 
 	@Override
 	public int getPriority() {
-		return 9000;
+		return Integer.MAX_VALUE / 2; //we need this to run last. divide by 2 to prevent wierd overflow issues
 	}
 }
 
