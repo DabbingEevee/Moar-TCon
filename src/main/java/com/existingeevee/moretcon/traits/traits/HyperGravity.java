@@ -18,7 +18,10 @@ public class HyperGravity extends AbstractTrait {
 
 	@Override
 	public float knockBack(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float knockback, float newKnockback, boolean isCritical) {
-		StaticVars.double1 = newKnockback;
+		if (!target.world.isRemote) {
+			StaticVars.lastHypergravityKB = newKnockback;
+
+		}
 		return newKnockback;
 	}
 
@@ -27,9 +30,9 @@ public class HyperGravity extends AbstractTrait {
 		double dx = player.posX - target.posX;
 		double dz = player.posZ - target.posZ;
 		double lenXY = Math.sqrt(dx * dx + dz * dz);
-		double kb = StaticVars.double1;
+		double kb = StaticVars.lastHypergravityKB + 0.75;
 		double accelerateVal = kb * 0.9;
-
+				
 		if (!player.world.isRemote) {
 			target.motionX += dx / lenXY * accelerateVal;
 			target.motionY += accelerateVal / 8;
@@ -43,6 +46,6 @@ public class HyperGravity extends AbstractTrait {
 
 	@Override
 	public int getPriority() {
-		return Integer.MAX_VALUE / 2; //we need this to run last. divide by 2 to prevent wierd overflow issues
+		return -2; //we need this to run last. divide by 2 to prevent wierd overflow issues
 	}
 }
