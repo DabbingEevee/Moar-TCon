@@ -38,13 +38,13 @@ public class Soulforged extends NumberTrackerTrait {
 	@Override
 	public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
 		if (this.getNumber(tool) > 0) {
-			event.setNewSpeed(event.getNewSpeed() * 4);
+			event.setNewSpeed(event.getNewSpeed() * 2);
 		}
 	}
 
 	@Override
 	public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective) {
-		if (this.getNumber(tool) > 0 && random.nextInt(5) == 0) {
+		if (this.getNumber(tool) > 0 && random.nextInt(10) == 0) {
 			this.removeNumber(tool, 1);
 		}
 	}
