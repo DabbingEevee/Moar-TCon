@@ -389,6 +389,7 @@ tile.moretcon.liquidebonite.name=Molten Ebonite
 tile.moretcon.liquidvalasium.name=Molten Valasium
 tile.moretcon.liquidfusionlava.name=Fusion Lava
 tile.moretcon.mummysludge.name=Mummy Sludge
+
 tile.moretcon.orearkenium.name=Arkenium Ore
 tile.moretcon.orebloodstone.name=Bloodstone Ore
 tile.moretcon.oreetherstone.name=Etherstone Ore
@@ -406,6 +407,7 @@ tile.moretcon.orevoidspar.name=Void Spar Ore
 tile.moretcon.oreebonite.name=Ebonite Ore
 tile.moretcon.oreerythynite.name=Erythynite Ore
 tile.moretcon.oreelectarite.name=Electarite Ore
+tile.moretcon.orehallowsite.name=Hallowsite Ore
 
 tile.moretcon.blockotherstone.name=Otherstone
 tile.moretcon.rottensludge.name=Rotten Sludge

@@ -599,6 +599,9 @@ public class ModMaterials implements MaterialTypes {
 			materialElectarite.setRepresentativeItem("gemElectarite");
 			materialElectarite.addTrait(ModTraits.luminescent, HEAD);
 			materialElectarite.addTrait(ModTraits.electrified, HEAD);
+			materialElectarite.addTrait(TinkerTraits.enderference, HEAD);
+			materialElectarite.addTrait(TinkerTraits.enderference);
+			materialElectarite.addTrait(TinkerTraits.unnatural);
 			materialElectarite.addTrait(ModTraits.luminescent);
 			materialElectarite.addStats(new HeadMaterialStats(620, 6f, 7f, 5));
 			materialElectarite.addStats(new HandleMaterialStats(2.2f, 10));

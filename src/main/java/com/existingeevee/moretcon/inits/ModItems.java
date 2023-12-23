@@ -17,6 +17,10 @@ public class ModItems {
 	/*---------------------------------------*/
 
 	//Metals
+	public static final Item nuggetHallowsite = new ItemBase("nuggetHallowsite");
+	public static final Item ingotHallowsite = new ItemBase("ingotHallowsite");
+	public static final Item dustHallowsite = new ItemBase("dustHallowsite");
+	
 	public static final Item nuggetFusionite = new ItemBase("nuggetFusionite", 0x0000ff);
 	public static final Item ingotFusionite = new ItemBase("ingotFusionite", GlowType.OVAL, 0x0000ff);
 	public static final Item dustFusionite = new ItemBase("dustFusionite", GlowType.CIRCLE_BIG, 0x0000ff);
@@ -168,6 +172,9 @@ public class ModItems {
 					ingotEbonite,
 					nuggetEbonite,
 
+					ingotHallowsite,
+					nuggetHallowsite,
+					
 					gemVoidSpar,
 					gemEnderal,
 					gemGarstone,
@@ -200,7 +207,9 @@ public class ModItems {
 						dustRuneSteel,
 						dustTrichromadentium,
 						dustAtronium,
-						dustEbonite);
+						dustEbonite,
+						dustHallowsite
+						);
 			}
 		}
 		if (CompatManager.twilightforest) {

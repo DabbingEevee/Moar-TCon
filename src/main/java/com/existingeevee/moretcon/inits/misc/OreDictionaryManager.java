@@ -113,6 +113,11 @@ public class OreDictionaryManager {
 			registerOre("gemElectarite", ModItems.gemElectarite);
 			registerOre("oreElectarite", ModBlocks.oreElectarite);
 			
+			registerOre("blockHallowsite", ModBlocks.blockHallowsite);
+			registerOre("oreHallowsite", ModBlocks.oreHallowsite);
+			registerOre("ingotHallowsite", ModItems.ingotHallowsite);
+			registerOre("nuggetHallowsite", ModItems.nuggetHallowsite);
+			
 			if(ConfigHandler.shouldLoadDust) {
 				registerOre("dustIrradium", ModItems.dustIrradium);
 				registerOre("dustValasium", ModItems.dustValasium);
@@ -126,7 +131,7 @@ public class OreDictionaryManager {
 				registerOre("dustAtronium", ModItems.dustAtronium);
 				registerOre("dustSteel", ModItems.dustSteel);
 				registerOre("dustEbonite", ModItems.dustEbonite);
-
+				registerOre("dustHallowsite", ModItems.dustHallowsite);
 			}
 		}
 		if(CompatManager.twilightforest) {
