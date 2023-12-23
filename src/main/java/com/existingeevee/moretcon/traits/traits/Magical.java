@@ -13,7 +13,6 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class Magical extends AbstractTrait {
 
-	//public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Magical() {
 		super(MiscUtils.createNonConflictiveName("magical"), 0x0066ff);
 	}

@@ -53,6 +53,7 @@ import com.existingeevee.moretcon.traits.traits.Rootplicating;
 import com.existingeevee.moretcon.traits.traits.Rotten;
 import com.existingeevee.moretcon.traits.traits.SkysBlessing;
 import com.existingeevee.moretcon.traits.traits.Slicing;
+import com.existingeevee.moretcon.traits.traits.Soulforged;
 import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
@@ -83,11 +84,17 @@ import thebetweenlands.common.capability.circlegem.CircleGemType;
 import thebetweenlands.common.registries.ItemRegistry;
 
 public class ModTraits {
+	public static BloodGodsBlessing bloodGodsBlessing = new BloodGodsBlessing();
+	public static EssentialObliteration essentialObliteration = new EssentialObliteration();
+	public static Plasmatic plasmatic = new Plasmatic();
+	public static TripleShot tripleshot = new TripleShot();
+	public static BloodyArc bloodyArc = new BloodyArc();
+	public static AerialFlame aerialFlames = new AerialFlame();
+
 	public static KineticBattery kineticBattery = new KineticBattery();
 	public static Hyperheat hyperheat = new Hyperheat();
 	public static ColdFire coldFire = new ColdFire();
 	public static Tricromatic trichromic = new Tricromatic();
-	public static BloodGodsBlessing bloodGodsBlessing = new BloodGodsBlessing();
 	public static HelpfulRadiation radioactive = new HelpfulRadiation();
 	public static Voidic voidic = new Voidic();
 	public static Pulsating pulsating = new Pulsating();
@@ -97,15 +104,11 @@ public class ModTraits {
 	public static Reaching reaching;
 	public static Aetheric aetheric = new Aetheric();
 	public static Rootplicating rootplicating = new Rootplicating();
-	public static Plasmatic plasmatic = new Plasmatic();
 	public static SkysBlessing blessed = new SkysBlessing();
 	public static Treetap treetap = new Treetap();
 	public static Hardcore hardcore = new Hardcore();
 	public static HyperGravity hypergravity = new HyperGravity();
-	public static TripleShot tripleshot = new TripleShot();
 	public static Mirroring mirroring = new Mirroring();
-	public static AerialFlame aerialFlames = new AerialFlame();
-	public static BloodyArc bloodyArc = new BloodyArc();
 	public static BottomsEnd bottomsEnd = new BottomsEnd();
 	public static Slicing slicing = new Slicing();
 	public static Leeching leeching = new Leeching();
@@ -124,8 +127,10 @@ public class ModTraits {
 	public static Overgrowth overgrowth2 = new Overgrowth(2);
 	public static Electrified electrified = new Electrified();
 	public static Haunted haunted = new Haunted();
+	public static Soulforged soulforged = new Soulforged(1);
+	public static Soulforged soulforged2 = new Soulforged(2);
+	public static Soulforged soulforged3 = new Soulforged(3);
 
-	public static EssentialObliteration essentialObliteration = new EssentialObliteration();
 
 	public static MatterReconstructionGel repair;
 

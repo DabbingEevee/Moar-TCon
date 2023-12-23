@@ -1,5 +1,6 @@
 death.attack.bleeding=%1$s bled out
 death.attack.coldfire=%1$s's thermal kinetic energy level had two solutions
+death.attack.haunted=%1$s had their soul burned away
 death.attack.pillar_of_fire=%1$s was swept away in a pillar of fire
 
 entity.decaying_effect_moretcon.name=Effect
@@ -188,6 +189,8 @@ material.moretcon.nahuatl.name=Nahuatl
 material.moretcon.slimewood.name=Slimewood
 material.moretcon.valasium.name=Valasium
 material.moretcon.electarite.name=Electarite
+material.moretcon.hallowsite.name=Hallowsite
+
 
 material.uniquetoolpart.name=Unique
 
@@ -308,8 +311,10 @@ modifier.moretcon.extratrait2.name=Embossment II
 modifier.moretcon.extratrait2.desc=§oIf embossment is so good why isn't there an embossment 2§r\nEmbossed with the power of %s, obtaining some of its traits.
 modifier.moretcon.electrified.name=Electrified
 modifier.moretcon.electrified.desc=§oUNLIMITED POWAH!!!!!!§r\nYour tool can build up and eventually discharge damaging amounts of electric current in targets.
-
-
+modifier.moretcon.haunted.name=Haunted
+modifier.moretcon.haunted.desc=§oSpooky scary skeletons...§r\nYour tool can ignite your targets in an otherworldly fire that bypasses invulnerability frames.
+modifier.moretcon.soulforged.name=Soulforged
+modifier.moretcon.soulforged.desc=§ohippity hoppity your soul is now my property§r\nYour tool can boost its own effectiveness using the souls of its slain enemies.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames

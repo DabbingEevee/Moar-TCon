@@ -23,7 +23,9 @@ public class Crushing extends ModifierTrait {
 		float actualDMG = newDamage;
 		if (player instanceof EntityPlayer) 
 			actualDMG *= ((EntityPlayer) player).getCooledAttackStrength(0.5f);
-		target.getEntityData().setFloat(this.getIdentifier(), actualDMG);
+		
+		target.getEntityData().setFloat(this.getModifierIdentifier(), actualDMG);
+		
 		return super.damage(tool, player, target, damage, newDamage * 0.95f, isCritical);
 	}
 
@@ -31,7 +33,7 @@ public class Crushing extends ModifierTrait {
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
 		if (wasHit) {
 			DamageSource source = player instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) player) : DamageSource.causeMobDamage(player);
-			MiscUtils.trueDamage(target, target.getEntityData().getFloat(this.getIdentifier()) * 0.05f, source, false);
+			MiscUtils.trueDamage(target, target.getEntityData().getFloat(this.getModifierIdentifier()) * 0.05f, source, false);
 		}
 	}
 

@@ -1,23 +1,34 @@
 package com.existingeevee.moretcon.traits.traits.abst;
 
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.util.Constants.NBT;
 
 public abstract class NumberTrackerTrait extends AdditionalDisplayTrait {
 
 	protected boolean showNumberRemaining = true;
 
+	public NumberTrackerTrait(String identifier, int color, int lvlmax, int lvl) {
+		super(identifier, color, lvlmax, lvl);
+	}
+	
 	public NumberTrackerTrait(String identifier, int color) {
 		super(identifier, color);
-		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	public abstract int getNumberMax(ItemStack stack);
 
-	public abstract int getNumber(ItemStack stack);
+	public int getNumber(ItemStack stack) {
+		NBTTagCompound comp = stack.getOrCreateSubCompound(this.getModifierIdentifier());
+		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : 0;
+	}
 
-	public abstract int setNumber(ItemStack stack, int amount);
-
+	public int setNumber(ItemStack stack, int amount) {
+		NBTTagCompound comp = stack.getOrCreateSubCompound(this.getModifierIdentifier());
+		comp.setInteger("remaining", amount);
+		return amount;
+	}
+	
 	public int addNumber(ItemStack stack, int amount) {
 		return setNumber(stack, Math.max(0, Math.min(this.getNumberMax(stack), getNumber(stack) + amount)));
 	}

@@ -38,8 +38,6 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialPenguinite);
 		setCustomRender(ModMaterials.materialShadowglass);
 		setCustomRender(ModMaterials.materialEmberlight);
-
-		//tinkers is rgba other is argb imma shoot myself
 		
 		ModMaterials.materialNahuatl.setRenderInfo(new MultiColor(0x100c1c, 0x271e3d, 0x49332e));
 		ModMaterials.materialAmberwood.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAmberwood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
@@ -57,6 +55,6 @@ public class MaterialClient {
 	}
 
 	public static void init() {
-
+		//empty method to init class static block	
 	} 
 }

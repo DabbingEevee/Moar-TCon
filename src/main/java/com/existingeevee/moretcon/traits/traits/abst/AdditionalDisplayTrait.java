@@ -9,15 +9,19 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.modifiers.ModifierNBT;
-import slimeknights.tconstruct.library.traits.AbstractTrait;
+import slimeknights.tconstruct.library.traits.AbstractTraitLeveled;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 
-public abstract class AdditionalDisplayTrait extends AbstractTrait {
+public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 
 	protected boolean showNumberRemaining = true;
 	
 	public AdditionalDisplayTrait(String identifier, int color) {
-		super(identifier, color);
+		this(identifier, color, 1, 1);
+	}
+	
+	public AdditionalDisplayTrait(String identifier, int color, int lvlmax, int lvl) {
+		super(identifier, color, lvlmax, lvl);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -36,7 +40,7 @@ public abstract class AdditionalDisplayTrait extends AbstractTrait {
 			sb.append(TinkerUtil.getRomanNumeral(data.level));
 		}
 		if (!detailed)
-			sb.append(": -{-toreplace.moretcon.display." + this.getIdentifier() + "-}-");
+			sb.append(": -{-toreplace.moretcon.display." + data.identifier + "-}-");
 
 		return sb.toString();
 	}
@@ -52,7 +56,7 @@ public abstract class AdditionalDisplayTrait extends AbstractTrait {
 		for (int i = 0; i < event.getToolTip().size(); i++) {
 			String str = event.getToolTip().get(i);
 			String[] splitString = str.split(": ");
-			if (splitString.length >= 2 && splitString[1].equals("-{-toreplace.moretcon.display." + this.getIdentifier() + "-}-")) {
+			if (splitString.length >= 2 && splitString[1].equals("-{-toreplace.moretcon.display." + this.getModifierIdentifier() + "-}-")) {
 				splitString[1] = this.getStringToRender(tool);
 				event.getToolTip().set(i, String.join(": ", splitString));
 				return;

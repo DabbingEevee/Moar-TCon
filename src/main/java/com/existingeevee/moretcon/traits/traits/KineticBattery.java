@@ -7,13 +7,11 @@ import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketParticles;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.utils.ToolHelper;
@@ -60,19 +58,6 @@ public class KineticBattery extends NumberTrackerTrait {
 	@Override
 	public int getNumberMax(ItemStack stack) {
 		return 50;
-	}
-
-	@Override
-	public int getNumber(ItemStack stack) {
-		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
-		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : 0;
-	}
-
-	@Override
-	public int setNumber(ItemStack stack, int amount) {
-		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
-		comp.setInteger("remaining", amount);
-		return amount;
 	}
 
 	@SubscribeEvent

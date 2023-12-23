@@ -10,7 +10,6 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class Darkened extends AbstractTrait {
 
-	//public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Darkened() {
 		super(MiscUtils.createNonConflictiveName("darkened"), 0);
 	}

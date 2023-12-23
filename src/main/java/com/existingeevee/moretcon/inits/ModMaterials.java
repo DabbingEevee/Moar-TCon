@@ -134,6 +134,7 @@ public class ModMaterials implements MaterialTypes {
 			MiscUtils.createNonConflictiveName("wormed"), 0xd99857, "tconstruct:arrow_head",
 			"tconstruct:arrow",
 			() -> new ItemStack(BlockRegistry.WEEDWOOD_WORKBENCH), "crafting_table");
+	
 	static {
 		if (CompatManager.tic3backport) {
 			materialNahuatl.setCastable(false);
@@ -609,7 +610,9 @@ public class ModMaterials implements MaterialTypes {
 			materialHallowsite.setCastable(false);
 			materialHallowsite.setCraftable(true);
 			materialHallowsite.setRepresentativeItem("ingotHallowsite");
-			materialHallowsite.addTrait(ModTraits.haunted);
+			materialHallowsite.addTrait(ModTraits.haunted, HEAD);
+			materialHallowsite.addTrait(ModTraits.soulforged2, HEAD);
+			materialHallowsite.addTrait(ModTraits.soulforged);
 			materialHallowsite.addStats(new HeadMaterialStats(620, 6f, 7f, 5));
 			materialHallowsite.addStats(new HandleMaterialStats(2.2f, 10));
 			materialHallowsite.addStats(new ExtraMaterialStats(70));

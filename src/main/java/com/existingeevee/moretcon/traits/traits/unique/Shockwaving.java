@@ -25,7 +25,6 @@ import thebetweenlands.common.registries.SoundRegistry;
 
 public class Shockwaving extends NumberTrackerTrait {
 
-	// public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Shockwaving() {
 		super(MiscUtils.createNonConflictiveName("shockwaving"), 0x0066ff);
 		MinecraftForge.EVENT_BUS.register(this);

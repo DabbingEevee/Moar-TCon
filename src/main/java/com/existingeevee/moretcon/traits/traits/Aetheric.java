@@ -9,7 +9,6 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class Aetheric extends AbstractTrait {
 
-	//public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Aetheric() {
 		super(MiscUtils.createNonConflictiveName("aetheric"), 0);
 	}

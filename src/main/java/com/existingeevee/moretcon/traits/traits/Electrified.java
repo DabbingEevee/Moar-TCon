@@ -19,7 +19,7 @@ public class Electrified extends AbstractTrait {
 
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
-		NBTTagCompound tag = target.getEntityData().getCompoundTag(this.getIdentifier());
+		NBTTagCompound tag = target.getEntityData().getCompoundTag(this.getModifierIdentifier());
 		int amount = tag.getInteger("amount");
 
 		if (tag.getLong("last") + 10 * 20 < target.world.getTotalWorldTime()) {
@@ -37,7 +37,7 @@ public class Electrified extends AbstractTrait {
 		if (amount >= 10) {
 			target.world.playSound(null, target.posX, target.posY, target.posZ, SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 10, 1.5f);
 			tag.setInteger("amount", 0);
-			target.getEntityData().setTag(this.getIdentifier(), tag);
+			target.getEntityData().setTag(this.getModifierIdentifier(), tag);
 			return (newDamage + amount / 2f) * 2.25f;
 		} else {
 			target.world.playSound(null, target.posX, target.posY, target.posZ, SoundEvents.BLOCK_ENDERCHEST_OPEN, SoundCategory.PLAYERS, 10, amount * 1.f / 10);
