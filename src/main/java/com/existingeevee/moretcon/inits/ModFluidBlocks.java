@@ -31,6 +31,7 @@ public class ModFluidBlocks {
 	public static Block blockLiquidEbonite;
 	public static Block blockLiquidSwampSteel;
 	public static Block blockLiquidRotiron;
+	public static Block blockLiquidHallowsite;
 	public static Block blockRottenSludge;
 	public static Block blockMummySludge;
 	public static Block blockBetweenSludge;
@@ -56,6 +57,7 @@ public class ModFluidBlocks {
 			blockLiquidAtronium = new BlockFluid("liquidatronium", ModFluids.liquidAtronium, Material.LAVA);
 			blockLiquidEbonite = new BlockFluid("liquidebonite", ModFluids.liquidEbonite, Material.LAVA);			
 			blockLiquidValasium = new BlockFluid("liquidvalasium", ModFluids.liquidValasium, Material.LAVA);			
+			blockLiquidHallowsite = new BlockFluid("liquidhallowsite", ModFluids.liquidHallowsite, Material.LAVA);			
 			blockLiquidFusionLava = new BlockFluid("liquidfusionlava", ModFluids.liquidFusionLava, Material.LAVA);			
 			
 			
@@ -72,7 +74,8 @@ public class ModFluidBlocks {
 				blockLiquidAtronium,
 				blockLiquidEbonite,
 				blockLiquidFusionLava,
-				blockLiquidValasium
+				blockLiquidValasium,
+				blockLiquidHallowsite
 /* ------------------------------------- */
 				);
 		}
