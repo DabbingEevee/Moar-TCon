@@ -69,6 +69,3 @@ public class Plasmatic extends AbstractTrait {
         }
 	}
 }
-//particle flame ~ ~.5 ~ 0 0 0 -0.05 100
-//particle smoke ~ ~.5 ~ 0 0 0 -0.05 300
-//particle fireworksSpark ~ ~ ~ 0 0 0 0.1 100

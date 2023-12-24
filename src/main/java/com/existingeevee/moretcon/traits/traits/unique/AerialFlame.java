@@ -26,17 +26,8 @@ public class AerialFlame extends AbstractProjectileTrait {
 	
 	private static final Random rand = new Random();
 	
-	//BlockPos prev = new BlockPos(entity.getPosition().getX(), lowY + 1, entity.getPosition().getZ());
-	//IBlockState prevState = world.getChunkFromBlockCoords(prev).getBlockState(prev);
-	//if (prevState.getBlock() == Blocks.AIR) {
-	//	world.setBlockState(prev, Blocks.FIRE.getDefaultState());
-	//}
-	
 	@Override
-	public void onProjectileUpdate(EntityProjectileBase entity, World world, ItemStack toolStat) {
-		//EntityArrow.class.getDeclaredField("inGround");
-		
-		
+	public void onProjectileUpdate(EntityProjectileBase entity, World world, ItemStack toolStat) {		
 		if (entity.serializeNBT().getBoolean("inGround")) {
 			return;
 		}
@@ -74,6 +65,5 @@ public class AerialFlame extends AbstractProjectileTrait {
 				e.attackEntityFrom(source, 5);
 			}
 		}
-
 	}
 }
