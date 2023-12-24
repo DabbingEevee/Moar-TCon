@@ -1,5 +1,6 @@
 package com.existingeevee.moretcon.fluid;
 
+import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.block.ISimpleBlockItemProvider;
 
 import net.minecraft.block.material.Material;
@@ -17,12 +18,7 @@ import net.minecraftforge.fluids.Fluid;
 public class RadioactiveBlockFluid extends BlockFluidClassic implements ISimpleBlockItemProvider {
 	public RadioactiveBlockFluid(String name, Fluid fluid, Material material) {
 		super(fluid, material);
-		setUnlocalizedName(name);
-		// setRegistryName(name);
-		/**
-		 * BlockInit.BLOCKS.add(this); ItemInit.ITEMS.add(new
-		 * ItemBlock(this).setRegistryName(name));
-		 **/
+		this.setUnlocalizedName(ModInfo.MODID + "." + name.toLowerCase());
 	}
 
 	@Override

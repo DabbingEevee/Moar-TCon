@@ -19,6 +19,8 @@ import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -34,7 +36,9 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.world.WorldEvent;
@@ -93,6 +97,32 @@ public class MiscUtils {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends Block> T getBlockTypeInBB(World world, AxisAlignedBB bb, Class<T> type) {
+		int j2 = MathHelper.floor(bb.minX);
+		int k2 = MathHelper.ceil(bb.maxX);
+		int l2 = MathHelper.floor(bb.minY);
+		int i3 = MathHelper.ceil(bb.maxY);
+		int j3 = MathHelper.floor(bb.minZ);
+		int k3 = MathHelper.ceil(bb.maxZ);
+		BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
+
+		for (int l3 = j2; l3 < k2; ++l3) {
+			for (int i4 = l2; i4 < i3; ++i4) {
+				for (int j4 = j3; j4 < k3; ++j4) {
+					IBlockState iblockstate1 = world.getBlockState(blockpos$pooledmutableblockpos.setPos(l3, i4, j4));
+					if (type.isInstance(iblockstate1.getBlock())) {
+						blockpos$pooledmutableblockpos.release();
+						return (T) iblockstate1.getBlock();
+					}
+				}
+			}
+		}
+
+		blockpos$pooledmutableblockpos.release();
+		return null;
 	}
 
 	public static void penetratingDamage(EntityLivingBase entity, int amount, DamageSource src, boolean bypassChecks) {
@@ -179,7 +209,7 @@ public class MiscUtils {
 	public static List<UniqueMaterial> getUniqueEmbossments(ItemStack stack) {
 		return getEmbossments(stack).stream().filter(m -> m instanceof UniqueMaterial).map(m -> ((UniqueMaterial) m)).collect(Collectors.toList());
 	}
-	
+
 	public static List<Material> getEmbossments(ItemStack stack) {
 		List<Material> material = new ArrayList<>();
 

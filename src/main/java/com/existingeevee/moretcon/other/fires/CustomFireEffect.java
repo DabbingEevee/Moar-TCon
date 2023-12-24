@@ -55,11 +55,13 @@ public class CustomFireEffect {
 	public static final CustomFireEffect SPIRIT_FIRE = new CustomFireEffect("spirit_fire",
 			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_0"),
 			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_1"), e -> {
+				if (e.isImmuneToFire())
+					return false;
 				if (e.isInWater()) {
 					e.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 1);
 					return false;
 				}
-								
+
 				if (!e.world.isRemote && (e.world.getWorldTime() + e.getUniqueID().hashCode()) % 20 == 0) {
 					int hurt = e.hurtResistantTime;
 					e.hurtResistantTime = 0;
@@ -68,7 +70,7 @@ public class CustomFireEffect {
 				}
 				return true;
 			});
-	
+
 	final String id;
 
 	final ResourceLocation one;
@@ -104,7 +106,7 @@ public class CustomFireEffect {
 		this.fullbright = fullbright;
 		return this;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof CustomFireEffect) {

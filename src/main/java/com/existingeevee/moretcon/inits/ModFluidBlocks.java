@@ -1,12 +1,16 @@
 package com.existingeevee.moretcon.inits;
 
 import com.existingeevee.moretcon.fluid.BlockFluid;
+import com.existingeevee.moretcon.fluid.CustomFireBlockFluid;
+import com.existingeevee.moretcon.fluid.RadioactiveBlockFluid;
 import com.existingeevee.moretcon.other.BlockMaterials;
+import com.existingeevee.moretcon.other.fires.CustomFireEffect;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.DamageSource;
 
 public class ModFluidBlocks {
 	/* ------------------------------------- */
@@ -46,8 +50,8 @@ public class ModFluidBlocks {
 
 	public static void init() {
 		if (CompatManager.loadMain) {
-			blockLiquidFusionite = new BlockFluid("liquidfusionite", ModFluids.liquidFusionite, Material.LAVA);
-			blockLiquidIrradium = new BlockFluid("liquidirradium", ModFluids.liquidIrradium, Material.LAVA);
+			blockLiquidFusionite = new CustomFireBlockFluid("liquidfusionite", ModFluids.liquidFusionite, CustomFireEffect.COLD_FIRE, Material.LAVA).setSource(new DamageSource("coldfire").setFireDamage());
+			blockLiquidIrradium = new RadioactiveBlockFluid("liquidirradium", ModFluids.liquidIrradium, Material.LAVA);
 			blockLiquidSolarSteel = new BlockFluid("liquidsolarsteel", ModFluids.liquidSolsteel, Material.LAVA);
 			blockLiquidHydrogen = new BlockFluid("liquidhydrogen", ModFluids.liquidHydrogen, BlockMaterials.GAS);
 			blockLiquidGallium = new BlockFluid("liquidgallium", ModFluids.liquidGallium, Material.LAVA);
@@ -57,8 +61,8 @@ public class ModFluidBlocks {
 			blockLiquidAtronium = new BlockFluid("liquidatronium", ModFluids.liquidAtronium, Material.LAVA);
 			blockLiquidEbonite = new BlockFluid("liquidebonite", ModFluids.liquidEbonite, Material.LAVA);			
 			blockLiquidValasium = new BlockFluid("liquidvalasium", ModFluids.liquidValasium, Material.LAVA);			
-			blockLiquidHallowsite = new BlockFluid("liquidhallowsite", ModFluids.liquidHallowsite, Material.LAVA);			
-			blockLiquidFusionLava = new BlockFluid("liquidfusionlava", ModFluids.liquidFusionLava, Material.LAVA);			
+			blockLiquidHallowsite = new CustomFireBlockFluid("liquidhallowsite", ModFluids.liquidHallowsite, CustomFireEffect.SPIRIT_FIRE, Material.LAVA).setSource(new DamageSource("haunted").setFireDamage());			
+			blockLiquidFusionLava = new CustomFireBlockFluid("liquidfusionlava", ModFluids.liquidFusionLava, CustomFireEffect.COLD_FIRE, Material.LAVA).setSource(new DamageSource("coldfire").setFireDamage());			
 			
 			
 		    ModFluidBlocks.registerBlocks(
