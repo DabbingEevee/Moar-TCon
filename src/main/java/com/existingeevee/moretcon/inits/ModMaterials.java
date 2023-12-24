@@ -348,7 +348,7 @@ public class ModMaterials implements MaterialTypes {
 				materialEbonite.addStats(new BatteryCellMaterialStats(120000));
 			}
 
-			//TODO rework
+			//TODO rework into metal/gem TBD
 			materialSpaceTimeDisruption.addItem(ModItems.spaceTimeDisruptionPowder, 1, Material.VALUE_Fragment);
 			materialSpaceTimeDisruption.setCastable(false);
 			materialSpaceTimeDisruption.setCraftable(true);
@@ -648,7 +648,7 @@ public class ModMaterials implements MaterialTypes {
 			materialHallowsite.addStats(new BowMaterialStats(1.1f, 1.4f, 8f));
 
 		}
-		if (CompatManager.aether_legacy) { // TODO
+		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
 			materialZanite.addItem("blockZanite", 1, Material.VALUE_Block);
 			materialZanite.setCastable(false);
@@ -758,7 +758,7 @@ public class ModMaterials implements MaterialTypes {
 			materialGravitite.addStats(whyWouldYouMakeABowOutOfThis);
 			
 		}
-		if (CompatManager.twilightforest) {
+		if (CompatManager.twilightforest) { //TODO add carminite & more alloys
 			materialIronwood.addCommonItems("Ironwood");
 			materialIronwood.setCastable(true);
 			materialIronwood.setFluid(ModFluids.liquidIronwood);
@@ -807,8 +807,7 @@ public class ModMaterials implements MaterialTypes {
 			materialIronwood.addStats(new BowMaterialStats(0.7f, 1f, 6f));
 		}
 
-		if (CompatManager.thebetweenlands) {
-
+		if (CompatManager.thebetweenlands) { //TODO Ancient ingots
 			materialSyrmorite.addItem("oreSyrmorite", 1, Material.VALUE_Ore());
 			materialSyrmorite.setFluid(ModFluids.liquidSyrmorite);
 			materialSyrmorite.addCommonItems("Syrmorite");
