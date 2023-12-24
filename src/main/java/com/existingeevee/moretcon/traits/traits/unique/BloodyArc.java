@@ -34,7 +34,7 @@ public class BloodyArc extends AbstractTrait {
         }
         if(isToolWithTrait(stack)) {
         	e.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 15);
-            if (!e.getEntityPlayer().world.isRemote) spawn(e.getEntityPlayer());
+            if (!e.getEntityPlayer().world.isRemote) spawn(e.getEntityPlayer(), ToolHelper.getActualDamage(stack, e.getEntityPlayer()));
     		e.getEntityPlayer().playSound(SoundHandler.BLOODY_SLASH, 1, 1);
     		e.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
         }
@@ -49,7 +49,7 @@ public class BloodyArc extends AbstractTrait {
         }
         if(isToolWithTrait(stack)) {
         	e.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 15);
-            if (!e.getEntityPlayer().world.isRemote) spawn(e.getEntityPlayer());
+            if (!e.getEntityPlayer().world.isRemote) spawn(e.getEntityPlayer(), ToolHelper.getActualDamage(stack, e.getEntityPlayer()));
     		e.getEntityPlayer().playSound(SoundHandler.BLOODY_SLASH, 1, 1);
     		e.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
         }
@@ -66,14 +66,14 @@ public class BloodyArc extends AbstractTrait {
         
         if(isToolWithTrait(stack)) {
         	e.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 15);
-            if (!e.getEntityPlayer().world.isRemote) spawn(e.getEntityPlayer());
+            if (!e.getEntityPlayer().world.isRemote) spawn(e.getEntityPlayer(), ToolHelper.getActualDamage(stack, e.getEntityPlayer()));
     		e.getEntityPlayer().playSound(SoundHandler.BLOODY_SLASH, 1, 1);
     		e.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
         }
 	}
     
-	public static void spawn(EntityPlayer playerIn) {
-		EntityDecayingEffect e = new EntityDecayingEffect(playerIn.getEntityWorld(), EnumDecayingEffectType.BLOODY_ARC, 5,
+	public static void spawn(EntityPlayer playerIn, double damage) {
+		EntityDecayingEffect e = new EntityDecayingEffect(playerIn.getEntityWorld(), EnumDecayingEffectType.BLOODY_ARC, damage * 0.75,
 				1.5, playerIn.getUniqueID(), playerIn.rotationPitch, playerIn.rotationYaw, true);
 		e.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
 		playerIn.getEntityWorld().spawnEntity(e);
