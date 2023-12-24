@@ -10,7 +10,7 @@ public class Oxide extends DurabilityShieldTrait {
 
 	public Oxide() {
 		super(MiscUtils.createNonConflictiveName("oxide"), 0);
-		this.showNumberRemaining = false;
+		this.showDisplay = false;
 	}
 
 	@Override

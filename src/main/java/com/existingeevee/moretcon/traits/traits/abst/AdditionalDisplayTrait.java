@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 
-	protected boolean showNumberRemaining = true;
+	protected boolean showDisplay = true;
 	
 	public AdditionalDisplayTrait(String identifier, int color) {
 		this(identifier, color, 1, 1);
@@ -27,7 +27,7 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 
 	@Override
 	public String getTooltip(NBTTagCompound modifierTag, boolean detailed) {
-		if (!showNumberRemaining) 
+		if (!showDisplay) 
 			return super.getTooltip(modifierTag, detailed);
 		
 		StringBuilder sb = new StringBuilder();
@@ -48,7 +48,7 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onItemTooltipEvent(ItemTooltipEvent event) {
-		if (!showNumberRemaining) 
+		if (!showDisplay) 
 			return;
 		ItemStack tool = event.getItemStack();
 		if (!this.isToolWithTrait(tool))

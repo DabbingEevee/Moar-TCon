@@ -6,8 +6,6 @@ import net.minecraftforge.common.util.Constants.NBT;
 
 public abstract class NumberTrackerTrait extends AdditionalDisplayTrait {
 
-	protected boolean showNumberRemaining = true;
-
 	public NumberTrackerTrait(String identifier, int color, int lvlmax, int lvl) {
 		super(identifier, color, lvlmax, lvl);
 	}
