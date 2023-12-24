@@ -16,7 +16,6 @@ public class Tarred extends ModifierTrait  {
 	public Tarred() {
 		super(MiscUtils.createNonConflictiveName("modtarred"), 0x333333);
 		this.addItem("dripTar", 5, 1);
-		
 		this.addAspects(new ModifierAspect.SingleAspect(this));
 	}
 
