@@ -260,19 +260,19 @@ public class EntityDecayingEffect extends EntityLiving {
 		BLOODY_ARC(new ResourceLocation(ModInfo.MODID, "textures/other/decaying_effect/bloody_arcs/bloody_arc"), 7, 1),
 		FIERY_SLASH(null, 7, 1); //TODO
 
-		private final int tpf;
+		private final int ticksPerFrame;
 		private final ResourceLocation resource;
 		private final int maxFrame;
 
-		EnumDecayingEffectType(ResourceLocation resource, int maxFrame, int tpf) {
-			this.tpf = tpf;
+		EnumDecayingEffectType(ResourceLocation resource, int maxFrame, int ticksPerFrame) {
+			this.ticksPerFrame = ticksPerFrame;
 			this.resource = resource;
 			this.maxFrame = maxFrame;
 
 		}
 
-		public int ticksPerFrame() {
-			return tpf;
+		public int getTicksPerFrame() {
+			return ticksPerFrame;
 		}
 
 		public ResourceLocation getResource() {
