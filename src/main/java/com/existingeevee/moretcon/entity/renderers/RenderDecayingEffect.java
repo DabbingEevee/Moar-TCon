@@ -26,7 +26,6 @@ public class RenderDecayingEffect extends RenderLiving<EntityDecayingEffect> {
 		if (resource == null) {
 			resource = EnumDecayingEffectType.DEFAULT.getResource();
 		}
-		return new ResourceLocation(type.getResource().getResourceDomain(),
-				type.getResource().getResourcePath() + "_" + entity.getFrame() + ".png");
+		return new ResourceLocation(type.getResource().getResourceDomain(), type.getResource().getResourcePath() + "_" + entity.getFrame() + ".png");
 	}
 }

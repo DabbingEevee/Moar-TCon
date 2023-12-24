@@ -74,11 +74,11 @@ public class BloodyArc extends AbstractTrait {
     
 	public static void spawn(EntityPlayer playerIn, double damage) {
 		EntityDecayingEffect e = new EntityDecayingEffect(playerIn.getEntityWorld(), EnumDecayingEffectType.BLOODY_ARC, damage * 0.75, 1.5, playerIn.getUniqueID(), playerIn.rotationPitch, playerIn.rotationYaw, true);
+		e.setYTranslation(0.5f);
 		e.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
 		playerIn.getEntityWorld().spawnEntity(e);
 		e.getAffectedEntities().stream().filter(entity -> entity instanceof EntityLivingBase)
 				.map(entity -> (EntityLivingBase) entity)
 				.forEach(entity -> entity.addPotionEffect(new PotionEffect(ModPotions.bleeding, 100, 0, false, false)));
-		
 	}
 }

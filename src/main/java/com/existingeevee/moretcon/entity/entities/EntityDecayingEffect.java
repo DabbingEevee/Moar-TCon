@@ -9,6 +9,7 @@ import com.existingeevee.moretcon.ModInfo;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -20,34 +21,33 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityDecayingEffect extends EntityLiving {
 
-	private static final DataParameter<Boolean> REVERSED = EntityDataManager
-			.<Boolean>createKey(EntityDecayingEffect.class, DataSerializers.BOOLEAN);
-
-	private static final DataParameter<String> TYPE = EntityDataManager.<String>createKey(EntityDecayingEffect.class,
-			DataSerializers.STRING);
+	private static final DataParameter<Boolean> REVERSED = EntityDataManager.<Boolean>createKey(EntityDecayingEffect.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<String> TYPE = EntityDataManager.<String>createKey(EntityDecayingEffect.class, DataSerializers.STRING);
+	private static final DataParameter<Float> Y_TRANSLATION = EntityDataManager.<Float>createKey(EntityDecayingEffect.class, DataSerializers.FLOAT);
 
 	private double damage, radius;
-	// private EnumDecayingEffectType type;
 	private int ticker, frame;
 	private UUID attacker;
 	private boolean hasSliced;
-
+	
 	public EntityDecayingEffect(World worldIn) {
 		this(worldIn, EnumDecayingEffectType.DEFAULT, 4, 1.5, UUID.nameUUIDFromBytes("dummy".getBytes()));
 	}
 
-	public EntityDecayingEffect(World worldIn, EnumDecayingEffectType type, double damage, double radius,
-			UUID attacker) {
+	public EntityDecayingEffect(World worldIn, EnumDecayingEffectType type, double damage, double radius, UUID attacker) {
 		this(worldIn, type, damage, radius, attacker, 0, 0, false);
 	}
 
-	public EntityDecayingEffect(World worldIn, EnumDecayingEffectType type, double damage, double radius, UUID attacker,
-			float anglePitch, float angleYaw, boolean randomizeDirection) {
+	public EntityDecayingEffect(World worldIn, EnumDecayingEffectType type, double damage, double radius, UUID attacker, float anglePitch, float angleYaw, boolean randomizeDirection) {
 		super(worldIn);
 		this.damage = damage;
 		this.radius = radius;
@@ -62,7 +62,7 @@ public class EntityDecayingEffect extends EntityLiving {
 		this.setSize((float) radius * 2, 0.6F);
 		this.setNoAI(true);
 	}
-
+	
 	@Override
 	public boolean isMovementBlocked() {
 		return true;
@@ -117,30 +117,31 @@ public class EntityDecayingEffect extends EntityLiving {
 
 	public EnumDecayingEffectType getType() {
 		EnumDecayingEffectType type = EnumDecayingEffectType.valueOf(this.dataManager.get(TYPE));
-		if (type == null) 
+		if (type == null)
 			type = EnumDecayingEffectType.DEFAULT;
 		return type;
 	}
 
-	public void setType(EnumDecayingEffectType type) {
+	public EntityDecayingEffect setType(EnumDecayingEffectType type) {
 		if (type == null)
 			type = EnumDecayingEffectType.DEFAULT;
 		this.dataManager.set(TYPE, type.name());
+		return this;
 	}
-//		Logging.log(type.toString());
 
 	public UUID getAttacker() {
 		return attacker;
 	}
 
-	public void setAttacker(UUID attacker) {
+	public EntityDecayingEffect setAttacker(UUID attacker) {
 		this.attacker = attacker;
+		return this;
 	}
 
 	public List<Entity> getAffectedEntities() {
 		return this.world.getEntitiesInAABBexcluding(this,
 				this.getEntityBoundingBox().expand(0.5, 0, 0.5).expand(-0.5, 1.25, -0.5),
-				e -> !e.getUniqueID().toString().equals(this.attacker.toString()));
+				e -> !e.getUniqueID().equals(this.attacker) && e instanceof EntityLivingBase);
 	}
 
 	@Override
@@ -151,12 +152,14 @@ public class EntityDecayingEffect extends EntityLiving {
 	@Override
 	public void onUpdate() {
 		if (!hasSliced) {
-			EntityPlayer attackerEntity = this.world.getPlayerEntityByUUID(attacker);
-			for (Entity e : getAffectedEntities()) {
-				if (attackerEntity != null) {
-					e.attackEntityFrom(DamageSource.causePlayerDamage(attackerEntity), (float) damage);
-				} else {
-					e.attackEntityFrom(DamageSource.GENERIC, (float) damage);
+			if (damage > 0) {
+				EntityPlayer attackerEntity = this.world.getPlayerEntityByUUID(attacker);
+				for (Entity e : getAffectedEntities()) {
+					if (attackerEntity != null) {
+						e.attackEntityFrom(DamageSource.causePlayerDamage(attackerEntity), (float) damage);
+					} else {
+						e.attackEntityFrom(DamageSource.GENERIC, (float) damage);
+					}
 				}
 			}
 			this.hasSliced = true;
@@ -176,7 +179,6 @@ public class EntityDecayingEffect extends EntityLiving {
 			this.frame++;
 		}
 		this.ticker++;
-		// super.onUpdate();
 	}
 
 	@Override
@@ -189,6 +191,7 @@ public class EntityDecayingEffect extends EntityLiving {
 		this.frame = 0;
 		this.dataManager.register(REVERSED, Boolean.valueOf(false));
 		this.dataManager.register(TYPE, EnumDecayingEffectType.DEFAULT.name());
+		this.dataManager.register(Y_TRANSLATION, 0f);
 		this.hasSliced = false;
 		this.setNoAI(true);
 		this.setSize((float) radius * 2, 0.6F);
@@ -207,6 +210,7 @@ public class EntityDecayingEffect extends EntityLiving {
 			this.setType(EnumDecayingEffectType.valueOf(data.getString("type")));
 			this.attacker = data.getUniqueId("attacker");
 			this.hasSliced = data.getBoolean("has_sliced");
+			this.setYTranslation(data.getFloat("y_translation"));
 			this.setSize((float) radius * 2, 0.6F);
 			this.setNoAI(true);
 		}
@@ -221,10 +225,33 @@ public class EntityDecayingEffect extends EntityLiving {
 		data.setInteger("ticker", ticker);
 		data.setInteger("frame", frame);
 		data.setBoolean("reverse", this.isReversed());
+		data.setFloat("y_translation", this.getYTranslation());
 		data.setUniqueId("attacker", attacker);
 		data.setBoolean("has_sliced", hasSliced);
 		data.setString("type", getType() == null ? EnumDecayingEffectType.DEFAULT.name() : getType().name());
 		compound.setTag("DecayingEffectData", data);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public int getBrightnessForRender() {
+		BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos(MathHelper.floor(this.posX), 0, MathHelper.floor(this.posZ));
+		if (!this.world.isBlockLoaded(blockpos$mutableblockpos)) {
+			return 0;
+		} else {
+			float f = 1;
+			f = MathHelper.clamp(f, 0.0F, 1.0F);
+			int i = this.world.getCombinedLight(this.getPosition(), 0);
+			int j = i & 255;
+			int k = i >> 16 & 255;
+			j = j + (int) (f * 15.0F * 16.0F);
+
+			if (j > 240) {
+				j = 240;
+			}
+
+			return j | k << 16;
+		}
 	}
 
 	public double getDamage() {
@@ -239,26 +266,19 @@ public class EntityDecayingEffect extends EntityLiving {
 		return ticker;
 	}
 
-	// public float getAngleYaw() {
-	// return angleYaw;
-	// }
-
-	// public float getAnglePitch() {
-	// return anglePitch;
-	// }
-
 	public boolean isReversed() {
-		return ((Boolean) this.dataManager.get(REVERSED)).booleanValue();
+		return this.dataManager.get(REVERSED);
 	}
 
 	public void setReversed(boolean isReversed) {
-		this.dataManager.set(REVERSED, Boolean.valueOf(isReversed));
+		this.dataManager.set(REVERSED, isReversed);
 	}
 
 	public static enum EnumDecayingEffectType {
 		DEFAULT(new ResourceLocation(ModInfo.MODID, "textures/other/decaying_effect/defaults/default"), 7, 1),
 		BLOODY_ARC(new ResourceLocation(ModInfo.MODID, "textures/other/decaying_effect/bloody_arcs/bloody_arc"), 7, 1),
-		FIERY_SLASH(null, 7, 1); //TODO
+		SHOCKWAVE(new ResourceLocation(ModInfo.MODID, "textures/other/decaying_effect/shockwave/shockwave"), 7, 1),
+		FIERY_SLASH(new ResourceLocation(ModInfo.MODID, "textures/other/decaying_effect/fiery_slash/fiery_slash"), 7, 1); //TODO
 
 		private final int ticksPerFrame;
 		private final ResourceLocation resource;
@@ -302,5 +322,14 @@ public class EntityDecayingEffect extends EntityLiving {
 	@Override
 	public EnumHandSide getPrimaryHand() {
 		return EnumHandSide.RIGHT;
+	}
+
+	public float getYTranslation() {
+		return this.dataManager.get(Y_TRANSLATION);
+	}
+
+	public EntityDecayingEffect setYTranslation(float yTranslation) {
+		this.dataManager.set(Y_TRANSLATION, yTranslation);
+		return this;
 	}
 }

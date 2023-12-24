@@ -2,6 +2,8 @@ package com.existingeevee.moretcon.item;
 
 import java.util.List;
 
+import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect;
+import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect.EnumDecayingEffectType;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.ModTabs;
 
@@ -41,6 +43,10 @@ public class ItemDebugTool extends ItemBase {
 				playerIn.sendMessage(new TextComponentString(playerIn.getHeldItem(handIn.equals(EnumHand.MAIN_HAND) ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND).serializeNBT().toString()));
 			}
 
+		} else {
+			EntityDecayingEffect en = new EntityDecayingEffect(playerIn.getEntityWorld(), EnumDecayingEffectType.SHOCKWAVE, 10 * 0.75, 1.5, playerIn.getUniqueID());
+			en.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
+			playerIn.getEntityWorld().spawnEntity(en);
 		}
 		
 		playerIn.getCooldownTracker().setCooldown(this, 5);
