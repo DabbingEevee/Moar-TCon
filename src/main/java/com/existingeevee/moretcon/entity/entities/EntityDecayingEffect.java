@@ -258,7 +258,7 @@ public class EntityDecayingEffect extends EntityLiving {
 	public static enum EnumDecayingEffectType {
 		DEFAULT(new ResourceLocation(ModInfo.MODID, "textures/other/decaying_effect/defaults/default"), 7, 1),
 		BLOODY_ARC(new ResourceLocation(ModInfo.MODID, "textures/other/decaying_effect/bloody_arcs/bloody_arc"), 7, 1),
-		FIERY_SLASH(null, 7, 1);
+		FIERY_SLASH(null, 7, 1); //TODO
 
 		private final int tpf;
 		private final ResourceLocation resource;
