@@ -108,7 +108,7 @@ public class EntityDecayingEffect extends EntityLiving {
 		EnumDecayingEffectType type = this.getType();
 		if (type == null)
 			type = EnumDecayingEffectType.DEFAULT;
-		return type.ticksPerFrame();
+		return type.getTicksPerFrame();
 	}
 
 	public double getRadius() {
