@@ -171,7 +171,6 @@ material.moretcon.runesteel.name=Runesteel
 material.moretcon.skyroot.name=Skyroot
 material.moretcon.slimybone.name=Slimy Bone
 material.moretcon.solarsteel.name=Solsteel
-material.moretcon.spacetimedisruption.name=Disruption
 material.moretcon.swampsteel.name=Swampsteel
 material.moretcon.syrmorite.name=Syrmorite
 material.moretcon.trichromadentium.name=Trichromadentium
@@ -315,6 +314,8 @@ modifier.moretcon.haunted.name=Haunted
 modifier.moretcon.haunted.desc=§oSpooky scary skeletons...§r\nYour tool can ignite your targets in an otherworldly fire that bypasses invulnerability frames.
 modifier.moretcon.soulforged.name=Soulforged
 modifier.moretcon.soulforged.desc=§ohippity hoppity your soul is now my property§r\nYour tool can boost its own effectiveness using the souls of its slain enemies.
+modifier.moretcon.blinkdrawn.name=Blinkdrawn
+modifier.moretcon.blinkdrawn.desc=§oQuickdraw!!§r\nYour tool can be loaded instantly with no delay, however will consume more durability per shot as well as dealing significantly less damage.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
@@ -425,6 +426,7 @@ uniquetoolpart.moretcon.trailblazer.name=Trailblazer
 uniquetoolpart.moretcon.triblade.name=Triblade
 uniquetoolpart.moretcon.essencore.name=Essencore
 uniquetoolpart.moretcon.wormed.name=Wormed
+uniquetoolpart.moretcon.spacetimedisruption.name=Space-Time Disruption
 
 comment Sponges=comment
 

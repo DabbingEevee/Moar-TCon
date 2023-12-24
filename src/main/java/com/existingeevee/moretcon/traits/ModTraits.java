@@ -58,6 +58,7 @@ import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
+import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
 import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
 import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
 import com.existingeevee.moretcon.traits.traits.unique.EssentialObliteration;
@@ -90,6 +91,7 @@ public class ModTraits {
 	public static TripleShot tripleshot = new TripleShot();
 	public static BloodyArc bloodyArc = new BloodyArc();
 	public static AerialFlame aerialFlames = new AerialFlame();
+	public static Blinkdrawn blinkdrawn = new Blinkdrawn();
 
 	public static KineticBattery kineticBattery = new KineticBattery();
 	public static Hyperheat hyperheat = new Hyperheat();

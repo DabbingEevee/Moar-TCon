@@ -48,7 +48,6 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialReedRope = new Material(MiscUtils.createNonConflictiveName("reedrope"), 0x000b4e0b);
 	public static final Material materialAnglerTooth = new Material(MiscUtils.createNonConflictiveName("anglertooth"), 0x00cfcf99);
 	public static final Material materialDragonFlyWing = new Material(MiscUtils.createNonConflictiveName("dragonflywing"), 0x00bed6db);
-	public static final Material materialSpaceTimeDisruption = new Material(MiscUtils.createNonConflictiveName("spacetimedisruption"), 0x400080);
 	public static final Material materialIrradium = new Material(MiscUtils.createNonConflictiveName("irradium"), 0x00ed00);
 	public static final Material materialSolsteel = new Material(MiscUtils.createNonConflictiveName("solarsteel"), 0xffad33);
 	public static final Material materialPenguinite = new Material(MiscUtils.createNonConflictiveName("penguinite"), 0xe6e6ffff);
@@ -135,6 +134,11 @@ public class ModMaterials implements MaterialTypes {
 			"tconstruct:arrow",
 			() -> new ItemStack(BlockRegistry.WEEDWOOD_WORKBENCH), "crafting_table");
 	
+	public static final UniqueMaterial materialSpaceTimeDisruption = new UniqueMaterial(
+			MiscUtils.createNonConflictiveName("spacetimedisruption"), 0x400080, "tconstruct:bow_limb", 
+			"tconstruct:crossbow");
+
+	
 	static {
 	    BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
 
@@ -214,7 +218,7 @@ public class ModMaterials implements MaterialTypes {
 			materialFusionite.addStats(new ExtraMaterialStats(20));
 			materialFusionite.addStats(new ArrowShaftMaterialStats(3.0f, 20));
 			materialFusionite.addStats(new ProjectileMaterialStats());
-			materialFusionite.addStats(new BowMaterialStats(1.5f, 1.0f, 7f));
+			materialFusionite.addStats(new BowMaterialStats(0.6f, 1.0f, 3f));
 			if (CompatManager.plustic) {
 				materialFusionite.addStats(new LaserMediumMaterialStats(10, 20));
 				materialFusionite.addStats(new BatteryCellMaterialStats(100000));
@@ -239,7 +243,7 @@ public class ModMaterials implements MaterialTypes {
 			materialValasium.addStats(new HandleMaterialStats(4f, 60));
 			materialValasium.addStats(new ExtraMaterialStats(500));
 			materialValasium.addStats(new ArrowShaftMaterialStats(3f, 75));
-			materialValasium.addStats(new BowMaterialStats(1.75f, 1.7f, 15f));
+			materialValasium.addStats(new BowMaterialStats(0.7f, 1.7f, 12f));
 
 			materialIrradium.addItem("oreIrradium", 1, Material.VALUE_Ore());
 			materialIrradium.setFluid(ModFluids.liquidIrradium);
@@ -262,7 +266,7 @@ public class ModMaterials implements MaterialTypes {
 			materialIrradium.addStats(new ExtraMaterialStats(40));
 			materialIrradium.addStats(new ArrowShaftMaterialStats(3f, 20));
 			materialIrradium.addStats(new ProjectileMaterialStats());
-			materialIrradium.addStats(new BowMaterialStats(1.25f, 1.25f, 3f));
+			materialIrradium.addStats(new BowMaterialStats(0.7f, 1.25f, 3f));
 
 			materialSolsteel.setFluid(ModFluids.liquidSolsteel);
 			materialSolsteel.addCommonItems("Solarsteel");
@@ -283,7 +287,7 @@ public class ModMaterials implements MaterialTypes {
 			materialSolsteel.addStats(new HandleMaterialStats(4f, 600));
 			materialSolsteel.addStats(new ExtraMaterialStats(600));
 			materialSolsteel.addStats(new ArrowShaftMaterialStats(3f, 50));
-			materialSolsteel.addStats(new BowMaterialStats(1.25f, 5.0f, 20f));
+			materialSolsteel.addStats(new BowMaterialStats(0.8f, 5.0f, 15f));
 
 			materialTrichromadentium.addItem("oreTrichromadentium", 1, Material.VALUE_Ore());
 			materialTrichromadentium.addCommonItems("Trichromadentium");
@@ -303,7 +307,7 @@ public class ModMaterials implements MaterialTypes {
 			materialTrichromadentium.addStats(new HandleMaterialStats(4f, 60));
 			materialTrichromadentium.addStats(new ExtraMaterialStats(500));
 			materialTrichromadentium.addStats(new ArrowShaftMaterialStats(3f, 75));
-			materialTrichromadentium.addStats(new BowMaterialStats(1.2f, 2.0f, 17f));
+			materialTrichromadentium.addStats(new BowMaterialStats(0.6f, 2.0f, 14f));
 
 			materialAtronium.addItem("oreAtronium", 1, Material.VALUE_Ore());
 			materialAtronium.addCommonItems("Atronium");
@@ -322,7 +326,7 @@ public class ModMaterials implements MaterialTypes {
 			materialAtronium.addStats(new HandleMaterialStats(3f, 180));
 			materialAtronium.addStats(new ExtraMaterialStats(750));
 			materialAtronium.addStats(new ArrowShaftMaterialStats(2f, 120));
-			materialAtronium.addStats(new BowMaterialStats(1f, 1.25f, 16f));
+			materialAtronium.addStats(new BowMaterialStats(0.6f, 1.25f, 12f));
 
 			materialEbonite.addItem("oreEbonite", 1, Material.VALUE_Ore());
 			materialEbonite.setFluid(ModFluids.liquidEbonite);
@@ -342,31 +346,17 @@ public class ModMaterials implements MaterialTypes {
 			materialEbonite.addStats(new ExtraMaterialStats(25));
 			materialEbonite.addStats(new ArrowShaftMaterialStats(1.5f, 20));
 			materialEbonite.addStats(new ProjectileMaterialStats());
-			materialEbonite.addStats(new BowMaterialStats(1f, 1.25f, 7f));
+			materialEbonite.addStats(new BowMaterialStats(0.8f, 1.25f, 4f));
 			if (CompatManager.plustic) {
 				materialEbonite.addStats(new LaserMediumMaterialStats(12, 20));
 				materialEbonite.addStats(new BatteryCellMaterialStats(120000));
 			}
 
-			//TODO rework into metal/gem TBD
-			materialSpaceTimeDisruption.addItem(ModItems.spaceTimeDisruptionPowder, 1, Material.VALUE_Fragment);
-			materialSpaceTimeDisruption.setCastable(false);
-			materialSpaceTimeDisruption.setCraftable(true);
-			materialSpaceTimeDisruption.setRepresentativeItem(ModItems.spaceTimeDisruptionPowder);
-			materialSpaceTimeDisruption.addTrait(TinkerTraits.lightweight);
 			materialSpaceTimeDisruption.addTrait(TinkerTraits.dense);
 			materialSpaceTimeDisruption.addTrait(ModTraits.luminescent);
-			if (CompatManager.plustic) {
-				materialSpaceTimeDisruption.addStats(new LaserMediumMaterialStats(13, 25));
-				materialSpaceTimeDisruption.addStats(new BatteryCellMaterialStats(520000));
-			}
-			materialSpaceTimeDisruption.addStats(new HeadMaterialStats(5, 10f, 8f, 6));
-			materialSpaceTimeDisruption.addStats(new HandleMaterialStats(3f, 2));
-			materialSpaceTimeDisruption.addStats(new ExtraMaterialStats(4));
-			materialSpaceTimeDisruption.addStats(new BowMaterialStats(Float.POSITIVE_INFINITY, 3f, 8f)); //well see....
-			materialSpaceTimeDisruption.addStats(new BowStringMaterialStats(3f));
-			materialSpaceTimeDisruption.addStats(new ArrowShaftMaterialStats(3f, 64));
-			materialSpaceTimeDisruption.addStats(new ProjectileMaterialStats());
+			materialSpaceTimeDisruption.addTrait(ModTraits.blinkdrawn);
+			materialSpaceTimeDisruption.addStats(new BowMaterialStats(Float.POSITIVE_INFINITY, 3f, 3f)); // big
+			materialSpaceTimeDisruption.addStats(new HeadMaterialStats(500, 10f, 8f, 6));
 
 			materialVoidSpar.addItem("gemVoidSpar", 1, Material.VALUE_Ingot);
 			materialVoidSpar.addItem("blockVoidSpar", 1, Material.VALUE_Block);
@@ -475,7 +465,7 @@ public class ModMaterials implements MaterialTypes {
 			materialGravitonium.addStats(new ExtraMaterialStats(300));
 			materialGravitonium.addStats(new ArrowShaftMaterialStats(3f, 50));
 			materialGravitonium.addStats(new ProjectileMaterialStats());
-			materialGravitonium.addStats(new BowMaterialStats(1.3f, 0.9f, 12f));
+			materialGravitonium.addStats(new BowMaterialStats(0.5f, 1.5f, 4f));
 
 			materialGallium.addCommonItems("Gallium");
 			materialGallium.setFluid(ModFluids.liquidGallium);
@@ -504,7 +494,7 @@ public class ModMaterials implements MaterialTypes {
 			materialRuneSteel.addStats(new ExtraMaterialStats(60));
 			materialRuneSteel.addStats(new ArrowShaftMaterialStats(3f, 20));
 			materialRuneSteel.addStats(new ProjectileMaterialStats());
-			materialRuneSteel.addStats(new BowMaterialStats(0.75f, 2.5f, 12f));
+			materialRuneSteel.addStats(new BowMaterialStats(0.75f, 2.5f, 6f));
 
 			materialEnderal.addItem("gemEnderal", 1, Material.VALUE_Ingot);
 			materialEnderal.addItem("blockEnderal", 1, Material.VALUE_Block);
@@ -538,7 +528,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEnderexamite.addStats(new ExtraMaterialStats(12));
 			materialEnderexamite.addStats(new ArrowShaftMaterialStats(1f, 15));
 			materialEnderexamite.addStats(new ProjectileMaterialStats());
-			materialEnderexamite.addStats(new BowMaterialStats(0.75f, 2.5f, 12f));
+			materialEnderexamite.addStats(new BowMaterialStats(0.75f, 2.5f, 4f));
 			CompositeRegistry.registerComposite(() -> materialEnderal, () -> materialEnderexamite, () -> TinkerFluids.knightslime);
 
 			materialShadowglass.setCastable(false);
@@ -552,7 +542,7 @@ public class ModMaterials implements MaterialTypes {
 			materialShadowglass.addStats(new ExtraMaterialStats(15));
 			materialShadowglass.addStats(new ArrowShaftMaterialStats(1.2f, 18));
 			materialShadowglass.addStats(new ProjectileMaterialStats());
-			materialShadowglass.addStats(new BowMaterialStats(2f, 0.9f, 10f));
+			materialShadowglass.addStats(new BowMaterialStats(2f, 0.9f, 6f));
 			CompositeRegistry.registerComposite(() -> materialErythynite, () -> materialShadowglass, () -> ModFluids.liquidEbonite);
 
 			materialPlasma.addStats(new HeadMaterialStats(4096, 6f, 12f, 5));
@@ -645,7 +635,7 @@ public class ModMaterials implements MaterialTypes {
 			materialHallowsite.addStats(new ExtraMaterialStats(70));
 			materialHallowsite.addStats(new ArrowShaftMaterialStats(1.2f, 10));
 			materialHallowsite.addStats(new ProjectileMaterialStats());
-			materialHallowsite.addStats(new BowMaterialStats(1.1f, 1.4f, 8f));
+			materialHallowsite.addStats(new BowMaterialStats(0.8f, 1.4f, 1f));
 
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
@@ -692,7 +682,7 @@ public class ModMaterials implements MaterialTypes {
 			materialAmberwood.addStats(new HeadMaterialStats(170, 4f, 4f, 2));
 			materialAmberwood.addStats(new HandleMaterialStats(1.2f, 125));
 			materialAmberwood.addStats(new ExtraMaterialStats(75));
-			materialAmberwood.addStats(new BowMaterialStats(0.7f, 1.6f, 4f));
+			materialAmberwood.addStats(new BowMaterialStats(0.7f, 1.6f, 3f));
 			materialAmberwood.addStats(new ArrowShaftMaterialStats(1.2f, 32));
 			CompositeRegistry.registerComposite(() -> materialSkyroot, () -> materialAmberwood, () -> ModFluids.liquidGoldenAmber);
 
@@ -711,7 +701,7 @@ public class ModMaterials implements MaterialTypes {
 			materialArkenium.addStats(new ExtraMaterialStats(125));
 			materialArkenium.addStats(new ArrowShaftMaterialStats(3.5f, 25));
 			materialArkenium.addStats(new ProjectileMaterialStats());
-			materialArkenium.addStats(new BowMaterialStats(0.5f, 2.75f, 5f));
+			materialArkenium.addStats(new BowMaterialStats(0.5f, 2.75f, 3f));
 
 			materialValkyrieMetal.addCommonItems("ValkyrieMetal");
 			materialValkyrieMetal.setFluid(ModFluids.liquidValkyrieMetal);
@@ -726,7 +716,7 @@ public class ModMaterials implements MaterialTypes {
 			materialValkyrieMetal.addStats(new ExtraMaterialStats(125));
 			materialValkyrieMetal.addStats(new ArrowShaftMaterialStats(3.5f, 25));
 			materialValkyrieMetal.addStats(new ProjectileMaterialStats());
-			materialValkyrieMetal.addStats(new BowMaterialStats(0.5f, 2.75f, 5f));
+			materialValkyrieMetal.addStats(new BowMaterialStats(0.5f, 2.75f, 3f));
 
 			materialHolystone.addItem("holystone", 1, Material.VALUE_Ingot);
 			materialHolystone.setCastable(false);
@@ -772,7 +762,7 @@ public class ModMaterials implements MaterialTypes {
 			materialIronwood.addStats(new ExtraMaterialStats(25));
 			materialIronwood.addStats(new ArrowShaftMaterialStats(1f, 1));
 			materialIronwood.addStats(new ProjectileMaterialStats());
-			materialIronwood.addStats(new BowMaterialStats(1f, 2.75f, 7f));
+			materialIronwood.addStats(new BowMaterialStats(0.75f, 2.75f, 3f));
 
 			materialFerroherb.setCastable(false);
 			materialFerroherb.setCraftable(false);
@@ -789,7 +779,7 @@ public class ModMaterials implements MaterialTypes {
 			materialFerroherb.addStats(new ArrowShaftMaterialStats(1f, 25));
 			materialFerroherb.addStats(new ProjectileMaterialStats());
 			CompositeRegistry.registerComposite(() -> TConstruct.steeleaf, () -> materialFerroherb, () -> ModFluids.liquidIronwood);
-			materialIronwood.addStats(new BowMaterialStats(1.2f, 2.75f, 8f));
+			materialIronwood.addStats(new BowMaterialStats(0.7f, 2.75f, 4f));
 
 			materialPenguinite.addCommonItems("Penguinite");
 			materialPenguinite.setCastable(true);
@@ -804,7 +794,7 @@ public class ModMaterials implements MaterialTypes {
 			materialPenguinite.addStats(new ExtraMaterialStats(25));
 			materialPenguinite.addStats(new ArrowShaftMaterialStats(1f, 1));
 			materialPenguinite.addStats(new ProjectileMaterialStats());
-			materialIronwood.addStats(new BowMaterialStats(0.7f, 1f, 6f));
+			materialPenguinite.addStats(new BowMaterialStats(0.7f, 1f, 2f));
 		}
 
 		if (CompatManager.thebetweenlands) { //TODO Ancient ingots
