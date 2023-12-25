@@ -45,11 +45,10 @@ public abstract class MixinForgeHooks {
 	private static void moretcon$HEAD_Inject$blockStrength(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world, @Nonnull BlockPos pos, CallbackInfoReturnable<Float> ci) {
 		if (ModTraits.bottomsEnd.getToolCoreClass().isInstance(player.getHeldItemMainhand().getItem())) {
 			float hardness = state.getBlockHardness(world, pos);
-			boolean isBedrock = state.getBlock() == Blocks.BEDROCK;
+			boolean isBedrock = state.getBlock() == Blocks.BEDROCK || state.getBlock().getRegistryName().toString().equals("thebetweenlands:betweenlands_bedrock");
 			boolean hasTrait = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand());
-			boolean canHarvest = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand());
 
-			if (isBedrock && hasTrait && canHarvest) {
+			if (isBedrock && hasTrait) {
 				hardness = 50;
 				ci.setReturnValue(player.getDigSpeed(state, pos) / hardness / 30F);
 			}

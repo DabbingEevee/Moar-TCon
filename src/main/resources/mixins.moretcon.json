@@ -4,9 +4,9 @@
   "refmap": "refmap.moretcon.json",
   "mixins": [
   	"early.common.MixinLoadController",
-  	"early.common.MixinForgeHooks",
    	"early.common.MixinItemStack",
-   	"early.common.MixinEntity"
+   	"early.common.MixinEntity",
+  	"early.common.MixinForgeHooks"
   ],
   "client": [
     "early.client.MixinRenderItem",

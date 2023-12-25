@@ -46,5 +46,4 @@ public class BloodGodsBlessing extends AbstractTrait implements IAdditionalTrait
 		
 		return list;
 	}
-
 }
