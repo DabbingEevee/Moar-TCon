@@ -138,7 +138,10 @@ public class ModMaterials implements MaterialTypes {
 			MiscUtils.createNonConflictiveName("spacetimedisruption"), 0x400080, "tconstruct:bow_limb", 
 			"tconstruct:crossbow");
 
-	
+	public static final UniqueMaterial materialQuakestruck = new UniqueMaterial(
+			MiscUtils.createNonConflictiveName("quakestruck"), 0x2683bd, "tconstruct:large_plate", 
+			"tconstruct:hammer");
+
 	static {
 	    BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
 
@@ -637,6 +640,9 @@ public class ModMaterials implements MaterialTypes {
 			materialHallowsite.addStats(new ProjectileMaterialStats());
 			materialHallowsite.addStats(new BowMaterialStats(0.8f, 1.4f, 1f));
 
+			materialQuakestruck.addTrait(ModTraits.seismishock);
+			materialQuakestruck.addStats(new HeadMaterialStats(1800, 20f, 18f, 8));
+
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -985,6 +991,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialEssencore);
 			ModMaterials.registerMaterial(materialElectarite).toolforge();
 			ModMaterials.registerMaterial(materialHallowsite).toolforge();
+			ModMaterials.registerMaterial(materialQuakestruck);
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);

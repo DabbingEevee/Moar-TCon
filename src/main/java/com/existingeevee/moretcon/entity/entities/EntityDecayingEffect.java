@@ -33,24 +33,25 @@ public class EntityDecayingEffect extends EntityLiving {
 	private static final DataParameter<Boolean> REVERSED = EntityDataManager.<Boolean>createKey(EntityDecayingEffect.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<String> TYPE = EntityDataManager.<String>createKey(EntityDecayingEffect.class, DataSerializers.STRING);
 	private static final DataParameter<Float> Y_TRANSLATION = EntityDataManager.<Float>createKey(EntityDecayingEffect.class, DataSerializers.FLOAT);
+	private static final DataParameter<Float> RADIUS = EntityDataManager.<Float>createKey(EntityDecayingEffect.class, DataSerializers.FLOAT);
 
-	private double damage, radius;
+	private double damage;
 	private int ticker, frame;
 	private UUID attacker;
 	private boolean hasSliced;
 	
 	public EntityDecayingEffect(World worldIn) {
-		this(worldIn, EnumDecayingEffectType.DEFAULT, 4, 1.5, UUID.nameUUIDFromBytes("dummy".getBytes()));
+		this(worldIn, EnumDecayingEffectType.DEFAULT, 4, 1.5f, UUID.nameUUIDFromBytes("dummy".getBytes()));
 	}
 
-	public EntityDecayingEffect(World worldIn, EnumDecayingEffectType type, double damage, double radius, UUID attacker) {
+	public EntityDecayingEffect(World worldIn, EnumDecayingEffectType type, double damage, float radius, UUID attacker) {
 		this(worldIn, type, damage, radius, attacker, 0, 0, false);
 	}
 
-	public EntityDecayingEffect(World worldIn, EnumDecayingEffectType type, double damage, double radius, UUID attacker, float anglePitch, float angleYaw, boolean randomizeDirection) {
+	public EntityDecayingEffect(World worldIn, EnumDecayingEffectType type, double damage, float radius, UUID attacker, float anglePitch, float angleYaw, boolean randomizeDirection) {
 		super(worldIn);
 		this.damage = damage;
-		this.radius = radius;
+		this.setRadius(radius);
 		this.attacker = attacker;
 		this.rotationYaw = angleYaw + (float) (randomizeDirection ? (Math.random() - 0.5d) * 90 : 0);
 		this.rotationPitch = anglePitch + (float) (randomizeDirection ? (Math.random() - 0.5d) * 27.5 : 0);
@@ -61,6 +62,15 @@ public class EntityDecayingEffect extends EntityLiving {
 		this.hasSliced = false;
 		this.setSize((float) radius * 2, 0.6F);
 		this.setNoAI(true);
+	}
+	
+	protected EntityDecayingEffect setRadius(float radius) {
+		this.dataManager.set(RADIUS, radius);
+		return this;
+	}
+	
+	public float getRadius() {
+		return this.dataManager.get(RADIUS);
 	}
 	
 	@Override
@@ -111,10 +121,6 @@ public class EntityDecayingEffect extends EntityLiving {
 		return type.getTicksPerFrame();
 	}
 
-	public double getRadius() {
-		return radius;
-	}
-
 	public EnumDecayingEffectType getType() {
 		EnumDecayingEffectType type = EnumDecayingEffectType.valueOf(this.dataManager.get(TYPE));
 		if (type == null)
@@ -140,7 +146,7 @@ public class EntityDecayingEffect extends EntityLiving {
 
 	public List<Entity> getAffectedEntities() {
 		return this.world.getEntitiesInAABBexcluding(this,
-				this.getEntityBoundingBox().expand(0.5, 0, 0.5).expand(-0.5, 1.25, -0.5),
+				this.getEntityBoundingBox(),//.expand(0.5, 0, 0.5).expand(-0.5, 1.25, -0.5)
 				e -> !e.getUniqueID().equals(this.attacker) && e instanceof EntityLivingBase);
 	}
 
@@ -153,10 +159,15 @@ public class EntityDecayingEffect extends EntityLiving {
 	public void onUpdate() {
 		if (!hasSliced) {
 			if (damage > 0) {
-				EntityPlayer attackerEntity = this.world.getPlayerEntityByUUID(attacker);
+				EntityLivingBase attackerEntity = this.world.getPlayerEntityByUUID(attacker);
+				if (attackerEntity == null) {
+					attackerEntity = this.world.getEntities(EntityLivingBase.class, e -> e.getUniqueID().equals(attacker)).stream().findAny().orElse(null);
+				}
 				for (Entity e : getAffectedEntities()) {
-					if (attackerEntity != null) {
-						e.attackEntityFrom(DamageSource.causePlayerDamage(attackerEntity), (float) damage);
+					if (attackerEntity instanceof EntityPlayer) {
+						e.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attackerEntity), (float) damage);
+					} else if (false) {
+						e.attackEntityFrom(DamageSource.causeMobDamage(attackerEntity), (float) damage);
 					} else {
 						e.attackEntityFrom(DamageSource.GENERIC, (float) damage);
 					}
@@ -169,6 +180,8 @@ public class EntityDecayingEffect extends EntityLiving {
 			this.onDeathUpdate();
 		}
 
+		this.setSize(this.getRadius() * 2, 0.6f);
+		
 		if (this.ticker > this.getTicksPerFrame()) {
 			if (this.frame >= this.getMaxFrame() - 1) {
 				this.setPosition(0, -Integer.MIN_VALUE, 0);
@@ -185,16 +198,16 @@ public class EntityDecayingEffect extends EntityLiving {
 	protected void entityInit() {
 		super.entityInit();
 		this.damage = 4;
-		this.radius = 1.5;
 		this.attacker = UUID.nameUUIDFromBytes("dummy".getBytes());
 		this.ticker = 0;
 		this.frame = 0;
 		this.dataManager.register(REVERSED, Boolean.valueOf(false));
 		this.dataManager.register(TYPE, EnumDecayingEffectType.DEFAULT.name());
 		this.dataManager.register(Y_TRANSLATION, 0f);
+		this.dataManager.register(RADIUS, 1.5f);
 		this.hasSliced = false;
 		this.setNoAI(true);
-		this.setSize((float) radius * 2, 0.6F);
+		this.setSize(this.getRadius() * 2, 0.6F);
 	}
 
 	@Override
@@ -203,7 +216,7 @@ public class EntityDecayingEffect extends EntityLiving {
 		if (compound.hasKey("DecayingEffectData", NBT.TAG_COMPOUND)) {
 			NBTTagCompound data = compound.getCompoundTag("DecayingEffectData");
 			this.damage = data.getDouble("damage");
-			this.radius = data.getDouble("radius");
+			this.setRadius(data.getFloat("radius"));
 			this.ticker = data.getInteger("ticker");
 			this.frame = data.getInteger("frame");
 			this.setReversed(data.getBoolean("reverse"));
@@ -211,7 +224,7 @@ public class EntityDecayingEffect extends EntityLiving {
 			this.attacker = data.getUniqueId("attacker");
 			this.hasSliced = data.getBoolean("has_sliced");
 			this.setYTranslation(data.getFloat("y_translation"));
-			this.setSize((float) radius * 2, 0.6F);
+			this.setSize(this.getRadius() * 2, 0.6F);
 			this.setNoAI(true);
 		}
 	}
@@ -221,7 +234,7 @@ public class EntityDecayingEffect extends EntityLiving {
 		super.writeEntityToNBT(compound);
 		NBTTagCompound data = new NBTTagCompound();
 		data.setDouble("damage", damage);
-		data.setDouble("radius", radius);
+		data.setFloat("radius", this.getRadius());
 		data.setInteger("ticker", ticker);
 		data.setInteger("frame", frame);
 		data.setBoolean("reverse", this.isReversed());

@@ -64,6 +64,7 @@ import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
 import com.existingeevee.moretcon.traits.traits.unique.EssentialObliteration;
 import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
 import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
+import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
 import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
 import com.existingeevee.moretcon.traits.traits.unique.Wormed;
@@ -132,6 +133,7 @@ public class ModTraits {
 	public static Soulforged soulforged = new Soulforged(1);
 	public static Soulforged soulforged2 = new Soulforged(2);
 	public static Soulforged soulforged3 = new Soulforged(3);
+	public static Seismishock seismishock = new Seismishock();;
 
 
 	public static MatterReconstructionGel repair;

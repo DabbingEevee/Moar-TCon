@@ -45,6 +45,8 @@ public class ModelDecayingEffect extends ModelBase {
 		GlStateManager.enableBlend();
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(0, 1.2 - ((EntityDecayingEffect) entity).getYTranslation(), 0);
+		float radius = ((EntityDecayingEffect) entity).getRadius();
+		GlStateManager.scale(radius / 1.5f, 1, radius / 1.5f);
 		GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 		if (((EntityDecayingEffect) entity).isReversed()) {
 			reverse.render(f5);
