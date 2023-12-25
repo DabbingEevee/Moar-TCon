@@ -2,8 +2,6 @@ package com.existingeevee.moretcon.item;
 
 import java.util.List;
 
-import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect;
-import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect.EnumDecayingEffectType;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.ModTabs;
 
