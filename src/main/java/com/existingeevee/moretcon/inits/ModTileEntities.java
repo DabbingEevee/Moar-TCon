@@ -7,8 +7,9 @@ import com.existingeevee.moretcon.other.utils.RegisterHelper;
 public class ModTileEntities {
 
 	public static void init() {
+		RegisterHelper.registerTileEntity(TileGravitoniumFaucet.class);
+
 		if (CompatManager.loadMain) {
-			RegisterHelper.registerTileEntity(TileGravitoniumFaucet.class);
 		}
 	}
 
