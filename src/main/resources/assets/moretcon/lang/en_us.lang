@@ -325,6 +325,7 @@ modifier.moretcon.seismishock.desc=§obonk§r\nYour tool emit a shockwave that d
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
+moretcon.bleeding=bleeding
 
 text.uniquely_crafted.crafting_table=Can be crafted in a Crafting Table
 text.uniquely_crafted.shockwave=Can be crafted using an Animator and a Mortar
