@@ -1,6 +1,6 @@
 death.attack.bleeding=%1$s bled out
 death.attack.coldfire=%1$s's thermal kinetic energy level had two solutions
-death.attack.haunted=%1$s had their soul burned away
+death.attack.haunted=%1$s's soul burned away
 death.attack.pillar_of_fire=%1$s was swept away in a pillar of fire
 
 entity.decaying_effect_moretcon.name=Effect
@@ -27,6 +27,7 @@ fluid.moretcon.liquidtrichromadentium=Molten Trichromadentium
 fluid.moretcon.liquidvalkyriemetal=Molten Valkyrie Metal
 fluid.moretcon.liquidebonite=Molten Ebonite
 fluid.moretcon.liquidvalasium=Molten Valasium
+fluid.moretcon.liquidhallowsite=Molten Hallowsite
 fluid.moretcon.mummysludge=Mummy Sludge
 fluid.moretcon.rottensludge=Rotten Sludge
 fluid.moretcon.liquidfusionlava=Fusion Lava
@@ -80,6 +81,7 @@ item.moretcon.dusttrichromadentium.name=Trichromadentium Dust
 item.moretcon.dustvalkyriemetal.name=Valkyrie Metal Dust
 item.moretcon.dustebonite.name=Ebonite Dust
 item.moretcon.dustvalasium.name=Valasium Dust
+item.moretcon.dusthallowsite.name=Hallowsite Dust
 
 item.moretcon.gembloodstone.name=Bloodstone
 item.moretcon.gemechostone.name=Echostone
@@ -109,6 +111,7 @@ item.moretcon.ingottrichromadentium.name=Trichromadentium Ingot
 item.moretcon.ingotvalkyriemetal.name=Valkyrie Metal Ingot
 item.moretcon.ingotebonite.name=Ebonite Ingot
 item.moretcon.ingotvalasium.name=Valasium Ingot
+item.moretcon.ingothallowsite.name=Hallowsite Ingot
 
 item.moretcon.itemsiltclay.name=Silt Clay
 item.moretcon.lightning.name=Lightning
@@ -129,6 +132,7 @@ item.moretcon.nuggettrichromadentium.name=Trichromadentium Nugget
 item.moretcon.nuggetvalkyriemetal.name=Valkyrie Metal Nugget
 item.moretcon.nuggetebonite.name=Ebonite Nugget
 item.moretcon.nuggetvalasium.name=Valasium Nugget
+item.moretcon.nuggethallowsite.name=Hallowsite Nugget
 
 item.moretcon.rawsteel.name=Raw Steel
 item.moretcon.ring.name=Ring
@@ -316,6 +320,8 @@ modifier.moretcon.soulforged.name=Soulforged
 modifier.moretcon.soulforged.desc=§ohippity hoppity your soul is now my property§r\nYour tool can boost its own effectiveness using the souls of its slain enemies.
 modifier.moretcon.blinkdrawn.name=Blinkdrawn
 modifier.moretcon.blinkdrawn.desc=§oQuickdraw!!§r\nYour tool can be loaded instantly with no delay, however will consume more durability per shot as well as dealing significantly less damage.
+modifier.moretcon.seismishock.name=Seismishock
+modifier.moretcon.seismishock.desc=§obonk§r\nYour tool emit a shockwave that deal massive AOE damage when dishing out a critical hit.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
@@ -335,7 +341,6 @@ tile.moretcon.betweensludge.name=Between Sludge
 tile.moretcon.blockarkenium.name=Block of Arkenium
 tile.moretcon.blockbloodstone.name=Block of Bloodstone
 tile.moretcon.blockcragravel.name=Cragravel
-tile.moretcon.blockdestabilizedbedrock.name=Destabilized Bedrock
 tile.moretcon.blockechostone.name=Block of Echostone
 tile.moretcon.blockenderal.name=Block of Enderal
 tile.moretcon.blockfusionite.name=Block of Fusionite
@@ -364,6 +369,7 @@ tile.moretcon.blockvoidspar.name=Block of Void Spar
 tile.moretcon.blockatronium.name=Block of Atronium
 tile.moretcon.blockerythynite.name=Block of Erythynite
 tile.moretcon.blockelectarite.name=Block of Electarite
+tile.moretcon.blockhallowsite.name=Block of Hallowsite
 
 tile.moretcon.burningsulfurflow.name=Molten Sulfur
 tile.moretcon.liquidarkenium.name=Molten Arkenium
@@ -388,6 +394,7 @@ tile.moretcon.liquidtrichromadentium.name=Molten Trichromadentium
 tile.moretcon.liquidvalkyriemetal.name=Molten Valkyrie Metal
 tile.moretcon.liquidebonite.name=Molten Ebonite
 tile.moretcon.liquidvalasium.name=Molten Valasium
+tile.moretcon.liquidhallowsite.name=Molten Hallowsite
 tile.moretcon.liquidfusionlava.name=Fusion Lava
 tile.moretcon.mummysludge.name=Mummy Sludge
 
@@ -427,6 +434,7 @@ uniquetoolpart.moretcon.triblade.name=Triblade
 uniquetoolpart.moretcon.essencore.name=Essencore
 uniquetoolpart.moretcon.wormed.name=Wormed
 uniquetoolpart.moretcon.spacetimedisruption.name=Space-Time Disruption
+uniquetoolpart.moretcon.quakestruck.name=Quakestruck
 
 comment Sponges=comment
 
