@@ -9,7 +9,8 @@
   	"late.common.MixinEntityProjectileBase"
   ],
   "client": [
-  	"late.client.MixinContentMaterial"
+  	"late.client.MixinContentMaterial",
+  	"late.client.MixinModFortifyDisplay"
   ],
   "server": [
   ]

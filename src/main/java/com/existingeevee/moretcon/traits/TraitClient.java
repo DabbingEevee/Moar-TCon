@@ -6,7 +6,6 @@ import com.existingeevee.moretcon.other.utils.CompatManager;
 
 import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
-import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
@@ -47,7 +46,7 @@ public class TraitClient {
 		}
 	}
 
-	private static void register(IModifier mod) {
+	public static void register(IModifier mod) {
 		if (mod == null) {
 			MoreTConLogger.log("Null modifier detected. Oops");
 			return;
