@@ -15,7 +15,7 @@ import thebetweenlands.common.handler.OverworldItemHandler;
 public class Betweenified extends ToolModifier {
 
 	public Betweenified() {
-		super(MiscUtils.createNonConflictiveName("modBetweenified"), 0x0b2e05);
+		super(MiscUtils.createNonConflictiveName("modbetweenified"), 0x0b2e05);
 		this.addItem(ModItems.betweenifiedModifier);
 		this.addAspects(new ModifierAspect.SingleAspect(this), new ModifierAspect.DataAspect(this),
 				ModifierAspect.freeModifier, ModifierAspect.freeModifier, ModifierAspect.freeModifier);

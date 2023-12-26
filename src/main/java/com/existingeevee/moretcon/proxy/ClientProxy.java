@@ -54,7 +54,6 @@ public class ClientProxy extends CommonProxy {
 		
 		SlotRendererRegistry.register(ModTraits.luminescent::isToolWithTrait, (stack, x, y, bakedmodel) -> ICustomSlotRenderer.simpleRender(stack, x, y, bakedmodel, GlowType.CIRCLE_BIG, ModTraits.luminescent.calculateColor(stack)));
 		SlotRendererRegistry.register(s -> s.getItem() instanceof MaterialItem && ((MaterialItem) s.getItem()).getMaterial(s).getAllTraits().contains(ModTraits.luminescent), (stack, x, y, bakedmodel) -> ICustomSlotRenderer.simpleRender(stack, x, y, bakedmodel, GlowType.CIRCLE_BIG, ModTraits.luminescent.calculateColor(stack)));
-		TraitClient.init();
 	}
 
 	@Override
@@ -71,6 +70,7 @@ public class ClientProxy extends CommonProxy {
 
 		CompositeRegistry.updateCompositeRenderer();
 
+		TraitClient.init(); //we have to do it here bc tinkers registered the stuff here
 	}
 
 	@Override

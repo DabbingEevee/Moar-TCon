@@ -135,7 +135,6 @@ public class ModTraits {
 	public static Soulforged soulforged3 = new Soulforged(3);
 	public static Seismishock seismishock = new Seismishock();;
 
-
 	public static MatterReconstructionGel repair;
 
 	public static AntiGravity antigravity;
@@ -144,25 +143,27 @@ public class ModTraits {
 	public static Gem modGreenGem;
 	public static Gem modBlueGem;
 	public static Shocking modShocking;
-
-	public static Corroding corroding;
-	public static Crushing crushing;
-	public static Betweenified betweenified;
 	public static Valonite modValonite;
 	public static Tarred modTarred;
+	public static Betweenified modBetweenified;
+
+	public static Corroding corroding;
+	
+	public static Crushing modCrushing;
+
 	public static Debug modDebug;
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
 	public static Oxide oxide;
 	public static Wormed wormed;
-	public static Burning burning;
+	public static Burning burning; //TODO move away from bl
 
 	static {
 		if (CompatManager.thebetweenlands) {
 			shockwaving = new Shockwaving();
 			rotten = new Rotten();
 			corroding = new Corroding();
-			betweenified = new Betweenified();
+			modBetweenified = new Betweenified();
 			oxide = new Oxide();
 			wormed = new Wormed();
 			burning = new Burning();
@@ -183,9 +184,9 @@ public class ModTraits {
 		if (CompatManager.loadMain) {
 			modDebug = new Debug();
 			repair = new MatterReconstructionGel();
-			crushing = new Crushing();
+			modCrushing = new Crushing();
 			registerModifier(
-					crushing
+					modCrushing
 					);
 		}
 		if (CompatManager.thebetweenlands) {

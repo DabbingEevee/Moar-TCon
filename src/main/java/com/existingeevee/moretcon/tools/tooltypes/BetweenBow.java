@@ -36,7 +36,6 @@ import slimeknights.tconstruct.library.materials.BowStringMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
-import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
 import slimeknights.tconstruct.library.tools.ranged.BowCore;
@@ -62,8 +61,6 @@ public class BetweenBow extends BowCore implements ICorrodible, IAnimatorRepaira
 		this.addPropertyOverride(PROPERTY_IS_PULLING, isPullingPropertyGetter);
 		TinkerRegistry.registerToolCrafting(this);
 		CorrosionHelper.addCorrosionPropertyOverrides(this);
-
-		addCategory(Category.WEAPON);
 	}
 
 	@Override

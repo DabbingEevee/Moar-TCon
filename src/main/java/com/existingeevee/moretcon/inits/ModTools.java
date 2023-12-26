@@ -145,21 +145,13 @@ public class ModTools {
 			blbowInfo.addSlotPosition(38, 47); // center bowstring
 			TinkerRegistryClient.addToolBuilding(blbowInfo);
 		}
-		/*if (CompatManager.baubles && ConfigHandler.enableRing) {
-			ToolBuildGuiInfo blaxeInfo = new ToolBuildGuiInfo(toolBetweenAxe);
-			blaxeInfo.addSlotPosition(22, 53);
-			blaxeInfo.addSlotPosition(31, 22);
-			blaxeInfo.addSlotPosition(51, 34);
-			TinkerRegistryClient.addToolBuilding(blaxeInfo);
-		}*/
-
 	}
 	
 	private static ToolCore tryMakeToolInstance(String toolName) {
 		return (ToolCore) tryMakeInstance("com.existingeevee.moretcon.tools.tooltypes." + toolName);
 	}
 
-	
+	//we have to do this bc bl/other addons may not always be here
 	private static Object tryMakeInstance(String classPath) {
 		try {
 			Class<?> clazz = Class.forName(classPath);
