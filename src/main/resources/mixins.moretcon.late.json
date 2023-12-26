@@ -2,6 +2,8 @@
   "compatibilityLevel": "JAVA_8",
   "package": "com.existingeevee.moretcon.mixin",
   "refmap": "refmap.moretcon.json",
+  "plugin": "com.existingeevee.moretcon.mixinext.MoreTConMixinPlugin",
+  
   "mixins": [
   	"late.common.MixinToolPart",
   	"late.common.MixinProjectileCore",
