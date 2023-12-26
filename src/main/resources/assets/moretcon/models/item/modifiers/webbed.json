@@ -1,0 +1,12 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/webbed/blpick",
+        "blaxe": "moretcon:other/modifier/webbed/blaxe",
+        "blsword": "moretcon:other/modifier/webbed/blsword",
+        "blshovel": "moretcon:other/modifier/webbed/blshovel",
+        "blbow": "moretcon:other/modifier/webbed/blbow",
+        "blbow1": "moretcon:other/modifier/webbed/blbow_1",
+        "blbow2": "moretcon:other/modifier/webbed/blbow_2",
+        "blbow3": "moretcon:other/modifier/webbed/blbow_3"
+    }
+}

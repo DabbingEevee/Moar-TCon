@@ -1,0 +1,9 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/beheading/blpick",
+        "blaxe": "moretcon:other/modifier/beheading/blaxe",
+        "blsword": "moretcon:other/modifier/beheading/blsword",
+        "blshovel": "moretcon:other/modifier/beheading/blshovel",
+        "blbow": "moretcon:other/modifier/beheading/blbow"
+    }
+}

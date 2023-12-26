@@ -1,0 +1,9 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/mending_moss/blpick",
+        "blaxe": "moretcon:other/modifier/mending_moss/blaxe",
+        "blsword": "moretcon:other/modifier/mending_moss/blsword",
+        "blshovel": "moretcon:other/modifier/mending_moss/blshovel",
+        "blbow": "moretcon:other/modifier/mending_moss/blbow"
+    }
+}

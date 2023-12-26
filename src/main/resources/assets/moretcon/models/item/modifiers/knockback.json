@@ -1,0 +1,9 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/knockback/blpick",
+        "blaxe": "moretcon:other/modifier/knockback/blaxe",
+        "blsword": "moretcon:other/modifier/knockback/blsword",
+        "blshovel": "moretcon:other/modifier/knockback/blshovel",
+        "blbow": "moretcon:other/modifier/knockback/blbow"
+    }
+}

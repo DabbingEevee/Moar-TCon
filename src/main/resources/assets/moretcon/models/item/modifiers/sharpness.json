@@ -1,0 +1,12 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/sharpness/blpick",
+        "blaxe": "moretcon:other/modifier/sharpness/blaxe",
+        "blsword": "moretcon:other/modifier/sharpness/blsword",
+        "blshovel": "moretcon:other/modifier/sharpness/blshovel",
+        "blbow": "moretcon:other/modifier/sharpness/blbow",
+        "blbow1": "moretcon:other/modifier/sharpness/blbow_1",
+        "blbow2": "moretcon:other/modifier/sharpness/blbow_2",
+        "blbow3": "moretcon:other/modifier/sharpness/blbow_3"
+    }
+}

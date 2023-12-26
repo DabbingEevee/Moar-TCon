@@ -1,0 +1,12 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/bane_of_arthopods/blpick",
+        "blaxe": "moretcon:other/modifier/bane_of_arthopods/blaxe",
+        "blsword": "moretcon:other/modifier/bane_of_arthopods/blsword",
+        "blshovel": "moretcon:other/modifier/bane_of_arthopods/blshovel",
+        "blbow": "moretcon:other/modifier/bane_of_arthopods/blbow",
+        "blbow1": "moretcon:other/modifier/bane_of_arthopods/blbow_1",
+        "blbow2": "moretcon:other/modifier/bane_of_arthopods/blbow_2",
+        "blbow3": "moretcon:other/modifier/bane_of_arthopods/blbow_3"
+    }
+}

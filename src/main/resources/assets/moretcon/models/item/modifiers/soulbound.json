@@ -1,0 +1,9 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/soulbound/blpick",
+        "blaxe": "moretcon:other/modifier/soulbound/blaxe",
+        "blsword": "moretcon:other/modifier/soulbound/blsword",
+        "blshovel": "moretcon:other/modifier/soulbound/blshovel",
+        "blbow": "moretcon:other/modifier/soulbound/blbow"
+    }
+}

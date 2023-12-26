@@ -1,0 +1,12 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/fiery/blpick",
+        "blaxe": "moretcon:other/modifier/fiery/blaxe",
+        "blsword": "moretcon:other/modifier/fiery/blsword",
+        "blshovel": "moretcon:other/modifier/fiery/blshovel",
+        "blbow": "moretcon:other/modifier/fiery/blbow",
+        "blbow1": "moretcon:other/modifier/fiery/blbow_1",
+        "blbow2": "moretcon:other/modifier/fiery/blbow_2",
+        "blbow3": "moretcon:other/modifier/fiery/blbow_3"
+    }
+}

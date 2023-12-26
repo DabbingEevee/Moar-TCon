@@ -1,0 +1,9 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/diamond/blpick",
+        "blaxe": "moretcon:other/modifier/diamond/blaxe",
+        "blsword": "moretcon:other/modifier/diamond/blsword",
+        "blshovel": "moretcon:other/modifier/diamond/blshovel",
+        "blbow": "moretcon:other/modifier/diamond/blbow"
+    }
+}
