@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.traits.ModTraits;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -46,6 +48,7 @@ import slimeknights.tconstruct.tools.ranged.TinkerRangedWeapons;
 import thebetweenlands.api.item.CorrosionHelper;
 import thebetweenlands.api.item.IAnimatorRepairable;
 import thebetweenlands.api.item.ICorrodible;
+import thebetweenlands.util.NBTHelper;
 
 public class BetweenBow extends BowCore implements ICorrodible, IAnimatorRepairable, IBetweenTinkerTool, ICustomCrosshairUser {
 
@@ -74,7 +77,17 @@ public class BetweenBow extends BowCore implements ICorrodible, IAnimatorRepaira
 			addDefaultSubItems(subItems, null, null, TinkerMaterials.string);
 		}
 	}
-
+	
+	@Override
+	public void setCorrosion(ItemStack stack, int corrosion) {
+		boolean bad = this.getCorrosion(stack) < corrosion;
+		
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+			return;
+		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
+		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
+	}
+	
 	/* Tic Tool Stuff */
 
 	@Override

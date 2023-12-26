@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.traits.ModTraits;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
@@ -22,6 +23,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -39,6 +41,7 @@ import slimeknights.tconstruct.tools.TinkerTools;
 import thebetweenlands.api.item.CorrosionHelper;
 import thebetweenlands.api.item.IAnimatorRepairable;
 import thebetweenlands.api.item.ICorrodible;
+import thebetweenlands.util.NBTHelper;
 
 public class BetweenPickaxe extends AoeToolCore implements ICorrodible, IAnimatorRepairable, IBetweenTinkerTool {
 
@@ -66,6 +69,16 @@ public class BetweenPickaxe extends AoeToolCore implements ICorrodible, IAnimato
 		CorrosionHelper.addCorrosionPropertyOverrides(this);
 	}
 
+	@Override
+	public void setCorrosion(ItemStack stack, int corrosion) {
+		boolean bad = this.getCorrosion(stack) < corrosion;
+		
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+			return;
+		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
+		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
+	}
+	
 	public BetweenPickaxe(PartMaterialType... requiredComponents) {
 		super(requiredComponents);
 
