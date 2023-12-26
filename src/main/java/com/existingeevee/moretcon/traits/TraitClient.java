@@ -1,18 +1,18 @@
 package com.existingeevee.moretcon.traits;
 
 import com.existingeevee.moretcon.ModInfo;
+import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
+import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
 public class TraitClient {
 
 	public static void init() {
-		RegisterHelper.moreTConModifiers.forEach(TraitClient::register);
 		if (CompatManager.thebetweenlands) {
 			register(ModTraits.modRedGem);
 			register(ModTraits.modGreenGem);
@@ -40,6 +40,7 @@ public class TraitClient {
 			register(TinkerModifiers.modKnockback);
 			register(TinkerModifiers.modWebbed);
 			register(TinkerModifiers.modSoulbound);
+			register(TinkerModifiers.modBlasting);
 		}
 		if (CompatManager.loadMain) {
 			register(ModTraits.modCrushing);
@@ -47,6 +48,10 @@ public class TraitClient {
 	}
 
 	private static void register(IModifier mod) {
+		if (mod == null) {
+			MoreTConLogger.log("Null modifier detected. Oops");
+			return;
+		}
 		ResourceLocation rl = new ResourceLocation(ModInfo.MODID, "models/item/modifiers/" + mod.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""));
 		ModelRegisterUtil.registerModifierModel(mod, rl);
 	}
