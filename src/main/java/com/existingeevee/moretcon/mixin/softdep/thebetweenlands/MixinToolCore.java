@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.mixin.softdep.thebetweenlands;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
+import com.existingeevee.moretcon.MoreTCon;
 import com.existingeevee.moretcon.traits.ModTraits;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -22,13 +23,15 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	@Unique
 	@Override
 	public boolean shouldUseBigSwingAnimation(ItemStack stack) {
+		if (MoreTCon.proxy.isClientSneaking())
+			return false;
 		return ModTraits.inertia.isToolWithTrait(stack);
 	}
 
 	@Unique
 	@Override
 	public float getSwingSpeedMultiplier(EntityLivingBase entity, ItemStack stack) {
-		if (!ModTraits.inertia.isToolWithTrait(stack)) {
+		if (!ModTraits.inertia.isToolWithTrait(stack) || entity.isSneaking()) {
 			return 1;
 		}
 		
@@ -51,7 +54,7 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	
 	@Override
 	public void onLeftClick(EntityPlayer player, ItemStack stack) {
-		if (!ModTraits.inertia.isToolWithTrait(stack)) {
+		if (!ModTraits.inertia.isToolWithTrait(stack) || player.isSneaking()) {
 			return;
 		}
 		

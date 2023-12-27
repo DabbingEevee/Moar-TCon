@@ -43,5 +43,8 @@ public class CommonProxy {
 	public boolean isClient() {
 		return false;
 	}
-
+	
+	public boolean isClientSneaking() {
+		return false;
+	}
 }

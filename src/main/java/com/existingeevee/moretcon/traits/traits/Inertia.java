@@ -1,7 +1,5 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import java.util.ConcurrentModificationException;
-
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
 
@@ -36,14 +34,10 @@ public class Inertia extends AbstractTrait implements IAdditionalTraitMethods {
 			ToolCore core = (ToolCore) tool.getItem();
 			isTool = core.hasCategory(Category.HARVEST);
 		}
-		try {
-			if (isTool) {
-				ItemRegistry.ANCIENT_BATTLE_AXE.onUpdate(tool, world, entity, itemSlot, isSelected);
-			} else {
-				ItemRegistry.ANCIENT_GREATSWORD.onUpdate(tool, world, entity, itemSlot, isSelected);
-			}
-		} catch (ConcurrentModificationException e) {
-			//hopefully nothing bad??
+		if (isTool) {
+			ItemRegistry.ANCIENT_BATTLE_AXE.onUpdate(tool, world, entity, itemSlot, isSelected);
+		} else {
+			ItemRegistry.ANCIENT_GREATSWORD.onUpdate(tool, world, entity, itemSlot, isSelected);
 		}
 	}
 
