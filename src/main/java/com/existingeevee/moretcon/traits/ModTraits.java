@@ -35,6 +35,7 @@ import com.existingeevee.moretcon.traits.traits.Haunted;
 import com.existingeevee.moretcon.traits.traits.HelpfulRadiation;
 import com.existingeevee.moretcon.traits.traits.HyperGravity;
 import com.existingeevee.moretcon.traits.traits.Hyperheat;
+import com.existingeevee.moretcon.traits.traits.Inertia;
 import com.existingeevee.moretcon.traits.traits.KineticBattery;
 import com.existingeevee.moretcon.traits.traits.Leeching;
 import com.existingeevee.moretcon.traits.traits.Liquid;
@@ -157,6 +158,7 @@ public class ModTraits {
 	public static Oxide oxide;
 	public static Wormed wormed;
 	public static Burning burning; //TODO move away from bl
+	public static Inertia inertia;
 
 	static {
 		if (CompatManager.thebetweenlands) {
@@ -167,6 +169,7 @@ public class ModTraits {
 			oxide = new Oxide();
 			wormed = new Wormed();
 			burning = new Burning();
+			inertia = new Inertia();
 		}
 		if (CompatManager.aether_legacy) {
 			antigravity = new AntiGravity();

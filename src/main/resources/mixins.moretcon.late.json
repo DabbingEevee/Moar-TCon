@@ -11,7 +11,10 @@
   	"late.common.MixinEntityProjectileBase",
   	
   	"softdep.thebetweenlands.MixinBlockEnergyBarrier",
-  	"softdep.thebetweenlands.MixinEntityFortressBossProjectile"
+  	"softdep.thebetweenlands.MixinEntityFortressBossProjectile",
+  	
+  	"softdep.thebetweenlands.MixinToolCore",
+  	"softdep.thebetweenlands.MixinItemGreataxe"
   ],
   "client": [
   	"late.client.MixinContentMaterial",

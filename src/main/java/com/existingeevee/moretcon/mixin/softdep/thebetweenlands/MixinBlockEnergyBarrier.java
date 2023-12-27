@@ -41,6 +41,4 @@ public class MixinBlockEnergyBarrier {
 	public void moretcon$HEAD_Inject$onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity, CallbackInfo ci) {
 		entityStatic = entity;
 	}
-
-
 }
