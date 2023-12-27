@@ -14,7 +14,7 @@ import slimeknights.tconstruct.tools.modifiers.ModFortifyDisplay;
 public class MixinModFortifyDisplay {
 
 	@Inject(at = @At("RETURN"), method = "<init>()V")
-	private void moretcon$INVOKE_Redirect$__init__(CallbackInfo info) {
+	private void moretcon$RETURN_Inject$__init__(CallbackInfo info) {
 		TraitClient.register((IModifier) this);
 	}
 	

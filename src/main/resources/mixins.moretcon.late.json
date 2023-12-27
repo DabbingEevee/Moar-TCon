@@ -8,7 +8,10 @@
   	"late.common.MixinToolPart",
   	"late.common.MixinProjectileCore",
   	"late.common.MixinTinkerProjectileHandler",
-  	"late.common.MixinEntityProjectileBase"
+  	"late.common.MixinEntityProjectileBase",
+  	
+  	"softdep.thebetweenlands.MixinBlockEnergyBarrier",
+  	"softdep.thebetweenlands.MixinEntityFortressBossProjectile"
   ],
   "client": [
   	"late.client.MixinContentMaterial",
