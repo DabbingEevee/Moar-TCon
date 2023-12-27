@@ -27,8 +27,10 @@ public class MixinBlockEnergyBarrier {
 	
 	@ModifyVariable(method = { "onEntityCollidedWithBlock", "onEntityCollision", "func_180634_a" }, at = @At("STORE"), ordinal = 0, remap = false)
 	public EnumHand moretcon$STORE_ModifyVariable$onEntityCollidedWithBlock(EnumHand handOrig) {
-		if (entityStatic instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityStatic;
+		Entity entity = entityStatic;
+		
+		if (entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entity;
 			ItemStack stack = player.getHeldItem(EnumHand.MAIN_HAND);
 			if (ToolHelper.getTraits(stack).contains(ModTraits.shockwaving)) {
 				return EnumHand.MAIN_HAND;

@@ -1,6 +1,5 @@
 package com.existingeevee.moretcon.mixin.softdep.thebetweenlands;
 
-import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -62,21 +61,25 @@ public class MixinItemGreataxe {
 		return toCheck;
 	}
 
+	private final static int CUTOFF = 115; //fuck this is janky
+
 	@ModifyVariable(method = { "onUpdate", "func_77663_a" }, at = @At("STORE"), ordinal = 0, remap = false)
 	public IBlockState moretcon$STORE_ModifyVariable$onUpdate(IBlockState state) {
-		if (stackStatic != null && stackStatic.getItem() instanceof ToolCore) {
-			try {
-				toCheckStatic.add(DUMMY);
-				toCheckStatic.removeIf(p -> p == DUMMY); //we are checking reference equality
-			} catch (ConcurrentModificationException e) {
-				//we are in the wrong place and im too tired to fix my mixin.
+		
+		ItemStack stack = stackStatic;
+		EntityPlayerMP player = playerStatic;
+		BlockPos pos = blockPosStatic;
+		List<BlockPos> toCheck = toCheckStatic;
+		
+		if (stack != null && stack.getItem() instanceof ToolCore) {	
+			if (Thread.currentThread().getStackTrace()[2].getLineNumber() > CUTOFF) {
 				return state;
 			}
-			
-			ToolCore core = (ToolCore) stackStatic.getItem();
-			boolean canHarvest = ModTraits.inertia.canSweepBreak(stackStatic, core, state, playerStatic, blockPosStatic);
+
+			ToolCore core = (ToolCore) stack.getItem();
+			boolean canHarvest = ModTraits.inertia.canSweepBreak(stack, core, state, player, pos);
 			if (canHarvest) {
-				toCheckStatic.add(blockPosStatic);
+				toCheck.add(pos);
 			}
 			return Blocks.BARRIER.getDefaultState(); //we handle these seperately regardless
 		}
