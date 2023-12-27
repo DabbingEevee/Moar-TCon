@@ -26,14 +26,14 @@ public abstract class MixinEntityFortressBossProjectile extends Entity {
 	private final ItemStack dummyStack = new ItemStack(Items.WOODEN_SWORD); 
 	
 	@ModifyVariable(method = { "onUpdate", "func_70071_h_" }, at = @At("STORE"), ordinal = 0, remap = false)
-	public ItemStack onUpdate(ItemStack heldItem) {
+	public ItemStack moretcon$STORE_ModifyVariable$onUpdate(ItemStack heldItem) {
 		if (heldItem != null && heldItem.getItem() instanceof ToolCore && ((ToolCore) heldItem.getItem()).hasCategory(Category.WEAPON))
 			return dummyStack;
 		return heldItem;
 	}
 	
 	@ModifyVariable(method = { "attackEntityFrom", "func_70097_a" }, at = @At("STORE"), ordinal = 0, remap = false)
-	public ItemStack attackEntityFrom(ItemStack heldItem) {
+	public ItemStack moretcon$STORE_ModifyVariable$attackEntityFrom(ItemStack heldItem) {
 		if (heldItem != null && heldItem.getItem() instanceof ToolCore && ((ToolCore) heldItem.getItem()).hasCategory(Category.WEAPON))
 			return dummyStack;
 		return heldItem;
