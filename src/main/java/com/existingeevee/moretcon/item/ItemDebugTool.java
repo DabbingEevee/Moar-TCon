@@ -26,7 +26,7 @@ public class ItemDebugTool extends ItemBase {
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		if (debugFunction(worldIn, playerIn))
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
-
+				
 		if (worldIn.isRemote) {
 			if (playerIn.isSneaking()) {
 				List<Entity> entities = worldIn.getEntitiesWithinAABBExcludingEntity(playerIn, playerIn.getEntityBoundingBox().expand(5.0D, 5.0D, 5.0D).expand(-5, -5, -5));
@@ -50,7 +50,17 @@ public class ItemDebugTool extends ItemBase {
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 	}
 
-	protected boolean debugFunction(World worldIn, EntityPlayer playerIn) { //this is used by me to test stuff. 
-		return false;
+	protected boolean debugFunction(World worldIn, EntityPlayer playerIn) { //this is used by me to test stuff.
+		//worldIn.getBiomeProvider().
+	    //byte[] biomes = worldIn.getChunkFromBlockCoords(playerIn.getPosition()).getBiomeArray();
+
+	    //for (int i = 0, biomesLength = biomes.length; i < biomesLength; i++) {
+	    //    biomes[i] = (byte) Biome.getIdForBiome(BiomeRegistry.MARSH_1);
+	    //}
+		
+		new thebetweenlands.common.world.gen.feature.structure.WorldGenSludgeWormDungeon().generate(worldIn, itemRand, playerIn.getPosition());
+		//new thebetweenlands.common.world.gen.feature.structure.WorldGenSludgeWormDungeon().generate(worldIn, itemRand, playerIn.getPosition());
+		//ItemAncientGreatsword
+		return true;
 	}
 }

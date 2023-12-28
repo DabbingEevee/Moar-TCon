@@ -58,6 +58,7 @@ public class FurnaceInit {
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustOctine, 1), new ItemStack(ItemRegistry.OCTINE_INGOT, 1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustSyrmorite, 1), EnumItemMisc.SYRMORITE_INGOT.create(1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustRotiron, 1), new ItemStack(ModItems.ingotRotiron, 1), 0F);
+				GameRegistry.addSmelting(new ItemStack(ModItems.dustAncientAlloy, 1), new ItemStack(ModItems.ingotAncientAlloy, 1), 0F);
 			}
 		}
 	}

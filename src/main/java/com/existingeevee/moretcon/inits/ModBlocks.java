@@ -72,7 +72,8 @@ public class ModBlocks {
 	public static final Block blockElectarite = ((BlockBase) new BlockBase("blockElectarite", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block oreHallowsite = ((BlockBase) new BlockOreMetal("oreHallowsite", 4, ModItems.ingotHallowsite).setHardness(12).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
 	public static final Block blockHallowsite = ((BlockBase) new BlockBase("blockHallowsite", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
-	
+	public static final Block blockAncientAlloy = ((BlockBase) new BlockBase("blockAncientAlloy", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials));
+
 	
 	public static final Block blockGravitoniumFaucet = new BlockGravitoniumFaucet();
 	public static final Block blockCragravel = ((BlockBase) new BlockFalling("blockCragravel", Material.GROUND, 0).setHardness(0.6f).setResistance(0.6f)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
@@ -159,7 +160,8 @@ public class ModBlocks {
 					blockSiltClay,
 					blockCragravel,
 					blockSwampSteel,
-					blockRotiron
+					blockRotiron,
+					blockAncientAlloy
 			/**-------------------------------------**/
 			);
 		}

@@ -95,7 +95,9 @@ public class ModFluids {
 
 	public static Fluid liquidGoldenAmber = new LiquidFluid("liquidGoldenAmber".toLowerCase()).setCColor(0xeaee57).setLuminosity(0)
 			.setDensity(1000).setViscosity(800).setTemperature(0);
-
+	
+	public static Fluid liquidAncientAlloy = new LiquidFluid("liquidAncientAlloy".toLowerCase()).setCColor(0x9fc1c0).setLuminosity(13)
+			.setDensity(1000).setViscosity(800).setTemperature(1100);
 	/** ------------------------------------- **/
 
 	private static void registerFluids(Fluid... fluid) {
@@ -140,7 +142,9 @@ public class ModFluids {
 					liquidRotiron,
 					liquidRottenSludge,
 					liquidMummySludge,
-					liquidBetweenSludge);
+					liquidBetweenSludge,
+					liquidAncientAlloy
+					);
 
 		}
 		if (CompatManager.aether_legacy) {

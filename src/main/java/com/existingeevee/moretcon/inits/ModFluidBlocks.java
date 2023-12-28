@@ -36,6 +36,7 @@ public class ModFluidBlocks {
 	public static Block blockLiquidSwampSteel;
 	public static Block blockLiquidRotiron;
 	public static Block blockLiquidHallowsite;
+	public static Block blockLiquidAncientAlloy;
 	public static Block blockRottenSludge;
 	public static Block blockMummySludge;
 	public static Block blockBetweenSludge;
@@ -115,7 +116,8 @@ public class ModFluidBlocks {
 			blockRottenSludge = new BlockFluid("rottensludge", ModFluids.liquidRottenSludge, Material.WATER);
 			blockMummySludge = new BlockFluid("mummysludge", ModFluids.liquidMummySludge, Material.WATER);
 			blockBetweenSludge = new BlockFluid("betweensludge", ModFluids.liquidBetweenSludge, Material.WATER);
-
+			blockLiquidAncientAlloy = new BlockFluid("liquidancientalloy", ModFluids.liquidAncientAlloy, Material.LAVA);
+			
 			ModFluidBlocks.registerBlocks(
 /* ------------------------------------- */
 					blockBurningSulfurFlow,
@@ -126,7 +128,8 @@ public class ModFluidBlocks {
 					blockLiquidRotiron,
 					blockRottenSludge,
 					blockMummySludge,
-					blockBetweenSludge
+					blockBetweenSludge,
+					blockLiquidAncientAlloy
 /* ------------------------------------- */
 					);
 		}

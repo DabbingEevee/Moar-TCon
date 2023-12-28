@@ -87,6 +87,12 @@ public class ModItems {
 	public static final Item nuggetTrichromadentium = new ItemBase("nuggetTrichromadentium", 0xffffff);
 	public static final Item dustTrichromadentium = new ItemBase("dustTrichromadentium", GlowType.CIRCLE_BIG, 0xffffff);
 
+	public static final Item ingotAncientAlloy = new ItemBase("ingotAncientAlloy");
+	public static final Item nuggetAncientAlloy = new ItemBase("nuggetAncientAlloy");
+	public static final Item dustAncientAlloy = new ItemBase("dustAncientAlloy");
+	public static final Item itemAncientScrap = new ItemBase("itemAncientScrap");
+	public static final Item itemAncientSlag = new ItemBase("itemAncientSlag");
+	
 	public static final Item dustIronwood = new ItemBase("dustIronwood");
 
 	public static final Item dustFiery = new ItemBase("dustFiery");
@@ -233,6 +239,11 @@ public class ModItems {
 					ingotSwampSteel,
 					nuggetSwampSteel,
 
+					ingotAncientAlloy,
+					nuggetAncientAlloy,
+					itemAncientScrap,
+					itemAncientSlag,
+					
 					itemSiltClay,
 					crushedShockwaveSword,
 
@@ -248,7 +259,10 @@ public class ModItems {
 						dustOctine,
 						dustSyrmorite,
 						dustRotiron,
-						dustSwampSteel);
+						dustSwampSteel,
+						dustAncientAlloy
+						
+						);
 			}
 
 		}

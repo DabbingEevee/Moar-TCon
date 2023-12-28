@@ -28,6 +28,7 @@ fluid.moretcon.liquidvalkyriemetal=Molten Valkyrie Metal
 fluid.moretcon.liquidebonite=Molten Ebonite
 fluid.moretcon.liquidvalasium=Molten Valasium
 fluid.moretcon.liquidhallowsite=Molten Hallowsite
+fluid.moretcon.liquidancientalloy=Molten Ancient Alloy
 fluid.moretcon.mummysludge=Mummy Sludge
 fluid.moretcon.rottensludge=Rotten Sludge
 fluid.moretcon.liquidfusionlava=Fusion Lava
@@ -57,6 +58,8 @@ item.moretcon.blsword.desc=A Between Sword is an equivalent of a broadsword for 
 item.moretcon.blsword.name=Between Sword
 item.moretcon.blswordblade.name=Between Blade
 item.moretcon.carbonpile.name=Pile of Carbon
+item.moretcon.itemancientscrap.name=Pile of Ancient Scrap
+item.moretcon.itemancientslag.name=Ancient Slag
 item.moretcon.crushedshockwavesword.name=Crushed Shockwave Sword
 item.moretcon.debugtool.name=ExistingEevee's Strange Debug Tool (E.E.S.D.T.)
 item.moretcon.dustarkenium.name=Arkenium Dust
@@ -82,6 +85,7 @@ item.moretcon.dustvalkyriemetal.name=Valkyrie Metal Dust
 item.moretcon.dustebonite.name=Ebonite Dust
 item.moretcon.dustvalasium.name=Valasium Dust
 item.moretcon.dusthallowsite.name=Hallowsite Dust
+item.moretcon.dustancientalloy.name=Ancient Alloy Dust
 
 item.moretcon.gembloodstone.name=Bloodstone
 item.moretcon.gemechostone.name=Echostone
@@ -112,6 +116,7 @@ item.moretcon.ingotvalkyriemetal.name=Valkyrie Metal Ingot
 item.moretcon.ingotebonite.name=Ebonite Ingot
 item.moretcon.ingotvalasium.name=Valasium Ingot
 item.moretcon.ingothallowsite.name=Hallowsite Ingot
+item.moretcon.ingotancientalloy.name=Ancient Alloy Ingot
 
 item.moretcon.itemsiltclay.name=Silt Clay
 item.moretcon.lightning.name=Lightning
@@ -133,6 +138,7 @@ item.moretcon.nuggetvalkyriemetal.name=Valkyrie Metal Nugget
 item.moretcon.nuggetebonite.name=Ebonite Nugget
 item.moretcon.nuggetvalasium.name=Valasium Nugget
 item.moretcon.nuggethallowsite.name=Hallowsite Nugget
+item.moretcon.nuggetancientalloy.name=Ancient Alloy Nugget
 
 item.moretcon.rawsteel.name=Raw Steel
 item.moretcon.ring.name=Ring
@@ -193,6 +199,7 @@ material.moretcon.slimewood.name=Slimewood
 material.moretcon.valasium.name=Valasium
 material.moretcon.electarite.name=Electarite
 material.moretcon.hallowsite.name=Hallowsite
+material.moretcon.ancientalloy.name=Ancient Alloy
 
 
 material.uniquetoolpart.name=Unique
@@ -322,6 +329,8 @@ modifier.moretcon.blinkdrawn.name=Blinkdrawn
 modifier.moretcon.blinkdrawn.desc=§oQuickdraw!!§r\nYour tool can be loaded instantly with no delay, however will consume more durability per shot as well as dealing significantly less damage.
 modifier.moretcon.seismishock.name=Seismishock
 modifier.moretcon.seismishock.desc=§obonk§r\nYour tool emit a shockwave that deal massive AOE damage when dishing out a critical hit.
+modifier.moretcon.inertia.name=Inertia
+modifier.moretcon.inertia.desc=§oswoosh§r\nYour tool can be swung in a similar way to Greatswords and Greataxes when not sneaking.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
@@ -371,6 +380,7 @@ tile.moretcon.blockatronium.name=Block of Atronium
 tile.moretcon.blockerythynite.name=Block of Erythynite
 tile.moretcon.blockelectarite.name=Block of Electarite
 tile.moretcon.blockhallowsite.name=Block of Hallowsite
+tile.moretcon.blockancientalloy.name=Block of Ancient Alloy
 
 tile.moretcon.burningsulfurflow.name=Molten Sulfur
 tile.moretcon.liquidarkenium.name=Molten Arkenium
@@ -397,6 +407,7 @@ tile.moretcon.liquidebonite.name=Molten Ebonite
 tile.moretcon.liquidvalasium.name=Molten Valasium
 tile.moretcon.liquidhallowsite.name=Molten Hallowsite
 tile.moretcon.liquidfusionlava.name=Fusion Lava
+tile.moretcon.liquidancientalloy.name=Molten Ancient Alloy
 tile.moretcon.mummysludge.name=Mummy Sludge
 
 tile.moretcon.orearkenium.name=Arkenium Ore

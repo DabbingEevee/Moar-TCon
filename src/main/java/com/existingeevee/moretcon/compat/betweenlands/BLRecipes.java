@@ -34,6 +34,7 @@ import thebetweenlands.api.IBetweenlandsAPI;
 import thebetweenlands.common.BetweenlandsAPI;
 import thebetweenlands.common.entity.mobs.EntityDreadfulMummy;
 import thebetweenlands.common.item.misc.ItemMisc.EnumItemMisc;
+import thebetweenlands.common.recipe.misc.AnimatorRecipe;
 import thebetweenlands.common.registries.BlockRegistry;
 import thebetweenlands.common.registries.ItemRegistry;
 
@@ -73,7 +74,22 @@ public class BLRecipes {
 		TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidBetweenSludge, 1), new FluidStack(ModFluids.liquidRottenSludge, 1), new FluidStack(ModFluids.liquidMummySludge, 275));
 		TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.betweenifiedModifier, 1), RecipeMatch.of(new ItemStack(ModItems.betweenicCore)), ModFluids.liquidBetweenSludge, 16, true, true));
 
-    	
+		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_BATTLE_AXE, 1), new ItemStack(ModItems.itemAncientSlag, 2), 0f);
+		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_GREATSWORD, 1), new ItemStack(ModItems.itemAncientSlag, 2), 0f);
+		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_HELMET, 1), new ItemStack(ModItems.itemAncientSlag, 3), 0f);
+		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_CHESTPLATE, 1), new ItemStack(ModItems.itemAncientSlag, 4), 0f);
+		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_LEGGINGS, 1), new ItemStack(ModItems.itemAncientSlag, 4), 0f);
+		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_BOOTS, 1), new ItemStack(ModItems.itemAncientSlag, 3), 0f);
+
+		blAPI.registerAnimatorRecipe(new AnimatorRecipe(new ItemStack(BlockRegistry.ANCIENT_REMNANT_BLOCK), 10, 30, new ItemStack(ModItems.itemAncientScrap)));
+		ForgeRegistries.RECIPES.register(new ShapelessRecipes(ModInfo.MODID, new ItemStack(ModItems.itemAncientScrap, 3), 
+				NonNullList.from(Ingredient.fromStacks(ItemStack.EMPTY), 
+						Ingredient.fromStacks(new ItemStack(ModItems.itemAncientSlag, 1)), 
+						Ingredient.fromStacks(EnumItemMisc.ANCIENT_REMNANT.create(1)), 
+						Ingredient.fromStacks(EnumItemMisc.ANCIENT_REMNANT.create(1))
+						)).setRegistryName("slag_to_scrap"));
+		TinkerRegistry.registerMelting(new ItemStack(ModItems.itemAncientScrap), ModFluids.liquidAncientAlloy, Material.VALUE_Ingot / 4);
+
 		ForgeRegistries.RECIPES.register(new ShapelessRecipes(ModInfo.MODID, new ItemStack(ModItems.sulfurBucketSyrmorite, 1), NonNullList.from(Ingredient.fromStacks(ItemStack.EMPTY), Ingredient.fromStacks(new ItemStack(ItemRegistry.BL_BUCKET, 1, 1)), Ingredient.fromStacks(new ItemStack(BlockRegistry.SULFUR_BLOCK, 1)))) {
 			@Override
 		    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
@@ -115,10 +131,6 @@ public class BLRecipes {
 
 		TinkerRegistry.registerMelting(new MeltingRecipe(new RecipeMatch.ItemCombination(Material.VALUE_Ingot / 8, EnumItemMisc.UNDYING_EMBER.create(1)), ModFluids.liquidEmber, 0));
 		
-		/*if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
-			GameRegistry.addSmelting(new ItemStack(ModItems.dustOctine, 1), new ItemStack(ItemRegistry.OCTINE_INGOT, 1), 0F);
-			GameRegistry.addSmelting(new ItemStack(ModItems.dustSyrmorite, 1), EnumItemMisc.SYRMORITE_INGOT.create(1), 0F);
-		}*/
 		blAPI.registerPestleAndMortarRecipe(new BLCragravelRecipe());
 	}
 }

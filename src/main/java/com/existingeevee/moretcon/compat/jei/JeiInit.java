@@ -41,7 +41,7 @@ public class JeiInit {
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreBloodstone, 1), "Found commonly in The Nether above the bedrock roof. \n\nMust be mined with a tool with \"Bottom's End\"", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEbonite, 1), "Found very rarely in all bedrockbearing dimensions in the lower bedrock layer. \n\nMust be mined with a tool with \"Bottom's End\"", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreErythynite, 1), "Found very rarely in The Nether in nether prisms which generates from y = 160 <-> 224", () -> CompatManager.loadMain));
-			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.blockEtherstone, 1), "Found rarely in The End in the etheral stone from y = 199 <-> 201. \n\nMust be mined with a tool with \"Etheral Harvest\"", () -> CompatManager.loadMain));
+			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEtherstone, 1), "Found rarely in The End in the etheral stone from y = 199 <-> 201. \n\nMust be mined with a tool with \"Etheral Harvest\"", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreElectarite, 1), "Found more or less commonly in all stonebearing dimensions from y = 24 <-> 48. \n\nDoes not spawn exposed to air.", () -> CompatManager.loadMain));
 		}
 		if (CompatManager.aether_legacy) {

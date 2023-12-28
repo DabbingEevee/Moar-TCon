@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tools.ToolCore;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 import thebetweenlands.api.item.IBigSwingAnimation;
 import thebetweenlands.api.item.IExtendedReach;
 import thebetweenlands.common.registries.ItemRegistry;
@@ -23,7 +24,7 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	@Unique
 	@Override
 	public boolean shouldUseBigSwingAnimation(ItemStack stack) {
-		if (MoreTCon.proxy.isClientSneaking())
+		if (MoreTCon.proxy.isClientSneaking() || ToolHelper.isBroken(stack))
 			return false;
 		return ModTraits.inertia.isToolWithTrait(stack);
 	}
@@ -31,7 +32,7 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	@Unique
 	@Override
 	public float getSwingSpeedMultiplier(EntityLivingBase entity, ItemStack stack) {
-		if (!ModTraits.inertia.isToolWithTrait(stack) || entity.isSneaking()) {
+		if (!ModTraits.inertia.isToolWithTrait(stack) || entity.isSneaking() || ToolHelper.isBroken(stack)) {
 			return 1;
 		}
 		
@@ -54,7 +55,7 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	
 	@Override
 	public void onLeftClick(EntityPlayer player, ItemStack stack) {
-		if (!ModTraits.inertia.isToolWithTrait(stack) || player.isSneaking()) {
+		if (!ModTraits.inertia.isToolWithTrait(stack) || player.isSneaking() || ToolHelper.isBroken(stack)) {
 			return;
 		}
 		

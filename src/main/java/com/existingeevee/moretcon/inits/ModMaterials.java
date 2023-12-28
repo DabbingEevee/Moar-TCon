@@ -81,6 +81,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialValasium = new Material(MiscUtils.createNonConflictiveName("valasium"), 0x9ab7d6);
 	public static final Material materialElectarite = new Material(MiscUtils.createNonConflictiveName("electarite"), 0x6666FF);
 	public static final Material materialHallowsite = new Material(MiscUtils.createNonConflictiveName("hallowsite"), 0x34eb98);
+	public static final Material materialAncientAlloy = new Material(MiscUtils.createNonConflictiveName("ancientAlloy"), 0xa2c2c0);
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -813,7 +814,7 @@ public class ModMaterials implements MaterialTypes {
 			materialSyrmorite.addTrait(TinkerTraits.coldblooded);
 			materialSyrmorite.addTrait(TinkerTraits.magnetic);
 			materialSyrmorite.addStats(new HeadMaterialStats(800, 5f, 4f, 2));
-			materialSyrmorite.addStats(new HandleMaterialStats(1.125f, -50));
+			materialSyrmorite.addStats(new HandleMaterialStats(0.8f, 60));
 			materialSyrmorite.addStats(new ExtraMaterialStats(-25));
 			materialSyrmorite.addStats(new ProjectileMaterialStats());
 			materialSyrmorite.addStats(new BowMaterialStats(0.7f, 1f, 3f));
@@ -828,7 +829,7 @@ public class ModMaterials implements MaterialTypes {
 			materialRotiron.addTrait(TinkerTraits.dense);
 			materialRotiron.addTrait(TinkerTraits.magnetic);
 			materialRotiron.addStats(new HeadMaterialStats(850, 5.25f, 5f, 2));
-			materialRotiron.addStats(new HandleMaterialStats(1.125f, -35));
+			materialRotiron.addStats(new HandleMaterialStats(1.125f, 45));
 			materialRotiron.addStats(new ExtraMaterialStats(-20));
 			materialRotiron.addStats(new ProjectileMaterialStats());
 			materialRotiron.addStats(new BowMaterialStats(0.7f, 1f, 4f));
@@ -843,7 +844,7 @@ public class ModMaterials implements MaterialTypes {
 			materialSwampSteel.addTrait(TinkerTraits.established);
 			materialSwampSteel.addTrait(TinkerTraits.heavy);
 			materialSwampSteel.addStats(new HeadMaterialStats(1200, 5.25f, 4.5f, 3));
-			materialSwampSteel.addStats(new HandleMaterialStats(1.5f, -25));
+			materialSwampSteel.addStats(new HandleMaterialStats(0.9f, 80)); 
 			materialSwampSteel.addStats(new ExtraMaterialStats(-12));
 			materialSwampSteel.addStats(new ProjectileMaterialStats());
 			materialSwampSteel.addStats(new BowMaterialStats(0.7f, 1f, 4f));
@@ -952,6 +953,20 @@ public class ModMaterials implements MaterialTypes {
 			materialWormed.addStats(new HeadMaterialStats(1024, 1f, 4f, 1));
 			materialWormed.addStats(new ProjectileMaterialStats());
 			materialWormed.addTrait(ModTraits.wormed);
+			
+			materialAncientAlloy.setFluid(ModFluids.liquidAncientAlloy);
+			materialAncientAlloy.addCommonItems("AncientAlloy");
+			materialAncientAlloy.setCastable(true);
+			materialAncientAlloy.setCraftable(false);
+			materialAncientAlloy.setRepresentativeItem("ingotAncientAlloy");
+			materialAncientAlloy.addTrait(TinkerTraits.dense, HEAD);
+			materialAncientAlloy.addTrait(ModTraits.inertia, HEAD);
+			materialAncientAlloy.addTrait(TinkerTraits.heavy);
+			materialAncientAlloy.addStats(new HeadMaterialStats(1000, 5.5f, 4f, 3));
+			materialAncientAlloy.addStats(new HandleMaterialStats(1f, 125));
+			materialAncientAlloy.addStats(new ExtraMaterialStats(40));
+			materialAncientAlloy.addStats(new ProjectileMaterialStats());
+			materialAncientAlloy.addStats(new BowMaterialStats(0.6f, 1.25f, 4f));
 		}
 	}
 
@@ -1027,7 +1042,8 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialRotiron).toolforge();
 			ModMaterials.registerMaterial(materialEmberlight);
 			ModMaterials.registerMaterial(materialWormed);
-
+			ModMaterials.registerMaterial(materialAncientAlloy).toolforge();
+			
 			MaterialUtils.readdTinkerMaterial(TinkerMaterials.bone);
 
 		}

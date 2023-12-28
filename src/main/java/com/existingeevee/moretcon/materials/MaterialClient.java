@@ -50,6 +50,7 @@ public class MaterialClient {
 		ModMaterials.materialIgniglomerate.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialIgniglomerate.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialValkyrieMetal.setRenderInfo(new MultiColor(0xdba213, 0xeeffff, 0xeaee57));
 		ModMaterials.materialOctine.setRenderInfo(new Metal(0xff8e3b, 0.7f, 2f, 0f));
+		ModMaterials.materialAncientAlloy.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAncientAlloy.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 	}
 
 	private static void setCustomRender(Material mat) {

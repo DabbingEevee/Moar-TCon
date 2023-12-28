@@ -158,6 +158,10 @@ public class OreDictionaryManager {
 			registerOre("ingotRotiron", ModItems.ingotRotiron);
 			registerOre("nuggetRotiron", ModItems.nuggetRotiron);
 
+			registerOre("blockAncientAlloy", ModBlocks.blockAncientAlloy);
+			registerOre("ingotAncientAlloy", ModItems.ingotAncientAlloy);
+			registerOre("nuggetAncientAlloy", ModItems.nuggetAncientAlloy);
+			
 			registerOre("ropeReed", EnumItemMisc.SWAMP_REED_ROPE.create(1));
 			registerOre("itemDragonFlyWing", EnumItemMisc.DRAGONFLY_WING.create(1));
 			registerOre("itemAnglerTooth", EnumItemMisc.ANGLER_TOOTH.create(1));
@@ -178,6 +182,7 @@ public class OreDictionaryManager {
 				registerOre("dustSwampsteel", ModItems.dustSwampSteel);
 				registerOre("dustRotiron", ModItems.dustRotiron);
 				registerOre("dustSyrmorite", ModItems.dustSyrmorite);
+				registerOre("dustAncientAlloy", ModItems.dustAncientAlloy);
 			}
 			registerOre("dripTar", EnumItemMisc.TAR_DRIP.create(1));
 		}
