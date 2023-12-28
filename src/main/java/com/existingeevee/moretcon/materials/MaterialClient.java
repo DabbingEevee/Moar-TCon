@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.materials;
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.client.LightShadingTextureColoredTexture;
 import com.existingeevee.moretcon.client.NoShadingTextureColoredTexture;
+import com.existingeevee.moretcon.client.WhiteShadingTextureColoredTexture;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
@@ -32,13 +33,14 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialZanite);
 		setCustomRender(ModMaterials.materialGravitite);
 		setCustomRender(ModMaterials.materialGravitonium);
-		setCustomRender(ModMaterials.materialTrichromadentium);
 		setCustomRender(ModMaterials.materialRotiron);
 		setCustomRender(ModMaterials.materialSwampSteel);
 		setCustomRender(ModMaterials.materialPenguinite);
 		setCustomRender(ModMaterials.materialShadowglass);
 		setCustomRender(ModMaterials.materialEmberlight);
 		
+		
+		ModMaterials.materialTrichromadentium.setRenderInfo(new WhiteShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialTrichromadentium.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));		
 		ModMaterials.materialNahuatl.setRenderInfo(new MultiColor(0x100c1c, 0x271e3d, 0x49332e));
 		ModMaterials.materialAmberwood.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAmberwood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialSlimewood.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialSlimewood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
