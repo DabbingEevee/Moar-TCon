@@ -331,6 +331,7 @@ modifier.moretcon.seismishock.name=Seismishock
 modifier.moretcon.seismishock.desc=§obonk§r\nYour tool emit a shockwave that deal massive AOE damage when dishing out a critical hit.
 modifier.moretcon.inertia.name=Inertia
 modifier.moretcon.inertia.desc=§oswoosh§r\nYour tool can be swung in a similar way to Greatswords and Greataxes when not sneaking.
+modifier.moretcon.inertia.advancedtoolsonly.desc=§oswoosh§r\nYour tool can be swung in a similar way to Greatswords and Greataxes when not sneaking if it can only be made in a tool forge.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames

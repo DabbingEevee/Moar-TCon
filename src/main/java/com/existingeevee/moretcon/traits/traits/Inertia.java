@@ -1,5 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
 
@@ -9,6 +10,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
@@ -27,7 +30,16 @@ public class Inertia extends AbstractTrait implements IAdditionalTraitMethods {
 	}
 
 	@Override
+	public String getLocalizedDesc() {
+		return Util.translate(LOC_Desc, getIdentifier() + (ConfigHandler.inertiaOnlyWorksOnAdvancedTools ? ".advancedtoolsonly" : ""));
+	}
+
+	@Override
 	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
+		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(tool.getItem())) {
+			return; //this is a simple tool. nope
+		}
+		
 		boolean isTool = true;
 
 		if (tool.getItem() instanceof ToolCore) {
@@ -42,6 +54,10 @@ public class Inertia extends AbstractTrait implements IAdditionalTraitMethods {
 	}
 
 	public boolean canSweepBreak(ItemStack stack, ToolCore core, IBlockState state, EntityPlayerMP player, BlockPos pos) {
+		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(core)) {
+			return false; //this is a simple tool. nope
+		}
+
 		boolean canHarvest = ToolHelper.isToolEffective2(stack, state) &&
 				state.getBlockHardness(player.world, pos) <= 2.25F &&
 				state.getPlayerRelativeBlockHardness(player, player.world, pos) > 0.01F;

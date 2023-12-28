@@ -62,6 +62,8 @@ public class ConfigHandler {
 	public static boolean enableGauntlet = true;
 	public static boolean enableRing = true;
 
+	public static boolean inertiaOnlyWorksOnAdvancedTools = false;
+	
 	public static void initConfig(File file) {
 		config = new Configuration(file, ModInfo.VERSION);
 
@@ -96,6 +98,9 @@ public class ConfigHandler {
 		String triRed = config.getString("trichromic_red", category, "minecraft:strength;1", "Set to a potion effect to affect trichromic color effect.");
 		String triGreen = config.getString("trichromic_green", category, "none;0", "Set to a potion effect to affect trichromic color effect, or \"none\" for default effect.");
 		String triBlue = config.getString("trichromic_blue", category, "none;0", "Set to a potion effect to affect trichromic color effect, or \"none\" for default effect.");
+		
+		ConfigHandler.inertiaOnlyWorksOnAdvancedTools = config.getBoolean("inertiaOnlyWorksOnAdvancedTools".toLowerCase(), category, false, "Set to \"true\" if you do not want inertia (betweenlands greataxe/greatsword trait) to function on basic tools.");
+
 		try {
 			ConfigHandler.trichromicRed = new ResourceLocation(triRed.split(";")[0]);
 			ConfigHandler.trichromicRedLvl = Integer.parseInt(triRed.split(";")[1]);

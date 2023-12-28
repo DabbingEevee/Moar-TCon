@@ -4,11 +4,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
 import com.existingeevee.moretcon.MoreTCon;
+import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.traits.ModTraits;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.utils.ToolHelper;
@@ -24,6 +26,9 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	@Unique
 	@Override
 	public boolean shouldUseBigSwingAnimation(ItemStack stack) {
+		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) {
+			return false; //this is a simple tool. nope
+		}
 		if (MoreTCon.proxy.isClientSneaking() || ToolHelper.isBroken(stack))
 			return false;
 		return ModTraits.inertia.isToolWithTrait(stack);
@@ -32,6 +37,9 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	@Unique
 	@Override
 	public float getSwingSpeedMultiplier(EntityLivingBase entity, ItemStack stack) {
+		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) {
+			return 1; //this is a simple tool. nope
+		}
 		if (!ModTraits.inertia.isToolWithTrait(stack) || entity.isSneaking() || ToolHelper.isBroken(stack)) {
 			return 1;
 		}
@@ -55,6 +63,9 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	
 	@Override
 	public void onLeftClick(EntityPlayer player, ItemStack stack) {
+		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) {
+			return; //this is a simple tool. nope
+		}
 		if (!ModTraits.inertia.isToolWithTrait(stack) || player.isSneaking() || ToolHelper.isBroken(stack)) {
 			return;
 		}
