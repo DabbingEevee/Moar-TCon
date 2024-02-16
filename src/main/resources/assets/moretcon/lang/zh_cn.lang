@@ -186,15 +186,17 @@ material.moretcon.valasium.name=维拉西恩
 
 material.uniquetoolpart.name=特殊
 
-modifier.moretcon.oxide.desc=§o免费耐久*！\n§r你的中间工具会消耗腐蚀性而不是耐用性，直到用完为止，对非交错工具不友好
+modifier.moretcon.kinetic_battery.desc=§o两级反转！\n§r当你受到伤害时，你的工具会储存动能。在潜行时进行攻击，可一次性释放能量。
+modifier.moretcon.kinetic_battery.name=动力电池
+modifier.moretcon.oxide.desc=§o免费耐久*！\n§r你的交错工具会消耗腐蚀性而不是耐用性，直到用完为止，对非交错工具不友好
 modifier.moretcon.oxide.name=氧化物 
-modifier.moretcon.overgrowth.desc=§o真菌！\n§r您的工具将使用腐蚀作为耐用性
+modifier.moretcon.overgrowth.desc=§o真菌！\n§r你的工具将使用腐蚀作为耐用性
 modifier.moretcon.overgrowth.name=附生
 modifier.moretcon.overcast.desc=§o厚覆盖！\n§r这种特性提供了两倍的耐用性
 modifier.moretcon.overcast.name=阴天 
 modifier.moretcon.overslime.desc=§黏滑的！\n§r你的工具消耗过多的时间而不是耐用性，直到用完为止！对缺少黏液的工具不友好
 modifier.moretcon.overslime.name=粘液附着
-modifier.moretcon.etheralharvest.desc=§o到另一边去！！\n§r您的工具将能够挖掘通常最终发现的无形方块
+modifier.moretcon.etheralharvest.desc=§o到另一边去！！\n§r你的工具将能够挖掘通常最终发现的无形方块
 modifier.moretcon.etheralharvest.name=以太收割
 modifier.moretcon.aerialflame.desc=§o天降正义!!!!!\n§r你的弹射物会向你的对手发射一道火柱
 modifier.moretcon.aerialflame.name=空中火焰
@@ -239,7 +241,7 @@ modifier.moretcon.modbluegem.desc=§o哦，闪亮§r\n当你进攻时，你的�
 modifier.moretcon.modbluegem.name=水蓝元素宝石
 modifier.moretcon.modcrushing.desc=现在这是一堆伤害！！§r\n你的工具将会把自身10%的攻击伤害转化为真实伤害
 modifier.moretcon.modcrushing.name=摧毁
-modifier.moretcon.moddebug.desc=§o§k你在这儿干什么§r\n您的工具会在聊天中记录有关自身的信息，通常用于给ExistingEevee调试工具
+modifier.moretcon.moddebug.desc=§o§k你在这儿干什么§r\n你的工具会在聊天中记录有关自身的信息，通常用于给ExistingEevee调试工具
 modifier.moretcon.moddebug.name=调试
 modifier.moretcon.modgreengem.desc=§o哦，闪亮§r\n当你攻击时，你的工具偶尔会治愈你
 modifier.moretcon.modgreengem.name=翠绿元素宝石
@@ -288,6 +290,20 @@ modifier.moretcon.penetrant.desc=§o他们越大，摔得越重§r\n你的工具
 modifier.moretcon.penetrant.name=渗透
 modifier.moretcon.darkened.desc=§o拥抱黑暗 §r\n你的工具在黑暗中更有效
 modifier.moretcon.darkened.name=黑暗
+modifier.moretcon.essential_obliteration.desc=§o懒惰的矿工...§r\n挖矿时潜行会显著降低挖掘速度，但会给你的工具“充电”。当你的工具“充电”时，手持它它可以增加20格的触及距离，而且挖掘速度明显加快
+modifier.moretcon.essential_obliteration.name=湮灭本质
+modifier.moretcon.wormed.desc=§o蠕动的战争！！§r\n在使用远程武器发射带有该词条的箭矢时潜行，会射出一只污泥蠕虫，攻击箭矢击中的任何物体。该强化共有10格能量，随着时间的推移，能量会自动恢复
+modifier.moretcon.wormed.name=蠕动
+modifier.moretcon.luminescent.desc=§o可能没有放射性...§r\n你的工具将熠熠生辉，仅仅是装饰
+modifier.moretcon.luminescent.name=发光
+modifier.moretcon.overdrive.desc=§o299,792,458米每秒§r\n你的工具使无敌帧黯然失色
+modifier.moretcon.overdrive.name=超速
+modifier.moretcon.weightless.desc=§o如同羽毛一样轻§r\n你可以快速攻击
+modifier.moretcon.weightless.name=无重力
+modifier.moretcon.shielding.desc=§o工具上的盔甲？§r\n当你手持有该词条的工具时时，护甲值+4
+modifier.moretcon.shielding.name=防护
+modifier.moretcon.extratrait2.name=浮雕 II
+modifier.moretcon.extratrait2.desc=§o如果浮雕效果这么好，为什么没有浮雕 II？§r\n蕴含 %s 的力量，获得 %s 的一些特征
 
 moretcon.bloodgodsblessing=血神的祝福
 moretcon.hyperflames=超极火焰
@@ -376,7 +392,10 @@ tile.moretcon.oreebonite.name=暗影金属矿石
 tile.moretcon.oreerythynite.name=永恒石矿石
 tile.moretcon.blockotherstone.name=异石
 tile.moretcon.rottensludge.name=烂泥
+
 traits.bloody_arc.slash=血腥之斩
+traits.kinetic_battery.swoosh_explosion=动力电池释能
+
 uniquetoolpart.moretcon.crimson.name=绯红
 uniquetoolpart.moretcon.mirrored.name=镜像
 uniquetoolpart.moretcon.plasma.name=电浆
@@ -385,6 +404,8 @@ uniquetoolpart.moretcon.technoblade.name=血神之刃
 uniquetoolpart.moretcon.test.name=测试
 uniquetoolpart.moretcon.trailblazer.name=开拓者
 uniquetoolpart.moretcon.triblade.name=三重剑刃
+uniquetoolpart.moretcon.essencore.name=本质核心
+uniquetoolpart.moretcon.wormed.name=蠕动
 
 comment Sponges=comment
 
