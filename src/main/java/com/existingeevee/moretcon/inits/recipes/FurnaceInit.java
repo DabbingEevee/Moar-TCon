@@ -10,8 +10,6 @@ import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import thebetweenlands.common.item.misc.ItemMisc.EnumItemMisc;
-import thebetweenlands.common.registries.ItemRegistry;
 import twilightforest.item.TFItems;
 
 public class FurnaceInit {
@@ -29,9 +27,6 @@ public class FurnaceInit {
 		}
 		if (CompatManager.aether_legacy) {
 			initAL();
-		}
-		if (CompatManager.thebetweenlands) {
-			initBL();
 		}
 	}
 	
@@ -66,16 +61,6 @@ public class FurnaceInit {
 		if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustArkenium, 1), new ItemStack(ModItems.ingotArkenium, 1), 0F);
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustValkyrieMetal, 1), new ItemStack(ModItems.ingotValkyrieMetal, 1), 0F);
-		}
-	}
-	
-	public static void initBL() {
-		if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
-			GameRegistry.addSmelting(new ItemStack(ModItems.dustSwampSteel, 1), new ItemStack(ModItems.ingotSwampSteel, 1), 0F);
-			GameRegistry.addSmelting(new ItemStack(ModItems.dustOctine, 1), new ItemStack(ItemRegistry.OCTINE_INGOT, 1), 0F);
-			GameRegistry.addSmelting(new ItemStack(ModItems.dustSyrmorite, 1), EnumItemMisc.SYRMORITE_INGOT.create(1), 0F);
-			GameRegistry.addSmelting(new ItemStack(ModItems.dustRotiron, 1), new ItemStack(ModItems.ingotRotiron, 1), 0F);
-			GameRegistry.addSmelting(new ItemStack(ModItems.dustAncientAlloy, 1), new ItemStack(ModItems.ingotAncientAlloy, 1), 0F);
 		}
 	}
 }

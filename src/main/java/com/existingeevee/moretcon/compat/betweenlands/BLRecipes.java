@@ -81,6 +81,14 @@ public class BLRecipes {
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_LEGGINGS, 1), new ItemStack(ModItems.itemAncientSlag, 4), 0f);
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_BOOTS, 1), new ItemStack(ModItems.itemAncientSlag, 3), 0f);
 
+		if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
+			GameRegistry.addSmelting(new ItemStack(ModItems.dustSwampSteel, 1), new ItemStack(ModItems.ingotSwampSteel, 1), 0F);
+			GameRegistry.addSmelting(new ItemStack(ModItems.dustOctine, 1), new ItemStack(ItemRegistry.OCTINE_INGOT, 1), 0F);
+			GameRegistry.addSmelting(new ItemStack(ModItems.dustSyrmorite, 1), EnumItemMisc.SYRMORITE_INGOT.create(1), 0F);
+			GameRegistry.addSmelting(new ItemStack(ModItems.dustRotiron, 1), new ItemStack(ModItems.ingotRotiron, 1), 0F);
+			GameRegistry.addSmelting(new ItemStack(ModItems.dustAncientAlloy, 1), new ItemStack(ModItems.ingotAncientAlloy, 1), 0F);
+		}
+		
 		blAPI.registerAnimatorRecipe(new AnimatorRecipe(new ItemStack(BlockRegistry.ANCIENT_REMNANT_BLOCK), 10, 30, new ItemStack(ModItems.itemAncientScrap)));
 		ForgeRegistries.RECIPES.register(new ShapelessRecipes(ModInfo.MODID, new ItemStack(ModItems.itemAncientScrap, 3), 
 				NonNullList.from(Ingredient.fromStacks(ItemStack.EMPTY), 
