@@ -13,6 +13,7 @@ public class NetworkHandler {
 
 	public static final SimpleNetworkWrapper HANDLER = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MODID);
 	private static int i = 0;
+	
 	public static void init() {
 		HANDLER.registerMessage(BleedingEffectMessage.class, BleedingEffectMessage.class, i++, Side.CLIENT);
 		HANDLER.registerMessage(AfterimageMessage.class, AfterimageMessage.class, i++, Side.CLIENT);

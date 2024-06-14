@@ -32,6 +32,9 @@ public interface ICustomSlotRenderer {
 	
 	@SideOnly(Side.CLIENT)
 	public static void simpleRender(ItemStack stack, int x, int y, IBakedModel bakedmodel, GlowType type, int hex) {
+		if (hex < 0)
+			return;
+		
 		float ticks = (float) ((Minecraft.getMinecraft().world.getTotalWorldTime()
 				+ Minecraft.getMinecraft().getRenderPartialTicks()) % (40 * Math.PI));
 

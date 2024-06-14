@@ -67,6 +67,11 @@ public class Luminescent extends AbstractTrait {
 				sumBlue += (col & 0xFF);
 				sumTotal += 1;
 			}
+			
+			if (sumTotal == 0) {
+				return -1;
+			}
+			
 			Color color = new Color(sumRed / sumTotal, sumGreen / sumTotal, sumBlue / sumTotal);
 			map.put(nbt, color.getRGB());
 			return calculateColor(stack);
