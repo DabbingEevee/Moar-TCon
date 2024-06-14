@@ -24,7 +24,7 @@ public class IgniglomerateGenerator extends WorldGenModifier {
 		if (!(world.provider.getDimensionType().getId() == DimensionType.NETHER.getId()))
 			return;
 
-		if (!(peekNextInt(random, 16) == 0))
+		if (!(peekNextInt(random, 4) == 0))
 			return;
 
 		int x = ctx.chunkX * 16 + random.nextInt(16);

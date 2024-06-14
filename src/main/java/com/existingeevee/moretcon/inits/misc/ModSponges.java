@@ -19,7 +19,7 @@ public class ModSponges {
 	public static Item gravitoniumSpongeAtronium;
 	public static Item gravitoniumSpongeSolarsteel;
 	public static Item gravitoniumSpongeValasium;
-
+	
 	public static void init() {
 		gravitoniumSponge = new ItemBase("gravitoniumSponge").setTab(ModTabs.moarTConMisc);
 		ModItems.registerItems(gravitoniumSponge);

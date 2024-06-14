@@ -31,7 +31,7 @@ public class AsteroidGenerator extends WorldGenModifier {
 			return;
 		}
 
-		if (!(peekNextInt(random, 2500) == 0)) {
+		if (!(peekNextInt(random, 125) == 0)) {
 			return;
 		}
 

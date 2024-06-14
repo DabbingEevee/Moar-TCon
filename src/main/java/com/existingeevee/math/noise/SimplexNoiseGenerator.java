@@ -15,6 +15,7 @@ public class SimplexNoiseGenerator {
 		this.scale = scale; // Overall scaling of the terrain
 	}
 
+	//WHAT THE FUCK DOWS THIS MEEEAANNNNN>>>>??>>>?>>?>
 	public double generateOctavedSimplexNoise(int x, int y, long seed) {
 		double totalNoise = 0;
 		double layerFrequency = scale;

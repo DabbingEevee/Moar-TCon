@@ -179,4 +179,11 @@ public class MoreTCon {
 		return instance;
 	}
 }
+
+//MAKE FUSIONITE BEDROCK ORE
 //ally of both trait
+//make g-sponges not hell
+//move recipes away from fusionite
+//igniglomerate fire spew
+
+

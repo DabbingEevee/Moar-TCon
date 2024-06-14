@@ -92,6 +92,7 @@ public class EntityDecayingEffect extends EntityLiving {
 		return false;
 	}
 
+	@Override
 	public void collideWithNearbyEntities() {
 		// trolled
 	}

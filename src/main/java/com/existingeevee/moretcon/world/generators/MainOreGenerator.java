@@ -15,7 +15,7 @@ public class MainOreGenerator extends WorldGenModifier {
 	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {		
 		runGenerator(ModBlocks.oreNaturalVoidSpar.getDefaultState(), 3, 3, 1, 3, BlockMatcher.forBlock(Blocks.BEDROCK), ctx);
 		runGenerator(ModBlocks.oreIrradium.getDefaultState(), 4, 3, 12, 32, BlockMatcher.forBlock(Blocks.STONE), ctx);
-		runGenerator(ModBlocks.oreFusionite.getDefaultState(), 3, 3, 1, 3, BlockMatcher.forBlock(Blocks.STONE), ctx);
+		runGenerator(ModBlocks.oreFusionite.getDefaultState(), 3, 3, 1, 6, BlockMatcher.forBlock(Blocks.STONE), ctx);
 		runGenerator(ModBlocks.oreGallium.getDefaultState(), 3, 1, 12, 24, BlockMatcher.forBlock(Blocks.STONE), ctx);
 		runGenerator(ModBlocks.oreVoidSpar.getDefaultState(), 3, 3, 1, 3, BlockMatcher.forBlock(Blocks.STONE), ctx);
 		runGenerator(ModBlocks.oreElectarite.getDefaultState(), 4, 3, 24, 48, BlockMatcher.forBlock(Blocks.STONE), false, ctx);
@@ -24,7 +24,7 @@ public class MainOreGenerator extends WorldGenModifier {
 		runGenerator(ModBlocks.oreGarstone.getDefaultState(), 3, 2, 75, 100, BlockMatcher.forBlock(Blocks.STONE), ctx);		
 		runGenerator(ModBlocks.oreEtherstone.getDefaultState(), 3, 3, 198, 202, BlockMatcher.forBlock(ModBlocks.blockOtherstone), ctx);
 		
-		if (ctx.rand.nextInt(4) == 0) {
+		if (ctx.rand.nextInt(2) == 0) {
 			runGenerator(ModBlocks.oreEbonite.getDefaultState(), 3, 3, 1, 3, BlockMatcher.forBlock(Blocks.BEDROCK), ctx);
 		}
 	}
