@@ -13,7 +13,7 @@ import slimeknights.tconstruct.tools.modifiers.ModFortifyDisplay;
 @Mixin(ModFortifyDisplay.class)
 public class MixinModFortifyDisplay {
 
-	@Inject(at = @At("RETURN"), method = "<init>()V")
+	@Inject(at = @At("RETURN"), method = "<init>()V", remap = false)
 	private void moretcon$RETURN_Inject$__init__(CallbackInfo info) {
 		TraitClient.register((IModifier) this);
 	}
