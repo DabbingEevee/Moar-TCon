@@ -2,7 +2,6 @@ package com.existingeevee.moretcon.traits.traits;
 
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
-import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -18,7 +17,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 import thebetweenlands.common.registries.ItemRegistry;
 
-public class Inertia extends AbstractTrait implements IAdditionalTraitMethods {
+public class Inertia extends AbstractTrait {
 
 	public Inertia() {
 		super(MiscUtils.createNonConflictiveName("inertia"), 0x000000);
