@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class MagicallyReactive extends AbstractTrait {
 
 	public MagicallyReactive() {
-		super(Misc.createNonConflictiveName("magically_reactive"), 0x9d763f);
+		super(MiscUtils.createNonConflictiveName("magically_reactive"), 0x9d763f);
 	}
 
 	@Override

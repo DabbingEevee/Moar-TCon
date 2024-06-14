@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.existingeevee.moretcon.inits.ModMaterials;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,7 +26,7 @@ public class Luminescent extends AbstractTrait {
 	}
 
 	public Luminescent(String identifier, int color) {
-		super(Misc.createNonConflictiveName(identifier), color);
+		super(MiscUtils.createNonConflictiveName(identifier), color);
 	}
 
 	@Override
@@ -52,11 +52,8 @@ public class Luminescent extends AbstractTrait {
 			int sumTotal = 0;
 			Set<Material> materials = new HashSet<>();
 
-			materials.addAll(Misc.getMaterials(stack));
-			Material embossment = Misc.getEmbossment(stack);
-			if (embossment != null) {
-				materials.add(embossment);
-			}
+			materials.addAll(MiscUtils.getMaterials(stack));
+			materials.addAll(MiscUtils.getEmbossments(stack));
 
 			materials.removeIf(m -> !m.getAllTraits().contains(this));
 

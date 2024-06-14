@@ -3,8 +3,8 @@ package com.existingeevee.moretcon.traits.traits.unique;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.OverrideItemUseEvent;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 
 import net.minecraft.block.Block;
@@ -25,9 +25,8 @@ import thebetweenlands.common.registries.SoundRegistry;
 
 public class Shockwaving extends NumberTrackerTrait {
 
-	// public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Shockwaving() {
-		super(Misc.createNonConflictiveName("shockwaving"), 0x0066ff);
+		super(MiscUtils.createNonConflictiveName("shockwaving"), 0x0066ff);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

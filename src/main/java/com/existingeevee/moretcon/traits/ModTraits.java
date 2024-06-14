@@ -10,13 +10,11 @@ import com.existingeevee.moretcon.MoreTCon;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.traits.modifiers.Betweenified;
-import com.existingeevee.moretcon.traits.modifiers.BlueGem;
 import com.existingeevee.moretcon.traits.modifiers.Crushing;
 import com.existingeevee.moretcon.traits.modifiers.Debug;
-import com.existingeevee.moretcon.traits.modifiers.GreenGem;
+import com.existingeevee.moretcon.traits.modifiers.Gem;
 import com.existingeevee.moretcon.traits.modifiers.MatterReconstructionGel;
 import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
-import com.existingeevee.moretcon.traits.modifiers.RedGem;
 import com.existingeevee.moretcon.traits.modifiers.Shocking;
 import com.existingeevee.moretcon.traits.modifiers.Tarred;
 import com.existingeevee.moretcon.traits.modifiers.Valonite;
@@ -31,10 +29,13 @@ import com.existingeevee.moretcon.traits.traits.ColdFire;
 import com.existingeevee.moretcon.traits.traits.Corroding;
 import com.existingeevee.moretcon.traits.traits.Darkened;
 import com.existingeevee.moretcon.traits.traits.DummyTrait;
+import com.existingeevee.moretcon.traits.traits.Electrified;
 import com.existingeevee.moretcon.traits.traits.Hardcore;
+import com.existingeevee.moretcon.traits.traits.Haunted;
 import com.existingeevee.moretcon.traits.traits.HelpfulRadiation;
 import com.existingeevee.moretcon.traits.traits.HyperGravity;
 import com.existingeevee.moretcon.traits.traits.Hyperheat;
+import com.existingeevee.moretcon.traits.traits.Inertia;
 import com.existingeevee.moretcon.traits.traits.KineticBattery;
 import com.existingeevee.moretcon.traits.traits.Leeching;
 import com.existingeevee.moretcon.traits.traits.Liquid;
@@ -53,15 +54,18 @@ import com.existingeevee.moretcon.traits.traits.Rootplicating;
 import com.existingeevee.moretcon.traits.traits.Rotten;
 import com.existingeevee.moretcon.traits.traits.SkysBlessing;
 import com.existingeevee.moretcon.traits.traits.Slicing;
+import com.existingeevee.moretcon.traits.traits.Soulforged;
 import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
+import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
 import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
 import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
 import com.existingeevee.moretcon.traits.traits.unique.EssentialObliteration;
 import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
 import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
+import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
 import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
 import com.existingeevee.moretcon.traits.traits.unique.Wormed;
@@ -79,32 +83,36 @@ import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.traits.ITrait;
+import thebetweenlands.common.capability.circlegem.CircleGemType;
+import thebetweenlands.common.registries.ItemRegistry;
 
 public class ModTraits {
+	public static BloodGodsBlessing bloodGodsBlessing = new BloodGodsBlessing();
+	public static EssentialObliteration essentialObliteration = new EssentialObliteration();
+	public static Plasmatic plasmatic = new Plasmatic();
+	public static TripleShot tripleshot = new TripleShot();
+	public static BloodyArc bloodyArc = new BloodyArc();
+	public static AerialFlame aerialFlames = new AerialFlame();
+	public static Blinkdrawn blinkdrawn = new Blinkdrawn();
+
 	public static KineticBattery kineticBattery = new KineticBattery();
 	public static Hyperheat hyperheat = new Hyperheat();
 	public static ColdFire coldFire = new ColdFire();
 	public static Tricromatic trichromic = new Tricromatic();
-	public static BloodGodsBlessing bloodGodsBlessing = new BloodGodsBlessing();
 	public static HelpfulRadiation radioactive = new HelpfulRadiation();
 	public static Voidic voidic = new Voidic();
-	public static Pulsating pulsation = new Pulsating();
+	public static Pulsating pulsating = new Pulsating();
 	public static Liquid liquid = new Liquid();
-	public static Burning burning = new Burning();
 	public static Resilient resilient = new Resilient();
 	public static Magical magical = new Magical();
 	public static Reaching reaching;
 	public static Aetheric aetheric = new Aetheric();
 	public static Rootplicating rootplicating = new Rootplicating();
-	public static Plasmatic plasmatic = new Plasmatic();
 	public static SkysBlessing blessed = new SkysBlessing();
 	public static Treetap treetap = new Treetap();
 	public static Hardcore hardcore = new Hardcore();
 	public static HyperGravity hypergravity = new HyperGravity();
-	public static TripleShot tripleshot = new TripleShot();
 	public static Mirroring mirroring = new Mirroring();
-	public static AerialFlame aerialFlames = new AerialFlame();
-	public static BloodyArc bloodyArc = new BloodyArc();
 	public static BottomsEnd bottomsEnd = new BottomsEnd();
 	public static Slicing slicing = new Slicing();
 	public static Leeching leeching = new Leeching();
@@ -121,37 +129,47 @@ public class ModTraits {
 	public static DummyTrait overcast = new DummyTrait("overcast", 0);
 	public static Overgrowth overgrowth = new Overgrowth(1);
 	public static Overgrowth overgrowth2 = new Overgrowth(2);
-
-	public static EssentialObliteration essentialObliteration = new EssentialObliteration();
+	public static Electrified electrified = new Electrified();
+	public static Haunted haunted = new Haunted();
+	public static Soulforged soulforged = new Soulforged(1);
+	public static Soulforged soulforged2 = new Soulforged(2);
+	public static Soulforged soulforged3 = new Soulforged(3);
+	public static Seismishock seismishock = new Seismishock();;
 
 	public static MatterReconstructionGel repair;
 
 	public static AntiGravity antigravity;
 
-	public static RedGem modRedGem;
-	public static GreenGem modGreenGem;
-	public static BlueGem modBlueGem;
+	public static Gem modRedGem;
+	public static Gem modGreenGem;
+	public static Gem modBlueGem;
 	public static Shocking modShocking;
-
-	public static Corroding corroding;
-	public static Crushing crushing;
-	public static Betweenified betweenified;
 	public static Valonite modValonite;
 	public static Tarred modTarred;
+	public static Betweenified modBetweenified;
+
+	public static Corroding corroding;
+	
+	public static Crushing modCrushing;
+
 	public static Debug modDebug;
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
 	public static Oxide oxide;
 	public static Wormed wormed;
+	public static Burning burning; //TODO move away from bl
+	public static Inertia inertia;
 
 	static {
 		if (CompatManager.thebetweenlands) {
 			shockwaving = new Shockwaving();
 			rotten = new Rotten();
 			corroding = new Corroding();
-			betweenified = new Betweenified();
+			modBetweenified = new Betweenified();
 			oxide = new Oxide();
 			wormed = new Wormed();
+			burning = new Burning();
+			inertia = new Inertia();
 		}
 		if (CompatManager.aether_legacy) {
 			antigravity = new AntiGravity();
@@ -166,22 +184,18 @@ public class ModTraits {
 	} 
 
 	public static void init() {
-		if (MoreTCon.proxy.isClient()) {
-			registerModifier(new ModExtraTraitDisplay2());
-		}
-		
 		if (CompatManager.loadMain) {
 			modDebug = new Debug();
 			repair = new MatterReconstructionGel();
-			crushing = new Crushing();
+			modCrushing = new Crushing();
 			registerModifier(
-					crushing
+					modCrushing
 					);
 		}
 		if (CompatManager.thebetweenlands) {
-			modRedGem = new RedGem();
-			modGreenGem = new GreenGem();
-			modBlueGem = new BlueGem();
+			modRedGem = new Gem(CircleGemType.CRIMSON, ItemRegistry.CRIMSON_MIDDLE_GEM, 0xFF0000);
+			modGreenGem = new Gem(CircleGemType.GREEN, ItemRegistry.GREEN_MIDDLE_GEM, 0x00FF00);
+			modBlueGem = new Gem(CircleGemType.AQUA, ItemRegistry.AQUA_MIDDLE_GEM, 0x0000FF);
 			modShocking = new Shocking();
 			modValonite = new Valonite();
 			modTarred = new Tarred();
@@ -198,6 +212,9 @@ public class ModTraits {
 
 	public static void postInit() {
 		registerExtraTraitModifiers();
+		if (MoreTCon.proxy.isClient()) {
+			registerModifier(new ModExtraTraitDisplay2());
+		}
 	}
 
 	

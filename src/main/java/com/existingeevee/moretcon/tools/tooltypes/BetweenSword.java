@@ -6,7 +6,8 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.traits.ModTraits;
 import com.google.common.collect.Multimap;
 
 import net.minecraft.block.state.IBlockState;
@@ -19,6 +20,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -35,6 +37,7 @@ import slimeknights.tconstruct.tools.TinkerTools;
 import thebetweenlands.api.item.CorrosionHelper;
 import thebetweenlands.api.item.IAnimatorRepairable;
 import thebetweenlands.api.item.ICorrodible;
+import thebetweenlands.util.NBTHelper;
 
 public class BetweenSword extends SwordCore implements ICorrodible, IAnimatorRepairable, IBetweenTinkerTool {
 
@@ -44,7 +47,7 @@ public class BetweenSword extends SwordCore implements ICorrodible, IAnimatorRep
 		super(PartMaterialType.handle(
 				TinkerTools.toolRod), PartMaterialType.head(ModTools.betweenSwordBlade),
 				PartMaterialType.extra(TinkerTools.wideGuard));
-		this.setUnlocalizedName(Misc.createNonConflictiveName("blsword"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blsword"));
 		TinkerRegistry.registerToolCrafting(this);
 		CorrosionHelper.addCorrosionPropertyOverrides(this);
 
@@ -62,7 +65,17 @@ public class BetweenSword extends SwordCore implements ICorrodible, IAnimatorRep
 	public double attackSpeed() {
 		return 1.6d; // default vanilla sword speed
 	}
-
+	
+	@Override
+	public void setCorrosion(ItemStack stack, int corrosion) {
+		boolean bad = this.getCorrosion(stack) < corrosion;
+		
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+			return;
+		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
+		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
+	}
+	
 	// sword sweep attack
 	@Override
 	public boolean dealDamage(ItemStack stack, EntityLivingBase player, Entity entity, float damage) {

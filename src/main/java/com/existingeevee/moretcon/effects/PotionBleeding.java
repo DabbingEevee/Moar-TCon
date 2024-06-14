@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.effects;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.NetworkHandler;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
@@ -29,7 +29,7 @@ public class PotionBleeding extends Potion {
 	public PotionBleeding() {
 		super(true, 0xff0000);
 		setRegistryName("bleeding");
-		setPotionName(Misc.createNonConflictiveName("bleeding"));
+		setPotionName(MiscUtils.createNonConflictiveName("bleeding"));
 		potionIcon = new ResourceLocation(ModInfo.MODID + ":textures/other/bleeding.png");
 	}
 

@@ -68,7 +68,13 @@ public class ModBlocks {
 	public static final Block blockOtherstone = ((BlockBase) new BlockEtheralBase("blockOtherstone", Material.ROCK, 1).setHardness(30).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
 	public static final Block oreEtherstone = ((BlockBase) new BlockEtheralOre("oreEtherstone", 8, ModItems.gemEtherstone).setHardness(40).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
 	public static final Block blockEtherstone = ((BlockBase) new BlockBase("blockEtherstone", Material.IRON, 8).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(0.5f);
+	public static final Block oreElectarite = ((BlockBase) new BlockOre("oreElectarite", 4, ModItems.gemElectarite).setHardness(12).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
+	public static final Block blockElectarite = ((BlockBase) new BlockBase("blockElectarite", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
+	public static final Block oreHallowsite = ((BlockBase) new BlockOreMetal("oreHallowsite", 4, ModItems.ingotHallowsite).setHardness(12).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
+	public static final Block blockHallowsite = ((BlockBase) new BlockBase("blockHallowsite", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
+	public static final Block blockAncientAlloy = ((BlockBase) new BlockBase("blockAncientAlloy", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials));
 
+	
 	public static final Block blockGravitoniumFaucet = new BlockGravitoniumFaucet();
 	public static final Block blockCragravel = ((BlockBase) new BlockFalling("blockCragravel", Material.GROUND, 0).setHardness(0.6f).setResistance(0.6f)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
 	public static final Block blockSiltClay = ((BlockBase) new BlockBase("blockSiltClay", Material.CLAY, 5).setHardness(0.6f).setResistance(0.6f)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
@@ -133,6 +139,10 @@ public class ModBlocks {
 					blockErythynite,
 					oreEtherstone,
 					blockEtherstone,
+					oreElectarite, 
+					blockElectarite,
+					oreHallowsite, 
+					blockHallowsite,
 					/**-------------------------------------**/
 					blockOtherstone);
 		}
@@ -150,7 +160,8 @@ public class ModBlocks {
 					blockSiltClay,
 					blockCragravel,
 					blockSwampSteel,
-					blockRotiron
+					blockRotiron,
+					blockAncientAlloy
 			/**-------------------------------------**/
 			);
 		}

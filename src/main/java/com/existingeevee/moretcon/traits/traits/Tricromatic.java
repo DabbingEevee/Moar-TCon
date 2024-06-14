@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.traits.traits;
 import java.util.Random;
 
 import com.existingeevee.moretcon.config.ConfigHandler;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +18,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 public class Tricromatic extends ModifierTrait {
 
 	public Tricromatic() {
-		super(Misc.createNonConflictiveName("trichromatic"), 0);
+		super(MiscUtils.createNonConflictiveName("trichromatic"), 0);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.gildedgames.the_aether.items.ItemsAether;
 
 import net.minecraft.block.state.IBlockState;
@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class SkysBlessing extends AbstractTrait {
 
 	public SkysBlessing() {
-		super(Misc.createNonConflictiveName("skys_blessing"), 0);
+		super(MiscUtils.createNonConflictiveName("skys_blessing"), 0);
 	}
 
     @Override

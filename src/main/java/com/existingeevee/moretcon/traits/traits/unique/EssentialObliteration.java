@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 
 import java.util.UUID;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 
 import net.minecraft.block.state.IBlockState;
@@ -10,10 +10,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -21,25 +19,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EssentialObliteration extends NumberTrackerTrait {
 
 	public EssentialObliteration() {
-		super(Misc.createNonConflictiveName("essential_obliteration"), 0);
+		super(MiscUtils.createNonConflictiveName("essential_obliteration"), 0);
 	}
 
 	@Override
 	public int getNumberMax(ItemStack stack) {
 		return 50;
-	}
-
-	@Override
-	public int getNumber(ItemStack stack) {
-		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
-		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : 0;
-	}
-
-	@Override
-	public int setNumber(ItemStack stack, int amount) {
-		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
-		comp.setInteger("remaining", amount);
-		return amount;
 	}
 
 	@Override

@@ -7,7 +7,8 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.traits.ModTraits;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
@@ -22,6 +23,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -40,6 +42,7 @@ import slimeknights.tconstruct.tools.TinkerTools;
 import thebetweenlands.api.item.CorrosionHelper;
 import thebetweenlands.api.item.IAnimatorRepairable;
 import thebetweenlands.api.item.ICorrodible;
+import thebetweenlands.util.NBTHelper;
 
 public class BetweenAxe extends AoeToolCore implements ICorrodible, IAnimatorRepairable, IBetweenTinkerTool {
 
@@ -58,7 +61,7 @@ public class BetweenAxe extends AoeToolCore implements ICorrodible, IAnimatorRep
 			PartMaterialType.head(ModTools.betweenAxeHead),
 			PartMaterialType.extra(TinkerTools.binding)
 			);
-		this.setUnlocalizedName(Misc.createNonConflictiveName("blaxe"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blaxe"));
 		TinkerRegistry.registerToolCrafting(this);
 		CorrosionHelper.addCorrosionPropertyOverrides(this);
 		//this.setRegistryName("blaxe");
@@ -74,6 +77,16 @@ public class BetweenAxe extends AoeToolCore implements ICorrodible, IAnimatorRep
 		this.setHarvestLevel("axe", 0);
 	}
 
+	@Override
+	public void setCorrosion(ItemStack stack, int corrosion) {
+		boolean bad = this.getCorrosion(stack) < corrosion;
+		
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+			return;
+		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
+		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
+	}
+	
 	@Override
 	public boolean isEffective(IBlockState state) {
 		return effective_materials.contains(state.getMaterial()) || EFFECTIVE_ON.contains(state.getBlock());
@@ -98,20 +111,9 @@ public class BetweenAxe extends AoeToolCore implements ICorrodible, IAnimatorRep
 	public float knockback() {
 		return 1.3f;
 	}
-
-	// hatches 1 : leaves 0
-	// @Override
-	// public float getStrVsBlock(ItemStack stack, IBlockState state) {
-	// if(state.getBlock().getMaterial(state) ==
-	// net.minecraft.block.material.Material.LEAVES) {
-	// return ToolHelper.calcDigSpeed(stack, state);
-	// }
-	// return super.getStrVsBlock(stack, state);
-//  }
-
+	
 	@Override
-	public void afterBlockBreak(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase player,
-			int damage, boolean wasEffective) {
+	public void afterBlockBreak(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase player, int damage, boolean wasEffective) {
 		// breaking leaves does not reduce durability
 		if (state.getBlock().isLeaves(state, world, pos)) {
 			damage = 0;

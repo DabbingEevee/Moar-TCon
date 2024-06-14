@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "normal": [
+      {
+        "model": "moretcon:orehallowsite"
+      },
+      {
+        "model": "moretcon:orehallowsite", "x": 90
+      },      
+      {
+        "model": "moretcon:orehallowsite", "x": 180
+      },      
+      {
+        "model": "moretcon:orehallowsite", "x": 270
+      },
+      {
+        "model": "moretcon:orehallowsite", "y": 90
+      },      
+      {
+        "model": "moretcon:orehallowsite", "y": 180
+      },      
+      {
+        "model": "moretcon:orehallowsite", "y": 270
+      }
+    ]
+  }
+}

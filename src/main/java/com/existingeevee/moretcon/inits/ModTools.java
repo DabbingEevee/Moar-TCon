@@ -1,8 +1,8 @@
 package com.existingeevee.moretcon.inits;
 
 import com.existingeevee.moretcon.config.ConfigHandler;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.utils.CompatManager;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.item.ItemStack;
@@ -40,7 +40,7 @@ public class ModTools {
 
 	
 	public static void init(boolean isClient) {
-		smallPlate = (ToolPart) new ToolPart(Material.VALUE_Ingot * 1).setUnlocalizedName(Misc.createNonConflictiveName("smallplate"));
+		smallPlate = (ToolPart) new ToolPart(Material.VALUE_Ingot * 1).setUnlocalizedName(MiscUtils.createNonConflictiveName("smallplate"));
 		RegisterHelper.registerItem(smallPlate);
 		
 		if (CompatManager.aether_legacy && ConfigHandler.enableGauntlet) {
@@ -54,19 +54,19 @@ public class ModTools {
 		}
 		
 		if (CompatManager.thebetweenlands && ConfigHandler.registerBetweenTinkerTools) {
-			betweenAxeHead = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(Misc.createNonConflictiveName("blaxehead"));
+			betweenAxeHead = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(MiscUtils.createNonConflictiveName("blaxehead"));
 			RegisterHelper.registerItem(betweenAxeHead);
 
-			betweenSwordBlade = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(Misc.createNonConflictiveName("blswordblade"));
+			betweenSwordBlade = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(MiscUtils.createNonConflictiveName("blswordblade"));
 			RegisterHelper.registerItem(betweenSwordBlade);
 
-			betweenShovelHead = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(Misc.createNonConflictiveName("blshovelblade"));
+			betweenShovelHead = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(MiscUtils.createNonConflictiveName("blshovelblade"));
 			RegisterHelper.registerItem(betweenShovelHead);
 
-			betweenPickHead = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(Misc.createNonConflictiveName("blpickhead"));
+			betweenPickHead = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(MiscUtils.createNonConflictiveName("blpickhead"));
 			RegisterHelper.registerItem(betweenPickHead);
 
-			betweenBowLimb = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(Misc.createNonConflictiveName("blbowlimb"));
+			betweenBowLimb = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(MiscUtils.createNonConflictiveName("blbowlimb"));
 			RegisterHelper.registerItem(betweenBowLimb);
 
 			toolBetweenAxe = tryMakeToolInstance("BetweenAxe");// = new BetweenAxe();
@@ -145,21 +145,13 @@ public class ModTools {
 			blbowInfo.addSlotPosition(38, 47); // center bowstring
 			TinkerRegistryClient.addToolBuilding(blbowInfo);
 		}
-		/*if (CompatManager.baubles && ConfigHandler.enableRing) {
-			ToolBuildGuiInfo blaxeInfo = new ToolBuildGuiInfo(toolBetweenAxe);
-			blaxeInfo.addSlotPosition(22, 53);
-			blaxeInfo.addSlotPosition(31, 22);
-			blaxeInfo.addSlotPosition(51, 34);
-			TinkerRegistryClient.addToolBuilding(blaxeInfo);
-		}*/
-
 	}
 	
 	private static ToolCore tryMakeToolInstance(String toolName) {
 		return (ToolCore) tryMakeInstance("com.existingeevee.moretcon.tools.tooltypes." + toolName);
 	}
 
-	
+	//we have to do this bc bl/other addons may not always be here
 	private static Object tryMakeInstance(String classPath) {
 		try {
 			Class<?> clazz = Class.forName(classPath);

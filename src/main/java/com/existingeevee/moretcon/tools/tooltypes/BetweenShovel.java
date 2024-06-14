@@ -8,7 +8,8 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.compat.betweenlands.IBetweenTinkerTool;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.traits.ModTraits;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
@@ -24,6 +25,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -45,6 +47,7 @@ import slimeknights.tconstruct.tools.TinkerTools;
 import thebetweenlands.api.item.CorrosionHelper;
 import thebetweenlands.api.item.IAnimatorRepairable;
 import thebetweenlands.api.item.ICorrodible;
+import thebetweenlands.util.NBTHelper;
 
 public class BetweenShovel extends AoeToolCore implements ICorrodible, IAnimatorRepairable, IBetweenTinkerTool {
 
@@ -61,12 +64,22 @@ public class BetweenShovel extends AoeToolCore implements ICorrodible, IAnimator
 	public BetweenShovel() {
 		this(PartMaterialType.handle(TinkerTools.toolRod), PartMaterialType.head(ModTools.betweenShovelHead),
 				PartMaterialType.extra(TinkerTools.binding));
-		this.setUnlocalizedName(Misc.createNonConflictiveName("blshovel"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("blshovel"));
 		TinkerRegistry.registerToolCrafting(this);
 		CorrosionHelper.addCorrosionPropertyOverrides(this);
 
 	}
 
+	@Override
+	public void setCorrosion(ItemStack stack, int corrosion) {
+		boolean bad = this.getCorrosion(stack) < corrosion;
+		
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+			return;
+		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
+		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
+	}
+	
 	protected BetweenShovel(PartMaterialType... requiredComponents) {
 		super(requiredComponents);
 

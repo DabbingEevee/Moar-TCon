@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import thebetweenlands.common.item.misc.ItemMisc.EnumItemMisc;
+import thebetweenlands.common.registries.ItemRegistry;
 import twilightforest.item.TFItems;
 
 public class FurnaceInit {
@@ -40,6 +41,7 @@ public class FurnaceInit {
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustTrichromadentium, 1), new ItemStack(ModItems.ingotTrichromadentium, 1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustAtronium, 1), new ItemStack(ModItems.ingotAtronium, 1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustSteel, 1), new ItemStack(ModItems.ingotSteel, 1), 0F);
+				GameRegistry.addSmelting(new ItemStack(ModItems.dustHallowsite, 1), new ItemStack(ModItems.ingotHallowsite, 1), 0F);
 			}
 			GameRegistry.addSmelting(new ItemStack(ModItems.rawSteel, 1), new ItemStack(ModItems.ingotSteel, 1), 0F);
 			GameRegistry.addSmelting(new ItemStack(ModBlocks.oreGravitoniumDense, 1), new ItemStack(ModItems.ingotGravitonium, 4), 0F);
@@ -53,9 +55,10 @@ public class FurnaceInit {
 		if (CompatManager.thebetweenlands) {
 			if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustSwampSteel, 1), new ItemStack(ModItems.ingotSwampSteel, 1), 0F);
-				GameRegistry.addSmelting(new ItemStack(ModItems.dustOctine, 1), new ItemStack(ModItems.ingotSwampSteel, 1), 0F);
+				GameRegistry.addSmelting(new ItemStack(ModItems.dustOctine, 1), new ItemStack(ItemRegistry.OCTINE_INGOT, 1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustSyrmorite, 1), EnumItemMisc.SYRMORITE_INGOT.create(1), 0F);
 				GameRegistry.addSmelting(new ItemStack(ModItems.dustRotiron, 1), new ItemStack(ModItems.ingotRotiron, 1), 0F);
+				GameRegistry.addSmelting(new ItemStack(ModItems.dustAncientAlloy, 1), new ItemStack(ModItems.ingotAncientAlloy, 1), 0F);
 			}
 		}
 	}

@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.inits.recipes;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.existingeevee.moretcon.config.ConfigHandler;
+import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.RecipeHelper;
@@ -117,6 +118,34 @@ public class UniqueToolpartRecipes {
 								Pair.of('F', new OreIngredient("ingotFusionite")),
 								Pair.of('N', new OreIngredient("nuggetFusionite")),
 								Pair.of('R', new OreIngredient("ingotRunesteel"))));
+			}
+			
+			if (canRegisterUniqueRecipe(ModMaterials.materialSpaceTimeDisruption)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("spacetimedisruption_recipe", ModMaterials.materialSpaceTimeDisruption.getUniqueToolPart(),
+								new String[] {
+										"PVP",
+										"EFE",
+										"PVP"
+								},
+								Pair.of('P', Ingredient.fromStacks(new ItemStack(ModItems.spaceTimeDisruptionPowder))),
+								Pair.of('V', new TinkerPartIngredient(ModMaterials.materialVoidSpar, "tconstruct:bow_limb")),
+								Pair.of('E', new TinkerPartIngredient(ModMaterials.materialEchostone, "tconstruct:bow_limb")),
+								Pair.of('F', new TinkerPartIngredient(ModMaterials.materialFusionite, "tconstruct:bow_limb"))));
+			}
+			
+			if (canRegisterUniqueRecipe(ModMaterials.materialQuakestruck)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("quakestruck_recipe", ModMaterials.materialQuakestruck.getUniqueToolPart(),
+								new String[] {
+										"OFO",
+										"EIE",
+										"OFO"
+								},
+								Pair.of('E', new OreIngredient("gemElectarite")),
+								Pair.of('I', new TinkerPartIngredient(ModMaterials.materialIgniglomerate, "tconstruct:large_plate")),
+								Pair.of('O', new TinkerPartIngredient(TinkerMaterials.obsidian, "tconstruct:large_plate")),
+								Pair.of('F', new OreIngredient("ingotFusionite"))));
 			}
 		}
 	}

@@ -1,0 +1,12 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/haste/blpick",
+        "blaxe": "moretcon:other/modifier/haste/blaxe",
+        "blsword": "moretcon:other/modifier/haste/blsword",
+        "blshovel": "moretcon:other/modifier/haste/blshovel",
+        "blbow": "moretcon:other/modifier/haste/blbow",
+        "blbow1": "moretcon:other/modifier/haste/blbow_1",
+        "blbow2": "moretcon:other/modifier/haste/blbow_2",
+        "blbow3": "moretcon:other/modifier/haste/blbow_3"
+    }
+}

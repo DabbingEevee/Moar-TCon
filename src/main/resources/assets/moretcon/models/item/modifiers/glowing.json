@@ -1,0 +1,12 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/glowing/blpick",
+        "blaxe": "moretcon:other/modifier/glowing/blaxe",
+        "blsword": "moretcon:other/modifier/glowing/blsword",
+        "blshovel": "moretcon:other/modifier/glowing/blshovel",
+        "blbow": "moretcon:other/modifier/glowing/blbow",
+        "blbow1": "moretcon:other/modifier/glowing/blbow_1",
+        "blbow2": "moretcon:other/modifier/glowing/blbow_2",
+        "blbow3": "moretcon:other/modifier/glowing/blbow_3"
+    }
+}

@@ -8,13 +8,14 @@ import javax.annotation.Nullable;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.block.ISimpleBlockItemProvider;
+import com.existingeevee.moretcon.block.ore.BlockEtheralOre;
+import com.existingeevee.moretcon.block.ore.BlockEtheralOreMetal;
 import com.existingeevee.moretcon.block.ore.BlockOre;
 import com.existingeevee.moretcon.block.ore.BlockOreMetal;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.other.BiValue;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.sponge.SpongeRegistry.GravitoniumSpongeItem;
 import com.google.common.base.Function;
 
@@ -57,7 +58,7 @@ public class RegisterHelper {
 
 		if (itemBlock != null) {
 			ForgeRegistries.ITEMS.register(itemBlock.apply(block).setRegistryName(block.getRegistryName()));
-			if (Misc.isClient()) {
+			if (MiscUtils.isClient()) {
 				RenderHandler.registerBlockModel(block);
 				if (block instanceof BlockFluidClassic) {
 					RenderHandler.registerFluidCustomMeshesAndStates(block);
@@ -69,6 +70,10 @@ public class RegisterHelper {
 			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockOre) block).getOreDrop()));
 		} else if (block instanceof BlockOreMetal) {
 			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockOreMetal) block).getOreDrop()));
+		} else if (block instanceof BlockEtheralOre) {
+			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockEtheralOre) block).getOreDrop()));
+		} else if (block instanceof BlockEtheralOreMetal) {
+			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockEtheralOreMetal) block).getOreDrop()));
 		}
 	}
 
@@ -83,7 +88,7 @@ public class RegisterHelper {
 		}
 		item.setRegistryName(name);
 		ForgeRegistries.ITEMS.register(item);
-		if (Misc.isClient()) {
+		if (MiscUtils.isClient()) {
 			if (item instanceof ToolCore) {
 				ModelRegisterUtil.registerToolModel((ToolCore) item);
 				moreTConTools.add((ToolCore) item); //we dont use this on the server anyways

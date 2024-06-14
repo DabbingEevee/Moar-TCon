@@ -27,7 +27,7 @@ public abstract class MixinToolPart {
 		}
 	}
 	
-	//we have to do this instead of a refmap bc mixingradle cant handle dependancies super well
+	//we have to do this instead of a refmap bc mixingradle cant handle dependencies super well
 	@Inject(method = { "getSubItems", "func_150895_a" }, at = @At("TAIL"), remap = false)
 	public void moretcon$TAIL_Inject$getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems, CallbackInfo ci) {
 		ToolPart $this = (ToolPart) (Object) this;

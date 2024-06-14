@@ -1,25 +1,37 @@
 package com.existingeevee.moretcon.materials;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.book.content.ContentMaterial;
 import slimeknights.tconstruct.library.book.content.ContentSingleStatMultMaterial;
 import slimeknights.tconstruct.library.book.sectiontransformer.AbstractMaterialSectionTransformer;
 import slimeknights.tconstruct.library.book.sectiontransformer.BowMaterialSectionTransformer;
+import slimeknights.tconstruct.library.events.TinkerCraftingEvent.ToolCraftingEvent;
+import slimeknights.tconstruct.library.events.TinkerCraftingEvent.ToolModifyEvent;
+import slimeknights.tconstruct.library.events.TinkerCraftingEvent.ToolPartReplaceEvent;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
+import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.modifiers.ModExtraTrait;
 
 @SuppressWarnings("deprecation")
@@ -61,6 +73,7 @@ public class UniqueMaterial extends Material {
 
 	private UniqueMaterial(String identifier, int color) {
 		super(identifier, color, false);
+		MinecraftForge.EVENT_BUS.register(this);
 		this.setCastable(false);
 		this.setCraftable(false);
 	}
@@ -172,5 +185,57 @@ public class UniqueMaterial extends Material {
 
 	public String getPartResLoc() {
 		return partResLoc;
+	}
+	
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void handleUniqueToolParts(ToolCraftingEvent event) {
+		for (ItemStack part : event.getToolParts()) {
+			if (TinkerUtil.getMaterialFromStack(part) == this && !event.getItemStack().getItem().getRegistryName().toString().equals(getToolResLoc())) {
+				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));// "You can only use unique tool parts on the correct tool.");
+			}
+		}
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void handleUniqueToolParts(ToolPartReplaceEvent event) {
+		for (ItemStack part : event.getToolParts()) {
+			if (TinkerUtil.getMaterialFromStack(part) == this && !event.getItemStack().getItem().getRegistryName().toString().equals(getToolResLoc())) {
+				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
+			}
+		}
+	}
+	
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void handleToolModifyEvent(ToolModifyEvent event) {
+		List<UniqueMaterial> pre = MiscUtils.getUniqueEmbossments(event.getToolBeforeModification());
+		List<UniqueMaterial> post = MiscUtils.getUniqueEmbossments(event.getItemStack());
+		
+		if (!pre.contains(this) && post.contains(this)) {
+			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getRegistryName().equals(event.getItemStack().getItem().getRegistryName()))
+				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
+		}
+	}
+	
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	@SideOnly(value = Side.CLIENT)
+	public void handleToolTips(ItemTooltipEvent event) {
+		try {
+			if (event.getItemStack().getItem() instanceof ToolPart) {
+				if (TinkerUtil.getMaterialFromStack(event.getItemStack()) == this) {
+					if (UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())) != null) {
+						int i = 1;
+						event.getToolTip().add(i++, "");
+						if (!(getPartResLoc().equals(event.getItemStack().getItem().getRegistryName().toString()))) {
+							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable"));
+							event.getToolTip().add(i++, "");
+						}
+						event.getToolTip().add(i++, "§7" + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getLocalizedName()));
+						event.getToolTip().add(i++, "");
+
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+		}
 	}
 }

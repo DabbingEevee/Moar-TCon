@@ -1,0 +1,8 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/luck/blpick",
+        "blaxe": "moretcon:other/modifier/luck/blaxe",
+        "blsword": "moretcon:other/modifier/luck/blsword",
+        "blshovel": "moretcon:other/modifier/luck/blshovel"
+    }
+}

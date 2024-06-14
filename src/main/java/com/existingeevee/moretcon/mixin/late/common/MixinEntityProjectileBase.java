@@ -23,14 +23,14 @@ public class MixinEntityProjectileBase {
 	@Inject(at = @At(value = "TAIL"), method = { "onCollideWithPlayer", "func_70100_b_" }, remap = false)
 	public void moretcon$TAIL_Inject$onCollideWithPlayer(@Nonnull EntityPlayer player, CallbackInfo ci) {
 		EntityProjectileBase $this = (EntityProjectileBase) (Object) this;
-		if ($this.isDead && !StaticVars.lastPickedUpArrow.isEmpty()) {
+		if ($this.isDead && !StaticVars.lastArrowPickup.isEmpty()) {
 
-			for (ITrait t : ToolHelper.getTraits(StaticVars.lastPickedUpArrow)) {
+			for (ITrait t : ToolHelper.getTraits(StaticVars.lastArrowPickup)) {
 				if (t instanceof IAdditionalTraitMethods) {
-					((IAdditionalTraitMethods) t).onPickup($this, StaticVars.lastPickedUpArrow, player);
+					((IAdditionalTraitMethods) t).onPickup($this, StaticVars.lastArrowPickup, player);
 				}
 			}
-			StaticVars.lastPickedUpArrow = ItemStack.EMPTY;
+			StaticVars.lastArrowPickup = ItemStack.EMPTY;
 		}
 	}
 

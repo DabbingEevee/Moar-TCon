@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -10,7 +10,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class Penetrant extends AbstractTrait {
 
 	public Penetrant() {
-		super(Misc.createNonConflictiveName("penetrant"), 0x9d763f);
+		super(MiscUtils.createNonConflictiveName("penetrant"), 0x9d763f);
 	}
 
 	@Override

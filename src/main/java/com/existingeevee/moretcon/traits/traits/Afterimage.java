@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Random;
 
 import com.existingeevee.moretcon.NetworkHandler;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
@@ -31,7 +31,7 @@ public class Afterimage extends AbstractTrait {
 	}
 
 	public Afterimage() {
-		super(Misc.createNonConflictiveName("afterimage"), 0);
+		super(MiscUtils.createNonConflictiveName("afterimage"), 0);
 	}
 
 	@Override

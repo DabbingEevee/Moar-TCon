@@ -5,7 +5,7 @@ import java.util.List;
 import com.existingeevee.moretcon.compat.ConarmSupport;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.gildedgames.the_aether.api.AetherAPI;
 import com.gildedgames.the_aether.api.accessories.AccessoryType;
 import com.gildedgames.the_aether.api.accessories.AetherAccessory;
@@ -40,7 +40,7 @@ public class Gauntlet extends TinkerToolCore {
 				PartMaterialType.head(TinkerTools.largePlate),
 				PartMaterialType.handle(ModTools.smallPlate),
 				PartMaterialType.extra(ModTools.smallPlate));
-		this.setUnlocalizedName(Misc.createNonConflictiveName("gauntlet"));
+		this.setUnlocalizedName(MiscUtils.createNonConflictiveName("gauntlet"));
 		TinkerRegistry.registerToolCrafting(this);
 		MinecraftForge.EVENT_BUS.register(this);
 	}

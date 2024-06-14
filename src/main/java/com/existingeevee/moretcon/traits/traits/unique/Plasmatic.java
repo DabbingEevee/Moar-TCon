@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 
 import java.util.List;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,7 +15,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class Plasmatic extends AbstractTrait {
 
 	public Plasmatic() {
-		super(Misc.createNonConflictiveName("plasmatic"), 0);
+		super(MiscUtils.createNonConflictiveName("plasmatic"), 0);
 	}
 
 	@Override
@@ -69,6 +69,3 @@ public class Plasmatic extends AbstractTrait {
         }
 	}
 }
-//particle flame ~ ~.5 ~ 0 0 0 -0.05 100
-//particle smoke ~ ~.5 ~ 0 0 0 -0.05 300
-//particle fireworksSpark ~ ~ ~ 0 0 0 0.1 100

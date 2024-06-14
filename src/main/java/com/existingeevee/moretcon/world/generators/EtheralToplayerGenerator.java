@@ -1,10 +1,9 @@
 package com.existingeevee.moretcon.world.generators;
 
-import java.util.Random;
-
 import com.existingeevee.math.noise.SimplexNoiseGenerator;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.world.WorldGenModifier;
+import com.existingeevee.moretcon.world.WorldgenContext;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -18,8 +17,11 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 	public static final SimplexNoiseGenerator ETHERAL_GENERATOR = new SimplexNoiseGenerator(7, 0.2f, 0.025f); // dL = 0.5
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
-			IChunkProvider chunkProvider) {
+	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {
+		World world = ctx.world;		
+		int chunkX = ctx.chunkX;
+		int chunkZ = ctx.chunkZ;
+		
 		if (!(world.provider.getDimensionType().getId() == DimensionType.THE_END.getId())) {
 			return;
 		}

@@ -1,0 +1,12 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/silktouch/blpick",
+        "blaxe": "moretcon:other/modifier/silktouch/blaxe",
+        "blsword": "moretcon:other/modifier/silktouch/blsword",
+        "blshovel": "moretcon:other/modifier/silktouch/blshovel",
+        "blbow": "moretcon:other/modifier/silktouch/blbow",
+        "blbow1": "moretcon:other/modifier/silktouch/blbow_1",
+        "blbow2": "moretcon:other/modifier/silktouch/blbow_2",
+        "blbow3": "moretcon:other/modifier/silktouch/blbow_3"
+    }
+}

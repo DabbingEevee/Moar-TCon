@@ -1,7 +1,7 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.utils.CompatManager;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.gildedgames.the_aether.entities.block.EntityFloatingBlock;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -23,7 +23,7 @@ public class AntiGravity extends AbstractTrait {
 
 //	contains code from TinkersAether
 	public AntiGravity() {
-		super(Misc.createNonConflictiveName("antigravity"), 0);
+		super(MiscUtils.createNonConflictiveName("antigravity"), 0);
         MinecraftForge.EVENT_BUS.register(this);
 	}
 

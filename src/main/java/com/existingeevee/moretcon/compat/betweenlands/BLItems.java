@@ -1,7 +1,7 @@
 package com.existingeevee.moretcon.compat.betweenlands;
 
 import com.existingeevee.moretcon.inits.ModFluids;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -17,7 +17,7 @@ public class BLItems {
 
 	public static void initBL(boolean isClient) {
 
-		blFilledMoltenSulfur = new ItemSpecificBucket(ModFluids.liquidBurningSulfurFlow).setUnlocalizedName(Misc.createNonConflictiveName("blFilledMoltenSulfur").toLowerCase());
+		blFilledMoltenSulfur = new ItemSpecificBucket(ModFluids.liquidBurningSulfurFlow).setUnlocalizedName(MiscUtils.createNonConflictiveName("blFilledMoltenSulfur").toLowerCase());
 		RegisterHelper.registerItem(blFilledMoltenSulfur);
 		
 

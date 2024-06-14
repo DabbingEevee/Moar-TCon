@@ -109,6 +109,15 @@ public class OreDictionaryManager {
 			registerOre("gemEtherstone", ModItems.gemEtherstone);
 			registerOre("oreEtherstone", ModBlocks.oreEtherstone);
 			
+			registerOre("blockElectarite", ModBlocks.blockElectarite);
+			registerOre("gemElectarite", ModItems.gemElectarite);
+			registerOre("oreElectarite", ModBlocks.oreElectarite);
+			
+			registerOre("blockHallowsite", ModBlocks.blockHallowsite);
+			registerOre("oreHallowsite", ModBlocks.oreHallowsite);
+			registerOre("ingotHallowsite", ModItems.ingotHallowsite);
+			registerOre("nuggetHallowsite", ModItems.nuggetHallowsite);
+			
 			if(ConfigHandler.shouldLoadDust) {
 				registerOre("dustIrradium", ModItems.dustIrradium);
 				registerOre("dustValasium", ModItems.dustValasium);
@@ -122,7 +131,7 @@ public class OreDictionaryManager {
 				registerOre("dustAtronium", ModItems.dustAtronium);
 				registerOre("dustSteel", ModItems.dustSteel);
 				registerOre("dustEbonite", ModItems.dustEbonite);
-
+				registerOre("dustHallowsite", ModItems.dustHallowsite);
 			}
 		}
 		if(CompatManager.twilightforest) {
@@ -149,6 +158,10 @@ public class OreDictionaryManager {
 			registerOre("ingotRotiron", ModItems.ingotRotiron);
 			registerOre("nuggetRotiron", ModItems.nuggetRotiron);
 
+			registerOre("blockAncientAlloy", ModBlocks.blockAncientAlloy);
+			registerOre("ingotAncientAlloy", ModItems.ingotAncientAlloy);
+			registerOre("nuggetAncientAlloy", ModItems.nuggetAncientAlloy);
+			
 			registerOre("ropeReed", EnumItemMisc.SWAMP_REED_ROPE.create(1));
 			registerOre("itemDragonFlyWing", EnumItemMisc.DRAGONFLY_WING.create(1));
 			registerOre("itemAnglerTooth", EnumItemMisc.ANGLER_TOOTH.create(1));
@@ -169,6 +182,7 @@ public class OreDictionaryManager {
 				registerOre("dustSwampsteel", ModItems.dustSwampSteel);
 				registerOre("dustRotiron", ModItems.dustRotiron);
 				registerOre("dustSyrmorite", ModItems.dustSyrmorite);
+				registerOre("dustAncientAlloy", ModItems.dustAncientAlloy);
 			}
 			registerOre("dripTar", EnumItemMisc.TAR_DRIP.create(1));
 		}

@@ -1,18 +1,20 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.ModTraits;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.traits.AbstractTraitLeveled;
+import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 public class Overgrowth extends AbstractTraitLeveled {
 
 	public Overgrowth(int levels) {
-		super(Misc.createNonConflictiveName("overgrowth"), 0, 3, levels);
+		super(MiscUtils.createNonConflictiveName("overgrowth"), 0, 3, levels);
 	}
 
 	@Override
@@ -26,7 +28,9 @@ public class Overgrowth extends AbstractTraitLeveled {
 			int current = ModTraits.overslime.getNumber(tool);
 			int cap = ModTraits.overslime.getNumberMax(tool);
 		
-			if (current < cap && random.nextFloat() < (this.levels * 0.05)) {
+			ModifierNBT tag = ModifierNBT.readTag(TinkerUtil.getModifierTag(tool, this.getModifierIdentifier()));
+			
+			if (current < cap && random.nextFloat() < (tag.level * 0.05)) {
 				ModTraits.overslime.addNumber(tool, 1);
 			}
 		}

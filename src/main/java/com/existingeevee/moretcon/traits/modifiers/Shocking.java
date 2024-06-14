@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.modifiers;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -24,7 +24,7 @@ import thebetweenlands.common.entity.EntityShock;
 public class Shocking extends ProjectileModifierTrait {
 
 	public Shocking() {
-		super(Misc.createNonConflictiveName("modshocking"), 0x0099e6);
+		super(MiscUtils.createNonConflictiveName("modshocking"), 0x0099e6);
 		this.addAspects(ModifierAspect.projectileOnly);//, new ModifierAspect.SingleAspect(this), new ModifierAspect.DataAspect(this), ModifierAspect.freeModifier);
 	}
 

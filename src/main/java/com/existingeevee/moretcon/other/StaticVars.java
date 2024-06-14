@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 @Deprecated
 public class StaticVars {
 
-	public static ItemStack lastPickedUpArrow = ItemStack.EMPTY;
+	public static ItemStack lastArrowPickup = ItemStack.EMPTY;
 	
+	public static double lastHypergravityKB = 0;
 }

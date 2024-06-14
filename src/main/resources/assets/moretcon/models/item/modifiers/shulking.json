@@ -1,0 +1,12 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/shulking/blpick",
+        "blaxe": "moretcon:other/modifier/shulking/blaxe",
+        "blsword": "moretcon:other/modifier/shulking/blsword",
+        "blshovel": "moretcon:other/modifier/shulking/blshovel",
+        "blbow": "moretcon:other/modifier/shulking/blbow",
+        "blbow1": "moretcon:other/modifier/shulking/blbow_1",
+        "blbow2": "moretcon:other/modifier/shulking/blbow_2",
+        "blbow3": "moretcon:other/modifier/shulking/blbow_3"
+    }
+}

@@ -17,6 +17,10 @@ public class ModItems {
 	/*---------------------------------------*/
 
 	//Metals
+	public static final Item nuggetHallowsite = new ItemBase("nuggetHallowsite");
+	public static final Item ingotHallowsite = new ItemBase("ingotHallowsite");
+	public static final Item dustHallowsite = new ItemBase("dustHallowsite");
+	
 	public static final Item nuggetFusionite = new ItemBase("nuggetFusionite", 0x0000ff);
 	public static final Item ingotFusionite = new ItemBase("ingotFusionite", GlowType.OVAL, 0x0000ff);
 	public static final Item dustFusionite = new ItemBase("dustFusionite", GlowType.CIRCLE_BIG, 0x0000ff);
@@ -83,6 +87,12 @@ public class ModItems {
 	public static final Item nuggetTrichromadentium = new ItemBase("nuggetTrichromadentium", 0xffffff);
 	public static final Item dustTrichromadentium = new ItemBase("dustTrichromadentium", GlowType.CIRCLE_BIG, 0xffffff);
 
+	public static final Item ingotAncientAlloy = new ItemBase("ingotAncientAlloy");
+	public static final Item nuggetAncientAlloy = new ItemBase("nuggetAncientAlloy");
+	public static final Item dustAncientAlloy = new ItemBase("dustAncientAlloy");
+	public static final Item itemAncientScrap = new ItemBase("itemAncientScrap");
+	public static final Item itemAncientSlag = new ItemBase("itemAncientSlag");
+	
 	public static final Item dustIronwood = new ItemBase("dustIronwood");
 
 	public static final Item dustFiery = new ItemBase("dustFiery");
@@ -102,6 +112,7 @@ public class ModItems {
 	public static final Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate").withColor(0xda6540).withType(GlowType.EXTREME);
 	public static final Item gemErythynite = new ItemBase("gemErythynite", GlowType.CIRCLE_BIG, 0x32ff00);
 	public static final Item gemEtherstone = new ItemBase("gemEtherstone", GlowType.CIRCLE_BIG, 0xffff00);;
+	public static final Item gemElectarite = new ItemBase("gemElectarite", GlowType.CIRCLE_BIG, 0x6666ff);;
 
 	//Ingriedients
 	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);
@@ -112,7 +123,7 @@ public class ModItems {
 	public static final Item sulfurBucketSyrmorite = new ItemBase("sulfurBucketSyrmorite").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item sulfurBucketIron = new ItemBase("sulfurBucketIron").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item betweenicCore = new ItemBase("betweenicCore", 0x3a2f24).setTab(ModTabs.moarTConMisc);
-//
+
 	//Modifier items
 	public static final Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
 	public static final Item crushingModifier = new ItemBase("crushingModifier").setTab(ModTabs.moarTConMisc);
@@ -167,6 +178,9 @@ public class ModItems {
 					ingotEbonite,
 					nuggetEbonite,
 
+					ingotHallowsite,
+					nuggetHallowsite,
+					
 					gemVoidSpar,
 					gemEnderal,
 					gemGarstone,
@@ -175,7 +189,8 @@ public class ModItems {
 					gemIgniglomerate,
 					gemErythynite,
 					gemEtherstone,
-
+					gemElectarite,
+					
 					crushingModifier,
 					matterReconstructionGel,
 					carbonPile,
@@ -198,7 +213,9 @@ public class ModItems {
 						dustRuneSteel,
 						dustTrichromadentium,
 						dustAtronium,
-						dustEbonite);
+						dustEbonite,
+						dustHallowsite
+						);
 			}
 		}
 		if (CompatManager.twilightforest) {
@@ -222,6 +239,11 @@ public class ModItems {
 					ingotSwampSteel,
 					nuggetSwampSteel,
 
+					ingotAncientAlloy,
+					nuggetAncientAlloy,
+					itemAncientScrap,
+					itemAncientSlag,
+					
 					itemSiltClay,
 					crushedShockwaveSword,
 
@@ -237,7 +259,10 @@ public class ModItems {
 						dustOctine,
 						dustSyrmorite,
 						dustRotiron,
-						dustSwampSteel);
+						dustSwampSteel,
+						dustAncientAlloy
+						
+						);
 			}
 
 		}

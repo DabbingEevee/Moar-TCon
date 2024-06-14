@@ -1,19 +1,47 @@
 {
-  "group": "moretcon",
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "010"
-  ],
-  "key": {
-    "0": {
-      "item": "minecraft:nether_star"
-    },
-    "1": {
-      "item": "moretcon:blockfusionite"
-    }    
-  },
-  "result": {
-    "item": "moretcon:spacetimedisruptionpowder",
-    "count": 2
-  }
+    "type": "forge:ore_shapeless",
+    "group": "moretcon:carbon",
+    "ingredients": [
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemEtherstone"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemVoidspar"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemDiamond"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemEchostone"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotGravitonium"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotFusionite"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotEbonite"
+        },
+        {
+      		"item": "moretcon:blockotherstone"
+        },
+        {
+      		"item": "moretcon:blockotherstone"
+        },
+        {
+      		"item": "moretcon:blockotherstone"
+        }
+    ],
+    "result": {
+        "item": "moretcon:spacetimedisruptionpowder",
+        "count": 1
+    }
 }

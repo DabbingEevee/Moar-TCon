@@ -1,8 +1,8 @@
 package com.existingeevee.moretcon.effects;
 
 import com.existingeevee.moretcon.ModInfo;
-import com.existingeevee.moretcon.other.Misc;
 import com.existingeevee.moretcon.other.fires.CustomFireHelper;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -23,7 +23,7 @@ public class PotionHyperflames extends Potion {
 	public PotionHyperflames() {
 		super(true, 0xff7777);
 		setRegistryName("hyperflames");
-		setPotionName(Misc.createNonConflictiveName("hyperflames"));
+		setPotionName(MiscUtils.createNonConflictiveName("hyperflames"));
 		potionIcon = new ResourceLocation(ModInfo.MODID + ":textures/other/coldflames.png");
 		MinecraftForge.EVENT_BUS.register(this);
 	}

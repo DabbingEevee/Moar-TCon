@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 
 import javax.annotation.Nullable;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
 
 import net.minecraft.entity.Entity;
@@ -27,7 +27,7 @@ import thebetweenlands.common.entity.mobs.EntityTinySludgeWormHelper;
 public class Wormed extends AbstractProjectileTrait implements IAdditionalTraitMethods {
 
 	public Wormed() {
-		super(Misc.createNonConflictiveName("wormed"), 0);
+		super(MiscUtils.createNonConflictiveName("wormed"), 0);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -50,7 +50,7 @@ public class Wormed extends AbstractProjectileTrait implements IAdditionalTraitM
 	
 	@Override
 	public void onPickup(EntityProjectileBase projectileBase, ItemStack ammo, EntityLivingBase entity) {
-		if (getNumberRemaining(ammo) < getNumberMax(ammo) && projectileBase.getTags().contains(this.getIdentifier() + ".active")) {
+		if (getNumberRemaining(ammo) < getNumberMax(ammo) && projectileBase.getTags().contains(this.getModifierIdentifier() + ".active")) {
 			addNumberRemaining(ammo, 1);
 		}
 	}
@@ -58,7 +58,7 @@ public class Wormed extends AbstractProjectileTrait implements IAdditionalTraitM
 	@Override
 	public void onLaunch(EntityProjectileBase projectileBase, World world, @Nullable EntityLivingBase shooter) {
 		if (getNumberRemaining(projectileBase.tinkerProjectile.getItemStack()) > 0 && (shooter == null ? true : shooter.isSneaking())) {
-			projectileBase.getTags().add(this.getIdentifier() + ".active");
+			projectileBase.getTags().add(this.getModifierIdentifier() + ".active");
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class Wormed extends AbstractProjectileTrait implements IAdditionalTraitM
 
 	@Override
 	public void afterHit(EntityProjectileBase projectile, World world, ItemStack ammoStack, EntityLivingBase attacker, Entity target, double impactSpeed) {
-		if (!world.isRemote && target instanceof EntityLivingBase && projectile.getTags().contains(this.getIdentifier() + ".active")) {
+		if (!world.isRemote && target instanceof EntityLivingBase && projectile.getTags().contains(this.getModifierIdentifier() + ".active")) {
 			EntityTinySludgeWormHelper worm = new EntityTinySludgeWormHelper(world);
 			worm.setLocationAndAngles(projectile.posX, projectile.posY, projectile.posZ, projectile.rotationYaw, projectile.rotationPitch);
 			worm.setAttackTarget((EntityLivingBase) target);
@@ -88,12 +88,12 @@ public class Wormed extends AbstractProjectileTrait implements IAdditionalTraitM
 	}
 
 	public int getNumberRemaining(ItemStack stack) {
-		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
+		NBTTagCompound comp = stack.getOrCreateSubCompound(this.getModifierIdentifier());
 		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : 10;
 	}
 
 	public int setNumberRemaining(ItemStack stack, int amount) {
-		NBTTagCompound comp = stack.getOrCreateSubCompound(this.identifier);
+		NBTTagCompound comp = stack.getOrCreateSubCompound(this.getModifierIdentifier());
 		comp.setInteger("remaining", amount);
 		return amount;
 	}
@@ -118,7 +118,7 @@ public class Wormed extends AbstractProjectileTrait implements IAdditionalTraitM
 			sb.append(TinkerUtil.getRomanNumeral(data.level));
 		}
 		if (!detailed)
-			sb.append(": -{-toreplace.moretcon.number." + this.getIdentifier() + "-}-");
+			sb.append(": -{-toreplace.moretcon.number." + data.identifier + "-}-");
 
 		return sb.toString();
 	}
@@ -132,7 +132,7 @@ public class Wormed extends AbstractProjectileTrait implements IAdditionalTraitM
 		for (int i = 0; i < event.getToolTip().size(); i++) {
 			String str = event.getToolTip().get(i);
 			String[] splitString = str.split(": ");
-			if (splitString.length >= 2 && splitString[1].equals("-{-toreplace.moretcon.number." + this.getIdentifier() + "-}-")) {
+			if (splitString.length >= 2 && splitString[1].equals("-{-toreplace.moretcon.number." + this.getModifierIdentifier() + "-}-")) {
 				splitString[1] = getNumberRemaining(tool) + "/" + getNumberMax(tool);
 				event.getToolTip().set(i, String.join(": ", splitString));
 				return;

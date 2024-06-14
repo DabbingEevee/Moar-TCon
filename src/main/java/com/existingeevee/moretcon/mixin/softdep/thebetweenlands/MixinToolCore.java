@@ -1,0 +1,85 @@
+package com.existingeevee.moretcon.mixin.softdep.thebetweenlands;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+
+import com.existingeevee.moretcon.MoreTCon;
+import com.existingeevee.moretcon.config.ConfigHandler;
+import com.existingeevee.moretcon.traits.ModTraits;
+
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.tinkering.Category;
+import slimeknights.tconstruct.library.tools.ToolCore;
+import slimeknights.tconstruct.library.utils.ToolHelper;
+import thebetweenlands.api.item.IBigSwingAnimation;
+import thebetweenlands.api.item.IExtendedReach;
+import thebetweenlands.common.registries.ItemRegistry;
+
+@Mixin(ToolCore.class)
+public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
+
+	//I promise to not do too much of these invasive mixins
+	
+	@Unique
+	@Override
+	public boolean shouldUseBigSwingAnimation(ItemStack stack) {
+		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) {
+			return false; //this is a simple tool. nope
+		}
+		if (MoreTCon.proxy.isClientSneaking() || ToolHelper.isBroken(stack))
+			return false;
+		return ModTraits.inertia.isToolWithTrait(stack);
+	}
+
+	@Unique
+	@Override
+	public float getSwingSpeedMultiplier(EntityLivingBase entity, ItemStack stack) {
+		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) {
+			return 1; //this is a simple tool. nope
+		}
+		if (!ModTraits.inertia.isToolWithTrait(stack) || entity.isSneaking() || ToolHelper.isBroken(stack)) {
+			return 1;
+		}
+		
+		boolean isTool = true;
+		
+		if (stack.getItem() instanceof ToolCore) {
+			ToolCore tool = (ToolCore) stack.getItem();
+			isTool = tool.hasCategory(Category.HARVEST);
+		}
+		if (isTool)
+			return 0.225f;
+		
+		return 0.35f;
+	}
+
+	@Override
+	public double getReach() {
+		return 1; //Hooopefully nothing bad happens
+	}
+	
+	@Override
+	public void onLeftClick(EntityPlayer player, ItemStack stack) {
+		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) {
+			return; //this is a simple tool. nope
+		}
+		if (!ModTraits.inertia.isToolWithTrait(stack) || player.isSneaking() || ToolHelper.isBroken(stack)) {
+			return;
+		}
+		
+		boolean isTool = true;
+		
+		if (stack.getItem() instanceof ToolCore) {
+			ToolCore tool = (ToolCore) stack.getItem();
+			isTool = tool.hasCategory(Category.HARVEST);
+		}
+		if (isTool) {
+			((IExtendedReach) ItemRegistry.ANCIENT_BATTLE_AXE).onLeftClick(player, stack);
+		} else {
+			((IExtendedReach) ItemRegistry.ANCIENT_GREATSWORD).onLeftClick(player, stack);
+		}
+    }
+}

@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits.unique;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.traits.AbstractProjectileTrait;
 public class TripleShot extends AbstractProjectileTrait {
 
 	public TripleShot() {
-		super(Misc.createNonConflictiveName("tripleshot"), 0xFFFFFF);
+		super(MiscUtils.createNonConflictiveName("tripleshot"), 0xFFFFFF);
         MinecraftForge.EVENT_BUS.register(this);
 	}
 

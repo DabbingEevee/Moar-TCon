@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits;
 
 import java.util.Random;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -13,9 +13,8 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class Magical extends AbstractTrait {
 
-	//public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Magical() {
-		super(Misc.createNonConflictiveName("magical"), 0x0066ff);
+		super(MiscUtils.createNonConflictiveName("magical"), 0x0066ff);
 	}
 
 	@Override

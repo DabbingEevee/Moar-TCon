@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.DurabilityShieldTrait;
 
 import net.minecraft.item.ItemStack;
@@ -9,8 +9,8 @@ import thebetweenlands.api.item.ICorrodible;
 public class Oxide extends DurabilityShieldTrait {
 
 	public Oxide() {
-		super(Misc.createNonConflictiveName("oxide"), 0);
-		this.showNumberRemaining = false;
+		super(MiscUtils.createNonConflictiveName("oxide"), 0);
+		this.showDisplay = false;
 	}
 
 	@Override

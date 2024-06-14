@@ -18,6 +18,8 @@ import com.existingeevee.moretcon.traits.ModTraits;
 import com.existingeevee.moretcon.traits.TraitClient;
 import com.existingeevee.moretcon.traits.book.BookTransformerAppendModifiers;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -58,7 +60,6 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void init() {
-		TraitClient.init();
 	}
 
 	@Override
@@ -71,6 +72,7 @@ public class ClientProxy extends CommonProxy {
 
 		CompositeRegistry.updateCompositeRenderer();
 
+		TraitClient.init(); //we have to do it here bc tinkers registered the stuff here
 	}
 
 	@Override
@@ -94,5 +96,11 @@ public class ClientProxy extends CommonProxy {
 	@Override 
 	public boolean isClient() {
 		return true;
+	}
+	
+	@Override
+	public boolean isClientSneaking() {
+		EntityPlayerSP p = Minecraft.getMinecraft().player;
+		return p == null ? false : p.isSneaking();
 	}
 }

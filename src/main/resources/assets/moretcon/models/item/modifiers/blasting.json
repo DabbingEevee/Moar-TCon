@@ -1,0 +1,7 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/blasting/blpick",
+        "blaxe": "moretcon:other/modifier/blasting/blaxe",
+        "blshovel": "moretcon:other/modifier/blasting/blshovel"
+    }
+}

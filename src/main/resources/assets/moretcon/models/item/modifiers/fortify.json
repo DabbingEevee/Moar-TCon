@@ -1,0 +1,7 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/fortify/blpick",
+        "blaxe": "moretcon:other/modifier/fortify/blaxe",
+        "blshovel": "moretcon:other/modifier/fortify/blshovel"
+    }
+}

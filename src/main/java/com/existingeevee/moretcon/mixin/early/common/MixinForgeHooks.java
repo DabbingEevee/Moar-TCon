@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.CancellationException;
 
 import com.existingeevee.moretcon.other.OverrideItemUseEvent;
 import com.existingeevee.moretcon.traits.ModTraits;
@@ -41,36 +40,18 @@ public abstract class MixinForgeHooks {
 		}
 		return item.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 	}
-	
+
 	@Inject(method = "blockStrength", at = @At("HEAD"), cancellable = true, remap = false)
 	private static void moretcon$HEAD_Inject$blockStrength(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world, @Nonnull BlockPos pos, CallbackInfoReturnable<Float> ci) {
-		try {
-			if (ModTraits.bottomsEnd.getToolCoreClass().isInstance(player.getHeldItemMainhand().getItem())) {
-				float hardness = state.getBlockHardness(world, pos);
-				boolean isBedrock = state.getBlock() == Blocks.BEDROCK;
-				boolean hasTrait = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand());
-				boolean canHarvest = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand());
-				
-				if (isBedrock && hasTrait && canHarvest) {
-					hardness = 50;
-					ci.setReturnValue(player.getDigSpeed(state, pos) / hardness / 30F);
-				}	
+		if (ModTraits.bottomsEnd.getToolCoreClass().isInstance(player.getHeldItemMainhand().getItem())) {
+			float hardness = state.getBlockHardness(world, pos);
+			boolean isBedrock = state.getBlock() == Blocks.BEDROCK || state.getBlock().getRegistryName().toString().equals("thebetweenlands:betweenlands_bedrock");
+			boolean hasTrait = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand());
+
+			if (isBedrock && hasTrait) {
+				hardness = 50;
+				ci.setReturnValue(player.getDigSpeed(state, pos) / hardness / 30F);
 			}
-		} catch (CancellationException e) {
-			e.printStackTrace();
 		}
 	}
-
 }
-
-/*
- * @Inject(method = "canToolHarvestBlock", at = @At("HEAD"), cancellable = true)
- * public static void moretcon$canToolHarvestBlock$InjectHEAD(IBlockAccess
- * world, BlockPos pos, @Nonnull ItemStack stack,
- * CallbackInfoReturnable<Boolean> ci) { // boolean IBlockState state =
- * world.getBlockState(pos); boolean isBedrock = state.getBlock() ==
- * Blocks.BEDROCK; boolean canBreakBedrock =
- * ToolHelper.getTraits(stack).stream().anyMatch(t ->
- * t.getIdentifier().equals(ModTraits.bottomsEnd.getIdentifier())); if
- * (isBedrock && canBreakBedrock) { ci.setReturnValue(true); } }
- */

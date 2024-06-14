@@ -3,7 +3,7 @@ package com.existingeevee.moretcon.traits.traits;
 import java.util.List;
 import java.util.UUID;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.gildedgames.the_aether.networking.AetherNetworkingManager;
 import com.gildedgames.the_aether.networking.packets.PacketExtendedAttack;
 
@@ -24,11 +24,12 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
 //adapted from tinkers aether
+//TODO, improve algorithm and use own packet handler
 public class Reaching extends AbstractTrait {
     public static final AttributeModifier reachModifier = new AttributeModifier(UUID.fromString("df6eabe7-ffff-0000-9099-002f90370708"), "Reaching Modifier", 2D, 0);
 
     public Reaching() {
-        super(Misc.createNonConflictiveName("reaching"), 0);
+        super(MiscUtils.createNonConflictiveName("reaching"), 0);
         MinecraftForge.EVENT_BUS.register(this);
     }
 

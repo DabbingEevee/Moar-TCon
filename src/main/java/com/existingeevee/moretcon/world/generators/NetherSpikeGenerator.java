@@ -5,6 +5,7 @@ import java.util.Random;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.world.IBlockStateProvider;
 import com.existingeevee.moretcon.world.WorldGenModifier;
+import com.existingeevee.moretcon.world.WorldgenContext;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -19,8 +20,10 @@ import net.minecraft.world.gen.IChunkGenerator;
 public class NetherSpikeGenerator extends WorldGenModifier {
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
-			IChunkProvider chunkProvider) {
+	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {
+		World world = ctx.world;
+		Random random = ctx.rand;
+		
 		if (world.provider.getDimensionType().getId() != DimensionType.NETHER.getId()) {
 			return;
 		}
@@ -30,7 +33,7 @@ public class NetherSpikeGenerator extends WorldGenModifier {
 		
 		IBlockStateProvider provider = provider(random);
 		
-		BlockPos origin = new BlockPos(random.nextInt(16) + chunkX * 16 + 8, 128, random.nextInt(16) + chunkZ * 16 + 8);
+		BlockPos origin = new BlockPos(random.nextInt(16) + ctx.chunkX * 16 + 8, 128, random.nextInt(16) + ctx.chunkZ * 16 + 8);
 
 		BlockPos position = origin.up(random.nextInt(4));
 		int i = random.nextInt(4) + 7;
@@ -66,8 +69,6 @@ public class NetherSpikeGenerator extends WorldGenModifier {
 							if (block != Blocks.BEDROCK) {
 								world.setBlockState(position.add(i1, -k, j1), provider.getNextBlock(random), 2);
 							}
-								//this.setBlockAndNotifyAdequately(world, position.add(i1, -k, j1),
-								//		Blocks.PACKED_ICE.getDefaultState());
 						}
 					}
 				}

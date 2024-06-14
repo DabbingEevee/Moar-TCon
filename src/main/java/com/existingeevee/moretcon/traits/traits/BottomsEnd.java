@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class BottomsEnd extends AbstractTrait {
 	public BottomsEnd() {
-		super(Misc.createNonConflictiveName("bottomsend".toLowerCase()), 0);
+		super(MiscUtils.createNonConflictiveName("bottomsend".toLowerCase()), 0);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	

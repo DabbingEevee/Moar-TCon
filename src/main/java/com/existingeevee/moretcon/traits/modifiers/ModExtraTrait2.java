@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.existingeevee.moretcon.inits.ModBlocks;
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.google.common.collect.ImmutableList;
 
 import net.minecraft.enchantment.Enchantment;
@@ -34,9 +34,13 @@ import slimeknights.tconstruct.tools.modifiers.ToolModifier;
 
 public class ModExtraTrait2 extends ToolModifier {
 
+	static {
+		Thread.dumpStack();
+	}
+	
 	public static final List<ItemStack> EMBOSSMENT_ITEMS = getEmbossmentItems();
-	public static final String EXTRA_TRAIT_IDENTIFIER = Misc.createNonConflictiveName("extratrait2");
-	private final Material material;
+	public static final String EXTRA_TRAIT_IDENTIFIER = MiscUtils.createNonConflictiveName("extratrait2");
+	public final Material material;
 	public final Set<ToolCore> toolCores;
 	private final Collection<ITrait> traits;
 

@@ -1,6 +1,6 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.Misc;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -10,9 +10,8 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class Darkened extends AbstractTrait {
 
-	//public static final Trait hammer_sickle = new Trait(identifier, color);
 	public Darkened() {
-		super(Misc.createNonConflictiveName("darkened"), 0);
+		super(MiscUtils.createNonConflictiveName("darkened"), 0);
 	}
 
 	@Override

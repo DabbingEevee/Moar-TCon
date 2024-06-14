@@ -1,0 +1,9 @@
+{
+    "textures": {
+        "blpick": "moretcon:other/modifier/smite/blpick",
+        "blaxe": "moretcon:other/modifier/smite/blaxe",
+        "blsword": "moretcon:other/modifier/smite/blsword",
+        "blshovel": "moretcon:other/modifier/smite/blshovel",
+        "blbow": "moretcon:other/modifier/smite/blbow"
+    }
+}
