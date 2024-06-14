@@ -1,6 +1,6 @@
 {
     "type": "forge:ore_shapeless",
-    "group": "moretcon:carbon",
+    "group": "moretcon",
     "ingredients": [
         {
             "type": "forge:ore_dict",
@@ -8,11 +8,7 @@
         },
         {
             "type": "forge:ore_dict",
-            "ore": "gemVoidspar"
-        },
-        {
-            "type": "forge:ore_dict",
-            "ore": "gemDiamond"
+            "ore": "gemVoidSpar"
         },
         {
             "type": "forge:ore_dict",
@@ -20,15 +16,15 @@
         },
         {
             "type": "forge:ore_dict",
-            "ore": "ingotGravitonium"
+            "ore": "dustGravitonium"
         },
         {
             "type": "forge:ore_dict",
-            "ore": "ingotFusionite"
+            "ore": "dustFusionite"
         },
         {
             "type": "forge:ore_dict",
-            "ore": "ingotEbonite"
+            "ore": "dustEbonite"
         },
         {
       		"item": "moretcon:blockotherstone"
