@@ -34,10 +34,6 @@ import slimeknights.tconstruct.tools.modifiers.ToolModifier;
 
 public class ModExtraTrait2 extends ToolModifier {
 
-	static {
-		Thread.dumpStack();
-	}
-	
 	public static final List<ItemStack> EMBOSSMENT_ITEMS = getEmbossmentItems();
 	public static final String EXTRA_TRAIT_IDENTIFIER = MiscUtils.createNonConflictiveName("extratrait2");
 	public final Material material;
