@@ -43,6 +43,7 @@ public class JeiInit {
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreErythynite, 1), "Found very rarely in The Nether in nether prisms which generates from y = 160 <-> 224", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEtherstone, 1), "Found rarely in The End in the etheral stone from y = 199 <-> 201. \n\nMust be mined with a tool with \"Etheral Harvest\"", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreElectarite, 1), "Found more or less commonly in all stonebearing dimensions from y = 24 <-> 48. \n\nDoes not spawn exposed to air.", () -> CompatManager.loadMain));
+			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreHallowsite, 1), "Found more or less commonly in all netherrack-bearing dimensions from y = 45 <-> 90. ", () -> CompatManager.loadMain));
 		}
 		if (CompatManager.aether_legacy) {
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreArkenium, 1), "Found rarely in all holystone-bearing dimensions from y = 5 <-> 250.", () -> CompatManager.aether_legacy));
