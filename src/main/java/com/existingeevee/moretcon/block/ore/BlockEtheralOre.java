@@ -38,6 +38,7 @@ public class BlockEtheralOre extends BlockEtheralBase {
 		this.toDrop = toDrop;
 		this.minDropAmount = minDropAmount;
 		this.maxDropAmount = maxDropAmount;
+		this.canBeReplaced = false;
 	}
 
 	@Override

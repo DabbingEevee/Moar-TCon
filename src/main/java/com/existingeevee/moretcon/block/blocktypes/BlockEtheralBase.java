@@ -24,6 +24,8 @@ public class BlockEtheralBase extends BlockBase {
 
 	public static final AxisAlignedBB EMPTY_AABB = new AxisAlignedBB(-100.0D, -100.0D, -100.0D, -100.0D, -100.0D, -100.0D);
 
+	protected boolean canBeReplaced = true;
+	
 	public BlockEtheralBase(String itemName, Material material, int harvestLevel) {
 		super(itemName, material, harvestLevel);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -52,7 +54,7 @@ public class BlockEtheralBase extends BlockBase {
 
 	@Override
 	public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos) {
-		return true;
+		return canBeReplaced;
 	}
 
 	
