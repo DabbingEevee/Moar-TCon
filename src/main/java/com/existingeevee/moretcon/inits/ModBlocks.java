@@ -6,6 +6,7 @@ import com.existingeevee.moretcon.block.blocktypes.BlockFalling;
 import com.existingeevee.moretcon.block.blocktypes.HotBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.RadiationBlockBase;
 import com.existingeevee.moretcon.block.blocktypes.unique.BlockGravitoniumFaucet;
+import com.existingeevee.moretcon.block.blocktypes.unique.BlockIgniglomerateCluster;
 import com.existingeevee.moretcon.block.blocktypes.unique.BlockVoidColumn;
 import com.existingeevee.moretcon.block.blocktypes.unique.BlockVoidCore;
 import com.existingeevee.moretcon.block.blocktypes.unique.BlockVoidPrismBottom;
@@ -59,7 +60,7 @@ public class ModBlocks {
 	public static final Block blockBloodstone = ((BlockBase) new BlockBase("blockBloodstone", Material.IRON, 5).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block oreEchostone = ((BlockBase) new BlockOre("oreEchostone", 5, ModItems.gemEchostone, 1).setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static final Block blockEchostone = ((BlockBase) new BlockBase("blockEchostone", Material.IRON, 6).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
-	public static final Block oreIgniglomerate = ((BlockBase) new BlockOre("oreIgniglomerate", 5, ModItems.gemIgniglomerate, 1).setCanBurn(false).setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setLightLevel(1);
+	public static final Block oreIgniglomerate = ((BlockBase) new BlockIgniglomerateCluster().setCanBurn(false).setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setLightLevel(1);
 	public static final Block blockIgniglomerate = ((BlockBase) new HotBlockBase("blockIgniglomerate", Material.IRON, 6).setCanBurn(false).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(1);
 	public static final Block oreEbonite = ((BlockBase) new BlockBedrockOreMetal("oreEbonite", 5, ModItems.ingotEbonite).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static final Block blockEbonite = ((BlockBase) new BlockBase("blockEbonite", Material.IRON, 5).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);

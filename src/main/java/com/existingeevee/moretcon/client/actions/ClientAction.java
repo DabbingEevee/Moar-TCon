@@ -1,5 +1,6 @@
 package com.existingeevee.moretcon.client.actions;
 
+import java.lang.reflect.Constructor;
 import java.nio.charset.StandardCharsets;
 
 import com.existingeevee.moretcon.MoreTCon;
@@ -19,6 +20,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class ClientAction {
 
+	protected ClientAction() {
+	}
+
 	@SideOnly(Side.CLIENT)
 	public abstract void runAsClient(World world, double x, double y, double z, NBTBase data);
 
@@ -30,11 +34,12 @@ public abstract class ClientAction {
 			NetworkHandler.HANDLER.sendToDimension(new SentClientActionMessage(this.getClass().getName(), x, y, z, data), world.provider.getDimension());
 		}
 	}
-	
+
+	@SideOnly(Side.CLIENT)
 	public void run(double x, double y, double z, NBTBase data) {
 		run(Minecraft.getMinecraft().world, x, y, z, data);
 	}
-	
+
 	public static class SentClientActionMessage implements IMessage, IMessageHandler<SentClientActionMessage, IMessage> {
 
 		private String classPath = "";
@@ -65,7 +70,9 @@ public abstract class ClientAction {
 			Minecraft.getMinecraft().addScheduledTask(() -> {
 				try {
 					Class<? extends ClientAction> c = (Class<? extends ClientAction>) Class.forName(message.classPath);
-					c.newInstance().run(message.x, message.y, message.z, message.tag);
+					Constructor<? extends ClientAction> constructor = c.getConstructor();
+					constructor.setAccessible(true);
+					constructor.newInstance().run(message.x, message.y, message.z, message.tag);
 				} catch (Throwable e) {
 					e.printStackTrace();
 				}

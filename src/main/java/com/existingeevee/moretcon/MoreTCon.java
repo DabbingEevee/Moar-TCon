@@ -184,6 +184,5 @@ public class MoreTCon {
 //ally of both trait
 //make g-sponges not hell
 //move recipes away from fusionite
-//igniglomerate fire spew
 
 
