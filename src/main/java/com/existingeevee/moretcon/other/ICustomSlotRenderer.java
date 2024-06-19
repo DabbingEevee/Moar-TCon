@@ -31,10 +31,10 @@ public interface ICustomSlotRenderer {
 	public static final ResourceLocation OVAL_GLOW = new ResourceLocation(ModInfo.MODID, "other/bg_glow_oval");
 	
 	@SideOnly(Side.CLIENT)
-	public static void simpleRender(ItemStack stack, int x, int y, IBakedModel bakedmodel, GlowType type, int hex) {
-		if (hex < 0)
+	public static void simpleRender(ItemStack stack, int x, int y, IBakedModel bakedmodel, GlowType type, int hex) {		
+		if (hex == Integer.MIN_VALUE)
 			return;
-		
+				
 		float ticks = (float) ((Minecraft.getMinecraft().world.getTotalWorldTime()
 				+ Minecraft.getMinecraft().getRenderPartialTicks()) % (40 * Math.PI));
 

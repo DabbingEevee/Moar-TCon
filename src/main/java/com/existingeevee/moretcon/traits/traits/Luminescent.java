@@ -21,7 +21,7 @@ public class Luminescent extends AbstractTrait {
 
 	static {
 		MATERIAL_COLOR_OVERRIDE.put(ModMaterials.materialFusionite, 0x0000ff);
-		MATERIAL_COLOR_OVERRIDE.put(ModMaterials.materialTrichromadentium, 0xffffff);
+		MATERIAL_COLOR_OVERRIDE.put(ModMaterials.materialTrichromadentium, 0xaaaaaa);
 		MATERIAL_COLOR_OVERRIDE.put(ModMaterials.materialGravitonium, 0x00a000);
 	}
 
@@ -64,14 +64,14 @@ public class Luminescent extends AbstractTrait {
 				sumBlue += (col & 0xFF);
 				sumTotal += 1;
 			}
-			
+
 			if (sumTotal == 0) {
-				return -1;
+				map.put(nbt, Integer.MIN_VALUE);
+			} else {
+				Color color = new Color(sumRed / 255f / sumTotal, sumGreen / 255f / sumTotal, sumBlue / 255f / sumTotal);
+				map.put(nbt, color.getRGB());
 			}
-			
-			Color color = new Color(sumRed / sumTotal, sumGreen / sumTotal, sumBlue / sumTotal);
-			map.put(nbt, color.getRGB());
-			return calculateColor(stack);
+			return map.get(nbt);
 		}
 	}
 }
