@@ -30,6 +30,7 @@ public class BlockEtheralBase extends BlockBase {
 		super(itemName, material, harvestLevel);
 		MinecraftForge.EVENT_BUS.register(this);
 		this.translucent = true;
+		this.setResistance(Float.POSITIVE_INFINITY);
 	}
 
 	@Override
