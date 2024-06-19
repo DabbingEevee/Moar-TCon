@@ -31,7 +31,7 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 				int x = i + chunkX * 16 + 8;
 				int z = j + chunkZ * 16 + 8;
 
-				if (x * x + z * z < 4000 * 4000)
+				if (x * x + z * z < 500 * 500)
 					continue;
 
 				double d = ETHERAL_GENERATOR.generateOctavedSimplexNoise(x, z, world.getSeed());
