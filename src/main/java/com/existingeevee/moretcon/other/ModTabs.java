@@ -25,7 +25,7 @@ public class ModTabs {
 		moarTConMaterials = (new CreativeTabs("moarTConMaterials") {
 			@Override
 			public ItemStack getTabIconItem() {
-				return new ItemStack(ModItems.ingotFusionite, (int) (1));
+				return new ItemStack(ModItems.ingotFusionite, 1);
 			}
 			
 		    @SideOnly(Side.CLIENT)
@@ -64,14 +64,14 @@ public class ModTabs {
 		moarTConMisc = (new CreativeTabs("moarTConMisc") {
 			@Override
 			public ItemStack getTabIconItem() {
-				return new ItemStack(ModItems.matterReconstructionGel, (int) (1));
+				return new ItemStack(ModItems.matterReconstructionGel, 1);
 			}
 		});
 		
 		uniqueToolParts = (new CreativeTabs("uniqueToolParts") {
 			@Override
 			public ItemStack getTabIconItem() {
-				return new ItemStack(ModItems.ingotGravitonium, (int) (1));
+				return new ItemStack(ModItems.ingotGravitonium, 1);
 			}
 
 			@Override
