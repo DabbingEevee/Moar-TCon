@@ -27,7 +27,7 @@ public class JeiInit {
 			CUSTOM.add(new JeiInformationContainer<FluidStack>(fluidstack, new FluidStack(ModFluids.liquidMummySludge, 1000), "Obtained by melting down a Dreadful Peat Mummy.", () -> CompatManager.thebetweenlands));
 		}
 		if (CompatManager.loadMain) {
-			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreFusionite, 1), "Found extremely rarely in all stonebearing dimensions from y = 1 <-> 6", () -> CompatManager.loadMain));
+			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreFusionite, 1), "Found extremely rarely in all stonebearing or bedrockbearing dimensions from y = 1 <-> 6", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreIrradium, 1), "Found more or less commonly in all stonebearing dimensions from y = 12 <-> 32.", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreVoidSpar, 1), "Found rare-ish-ly in all stonebearing dimensions or bedrockbearing from y = 1 <-> 3.", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreNaturalVoidSpar, 1), "Found rare-ish-ly commonly in all stonebearing or bedrockbearing dimensions from y = 12 <-> 32. \n\nMust be mined with a tool with \"Bottom's End\"", () -> CompatManager.loadMain));

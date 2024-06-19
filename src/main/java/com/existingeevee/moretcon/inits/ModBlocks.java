@@ -27,8 +27,8 @@ public class ModBlocks {
 	public static int totalBlocks;
 	/*---------------------------------------*/
 	public static final Block blockFusionite = ((BlockBase) new BlockBase("blockFusionite", Material.IRON, 3).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
-	public static final Block blockValasium = ((BlockBase) new BlockBase("blockValasium", Material.IRON, 6).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block oreFusionite = ((BlockBase) new BlockOreMetal("oreFusionite", 4, ModItems.ingotFusionite).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
+	public static final Block oreBedrockFusionite = ((BlockBase) new BlockBedrockOreMetal("oreBedrockFusionite", 4, ModItems.ingotFusionite).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static final Block blockIrradium = ((BlockBase) new RadiationBlockBase("blockIrradium", Material.IRON, 3).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block oreIrradium = ((BlockBase) new BlockOreMetal("oreIrradium", 2, ModItems.ingotIrradium).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static final Block blockSolsteel = ((BlockBase) new HotBlockBase("blockSolarSteel", Material.IRON, 3).setCanBurn(false).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
@@ -73,6 +73,7 @@ public class ModBlocks {
 	public static final Block oreHallowsite = ((BlockBase) new BlockOreMetal("oreHallowsite", 4, ModItems.ingotHallowsite).setHardness(12).setResistance(0).setCreativeTab(ModTabs.moarTConMaterials));
 	public static final Block blockHallowsite = ((BlockBase) new BlockBase("blockHallowsite", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block blockAncientAlloy = ((BlockBase) new BlockBase("blockAncientAlloy", Material.IRON, 4).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials));
+	public static final Block blockValasium = ((BlockBase) new BlockBase("blockValasium", Material.IRON, 6).setHardness(10).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 
 	
 	public static final Block blockGravitoniumFaucet = new BlockGravitoniumFaucet();
@@ -106,8 +107,9 @@ public class ModBlocks {
 			ModBlocks.registerBlocks(
 					/**-------------------------------------**/
 					blockFusionite,
-					blockValasium,
+					oreBedrockFusionite,
 					oreFusionite,
+					blockValasium,
 					blockIrradium,
 					oreIrradium,
 					blockSolsteel,
