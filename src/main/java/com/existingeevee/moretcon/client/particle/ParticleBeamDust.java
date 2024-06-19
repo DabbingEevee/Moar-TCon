@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.particle;
+package com.existingeevee.moretcon.client.particle;
 
 import com.existingeevee.moretcon.block.blocktypes.unique.VoidConductor;
 import com.existingeevee.moretcon.inits.ModBlocks;

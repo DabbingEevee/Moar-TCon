@@ -1,8 +1,8 @@
 package com.existingeevee.moretcon.client.actions;
 
-import com.existingeevee.moretcon.particle.ParticleBeamDust;
-import com.existingeevee.moretcon.particle.ParticleSpawner;
-import com.existingeevee.moretcon.particle.ParticleSpawner.ParticleProvider;
+import com.existingeevee.moretcon.client.particle.ParticleBeamDust;
+import com.existingeevee.moretcon.client.particle.ParticleSpawner;
+import com.existingeevee.moretcon.client.particle.ParticleSpawner.ParticleProvider;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTBase;

@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.particle;
+package com.existingeevee.moretcon.client.particle;
 
 import java.util.Random;
 
