@@ -1,8 +1,8 @@
 package com.existingeevee.moretcon.traits.traits.unique;
 
-import com.existingeevee.moretcon.effects.ModPotions;
 import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect;
 import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect.EnumDecayingEffectType;
+import com.existingeevee.moretcon.inits.ModPotions;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 

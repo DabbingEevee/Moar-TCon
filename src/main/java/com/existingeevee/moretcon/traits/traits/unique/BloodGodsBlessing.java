@@ -2,7 +2,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 
 import java.util.List;
 
-import com.existingeevee.moretcon.effects.ModPotions;
+import com.existingeevee.moretcon.inits.ModPotions;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
 import com.google.common.collect.Lists;

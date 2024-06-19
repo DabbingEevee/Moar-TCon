@@ -1,5 +1,8 @@
-package com.existingeevee.moretcon.effects;
+package com.existingeevee.moretcon.inits;
 
+import com.existingeevee.moretcon.effects.PotionBleeding;
+import com.existingeevee.moretcon.effects.PotionBloodGodsBlessing;
+import com.existingeevee.moretcon.effects.PotionHyperflames;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 
 import net.minecraft.potion.Potion;

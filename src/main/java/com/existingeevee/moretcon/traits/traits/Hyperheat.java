@@ -1,7 +1,7 @@
 package com.existingeevee.moretcon.traits.traits;
 
 import com.existingeevee.moretcon.config.ConfigHandler;
-import com.existingeevee.moretcon.effects.ModPotions;
+import com.existingeevee.moretcon.inits.ModPotions;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
