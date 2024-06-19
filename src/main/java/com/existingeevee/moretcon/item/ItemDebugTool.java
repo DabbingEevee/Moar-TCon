@@ -58,9 +58,9 @@ public class ItemDebugTool extends ItemBase {
 	    //    biomes[i] = (byte) Biome.getIdForBiome(BiomeRegistry.MARSH_1);
 	    //}
 		
-		new thebetweenlands.common.world.gen.feature.structure.WorldGenSludgeWormDungeon().generate(worldIn, itemRand, playerIn.getPosition());
+		//new thebetweenlands.common.world.gen.feature.structure.WorldGenSludgeWormDungeon().generate(worldIn, itemRand, playerIn.getPosition());
 		//new thebetweenlands.common.world.gen.feature.structure.WorldGenSludgeWormDungeon().generate(worldIn, itemRand, playerIn.getPosition());
 		//ItemAncientGreatsword
-		return true;
+		return false;
 	}
 }
