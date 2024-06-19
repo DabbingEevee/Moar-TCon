@@ -28,9 +28,9 @@ public class OverrideItemUseEvent extends PlayerEvent {
 	private final EnumFacing face;
 
 	public OverrideItemUseEvent(EntityPlayer player, EnumHand hand, BlockPos pos, EnumFacing face, Vec3d hitVec) {
-        super(Preconditions.checkNotNull(player, "Null player in PostRightClickBlockEvent!"));
-		this.hand = Preconditions.checkNotNull(hand, "Null hand in PostRightClickBlockEvent!");
-		this.pos = Preconditions.checkNotNull(pos, "Null position in PostRightClickBlockEvent!");
+        super(Preconditions.checkNotNull(player, "Null player in OverrideItemUseEvent!"));
+		this.hand = Preconditions.checkNotNull(hand, "Null hand in OverrideItemUseEvent!");
+		this.pos = Preconditions.checkNotNull(pos, "Null position in OverrideItemUseEvent!");
 		this.face = face;
 		this.hitVec = hitVec;
 	}
