@@ -180,7 +180,6 @@ public class MoreTCon {
 	}
 }
 
-//MAKE FUSIONITE BEDROCK ORE
 //ally of both trait
 //make g-sponges not hell
 //move recipes away from fusionite
