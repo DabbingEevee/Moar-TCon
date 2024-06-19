@@ -27,16 +27,16 @@ public class ModSponges {
 		if (CompatManager.loadMain) {
 
 			gravitoniumSpongeTrichromadentium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("trichromadentium", "oreTrichromadentium", new ItemStack(ModItems.ingotTrichromadentium), new OreIngredient("gemEnderal"),
-					SpongeRegistry.createSpongeStep(() -> TinkerFluids.iron, Material.VALUE_Block * 8),
-					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidIrradium, Material.VALUE_Block * 8),
-					SpongeRegistry.createSpongeStep(() -> TinkerFluids.cobalt, Material.VALUE_Block * 8),
-					SpongeRegistry.createSpongeStep(() -> TinkerFluids.obsidian, Material.VALUE_Ingot * 32)));
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.iron, Material.VALUE_Ingot * 8),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidIrradium, Material.VALUE_Ingot * 8),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.cobalt, Material.VALUE_Ingot * 8),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.obsidian, Material.VALUE_Ingot * 8)));
 
 			gravitoniumSpongeAtronium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("atronium", "oreAtronium", new ItemStack(ModItems.ingotAtronium), new OreIngredient("gemErythynite"), 
 					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidGallium, Material.VALUE_Ingot * 2),
-					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidFusionite, Material.VALUE_Block),
-					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidRuneSteel, Material.VALUE_Block * 4),
-					SpongeRegistry.createSpongeStep(() -> TinkerFluids.gold, Material.VALUE_Block * 8)));
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidFusionite, Material.VALUE_Ingot),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidRuneSteel, Material.VALUE_Ingot * 4),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.gold, Material.VALUE_Ingot * 8)));
 
 			gravitoniumSpongeSolarsteel = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("solarsteel", "oreSolarsteel", new ItemStack(ModItems.ingotSolsteel), new OreIngredient("gemIgniglomerate"),
 					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidFusionite, Material.VALUE_Ingot * 4),
