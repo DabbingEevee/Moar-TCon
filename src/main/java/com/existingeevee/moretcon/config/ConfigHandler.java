@@ -29,7 +29,7 @@ public class ConfigHandler {
 	public static boolean shouldAllowConstructsArmory = true;
 	public static boolean shouldAllowTiC3ContentBackport = true;
 
-	public static boolean shouldLoadDust = false;
+	public static boolean shouldLoadDust = true;
 	public static boolean shouldLoadDustForCompatability = true;
 
 	public static boolean disableOreGen = false;
