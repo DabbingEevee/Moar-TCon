@@ -27,7 +27,7 @@ public class Blinkdrawn extends AbstractTrait {
 		super.applyEffect(rootCompound, modifierTag);
 		if (TinkerUtil.hasCategory(rootCompound, Category.LAUNCHER)) {
 			ProjectileLauncherNBT launcherData = new ProjectileLauncherNBT(TagUtil.getToolTag(rootCompound));
-			launcherData.drawSpeed = Float.POSITIVE_INFINITY; //YES
+			launcherData.drawSpeed = Float.MAX_VALUE; //YES
 			launcherData.bonusDamage -= 6; //Very large penalty
 			TagUtil.setToolTag(rootCompound, launcherData.get());
 		}

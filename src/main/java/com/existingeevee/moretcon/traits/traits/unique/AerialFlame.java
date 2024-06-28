@@ -17,21 +17,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.traits.AbstractProjectileTrait;
+import slimeknights.tconstruct.library.traits.ITrait;
+import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 public class AerialFlame extends AbstractProjectileTrait {
-	
+
 	public AerialFlame() {
 		super(MiscUtils.createNonConflictiveName("AerialFlame".toLowerCase()), 0);
 	}
-	
+
 	private static final Random rand = new Random();
-	
+
 	@Override
-	public void onProjectileUpdate(EntityProjectileBase entity, World world, ItemStack toolStat) {		
+	public void onProjectileUpdate(EntityProjectileBase entity, World world, ItemStack toolStack) {
 		if (entity.serializeNBT().getBoolean("inGround")) {
 			return;
 		}
-		
+
 		int lowY = entity.getPosition().getY();
 		int i = 0;
 		while (true) {
@@ -48,21 +50,51 @@ public class AerialFlame extends AbstractProjectileTrait {
 					}
 				}
 			}
-			
+
 		}
 		AxisAlignedBB hitbox = new AxisAlignedBB(entity.posX - 0.75, entity.posY, entity.posZ - 0.75, entity.lastTickPosX + 0.75, lowY - 1, entity.lastTickPosZ + 0.75);
 		List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(entity.shootingEntity, hitbox);
-		
+
 		entities.removeIf(e -> !(e instanceof EntityLivingBase));
-		
-		DamageSource source = new EntityDamageSource("pillar_of_fire", entity.shootingEntity).setFireDamage(); 
+
+		DamageSource source = new EntityDamageSource("pillar_of_fire", entity.shootingEntity).setFireDamage();
+
 		for (Entity e : entities) {
-			if (e == entity) continue;
+			if (e == entity)
+				continue;
+
+			float dmg = 5;
+			e.setFire(10);
+
 			if (e.isImmuneToFire()) {
-				e.attackEntityFrom(source, 2.5f);
-			} else {
-				e.setFire(10);
-				e.attackEntityFrom(source, 5);
+				dmg = 2.5f;
+			}
+			if (entity.shootingEntity instanceof EntityLivingBase) {
+				//Proc traits and all
+				List<ITrait> traits = TinkerUtil.getTraitsOrdered(entity.tinkerProjectile.getItemStack());
+
+				float dmgOrig = dmg;
+				
+				for (ITrait t : traits) {
+					if (e instanceof EntityLivingBase) {
+						dmg = t.damage(toolStack, (EntityLivingBase) entity.shootingEntity, (EntityLivingBase) e, dmgOrig, dmg, false);
+					}
+				}
+				
+				float hpBefore = ((EntityLivingBase) e).getHealth();
+				boolean wasHit = e.attackEntityFrom(source, dmg);
+				
+				for (ITrait t : traits) {
+					if (e instanceof EntityLivingBase) {
+						t.onHit(toolStack, (EntityLivingBase) entity.shootingEntity, (EntityLivingBase) e, dmg, false);
+					}
+				}
+				
+				for (ITrait t : traits) {
+					if (e instanceof EntityLivingBase) {
+						t.afterHit(toolStack, (EntityLivingBase) entity.shootingEntity, (EntityLivingBase) e, hpBefore - ((EntityLivingBase) e).getHealth(), false, wasHit);
+					}
+				}
 			}
 		}
 	}
