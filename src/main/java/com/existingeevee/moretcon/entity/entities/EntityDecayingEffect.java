@@ -156,22 +156,25 @@ public class EntityDecayingEffect extends EntityLiving {
 		this.setDead();
 	}
 
+	public DamageSource getDamageSource() {
+		EntityLivingBase attackerEntity = this.world.getPlayerEntityByUUID(attacker);
+		if (attackerEntity == null) {
+			attackerEntity = this.world.getEntities(EntityLivingBase.class, e -> e.getUniqueID().equals(attacker)).stream().findAny().orElse(null);
+		}
+		
+		if (attackerEntity instanceof EntityPlayer) {
+			return DamageSource.causePlayerDamage((EntityPlayer) attackerEntity);
+		} else {
+			return DamageSource.GENERIC;
+		}
+	}
+	
 	@Override
 	public void onUpdate() {
 		if (!hasSliced) {
 			if (damage > 0) {
-				EntityLivingBase attackerEntity = this.world.getPlayerEntityByUUID(attacker);
-				if (attackerEntity == null) {
-					attackerEntity = this.world.getEntities(EntityLivingBase.class, e -> e.getUniqueID().equals(attacker)).stream().findAny().orElse(null);
-				}
 				for (Entity e : getAffectedEntities()) {
-					if (attackerEntity instanceof EntityPlayer) {
-						e.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) attackerEntity), (float) damage);
-					} else if (false) {
-						e.attackEntityFrom(DamageSource.causeMobDamage(attackerEntity), (float) damage);
-					} else {
-						e.attackEntityFrom(DamageSource.GENERIC, (float) damage);
-					}
+					e.attackEntityFrom(getDamageSource(), (float) damage);
 				}
 			}
 			this.hasSliced = true;
