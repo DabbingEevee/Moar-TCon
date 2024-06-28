@@ -128,7 +128,6 @@ public class MoreTCon {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-
 		FurnaceInit.init();
 		SpongeRegistry.postInit();
 		

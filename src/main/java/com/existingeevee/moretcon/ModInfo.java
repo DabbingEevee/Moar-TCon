@@ -3,8 +3,8 @@ package com.existingeevee.moretcon;
 public class ModInfo {
     public static final String MODID = "moretcon";
     public static final String NAME = "Moar TCon";
-    public static final String VERSION = "1.12.0";
-    public static final boolean BETA = true;
+    public static final String VERSION = "V12b1";
+    public static final boolean BETA = VERSION.contains("b") || VERSION.contains("rc");
     public static final String DEPENDANCY =
     		"required-after:tconstruct;" +
     		"after:twilightforest;" +

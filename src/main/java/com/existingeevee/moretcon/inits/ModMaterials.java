@@ -135,6 +135,11 @@ public class ModMaterials implements MaterialTypes {
 			"tconstruct:arrow",
 			() -> new ItemStack(BlockRegistry.WEEDWOOD_WORKBENCH), "crafting_table");
 	
+	public static final UniqueMaterial materialCryosplinters = new UniqueMaterial(
+			MiscUtils.createNonConflictiveName("cryosplinters"), 0x91bbff, "tconstruct:arrow_head",
+			"tconstruct:arrow");
+	
+	
 	public static final UniqueMaterial materialSpaceTimeDisruption = new UniqueMaterial(
 			MiscUtils.createNonConflictiveName("spacetimedisruption"), 0x400080, "tconstruct:bow_limb", 
 			"tconstruct:crossbow");
@@ -644,6 +649,9 @@ public class ModMaterials implements MaterialTypes {
 			materialQuakestruck.addTrait(ModTraits.seismishock);
 			materialQuakestruck.addStats(new HeadMaterialStats(1800, 20f, 18f, 8));
 
+			materialCryosplinters.addStats(new HeadMaterialStats(2048, 6f, 8f, 5));
+			materialCryosplinters.addStats(new ProjectileMaterialStats());
+			materialCryosplinters.addTrait(ModTraits.hailshot);
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -804,7 +812,7 @@ public class ModMaterials implements MaterialTypes {
 			materialPenguinite.addStats(new BowMaterialStats(0.7f, 1f, 2f));
 		}
 
-		if (CompatManager.thebetweenlands) { //TODO Ancient ingots
+		if (CompatManager.thebetweenlands) {
 			materialSyrmorite.addItem("oreSyrmorite", 1, Material.VALUE_Ore());
 			materialSyrmorite.setFluid(ModFluids.liquidSyrmorite);
 			materialSyrmorite.addCommonItems("Syrmorite");
@@ -1007,6 +1015,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialElectarite).toolforge();
 			ModMaterials.registerMaterial(materialHallowsite).toolforge();
 			ModMaterials.registerMaterial(materialQuakestruck);
+			ModMaterials.registerMaterial(materialCryosplinters);	
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);

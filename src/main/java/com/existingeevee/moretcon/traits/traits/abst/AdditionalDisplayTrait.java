@@ -15,11 +15,11 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 
 	protected boolean showDisplay = true;
-	
+
 	public AdditionalDisplayTrait(String identifier, int color) {
 		this(identifier, color, 1, 1);
 	}
-	
+
 	public AdditionalDisplayTrait(String identifier, int color, int lvlmax, int lvl) {
 		super(identifier, color, lvlmax, lvl);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -27,9 +27,9 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 
 	@Override
 	public String getTooltip(NBTTagCompound modifierTag, boolean detailed) {
-		if (!showDisplay) 
+		if (!showDisplay)
 			return super.getTooltip(modifierTag, detailed);
-		
+
 		StringBuilder sb = new StringBuilder();
 
 		ModifierNBT data = ModifierNBT.readTag(modifierTag);
@@ -48,7 +48,7 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onItemTooltipEvent(ItemTooltipEvent event) {
-		if (!showDisplay) 
+		if (!showDisplay)
 			return;
 		ItemStack tool = event.getItemStack();
 		if (!this.isToolWithTrait(tool))
@@ -57,12 +57,17 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 			String str = event.getToolTip().get(i);
 			String[] splitString = str.split(": ");
 			if (splitString.length >= 2 && splitString[1].equals("-{-toreplace.moretcon.display." + this.getModifierIdentifier() + "-}-")) {
-				splitString[1] = this.getStringToRender(tool);
-				event.getToolTip().set(i, String.join(": ", splitString));
+				String toRender = this.getStringToRender(tool);
+				if (toRender != null) {
+					splitString[1] = this.getStringToRender(tool);
+					event.getToolTip().set(i, String.join(": ", splitString));
+				} else {
+					event.getToolTip().set(i, splitString[0]);
+				}
 				return;
 			}
 		}
 	}
-	
+
 	public abstract String getStringToRender(ItemStack tool);
 }

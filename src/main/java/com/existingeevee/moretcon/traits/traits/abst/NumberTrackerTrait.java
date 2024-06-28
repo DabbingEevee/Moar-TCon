@@ -18,7 +18,7 @@ public abstract class NumberTrackerTrait extends AdditionalDisplayTrait {
 
 	public int getNumber(ItemStack stack) {
 		NBTTagCompound comp = stack.getOrCreateSubCompound(this.getModifierIdentifier());
-		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : 0;
+		return comp.hasKey("remaining", NBT.TAG_INT) ? comp.getInteger("remaining") : getDefaultNumber(stack);
 	}
 
 	public int setNumber(ItemStack stack, int amount) {
@@ -35,6 +35,10 @@ public abstract class NumberTrackerTrait extends AdditionalDisplayTrait {
 		return addNumber(stack, -amount);
 	}
 
+	public int getDefaultNumber(ItemStack stack) {
+		return 0;
+	}
+	
 	@Override
 	public String getStringToRender(ItemStack tool) {
 		return getNumber(tool) + "/" + getNumberMax(tool);

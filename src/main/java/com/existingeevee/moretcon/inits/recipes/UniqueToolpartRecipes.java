@@ -48,7 +48,7 @@ public class UniqueToolpartRecipes {
 								Pair.of('S', new OreIngredient("blockSolsteel")),
 								Pair.of('F', new OreIngredient("blockFusionite")),
 								Pair.of('W', new TinkerPartIngredient(TinkerMaterials.firewood, "tconstruct:knife_blade")),
-								Pair.of('P', new TinkerPartIngredient(ModMaterials.materialPlasma, ModMaterials.materialPlasma.getUniqueToolPart())),
+								Pair.of('P', new TinkerPartIngredient(ModMaterials.materialIgniglomerate, "tconstruct:knife_blade")),
 								Pair.of('B', Ingredient.fromStacks(new ItemStack(Blocks.BEACON)))));
 			}
 			if (canRegisterUniqueRecipe(ModMaterials.materialTriblade)) {
@@ -146,6 +146,21 @@ public class UniqueToolpartRecipes {
 								Pair.of('I', new TinkerPartIngredient(ModMaterials.materialIgniglomerate, "tconstruct:large_plate")),
 								Pair.of('O', new TinkerPartIngredient(TinkerMaterials.obsidian, "tconstruct:large_plate")),
 								Pair.of('F', new OreIngredient("ingotFusionite"))));
+			}
+			
+			if (canRegisterUniqueRecipe(ModMaterials.materialCryosplinters)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("cryosplinters_recipe", ModMaterials.materialCryosplinters.getUniqueToolPart(),
+								new String[] {
+										"FIG",
+										"IHV",
+										"GVV"
+								},
+								Pair.of('G', new OreIngredient("gunpowder")),
+								Pair.of('F', new OreIngredient("ingotFusionite")),
+								Pair.of('V', new OreIngredient("ingotValasium")),
+								Pair.of('H', new TinkerPartIngredient(ModMaterials.materialElectarite, "tconstruct:arrow_head")),
+								Pair.of('I', Ingredient.fromStacks(new ItemStack(Blocks.PACKED_ICE)))));
 			}
 		}
 	}

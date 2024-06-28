@@ -201,7 +201,6 @@ material.moretcon.electarite.name=Electarite
 material.moretcon.hallowsite.name=Hallowsite
 material.moretcon.ancientalloy.name=Ancient Alloy
 
-
 material.uniquetoolpart.name=Unique
 
 modifier.moretcon.kinetic_battery.desc=§oUNO REVERSE!\n§rYour tool will store kinetic energy whenever you take damage. Attacking while shifting to release the energy all at once.
@@ -273,7 +272,7 @@ modifier.moretcon.modtarred.desc=§oYuck§r\nYour tool occasionally gives oppone
 modifier.moretcon.modtarred.name=Tarred
 modifier.moretcon.modvalonite.desc=§oArmor... for swords...§r\nYour tool is twice as resilient, taking damage and corroding half as commonly.
 modifier.moretcon.modvalonite.name=Valonite
-modifier.moretcon.plasmatic.desc=§oI HAVE THE HIGH GROUND§r\nYour tool will be able to penetrate and hit multiple entities as well as lighting them on fire.
+modifier.moretcon.plasmatic.desc=§oI HAVE THE HIGH GROUND§r\nYour tool will be able to hit everything within your reach distance, including behind blocks and other entities. It also lights them on fire.
 modifier.moretcon.plasmatic.name=Plasmatic
 modifier.moretcon.pulsating.desc=§oSine wavy davie\n§rYour tool a bit of extra damage. Always fluctuates from high damage to low damage.
 modifier.moretcon.pulsating.name=Pulsating
@@ -332,13 +331,15 @@ modifier.moretcon.seismishock.desc=§obonk§r\nYour tool emit a shockwave that d
 modifier.moretcon.inertia.name=Inertia
 modifier.moretcon.inertia.desc=§oswoosh§r\nYour tool can be swung in a similar way to Greatswords and Greataxes when not sneaking.
 modifier.moretcon.inertia.advancedtoolsonly.desc=§oswoosh§r\nYour tool can be swung in a similar way to Greatswords and Greataxes when not sneaking if it can only be made in a tool forge.
+modifier.moretcon.hailshot.name=Hailshot
+modifier.moretcon.hailshot.desc=§olet it gooooo§r\nYour projectile will become empowered on kill. Sneaking and shooting while empowered will cause your next shot to cause an icy explosion on impact.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
 moretcon.bleeding=bleeding
 
 text.uniquely_crafted.crafting_table=Can be crafted in a Crafting Table
-text.uniquely_crafted.shockwave=Can be crafted using an Animator and a Mortar
+text.uniquely_crafted.shockwave=Can be crafted using an Animator and __n__a Mortar
 text.composite=Can be composited from __s____n__and __l__
 text.beta.desc=Thank you for testing out the beta! Please__n__ report any issues to ExistingEevee! __n____n__ You can find the issue tracker here: __n__ 
 text.beta.name=BETA
@@ -449,6 +450,11 @@ uniquetoolpart.moretcon.essencore.name=Essencore
 uniquetoolpart.moretcon.wormed.name=Wormed
 uniquetoolpart.moretcon.spacetimedisruption.name=Space-Time Disruption
 uniquetoolpart.moretcon.quakestruck.name=Quakestruck
+uniquetoolpart.moretcon.cryosplinters.name=Cryosplinters
+
+booltracker.active.name=Active
+booltracker.inactive.name=Inactive
+booltracker.empowered.name=Empowered
 
 comment Sponges=comment
 

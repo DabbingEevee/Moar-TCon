@@ -18,5 +18,15 @@
 	    		"stream": true
 	    	}
 	    ]
+	},
+	"traits.hailshot.icy_explosion": {
+	    "category": "entity",
+	    "subtitle": "traits.hailshot.icy_explosion",
+	    "sounds": [
+	    	{
+	    		"name": "moretcon:traits/hailshot/icy_explosion",
+	    		"stream": true
+	    	}
+	    ]
 	}
 }

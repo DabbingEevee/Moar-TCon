@@ -80,7 +80,7 @@ public abstract class MixinContentMaterial {
 		if (material instanceof UniqueMaterial) {
 			UniqueMaterial unique = (UniqueMaterial) material;
 			ElementItem elementItem = new ElementTinkerItem(unique.getCrafter());
-			elementItem.tooltip = ImmutableList.of(I18n.format("text.uniquely_crafted." + unique.getCrafterString()));
+			elementItem.tooltip = Arrays.asList(I18n.format("text.uniquely_crafted." + unique.getCrafterString()).split("__n__"));
 			displayTools.add(elementItem);
 		}
 		if (CompositeRegistry.getComposite(material).isPresent()) {
