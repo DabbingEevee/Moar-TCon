@@ -51,13 +51,27 @@ def getDate() {
 
 
 def getVersionFromJava() {
+	String versionPrefix = 'public static final String VERSION = "';
+
+	String version = "V0";
+	File file = file('src/main/java/com/existingeevee/moretcon/ModInfo.java')
+	file.eachLine { String s ->
+		s = s.trim();
+		if (s.startsWith(versionPrefix)) {
+			version = s.substring(versionPrefix.length(), s.length() - 2);
+			System.out.println("Version: " + version)
+		}
+	}
+	
+	return version;
+	
+	/*
 	String mega = '0';
 	String major = '0';
 	String revision = '0';
 	String patch = '0';
 	boolean beta = false;
 	boolean patchFound = false;
-	String versionPrefix = 'public static final String VERSION = "';
 	String betaPrefix = 'public static final boolean BETA = ';
 	File file = file('src/main/java/com/existingeevee/moretcon/ModInfo.java')
 	file.eachLine { String s ->
@@ -92,7 +106,7 @@ def getVersionFromJava() {
 	if (patchFound) {
 	    return "$mega.$major.$revision" + "_" + "$patch" + (beta ? ("-b" + getDate()) : "");
 	}
-	return "$mega.$major.$revision" + (beta ? ("-b" + getDate()) : "");
+	return "$mega.$major.$revision" + (beta ? ("-b" + getDate()) : "");*/
 }
 
 repositories {
