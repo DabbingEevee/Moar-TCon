@@ -21,6 +21,7 @@ import com.google.gson.GsonBuilder;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -349,5 +350,11 @@ public class MiscUtils {
 
 	public static double randomN1T1() {
 		return Math.random() * 2 - 1;
+	}
+
+	public static void resetRightClickDelay() {
+		if (isClient()) {
+			ObfuscationReflectionHelper.setPrivateValue(Minecraft.class, Minecraft.getMinecraft(), 0, "field_71467_ac");
+		}
 	}
 }

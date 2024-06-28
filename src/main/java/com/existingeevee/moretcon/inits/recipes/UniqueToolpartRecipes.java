@@ -162,6 +162,22 @@ public class UniqueToolpartRecipes {
 								Pair.of('H', new TinkerPartIngredient(ModMaterials.materialElectarite, "tconstruct:arrow_head")),
 								Pair.of('I', Ingredient.fromStacks(new ItemStack(Blocks.PACKED_ICE)))));
 			}
+			
+			if (canRegisterUniqueRecipe(ModMaterials.materialAutoloader)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("autoloader_recipe", ModMaterials.materialAutoloader.getUniqueToolPart(),
+								new String[] {
+										"RRD",
+										"GSR",
+										"PGR"
+								},
+								Pair.of('R', new OreIngredient("dustRedstone")),
+								Pair.of('G', new OreIngredient("ingotGallium")),
+								Pair.of('D', Ingredient.fromStacks(new ItemStack(Blocks.DISPENSER))),
+								Pair.of('P', Ingredient.fromStacks(new ItemStack(Blocks.PISTON))),
+								Pair.of('S', new TinkerPartIngredient(TinkerMaterials.steel, "tconstruct:tough_tool_rod"))
+								));
+			}
 		}
 	}
 

@@ -333,6 +333,8 @@ modifier.moretcon.inertia.desc=§oswoosh§r\nYour tool can be swung in a similar
 modifier.moretcon.inertia.advancedtoolsonly.desc=§oswoosh§r\nYour tool can be swung in a similar way to Greatswords and Greataxes when not sneaking if it can only be made in a tool forge.
 modifier.moretcon.hailshot.name=Hailshot
 modifier.moretcon.hailshot.desc=§olet it gooooo§r\nYour projectile will become empowered on kill. Sneaking and shooting while empowered will cause your next shot to cause an icy explosion on impact.
+modifier.moretcon.autoloading.name=Autoloading
+modifier.moretcon.autoloading.desc=§oFOR DEMOCRACY!!!§r\nYour tool will fire full auto, as well as firing much faster.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
@@ -451,6 +453,7 @@ uniquetoolpart.moretcon.wormed.name=Wormed
 uniquetoolpart.moretcon.spacetimedisruption.name=Space-Time Disruption
 uniquetoolpart.moretcon.quakestruck.name=Quakestruck
 uniquetoolpart.moretcon.cryosplinters.name=Cryosplinters
+uniquetoolpart.moretcon.autoloader.name=Autoloader
 
 booltracker.active.name=Active
 booltracker.inactive.name=Inactive

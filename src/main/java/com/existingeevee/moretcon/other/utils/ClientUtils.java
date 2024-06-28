@@ -11,7 +11,4 @@ public class ClientUtils {
 	public static BlockTexture createMaterialRenderInfo(Material material) {
 		return new MaterialRenderInfo.BlockTexture(new ResourceLocation(ModInfo.MODID + ":other/material" + material.getIdentifier().replaceFirst(ModInfo.MODID + ".", "")));
 	}
-
-
-
 }

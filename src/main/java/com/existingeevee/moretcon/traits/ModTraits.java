@@ -59,11 +59,12 @@ import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
+import com.existingeevee.moretcon.traits.traits.unique.Autoloading;
 import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
 import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
 import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
-import com.existingeevee.moretcon.traits.traits.unique.Hailshot;
 import com.existingeevee.moretcon.traits.traits.unique.EssentialObliteration;
+import com.existingeevee.moretcon.traits.traits.unique.Hailshot;
 import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
 import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
 import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
@@ -137,6 +138,7 @@ public class ModTraits {
 	public static Soulforged soulforged3 = new Soulforged(3);
 	public static Seismishock seismishock = new Seismishock();;
 	public static Hailshot hailshot = new Hailshot();;
+	public static Autoloading autoloading = new Autoloading();;
 
 	public static MatterReconstructionGel repair;
 
