@@ -71,10 +71,13 @@ public abstract class MixinContentMaterial {
 		ContentMaterial $this = (ContentMaterial) (Object) this;
 
 		int y = 10;
+
+		boolean shouldUseDefaultBehavior = true;
+		
 		List<ElementItem> displayTools = Lists.newArrayList();
 
 		if (!material.getRepresentativeItem().isEmpty()) {
-			displayTools.add(new ElementTinkerItem(material.getRepresentativeItem())); //ToolModel
+			displayTools.add(new ElementTinkerItem(material.getRepresentativeItem())); 
 		}
 
 		if (material instanceof UniqueMaterial) {
@@ -82,6 +85,7 @@ public abstract class MixinContentMaterial {
 			ElementItem elementItem = new ElementTinkerItem(unique.getCrafter());
 			elementItem.tooltip = Arrays.asList(I18n.format("text.uniquely_crafted." + unique.getCrafterString()).split("__n__"));
 			displayTools.add(elementItem);
+			shouldUseDefaultBehavior = false;
 		}
 		if (CompositeRegistry.getComposite(material).isPresent()) {
 			CompositeData data = CompositeRegistry.getComposite(material).get();
@@ -92,6 +96,7 @@ public abstract class MixinContentMaterial {
 					.replace("__l__", data.getCatalyst().getLocalizedName(new FluidStack(data.getCatalyst(), 0)));
 			elementItem.tooltip = Arrays.asList(text.split("__n__"));
 			displayTools.add(elementItem);
+			shouldUseDefaultBehavior = false;
 		}
 		if (material.isCraftable()) {
 			ItemStack partbuilder = new ItemStack(TinkerTools.toolTables, 1, BlockToolTable.TableTypes.PartBuilder.meta);
@@ -107,6 +112,10 @@ public abstract class MixinContentMaterial {
 			displayTools.add(elementItem);
 		}
 
+		if (shouldUseDefaultBehavior) {
+			return;
+		}
+		
 		if (material instanceof UniqueMaterial) { 
 			UniqueMaterial unique = (UniqueMaterial) material;
 			ToolCore tool = UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(unique.getToolResLoc()));
