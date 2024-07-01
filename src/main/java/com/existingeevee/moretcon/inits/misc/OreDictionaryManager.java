@@ -24,6 +24,7 @@ public class OreDictionaryManager {
 		if (CompatManager.loadMain) {
 			registerOre("blockFusionite", ModBlocks.blockFusionite);
 			registerOre("oreFusionite", ModBlocks.oreFusionite);
+			registerOre("oreFusionite", ModBlocks.oreBedrockFusionite);
 			registerOre("ingotFusionite", ModItems.ingotFusionite);
 			registerOre("nuggetFusionite", ModItems.nuggetFusionite);
 

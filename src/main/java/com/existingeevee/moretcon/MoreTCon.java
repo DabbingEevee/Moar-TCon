@@ -63,7 +63,7 @@ public class MoreTCon {
 	public static MoreTCon instance;
 	
 	@SidedProxy(serverSide = "com.existingeevee.moretcon.proxy.CommonProxy", clientSide = "com.existingeevee.moretcon.proxy.ClientProxy")
-	public static CommonProxy proxy;
+	public static CommonProxy proxy; //Work on college
 
 	static {
 		CustomFireEffect.init();
@@ -91,6 +91,9 @@ public class MoreTCon {
 		MaterialUtils.completeReadds();
 		MinecraftForge.EVENT_BUS.register(CustomFireHelper.class);
 		ModTraits.init();
+
+		OreDictionaryManager.init(); //TODO LOOK AT
+
 		proxy.preInit();
 
 	}
@@ -104,9 +107,7 @@ public class MoreTCon {
 	}
 
 	@SubscribeEvent
-	public static void registerRecipes(Register<IRecipe> event) {		
-		OreDictionaryManager.init();
-		
+	public static void registerRecipes(Register<IRecipe> event) {				
 		IForgeRegistry<IRecipe> registry = event.getRegistry();
 		
 		OreRecipes.init(event);

@@ -52,7 +52,7 @@ public class RenderHandler {
 	
 	@SideOnly(Side.CLIENT)
 	public static void registerItemModel(Item item) {
-		ModelResourceLocation model = new ModelResourceLocation(ModInfo.MODID + ":" + item.getUnlocalizedName().replaceFirst(("item." + ModInfo.MODID + "."), ""), "inventory");
+		ModelResourceLocation model = new ModelResourceLocation(ModInfo.MODID + ":" + item.getUnlocalizedName().replaceFirst("item." + ModInfo.MODID + ".", ""), "inventory");
 		ModelLoader.setCustomModelResourceLocation(item, 0, model);
 	}
 

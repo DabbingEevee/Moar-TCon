@@ -35,12 +35,12 @@ public class Electrified extends AbstractTrait {
 			new LightningEffectAction().run(target.world, center.x, center.y, center.z, tagCompound);
 		}
 		if (amount >= 10) {
-			target.world.playSound(null, target.posX, target.posY, target.posZ, SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 10, 1.5f);
+			target.world.playSound(null, target.posX, target.posY, target.posZ, SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1, 1.5f);
 			tag.setInteger("amount", 0);
 			target.getEntityData().setTag(this.getModifierIdentifier(), tag);
 			return (newDamage + amount / 2f) * 2.25f;
 		} else {
-			target.world.playSound(null, target.posX, target.posY, target.posZ, SoundEvents.BLOCK_ENDERCHEST_OPEN, SoundCategory.PLAYERS, 10, amount * 1.f / 10);
+			target.world.playSound(null, target.posX, target.posY, target.posZ, SoundEvents.BLOCK_ENDERCHEST_OPEN, SoundCategory.PLAYERS, 1, amount * 1.f / 10);
 			return newDamage + amount / 2f;
 		}
 	}
@@ -49,7 +49,7 @@ public class Electrified extends AbstractTrait {
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
 		if (wasHit) {
 
-			if (player instanceof EntityPlayer && ((EntityPlayer) player).getCooledAttackStrength(0.5f) < 0.75) {
+			if (player instanceof EntityPlayer && ((EntityPlayer) player).getCooledAttackStrength(0f) < 0.75) {
 				return; //if not close to fully charged then no proc
 			}
 
