@@ -13,9 +13,9 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import slimeknights.tconstruct.library.modifiers.ModifierTrait;
+import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-public class Tricromatic extends ModifierTrait {
+public class Tricromatic extends AbstractTrait {
 
 	public Tricromatic() {
 		super(MiscUtils.createNonConflictiveName("trichromatic"), 0);
