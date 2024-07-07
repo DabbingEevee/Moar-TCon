@@ -23,7 +23,7 @@ public class Blighted extends AbstractTrait {
 			}
 		}
 		
-		return newDamage + totalDebuffLevels;
+		return newDamage * (1 + 0.03f * totalDebuffLevels);
 	}
 
 }

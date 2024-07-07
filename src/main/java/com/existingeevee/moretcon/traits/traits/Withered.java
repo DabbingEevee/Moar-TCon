@@ -21,9 +21,15 @@ public class Withered extends AbstractTrait {
 			if (target.isPotionActive(MobEffects.WITHER)) {
 				prevLevel = target.getActivePotionEffect(MobEffects.WITHER).getAmplifier();
 			}
-
-			target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 20 * 20, prevLevel + 1));
+			if (!target.world.isRemote) {
+				if (target.world.rand.nextInt(4) == 0) {
+					target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 5 * 20, Math.min(prevLevel + 1, 2)));
+				} else {
+					if (prevLevel > 0) {
+						target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 5 * 20, prevLevel));
+					}
+				}
+			}
 		}
 	}
-
 }
