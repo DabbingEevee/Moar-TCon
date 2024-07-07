@@ -52,6 +52,7 @@ public class FurnaceInit {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustAtronium, 1), new ItemStack(ModItems.ingotAtronium, 1), 0F);
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustSteel, 1), new ItemStack(ModItems.ingotSteel, 1), 0F);
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustHallowsite, 1), new ItemStack(ModItems.ingotHallowsite, 1), 0F);
+			GameRegistry.addSmelting(new ItemStack(ModItems.dustBlightsteel, 1), new ItemStack(ModItems.ingotBlightsteel, 1), 0F);
 		}
 		GameRegistry.addSmelting(new ItemStack(ModItems.rawSteel, 1), new ItemStack(ModItems.ingotSteel, 1), 0F);
 		GameRegistry.addSmelting(new ItemStack(ModBlocks.oreGravitoniumDense, 1), new ItemStack(ModItems.ingotGravitonium, 4), 0F);

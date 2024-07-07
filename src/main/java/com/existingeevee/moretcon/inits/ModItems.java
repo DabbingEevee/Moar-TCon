@@ -87,6 +87,11 @@ public class ModItems {
 	public static final Item nuggetTrichromadentium = new ItemBase("nuggetTrichromadentium", 0xffffff);
 	public static final Item dustTrichromadentium = new ItemBase("dustTrichromadentium", GlowType.CIRCLE_BIG, 0xffffff);
 
+	public static final Item ingotBlightsteel = new ItemBase("ingotBlightsteel");
+	public static final Item nuggetBlightsteel = new ItemBase("nuggetBlightsteel");
+	public static final Item dustBlightsteel = new ItemBase("dustBlightsteel");
+
+	
 	public static final Item ingotAncientAlloy = new ItemBase("ingotAncientAlloy");
 	public static final Item nuggetAncientAlloy = new ItemBase("nuggetAncientAlloy");
 	public static final Item dustAncientAlloy = new ItemBase("dustAncientAlloy");
@@ -181,6 +186,9 @@ public class ModItems {
 					ingotHallowsite,
 					nuggetHallowsite,
 					
+					ingotBlightsteel,
+					nuggetBlightsteel,
+					
 					gemVoidSpar,
 					gemEnderal,
 					gemGarstone,
@@ -214,7 +222,8 @@ public class ModItems {
 						dustTrichromadentium,
 						dustAtronium,
 						dustEbonite,
-						dustHallowsite
+						dustHallowsite,
+						dustBlightsteel
 						);
 			}
 		}

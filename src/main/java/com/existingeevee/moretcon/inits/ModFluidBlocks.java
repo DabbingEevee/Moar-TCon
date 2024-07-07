@@ -42,6 +42,7 @@ public class ModFluidBlocks {
 	public static Block blockBetweenSludge;
 	public static Block blockLiquidGoldenAmber;
 	public static Block blockLiquidFusionLava;
+	public static Block blockLiquidBlightsteel;
 	/* ------------------------------------- */
 	private static void registerBlocks(Block... block) {
 		for (Block i : block) {
@@ -64,7 +65,7 @@ public class ModFluidBlocks {
 			blockLiquidValasium = new BlockFluid("liquidvalasium", ModFluids.liquidValasium, Material.LAVA);			
 			blockLiquidHallowsite = new CustomFireBlockFluid("liquidhallowsite", ModFluids.liquidHallowsite, CustomFireEffect.SPIRIT_FIRE, Material.LAVA).setSource(new DamageSource("haunted").setFireDamage());			
 			blockLiquidFusionLava = new CustomFireBlockFluid("liquidfusionlava", ModFluids.liquidFusionLava, CustomFireEffect.COLD_FIRE, Material.LAVA).setSource(new DamageSource("coldfire").setFireDamage());			
-			
+			blockLiquidBlightsteel = new BlockFluid("liquidblightsteel", ModFluids.liquidBlightsteel, Material.LAVA);			
 			
 		    ModFluidBlocks.registerBlocks(
 /* ------------------------------------- */
@@ -80,7 +81,8 @@ public class ModFluidBlocks {
 				blockLiquidEbonite,
 				blockLiquidFusionLava,
 				blockLiquidValasium,
-				blockLiquidHallowsite
+				blockLiquidHallowsite,
+				blockLiquidBlightsteel
 /* ------------------------------------- */
 				);
 		}

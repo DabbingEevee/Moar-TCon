@@ -81,7 +81,8 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialValasium = new Material(MiscUtils.createNonConflictiveName("valasium"), 0x9ab7d6);
 	public static final Material materialElectarite = new Material(MiscUtils.createNonConflictiveName("electarite"), 0x6666FF);
 	public static final Material materialHallowsite = new Material(MiscUtils.createNonConflictiveName("hallowsite"), 0x34eb98);
-	public static final Material materialAncientAlloy = new Material(MiscUtils.createNonConflictiveName("ancientAlloy"), 0xa2c2c0);
+	public static final Material materialAncientAlloy = new Material(MiscUtils.createNonConflictiveName("ancientalloy"), 0xa2c2c0);
+	public static final Material materialBlightsteel = new Material(MiscUtils.createNonConflictiveName("blightsteel"), 0x243c5a);
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -650,6 +651,22 @@ public class ModMaterials implements MaterialTypes {
 			materialHallowsite.addStats(new ProjectileMaterialStats());
 			materialHallowsite.addStats(new BowMaterialStats(0.8f, 1.4f, 1f));
 
+			materialBlightsteel.addCommonItems("Blightsteel");
+			materialBlightsteel.setFluid(ModFluids.liquidBlightsteel);
+			materialBlightsteel.setCastable(true);
+			materialBlightsteel.setCraftable(false);
+			materialBlightsteel.setRepresentativeItem("ingotBlightsteel");
+			materialBlightsteel.addTrait(ModTraits.withered, HEAD);
+			materialBlightsteel.addTrait(ModTraits.blighted, HEAD);
+			materialBlightsteel.addTrait(ModTraits.withered);
+			materialBlightsteel.addTrait(ModTraits.soulforged);
+			materialBlightsteel.addStats(new HeadMaterialStats(1020, 6.5f, 8f, 6));
+			materialBlightsteel.addStats(new HandleMaterialStats(2.5f, 80));
+			materialBlightsteel.addStats(new ExtraMaterialStats(100));
+			materialBlightsteel.addStats(new ArrowShaftMaterialStats(1.5f, 125));
+			materialBlightsteel.addStats(new ProjectileMaterialStats());
+			materialBlightsteel.addStats(new BowMaterialStats(1.2f, 1.3f, 0.8f));
+			
 			materialQuakestruck.addTrait(ModTraits.seismishock);
 			materialQuakestruck.addStats(new HeadMaterialStats(1800, 20f, 18f, 8));
 
@@ -1024,7 +1041,9 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialHallowsite).toolforge();
 			ModMaterials.registerMaterial(materialQuakestruck);
 			ModMaterials.registerMaterial(materialCryosplinters);	
+			ModMaterials.registerMaterial(materialBlightsteel);	
 			ModMaterials.registerMaterial(materialAutoloader);	
+			
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);

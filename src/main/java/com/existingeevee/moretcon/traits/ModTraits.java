@@ -23,6 +23,7 @@ import com.existingeevee.moretcon.traits.traits.Aetheric;
 import com.existingeevee.moretcon.traits.traits.Afterimage;
 import com.existingeevee.moretcon.traits.traits.AntiGravity;
 import com.existingeevee.moretcon.traits.traits.AttributeTrait;
+import com.existingeevee.moretcon.traits.traits.Blighted;
 import com.existingeevee.moretcon.traits.traits.BottomsEnd;
 import com.existingeevee.moretcon.traits.traits.Burning;
 import com.existingeevee.moretcon.traits.traits.ColdFire;
@@ -58,6 +59,7 @@ import com.existingeevee.moretcon.traits.traits.Soulforged;
 import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
+import com.existingeevee.moretcon.traits.traits.Withered;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
 import com.existingeevee.moretcon.traits.traits.unique.Autoloading;
 import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
@@ -139,7 +141,9 @@ public class ModTraits {
 	public static Seismishock seismishock = new Seismishock();;
 	public static Hailshot hailshot = new Hailshot();;
 	public static Autoloading autoloading = new Autoloading();;
-
+	public static Withered withered = new Withered();;
+	public static Blighted blighted = new Blighted();;
+	
 	public static MatterReconstructionGel repair;
 
 	public static AntiGravity antigravity;

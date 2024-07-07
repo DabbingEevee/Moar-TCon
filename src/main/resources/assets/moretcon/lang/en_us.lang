@@ -4,6 +4,7 @@ death.attack.haunted=%1$s's soul burned away
 death.attack.pillar_of_fire=%1$s was swept away in a pillar of fire
 
 entity.decaying_effect_moretcon.name=Effect
+
 fluid.moretcon.betweensludge=Between Sludge
 fluid.moretcon.burningsulfurflow=Molten Sulfur
 fluid.moretcon.liquidarkenium=Molten Arkenium
@@ -32,10 +33,11 @@ fluid.moretcon.liquidancientalloy=Molten Ancient Alloy
 fluid.moretcon.mummysludge=Mummy Sludge
 fluid.moretcon.rottensludge=Rotten Sludge
 fluid.moretcon.liquidfusionlava=Fusion Lava
+fluid.moretcon.liquidblightsteel=Molten Blightsteel
 
 item.moretcon.betweenifiedmodifier.desc=Adding this to any tool will allow for its full efficiency to be used in the Betweenlands.
 item.moretcon.crushingmodifier.desc=Adding this to any tool will convert 5% of its damage to true damage.
-item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage on it.
+item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage or 10% of the durability on it, whichever is greater.
 item.moretcon.repitem.desc=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
 
 item.moretcon.repitem.name=-{-name-}- Composite
@@ -86,6 +88,7 @@ item.moretcon.dustebonite.name=Ebonite Dust
 item.moretcon.dustvalasium.name=Valasium Dust
 item.moretcon.dusthallowsite.name=Hallowsite Dust
 item.moretcon.dustancientalloy.name=Ancient Alloy Dust
+item.moretcon.dustblightsteel.name=Blightsteel Dust
 
 item.moretcon.gembloodstone.name=Bloodstone
 item.moretcon.gemechostone.name=Echostone
@@ -117,6 +120,7 @@ item.moretcon.ingotebonite.name=Ebonite Ingot
 item.moretcon.ingotvalasium.name=Valasium Ingot
 item.moretcon.ingothallowsite.name=Hallowsite Ingot
 item.moretcon.ingotancientalloy.name=Ancient Alloy Ingot
+item.moretcon.ingotblightsteel.name=Blightsteel Ingot
 
 item.moretcon.itemsiltclay.name=Silt Clay
 item.moretcon.lightning.name=Lightning
@@ -139,6 +143,7 @@ item.moretcon.nuggetebonite.name=Ebonite Nugget
 item.moretcon.nuggetvalasium.name=Valasium Nugget
 item.moretcon.nuggethallowsite.name=Hallowsite Nugget
 item.moretcon.nuggetancientalloy.name=Ancient Alloy Nugget
+item.moretcon.nuggetblightsteel.name=Blightsteel Nugget
 
 item.moretcon.rawsteel.name=Raw Steel
 item.moretcon.ring.name=Ring
@@ -200,6 +205,7 @@ material.moretcon.valasium.name=Valasium
 material.moretcon.electarite.name=Electarite
 material.moretcon.hallowsite.name=Hallowsite
 material.moretcon.ancientalloy.name=Ancient Alloy
+material.moretcon.blightsteel.name=Blightsteel
 
 material.uniquetoolpart.name=Unique
 
@@ -335,6 +341,10 @@ modifier.moretcon.hailshot.name=Hailshot
 modifier.moretcon.hailshot.desc=§olet it gooooo§r\nYour projectile will become empowered on kill. Sneaking and shooting while empowered will cause your next shot to cause an icy explosion on impact.
 modifier.moretcon.autoloading.name=Autoloading
 modifier.moretcon.autoloading.desc=§oFOR DEMOCRACY!!!§r\nYour tool will fire full auto, as well as firing much faster.
+modifier.moretcon.blighted.name=Blighted
+modifier.moretcon.blighted.desc=§oLets not get here...§r\nYour tool will deal additional damage for every level of debuff on a target.
+modifier.moretcon.withered.name=Withered
+modifier.moretcon.withered.desc=§ospoopy scary skeletons§r\nYour tool will apply stacking wither every hit.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
@@ -385,6 +395,7 @@ tile.moretcon.blockerythynite.name=Block of Erythynite
 tile.moretcon.blockelectarite.name=Block of Electarite
 tile.moretcon.blockhallowsite.name=Block of Hallowsite
 tile.moretcon.blockancientalloy.name=Block of Ancient Alloy
+tile.moretcon.blockblightsteel.name=Block of Blightsteel
 
 tile.moretcon.burningsulfurflow.name=Molten Sulfur
 tile.moretcon.liquidarkenium.name=Molten Arkenium
@@ -412,6 +423,7 @@ tile.moretcon.liquidvalasium.name=Molten Valasium
 tile.moretcon.liquidhallowsite.name=Molten Hallowsite
 tile.moretcon.liquidfusionlava.name=Fusion Lava
 tile.moretcon.liquidancientalloy.name=Molten Ancient Alloy
+tile.moretcon.liquidblightsteel.name=Molten Blightsteel
 tile.moretcon.mummysludge.name=Mummy Sludge
 
 tile.moretcon.orearkenium.name=Arkenium Ore

@@ -38,6 +38,7 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialPenguinite);
 		setCustomRender(ModMaterials.materialShadowglass);
 		setCustomRender(ModMaterials.materialEmberlight);
+		setCustomRender(ModMaterials.materialBlightsteel);
 		
 		
 		ModMaterials.materialTrichromadentium.setRenderInfo(new WhiteShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialTrichromadentium.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));		

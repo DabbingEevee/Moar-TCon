@@ -76,7 +76,8 @@ public class ModFluids {
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
 	public static Fluid liquidHallowsite = new LiquidFluid("liquidhallowsite").setCColor(0x6add9d).setLuminosity(15)
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
-
+	public static Fluid liquidBlightsteel = new LiquidFluid("liquidblightsteel").setCColor(0x243c5a).setLuminosity(15)
+			.setDensity(1000).setViscosity(800).setTemperature(1100);
 	public static Fluid liquidFusionLava = new LiquidFluid("liquidfusionlava",
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidfusionlava_still"), //were gonna just use the solsteel textures for now until i have more time
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidfusionlava_flowing")).setCColor(0x00ffff).setLuminosity(15)
@@ -122,7 +123,8 @@ public class ModFluids {
 					liquidEbonite,
 					liquidFusionLava,
 					liquidValasium, 
-					liquidHallowsite
+					liquidHallowsite,
+					liquidBlightsteel
 			/** ------------------------------------- **/
 			);
 		}

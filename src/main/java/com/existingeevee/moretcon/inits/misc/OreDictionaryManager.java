@@ -76,6 +76,10 @@ public class OreDictionaryManager {
 			registerOre("ingotSolsteel", ModItems.ingotSolsteel);
 			registerOre("nuggetSolsteel", ModItems.nuggetSolsteel);
 			
+			registerOre("blockBlightsteel", ModBlocks.blockBlightsteel);
+			registerOre("ingotBlightsteel", ModItems.ingotBlightsteel);
+			registerOre("nuggetBlightsteel", ModItems.nuggetBlightsteel);
+			
 			registerOre("blockSolarsteel", ModBlocks.blockSolsteel);
 			registerOre("ingotSolarsteel", ModItems.ingotSolsteel);
 			registerOre("nuggetSolarsteel", ModItems.nuggetSolsteel);
@@ -133,6 +137,7 @@ public class OreDictionaryManager {
 				registerOre("dustSteel", ModItems.dustSteel);
 				registerOre("dustEbonite", ModItems.dustEbonite);
 				registerOre("dustHallowsite", ModItems.dustHallowsite);
+				registerOre("dustBlightsteel", ModItems.dustBlightsteel);
 			}
 		}
 		if(CompatManager.twilightforest) {
