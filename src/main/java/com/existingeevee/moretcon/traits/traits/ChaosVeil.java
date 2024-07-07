@@ -18,6 +18,4 @@ public class ChaosVeil extends AbstractTrait {
 		//newDamage += (player.getEntityWorld().provider.getDimension() == AetherConfig.dimension.aether_dimension_id ? damage / 4f : 0);
 		return super.damage(tool, player, target, damage, newDamage, isCritical);
 	}
-
-
 }

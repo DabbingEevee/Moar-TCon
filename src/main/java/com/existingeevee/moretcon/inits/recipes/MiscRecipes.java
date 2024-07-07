@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.inits.misc;
+package com.existingeevee.moretcon.inits.recipes;
 
 import com.existingeevee.moretcon.other.BreakApartBoltCoreRecipe;
 

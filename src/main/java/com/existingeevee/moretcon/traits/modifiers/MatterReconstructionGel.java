@@ -46,7 +46,10 @@ public class MatterReconstructionGel extends Modifier {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void handleToolModifyEvent(ToolModifyEvent event) {
 		if (event.getItemStack().serializeNBT().getCompoundTag("tag").getBoolean("ToRepair")) {
-			int repairedAmount = Integer.max(event.getItemStack().getItemDamage() - 256, 0);
+			
+			int maxDamage = event.getItemStack().getMaxDamage();
+			
+			int repairedAmount = Integer.max(event.getItemStack().getItemDamage() - Math.max(256, maxDamage / 10), 0);
 			event.getItemStack().setItemDamage(repairedAmount);
 			event.getItemStack().serializeNBT().getCompoundTag("tag").removeTag("ToRepair");
 			NBTTagList list = event.getItemStack().serializeNBT().getCompoundTag("tag").getCompoundTag("TinkerData").getTagList("Modifiers", NBT.TAG_STRING);
