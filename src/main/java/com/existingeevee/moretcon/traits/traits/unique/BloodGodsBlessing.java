@@ -21,6 +21,9 @@ public class BloodGodsBlessing extends AbstractTrait implements IAdditionalTrait
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
+		if (!wasHit) 
+			return;
+		
 		if (target.isDead || target.getHealth() >= 0) {
 			int lvl = -1;
 			

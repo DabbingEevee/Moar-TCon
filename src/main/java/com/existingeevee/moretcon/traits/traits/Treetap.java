@@ -22,7 +22,6 @@ public class Treetap extends AbstractTrait {
 
     @Override
     public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective) {
-
     	if ((state.getProperties().containsKey(PropertyEnum.create("aether_logs", EnumLogType.class))) && (state.getValue(PropertyEnum.create("aether_logs", EnumLogType.class)) == EnumLogType.Oak) && !world.isRemote && state.getBlock().equals(BlocksAether.aether_log) && wasEffective) {
             world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ItemsAether.golden_amber, 1 + random.nextInt(2))));
         }

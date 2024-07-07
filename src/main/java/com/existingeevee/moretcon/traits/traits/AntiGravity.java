@@ -1,7 +1,9 @@
 package com.existingeevee.moretcon.traits.traits;
 
+import com.existingeevee.moretcon.other.OverrideItemUseEvent;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
 import com.gildedgames.the_aether.entities.block.EntityFloatingBlock;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -12,29 +14,28 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
 
-public class AntiGravity extends AbstractTrait {
+public class AntiGravity extends AbstractTrait implements IAdditionalTraitMethods {
 
-//	contains code from TinkersAether
 	public AntiGravity() {
 		super(MiscUtils.createNonConflictiveName("antigravity"), 0);
         MinecraftForge.EVENT_BUS.register(this);
 	}
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void floatBlock(PlayerInteractEvent.RightClickBlock event) {
+	public void onRightClick(OverrideItemUseEvent event) {
     	if (CompatManager.aether_legacy) {
 	        World world = event.getWorld();
 	        BlockPos pos = event.getPos();
 	        ItemStack heldItem = event.getItemStack();
 	        if (event.getWorld().isRemote
-	                || !event.getEntityPlayer().isSneaking()
+	                //|| !event.getEntityPlayer().isSneaking()
 	                || heldItem == ItemStack.EMPTY
 	                || !isToolWithTrait(heldItem)
 	                || ToolHelper.getCurrentDurability(event.getItemStack()) < 4)
@@ -52,6 +53,8 @@ public class AntiGravity extends AbstractTrait {
 	            if (!event.getEntityPlayer().isCreative()) {
 	                ToolHelper.damageTool(event.getItemStack(), 4, event.getEntityLiving());
 	            }
+	            event.setResult(Result.DENY);
+	            event.getEntityPlayer().swingArm(event.getHand());
 	        }
     	}
     }

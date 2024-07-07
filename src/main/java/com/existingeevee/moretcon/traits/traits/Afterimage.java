@@ -68,13 +68,11 @@ public class Afterimage extends AbstractTrait {
 	}
 
 	@Override
-	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt,
-			boolean wasCritical, boolean wasHit) {
-		if (tool.getItem() instanceof IProjectile) 
+	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
+		if (tool.getItem() instanceof IProjectile || !wasHit) 
 			return;
 		
-		if (target.getEntityData().hasKey("afterimaged", NBT.TAG_LONG)
-				&& target.getEntityData().getLong("afterimaged") >= player.world.getTotalWorldTime()) {
+		if (target.getEntityData().hasKey("afterimaged", NBT.TAG_LONG) && target.getEntityData().getLong("afterimaged") >= player.world.getTotalWorldTime()) {
 			target.getEntityData().removeTag("afterimaged");
 		}
 		

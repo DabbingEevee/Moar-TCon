@@ -25,7 +25,7 @@ public class BasicPotionTrait extends AbstractTrait {
 	
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (potion == null) return;
+		if (potion == null || !wasHit) return;
 		target.addPotionEffect(new PotionEffect(potion, (int) amplifier.evaluate(damageDealt) , (int) duration.evaluate(damageDealt)));
 	}
 }

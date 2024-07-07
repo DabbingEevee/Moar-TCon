@@ -19,7 +19,7 @@ public class Burning extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (player.world.rand.nextFloat() < getOctineToolFireChance(tool, target, player)) {
+		if (player.world.rand.nextFloat() < getOctineToolFireChance(tool, target, player) && wasHit) {
 			target.setFire(5);
 		}
 		super.afterHit(tool, target, player, damageDealt, wasHit, wasHit);

@@ -13,10 +13,11 @@ public class Hyperheat extends AbstractTrait {
 	public Hyperheat() {
 		super(MiscUtils.createNonConflictiveName("hyperheat"), 0x0066ff);
 	}
-	
+
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		target.addPotionEffect(new PotionEffect(ModPotions.hyperflames, 200, (int) Math.min(damageDealt / 3, ConfigHandler.hyperheatMaximumStack)));
+		if (wasHit) {
+			target.addPotionEffect(new PotionEffect(ModPotions.hyperflames, 200, (int) Math.min(damageDealt / 3, ConfigHandler.hyperheatMaximumStack)));
+		}
 	}
 }
-

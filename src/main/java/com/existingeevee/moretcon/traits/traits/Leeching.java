@@ -16,7 +16,7 @@ public class Leeching extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (new Random().nextInt(3) == 0) {
+		if (new Random().nextInt(3) == 0 && wasHit) {
 			player.setHealth(player.getHealth() + damageDealt * 0.1f);
 		}
 	}

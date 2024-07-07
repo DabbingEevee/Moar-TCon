@@ -26,7 +26,7 @@ public class SkysBlessing extends AbstractTrait {
 
     @Override
     public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-        if(!target.isEntityAlive() && !target.getEntityWorld().isRemote && random.nextInt(20) == 0) {
+        if(!target.isEntityAlive() && !target.getEntityWorld().isRemote && random.nextInt(20) == 0 && wasHit) {
         	target.world.spawnEntity(new EntityItem(target.getEntityWorld(), target.getPosition().getX(), target.getPosition().getY(), target.getPosition().getZ(), new ItemStack(ItemsAether.ambrosium_shard, 1)));
         }
     }

@@ -8,7 +8,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-
 public class Haunted extends AbstractTrait {
 
 	public Haunted() {
@@ -17,6 +16,8 @@ public class Haunted extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		CustomFireHelper.setAblaze(target, CustomFireEffect.SPIRIT_FIRE, 100);
+		if (wasHit) {
+			CustomFireHelper.setAblaze(target, CustomFireEffect.SPIRIT_FIRE, 100);
+		}
 	}
 }

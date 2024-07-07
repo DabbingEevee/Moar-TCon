@@ -20,6 +20,6 @@ public class MagicallyReactive extends AbstractTrait {
 			amount += stack.isItemEnchanted() ? 1 : 0;
 		}
 		
-		return newDamage + amount;
+		return newDamage * (1 + 0.5f * amount);
 	}
 }

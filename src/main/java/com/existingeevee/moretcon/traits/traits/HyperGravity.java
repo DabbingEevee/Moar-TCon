@@ -27,6 +27,9 @@ public class HyperGravity extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
+		if (!wasHit)
+			return;
+		
 		double dx = player.posX - target.posX;
 		double dz = player.posZ - target.posZ;
 		double lenXY = Math.sqrt(dx * dx + dz * dz);

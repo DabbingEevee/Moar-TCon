@@ -32,7 +32,7 @@ public class KineticBattery extends NumberTrackerTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (this.getNumber(tool) > 0 && player.isSneaking()) {
+		if (this.getNumber(tool) > 0 && player.isSneaking() && wasHit) {
 			player.world.playSound(null, player.getPosition(), SoundHandler.SWOOSH_EXPLOSION, SoundCategory.PLAYERS, 1, 1);
 			this.setNumber(tool, 0);
 			
