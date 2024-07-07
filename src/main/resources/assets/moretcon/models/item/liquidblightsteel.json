@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "moretcon:blocks/fluids/blightsteel_still"
+    "layer0": "moretcon:blocks/fluids/liquidblightsteel_still"
   }
 }
