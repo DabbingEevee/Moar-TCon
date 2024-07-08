@@ -83,7 +83,8 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialHallowsite = new Material(MiscUtils.createNonConflictiveName("hallowsite"), 0x34eb98);
 	public static final Material materialAncientAlloy = new Material(MiscUtils.createNonConflictiveName("ancientalloy"), 0xa2c2c0);
 	public static final Material materialBlightsteel = new Material(MiscUtils.createNonConflictiveName("blightsteel"), 0x243c5a);
-
+	public static final Material materialSanguiseelium = new Material(MiscUtils.createNonConflictiveName("sanguiseelium"), 0x6b1313);
+	
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
 
@@ -677,6 +678,22 @@ public class ModMaterials implements MaterialTypes {
 			materialAutoloader.addTrait(ModTraits.autoloading);
 			materialAutoloader.addStats(new ExtraMaterialStats(1024));
 			materialAutoloader.addStats(new HandleMaterialStats(4f, 1024));
+			
+			materialSanguiseelium.addCommonItems("Sanguiseelium");
+			//materialSanguiseelium.setFluid(ModFluids.liquidBlightsteel);
+			//materialSanguiseelium.setCastable(true);
+			//materialSanguiseelium.setCraftable(false);
+			materialSanguiseelium.setRepresentativeItem("ingotSanguiseelium"); 
+			materialSanguiseelium.addTrait(ModTraits.leeching, HEAD);
+			materialSanguiseelium.addTrait(ModTraits.receptive, HEAD);
+			materialSanguiseelium.addTrait(ModTraits.leeching);
+			materialSanguiseelium.addTrait(ModTraits.soulforged);
+			materialSanguiseelium.addStats(new HeadMaterialStats(2004, 7.5f, 8f, 6));
+			materialSanguiseelium.addStats(new HandleMaterialStats(2.5f, 80));
+			materialSanguiseelium.addStats(new ExtraMaterialStats(100));
+			materialSanguiseelium.addStats(new ArrowShaftMaterialStats(1.5f, 125));
+			materialSanguiseelium.addStats(new ProjectileMaterialStats());
+			materialSanguiseelium.addStats(new BowMaterialStats(1.2f, 1.3f, 0.8f));
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -1042,6 +1059,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialQuakestruck);
 			ModMaterials.registerMaterial(materialCryosplinters);	
 			ModMaterials.registerMaterial(materialBlightsteel);	
+			ModMaterials.registerMaterial(materialSanguiseelium);	
 			ModMaterials.registerMaterial(materialAutoloader);	
 			
 		}

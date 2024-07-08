@@ -92,7 +92,7 @@ public class MoreTCon {
 		MinecraftForge.EVENT_BUS.register(CustomFireHelper.class);
 		ModTraits.init();
 
-		OreDictionaryManager.init(); //TODO LOOK AT
+		OreDictionaryManager.init();
 
 		proxy.preInit();
 
