@@ -3,7 +3,6 @@ package com.existingeevee.moretcon.mixinext;
 import java.util.List;
 import java.util.Set;
 
-import org.spongepowered.asm.lib.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
@@ -22,7 +21,7 @@ public final class MoreTConMixinPlugin implements IMixinConfigPlugin {
 		return true;
 	}
 
-	// Boilerplate
+	// me when the boiler is plate
 
 	@Override
 	public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
@@ -45,12 +44,13 @@ public final class MoreTConMixinPlugin implements IMixinConfigPlugin {
 	}
 
 	@Override
-	public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
+	public void preApply(String targetClassName, org.objectweb.asm.tree.ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+		
 	}
 
 	@Override
-	public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
+	public void postApply(String targetClassName, org.objectweb.asm.tree.ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+		
 	}
+
 }

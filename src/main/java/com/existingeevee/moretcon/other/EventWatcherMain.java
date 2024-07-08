@@ -22,7 +22,6 @@ import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-@SuppressWarnings("deprecation")
 public class EventWatcherMain {
 
 	public static boolean sent = false;

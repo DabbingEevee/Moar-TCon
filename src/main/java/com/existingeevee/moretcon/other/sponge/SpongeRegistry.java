@@ -28,7 +28,6 @@ import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 
-@SuppressWarnings("deprecation")
 public class SpongeRegistry {
 	private SpongeRegistry() {
 	}

@@ -34,7 +34,6 @@ import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.modifiers.ModExtraTrait;
 
-@SuppressWarnings("deprecation")
 public class UniqueMaterial extends Material {
 
 	public static final Map<String, BiValue<UniqueMaterial, String>> uniqueMaterials = new HashMap<String, BiValue<UniqueMaterial, String>>();

@@ -14,12 +14,6 @@ public class Monomial extends Equation {
 	public double evaluate(double x) {
 		return Math.pow(x, this.exponential) * multiplier;
 	}
-
-	
-	@Override
-	public long evaluate(long x) {
-		return (long) (Math.pow(x, this.exponential) * multiplier);
-	}
 	
 	public static Monomial valueOf(double val) {
 		return new Monomial(val, 0);
