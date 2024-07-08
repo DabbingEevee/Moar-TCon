@@ -16,7 +16,6 @@ import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-@SuppressWarnings("deprecation")
 @Mixin(EntityProjectileBase.class)
 public class MixinEntityProjectileBase {
 

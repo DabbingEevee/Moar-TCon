@@ -22,7 +22,6 @@ import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.tools.modifiers.ToolModifier;
 import thebetweenlands.common.capability.circlegem.CircleGemType;
 
-@SuppressWarnings("deprecation")
 public class Gem extends ToolModifier {
 
 	private final CircleGemType type;

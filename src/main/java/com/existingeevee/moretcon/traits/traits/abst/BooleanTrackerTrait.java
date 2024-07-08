@@ -6,7 +6,6 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.Constants.NBT;
 
-@SuppressWarnings("deprecation")
 public abstract class BooleanTrackerTrait extends AdditionalDisplayTrait {
 
 	public BooleanTrackerTrait(String identifier, int color) {

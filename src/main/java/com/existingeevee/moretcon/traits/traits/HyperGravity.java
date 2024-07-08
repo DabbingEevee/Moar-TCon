@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-@SuppressWarnings("deprecation")
 public class HyperGravity extends AbstractTrait {
 
 	public HyperGravity() {

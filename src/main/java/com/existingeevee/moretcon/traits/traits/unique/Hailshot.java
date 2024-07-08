@@ -25,7 +25,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.traits.IProjectileTrait;
 
-@SuppressWarnings("deprecation")
 public class Hailshot extends BooleanTrackerTrait implements IProjectileTrait, IAdditionalTraitMethods {
 
 	public Hailshot() {

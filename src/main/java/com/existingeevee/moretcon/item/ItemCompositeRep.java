@@ -17,7 +17,6 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.materials.Material;
 
-@SuppressWarnings("deprecation")
 public class ItemCompositeRep extends ItemBase {
 
 	private static ItemCompositeRep itemInstance;

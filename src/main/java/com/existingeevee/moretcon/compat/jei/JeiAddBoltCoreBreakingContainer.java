@@ -74,7 +74,6 @@ public class JeiAddBoltCoreBreakingContainer extends JeiCustomContainer {
 		}
 
 		@Override
-		@SuppressWarnings("deprecation")
 		public void setRecipe(IRecipeLayout recipeLayout, IIngredients ingredients) {
 		    List<ItemStack> inputs = ingredients.getInputs(ItemStack.class).get(0);
 		    List<ItemStack> outputs = ingredients.getOutputs(ItemStack.class).get(0);

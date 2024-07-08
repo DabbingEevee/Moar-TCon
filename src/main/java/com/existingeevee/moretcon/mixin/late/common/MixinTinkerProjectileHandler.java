@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.capability.projectile.TinkerProjectileHandler;
 import slimeknights.tconstruct.library.tools.ranged.IAmmo;
 
-@SuppressWarnings("deprecation")
 @Mixin(TinkerProjectileHandler.class)
 public class MixinTinkerProjectileHandler {
 
