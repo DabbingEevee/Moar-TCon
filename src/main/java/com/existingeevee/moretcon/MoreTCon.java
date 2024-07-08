@@ -63,7 +63,7 @@ public class MoreTCon {
 	public static MoreTCon instance;
 	
 	@SidedProxy(serverSide = "com.existingeevee.moretcon.proxy.CommonProxy", clientSide = "com.existingeevee.moretcon.proxy.ClientProxy")
-	public static CommonProxy proxy; //Work on college
+	public static CommonProxy proxy; 
 
 	static {
 		CustomFireEffect.init();
