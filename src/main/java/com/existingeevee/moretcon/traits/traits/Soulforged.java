@@ -30,14 +30,10 @@ public class Soulforged extends NumberTrackerTrait {
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		if (this.getNumber(tool) > 0) {
 			newDamage = Math.max(newDamage + 4, newDamage * 1.1f);
-			if (random.nextInt(2) == 0) {
-				ItemStack origArrowStack = ArrowReferenceHelper.getProjectileStack(tool);
-				this.removeNumber(origArrowStack.isEmpty() ? tool : origArrowStack, 1);
-			}
 		}
 		return newDamage;
 	}
-
+	
 	@Override
 	public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
 		if (this.getNumber(tool) > 0) {
@@ -60,6 +56,14 @@ public class Soulforged extends NumberTrackerTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
+		if (!wasHit)
+			return;
+		
+		if (random.nextInt(2) == 0) {
+			ItemStack origArrowStack = ArrowReferenceHelper.getProjectileStack(tool);
+			this.removeNumber(origArrowStack.isEmpty() ? tool : origArrowStack, 1);
+		}
+		
 		if (target.getHealth() <= 0) {
 			ItemStack origArrowStack = ArrowReferenceHelper.getProjectileStack(tool);
 			if (!origArrowStack.isEmpty()) {
