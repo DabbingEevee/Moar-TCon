@@ -18,7 +18,7 @@ import thebetweenlands.common.registries.BlockRegistry;
 import twilightforest.block.TFBlocks;
 
 public class OreDictionaryManager {
-	public static void init() {
+	public static void preInit() {
 		registerOre("gemCoal", new ItemStack(Items.COAL));
 
 		if (CompatManager.loadMain) {
@@ -31,15 +31,15 @@ public class OreDictionaryManager {
 			registerOre("blockTrichromadentium", ModBlocks.blockTrichromadentium);
 			registerOre("ingotTrichromadentium", ModItems.ingotTrichromadentium);
 			registerOre("nuggetTrichromadentium", ModItems.nuggetTrichromadentium);
-			
+
 			registerOre("blockValasium", ModBlocks.blockValasium);
 			registerOre("ingotValasium", ModItems.ingotValasium);
 			registerOre("nuggetValasium", ModItems.nuggetValasium);
-			
+
 			registerOre("blockAtronium", ModBlocks.blockAtronium);
 			registerOre("ingotAtronium", ModItems.ingotAtronium);
 			registerOre("nuggetAtronium", ModItems.nuggetAtronium);
-			
+
 			registerOre("blockGravitonium", ModBlocks.blockGravitonium);
 			registerOre("oreGravitonium", ModBlocks.oreGravitonium);
 			registerOre("oreGravitoniumDense", ModBlocks.oreGravitoniumDense);
@@ -75,15 +75,15 @@ public class OreDictionaryManager {
 			registerOre("blockSolsteel", ModBlocks.blockSolsteel);
 			registerOre("ingotSolsteel", ModItems.ingotSolsteel);
 			registerOre("nuggetSolsteel", ModItems.nuggetSolsteel);
-			
+
 			registerOre("blockBlightsteel", ModBlocks.blockBlightsteel);
 			registerOre("ingotBlightsteel", ModItems.ingotBlightsteel);
 			registerOre("nuggetBlightsteel", ModItems.nuggetBlightsteel);
-			
+
 			registerOre("blockSolarsteel", ModBlocks.blockSolsteel);
 			registerOre("ingotSolarsteel", ModItems.ingotSolsteel);
 			registerOre("nuggetSolarsteel", ModItems.nuggetSolsteel);
-			
+
 			registerOre("blockEbonite", ModBlocks.blockEbonite);
 			registerOre("oreEbonite", ModBlocks.oreEbonite);
 			registerOre("ingotEbonite", ModItems.ingotEbonite);
@@ -97,7 +97,7 @@ public class OreDictionaryManager {
 			registerOre("blockBloodstone", ModBlocks.blockBloodstone);
 			registerOre("gemBloodstone", ModItems.gemBloodstone);
 			registerOre("oreBloodstone", ModBlocks.oreBloodstone);
-			
+
 			registerOre("blockEchostone", ModBlocks.blockEchostone);
 			registerOre("gemEchostone", ModItems.gemEchostone);
 			registerOre("oreEchostone", ModBlocks.oreEchostone);
@@ -105,25 +105,25 @@ public class OreDictionaryManager {
 			registerOre("blockIgniglomerate", ModBlocks.blockIgniglomerate);
 			registerOre("gemIgniglomerate", ModItems.gemIgniglomerate);
 			registerOre("oreIgniglomerate", ModBlocks.oreIgniglomerate);
-			
+
 			registerOre("blockErythynite", ModBlocks.blockErythynite);
 			registerOre("gemErythynite", ModItems.gemErythynite);
 			registerOre("oreErythynite", ModBlocks.oreErythynite);
-			
+
 			registerOre("blockEtherstone", ModBlocks.blockEtherstone);
 			registerOre("gemEtherstone", ModItems.gemEtherstone);
 			registerOre("oreEtherstone", ModBlocks.oreEtherstone);
-			
+
 			registerOre("blockElectarite", ModBlocks.blockElectarite);
 			registerOre("gemElectarite", ModItems.gemElectarite);
 			registerOre("oreElectarite", ModBlocks.oreElectarite);
-			
+
 			registerOre("blockHallowsite", ModBlocks.blockHallowsite);
 			registerOre("oreHallowsite", ModBlocks.oreHallowsite);
 			registerOre("ingotHallowsite", ModItems.ingotHallowsite);
 			registerOre("nuggetHallowsite", ModItems.nuggetHallowsite);
-			
-			if(ConfigHandler.shouldLoadDust) {
+
+			if (ConfigHandler.shouldLoadDust) {
 				registerOre("dustIrradium", ModItems.dustIrradium);
 				registerOre("dustValasium", ModItems.dustValasium);
 				registerOre("dustSolarsteel", ModItems.dustSolarSteel);
@@ -140,22 +140,20 @@ public class OreDictionaryManager {
 				registerOre("dustBlightsteel", ModItems.dustBlightsteel);
 			}
 		}
-		if(CompatManager.twilightforest) {
-			//Penguin
+		
+		if (CompatManager.twilightforest) {
 			registerOre("blockPenguinite", ModBlocks.blockPenguinite);
 			registerOre("ingotPenguinite", ModItems.ingotPenguinite);
 			registerOre("nuggetPenguinite", ModItems.nuggetPenguinite);
-			registerOre("blockIronwood", new ItemStack(TFBlocks.block_storage, 1, 0));
-			if(ConfigHandler.shouldLoadDustForCompatability && ConfigHandler.shouldLoadDust) {
+			if (ConfigHandler.shouldLoadDustForCompatability && ConfigHandler.shouldLoadDust) {
+				registerOre("dustPenguinite", ModItems.dustPenguinite);
 				registerOre("dustFiery", ModItems.dustFiery);
 				registerOre("dustIronwood", ModItems.dustIronwood);
 				registerOre("dustKnightmetal", ModItems.dustKnightmetal);
-				registerOre("dustPenguinite", ModItems.dustPenguinite);
-				//registerOre("dustSteeleaf", ModItems.dustSteeleaf);
 			}
 		}
-
-		if(CompatManager.thebetweenlands && Loader.isModLoaded("thebetweenlands")) {
+		
+		if (CompatManager.thebetweenlands && Loader.isModLoaded("thebetweenlands")) {
 			registerOre("blockSwampsteel", ModBlocks.blockSwampSteel);
 			registerOre("ingotSwampsteel", ModItems.ingotSwampSteel);
 			registerOre("nuggetSwampsteel", ModItems.nuggetSwampSteel);
@@ -167,7 +165,44 @@ public class OreDictionaryManager {
 			registerOre("blockAncientAlloy", ModBlocks.blockAncientAlloy);
 			registerOre("ingotAncientAlloy", ModItems.ingotAncientAlloy);
 			registerOre("nuggetAncientAlloy", ModItems.nuggetAncientAlloy);
-			
+
+			registerOre("blockClay", ModBlocks.blockSiltClay);
+			registerOre("clay", ModItems.itemSiltClay);
+			registerOre("gravel", ModBlocks.blockCragravel);
+
+			if (ConfigHandler.shouldLoadDustForCompatability && ConfigHandler.shouldLoadDust) {
+				registerOre("dustOctine", ModItems.dustOctine);
+				registerOre("dustSwampsteel", ModItems.dustSwampSteel);
+				registerOre("dustRotiron", ModItems.dustRotiron);
+				registerOre("dustSyrmorite", ModItems.dustSyrmorite);
+				registerOre("dustAncientAlloy", ModItems.dustAncientAlloy);
+			}
+		}
+		
+		if (CompatManager.aether_legacy) {
+			registerOre("blockArkenium", ModBlocks.blockArkenium);
+			registerOre("oreArkenium", ModBlocks.oreArkenium);
+			registerOre("ingotArkenium", ModItems.ingotArkenium);
+			registerOre("nuggetArkenium", ModItems.nuggetArkenium);
+
+			registerOre("blockValkyrieMetal", ModBlocks.blockValkyrieMetal);
+			registerOre("ingotValkyrieMetal", ModItems.ingotValkyrieMetal);
+			registerOre("nuggetValkyrieMetal", ModItems.nuggetValkyrieMetal);
+
+			registerOre("blockGravitite", ModBlocks.blockGravitite);
+			if (ConfigHandler.shouldLoadDustForCompatability && ConfigHandler.shouldLoadDust) {
+				registerOre("dustArkenium", ModItems.dustArkenium);
+				registerOre("dustValkyrieMetal", ModItems.dustValkyrieMetal);
+			}
+		}
+	}
+
+	public static void initPost() {
+		if (CompatManager.twilightforest) {
+			registerOre("blockIronwood", new ItemStack(TFBlocks.block_storage, 1, 0));
+		}
+
+		if (CompatManager.thebetweenlands) {
 			registerOre("ropeReed", EnumItemMisc.SWAMP_REED_ROPE.create(1));
 			registerOre("itemDragonFlyWing", EnumItemMisc.DRAGONFLY_WING.create(1));
 			registerOre("itemAnglerTooth", EnumItemMisc.ANGLER_TOOTH.create(1));
@@ -179,45 +214,15 @@ public class OreDictionaryManager {
 			registerOre("stickWoodWeedwood", EnumItemMisc.WEEDWOOD_STICK.create(1));
 			registerOre("blockSlimyBone", BlockRegistry.SLIMY_BONE_BLOCK);
 			registerOre("gemSlimyBone", EnumItemMisc.SLIMY_BONE.create(1));
-			registerOre("blockClay", ModBlocks.blockSiltClay);
-			registerOre("clay", ModItems.itemSiltClay);
-			registerOre("gravel", ModBlocks.blockCragravel);
-
-			if(ConfigHandler.shouldLoadDustForCompatability && ConfigHandler.shouldLoadDust) {
-				registerOre("dustOctine", ModItems.dustOctine);
-				registerOre("dustSwampsteel", ModItems.dustSwampSteel);
-				registerOre("dustRotiron", ModItems.dustRotiron);
-				registerOre("dustSyrmorite", ModItems.dustSyrmorite);
-				registerOre("dustAncientAlloy", ModItems.dustAncientAlloy);
-			}
 			registerOre("dripTar", EnumItemMisc.TAR_DRIP.create(1));
 		}
-		if(CompatManager.aether_legacy) {
-			registerOre("blockArkenium", ModBlocks.blockArkenium);
-			registerOre("oreArkenium", ModBlocks.oreArkenium);
-			registerOre("ingotArkenium", ModItems.ingotArkenium);
-			registerOre("nuggetArkenium", ModItems.nuggetArkenium);
-
-			registerOre("blockValkyrieMetal", ModBlocks.blockValkyrieMetal);
-			registerOre("ingotValkyrieMetal", ModItems.ingotValkyrieMetal);
-			registerOre("nuggetValkyrieMetal", ModItems.nuggetValkyrieMetal);
-
+		if (CompatManager.aether_legacy) {
 			registerOre("holystone", BlocksAether.holystone);
-
 			registerOre("plankWoodSkyroot", BlocksAether.skyroot_plank);
 			registerOre("logWoodSkyroot", new ItemStack(BlocksAether.aether_log, 1, 0));
 			registerOre("stickWoodSkyroot", ItemsAether.skyroot_stick);
-			registerOre("blockGravitite", ModBlocks.blockGravitite);
 			registerOre("gemGravitite", BlocksAether.enchanted_gravitite);
-			if(ConfigHandler.shouldLoadDustForCompatability && ConfigHandler.shouldLoadDust) {
-				registerOre("dustArkenium", ModItems.dustArkenium);
-				registerOre("dustValkyrieMetal", ModItems.dustValkyrieMetal);
-			}
 		}
-	}
-
-	public static void initPost() {
-
 	}
 
 	public static void registerOre(String strName, ItemStack... itemStack) {
@@ -225,6 +230,7 @@ public class OreDictionaryManager {
 			OreDictionary.registerOre(strName, i);
 		}
 	}
+
 	public static void registerOre(String strName, Item... items) {
 		for (Item i : items) {
 			OreDictionary.registerOre(strName, i);
@@ -235,5 +241,10 @@ public class OreDictionaryManager {
 		for (Block b : blocks) {
 			OreDictionary.registerOre(strName, b);
 		}
+	}
+
+	public static void init() {
+		// TODO Auto-generated method stub
+		
 	}
 }
