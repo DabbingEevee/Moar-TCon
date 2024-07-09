@@ -2,6 +2,7 @@ package com.existingeevee.moretcon.traits.traits;
 
 import java.lang.reflect.Field;
 
+import com.existingeevee.moretcon.other.utils.ArrowReferenceHelper;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 
@@ -29,8 +30,10 @@ public class Soulforged extends NumberTrackerTrait {
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		if (this.getNumber(tool) > 0) {
 			newDamage = Math.max(newDamage + 4, newDamage * 1.1f);
-			if (random.nextInt(2) == 0)
-				this.removeNumber(tool, 1);
+			if (random.nextInt(2) == 0) {
+				ItemStack origArrowStack = ArrowReferenceHelper.getProjectileStack(tool);
+				this.removeNumber(origArrowStack.isEmpty() ? tool : origArrowStack, 1);
+			}
 		}
 		return newDamage;
 	}
@@ -48,11 +51,21 @@ public class Soulforged extends NumberTrackerTrait {
 			this.removeNumber(tool, 1);
 		}
 	}
-	
+
 	@Override
 	public int getNumberMax(ItemStack stack) {
 		ModifierNBT tag = ModifierNBT.readTag(TinkerUtil.getModifierTag(stack, this.getModifierIdentifier()));
 		return 25 * tag.level;
+	}
+
+	@Override
+	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
+		if (target.getHealth() <= 0) {
+			ItemStack origArrowStack = ArrowReferenceHelper.getProjectileStack(tool);
+			if (!origArrowStack.isEmpty()) {
+				this.addNumber(origArrowStack, random.nextInt(2) + 1);
+			}
+		}
 	}
 
 	private static final Field recentlyHit$EntityLivingBase = ObfuscationReflectionHelper.findField(EntityLivingBase.class, "field_70718_bc");

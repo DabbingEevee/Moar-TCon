@@ -27,6 +27,10 @@ public class ArrowReferenceHelper {
 		return PROJECTILE_STACKS.getOrDefault(proj.getItemStack(), ItemStack.EMPTY);
 	}
 	
+	public static ItemStack getProjectileStack(ItemStack ammoCopy) {
+		return PROJECTILE_STACKS.getOrDefault(ammoCopy, ItemStack.EMPTY);
+	}
+	
 	@SubscribeEvent
 	public static void onOnBowShoot(OnBowShoot event) {
 		StaticVars.lastArrowFired.set(event.ammo);
