@@ -18,7 +18,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 @Mixin(ProjectileCore.class)
 public class MixinProjectileCore {
 
-	@Inject(at = @At(value = "RETURN"), method = "useAmmo", remap = false, cancellable = true)
+	@Inject(at = @At(value = "RETURN"), method = "useAmmo", remap = false)
 	public void moretcon$RETURN_Inject$useAmmo(ItemStack stack, @Nullable EntityLivingBase player, CallbackInfoReturnable<Boolean> ci) {
 		for (ITrait t : ToolHelper.getTraits(stack)) {
 			if (t instanceof IAdditionalTraitMethods) {
@@ -26,5 +26,4 @@ public class MixinProjectileCore {
 			}
 		}
 	}
-
 }
