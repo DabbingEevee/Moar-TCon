@@ -48,14 +48,17 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onItemTooltipEvent(ItemTooltipEvent event) {
-		if (!showDisplay)
+		if (!showDisplay) 
 			return;
+		
 		ItemStack tool = event.getItemStack();
 		if (!this.isToolWithTrait(tool))
 			return;
+		
 		for (int i = 0; i < event.getToolTip().size(); i++) {
 			String str = event.getToolTip().get(i);
 			String[] splitString = str.split(": ");
+			
 			if (splitString.length >= 2 && splitString[1].equals("-{-toreplace.moretcon.display." + this.getModifierIdentifier() + "-}-")) {
 				String toRender = this.getStringToRender(tool);
 				if (toRender != null) {

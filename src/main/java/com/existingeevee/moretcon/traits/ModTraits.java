@@ -49,6 +49,7 @@ import com.existingeevee.moretcon.traits.traits.Oxide;
 import com.existingeevee.moretcon.traits.traits.Penetrant;
 import com.existingeevee.moretcon.traits.traits.Pulsating;
 import com.existingeevee.moretcon.traits.traits.Reaching;
+import com.existingeevee.moretcon.traits.traits.Receptive;
 import com.existingeevee.moretcon.traits.traits.Resilient;
 import com.existingeevee.moretcon.traits.traits.Rootplicating;
 import com.existingeevee.moretcon.traits.traits.Rotten;
@@ -142,6 +143,7 @@ public class ModTraits {
 	public static Autoloading autoloading = new Autoloading();
 	public static Withered withered = new Withered();
 	public static Blighted blighted = new Blighted();
+	public static Receptive receptive = new Receptive();
 	
 	public static Aetheric aetheric = new Aetheric();
 	public static Rootplicating rootplicating = new Rootplicating();

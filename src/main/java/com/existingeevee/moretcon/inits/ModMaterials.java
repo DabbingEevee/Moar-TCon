@@ -689,7 +689,7 @@ public class ModMaterials implements MaterialTypes {
 			//materialSanguiseelium.setCraftable(false);
 			materialSanguiseelium.setRepresentativeItem("ingotSanguiseelium"); 
 			materialSanguiseelium.addTrait(ModTraits.leeching, HEAD);
-			//materialSanguiseelium.addTrait(ModTraits.receptive, HEAD);
+			materialSanguiseelium.addTrait(ModTraits.receptive, HEAD);
 			materialSanguiseelium.addTrait(ModTraits.leeching);
 			materialSanguiseelium.addTrait(ModTraits.soulforged);
 			materialSanguiseelium.addStats(new HeadMaterialStats(2004, 7.5f, 8f, 6));

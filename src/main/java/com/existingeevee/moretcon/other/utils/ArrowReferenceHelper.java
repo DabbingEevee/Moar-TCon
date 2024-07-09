@@ -28,6 +28,8 @@ public class ArrowReferenceHelper {
 	}
 	
 	public static ItemStack getProjectileStack(ItemStack ammoCopy) {
+		System.out.println(PROJECTILE_STACKS);
+
 		return PROJECTILE_STACKS.getOrDefault(ammoCopy, ItemStack.EMPTY);
 	}
 	

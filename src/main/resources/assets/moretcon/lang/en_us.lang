@@ -345,6 +345,8 @@ modifier.moretcon.blighted.name=Blighted
 modifier.moretcon.blighted.desc=§oLets not get here...§r\nYour tool will deal additional damage for every level of debuff on a target.
 modifier.moretcon.withered.name=Withered
 modifier.moretcon.withered.desc=§ospoopy scary skeletons§r\nYour tool will apply stacking wither every hit.
+modifier.moretcon.receptive.name=Receptive
+modifier.moretcon.receptive.desc=§oat your command...§r\nYour tool will grow and adapt to what you use it for.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
