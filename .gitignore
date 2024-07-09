@@ -39,4 +39,3 @@ hs_err_pid*
 /build/
 /externallibsource/
 .project
-src/main/java/com/existingeevee/moretcon/item/ItemDebugTool.java
