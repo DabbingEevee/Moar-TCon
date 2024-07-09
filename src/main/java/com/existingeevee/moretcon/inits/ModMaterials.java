@@ -154,6 +154,10 @@ public class ModMaterials implements MaterialTypes {
 			MiscUtils.createNonConflictiveName("quakestruck"), 0x2683bd, "tconstruct:large_plate", 
 			"tconstruct:hammer");
 
+	public static final UniqueMaterial materialSkybolt = new UniqueMaterial(
+			MiscUtils.createNonConflictiveName("skybolt"), 0x3BB0FF, "tconstruct:sword_blade", 
+			"tconstruct:broadsword");
+	
 	static {
 	    BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
 
@@ -804,6 +808,8 @@ public class ModMaterials implements MaterialTypes {
 			materialGravitite.addStats(new ExtraMaterialStats(90));
 			materialGravitite.addStats(whyWouldYouMakeABowOutOfThis);
 			
+			materialSkybolt.addStats(new HeadMaterialStats(1070, 7.50f, 5.00f, 3));
+			materialSkybolt.addTrait(ModTraits.boltforged);
 		}
 		if (CompatManager.twilightforest) { //TODO add carminite & more alloys
 			materialIronwood.addCommonItems("Ironwood");
@@ -1082,6 +1088,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialGravitite).toolforge();
 			ModMaterials.registerMaterial(materialValkyrieMetal, "ValkyrieMetal").toolforge();
 			ModMaterials.registerMaterial(materialAmberwood);
+			ModMaterials.registerMaterial(materialSkybolt);
 		}
 		if (CompatManager.thebetweenlands) {
 			ModMaterials.registerMaterial(materialShockwave);

@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import com.existingeevee.moretcon.MoreTCon;
 import com.existingeevee.moretcon.other.utils.CompatManager;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.traits.modifiers.Betweenified;
 import com.existingeevee.moretcon.traits.modifiers.Crushing;
@@ -60,6 +61,7 @@ import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
 import com.existingeevee.moretcon.traits.traits.Withered;
+import com.existingeevee.moretcon.traits.traits.abst.StackDelagateTrait;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
 import com.existingeevee.moretcon.traits.traits.unique.Autoloading;
 import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
@@ -73,12 +75,14 @@ import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
 import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
 import com.existingeevee.moretcon.traits.traits.unique.Wormed;
+import com.gildedgames.the_aether.items.ItemsAether;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.modifiers.IModifier;
@@ -109,11 +113,6 @@ public class ModTraits {
 	public static Liquid liquid = new Liquid();
 	public static Resilient resilient = new Resilient();
 	public static Magical magical = new Magical();
-	public static Reaching reaching;
-	public static Aetheric aetheric = new Aetheric();
-	public static Rootplicating rootplicating = new Rootplicating();
-	public static SkysBlessing blessed = new SkysBlessing();
-	public static Treetap treetap = new Treetap();
 	public static Hardcore hardcore = new Hardcore();
 	public static HyperGravity hypergravity = new HyperGravity();
 	public static Mirroring mirroring = new Mirroring();
@@ -138,12 +137,19 @@ public class ModTraits {
 	public static Soulforged soulforged = new Soulforged(1);
 	public static Soulforged soulforged2 = new Soulforged(2);
 	public static Soulforged soulforged3 = new Soulforged(3);
-	public static Seismishock seismishock = new Seismishock();;
-	public static Hailshot hailshot = new Hailshot();;
-	public static Autoloading autoloading = new Autoloading();;
-	public static Withered withered = new Withered();;
-	public static Blighted blighted = new Blighted();;
+	public static Seismishock seismishock = new Seismishock();
+	public static Hailshot hailshot = new Hailshot();
+	public static Autoloading autoloading = new Autoloading();
+	public static Withered withered = new Withered();
+	public static Blighted blighted = new Blighted();
 	
+	public static Aetheric aetheric = new Aetheric();
+	public static Rootplicating rootplicating = new Rootplicating();
+	public static SkysBlessing blessed = new SkysBlessing();
+	public static Treetap treetap = new Treetap();
+	public static Reaching reaching;
+	public static StackDelagateTrait boltforged = new StackDelagateTrait(MiscUtils.createNonConflictiveName("boltforged"), 0, () -> new ItemStack(ItemsAether.lightning_sword), false).setOnHit();
+
 	public static MatterReconstructionGel repair;
 
 	public static AntiGravity antigravity;
@@ -161,6 +167,7 @@ public class ModTraits {
 	public static Crushing modCrushing;
 
 	public static Debug modDebug;
+	
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
 	public static Oxide oxide;
