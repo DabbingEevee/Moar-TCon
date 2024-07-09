@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 
 /**
- * Encapsulates the standard actions for integrating a material/item into tcon
+ * Essentially a gutted version of MaterialIntegration that only registers stuff
  */
 public class MTMaterialIntegration extends MaterialIntegration {
 
