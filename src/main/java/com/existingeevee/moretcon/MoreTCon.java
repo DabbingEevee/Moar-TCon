@@ -25,6 +25,7 @@ import com.existingeevee.moretcon.other.fires.CustomFireEffect;
 import com.existingeevee.moretcon.other.fires.CustomFireHelper;
 import com.existingeevee.moretcon.other.fixes.ExtremeToolDurabilityFix;
 import com.existingeevee.moretcon.other.sponge.SpongeRegistry;
+import com.existingeevee.moretcon.other.utils.ArrowReferenceHelper;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
@@ -90,9 +91,10 @@ public class MoreTCon {
 		}
 		MaterialUtils.completeReadds();
 		MinecraftForge.EVENT_BUS.register(CustomFireHelper.class);
+		MinecraftForge.EVENT_BUS.register(ArrowReferenceHelper.class);
 		ModTraits.init();
 
-		OreDictionaryManager.init();
+		OreDictionaryManager.preInit(); 
 
 		proxy.preInit();
 
@@ -108,6 +110,8 @@ public class MoreTCon {
 
 	@SubscribeEvent
 	public static void registerRecipes(Register<IRecipe> event) {				
+		OreDictionaryManager.init(); 
+		
 		IForgeRegistry<IRecipe> registry = event.getRegistry();
 		
 		OreRecipes.init(event);
