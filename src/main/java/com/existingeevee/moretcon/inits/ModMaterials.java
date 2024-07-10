@@ -158,8 +158,8 @@ public class ModMaterials implements MaterialTypes {
 			MiscUtils.createNonConflictiveName("skybolt"), 0x3BB0FF, "tconstruct:sword_blade", 
 			"tconstruct:broadsword");
 
-	public static final UniqueMaterial materialVengence = new UniqueMaterial(
-			MiscUtils.createNonConflictiveName("vengence"), 0xFFFFFF, "tconstruct:sign_head", 
+	public static final UniqueMaterial materialVengeance = new UniqueMaterial(
+			MiscUtils.createNonConflictiveName("vengeance"), 0xFFFFFF, "tconstruct:sign_head", 
 			"tconstruct:battlesign");
 	
 	static {
@@ -706,8 +706,8 @@ public class ModMaterials implements MaterialTypes {
 			materialSanguiseelium.addStats(new ProjectileMaterialStats());
 			materialSanguiseelium.addStats(new BowMaterialStats(1.2f, 1.3f, 0.8f));
 			
-			materialVengence.addStats(new HeadMaterialStats(1024, 6f, 7f, 7));
-			materialVengence.addTrait(ModTraits.offense);
+			materialVengeance.addStats(new HeadMaterialStats(1024, 6f, 7f, 7));
+			materialVengeance.addTrait(ModTraits.offense);
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -1077,7 +1077,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialBlightsteel);	
 			ModMaterials.registerMaterial(materialSanguiseelium);	
 			ModMaterials.registerMaterial(materialAutoloader);
-			ModMaterials.registerMaterial(materialVengence);
+			ModMaterials.registerMaterial(materialVengeance);
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl);
