@@ -206,6 +206,7 @@ material.moretcon.electarite.name=Electarite
 material.moretcon.hallowsite.name=Hallowsite
 material.moretcon.ancientalloy.name=Ancient Alloy
 material.moretcon.blightsteel.name=Blightsteel
+material.moretcon.sanguiseelium.name=Sanguiseelium
 
 material.uniquetoolpart.name=Unique
 
@@ -479,6 +480,7 @@ uniquetoolpart.moretcon.quakestruck.name=Quakestruck
 uniquetoolpart.moretcon.cryosplinters.name=Cryosplinters
 uniquetoolpart.moretcon.autoloader.name=Autoloader
 uniquetoolpart.moretcon.vengence.name=Vengeance
+uniquetoolpart.moretcon.skybolt.name=Skybolt
 
 booltracker.active.name=Active
 booltracker.inactive.name=Inactive

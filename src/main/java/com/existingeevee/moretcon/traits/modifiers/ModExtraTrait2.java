@@ -39,7 +39,7 @@ public class ModExtraTrait2 extends ToolModifier {
 	public final Material material;
 	public final Set<ToolCore> toolCores;
 	private final Collection<ITrait> traits;
-
+	
 	public ModExtraTrait2(Material material, Collection<ITrait> traits) {
 		this(material, traits, generateIdentifier(material, traits));
 	}
