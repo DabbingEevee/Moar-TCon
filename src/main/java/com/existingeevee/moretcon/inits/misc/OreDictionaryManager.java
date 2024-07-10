@@ -197,7 +197,7 @@ public class OreDictionaryManager {
 		}
 	}
 
-	public static void initPost() {
+	public static void init() {
 		if (CompatManager.twilightforest) {
 			registerOre("blockIronwood", new ItemStack(TFBlocks.block_storage, 1, 0));
 		}
@@ -241,10 +241,5 @@ public class OreDictionaryManager {
 		for (Block b : blocks) {
 			OreDictionary.registerOre(strName, b);
 		}
-	}
-
-	public static void init() {
-		// TODO Auto-generated method stub
-		
 	}
 }
