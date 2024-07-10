@@ -62,6 +62,8 @@ public class ConfigHandler {
 	public static boolean enableGauntlet = true;
 	public static boolean enableRing = true;
 
+	public static boolean unfracturedBedrockObtainable = true;
+	
 	public static boolean inertiaOnlyWorksOnAdvancedTools = false;
 	
 	public static void initConfig(File file) {
@@ -99,6 +101,7 @@ public class ConfigHandler {
 		String triGreen = config.getString("trichromic_green", category, "none;0", "Set to a potion effect to affect trichromic color effect, or \"none\" for default effect.");
 		String triBlue = config.getString("trichromic_blue", category, "none;0", "Set to a potion effect to affect trichromic color effect, or \"none\" for default effect.");
 		
+		unfracturedBedrockObtainable = config.getBoolean("unfracturedbedrockobtainable", category, unfracturedBedrockObtainable, "Whether or not regular (typically unbreakable) bedrock should be obtainable.");
 		ConfigHandler.inertiaOnlyWorksOnAdvancedTools = config.getBoolean("inertiaOnlyWorksOnAdvancedTools".toLowerCase(), category, false, "Set to \"true\" if you do not want inertia (betweenlands greataxe/greatsword trait) to function on basic tools.");
 
 		try {

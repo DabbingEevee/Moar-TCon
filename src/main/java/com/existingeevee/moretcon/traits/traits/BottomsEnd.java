@@ -1,9 +1,13 @@
 package com.existingeevee.moretcon.traits.traits;
 
+import com.existingeevee.moretcon.config.ConfigHandler;
+import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
@@ -16,30 +20,49 @@ public class BottomsEnd extends AbstractTrait {
 		super(MiscUtils.createNonConflictiveName("bottomsend".toLowerCase()), 0);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
-    @SubscribeEvent
-    public void bedrockHarvestEvent(BlockEvent.HarvestDropsEvent event) {
-    	if (event.getHarvester() != null && this.isToolWithTrait(event.getHarvester().getHeldItemMainhand())) {
-			IBlockState state = event.getState();
-			if (state.getBlock() == Blocks.BEDROCK && event.getDrops().isEmpty()) {
-				event.getDrops().add(new ItemStack(Blocks.BEDROCK));
+
+	@SubscribeEvent
+	public void bedrockHarvestEvent(BlockEvent.HarvestDropsEvent event) {
+		ItemStack tool = event.getHarvester().getHeldItemMainhand();
+		IBlockState state = event.getState();
+		int harvestLevel = tool.getItem().getHarvestLevel(tool, "pickaxe", event.getHarvester(), state);
+		
+		boolean silkTouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, tool) > 0;
+		if (event.getHarvester() != null && this.isToolWithTrait(tool)) {
+			if (state.getBlock() == Blocks.BEDROCK) {
+				if (harvestLevel >= 4)
+					if (silkTouch && ConfigHandler.unfracturedBedrockObtainable) {
+						event.getDrops().add(new ItemStack(Blocks.BEDROCK));
+					} else {
+						event.getDrops().add(new ItemStack(ModBlocks.blockCobbledBedrock));
+					}
 			}
-    	}
+
+			if (state.getBlock().getRegistryName().toString().equals("thebetweenlands:betweenlands_bedrock")) {
+				if (harvestLevel < 4)
+					event.getDrops().clear();
+
+				if (!silkTouch || !ConfigHandler.unfracturedBedrockObtainable) {
+					event.getDrops().clear();
+					event.getDrops().add(new ItemStack(ModBlocks.blockCobbledBetweenBedrock));
+				}
+			}
+		}
 	}
-	
-    @Override
-    public boolean isToolWithTrait(ItemStack is) {
-    	return super.isToolWithTrait(is);
-    }
-        
-    public Class<ToolCore> getToolCoreClass() {
-    	return ToolCore.class;
-    }
-    
-    public boolean canToolHarvest(ItemStack is, IBlockState state) {
-    	if (is.getItem() instanceof ToolCore) {
-    		return ((ToolCore) is.getItem()).isEffective(state);
-    	}
-    	return false;
-    }
+
+	@Override
+	public boolean isToolWithTrait(ItemStack is) {
+		return super.isToolWithTrait(is);
+	}
+
+	public Class<ToolCore> getToolCoreClass() {
+		return ToolCore.class;
+	}
+
+	public boolean canToolHarvest(ItemStack is, IBlockState state) {
+		if (is.getItem() instanceof ToolCore) {
+			return ((ToolCore) is.getItem()).isEffective(state);
+		}
+		return false;
+	}
 }

@@ -78,6 +78,8 @@ public class ModBlocks {
 	public static final Block blockSanguiseelium = ((BlockBase) new BlockBase("blockSanguiseelium", Material.IRON, 6).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 
 	public static final Block blockOtherstone = ((BlockBase) new BlockEtheralBase("blockOtherstone", Material.ROCK, 1).setHardness(30).setCreativeTab(ModTabs.moarTConMaterials));
+	public static final Block blockCobbledBedrock = ((BlockBase) new BlockBase("blockCobbledBedrock", Material.ROCK, 4).setResistance(Float.MAX_VALUE).setHardness(40).setCreativeTab(ModTabs.moarTConMaterials));
+	public static final Block blockCobbledBetweenBedrock = ((BlockBase) new BlockBase("blockCobbledBetweenBedrock", Material.ROCK, 4).setResistance(Float.MAX_VALUE).setHardness(40).setCreativeTab(ModTabs.moarTConMaterials));
 	
 	public static final Block blockGravitoniumFaucet = new BlockGravitoniumFaucet(); 
 	public static final Block blockCragravel = ((BlockBase) new BlockFalling("blockCragravel", Material.GROUND, 0).setHardness(0.6f).setResistance(0.6f)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
@@ -151,6 +153,8 @@ public class ModBlocks {
 					blockBlightsteel,
 					blockSanguiseelium,
 					/**-------------------------------------**/
+					blockCobbledBedrock,
+					blockCobbledBetweenBedrock,
 					blockOtherstone);
 		}
 		if (CompatManager.twilightforest) {

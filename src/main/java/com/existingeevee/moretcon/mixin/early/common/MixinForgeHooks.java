@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.mixin.early.common;
+	package com.existingeevee.moretcon.mixin.early.common;
 
 import javax.annotation.Nonnull;
 
@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.existingeevee.moretcon.block.blocktypes.BlockCobbledBedrock;
 import com.existingeevee.moretcon.other.OverrideItemUseEvent;
 import com.existingeevee.moretcon.traits.ModTraits;
 
@@ -44,12 +45,20 @@ public abstract class MixinForgeHooks {
 	@Inject(method = "blockStrength", at = @At("HEAD"), cancellable = true, remap = false)
 	private static void moretcon$HEAD_Inject$blockStrength(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world, @Nonnull BlockPos pos, CallbackInfoReturnable<Float> ci) {
 		if (ModTraits.bottomsEnd.getToolCoreClass().isInstance(player.getHeldItemMainhand().getItem())) {
-			float hardness = state.getBlockHardness(world, pos);
+			float hardness = -1;
 			boolean isBedrock = state.getBlock() == Blocks.BEDROCK || state.getBlock().getRegistryName().toString().equals("thebetweenlands:betweenlands_bedrock");
+
+			boolean isSoftBedrock = state.getBlock() instanceof BlockCobbledBedrock;
+
 			boolean hasTrait = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand());
 
-			if (isBedrock && hasTrait) {
+			if (isSoftBedrock) {
+				hardness = 30;
+			} else if (isBedrock) {
 				hardness = 50;
+			}
+
+			if (hardness >= 0 && hasTrait) {
 				ci.setReturnValue(player.getDigSpeed(state, pos) / hardness / 30F);
 			}
 		}
