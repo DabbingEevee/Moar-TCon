@@ -33,12 +33,13 @@ public class CompositeRegistry {
 		return new ArrayList<>(data);
 	}
 
-	public static void registerComposite(CompositeData compData) {
+	public static CompositeData registerComposite(CompositeData compData) {
 		data.add(compData);
+		return compData;
 	}
 
-	public static void registerComposite(Supplier<Material> from, Supplier<Material> to, Supplier<Fluid> catalyst) {
-		data.add(new CompositeData(from, to, catalyst, false));
+	public static CompositeData registerComposite(Supplier<Material> from, Supplier<Material> to, Supplier<Fluid> catalyst) {
+		return registerComposite(new CompositeData(from, to, catalyst, false));
 	}
 
 	public static Optional<CompositeData> getComposite(Material mat) {
