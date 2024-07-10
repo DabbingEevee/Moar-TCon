@@ -21,6 +21,10 @@ public class ModItems {
 	public static final Item ingotHallowsite = new ItemBase("ingotHallowsite");
 	public static final Item dustHallowsite = new ItemBase("dustHallowsite");
 	
+	public static final Item nuggetSanguiseelium = new ItemBase("nuggetSanguiseelium");
+	public static final Item ingotSanguiseelium = new ItemBase("ingotSanguiseelium");
+	public static final Item dustSanguiseelium = new ItemBase("dustSanguiseelium");
+	
 	public static final Item nuggetFusionite = new ItemBase("nuggetFusionite", 0x0000ff);
 	public static final Item ingotFusionite = new ItemBase("ingotFusionite", GlowType.OVAL, 0x0000ff);
 	public static final Item dustFusionite = new ItemBase("dustFusionite", GlowType.CIRCLE_BIG, 0x0000ff);
@@ -188,6 +192,9 @@ public class ModItems {
 					
 					ingotBlightsteel,
 					nuggetBlightsteel,
+
+					ingotSanguiseelium,
+					nuggetSanguiseelium,
 					
 					gemVoidSpar,
 					gemEnderal,
@@ -223,7 +230,8 @@ public class ModItems {
 						dustAtronium,
 						dustEbonite,
 						dustHallowsite,
-						dustBlightsteel
+						dustBlightsteel,
+						dustSanguiseelium
 						);
 			}
 		}

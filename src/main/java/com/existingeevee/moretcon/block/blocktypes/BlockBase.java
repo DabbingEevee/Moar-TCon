@@ -70,10 +70,10 @@ public class BlockBase extends Block implements ISimpleBlockItemProvider {
 
 	@Override
 	public SoundType getSoundType(IBlockState state, World world, BlockPos pos, @Nullable Entity entity) {
-		if (state.getBlock().equals(ModBlocks.blockCragravel)) {
+		if (state.getBlock() == ModBlocks.blockCragravel) {
 			return SoundType.GROUND;
 		}
-		if (state.getBlock().equals(ModBlocks.blockSiltClay)) {
+		if (state.getBlock() == ModBlocks.blockSiltClay) {
 			return SoundType.GROUND;
 		}
 		return super.getSoundType(state, world, pos, entity);
