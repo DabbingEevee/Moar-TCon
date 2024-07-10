@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -114,6 +115,12 @@ public class UniqueMaterial extends Material {
 				return I18n.translateToLocal("text.misc.one_of") + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + " " + I18n.translateToLocal(UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(this.partResLoc)).getUnlocalizedName() + ".name");
 			}
 			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedName")) {
+				return I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name");
+			}
+			if (stacktrace[2].getClassName().equals(ModExtraTrait2.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedDesc")) {
+				return I18n.translateToLocal("text.misc.one_of") + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + " " + I18n.translateToLocal(UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(this.partResLoc)).getUnlocalizedName() + ".name");
+			}
+			if (stacktrace[2].getClassName().equals(ModExtraTrait2.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedName")) {
 				return I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name");
 			}
 			if (stacktrace[3].getClassName().equals(ToolPart.class.getName()) && (stacktrace[3].getMethodName().equals("getItemStackDisplayName") || stacktrace[3].getMethodName().equals("func_77653_i"))) {

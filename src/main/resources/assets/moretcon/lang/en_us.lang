@@ -472,6 +472,7 @@ uniquetoolpart.moretcon.spacetimedisruption.name=Space-Time Disruption
 uniquetoolpart.moretcon.quakestruck.name=Quakestruck
 uniquetoolpart.moretcon.cryosplinters.name=Cryosplinters
 uniquetoolpart.moretcon.autoloader.name=Autoloader
+uniquetoolpart.moretcon.vengence.name=Vengeance
 
 booltracker.active.name=Active
 booltracker.inactive.name=Inactive

@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.existingeevee.moretcon.inits.ModBlocks;
+import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.google.common.collect.ImmutableList;
 
@@ -17,6 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.text.translation.I18n;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.materials.Material;
