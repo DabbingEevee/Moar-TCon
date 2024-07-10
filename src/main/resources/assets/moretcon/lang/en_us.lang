@@ -349,6 +349,8 @@ modifier.moretcon.receptive.name=Receptive
 modifier.moretcon.receptive.desc=§oat your command...§r\nYour tool will grow and adapt to what you use it for.
 modifier.moretcon.fireslime.name=Fireslime
 modifier.moretcon.fireslime.desc=§oIM COOKIN!!§r\nYour tool will rapidly regenerate overslime and function significantly better while the you are on fire.
+modifier.moretcon.offense.name=Offense
+modifier.moretcon.offense.desc=§oGood defense = Good offense§r\nYour tool will automatically attack any targets blocked.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames

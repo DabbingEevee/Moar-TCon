@@ -76,6 +76,7 @@ import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
 import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
 import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
+import com.existingeevee.moretcon.traits.traits.unique.Offense;
 import com.existingeevee.moretcon.traits.traits.unique.Wormed;
 import com.gildedgames.the_aether.items.ItemsAether;
 import com.google.common.collect.ImmutableSet;
@@ -146,7 +147,8 @@ public class ModTraits {
 	public static Withered withered = new Withered();
 	public static Blighted blighted = new Blighted();
 	public static Receptive receptive = new Receptive();
-	
+	public static Offense offense = new Offense();
+
 	public static Aetheric aetheric = new Aetheric();
 	public static Rootplicating rootplicating = new Rootplicating();
 	public static SkysBlessing blessed = new SkysBlessing();
