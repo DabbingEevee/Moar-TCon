@@ -148,7 +148,6 @@ public class Receptive extends AdditionalDisplayTrait implements IProjectileTrai
 
 		// we dont want modifications to messup the recalc
 		rootCompound.getCompoundTag(this.getModifierIdentifier()).removeTag("StatModifications");
-
 		this.recalculateStats(rootCompound, rootCompound.getCompoundTag(this.getModifierIdentifier()).getInteger("attack"), rootCompound.getCompoundTag(this.getModifierIdentifier()).getInteger("mining"));
 	}
 

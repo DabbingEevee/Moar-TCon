@@ -204,6 +204,9 @@ public class ModMaterials implements MaterialTypes {
 
 			TinkerMaterials.blueslime.addTrait(ModTraits.overgrowth2, HEAD);
 			TinkerMaterials.blueslime.addTrait(ModTraits.overgrowth);
+			
+			TinkerMaterials.magmaslime.addTrait(ModTraits.fireslime, HEAD);
+			TinkerMaterials.magmaslime.addTrait(ModTraits.overgrowth);
 		}
 
 		if (CompatManager.plustic) {
