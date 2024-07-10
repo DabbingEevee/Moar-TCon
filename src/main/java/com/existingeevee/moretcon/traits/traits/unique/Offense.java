@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 public class Offense extends AbstractTrait {
 
 	public Offense() {
-		super(MiscUtils.createNonConflictiveName("vengeful"), 0);
+		super(MiscUtils.createNonConflictiveName("offense"), 0);
 	}
 
 	@Override
