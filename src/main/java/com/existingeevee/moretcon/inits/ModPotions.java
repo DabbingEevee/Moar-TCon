@@ -27,7 +27,7 @@ public class ModPotions {
 						hyperflames
 					);
 		}
-		if (CompatManager.jokes) {
+		if (CompatManager.easterEggs) {
 			ForgeRegistries.POTIONS.registerAll(
 					bloodgodsblessing
 					);

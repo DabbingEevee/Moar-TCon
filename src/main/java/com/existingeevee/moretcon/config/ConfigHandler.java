@@ -16,7 +16,7 @@ public class ConfigHandler {
 
 	public static Configuration config;
 
-	public static boolean shouldAllowJokeItems = true;
+	public static boolean shouldAllowEasterEggItems = true;
 	public static boolean shouldAllowTwilightForest = true;
 	public static boolean shouldAllowIceAndFire = false;
 	public static boolean shouldAllowPlusTiC = true;
@@ -77,7 +77,7 @@ public class ConfigHandler {
 		ConfigHandler.shouldAllowIceAndFire = config.getBoolean("iceandfire", category, true, "[NYI] Set to \"false\" if you don't want to allow Ice and Fire compatibility to load.");
 		ConfigHandler.shouldAllowPlusTiC = config.getBoolean("plustic", category, true, "Set to \"false\" if you don't want to allow PlusTiC compatibility to load.");
 		ConfigHandler.shouldAllowBetweenLands = config.getBoolean("thebetweenlands", category, true, "Set to \"false\" if you don't want to allow Betweenlands compatibility to load.");
-		ConfigHandler.shouldAllowJokeItems = config.getBoolean("jokes", category, true, "Set to \"false\" if you don't want to allow Easter Eggs and Jokes to load.");
+		ConfigHandler.shouldAllowEasterEggItems = config.getBoolean("jokes", category, true, "Set to \"false\" if you don't want to allow Easter Eggs and Jokes to load.");
 		ConfigHandler.shouldAllowCrossCompat = config.getBoolean("crosscompat", category, true, "[NYI] Set to \"false\" if you don't want to allow cross compatibility between mods to load.");
 		ConfigHandler.shouldAllowMainContent = config.getBoolean("main", category, true, "Set to \"false\" if you don't want to allow things from the main mod to load.");
 		ConfigHandler.shouldAllowAether = config.getBoolean("aether_legacy", category, true, "Set to \"false\" if you don't want to allow Aether compatibility to load.");

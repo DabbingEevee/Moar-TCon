@@ -170,7 +170,7 @@ public class ModBlocks {
 			/**-------------------------------------**/
 			);
 		}
-		if (CompatManager.jokes) {
+		if (CompatManager.easterEggs) {
 			ModBlocks.registerBlocks(
 			/**-------------------------------------**/
 

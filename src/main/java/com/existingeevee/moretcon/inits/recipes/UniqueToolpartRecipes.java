@@ -8,6 +8,7 @@ import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.RecipeHelper;
 import com.existingeevee.moretcon.other.ingredient.TinkerPartIngredient;
+import com.gildedgames.the_aether.items.ItemsAether;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -15,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.tools.TinkerMaterials;
@@ -22,6 +24,56 @@ import slimeknights.tconstruct.tools.TinkerMaterials;
 public class UniqueToolpartRecipes {
 
 	public static void init(Register<IRecipe> event) {
+		if (ConfigHandler.shouldAllowEasterEggItems) {
+			if (canRegisterUniqueRecipe(ModMaterials.materialTechnoblade)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("techno_recipe", ModMaterials.materialTechnoblade.getUniqueToolPart(),
+								new String[] {
+										" GS",
+										"NPG",
+										"DN "
+								},
+								Pair.of('S', new OreIngredient("netherStar")),
+								Pair.of('G', new OreIngredient("gemGarstone")),
+								Pair.of('N', new OreIngredient("ingotBrickNether")),
+								Pair.of('G', new OreIngredient("ingotGallium")),
+								Pair.of('D', new OreIngredient("blockDiamond")),
+								Pair.of('P', new TinkerPartIngredient(TinkerMaterials.pigiron, "tconstruct:sword_blade"))));
+			}
+		}
+
+		if (ConfigHandler.shouldAllowPlusTiC) {
+			if (canRegisterUniqueRecipe(ModMaterials.materialCrimson)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("crimson_recipe", ModMaterials.materialCrimson.getUniqueToolPart(),
+								new String[] {
+										"ACG",
+										"CBC",
+										"OCA"
+								},
+								Pair.of('A', new OreIngredient("ingotGallium")),
+								Pair.of('G', new OreIngredient("gemGarstone")),
+								Pair.of('C', new OreIngredient("slimeballBlood")),
+								Pair.of('B', new TinkerPartIngredient(ModMaterials.materialBloodstone, "tconstruct:tough_tool_rod")),
+								Pair.of('O', new TinkerPartIngredient(TinkerMaterials.bone, "tconstruct:tough_tool_rod"))));
+			}
+		}
+
+		if (ConfigHandler.shouldAllowAether) {
+			if (canRegisterUniqueRecipe(ModMaterials.materialSkybolt)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("skybolt_recipe", ModMaterials.materialSkybolt.getUniqueToolPart(),
+								new String[] {
+										" AL",
+										"AGA",
+										"LA "
+								},
+								Pair.of('A', Ingredient.fromStacks(new ItemStack(ItemsAether.golden_amber))),
+								Pair.of('L', Ingredient.fromStacks(new ItemStack(ItemsAether.lightning_sword, 1, OreDictionary.WILDCARD_VALUE))),
+								Pair.of('G', new TinkerPartIngredient(ModMaterials.materialGravitite, "tconstruct:sword_blade"))));
+			}
+		}
+
 		if (ConfigHandler.shouldAllowMainContent) {
 			if (canRegisterUniqueRecipe(ModMaterials.materialPlasma)) {
 				event.getRegistry().register(
@@ -77,35 +129,6 @@ public class UniqueToolpartRecipes {
 								Pair.of('F', new TinkerPartIngredient(TinkerMaterials.feather, "tconstruct:fletching"))));
 			}
 
-			if (canRegisterUniqueRecipe(ModMaterials.materialTechnoblade)) {
-				event.getRegistry().register(
-						RecipeHelper.createRecipe("techno_recipe", ModMaterials.materialTechnoblade.getUniqueToolPart(),
-								new String[] {
-										" GS",
-										"NPG",
-										"DN "
-								},
-								Pair.of('S', new OreIngredient("netherStar")),
-								Pair.of('G', new OreIngredient("gemGarstone")),
-								Pair.of('N', new OreIngredient("ingotBrickNether")),
-								Pair.of('G', new OreIngredient("ingotGallium")),
-								Pair.of('D', new OreIngredient("blockDiamond")),
-								Pair.of('P', new TinkerPartIngredient(TinkerMaterials.pigiron, "tconstruct:sword_blade"))));
-			}
-			if (canRegisterUniqueRecipe(ModMaterials.materialCrimson)) {
-				event.getRegistry().register(
-						RecipeHelper.createRecipe("crimson_recipe", ModMaterials.materialCrimson.getUniqueToolPart(),
-								new String[] {
-										"ACG",
-										"CBC",
-										"OCA"
-								},
-								Pair.of('A', new OreIngredient("ingotGallium")),
-								Pair.of('G', new OreIngredient("gemGarstone")),
-								Pair.of('C', new OreIngredient("slimeballBlood")),
-								Pair.of('B', new TinkerPartIngredient(ModMaterials.materialBloodstone, "tconstruct:tough_tool_rod")),
-								Pair.of('O', new TinkerPartIngredient(TinkerMaterials.bone, "tconstruct:tough_tool_rod"))));
-			}
 			if (canRegisterUniqueRecipe(ModMaterials.materialEssencore)) {
 				event.getRegistry().register(
 						RecipeHelper.createRecipe("essencore_recipe", ModMaterials.materialEssencore.getUniqueToolPart(),
@@ -119,7 +142,7 @@ public class UniqueToolpartRecipes {
 								Pair.of('N', new OreIngredient("nuggetFusionite")),
 								Pair.of('R', new OreIngredient("ingotRunesteel"))));
 			}
-			
+
 			if (canRegisterUniqueRecipe(ModMaterials.materialSpaceTimeDisruption)) {
 				event.getRegistry().register(
 						RecipeHelper.createRecipe("spacetimedisruption_recipe", ModMaterials.materialSpaceTimeDisruption.getUniqueToolPart(),
@@ -133,7 +156,7 @@ public class UniqueToolpartRecipes {
 								Pair.of('E', new TinkerPartIngredient(ModMaterials.materialEchostone, "tconstruct:bow_limb")),
 								Pair.of('F', new TinkerPartIngredient(ModMaterials.materialFusionite, "tconstruct:bow_limb"))));
 			}
-			
+
 			if (canRegisterUniqueRecipe(ModMaterials.materialQuakestruck)) {
 				event.getRegistry().register(
 						RecipeHelper.createRecipe("quakestruck_recipe", ModMaterials.materialQuakestruck.getUniqueToolPart(),
@@ -147,7 +170,7 @@ public class UniqueToolpartRecipes {
 								Pair.of('O', new TinkerPartIngredient(TinkerMaterials.obsidian, "tconstruct:large_plate")),
 								Pair.of('F', new OreIngredient("ingotFusionite"))));
 			}
-			
+
 			if (canRegisterUniqueRecipe(ModMaterials.materialCryosplinters)) {
 				event.getRegistry().register(
 						RecipeHelper.createRecipe("cryosplinters_recipe", ModMaterials.materialCryosplinters.getUniqueToolPart(),
@@ -162,7 +185,7 @@ public class UniqueToolpartRecipes {
 								Pair.of('H', new TinkerPartIngredient(ModMaterials.materialElectarite, "tconstruct:arrow_head")),
 								Pair.of('I', Ingredient.fromStacks(new ItemStack(Blocks.PACKED_ICE)))));
 			}
-			
+
 			if (canRegisterUniqueRecipe(ModMaterials.materialAutoloader)) {
 				event.getRegistry().register(
 						RecipeHelper.createRecipe("autoloader_recipe", ModMaterials.materialAutoloader.getUniqueToolPart(),
@@ -175,8 +198,21 @@ public class UniqueToolpartRecipes {
 								Pair.of('G', new OreIngredient("ingotGallium")),
 								Pair.of('D', Ingredient.fromStacks(new ItemStack(Blocks.DISPENSER))),
 								Pair.of('P', Ingredient.fromStacks(new ItemStack(Blocks.PISTON))),
-								Pair.of('S', new TinkerPartIngredient(TinkerMaterials.steel, "tconstruct:tough_tool_rod"))
-								));
+								Pair.of('S', new TinkerPartIngredient(TinkerMaterials.steel, "tconstruct:tough_tool_rod"))));
+			}
+
+			if (canRegisterUniqueRecipe(ModMaterials.materialVengeance)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("vengeance_recipe", ModMaterials.materialVengeance.getUniqueToolPart(),
+								new String[] {
+										"RSR",
+										"GIG",
+										"RSR"
+								},
+								Pair.of('R', new OreIngredient("ingotRunesteel")),
+								Pair.of('G', new OreIngredient("ingotGallium")),
+								Pair.of('S', new TinkerPartIngredient(TinkerMaterials.steel, "tconstruct:knife_blade")),
+								Pair.of('I', new TinkerPartIngredient(ModMaterials.materialIrradium, "tconstruct:sign_head"))));
 			}
 		}
 	}

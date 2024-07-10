@@ -155,7 +155,7 @@ public class ModFluids {
 					liquidValkyrieMetal,
 					liquidGoldenAmber);
 		}
-		if (CompatManager.jokes) {
+		if (CompatManager.easterEggs) {
 
 		}
 
