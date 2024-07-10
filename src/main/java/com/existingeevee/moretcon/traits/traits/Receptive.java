@@ -2,10 +2,12 @@ package com.existingeevee.moretcon.traits.traits;
 
 import java.lang.reflect.Field;
 import java.text.DecimalFormat;
+import java.util.List;
 
 import com.existingeevee.moretcon.other.utils.ArrowReferenceHelper;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.traits.abst.AdditionalDisplayTrait;
+import com.google.common.collect.ImmutableList;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -20,6 +22,7 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
@@ -37,9 +40,38 @@ public class Receptive extends AdditionalDisplayTrait implements IProjectileTrai
 	// Tools: Attack, Mining Speed
 
 	public Receptive() {
-		super(MiscUtils.createNonConflictiveName("receptive"), 0); // BowCore TraitAlien
-
+		super(MiscUtils.createNonConflictiveName("receptive"), 0);
 		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	@Override
+	public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
+		int attack = this.getAttack(tool);
+		int mining = this.getMining(tool);
+
+		float dmgMult = 1 + attack * 1f / POINT_CAP * (MAX_DMG_MULT - 1);
+		float miningMult = 1 + mining * 1f / POINT_CAP * (MAX_MINING_MULT - 1);
+
+		float drawMult = 1 + attack * 1f / POINT_CAP * (MAX_DRAWSPEED_MULT - 1);
+		float rangeMult = 1 + attack * 1f / POINT_CAP * (MAX_RANGE_MULT - 1);
+		float bnDmgMult = 1 + attack * 1f / POINT_CAP * (MAX_BONUS_DMG_MULT - 1);
+
+		if (TinkerUtil.hasCategory(TagUtil.getTagSafe(tool), Category.LAUNCHER)) {
+			return ImmutableList.of(
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".unalloc"), POINT_CAP - attack - mining + "/" + POINT_CAP),
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".damage"), Util.df.format(dmgMult)),
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".mining"), Util.df.format(miningMult)),
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".draw"), Util.df.format(drawMult)),
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".range"), Util.df.format(rangeMult)),
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".bonus_dmg"), Util.df.format(bnDmgMult))
+
+			);
+		} else {
+			return ImmutableList.of(
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".unalloc"), POINT_CAP - attack - mining + "/" + POINT_CAP),
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".damage"), Util.df.format(dmgMult)),
+					Util.translateFormatted(String.format(LOC_Extra, getModifierIdentifier() + ".mining"), Util.df.format(miningMult)));
+		}
 	}
 
 	public static final int POINT_CAP = 8000;
@@ -206,21 +238,21 @@ public class Receptive extends AdditionalDisplayTrait implements IProjectileTrai
 
 	@Override
 	public void onLaunch(EntityProjectileBase projectileBase, World world, EntityLivingBase shooter) {
-		
+
 	}
 
 	@Override
 	public void onProjectileUpdate(EntityProjectileBase projectile, World world, ItemStack toolStack) {
-		
+
 	}
 
 	@Override
 	public void onMovement(EntityProjectileBase projectile, World world, double slowdown) {
-		
+
 	}
 
 	private static final DecimalFormat FORMATTER = new DecimalFormat("0.###");
-	
+
 	@Override
 	public String getStringToRender(ItemStack tool) {
 		double total = this.getAttack(tool) + this.getMining(tool);
