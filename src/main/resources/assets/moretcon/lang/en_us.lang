@@ -358,6 +358,8 @@ modifier.moretcon.fireslime.name=Fireslime
 modifier.moretcon.fireslime.desc=§oIM COOKIN!!§r\nYour tool will rapidly regenerate overslime and function significantly better while the you are on fire.
 modifier.moretcon.offense.name=Offense
 modifier.moretcon.offense.desc=§oGood defense = Good offense§r\nYour tool will automatically attack any targets blocked.
+modifier.moretcon.boltforged.name=Boltforged
+modifier.moretcon.boltforged.desc=§omotivational shocks§r\nYour tool will will strike targets.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
@@ -409,6 +411,9 @@ tile.moretcon.blockelectarite.name=Block of Electarite
 tile.moretcon.blockhallowsite.name=Block of Hallowsite
 tile.moretcon.blockancientalloy.name=Block of Ancient Alloy
 tile.moretcon.blockblightsteel.name=Block of Blightsteel
+
+tile.moretcon.blockcobbledbedrock.name=Cobbled Bedrock
+tile.moretcon.blockcobbledbetweenbedrock.name=Cobbled Betweenlands Bedrock
 
 tile.moretcon.burningsulfurflow.name=Molten Sulfur
 tile.moretcon.liquidarkenium.name=Molten Arkenium

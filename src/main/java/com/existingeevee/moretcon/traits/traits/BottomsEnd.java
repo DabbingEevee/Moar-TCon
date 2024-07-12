@@ -23,12 +23,17 @@ public class BottomsEnd extends AbstractTrait {
 
 	@SubscribeEvent
 	public void bedrockHarvestEvent(BlockEvent.HarvestDropsEvent event) {
-		ItemStack tool = event.getHarvester().getHeldItemMainhand();
 		IBlockState state = event.getState();
-		int harvestLevel = tool.getItem().getHarvestLevel(tool, "pickaxe", event.getHarvester(), state);
 		
-		boolean silkTouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, tool) > 0;
-		if (event.getHarvester() != null && this.isToolWithTrait(tool)) {
+		if (event.getHarvester() != null) {
+			
+			ItemStack tool = event.getHarvester().getHeldItemMainhand();
+			int harvestLevel = tool.getItem().getHarvestLevel(tool, "pickaxe", event.getHarvester(), state);
+			boolean silkTouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, tool) > 0;
+			
+			if (!this.isToolWithTrait(tool))
+				return;
+			
 			if (state.getBlock() == Blocks.BEDROCK) {
 				if (harvestLevel >= 4)
 					if (silkTouch && ConfigHandler.unfracturedBedrockObtainable) {
