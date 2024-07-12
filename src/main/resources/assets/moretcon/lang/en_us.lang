@@ -36,7 +36,7 @@ fluid.moretcon.liquidfusionlava=Fusion Lava
 fluid.moretcon.liquidblightsteel=Molten Blightsteel
 
 item.moretcon.betweenifiedmodifier.desc=Adding this to any tool will allow for its full efficiency to be used in the Betweenlands.
-item.moretcon.crushingmodifier.desc=Adding this to any tool will convert 5% of its damage to true damage.
+item.moretcon.crushingmodifier.desc=Adding this to any tool will convert 1% of its damage to true damage per level.
 item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage or 10% of the durability on it, whichever is greater.
 item.moretcon.repitem.desc=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
 
@@ -263,6 +263,7 @@ modifier.moretcon.modbetweenified.desc=Fine, I'll do it myself.§r\nYour tool wi
 modifier.moretcon.modbetweenified.name=Betweenified
 modifier.moretcon.modcrushing.desc=NOW THATS A LOTTA DAMAGE!!§r\nYour tool will have 5% of its normal damage be armor penetration damage
 modifier.moretcon.modcrushing.name=Crushing
+modifier.moretcon.modcrushing.extra=True Damage: %s
 modifier.moretcon.moddebug.desc=§o§kwhyareyouhere§r\nYour tool logs info about itself in the chat. Typically used by ExistingEevee to debug tools.
 modifier.moretcon.moddebug.name=Debug
 modifier.moretcon.modaquagem.desc=§oOoh Shiny§r\nYour tool occasionally weakens opponents when you attack.
@@ -359,7 +360,7 @@ modifier.moretcon.fireslime.desc=§oIM COOKIN!!§r\nYour tool will rapidly regen
 modifier.moretcon.offense.name=Offense
 modifier.moretcon.offense.desc=§oGood defense = Good offense§r\nYour tool will automatically attack any targets blocked.
 modifier.moretcon.boltforged.name=Boltforged
-modifier.moretcon.boltforged.desc=§omotivational shocks§r\nYour tool will will strike targets.
+modifier.moretcon.boltforged.desc=§omotivational shocks§r\nYour tool will will strike targets with lightning.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames
