@@ -154,7 +154,6 @@ public class ModBlocks {
 					blockSanguiseelium,
 					/**-------------------------------------**/
 					blockCobbledBedrock,
-					blockCobbledBetweenBedrock,
 					blockOtherstone);
 		}
 		if (CompatManager.twilightforest) {
@@ -172,7 +171,8 @@ public class ModBlocks {
 					blockCragravel,
 					blockSwampSteel,
 					blockRotiron,
-					blockAncientAlloy
+					blockAncientAlloy,
+					blockCobbledBetweenBedrock
 			/**-------------------------------------**/
 			);
 		}
