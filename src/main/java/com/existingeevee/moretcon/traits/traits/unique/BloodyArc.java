@@ -37,6 +37,8 @@ public class BloodyArc extends AbstractTrait {
 		if (e.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem())) {
 			return;
 		}
+		if (ToolHelper.isBroken(stack))
+			return;
 		if (isToolWithTrait(stack)) {
 			e.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 15);
 			if (!e.getEntityPlayer().world.isRemote)
@@ -54,6 +56,8 @@ public class BloodyArc extends AbstractTrait {
 		if (e.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem())) {
 			return;
 		}
+		if (ToolHelper.isBroken(stack))
+			return;
 		if (isToolWithTrait(stack)) {
 			e.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 15);
 			if (!e.getEntityPlayer().world.isRemote)

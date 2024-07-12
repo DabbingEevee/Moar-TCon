@@ -14,6 +14,7 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class BottomsEnd extends AbstractTrait {
 	public BottomsEnd() {
@@ -31,7 +32,7 @@ public class BottomsEnd extends AbstractTrait {
 			int harvestLevel = tool.getItem().getHarvestLevel(tool, "pickaxe", event.getHarvester(), state);
 			boolean silkTouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, tool) > 0;
 			
-			if (!this.isToolWithTrait(tool))
+			if (!this.isToolWithTrait(tool) || ToolHelper.isBroken(tool))
 				return;
 			
 			if (state.getBlock() == Blocks.BEDROCK) {
@@ -62,12 +63,5 @@ public class BottomsEnd extends AbstractTrait {
 
 	public Class<ToolCore> getToolCoreClass() {
 		return ToolCore.class;
-	}
-
-	public boolean canToolHarvest(ItemStack is, IBlockState state) {
-		if (is.getItem() instanceof ToolCore) {
-			return ((ToolCore) is.getItem()).isEffective(state);
-		}
-		return false;
 	}
 }

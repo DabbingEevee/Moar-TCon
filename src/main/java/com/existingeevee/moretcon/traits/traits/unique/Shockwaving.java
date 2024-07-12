@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 import thebetweenlands.common.entity.EntityShockwaveBlock;
 import thebetweenlands.common.registries.SoundRegistry;
 
@@ -34,7 +35,7 @@ public class Shockwaving extends NumberTrackerTrait {
 	public void onRightClick(OverrideItemUseEvent event) {
 		ItemStack stack = event.getItemStack();
 
-		if (!isToolWithTrait(stack))
+		if (!isToolWithTrait(stack) || ToolHelper.isBroken(stack))
 			return;
 
 		if (stack.getItemDamage() == stack.getMaxDamage()) {

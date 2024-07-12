@@ -14,7 +14,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class KineticBattery extends NumberTrackerTrait {
 
@@ -64,7 +63,7 @@ public class KineticBattery extends NumberTrackerTrait {
 	public void onHurt(LivingHurtEvent event) {
 		for (EnumHand hand : EnumHand.values()) {
 			ItemStack stack = event.getEntityLiving().getHeldItem(hand);
-			if (ToolHelper.getTraits(stack).contains(this)) {
+			if (this.isToolWithTrait(stack)) {
 				this.addNumber(stack, Math.round(event.getAmount()));
 				return;
 			}

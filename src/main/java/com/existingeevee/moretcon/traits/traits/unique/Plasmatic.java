@@ -16,6 +16,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class Plasmatic extends AbstractTrait {
 
@@ -42,7 +43,8 @@ public class Plasmatic extends AbstractTrait {
 
 	@SubscribeEvent
 	public void onMouseClick(PlayerInteractEvent.LeftClickBlock event) {
-		if (this.isToolWithTrait(event.getEntityPlayer().getHeldItemMainhand())) {
+		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+		if (this.isToolWithTrait(stack) && !ToolHelper.isBroken(stack)) {
 			proc(event.getEntityPlayer(), null);
 		}
 	}

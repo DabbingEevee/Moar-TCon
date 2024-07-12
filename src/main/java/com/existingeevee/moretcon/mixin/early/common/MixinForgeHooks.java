@@ -25,6 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 @Mixin(ForgeHooks.class)
 public abstract class MixinForgeHooks {
@@ -50,7 +51,7 @@ public abstract class MixinForgeHooks {
 
 			boolean isSoftBedrock = state.getBlock() instanceof BlockCobbledBedrock;
 
-			boolean hasTrait = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand());
+			boolean hasTrait = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand()) && !ToolHelper.isBroken(player.getHeldItemMainhand());
 
 			if (isSoftBedrock) {
 				hardness = 30;

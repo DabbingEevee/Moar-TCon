@@ -48,19 +48,23 @@ public class Reaching extends AbstractTrait {
         if ((event.getEntityLiving() instanceof EntityPlayer)) {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
             ItemStack stack = player.getHeldItemMainhand();
-            if (!player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).hasModifier(reachModifier) && isToolWithTrait(stack)) {
+            if (!player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).hasModifier(reachModifier) && shouldHaveReach(stack)) {
                 player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).applyModifier(reachModifier);
-            } else if (player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).hasModifier(reachModifier) && !isToolWithTrait(stack)) {
+            } else if (player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).hasModifier(reachModifier) && !shouldHaveReach(stack)) {
                 player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).removeModifier(reachModifier);
             }
         }
     }
 
+    public boolean shouldHaveReach(ItemStack stack) {
+    	return this.isToolWithTrait(stack) && !ToolHelper.isBroken(stack);
+    }
+    
     @SubscribeEvent
     public void onMouseClick(PlayerInteractEvent.LeftClickEmpty event) {
         EntityPlayer player = event.getEntityPlayer();
         ItemStack stack = player.getHeldItemMainhand();
-        if(isToolWithTrait(stack)) {
+        if(shouldHaveReach(stack)) {
             Vec3d playerVision = player.getLookVec();
             AxisAlignedBB reachDistance = player.getEntityBoundingBox().grow(10.0D);
             List<Entity> locatedEntities = player.world.getEntitiesWithinAABB(Entity.class, reachDistance);

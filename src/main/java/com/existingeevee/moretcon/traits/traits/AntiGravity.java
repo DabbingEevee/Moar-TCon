@@ -35,8 +35,8 @@ public class AntiGravity extends AbstractTrait implements IAdditionalTraitMethod
 	        BlockPos pos = event.getPos();
 	        ItemStack heldItem = event.getItemStack();
 	        if (event.getWorld().isRemote
-	                //|| !event.getEntityPlayer().isSneaking()
-	                || heldItem == ItemStack.EMPTY
+	        		|| ToolHelper.isBroken(heldItem)
+	        		|| heldItem == ItemStack.EMPTY
 	                || !isToolWithTrait(heldItem)
 	                || ToolHelper.getCurrentDurability(event.getItemStack()) < 4)
 	            return;

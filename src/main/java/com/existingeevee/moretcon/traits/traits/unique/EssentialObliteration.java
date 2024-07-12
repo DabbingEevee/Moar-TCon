@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class EssentialObliteration extends NumberTrackerTrait {
 
@@ -56,7 +57,8 @@ public class EssentialObliteration extends NumberTrackerTrait {
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent e) {
 		if ((e.getEntityLiving() instanceof EntityPlayer)) {
-			if (this.isToolWithTrait(e.getEntityLiving().getHeldItemMainhand()) && !e.getEntityLiving().isSneaking()) {
+			ItemStack stack = e.getEntityLiving().getHeldItemMainhand();
+			if (this.isToolWithTrait(stack) && !e.getEntityLiving().isSneaking() && this.getNumber(stack) > 0 && !ToolHelper.isBroken(stack)) {
 				if (!e.getEntityLiving().getAttributeMap().getAttributeInstance(EntityPlayer.REACH_DISTANCE).hasModifier(ESSENCORE_MINING_REACH)) {
 					e.getEntityLiving().getAttributeMap().getAttributeInstance(EntityPlayer.REACH_DISTANCE).applyModifier(ESSENCORE_MINING_REACH);
 				}
