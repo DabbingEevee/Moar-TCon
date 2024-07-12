@@ -19,6 +19,7 @@ public class ModSponges {
 	public static Item gravitoniumSpongeAtronium;
 	public static Item gravitoniumSpongeSolarsteel;
 	public static Item gravitoniumSpongeValasium;
+	public static Item gravitoniumSpongeSanguiseelium;
 	
 	public static void init() {
 		gravitoniumSponge = new ItemBase("gravitoniumSponge").setTab(ModTabs.moarTConMisc);
@@ -50,11 +51,19 @@ public class ModSponges {
 					SpongeRegistry.createSpongeStep(() -> TinkerFluids.cobalt, Material.VALUE_Block * 4),
 					SpongeRegistry.createSpongeStep(() -> TinkerFluids.steel, Material.VALUE_Block * 4)));
 
+			gravitoniumSpongeSanguiseelium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("sanguiseelium", "oreSanguiseelium", new ItemStack(ModItems.ingotSanguiseelium), new OreIngredient("ingotHallowsite"),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidHallowsite, Material.VALUE_Ingot * 4),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidGallium, Material.VALUE_Ingot * 2),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidLiquifiedSouls, Material.VALUE_Ingot),
+					SpongeRegistry.createSpongeStep(() -> TinkerFluids.blood, 2000)));
+
+			
 			ModItems.registerItems(
 					gravitoniumSpongeTrichromadentium,
 					gravitoniumSpongeAtronium,
 					gravitoniumSpongeSolarsteel,
-					gravitoniumSpongeValasium
+					gravitoniumSpongeValasium,
+					gravitoniumSpongeSanguiseelium
 					);
 		}
 
