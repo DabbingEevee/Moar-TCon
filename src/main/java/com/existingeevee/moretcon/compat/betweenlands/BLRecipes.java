@@ -4,6 +4,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.config.ConfigHandler;
+import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.inits.ModFluids;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
@@ -57,7 +58,7 @@ public class BLRecipes {
 		}
 		if (UniqueToolpartRecipes.canRegisterUniqueRecipe(ModMaterials.materialWormed)) {
 			event.getRegistry().register(
-					RecipeHelper.createRecipe("crimson_recipe", ModMaterials.materialWormed.getUniqueToolPart(),
+					RecipeHelper.createRecipe("wormed_recipe", ModMaterials.materialWormed.getUniqueToolPart(),
 							new String[] {
 									"WWW",
 									"WAW",
@@ -88,7 +89,9 @@ public class BLRecipes {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustRotiron, 1), new ItemStack(ModItems.ingotRotiron, 1), 0F);
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustAncientAlloy, 1), new ItemStack(ModItems.ingotAncientAlloy, 1), 0F);
 		}
-		
+		if (ConfigHandler.unfracturedBedrockObtainable) {
+			GameRegistry.addSmelting(new ItemStack(ModBlocks.blockCobbledBetweenBedrock, 1), new ItemStack(BlockRegistry.BETWEENLANDS_BEDROCK, 1), 0F);
+		}
 		blAPI.registerAnimatorRecipe(new AnimatorRecipe(new ItemStack(BlockRegistry.ANCIENT_REMNANT_BLOCK), 10, 30, new ItemStack(ModItems.itemAncientScrap)));
 		ForgeRegistries.RECIPES.register(new ShapelessRecipes(ModInfo.MODID, new ItemStack(ModItems.itemAncientScrap, 3), 
 				NonNullList.from(Ingredient.fromStacks(ItemStack.EMPTY), 

@@ -8,6 +8,7 @@ import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import twilightforest.item.TFItems;
@@ -53,6 +54,9 @@ public class FurnaceInit {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustSteel, 1), new ItemStack(ModItems.ingotSteel, 1), 0F);
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustHallowsite, 1), new ItemStack(ModItems.ingotHallowsite, 1), 0F);
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustBlightsteel, 1), new ItemStack(ModItems.ingotBlightsteel, 1), 0F);
+		}
+		if (ConfigHandler.unfracturedBedrockObtainable) {
+			GameRegistry.addSmelting(new ItemStack(ModBlocks.blockCobbledBedrock, 1), new ItemStack(Blocks.BEDROCK, 1), 0F);
 		}
 		GameRegistry.addSmelting(new ItemStack(ModItems.rawSteel, 1), new ItemStack(ModItems.ingotSteel, 1), 0F);
 		GameRegistry.addSmelting(new ItemStack(ModBlocks.oreGravitoniumDense, 1), new ItemStack(ModItems.ingotGravitonium, 4), 0F);
