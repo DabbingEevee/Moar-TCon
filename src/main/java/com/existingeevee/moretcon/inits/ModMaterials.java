@@ -158,7 +158,7 @@ public class ModMaterials implements MaterialTypes {
 			"tconstruct:broadsword");
 
 	public static final UniqueMaterial materialVengeance = new UniqueMaterial(
-			MiscUtils.createNonConflictiveName("vengeance"), 0xFFFFFF, "tconstruct:sign_head",
+			MiscUtils.createNonConflictiveName("vengeance"), 0x3a454a, "tconstruct:sign_head",
 			"tconstruct:battlesign");
 
 	private static void initMats() {
