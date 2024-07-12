@@ -1,6 +1,5 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import com.existingeevee.moretcon.other.StaticVars;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -15,11 +14,12 @@ public class HyperGravity extends AbstractTrait {
 		super(MiscUtils.createNonConflictiveName("hypergravity"), 0);
 	}
 
+	public static final ThreadLocal<Float> lastHypergravityKB = ThreadLocal.withInitial(() -> 0f);
+	
 	@Override
 	public float knockBack(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float knockback, float newKnockback, boolean isCritical) {
 		if (!target.world.isRemote) {
-			StaticVars.lastHypergravityKB.set(newKnockback);;
-
+			lastHypergravityKB.set(newKnockback);;
 		}
 		return newKnockback;
 	}
@@ -32,7 +32,7 @@ public class HyperGravity extends AbstractTrait {
 		double dx = player.posX - target.posX;
 		double dz = player.posZ - target.posZ;
 		double lenXY = Math.sqrt(dx * dx + dz * dz);
-		double kb = StaticVars.lastHypergravityKB.get() + 0.75;
+		double kb = lastHypergravityKB.get() + 0.75;
 		double accelerateVal = kb * 0.9;
 				
 		if (!player.world.isRemote) {
