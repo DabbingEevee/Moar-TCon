@@ -3,21 +3,17 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     " 0 ",
-    "010",
+    "0 0",
     " 0 "
   ],
   "key": {
     "0": {
        "type": "forge:ore_dict",
        "ore": "ingotGravitonium"
-    },
-    "1": {
-      "item": "minecraft:sponge",
-      "data": 0
     }
   },
   "result": {
     "item": "moretcon:gravitoniumsponge",
-    "count": 4
+    "count": 1
   }
 }

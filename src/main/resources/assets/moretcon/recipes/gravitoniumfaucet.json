@@ -7,7 +7,8 @@
   ],
   "key": {
     "0": {
-      "item": "moretcon:ingotgravitonium"
+       "type": "forge:ore_dict",
+       "ore": "ingotGravitonium"
     },
     "1": {
       "item": "tconstruct:faucet",
