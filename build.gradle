@@ -82,6 +82,9 @@ repositories {
         name "ChickenBones"
         url "http://chickenbones.net/maven/"
     }
+    flatDir {
+        dir 'libs'
+    }
 }
 
 configurations {
@@ -113,6 +116,8 @@ dependencies {
     implementation  'curse.maven:constructs-armory-287683:3174535'
 
     implementation  'curse.maven:jei-238222:4538010'
+
+    implementation  'codechicken:CodeChickenLib:1.12.2-3.2.3_devfix.1-universal'
 
 	implementation ("net.minecraftforge:mergetool:0.2.3.3") { force = true }
 

@@ -15,8 +15,12 @@ public final class MoreTConMixinPlugin implements IMixinConfigPlugin {
 	@Override
 	public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
 		if (mixinClassName.startsWith(START)) {
-			String modid = mixinClassName.replaceFirst(START, "").split("\\.")[0];
-			return Loader.isModLoaded(modid);
+			String[] modids = mixinClassName.replaceFirst(START, "").split("\\.")[0].split("$");
+			for (String modid : modids) {
+				if (!Loader.isModLoaded(modid))
+					return false;
+			}
+			return true;
 		} 
 		return true;
 	}

@@ -61,6 +61,10 @@ public class BottomsEnd extends AbstractTrait {
 		return super.isToolWithTrait(is);
 	}
 
+	public boolean isStackBroken(ItemStack is) {
+		return ToolHelper.isBroken(is);
+	}
+	
 	public Class<ToolCore> getToolCoreClass() {
 		return ToolCore.class;
 	}
