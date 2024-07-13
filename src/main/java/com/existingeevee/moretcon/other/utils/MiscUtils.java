@@ -22,6 +22,7 @@ import com.google.gson.GsonBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -38,6 +39,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -196,7 +198,7 @@ public class MiscUtils {
 	private static Map<String, ModExtraTrait> extratrait = new HashMap<>();
 	private static Map<String, ModExtraTrait2> extratrait2 = new HashMap<>();
 
-	public static void init() { //we have to init this
+	public static void init() { // we have to init this
 		for (Modifier m : TinkerModifiers.extraTraitMods) {
 			extratrait.put(m.getIdentifier(), (ModExtraTrait) m);
 		}
@@ -355,6 +357,45 @@ public class MiscUtils {
 	public static void resetRightClickDelay() {
 		if (isClient()) {
 			ObfuscationReflectionHelper.setPrivateValue(Minecraft.class, Minecraft.getMinecraft(), 0, "field_71467_ac");
+		}
+	}
+
+	public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double maxRange, List<Entity> exclude) {
+		Vec3d start = entityLiving.getPositionEyes(0.5f);
+		Vec3d lookVec = entityLiving.getLook(0.5f);
+		Vec3d end = start.addVector(lookVec.x * maxRange, lookVec.y * maxRange, lookVec.z * maxRange);
+		RayTraceResult firstTrace = entityLiving.world.rayTraceBlocks(start, end, false, false, true);
+		AxisAlignedBB area = new AxisAlignedBB(start, firstTrace != null ? firstTrace.hitVec : end);
+		List<Entity> entities = entityLiving.world.getEntitiesWithinAABBExcludingEntity(entityLiving, area);
+
+		Entity closestValid = null;
+		double closestDistSq = Double.MAX_VALUE;
+
+		for (Entity e : entities) {
+			if (!(e instanceof EntityLivingBase))
+				continue;
+
+			if (e.equals(entityLiving))
+				continue;
+
+			if (exclude != null && exclude.contains(e))
+				continue;
+						
+			RayTraceResult intercept = e.getEntityBoundingBox().calculateIntercept(start, end);
+			
+			if (intercept != null) {
+				double distSq = intercept.hitVec.squareDistanceTo(start);
+				if (closestDistSq > distSq) {
+					closestValid = e;
+					closestDistSq = distSq;
+				}
+			}
+		}
+
+		if (closestValid != null) {
+			return new RayTraceResult(closestValid);
+		} else {
+			return firstTrace;
 		}
 	}
 }

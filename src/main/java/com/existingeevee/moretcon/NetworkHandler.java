@@ -2,6 +2,7 @@ package com.existingeevee.moretcon;
 
 import com.existingeevee.moretcon.client.actions.ClientAction.SentClientActionMessage;
 import com.existingeevee.moretcon.effects.PotionBleeding.BleedingEffectMessage;
+import com.existingeevee.moretcon.other.ExtendedAttackMessage;
 import com.existingeevee.moretcon.other.fires.CustomFireHelper.SyncCustomFiresMessage;
 import com.existingeevee.moretcon.traits.traits.Afterimage.AfterimageMessage;
 
@@ -19,6 +20,7 @@ public class NetworkHandler {
 		HANDLER.registerMessage(AfterimageMessage.class, AfterimageMessage.class, i++, Side.CLIENT);
 		HANDLER.registerMessage(SyncCustomFiresMessage.class, SyncCustomFiresMessage.class, i++, Side.CLIENT);
 		HANDLER.registerMessage(SentClientActionMessage.class, SentClientActionMessage.class, i++, Side.CLIENT);
+		HANDLER.registerMessage(ExtendedAttackMessage.class, ExtendedAttackMessage.class, i++, Side.SERVER);
 	}
 	
 }

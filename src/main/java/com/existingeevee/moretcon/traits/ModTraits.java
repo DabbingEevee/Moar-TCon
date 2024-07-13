@@ -138,7 +138,6 @@ public class ModTraits {
 	public static Haunted haunted = new Haunted();
 	public static Soulforged soulforged = new Soulforged(1);
 	public static Soulforged soulforged2 = new Soulforged(2);
-	public static Soulforged soulforged3 = new Soulforged(3);
 	public static Seismishock seismishock = new Seismishock();
 	public static Hailshot hailshot = new Hailshot();
 	public static Autoloading autoloading = new Autoloading();
@@ -146,12 +145,14 @@ public class ModTraits {
 	public static Blighted blighted = new Blighted();
 	public static Receptive receptive = new Receptive();
 	public static Offense offense = new Offense();
+	public static Reaching reaching = new Reaching(1);
+	public static Reaching reaching2 = new Reaching(2);
 
 	public static Aetheric aetheric = new Aetheric();
 	public static Rootplicating rootplicating = new Rootplicating();
 	public static SkysBlessing blessed = new SkysBlessing();
 	public static Treetap treetap = new Treetap();
-	public static Reaching reaching;
+
 	public static StackDelagateTrait boltforged = new Boltforged();
 
 	public static MatterReconstructionGel repair;
@@ -192,7 +193,6 @@ public class ModTraits {
 		}
 		if (CompatManager.aether_legacy) {
 			antigravity = new AntiGravity();
-			reaching = new Reaching();
 		}
 	}
 

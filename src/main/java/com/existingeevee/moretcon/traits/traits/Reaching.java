@@ -3,101 +3,73 @@ package com.existingeevee.moretcon.traits.traits;
 import java.util.List;
 import java.util.UUID;
 
+import com.existingeevee.moretcon.NetworkHandler;
+import com.existingeevee.moretcon.other.ExtendedAttackMessage;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
-import com.gildedgames.the_aether.networking.AetherNetworkingManager;
-import com.gildedgames.the_aether.networking.packets.PacketExtendedAttack;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import slimeknights.tconstruct.library.traits.AbstractTrait;
+import slimeknights.tconstruct.library.modifiers.ModifierNBT;
+import slimeknights.tconstruct.library.traits.AbstractTraitLeveled;
+import slimeknights.tconstruct.library.utils.TagUtil;
+import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-//adapted from tinkers aether
-//TODO, improve algorithm and use own packet handler
-public class Reaching extends AbstractTrait {
-    public static final AttributeModifier reachModifier = new AttributeModifier(UUID.fromString("df6eabe7-ffff-0000-9099-002f90370708"), "Reaching Modifier", 2D, 0);
+public class Reaching extends AbstractTraitLeveled {
+	public static final UUID REACH_MODIFIER = UUID.fromString("df6eabe7-ffff-0000-9099-002f90370708");
 
-    public Reaching() {
-        super(MiscUtils.createNonConflictiveName("reaching"), 0);
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+	public Reaching(int level) {
+		super(MiscUtils.createNonConflictiveName("reaching"), 0, 3, level);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void onPlayerJoin(EntityJoinWorldEvent event) {
-        if ((event.getEntity() instanceof EntityPlayer)) {
-            EntityPlayer player = (EntityPlayer) event.getEntity();
-            if (player.world.isRemote)
-            	player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).removeModifier(reachModifier);;
-        }
-    }
+	@Override
+	public void getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack, Multimap<String, AttributeModifier> attributeMap) {
+		if (slot != EntityEquipmentSlot.MAINHAND)
+			return;
 
-    @SubscribeEvent
-    public void onPlayerUpdate(LivingEvent.LivingUpdateEvent event) {
-        if ((event.getEntityLiving() instanceof EntityPlayer)) {
-            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-            ItemStack stack = player.getHeldItemMainhand();
-            if (!player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).hasModifier(reachModifier) && shouldHaveReach(stack)) {
-                player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).applyModifier(reachModifier);
-            } else if (player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).hasModifier(reachModifier) && !shouldHaveReach(stack)) {
-                player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).removeModifier(reachModifier);
-            }
-        }
-    }
+		NBTTagList tagList = TagUtil.getModifiersTagList(stack);
+		int index = TinkerUtil.getIndexInCompoundList(tagList, getModifierIdentifier());
 
-    public boolean shouldHaveReach(ItemStack stack) {
-    	return this.isToolWithTrait(stack) && !ToolHelper.isBroken(stack);
-    }
-    
-    @SubscribeEvent
-    public void onMouseClick(PlayerInteractEvent.LeftClickEmpty event) {
-        EntityPlayer player = event.getEntityPlayer();
-        ItemStack stack = player.getHeldItemMainhand();
-        if(shouldHaveReach(stack)) {
-            Vec3d playerVision = player.getLookVec();
-            AxisAlignedBB reachDistance = player.getEntityBoundingBox().grow(10.0D);
-            List<Entity> locatedEntities = player.world.getEntitiesWithinAABB(Entity.class, reachDistance);
-            Entity found = null;
-            double foundLen = 0.0D;
-            for (Object o : locatedEntities) {
-                if (o == player) {
-                    continue;
-                }
-                Entity ent = (Entity) o;
-                if (!ent.canBeCollidedWith()) {
-                    continue;
-                }
-                Vec3d vec = new Vec3d(ent.posX - player.posX, ent.getEntityBoundingBox().minY + ent.height / 2f - player.posY - player.getEyeHeight(), ent.posZ - player.posZ);
+		if (index > -1) {
+			ModifierNBT modifier = ModifierNBT.readTag(tagList.getCompoundTagAt(index));
+			attributeMap.put(EntityPlayer.REACH_DISTANCE.getName(), new AttributeModifier(REACH_MODIFIER, "reach modifier", modifier.level * 2 - 2, 0));
+		}
+	}
 
-                double len = vec.lengthVector();
-                if (len > 8F) {
-                    continue;
-                }
-                vec = vec.normalize();
-                double dot = playerVision.dotProduct(vec);
-                if (dot < 1.0 - 0.125 / len || !player.canEntityBeSeen(ent)) {
-                    continue;
-                }
-                if (foundLen == 0.0 || len < foundLen) {
-                    found = ent;
-                    foundLen = len;
-                }
-            }
-            if (found != null && player.getRidingEntity() != found) {
-            	if (!player.isCreative()) ToolHelper.damageTool(stack, 1, player);
-				AetherNetworkingManager.sendToServer(new PacketExtendedAttack(found.getEntityId()));
-            }
-        }
-    }
+	public boolean shouldHaveReach(ItemStack stack) {
+		return this.isToolWithTrait(stack) && !ToolHelper.isBroken(stack);
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onMouseClick(PlayerInteractEvent.LeftClickEmpty event) {
+		EntityPlayer player = event.getEntityPlayer();
+		ItemStack stack = player.getHeldItemMainhand();
+		NBTTagList tagList = TagUtil.getModifiersTagList(stack);
+		int index = TinkerUtil.getIndexInCompoundList(tagList, getModifierIdentifier());
+
+		if (index > -1 && shouldHaveReach(stack)) {
+			ModifierNBT modifier = ModifierNBT.readTag(tagList.getCompoundTagAt(index));
+			List<Entity> exclude = player.getRidingEntity() == null ? null : Lists.newArrayList(player.getRidingEntity());
+			RayTraceResult result = MiscUtils.rayTrace(player, 4 + 2 * modifier.level, exclude);
+			if (result != null && result.entityHit != null) {
+				if (!player.isCreative())
+					ToolHelper.damageTool(stack, 1, player);
+				NetworkHandler.HANDLER.sendToServer(new ExtendedAttackMessage(result.entityHit));
+			}
+		}
+	}
 }

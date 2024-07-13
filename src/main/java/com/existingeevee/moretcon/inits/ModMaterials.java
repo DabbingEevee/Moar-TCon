@@ -753,8 +753,9 @@ public class ModMaterials implements MaterialTypes {
 			materialValkyrieMetal.setFluid(ModFluids.liquidValkyrieMetal);
 			materialValkyrieMetal.setCastable(true);
 			materialValkyrieMetal.setCraftable(false);
-			materialValkyrieMetal.addTrait(ModTraits.reaching, HEAD);
+			materialValkyrieMetal.addTrait(ModTraits.reaching2, HEAD);
 			materialValkyrieMetal.addTrait(ModTraits.treetap, HEAD);
+			materialValkyrieMetal.addTrait(ModTraits.reaching);
 			materialValkyrieMetal.addTrait(ModTraits.aetheric);
 			materialValkyrieMetal.setRepresentativeItem("ingotValkyrieMetal");
 			TinkerRegistry.addMaterialStats(materialValkyrieMetal, new HeadMaterialStats(1250, 10.0f, 5.25f, 4));
@@ -790,7 +791,7 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialGravitite, new HeadMaterialStats(950, 7.50f, 5.00f, 3));
 			TinkerRegistry.addMaterialStats(materialGravitite, new HandleMaterialStats(0.9f, 90));
 			TinkerRegistry.addMaterialStats(materialGravitite, new ExtraMaterialStats(90));
-			TinkerRegistry.addMaterialStats(	materialGravitite, whyWouldYouMakeABowOutOfThis);
+			TinkerRegistry.addMaterialStats(materialGravitite, whyWouldYouMakeABowOutOfThis);
 
 			TinkerRegistry.addMaterialStats(materialSkybolt, new HeadMaterialStats(1070, 7.50f, 5.00f, 3));
 			materialSkybolt.addTrait(ModTraits.boltforged);
