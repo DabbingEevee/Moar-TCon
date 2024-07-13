@@ -361,10 +361,15 @@ public class MiscUtils {
 	}
 
 	public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double maxRange, List<Entity> exclude) {
+		return rayTrace(entityLiving, maxRange, exclude, true);
+	}
+
+	
+	public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double maxRange, List<Entity> exclude, boolean affectedByBlocks) {
 		Vec3d start = entityLiving.getPositionEyes(0.5f);
 		Vec3d lookVec = entityLiving.getLook(0.5f);
 		Vec3d end = start.addVector(lookVec.x * maxRange, lookVec.y * maxRange, lookVec.z * maxRange);
-		RayTraceResult firstTrace = entityLiving.world.rayTraceBlocks(start, end, false, false, true);
+		RayTraceResult firstTrace = affectedByBlocks ? entityLiving.world.rayTraceBlocks(start, end, false, false, true) : null;
 		AxisAlignedBB area = new AxisAlignedBB(start, firstTrace != null ? firstTrace.hitVec : end);
 		List<Entity> entities = entityLiving.world.getEntitiesWithinAABBExcludingEntity(entityLiving, area);
 
@@ -382,7 +387,7 @@ public class MiscUtils {
 				continue;
 						
 			RayTraceResult intercept = e.getEntityBoundingBox().calculateIntercept(start, end);
-			
+						
 			if (intercept != null) {
 				double distSq = intercept.hitVec.squareDistanceTo(start);
 				if (closestDistSq > distSq) {

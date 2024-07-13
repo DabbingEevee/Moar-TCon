@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -36,9 +37,9 @@ public class Plasmatic extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (!wasHit || IS_ALREADY_PROCING.get())
+		if (!wasHit || IS_ALREADY_PROCING.get() || !(player instanceof EntityPlayer))
 			return;
-		this.proc(player, target);
+		this.proc((EntityPlayer) player, target);
 	}
 
 	@SubscribeEvent
@@ -48,39 +49,34 @@ public class Plasmatic extends AbstractTrait {
 			proc(event.getEntityPlayer(), null);
 		}
 	}
-	
-	public void proc(EntityLivingBase player, Entity ignore) {
-		Vec3d playerVision = player.getLookVec();
-		AxisAlignedBB reachDistance = player.getEntityBoundingBox().grow(4.0D);
-		List<Entity> locatedEntities = player.world.getEntitiesWithinAABB(Entity.class, reachDistance);
-		double foundLen = 0.0D;
-		for (Entity ent : locatedEntities) {
-			if (ent == player || ent == ignore) {
-				continue;
-			}
 
-			if (!ent.canBeCollidedWith()) {
+	public void proc(EntityPlayer player, Entity ignore) {
+		double maxRange = 4.0D;
+
+		Vec3d start = player.getPositionEyes(0.5f);
+		Vec3d lookVec = player.getLook(0.5f);
+		Vec3d end = start.add(lookVec.scale(maxRange));
+		AxisAlignedBB area = new AxisAlignedBB(start, end);
+		List<Entity> entities = player.world.getEntitiesWithinAABBExcludingEntity(player, area);
+
+		for (Entity e : entities) {
+			if (!(e instanceof EntityLivingBase))
 				continue;
-			}
-			Vec3d vec = new Vec3d(ent.posX - player.posX, ent.getEntityBoundingBox().minY + ent.height / 2f - player.posY - player.getEyeHeight(), ent.posZ - player.posZ);
-			double len = vec.lengthVector();
-			if (len > 4F) {
+
+			if (e.equals(player) || e == player.getRidingEntity())
 				continue;
-			}
-			vec = vec.normalize();
-			double dot = playerVision.dotProduct(vec);
-			if (dot < 1.0 - 0.125 / len) {
-				continue;
-			}
-			if (foundLen == 0.0 || len < foundLen) {
+
+			RayTraceResult intercept = e.getEntityBoundingBox().calculateIntercept(start, end);
+			
+			if (intercept != null) {
 				try {
 					IS_ALREADY_PROCING.set(true);
 					int orig = ticksSinceLastAtt.getInt(player);
-					((EntityPlayer) player).attackTargetEntityWithCurrentItem(ent);
+					player.attackTargetEntityWithCurrentItem(e);
 					ticksSinceLastAtt.setInt(player, orig);
 					IS_ALREADY_PROCING.set(false);
-				} catch (IllegalArgumentException | IllegalAccessException e) {
-					e.printStackTrace();
+				} catch (IllegalArgumentException | IllegalAccessException er) {
+					er.printStackTrace();
 				}
 			}
 		}
