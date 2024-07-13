@@ -19,6 +19,7 @@
   "client": [
   	"late.client.MixinContentMaterial",
   	"late.client.MixinModFortifyDisplay",
+  	"late.client.MixinContentSingleStatMultMaterial",
   	
   	"softdep.codechickenlib.MixinCCRenderItem"
   ],
