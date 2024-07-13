@@ -51,16 +51,6 @@ public class ItemDebugTool extends ItemBase {
 	}
 
 	protected boolean debugFunction(World worldIn, EntityPlayer playerIn) { //this is used by me to test stuff.
-		//worldIn.getBiomeProvider().
-	    //byte[] biomes = worldIn.getChunkFromBlockCoords(playerIn.getPosition()).getBiomeArray();
-
-	    //for (int i = 0, biomesLength = biomes.length; i < biomesLength; i++) {
-	    //    biomes[i] = (byte) Biome.getIdForBiome(BiomeRegistry.MARSH_1);
-	    //}
-		
-		//new thebetweenlands.common.world.gen.feature.structure.WorldGenSludgeWormDungeon().generate(worldIn, itemRand, playerIn.getPosition());
-		//new thebetweenlands.common.world.gen.feature.structure.WorldGenSludgeWormDungeon().generate(worldIn, itemRand, playerIn.getPosition());
-		//ItemAncientGreatsword
 		return false;
 	}
 }
