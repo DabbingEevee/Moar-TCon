@@ -8,7 +8,6 @@ import java.util.UUID;
 
 import com.existingeevee.moretcon.MoreTCon;
 import com.existingeevee.moretcon.other.utils.CompatManager;
-import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.traits.modifiers.Betweenified;
 import com.existingeevee.moretcon.traits.modifiers.Crushing;
@@ -69,23 +68,22 @@ import com.existingeevee.moretcon.traits.traits.unique.Autoloading;
 import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
 import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
 import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
+import com.existingeevee.moretcon.traits.traits.unique.Boltforged;
 import com.existingeevee.moretcon.traits.traits.unique.EssentialObliteration;
 import com.existingeevee.moretcon.traits.traits.unique.Hailshot;
 import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
+import com.existingeevee.moretcon.traits.traits.unique.Offense;
 import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
 import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
 import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
-import com.existingeevee.moretcon.traits.traits.unique.Offense;
 import com.existingeevee.moretcon.traits.traits.unique.Wormed;
-import com.gildedgames.the_aether.items.ItemsAether;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.modifiers.IModifier;
@@ -154,7 +152,7 @@ public class ModTraits {
 	public static SkysBlessing blessed = new SkysBlessing();
 	public static Treetap treetap = new Treetap();
 	public static Reaching reaching;
-	public static StackDelagateTrait boltforged = new StackDelagateTrait(MiscUtils.createNonConflictiveName("boltforged"), 0, () -> new ItemStack(ItemsAether.lightning_sword), false).setOnHit();
+	public static StackDelagateTrait boltforged = new Boltforged();
 
 	public static MatterReconstructionGel repair;
 
