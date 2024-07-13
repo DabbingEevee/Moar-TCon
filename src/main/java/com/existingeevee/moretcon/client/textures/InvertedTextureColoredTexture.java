@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.client;
+package com.existingeevee.moretcon.client.textures;
 
 import java.util.Collection;
 import java.util.function.Function;
@@ -16,11 +16,11 @@ import slimeknights.tconstruct.library.client.texture.TinkerTexture;
 
 public class InvertedTextureColoredTexture extends AbstractColoredTexture {
 
-	public static class Texture extends AbstractMaterialRenderInfo {
+	public static class RenderInfo extends AbstractMaterialRenderInfo {
 
 		protected ResourceLocation texturePath;
 
-		public Texture(ResourceLocation texturePath) {
+		public RenderInfo(ResourceLocation texturePath) {
 			this.texturePath = texturePath;
 		}
 

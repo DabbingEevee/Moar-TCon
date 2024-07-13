@@ -1,14 +1,14 @@
 package com.existingeevee.moretcon.materials;
 
 import com.existingeevee.moretcon.ModInfo;
-import com.existingeevee.moretcon.client.LightShadingTextureColoredTexture;
-import com.existingeevee.moretcon.client.NoShadingTextureColoredTexture;
-import com.existingeevee.moretcon.client.WhiteShadingTextureColoredTexture;
+import com.existingeevee.moretcon.client.textures.LightShadingTextureColoredTexture;
+import com.existingeevee.moretcon.client.textures.NoShadingTextureColoredTexture;
+import com.existingeevee.moretcon.client.textures.OctineTexture;
+import com.existingeevee.moretcon.client.textures.WhiteShadingTextureColoredTexture;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.util.ResourceLocation;
-import slimeknights.tconstruct.library.client.MaterialRenderInfo.Metal;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo.MultiColor;
 import slimeknights.tconstruct.library.materials.Material;
 
@@ -41,17 +41,17 @@ public class MaterialClient {
 		setCustomRender(ModMaterials.materialBlightsteel);
 		
 		
-		ModMaterials.materialTrichromadentium.setRenderInfo(new WhiteShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialTrichromadentium.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));		
+		ModMaterials.materialTrichromadentium.setRenderInfo(new WhiteShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialTrichromadentium.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));		
 		ModMaterials.materialNahuatl.setRenderInfo(new MultiColor(0x100c1c, 0x271e3d, 0x49332e));
-		ModMaterials.materialAmberwood.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAmberwood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-		ModMaterials.materialSlimewood.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialSlimewood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-		ModMaterials.materialEtherstone.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialEtherstone.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-		ModMaterials.materialSolsteel.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialSolsteel.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
-		ModMaterials.materialIgniglomerate.setRenderInfo(new NoShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialIgniglomerate.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialAmberwood.setRenderInfo(new LightShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAmberwood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialSlimewood.setRenderInfo(new LightShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialSlimewood.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialEtherstone.setRenderInfo(new LightShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialEtherstone.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialSolsteel.setRenderInfo(new LightShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialSolsteel.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialIgniglomerate.setRenderInfo(new NoShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialIgniglomerate.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialValkyrieMetal.setRenderInfo(new MultiColor(0xdba213, 0xeeffff, 0xeaee57));
-		ModMaterials.materialOctine.setRenderInfo(new Metal(0xff8e3b, 0.7f, 2f, 0f));
-		ModMaterials.materialAncientAlloy.setRenderInfo(new LightShadingTextureColoredTexture.Texture(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAncientAlloy.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialOctine.setRenderInfo(new OctineTexture.RenderInfo());//new Metal(0xff8e3b, 0.7f, 2f, 0f));
+		ModMaterials.materialAncientAlloy.setRenderInfo(new LightShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAncientAlloy.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 	}
 
 	private static void setCustomRender(Material mat) {

@@ -1,4 +1,4 @@
-package com.existingeevee.moretcon.client;
+package com.existingeevee.moretcon.client.textures;
 
 import java.util.Collection;
 import java.util.function.Function;
@@ -14,13 +14,13 @@ import slimeknights.tconstruct.library.client.RenderUtil;
 import slimeknights.tconstruct.library.client.texture.AbstractColoredTexture;
 import slimeknights.tconstruct.library.client.texture.TinkerTexture;
 
-public class WhiteShadingTextureColoredTexture extends AbstractColoredTexture {
+public class LightShadingTextureColoredTexture extends AbstractColoredTexture {
 
-	public static class Texture extends AbstractMaterialRenderInfo {
+	public static class RenderInfo extends AbstractMaterialRenderInfo {
 
 		protected ResourceLocation texturePath;
 
-		public Texture(ResourceLocation texturePath) {
+		public RenderInfo(ResourceLocation texturePath) {
 			this.texturePath = texturePath;
 		}
 
@@ -33,7 +33,7 @@ public class WhiteShadingTextureColoredTexture extends AbstractColoredTexture {
 				blockTexture = TinkerTexture.loadManually(texturePath);
 			}
 
-			WhiteShadingTextureColoredTexture sprite = new WhiteShadingTextureColoredTexture(
+			LightShadingTextureColoredTexture sprite = new LightShadingTextureColoredTexture(
 					new ResourceLocation(blockTexture.getIconName()), baseTexture, location);
 			sprite.stencil = false;
 			return sprite;
@@ -51,7 +51,7 @@ public class WhiteShadingTextureColoredTexture extends AbstractColoredTexture {
 
 	public boolean stencil = false;
 
-	public WhiteShadingTextureColoredTexture(ResourceLocation addTextureLocation, ResourceLocation baseTexture,
+	public LightShadingTextureColoredTexture(ResourceLocation addTextureLocation, ResourceLocation baseTexture,
 			String spriteName) {
 		super(baseTexture, spriteName);
 		this.addTextureLocation = addTextureLocation;
@@ -112,9 +112,9 @@ public class WhiteShadingTextureColoredTexture extends AbstractColoredTexture {
 	    int g = RenderUtil.green(c);
 
 	    if(!stencil) {
-	      r = mult(r, 0xFF - RenderUtil.red(pixel));
-	      g = mult(g, 0xFF - RenderUtil.green(pixel));
-	      b = mult(b, 0xFF - RenderUtil.blue(pixel));
+	      r = mult(r, RenderUtil.red(pixel));
+	      g = mult(g, RenderUtil.green(pixel));
+	      b = mult(b, RenderUtil.blue(pixel));
 	    }
 	    return RenderUtil.compose(r, g, b, a);
 	}
