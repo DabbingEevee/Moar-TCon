@@ -54,7 +54,7 @@ public class ModSponges {
 			gravitoniumSpongeSanguiseelium = SpongeRegistry.getSponge(SpongeRegistry.createSpongeRecipe("sanguiseelium", "oreSanguiseelium", new ItemStack(ModItems.ingotSanguiseelium), new OreIngredient("ingotHallowsite"),
 					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidHallowsite, Material.VALUE_Ingot * 4),
 					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidGallium, Material.VALUE_Ingot * 2),
-					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidLiquifiedSouls, Material.VALUE_Ingot),
+					SpongeRegistry.createSpongeStep(() -> ModFluids.liquidLiquifiedSouls, Material.VALUE_Ingot * 4),
 					SpongeRegistry.createSpongeStep(() -> TinkerFluids.blood, 2000)));
 
 			
