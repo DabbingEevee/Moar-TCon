@@ -47,7 +47,6 @@ public class Hailshot extends BooleanTrackerTrait implements IProjectileTrait, I
 			if (((EntityLivingBase) target).getHealth() <= 0) {
 				ItemStack ammoStackOrig = ArrowReferenceHelper.getProjectileStack(projectile.tinkerProjectile);
 				setActive(ammoStackOrig, true);
-				System.out.println(ammoStackOrig.serializeNBT());
 			}
 		}
 
