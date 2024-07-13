@@ -63,7 +63,7 @@ public class Plasmatic extends AbstractTrait {
 			if (!(e instanceof EntityLivingBase))
 				continue;
 
-			if (e.equals(player) || e == player.getRidingEntity())
+			if (e.equals(player) || e == player.getRidingEntity() || e == ignore)
 				continue;
 
 			RayTraceResult intercept = e.getEntityBoundingBox().calculateIntercept(start, end);
