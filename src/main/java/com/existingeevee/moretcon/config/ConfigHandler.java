@@ -89,7 +89,7 @@ public class ConfigHandler {
 
 		category = "Misc";
 		config.addCustomCategoryComment(category, "Tweak the miscellaneous values/content of the mod");
-		ConfigHandler.shouldLoadDust = config.getBoolean("allowdust", category, false, "Set to \"true\" if you want to load dust.");
+		ConfigHandler.shouldLoadDust = config.getBoolean("allowdust", category, true, "Set to \"true\" if you want to load dust.");
 		ConfigHandler.enableGauntlet = config.getBoolean("enablegauntlet", category, true, "Set to \"false\" if you want to disable the gauntlet tool.");
 		ConfigHandler.enableRing = config.getBoolean("enablering", category, true, "Set to \"false\" if you want to disable the ring tool.");
 		ConfigHandler.shouldLoadDustForCompatability = config.getBoolean("compatdust", category, true, "Set to \"false\" if you do not want to load dust for other mods.");
