@@ -667,9 +667,9 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialAutoloader, new HandleMaterialStats(4f, 1024));
 
 			materialSanguiseelium.addCommonItems("Sanguiseelium");
-			// materialSanguiseelium.setFluid(ModFluids.liquidBlightsteel);
-			// materialSanguiseelium.setCastable(true);
-			// materialSanguiseelium.setCraftable(false);
+			materialSanguiseelium.setFluid(ModFluids.liquidSanguiseelium);
+			materialSanguiseelium.setCastable(true);
+			materialSanguiseelium.setCraftable(false);
 			materialSanguiseelium.setRepresentativeItem("ingotSanguiseelium");
 			materialSanguiseelium.addTrait(ModTraits.leeching, HEAD);
 			materialSanguiseelium.addTrait(ModTraits.receptive, HEAD);
@@ -681,6 +681,7 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialSanguiseelium, new ArrowShaftMaterialStats(1.5f, 125));
 			TinkerRegistry.addMaterialStats(materialSanguiseelium, new BowMaterialStats(1.2f, 1.3f, 0.8f));
 
+			
 			TinkerRegistry.addMaterialStats(materialVengeance, new HeadMaterialStats(1024, 6f, 7f, 7));
 			materialVengeance.addTrait(ModTraits.offense);
 		}

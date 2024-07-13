@@ -23,6 +23,7 @@ public class OreRecipes {
 		MiscUtils.registerBlockNuggetIngotRecipeOre("Hallowsite", event);
 		MiscUtils.registerBlockNuggetIngotRecipeOre("AncientAlloy", event);
 		MiscUtils.registerBlockNuggetIngotRecipeOre("Blightsteel", event);
+		MiscUtils.registerBlockNuggetIngotRecipeOre("Sanguiseelium", event);
 		
 		MiscUtils.register9x9Recipes("gemBloodstone", "blockBloodstone", event);
 		MiscUtils.register9x9Recipes("gemEchostone", "blockEchostone", event);
