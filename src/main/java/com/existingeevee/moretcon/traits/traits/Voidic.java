@@ -25,7 +25,6 @@ public class Voidic extends AbstractTrait {
 
 	@Override
 	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
-
 		if (Math.random() < 0.005 && world.isRemote && entity instanceof EntityLivingBase) {
 			if (entity.getPosition().getY() < 4) {
 				ToolHelper.healTool(tool, 1, (EntityLivingBase) entity);
