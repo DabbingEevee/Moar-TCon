@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class Voidic extends AbstractTrait {
 
@@ -25,9 +26,9 @@ public class Voidic extends AbstractTrait {
 	@Override
 	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
 
-		if (Math.random() < 0.025 && world.isRemote && entity instanceof EntityLivingBase) {
+		if (Math.random() < 0.005 && world.isRemote && entity instanceof EntityLivingBase) {
 			if (entity.getPosition().getY() < 4) {
-				tool.damageItem(-1, (EntityLivingBase) entity);
+				ToolHelper.healTool(tool, 1, (EntityLivingBase) entity);
 			}
 		}
 		super.onUpdate(tool, world, entity, itemSlot, isSelected);
