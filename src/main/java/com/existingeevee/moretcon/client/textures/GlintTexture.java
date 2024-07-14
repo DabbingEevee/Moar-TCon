@@ -10,22 +10,43 @@ import slimeknights.tconstruct.library.client.texture.AbstractColoredTexture;
 
 //This is hell im sure theres a better way to do this
 //buuuuut idk what im doing lmfao
-public class OctineTexture extends AbstractColoredTexture {
+public class GlintTexture extends AbstractColoredTexture {
 	boolean[] blank;
 	boolean[] border;
 	boolean[] onTop;
 	int minBrightness;
 	int maxBrightness;
 	int brightnessData[];
-	
-	protected OctineTexture(ResourceLocation baseTextureLocation, String spriteName) {
+
+	int borderTop, borderC, glint, bright, mid, dark;
+
+	protected GlintTexture(ResourceLocation baseTextureLocation, String spriteName) {
 		super(baseTextureLocation, spriteName);
 	}
 
 	public static class RenderInfo extends AbstractMaterialRenderInfo {
+		
+		int borderTop, border, glint, bright, mid, dark;
+		
+		public RenderInfo(int borderTop, int border, int glint, int bright, int mid, int dark) {
+			this.borderTop = borderTop;
+			this.border = border;
+			this.glint = glint;
+			this.bright = bright;
+			this.mid = mid;
+			this.dark = dark;
+		}
+		
 		@Override
 		public TextureAtlasSprite getTexture(ResourceLocation baseTexture, String location) {
-			return new OctineTexture(baseTexture, location);
+			GlintTexture texture = new GlintTexture(baseTexture, location);
+			texture.borderTop = borderTop;
+			texture.borderC = border;
+			texture.glint = glint;
+			texture.bright = bright;
+			texture.mid = mid;
+			texture.dark = dark;
+			return texture;
 		}
 	}
 
@@ -107,22 +128,22 @@ public class OctineTexture extends AbstractColoredTexture {
 	@Override
 	protected int colorPixel(int pixel, int pxCoord) {
 		if (!blank[pxCoord]) {
+			int a = RenderUtil.alpha(pixel);
 			if (border[pxCoord]) {
 				if (onTop[pxCoord]) {
-					return RenderUtil.compose(211, 85, 12, 255);
+					return RenderUtil.compose(RenderUtil.red(borderTop), RenderUtil.green(borderTop), RenderUtil.blue(borderTop), a);
 				} else {
-					return RenderUtil.compose(248, 101, 13, 255);
+					return RenderUtil.compose(RenderUtil.red(borderC), RenderUtil.green(borderC), RenderUtil.blue(borderC), a);
 				}
 			} else {
-				int a = RenderUtil.alpha(pixel);
+				
 				if (a == 0) {
 					return pixel;
 				}
-
 				int brightness = brightnessData[pxCoord];
-				int c = 0xffc81f;
+				int c = mid;
 				if (brightness < minBrightness) {
-					c = 0xff8906;
+					c = dark;
 				} else if (brightness > maxBrightness) {
 
 					int y = getY(pxCoord);
@@ -134,7 +155,7 @@ public class OctineTexture extends AbstractColoredTexture {
 					if (x - 1 > 0 && onTop[coord(x - 1, y)])
 						nextToTop = true;
 
-					c = nextToTop ? 0xffffff : 0xffc81f;
+					c = nextToTop ? glint : bright;
 				}
 
 				// multiply in the color

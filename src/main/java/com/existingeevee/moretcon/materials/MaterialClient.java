@@ -1,9 +1,9 @@
 package com.existingeevee.moretcon.materials;
 
 import com.existingeevee.moretcon.ModInfo;
+import com.existingeevee.moretcon.client.textures.GlintTexture;
 import com.existingeevee.moretcon.client.textures.LightShadingTextureColoredTexture;
 import com.existingeevee.moretcon.client.textures.NoShadingTextureColoredTexture;
-import com.existingeevee.moretcon.client.textures.OctineTexture;
 import com.existingeevee.moretcon.client.textures.WhiteShadingTextureColoredTexture;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
@@ -50,7 +50,8 @@ public class MaterialClient {
 		ModMaterials.materialEbonite.setRenderInfo(new NoShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialEbonite.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialIgniglomerate.setRenderInfo(new NoShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialIgniglomerate.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialValkyrieMetal.setRenderInfo(new MultiColor(0xdba213, 0xeeffff, 0xeaee57));
-		ModMaterials.materialOctine.setRenderInfo(new OctineTexture.RenderInfo());//new Metal(0xff8e3b, 0.7f, 2f, 0f));
+		ModMaterials.materialValonite.setRenderInfo(new GlintTexture.RenderInfo(0x906390, 0x563856, 0xf2ecf2, 0xd8b8d8, 0xc390c3, 0xc390c3));
+		ModMaterials.materialOctine.setRenderInfo(new GlintTexture.RenderInfo(0xff8906, 0xd3550c, 0xf7f7f7, 0xffc81f, 0xf8a100, 0xff8906));
 		ModMaterials.materialAncientAlloy.setRenderInfo(new LightShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAncientAlloy.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 	}
 
