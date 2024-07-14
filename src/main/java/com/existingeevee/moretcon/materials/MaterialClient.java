@@ -53,6 +53,7 @@ public class MaterialClient {
 		ModMaterials.materialValonite.setRenderInfo(new GlintTexture.RenderInfo(0x906390, 0x563856, 0xf2ecf2, 0xd8b8d8, 0xc390c3, 0xc390c3));
 		ModMaterials.materialOctine.setRenderInfo(new GlintTexture.RenderInfo(0xff8906, 0xd3550c, 0xf7f7f7, 0xffc81f, 0xf8a100, 0xff8906));
 		ModMaterials.materialAncientAlloy.setRenderInfo(new LightShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAncientAlloy.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
+		ModMaterials.materialAtronium.setRenderInfo(new GlintTexture.RenderInfo(0x4e4031, 0x2f261c, 0xf0ceac, 0xf6be86, 0xd99857, 0xd99857));
 	}
 
 	private static void setCustomRender(Material mat) {
