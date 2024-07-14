@@ -4,6 +4,7 @@ import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.client.textures.GlintTexture;
 import com.existingeevee.moretcon.client.textures.LightShadingTextureColoredTexture;
 import com.existingeevee.moretcon.client.textures.NoShadingTextureColoredTexture;
+import com.existingeevee.moretcon.client.textures.SanguiseeliumTexture;
 import com.existingeevee.moretcon.client.textures.WhiteShadingTextureColoredTexture;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
@@ -55,6 +56,8 @@ public class MaterialClient {
 		ModMaterials.materialAncientAlloy.setRenderInfo(new LightShadingTextureColoredTexture.RenderInfo(new ResourceLocation(ModInfo.MODID + ":other/material" + ModMaterials.materialAncientAlloy.getIdentifier().replaceFirst(ModInfo.MODID + ".", ""))));
 		ModMaterials.materialAtronium.setRenderInfo(new GlintTexture.RenderInfo(0x4e4031, 0x2f261c, 0xf0ceac, 0xf6be86, 0xd99857, 0xd99857));
 		ModMaterials.materialValasium.setRenderInfo(new GlintTexture.RenderInfo(0x646681, 0x646681, 0xb3c3cb, 0x959cb3, 0x959cb3, 0x959cb3));
+		ModMaterials.materialSanguiseelium.setRenderInfo(new SanguiseeliumTexture.RenderInfo());
+		
 	}
 
 	private static void setCustomRender(Material mat) {
