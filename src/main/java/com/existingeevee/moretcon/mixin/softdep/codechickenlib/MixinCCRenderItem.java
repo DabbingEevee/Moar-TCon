@@ -6,7 +6,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.existingeevee.moretcon.other.ICustomSlotRenderer;
 import com.existingeevee.moretcon.other.SlotRendererRegistry;
 
 import codechicken.lib.render.item.CCRenderItem;
@@ -24,11 +23,7 @@ public abstract class MixinCCRenderItem {
 		if (!this.isValidModel(bakedmodel)) // We only have this execute IF chickenlib is handling it
 			return; // Otherwise its handled in the vanilla RenderItem
 
-		ICustomSlotRenderer renderer = SlotRendererRegistry.get(stack);
-
-		if (renderer != null && renderer.shouldRender(stack)) {
-			renderer.render(stack, x, y, bakedmodel);
-		}
+		SlotRendererRegistry.render(stack, x, y, bakedmodel);
 	}
 
 	@Shadow(remap = false)
