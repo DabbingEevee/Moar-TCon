@@ -37,7 +37,7 @@ import twilightforest.compat.TConstruct;
 public class ModMaterials implements MaterialTypes {
 
 	public static int totalMaterials;
-
+	
 	public static final Material materialWeedwood = new Material(MiscUtils.createNonConflictiveName("weedwood"), 0xcc9900);
 	public static final Material materialIronwood = new Material(MiscUtils.createNonConflictiveName("ironwood"), 0xcc9900);
 	public static final Material materialFusionite = new Material(MiscUtils.createNonConflictiveName("fusionite"), 0x3399ff);
@@ -84,6 +84,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialAncientAlloy = new Material(MiscUtils.createNonConflictiveName("ancientalloy"), 0xa2c2c0);
 	public static final Material materialBlightsteel = new Material(MiscUtils.createNonConflictiveName("blightsteel"), 0x243c5a);
 	public static final Material materialSanguiseelium = new Material(MiscUtils.createNonConflictiveName("sanguiseelium"), 0x6b1313);
+	public static final Material materialZracohlium = new Material(MiscUtils.createNonConflictiveName("zracohlium"), 0x696942);
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -681,9 +682,24 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialSanguiseelium, new ArrowShaftMaterialStats(1.5f, 125));
 			TinkerRegistry.addMaterialStats(materialSanguiseelium, new BowMaterialStats(1.2f, 1.3f, 0.8f));
 
-			
 			TinkerRegistry.addMaterialStats(materialVengeance, new HeadMaterialStats(1024, 6f, 7f, 7));
 			materialVengeance.addTrait(ModTraits.offense);
+
+			materialZracohlium.addCommonItems("Zracohlium");
+			materialZracohlium.setFluid(ModFluids.liquidZracohlium);
+			materialZracohlium.setCastable(true);
+			materialZracohlium.setCraftable(false);
+			materialZracohlium.setRepresentativeItem("ingotZracohlium");			
+			materialZracohlium.addTrait(ModTraits.supercritical2, HEAD);
+			materialZracohlium.addTrait(TinkerTraits.coldblooded, HEAD);
+			materialZracohlium.addTrait(ModTraits.pyrophoric);
+			materialZracohlium.addTrait(ModTraits.supercritical1);
+			materialZracohlium.addTrait(ModTraits.radioactive);
+			TinkerRegistry.addMaterialStats(materialZracohlium, new HeadMaterialStats(1200, 8f, 6.5f, 5));
+			TinkerRegistry.addMaterialStats(materialZracohlium, new HandleMaterialStats(1.25f, 125));
+			TinkerRegistry.addMaterialStats(materialZracohlium, new ExtraMaterialStats(90));
+			TinkerRegistry.addMaterialStats(materialZracohlium, new ArrowShaftMaterialStats(1.5f, 125));
+			TinkerRegistry.addMaterialStats(materialZracohlium, new BowMaterialStats(1.2f, 1.3f, 0.8f));
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -1000,8 +1016,7 @@ public class ModMaterials implements MaterialTypes {
 	}
 
 	public static void init() {
-		initMats();
-		
+		initMats();		
 		if (CompatManager.plustic) {
 			ModMaterials.registerMaterial(materialCrimson);
 		}
@@ -1009,6 +1024,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialTechnoblade);
 		}
 		if (CompatManager.loadMain) {
+			ModMaterials.registerMaterial(materialZracohlium);
 			ModMaterials.registerMaterial(materialPlasma);
 			ModMaterials.registerMaterial(materialFusionite).toolforge();
 			ModMaterials.registerMaterial(materialValasium).toolforge();

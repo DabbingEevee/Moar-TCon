@@ -44,7 +44,8 @@ public class ModFluidBlocks {
 	public static Block blockLiquidFusionLava;
 	public static Block blockLiquidBlightsteel;
 	public static Block blockLiquifiedSouls;
-	public static Block blockSanguiseelium;
+	public static Block blockLiquidSanguiseelium;
+	public static Block blockLiquidZracohlium;
 	/* ------------------------------------- */
 	private static void registerBlocks(Block... block) {
 		for (Block i : block) {
@@ -67,7 +68,8 @@ public class ModFluidBlocks {
 			blockLiquidValasium = new BlockFluid("liquidvalasium", ModFluids.liquidValasium, Material.LAVA);			
 			blockLiquidHallowsite = new CustomFireBlockFluid("liquidhallowsite", ModFluids.liquidHallowsite, CustomFireEffect.SPIRIT_FIRE, Material.LAVA).setSource(new DamageSource("haunted").setFireDamage());			
 			blockLiquidBlightsteel = new BlockFluid("liquidblightsteel", ModFluids.liquidBlightsteel, Material.LAVA);			
-			blockSanguiseelium = new BlockFluid("liquidsanguiseelium", ModFluids.liquidSanguiseelium, Material.LAVA);			
+			blockLiquidSanguiseelium = new BlockFluid("liquidsanguiseelium", ModFluids.liquidSanguiseelium, Material.LAVA);			
+			blockLiquidZracohlium = new BlockFluid("liquidzracohlium", ModFluids.liquidZracohlium, Material.LAVA);			
 			
 			blockLiquidFusionLava = new CustomFireBlockFluid("liquidfusionlava", ModFluids.liquidFusionLava, CustomFireEffect.COLD_FIRE, Material.LAVA).setSource(new DamageSource("coldfire").setFireDamage());			
 			blockLiquifiedSouls = new BlockFluid("liquifiedsouls", ModFluids.liquidLiquifiedSouls, Material.WATER);			
@@ -88,8 +90,9 @@ public class ModFluidBlocks {
 				blockLiquidValasium,
 				blockLiquidHallowsite,
 				blockLiquidBlightsteel,
-				blockSanguiseelium,
-				blockLiquifiedSouls
+				blockLiquidSanguiseelium,
+				blockLiquifiedSouls,
+				blockLiquidZracohlium
 /* ------------------------------------- */
 				);
 		}

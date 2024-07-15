@@ -57,6 +57,7 @@ import com.existingeevee.moretcon.traits.traits.Rotten;
 import com.existingeevee.moretcon.traits.traits.SkysBlessing;
 import com.existingeevee.moretcon.traits.traits.Slicing;
 import com.existingeevee.moretcon.traits.traits.Soulforged;
+import com.existingeevee.moretcon.traits.traits.Supercritical;
 import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
@@ -148,6 +149,9 @@ public class ModTraits {
 	public static Offense offense = new Offense();
 	public static Reaching reaching = new Reaching(1);
 	public static Reaching reaching2 = new Reaching(2);
+	public static Supercritical supercritical1 = new Supercritical(1);
+	public static Supercritical supercritical2 = new Supercritical(2);
+	public static Supercritical supercritical3 = new Supercritical(3);
 
 	public static Aetheric aetheric = new Aetheric();
 	public static Rootplicating rootplicating = new Rootplicating();

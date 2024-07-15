@@ -104,6 +104,9 @@ public class ModFluids {
 	
 	public static Fluid liquidAncientAlloy = new LiquidFluid("liquidAncientAlloy".toLowerCase()).setCColor(0x9fc1c0).setLuminosity(13)
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
+	
+	public static Fluid liquidZracohlium = new LiquidFluid("liquidZracohlium".toLowerCase()).setCColor(0x696942).setLuminosity(12)
+			.setDensity(1000).setViscosity(800).setTemperature(1500);
 	/** ------------------------------------- **/
 
 	private static void registerFluids(Fluid... fluid) {
@@ -131,7 +134,8 @@ public class ModFluids {
 					liquidHallowsite,
 					liquidBlightsteel,
 					liquidSanguiseelium,
-					liquidLiquifiedSouls
+					liquidLiquifiedSouls,
+					liquidZracohlium
 			/** ------------------------------------- **/
 			);
 		} //CustomModelRenderCoreHooks

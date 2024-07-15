@@ -367,7 +367,7 @@ modifier.moretcon.offense.desc=§oGood defense = Good offense§r\nYour tool will
 modifier.moretcon.boltforged.name=Boltforged
 modifier.moretcon.boltforged.desc=§omotivational shocks§r\nYour tool will strike targets with lightning, as well as making you immune to the,.
 modifier.moretcon.pyrophoric.name=Pyrophoric
-modifier.moretcon.pyrophoric.desc=§oWarning: Exposure to oxygen may have adverse consequences§r\nYour tool will randomly ignite, granting fire damage as well as an boost to the tool.
+modifier.moretcon.pyrophoric.desc=§oWarning: Exposure to oxygen may have adverse consequences§r\nYour tool will randomly ignite, granting fire damage as well as an overall boost to the tool.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames

@@ -16,7 +16,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 public class Supercritical extends AbstractTraitLeveled {
 
 	public Supercritical(int lvl) {
-		super(MiscUtils.createNonConflictiveName("soulforged"), 0, 4, lvl);
+		super(MiscUtils.createNonConflictiveName("supercritical"), 0, 4, lvl);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	

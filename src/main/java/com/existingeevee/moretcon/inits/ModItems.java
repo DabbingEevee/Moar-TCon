@@ -95,7 +95,10 @@ public class ModItems {
 	public static final Item nuggetBlightsteel = new ItemBase("nuggetBlightsteel");
 	public static final Item dustBlightsteel = new ItemBase("dustBlightsteel");
 
-	
+	public static final Item ingotZracohlium = new ItemBase("ingotZracohlium");
+	public static final Item nuggetZracohlium = new ItemBase("nuggetZracohlium");
+	public static final Item dustZracohlium = new ItemBase("dustZracohlium");
+
 	public static final Item ingotAncientAlloy = new ItemBase("ingotAncientAlloy");
 	public static final Item nuggetAncientAlloy = new ItemBase("nuggetAncientAlloy");
 	public static final Item dustAncientAlloy = new ItemBase("dustAncientAlloy");
@@ -196,6 +199,9 @@ public class ModItems {
 					ingotSanguiseelium,
 					nuggetSanguiseelium,
 					
+					ingotZracohlium,
+					nuggetZracohlium,
+					
 					gemVoidSpar,
 					gemEnderal,
 					gemGarstone,
@@ -231,7 +237,8 @@ public class ModItems {
 						dustEbonite,
 						dustHallowsite,
 						dustBlightsteel,
-						dustSanguiseelium
+						dustSanguiseelium,
+						dustZracohlium
 						);
 			}
 		}

@@ -127,6 +127,11 @@ public class OreDictionaryManager {
 			registerOre("ingotHallowsite", ModItems.ingotHallowsite);
 			registerOre("nuggetHallowsite", ModItems.nuggetHallowsite);
 
+			registerOre("blockZracohlium", ModBlocks.blockZracohlium);
+			registerOre("oreZracohlium", ModBlocks.oreZracohlium);
+			registerOre("ingotZracohlium", ModItems.ingotZracohlium);
+			registerOre("nuggetZracohlium", ModItems.nuggetZracohlium);
+
 			if (ConfigHandler.shouldLoadDust) {
 				registerOre("dustIrradium", ModItems.dustIrradium);
 				registerOre("dustValasium", ModItems.dustValasium);
@@ -143,6 +148,7 @@ public class OreDictionaryManager {
 				registerOre("dustHallowsite", ModItems.dustHallowsite);
 				registerOre("dustBlightsteel", ModItems.dustBlightsteel);
 				registerOre("dustSanguiseelium", ModItems.dustSanguiseelium);
+				registerOre("dustZracohlium", ModItems.dustZracohlium);
 			}
 		}
 		

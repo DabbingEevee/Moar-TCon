@@ -86,5 +86,4 @@ public class BreakApartBoltCoreRecipe extends Impl<IRecipe> implements IRecipe {
 	public boolean isDynamic() {
 		return true;
 	}
-
 }
