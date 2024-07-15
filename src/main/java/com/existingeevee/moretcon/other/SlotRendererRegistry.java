@@ -43,7 +43,8 @@ public class SlotRendererRegistry {
 		Collection<ICustomSlotRenderer> renderers = get(stack);
 
 		for (ICustomSlotRenderer renderer : renderers) {
-			renderer.render(stack, x, y, bakedmodel);
+			if (renderer.shouldRender(stack))
+				renderer.render(stack, x, y, bakedmodel);
 		}
 	}
 

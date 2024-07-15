@@ -78,13 +78,13 @@ public class ItemBase extends Item implements ICustomSlotRenderer {
 
 	private GlowType type = GlowType.CIRCLE;
 	private int hex = -1;
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void render(ItemStack stack, int x, int y, IBakedModel bakedmodel) {
 		ICustomSlotRenderer.simpleRender(stack, x, y, bakedmodel, type, hex);
 	}
-	
+
 	public ItemBase withColor(int color) {
 		this.hex = color;
 		return this;
