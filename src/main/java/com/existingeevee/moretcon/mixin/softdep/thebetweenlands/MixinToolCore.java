@@ -31,7 +31,14 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 		}
 		if (MoreTCon.proxy.isClientSneaking() || ToolHelper.isBroken(stack))
 			return false;
-		return ModTraits.inertia.isToolWithTrait(stack);
+		
+		boolean isMelee = false;
+		if (stack.getItem() instanceof ToolCore) {
+			ToolCore tool = (ToolCore) stack.getItem();
+			isMelee = !tool.hasCategory(Category.NO_MELEE);
+		}
+		
+		return  isMelee && ModTraits.inertia.isToolWithTrait(stack);
 	}
 
 	@Unique
@@ -45,22 +52,30 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 		}
 		
 		boolean isTool = true;
+		boolean isMelee = true;
 		
 		if (stack.getItem() instanceof ToolCore) {
 			ToolCore tool = (ToolCore) stack.getItem();
 			isTool = tool.hasCategory(Category.HARVEST);
+			isMelee = !tool.hasCategory(Category.NO_MELEE);
 		}
+		
+		if (!isMelee)
+			return 1;
+		
 		if (isTool)
 			return 0.225f;
 		
 		return 0.35f;
 	}
 
+	@Unique
 	@Override
 	public double getReach() {
 		return 1; //Hooopefully nothing bad happens
 	}
 	
+	@Unique
 	@Override
 	public void onLeftClick(EntityPlayer player, ItemStack stack) {
 		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) {
@@ -71,11 +86,15 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 		}
 		
 		boolean isTool = true;
-		
+		boolean isMelee = true;
 		if (stack.getItem() instanceof ToolCore) {
 			ToolCore tool = (ToolCore) stack.getItem();
 			isTool = tool.hasCategory(Category.HARVEST);
+			isMelee = !tool.hasCategory(Category.NO_MELEE);
 		}
+		if (!isMelee)
+			return;
+		
 		if (isTool) {
 			((IExtendedReach) ItemRegistry.ANCIENT_BATTLE_AXE).onLeftClick(player, stack);
 		} else {
