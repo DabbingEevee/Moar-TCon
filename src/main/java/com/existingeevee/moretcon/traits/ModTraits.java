@@ -48,6 +48,7 @@ import com.existingeevee.moretcon.traits.traits.Overslime;
 import com.existingeevee.moretcon.traits.traits.Oxide;
 import com.existingeevee.moretcon.traits.traits.Penetrant;
 import com.existingeevee.moretcon.traits.traits.Pulsating;
+import com.existingeevee.moretcon.traits.traits.Pyrophoric;
 import com.existingeevee.moretcon.traits.traits.Reaching;
 import com.existingeevee.moretcon.traits.traits.Receptive;
 import com.existingeevee.moretcon.traits.traits.Resilient;
@@ -154,6 +155,8 @@ public class ModTraits {
 	public static Treetap treetap = new Treetap();
 
 	public static StackDelagateTrait boltforged = new Boltforged();
+
+	public static Pyrophoric pyrophoric = new Pyrophoric();
 
 	public static MatterReconstructionGel repair;
 

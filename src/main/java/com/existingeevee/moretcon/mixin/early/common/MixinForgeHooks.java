@@ -1,4 +1,4 @@
-	package com.existingeevee.moretcon.mixin.early.common;
+package com.existingeevee.moretcon.mixin.early.common;
 
 import javax.annotation.Nonnull;
 
@@ -10,12 +10,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.existingeevee.moretcon.block.blocktypes.BlockCobbledBedrock;
 import com.existingeevee.moretcon.other.OverrideItemUseEvent;
+import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.traits.ModTraits;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -62,5 +64,12 @@ public abstract class MixinForgeHooks {
 				ci.setReturnValue(player.getDigSpeed(state, pos) / hardness / 30F);
 			}
 		}
+	}
+
+	@Inject(method = "canContinueUsing", at = @At("HEAD"), cancellable = true, remap = false)
+	public static void moretcon$HEAD_Inject$canContinueUsing(ItemStack from, ItemStack to, CallbackInfoReturnable<Boolean> ci) {
+		if (ReequipHack.HAS_PROCESSED.get())
+			return;
+		ci.setReturnValue(ReequipHack.canContinueUsing(from, to));
 	}
 }

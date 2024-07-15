@@ -1,6 +1,7 @@
 package com.existingeevee.moretcon.traits.traits;
 
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.traits.ModTraits;
 import com.existingeevee.moretcon.traits.traits.abst.DurabilityShieldTrait;
 
@@ -11,6 +12,7 @@ public class Overslime extends DurabilityShieldTrait {
 
 	public Overslime() {
 		super(MiscUtils.createNonConflictiveName("overslime"), 0);
+		ReequipHack.registerIgnoredKey(this.getModifierIdentifier());
 	}
 
 	@Override

@@ -6,11 +6,13 @@
   	"early.common.MixinLoadController",
    	"early.common.MixinItemStack",
    	"early.common.MixinEntity",
-  	"early.common.MixinForgeHooks"
+  	"early.common.MixinForgeHooks",
+  	"early.common.MixinForgeHooksClient"
   ],
   "client": [
     "early.client.MixinRenderItem",
-    "early.client.MixinItemRenderer"
+    "early.client.MixinItemRenderer",
+    "early.client.MixinGuiIngame"
   ],
   "server": [
   ]
