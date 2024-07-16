@@ -1,16 +1,12 @@
 package com.existingeevee.moretcon.mixin.early.client;
 
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.existingeevee.moretcon.other.utils.ReequipHack;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.item.ItemStack;
 
@@ -19,28 +15,37 @@ public class MixinGuiIngame {
 
 	@Shadow
 	Minecraft mc;
-
 	@Shadow
 	int remainingHighlightTicks;
 	@Shadow
-	ItemStack highlightingItemStack = ItemStack.EMPTY;
+	ItemStack highlightingItemStack;
+	@Shadow
+    protected int updateCounter;
+	@Shadow
+    protected int overlayMessageTime;
+	@Shadow
+    protected int titlesTimer;
+	@Shadow
+    protected String displayedTitle;
+	@Shadow
+    protected String displayedSubTitle;
+	
+	@Overwrite
+	public void updateTick() {
+		if (this.overlayMessageTime > 0) {
+			--this.overlayMessageTime;
+		}
 
-	@Unique
-	private static final ThreadLocal<Boolean> IS_HANDLED = ThreadLocal.withInitial(() -> false);
+		if (this.titlesTimer > 0) {
+			--this.titlesTimer;
 
-	@Inject(method = "updateTick()V", at = @At(value = "HEAD"))
-	public void moretcon$HEAD_Inject$updateTick(CallbackInfo ci) {
-		if (IS_HANDLED.get())
-			return;
-		IS_HANDLED.set(true);
+			if (this.titlesTimer <= 0) {
+				this.displayedTitle = "";
+				this.displayedSubTitle = "";
+			}
+		}
 
-		EntityPlayerSP player = mc.player;
-		mc.player = null;
-
-		((GuiIngame) (Object) this).updateTick();
-
-		mc.player = player;
-		IS_HANDLED.set(false);
+		++this.updateCounter;
 
 		if (this.mc.player != null) {
 			ItemStack itemstack = this.mc.player.inventory.getCurrentItem();
@@ -59,5 +64,4 @@ public class MixinGuiIngame {
 		}
 	}
 
-	
 }
