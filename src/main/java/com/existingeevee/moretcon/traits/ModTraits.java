@@ -151,7 +151,6 @@ public class ModTraits {
 	public static Reaching reaching2 = new Reaching(2);
 	public static Supercritical supercritical1 = new Supercritical(1);
 	public static Supercritical supercritical2 = new Supercritical(2);
-	public static Supercritical supercritical3 = new Supercritical(3);
 
 	public static Aetheric aetheric = new Aetheric();
 	public static Rootplicating rootplicating = new Rootplicating();

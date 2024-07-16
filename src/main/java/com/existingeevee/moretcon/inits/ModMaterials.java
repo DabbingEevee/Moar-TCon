@@ -690,8 +690,8 @@ public class ModMaterials implements MaterialTypes {
 			materialZracohlium.setCastable(true);
 			materialZracohlium.setCraftable(false);
 			materialZracohlium.setRepresentativeItem("ingotZracohlium");			
-			materialZracohlium.addTrait(ModTraits.supercritical2, HEAD);
-			materialZracohlium.addTrait(TinkerTraits.coldblooded, HEAD);
+			materialZracohlium.addTrait(ModTraits.supercritical1, HEAD);
+			materialZracohlium.addTrait(TinkerTraits.coldblooded, HEAD);	
 			materialZracohlium.addTrait(ModTraits.pyrophoric);
 			materialZracohlium.addTrait(ModTraits.supercritical1);
 			materialZracohlium.addTrait(ModTraits.radioactive);
