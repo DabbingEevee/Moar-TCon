@@ -36,6 +36,7 @@ fluid.moretcon.liquidfusionlava=Fusion Lava
 fluid.moretcon.liquidblightsteel=Molten Blightsteel
 fluid.moretcon.liquidsanguiseelium=Molten Sanguiseelium
 fluid.moretcon.liquifiedsouls=Liquified Souls
+fluid.moretcon.liquidzracohlium=Molten Zracohlium
 
 item.moretcon.betweenifiedmodifier.desc=Adding this to any tool will allow for its full efficiency to be used in the Betweenlands.
 item.moretcon.crushingmodifier.desc=Adding this to any tool will convert 1% of its damage to true damage per level.
@@ -92,6 +93,7 @@ item.moretcon.dusthallowsite.name=Hallowsite Dust
 item.moretcon.dustancientalloy.name=Ancient Alloy Dust
 item.moretcon.dustblightsteel.name=Blightsteel Dust
 item.moretcon.dustsanguiseelium.name=Sanguiseelium Dust
+item.moretcon.dustzracohlium.name=Zracohlium Dust
 
 item.moretcon.gembloodstone.name=Bloodstone
 item.moretcon.gemechostone.name=Echostone
@@ -125,6 +127,7 @@ item.moretcon.ingothallowsite.name=Hallowsite Ingot
 item.moretcon.ingotancientalloy.name=Ancient Alloy Ingot
 item.moretcon.ingotblightsteel.name=Blightsteel Ingot
 item.moretcon.ingotsanguiseelium.name=Sanguiseelium Ingot
+item.moretcon.ingotzracohlium.name=Zracohlium Ingot
 
 item.moretcon.itemsiltclay.name=Silt Clay
 item.moretcon.lightning.name=Lightning
@@ -149,6 +152,7 @@ item.moretcon.nuggethallowsite.name=Hallowsite Nugget
 item.moretcon.nuggetancientalloy.name=Ancient Alloy Nugget
 item.moretcon.nuggetblightsteel.name=Blightsteel Nugget
 item.moretcon.nuggetsanguiseelium.name=Sanguiseelium Nugget
+item.moretcon.nuggetzracohlium.name=Zracohlium Nugget
 
 item.moretcon.rawsteel.name=Raw Steel
 item.moretcon.ring.name=Ring
@@ -161,7 +165,7 @@ item.moretcon.sulfurbucketiron.name=Sulfur Bucket
 item.moretcon.sulfurbucketsyrmorite.name=Syrmorite Bucket (Sulfur)
 
 itemGroup.moarTConMaterials=Moar TCon: Materials
-itemGroup.moarTConMisc=Moar TCon Misc
+itemGroup.moarTConMisc=Moar TCon: Misc
 itemGroup.uniqueToolParts=Unique Toolparts
 
 material.moretcon.anglertooth.name=Angler Tooth
@@ -212,6 +216,7 @@ material.moretcon.hallowsite.name=Hallowsite
 material.moretcon.ancientalloy.name=Ancient Alloy
 material.moretcon.blightsteel.name=Blightsteel
 material.moretcon.sanguiseelium.name=Sanguiseelium
+material.moretcon.zracohlium.name=Zracohlium
 
 material.uniquetoolpart.name=Unique
 
@@ -422,6 +427,7 @@ tile.moretcon.blockhallowsite.name=Block of Hallowsite
 tile.moretcon.blockancientalloy.name=Block of Ancient Alloy
 tile.moretcon.blockblightsteel.name=Block of Blightsteel
 tile.moretcon.blocksanguiseelium.name=Block of Sanguiseelium
+tile.moretcon.blockzracohlium.name=Block of Zracohlium
 
 tile.moretcon.blockcobbledbedrock.name=Cobbled Bedrock
 tile.moretcon.blockcobbledbetweenbedrock.name=Cobbled Betweenlands Bedrock
@@ -456,6 +462,7 @@ tile.moretcon.liquidblightsteel.name=Molten Blightsteel
 tile.moretcon.liquidsanguiseelium.name=Molten Sanguiseelium
 tile.moretcon.mummysludge.name=Mummy Sludge
 tile.moretcon.liquifiedsouls.name=Liquified Souls
+tile.moretcon.liquidzracohlium.name=Molten Zracohlium
 
 tile.moretcon.orearkenium.name=Arkenium Ore
 tile.moretcon.orebloodstone.name=Bloodstone Ore
@@ -476,6 +483,7 @@ tile.moretcon.oreebonite.name=Ebonite Ore
 tile.moretcon.oreerythynite.name=Erythynite Ore
 tile.moretcon.oreelectarite.name=Electarite Ore
 tile.moretcon.orehallowsite.name=Hallowsite Ore
+tile.moretcon.orezracohlium.name=Zracohlium Ore
 
 tile.moretcon.blockotherstone.name=Otherstone
 tile.moretcon.rottensludge.name=Rotten Sludge
