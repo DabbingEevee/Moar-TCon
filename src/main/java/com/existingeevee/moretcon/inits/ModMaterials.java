@@ -37,7 +37,7 @@ import twilightforest.compat.TConstruct;
 public class ModMaterials implements MaterialTypes {
 
 	public static int totalMaterials;
-	
+
 	public static final Material materialWeedwood = new Material(MiscUtils.createNonConflictiveName("weedwood"), 0xcc9900);
 	public static final Material materialIronwood = new Material(MiscUtils.createNonConflictiveName("ironwood"), 0xcc9900);
 	public static final Material materialFusionite = new Material(MiscUtils.createNonConflictiveName("fusionite"), 0x3399ff);
@@ -378,7 +378,7 @@ public class ModMaterials implements MaterialTypes {
 			materialSpaceTimeDisruption.addTrait(TinkerTraits.dense);
 			materialSpaceTimeDisruption.addTrait(ModTraits.luminescent);
 			materialSpaceTimeDisruption.addTrait(ModTraits.blinkdrawn);
-			TinkerRegistry.addMaterialStats(materialSpaceTimeDisruption, new BowMaterialStats(Float.POSITIVE_INFINITY, 3f, 3f)); // big
+			TinkerRegistry.addMaterialStats(materialSpaceTimeDisruption, new BowMaterialStats(Float.MAX_VALUE, 3f, 3f)); // big
 			TinkerRegistry.addMaterialStats(materialSpaceTimeDisruption, new HeadMaterialStats(500, 10f, 8f, 6));
 
 			materialVoidSpar.addItem("gemVoidSpar", 1, Material.VALUE_Ingot);
@@ -655,7 +655,8 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialBlightsteel, new HeadMaterialStats(1020, 6.5f, 8f, 6));
 			TinkerRegistry.addMaterialStats(materialBlightsteel, new HandleMaterialStats(2.5f, 80));
 			TinkerRegistry.addMaterialStats(materialBlightsteel, new ExtraMaterialStats(100));
-			TinkerRegistry.addMaterialStats(materialBlightsteel, new ArrowShaftMaterialStats(1.5f, 125));			TinkerRegistry.addMaterialStats(materialBlightsteel, new BowMaterialStats(1.2f, 1.3f, 0.8f));
+			TinkerRegistry.addMaterialStats(materialBlightsteel, new ArrowShaftMaterialStats(1.5f, 125));
+			TinkerRegistry.addMaterialStats(materialBlightsteel, new BowMaterialStats(1.2f, 1.3f, 0.8f));
 
 			materialQuakestruck.addTrait(ModTraits.seismishock);
 			TinkerRegistry.addMaterialStats(materialQuakestruck, new HeadMaterialStats(1800, 20f, 18f, 8));
@@ -689,9 +690,9 @@ public class ModMaterials implements MaterialTypes {
 			materialZracohlium.setFluid(ModFluids.liquidZracohlium);
 			materialZracohlium.setCastable(true);
 			materialZracohlium.setCraftable(false);
-			materialZracohlium.setRepresentativeItem("ingotZracohlium");			
+			materialZracohlium.setRepresentativeItem("ingotZracohlium");
 			materialZracohlium.addTrait(ModTraits.supercritical1, HEAD);
-			materialZracohlium.addTrait(TinkerTraits.coldblooded, HEAD);	
+			materialZracohlium.addTrait(TinkerTraits.coldblooded, HEAD);
 			materialZracohlium.addTrait(ModTraits.pyrophoric);
 			materialZracohlium.addTrait(ModTraits.supercritical1);
 			materialZracohlium.addTrait(ModTraits.radioactive);
@@ -937,7 +938,6 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialEmberlight, new HeadMaterialStats(1200, 7.0f, 10.0f, 4));
 			TinkerRegistry.addMaterialStats(materialEmberlight, new HandleMaterialStats(2.0f, 20));
 			TinkerRegistry.addMaterialStats(materialEmberlight, new ExtraMaterialStats(12));
-			TinkerRegistry.addMaterialStats(materialEmberlight, new ArrowShaftMaterialStats(1.0f, 15));
 			CompositeRegistry.registerComposite(() -> materialValonite, () -> materialEmberlight, () -> ModFluids.liquidEmber);
 			TinkerRegistry.addMaterialStats(materialEmberlight, whyWouldYouMakeABowOutOfThis);
 
@@ -1016,7 +1016,7 @@ public class ModMaterials implements MaterialTypes {
 	}
 
 	public static void init() {
-		initMats();		
+		initMats();
 		if (CompatManager.plustic) {
 			ModMaterials.registerMaterial(materialCrimson);
 		}
