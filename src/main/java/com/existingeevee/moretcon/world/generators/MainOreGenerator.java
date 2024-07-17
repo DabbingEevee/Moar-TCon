@@ -20,6 +20,7 @@ public class MainOreGenerator extends WorldGenModifier {
 		runGenerator(ModBlocks.oreGallium.getDefaultState(), 3, 1, 12, 24, BlockMatcher.forBlock(Blocks.STONE), ctx);
 		runGenerator(ModBlocks.oreVoidSpar.getDefaultState(), 3, 3, 1, 3, BlockMatcher.forBlock(Blocks.STONE), ctx);
 		runGenerator(ModBlocks.oreElectarite.getDefaultState(), 4, 3, 24, 48, BlockMatcher.forBlock(Blocks.STONE), false, ctx);
+		runGenerator(ModBlocks.oreZracohlium.getDefaultState(), 4, 3, 24, 72, BlockMatcher.forBlock(Blocks.END_STONE), false, ctx);
 		runGenerator(ModBlocks.oreEnderal.getDefaultState(), 4, 3, 12, 32, BlockMatcher.forBlock(Blocks.END_STONE), ctx);
 		runGenerator(ModBlocks.oreEchostone.getDefaultState(), 4, 6, 12, 48, BlockMatcher.forBlock(Blocks.END_STONE), ctx);
 		runGenerator(ModBlocks.oreGarstone.getDefaultState(), 3, 2, 75, 100, BlockMatcher.forBlock(Blocks.STONE), ctx);		
