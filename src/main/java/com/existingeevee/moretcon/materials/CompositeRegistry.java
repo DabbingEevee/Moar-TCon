@@ -64,7 +64,7 @@ public class CompositeRegistry {
 
 		for (int i = 0; i < data.size(); i++) {
 			ModelLoader.setCustomModelResourceLocation(ItemCompositeRep.getItemInstance(), i, new ModelResourceLocation(
-					ModInfo.MODID + ":" + "repitem" + data.get(i).getResult().identifier, "inventory"));
+					ModInfo.MODID + ":repitem" + data.get(i).getResult().identifier, "inventory"));
 		}
 	}
 
