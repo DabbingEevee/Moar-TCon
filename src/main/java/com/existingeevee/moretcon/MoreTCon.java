@@ -18,6 +18,7 @@ import com.existingeevee.moretcon.inits.recipes.OreRecipes;
 import com.existingeevee.moretcon.inits.recipes.SmelteryInit;
 import com.existingeevee.moretcon.inits.recipes.UniqueToolpartRecipes;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
+import com.existingeevee.moretcon.materials.MTMaterialIntegration;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.EventWatcherMain;
 import com.existingeevee.moretcon.other.ModTabs;
@@ -136,6 +137,12 @@ public class MoreTCon {
 		FurnaceInit.init();
 		SpongeRegistry.postInit();
 		
+		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
+			if (integration instanceof MTMaterialIntegration) {
+				((MTMaterialIntegration) integration).refreshFluid();
+			}
+		}
+		
 		proxy.init();
 	}
 
@@ -185,7 +192,4 @@ public class MoreTCon {
 }
 
 //ally of both trait
-//make g-sponges not hell
 //move recipes away from fusionite
-
-

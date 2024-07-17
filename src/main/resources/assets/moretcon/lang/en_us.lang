@@ -217,6 +217,7 @@ material.moretcon.ancientalloy.name=Ancient Alloy
 material.moretcon.blightsteel.name=Blightsteel
 material.moretcon.sanguiseelium.name=Sanguiseelium
 material.moretcon.zracohlium.name=Zracohlium
+material.moretcon.searedstone.name=Seared Stone
 
 material.uniquetoolpart.name=Unique
 
@@ -375,6 +376,8 @@ modifier.moretcon.pyrophoric.name=Pyrophoric
 modifier.moretcon.pyrophoric.desc=§oWarning: Exposure to oxygen may have adverse consequences§r\nYour tool will randomly ignite, granting fire damage as well as an overall boost to the tool.
 modifier.moretcon.supercritical.name=Supercritical
 modifier.moretcon.supercritical.desc=§oBig damage!!!§r\nYour tool's critical hits will have a higher crit modifier.
+modifier.moretcon.searing.name=Searing
+modifier.moretcon.searing.desc=§oHarness the Smeltery!§r\nYour tool mines meltable blocks such as stone and metal ores faster.
 
 moretcon.bloodgodsblessing=Blood God's Blessing
 moretcon.hyperflames=Hyperflames

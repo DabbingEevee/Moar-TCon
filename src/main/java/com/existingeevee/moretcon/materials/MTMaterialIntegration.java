@@ -66,4 +66,10 @@ public class MTMaterialIntegration extends MaterialIntegration {
 			e.printStackTrace();
 		}
 	}
+
+	public void refreshFluid() {
+		if (material instanceof DelagateFluidMaterial) {
+			fluid = material.getFluid();
+		}
+	}
 }

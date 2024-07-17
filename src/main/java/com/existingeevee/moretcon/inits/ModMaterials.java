@@ -4,6 +4,7 @@ import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
+import com.existingeevee.moretcon.materials.DelagateFluidMaterial;
 import com.existingeevee.moretcon.materials.MTMaterialIntegration;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.MoreTConLogger;
@@ -88,12 +89,12 @@ public class ModMaterials implements MaterialTypes {
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
+	public static final DelagateFluidMaterial materialSearedStone = new DelagateFluidMaterial(MiscUtils.createNonConflictiveName("searedstone"), 0x4f4a47);
 
 	//TODO
 	// public static final Material materialQueensslime = new Material(Misc.createNonConflictiveName("queensslime"), 0x565808); //Need Custom
 	// public static final Material materialHepatizon = new Material(Misc.createNonConflictiveName("hepatizon"), 0xf1ea3b);
 	// public static final Material materialSlimesteel = new Material(Misc.createNonConflictiveName("slimesteel"), 0x47efea);
-	// public static final Material materialSearedStone = new Material(Misc.createNonConflictiveName("searedstone"), 0x4f4a47);
 	// public static final Material materialScorchedStone = new Material(Misc.createNonConflictiveName("scorchedstone"), 0x53453c);
 	// public static final Material materialBloodbone = new Material(Misc.createNonConflictiveName("bloodbone"), 0xb80000);
 	// public static final Material materialNecroticBone = new Material(Misc.createNonConflictiveName("necrobone"), 0x343434);
@@ -164,7 +165,7 @@ public class ModMaterials implements MaterialTypes {
 
 	private static void initMats() {
 		BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
-
+		
 		if (CompatManager.tic3backport) {
 			materialNahuatl.setCastable(false);
 			materialNahuatl.setCraftable(false);
@@ -211,6 +212,20 @@ public class ModMaterials implements MaterialTypes {
 
 			TinkerMaterials.magmaslime.addTrait(ModTraits.fireslime, HEAD);
 			TinkerMaterials.magmaslime.addTrait(ModTraits.overgrowth);
+
+			materialSearedStone.addItem("blockSeared", 1, Material.VALUE_Ingot);
+			materialSearedStone.setFluid(() -> TinkerFluids.searedStone);
+			materialSearedStone.setCastable(true);
+			materialSearedStone.setCraftable(true);
+			materialSearedStone.setRepresentativeItem("blockSeared");
+			materialSearedStone.addTrait(TinkerTraits.stonebound);
+			materialSearedStone.addTrait(ModTraits.searing);
+			materialSearedStone.addTrait(TinkerTraits.crude, HEAD);
+			materialSearedStone.addTrait(ModTraits.searing2, HEAD);
+			TinkerRegistry.addMaterialStats(materialSearedStone, new HeadMaterialStats(225, 1.5f, 6.5f, 1));
+			TinkerRegistry.addMaterialStats(materialSearedStone, new HandleMaterialStats(0.85f, -25));
+			TinkerRegistry.addMaterialStats(materialSearedStone, new ExtraMaterialStats(-15));
+			TinkerRegistry.addMaterialStats(materialSearedStone, whyWouldYouMakeABowOutOfThis);
 		}
 
 		if (CompatManager.plustic) {
@@ -1017,6 +1032,7 @@ public class ModMaterials implements MaterialTypes {
 
 	public static void init() {
 		initMats();
+		
 		if (CompatManager.plustic) {
 			ModMaterials.registerMaterial(materialCrimson);
 		}
@@ -1024,77 +1040,77 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialTechnoblade);
 		}
 		if (CompatManager.loadMain) {
-			ModMaterials.registerMaterial(materialZracohlium);
-			ModMaterials.registerMaterial(materialPlasma);
+			ModMaterials.registerMaterial(materialZracohlium).toolforge();
+			ModMaterials.registerMaterial(materialPlasma, null);
 			ModMaterials.registerMaterial(materialFusionite).toolforge();
 			ModMaterials.registerMaterial(materialValasium).toolforge();
-			ModMaterials.registerMaterial(materialSpaceTimeDisruption, "SpaceTimeDisruption");
+			ModMaterials.registerMaterial(materialSpaceTimeDisruption, null);
 			ModMaterials.registerMaterial(materialVoidSpar, "VoidSpar").toolforge();
 			ModMaterials.registerMaterial(materialEnderal).toolforge();
 			ModMaterials.registerMaterial(materialIrradium).toolforge();
 			ModMaterials.registerMaterial(materialSolsteel).toolforge();
 			ModMaterials.registerMaterial(materialGallium).toolforge();
-			ModMaterials.registerMaterial(materialEnderexamite);
+			ModMaterials.registerMaterial(materialEnderexamite, null);
 			ModMaterials.registerMaterial(materialGarstone).toolforge();
 			ModMaterials.registerMaterial(materialRuneSteel).toolforge();
 			ModMaterials.registerMaterial(materialGravitonium).toolforge();
 			ModMaterials.registerMaterial(materialTrichromadentium).toolforge();
-			ModMaterials.registerMaterial(materialTriblade);
-			ModMaterials.registerMaterial(materialMirrored);
-			ModMaterials.registerMaterial(materialTrailblazer);
+			ModMaterials.registerMaterial(materialTriblade, null);
+			ModMaterials.registerMaterial(materialMirrored, null);
+			ModMaterials.registerMaterial(materialTrailblazer, null);
 			ModMaterials.registerMaterial(materialBloodstone).toolforge();
 			ModMaterials.registerMaterial(materialEchostone).toolforge();
 			ModMaterials.registerMaterial(materialIgniglomerate).toolforge();
 			ModMaterials.registerMaterial(materialAtronium).toolforge();
 			ModMaterials.registerMaterial(materialEbonite).toolforge();
 			ModMaterials.registerMaterial(materialErythynite).toolforge();
-			ModMaterials.registerMaterial(materialShadowglass);
+			ModMaterials.registerMaterial(materialShadowglass, null);
 			ModMaterials.registerMaterial(materialEtherstone).toolforge();
-			ModMaterials.registerMaterial(materialEssencore);
+			ModMaterials.registerMaterial(materialEssencore, null);
 			ModMaterials.registerMaterial(materialElectarite).toolforge();
 			ModMaterials.registerMaterial(materialHallowsite).toolforge();
-			ModMaterials.registerMaterial(materialQuakestruck);
-			ModMaterials.registerMaterial(materialCryosplinters);
-			ModMaterials.registerMaterial(materialBlightsteel);
-			ModMaterials.registerMaterial(materialSanguiseelium);
-			ModMaterials.registerMaterial(materialAutoloader);
-			ModMaterials.registerMaterial(materialVengeance);
+			ModMaterials.registerMaterial(materialQuakestruck, null);
+			ModMaterials.registerMaterial(materialCryosplinters, null);
+			ModMaterials.registerMaterial(materialBlightsteel).toolforge();
+			ModMaterials.registerMaterial(materialSanguiseelium).toolforge();
+			ModMaterials.registerMaterial(materialAutoloader, null);
+			ModMaterials.registerMaterial(materialVengeance, null);
 		}
 		if (CompatManager.tic3backport) {
-			ModMaterials.registerMaterial(materialNahuatl);
-			ModMaterials.registerMaterial(materialSlimewood);
-
+			ModMaterials.registerMaterial(materialNahuatl, null);
+			ModMaterials.registerMaterial(materialSlimewood, null);
+			ModMaterials.registerMaterial(materialSearedStone, null);	
 		}
 
 		if (CompatManager.twilightforest) {
 			ModMaterials.registerMaterial(materialIronwood).toolforge();
 			ModMaterials.registerMaterial(materialPenguinite).toolforge();
-			ModMaterials.registerMaterial(materialFerroherb);
+			ModMaterials.registerMaterial(materialFerroherb, null);
 		}
 		if (CompatManager.aether_legacy) {
 			ModMaterials.registerMaterial(materialArkenium).toolforge();
-			ModMaterials.registerMaterial(materialSkyroot);
-			ModMaterials.registerMaterial(materialHolystone);
+			ModMaterials.registerMaterial(materialSkyroot, null);
+			ModMaterials.registerMaterial(materialHolystone, null);
 			ModMaterials.registerMaterial(materialZanite).toolforge();
 			ModMaterials.registerMaterial(materialGravitite).toolforge();
 			ModMaterials.registerMaterial(materialValkyrieMetal, "ValkyrieMetal").toolforge();
-			ModMaterials.registerMaterial(materialAmberwood);
-			ModMaterials.registerMaterial(materialSkybolt);
+			ModMaterials.registerMaterial(materialAmberwood, null);
+			ModMaterials.registerMaterial(materialSkybolt, null);
 		}
 		if (CompatManager.thebetweenlands) {
-			ModMaterials.registerMaterial(materialShockwave);
+			ModMaterials.registerMaterial(materialShockwave, null);
 			ModMaterials.registerMaterial(materialSyrmorite).toolforge();
 			ModMaterials.registerMaterial(materialOctine).toolforge();
 			ModMaterials.registerMaterial(materialValonite).toolforge();
-			ModMaterials.registerMaterial(materialReedRope, "ReedRope");
-			ModMaterials.registerMaterial(materialDragonFlyWing, "DragonFlyWing");
-			ModMaterials.registerMaterial(materialAnglerTooth, "AnglerTooth");
-			ModMaterials.registerMaterial(materialWeedwood, "WeedWood");
+			ModMaterials.registerMaterial(materialReedRope, null);
+			ModMaterials.registerMaterial(materialDragonFlyWing, null);
+			ModMaterials.registerMaterial(materialAnglerTooth, null);
+			ModMaterials.registerMaterial(materialWeedwood, null);
 			ModMaterials.registerMaterial(materialSlimyBone, "SlimyBone").toolforge();
 			ModMaterials.registerMaterial(materialSwampSteel).toolforge();
 			ModMaterials.registerMaterial(materialRotiron).toolforge();
-			ModMaterials.registerMaterial(materialEmberlight);
-			ModMaterials.registerMaterial(materialWormed);
+			ModMaterials.registerMaterial(materialEmberlight, null);
+			ModMaterials.registerMaterial(materialWormed, null);
 			ModMaterials.registerMaterial(materialAncientAlloy).toolforge();
 
 			MaterialUtils.readdTinkerMaterial(TinkerMaterials.bone);
@@ -1109,7 +1125,7 @@ public class ModMaterials implements MaterialTypes {
 	}
 
 	public static MaterialIntegration registerMaterial(Material material, String suffix) {
-		return registerMaterials(material, material.getFluid(), suffix, "ingot" + suffix);
+		return registerMaterials(material, material.getFluid(), suffix, suffix == null ? null : ("ingot" + suffix));
 	}
 
 	public static MaterialIntegration registerMaterial(Material material, String suffix, String... requiredOreDicts) {

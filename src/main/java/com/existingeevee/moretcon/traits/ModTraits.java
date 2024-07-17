@@ -54,6 +54,7 @@ import com.existingeevee.moretcon.traits.traits.Receptive;
 import com.existingeevee.moretcon.traits.traits.Resilient;
 import com.existingeevee.moretcon.traits.traits.Rootplicating;
 import com.existingeevee.moretcon.traits.traits.Rotten;
+import com.existingeevee.moretcon.traits.traits.Searing;
 import com.existingeevee.moretcon.traits.traits.SkysBlessing;
 import com.existingeevee.moretcon.traits.traits.Slicing;
 import com.existingeevee.moretcon.traits.traits.Soulforged;
@@ -151,16 +152,16 @@ public class ModTraits {
 	public static Reaching reaching2 = new Reaching(2);
 	public static Supercritical supercritical1 = new Supercritical(1);
 	public static Supercritical supercritical2 = new Supercritical(2);
-
 	public static Aetheric aetheric = new Aetheric();
 	public static Rootplicating rootplicating = new Rootplicating();
 	public static SkysBlessing blessed = new SkysBlessing();
 	public static Treetap treetap = new Treetap();
-
 	public static StackDelagateTrait boltforged = new Boltforged();
-
 	public static Pyrophoric pyrophoric = new Pyrophoric();
+	public static Searing searing = new Searing(1);
+	public static Searing searing2 = new Searing(2);
 
+	
 	public static MatterReconstructionGel repair;
 
 	public static AntiGravity antigravity;
