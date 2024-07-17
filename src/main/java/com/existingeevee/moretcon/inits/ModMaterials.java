@@ -84,7 +84,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialAncientAlloy = new Material(MiscUtils.createNonConflictiveName("ancientalloy"), 0xa2c2c0);
 	public static final Material materialBlightsteel = new Material(MiscUtils.createNonConflictiveName("blightsteel"), 0x243c5a);
 	public static final Material materialSanguiseelium = new Material(MiscUtils.createNonConflictiveName("sanguiseelium"), 0x6b1313);
-	public static final Material materialZracohlium = new Material(MiscUtils.createNonConflictiveName("zracohlium"), 0x696942);
+	public static final Material materialZracohlium = new Material(MiscUtils.createNonConflictiveName("zracohlium"), 0x444c2a);
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
