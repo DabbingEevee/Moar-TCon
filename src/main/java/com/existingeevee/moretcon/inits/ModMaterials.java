@@ -435,6 +435,7 @@ public class ModMaterials implements MaterialTypes {
 			materialEchostone.setCraftable(true);
 			materialEchostone.setRepresentativeItem("gemEchostone");
 			materialEchostone.addTrait(TinkerTraits.unnatural);
+			materialEchostone.addTrait(ModTraits.eularsWrath);
 			materialEchostone.addTrait(ModTraits.afterimage, HEAD);
 			materialEchostone.addTrait(ModTraits.luminescent, HEAD);
 			materialEchostone.addTrait(ModTraits.luminescent);

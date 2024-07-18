@@ -29,6 +29,7 @@ import com.existingeevee.moretcon.traits.traits.ColdFire;
 import com.existingeevee.moretcon.traits.traits.Corroding;
 import com.existingeevee.moretcon.traits.traits.Darkened;
 import com.existingeevee.moretcon.traits.traits.Electrified;
+import com.existingeevee.moretcon.traits.traits.EularsWrath;
 import com.existingeevee.moretcon.traits.traits.Fireslime;
 import com.existingeevee.moretcon.traits.traits.Hardcore;
 import com.existingeevee.moretcon.traits.traits.Haunted;
@@ -160,6 +161,7 @@ public class ModTraits {
 	public static Pyrophoric pyrophoric = new Pyrophoric();
 	public static Searing searing = new Searing(1);
 	public static Searing searing2 = new Searing(2);
+	public static EularsWrath eularsWrath = new EularsWrath();
 
 	
 	public static MatterReconstructionGel repair;
