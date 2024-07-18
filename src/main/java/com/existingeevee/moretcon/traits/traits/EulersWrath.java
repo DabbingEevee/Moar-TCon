@@ -13,10 +13,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-public class EularsWrath extends AbstractTrait {
+public class EulersWrath extends AbstractTrait {
 
-	public EularsWrath() {
-		super(MiscUtils.createNonConflictiveName("eulars_wrath"), 0);
+	public EulersWrath() {
+		super(MiscUtils.createNonConflictiveName("eulers_wrath"), 0);
 	}
 
 	@Override

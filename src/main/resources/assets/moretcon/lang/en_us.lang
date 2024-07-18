@@ -378,8 +378,8 @@ modifier.moretcon.supercritical.name=Supercritical
 modifier.moretcon.supercritical.desc=§oBig damage!!!§r\nYour tool's critical hits will have a higher crit modifier.
 modifier.moretcon.searing.name=Searing
 modifier.moretcon.searing.desc=§oHarness the Smeltery!§r\nYour tool mines meltable blocks such as stone and metal ores faster.
-modifier.moretcon.eulars_wrath.name=Eular's Wrath
-modifier.moretcon.eulars_wrath.desc=§oHes upset because you rounded it to 3...§r\nYour tool is approximately 2.1718x as effective, approximately 1 in 2.1718 times.
+modifier.moretcon.eulers_wrath.name=Euler's Wrath
+modifier.moretcon.eulers_wrath.desc=§oHes upset because you rounded it to 3...§r\nYour tool is approximately 2.1718x as effective, approximately 1 in 2.1718 times.
 
 
 moretcon.bloodgodsblessing=Blood God's Blessing
