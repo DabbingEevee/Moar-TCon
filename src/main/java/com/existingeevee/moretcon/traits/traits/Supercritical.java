@@ -23,9 +23,8 @@ public class Supercritical extends AbstractTraitLeveled {
 
 		if (index > -1 && isCritical) {
 			ModifierNBT modifier = ModifierNBT.readTag(tagList.getCompoundTagAt(index));
-			float unmodifiedDamage = newDamage / 1.5f;
 			
-			return newDamage + unmodifiedDamage * (modifier.level * 0.25f);
+			return newDamage + newDamage * (modifier.level * 0.25f);
 		}
 		return newDamage;
 	}
