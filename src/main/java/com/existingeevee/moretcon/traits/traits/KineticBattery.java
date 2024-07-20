@@ -1,6 +1,7 @@
 package com.existingeevee.moretcon.traits.traits;
 
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 
@@ -19,6 +20,7 @@ public class KineticBattery extends NumberTrackerTrait {
 
 	public KineticBattery() {
 		super(MiscUtils.createNonConflictiveName("kinetic_battery"), 0);
+		ReequipHack.registerIgnoredKey(this.getModifierIdentifier());
 	}
 
 	@Override
