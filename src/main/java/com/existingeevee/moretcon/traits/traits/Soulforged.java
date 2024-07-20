@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import com.existingeevee.moretcon.other.utils.ArrowReferenceHelper;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.traits.traits.abst.NumberTrackerTrait;
 
 import net.minecraft.block.state.IBlockState;
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -27,6 +29,8 @@ public class Soulforged extends NumberTrackerTrait implements IProjectileTrait {
 
 	public Soulforged(int lvl) {
 		super(MiscUtils.createNonConflictiveName("soulforged"), 0, 3, lvl);
+		ReequipHack.registerIgnoredKey(getModifierIdentifier());
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@Override

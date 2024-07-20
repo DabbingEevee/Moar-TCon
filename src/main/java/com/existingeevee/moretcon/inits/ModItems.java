@@ -135,6 +135,7 @@ public class ModItems {
 	public static final Item sulfurBucketSyrmorite = new ItemBase("sulfurBucketSyrmorite").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item sulfurBucketIron = new ItemBase("sulfurBucketIron").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item betweenicCore = new ItemBase("betweenicCore", 0x3a2f24).setTab(ModTabs.moarTConMisc);
+	public static final Item solidLightning = new ItemBase("solidLightning", 0xb4e5ff).setTab(ModTabs.moarTConMisc);
 
 	//Modifier items
 	public static final Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
@@ -217,7 +218,8 @@ public class ModItems {
 					carbonPile,
 					rawSteel,
 					spaceTimeDisruptionPowder,
-					hydrogenRichRedstonePowder
+					hydrogenRichRedstonePowder,
+					solidLightning
 
 			/**-------------------------------------**/
 

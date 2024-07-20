@@ -66,13 +66,13 @@ import com.existingeevee.moretcon.traits.traits.Voidic;
 import com.existingeevee.moretcon.traits.traits.Withered;
 import com.existingeevee.moretcon.traits.traits.abst.AttributeTrait;
 import com.existingeevee.moretcon.traits.traits.abst.DummyTrait;
-import com.existingeevee.moretcon.traits.traits.abst.StackDelagateTrait;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
 import com.existingeevee.moretcon.traits.traits.unique.Autoloading;
 import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
 import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
 import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
 import com.existingeevee.moretcon.traits.traits.unique.Boltforged;
+import com.existingeevee.moretcon.traits.traits.unique.Dematerializing;
 import com.existingeevee.moretcon.traits.traits.unique.EssentialObliteration;
 import com.existingeevee.moretcon.traits.traits.unique.Hailshot;
 import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
@@ -107,7 +107,13 @@ public class ModTraits {
 	public static BloodyArc bloodyArc = new BloodyArc();
 	public static AerialFlame aerialFlames = new AerialFlame();
 	public static Blinkdrawn blinkdrawn = new Blinkdrawn();
-
+	public static Mirroring mirroring = new Mirroring();
+	public static Seismishock seismishock = new Seismishock();
+	public static Hailshot hailshot = new Hailshot();
+	public static Autoloading autoloading = new Autoloading();
+	public static Boltforged boltforged = new Boltforged();
+	public static Dematerializing dematerializing = new Dematerializing();
+	
 	public static KineticBattery kineticBattery = new KineticBattery();
 	public static Hyperheat hyperheat = new Hyperheat();
 	public static ColdFire coldFire = new ColdFire();
@@ -120,7 +126,6 @@ public class ModTraits {
 	public static Magical magical = new Magical();
 	public static Hardcore hardcore = new Hardcore();
 	public static HyperGravity hypergravity = new HyperGravity();
-	public static Mirroring mirroring = new Mirroring();
 	public static BottomsEnd bottomsEnd = new BottomsEnd();
 	public static Slicing slicing = new Slicing();
 	public static Leeching leeching = new Leeching();
@@ -142,9 +147,6 @@ public class ModTraits {
 	public static Haunted haunted = new Haunted();
 	public static Soulforged soulforged = new Soulforged(1);
 	public static Soulforged soulforged2 = new Soulforged(2);
-	public static Seismishock seismishock = new Seismishock();
-	public static Hailshot hailshot = new Hailshot();
-	public static Autoloading autoloading = new Autoloading();
 	public static Withered withered = new Withered();
 	public static Blighted blighted = new Blighted();
 	public static Receptive receptive = new Receptive();
@@ -157,7 +159,6 @@ public class ModTraits {
 	public static Rootplicating rootplicating = new Rootplicating();
 	public static SkysBlessing blessed = new SkysBlessing();
 	public static Treetap treetap = new Treetap();
-	public static StackDelagateTrait boltforged = new Boltforged();
 	public static Pyrophoric pyrophoric = new Pyrophoric();
 	public static Searing searing = new Searing(1);
 	public static Searing searing2 = new Searing(2);

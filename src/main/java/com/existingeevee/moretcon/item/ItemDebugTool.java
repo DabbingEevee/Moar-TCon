@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 public class ItemDebugTool extends ItemBase {
 
 	public ItemDebugTool() {
-		super("debugtool");
+		super("debugtool", 0xceedff);
 		this.setMaxStackSize(1);
 		this.setTab(ModTabs.moarTConMisc);
 	}

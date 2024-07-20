@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.inits.ModFluids;
+import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 
 import mezz.jei.api.IModRegistry;
@@ -44,6 +45,8 @@ public class JeiInit {
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreEtherstone, 1), "Found rarely in The End in the etheral stone from y = 199 <-> 201. \n\nMust be mined with a tool with \"Etheral Harvest\"", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreElectarite, 1), "Found more or less commonly in all stonebearing dimensions from y = 24 <-> 48. \n\nDoes not spawn exposed to air.", () -> CompatManager.loadMain));
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreHallowsite, 1), "Found more or less commonly in all netherrack-bearing dimensions from y = 45 <-> 90. ", () -> CompatManager.loadMain));
+
+			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModItems.solidLightning, 1), "Created by placing an Electarite Block above y = 245 during a thunderstorm", () -> CompatManager.loadMain));
 		}
 		if (CompatManager.aether_legacy) {
 			CUSTOM.add(new JeiInformationContainer<ItemStack>(itemstack, new ItemStack(ModBlocks.oreArkenium, 1), "Found rarely in all holystone-bearing dimensions from y = 5 <-> 250.", () -> CompatManager.aether_legacy));

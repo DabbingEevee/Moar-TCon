@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.existingeevee.moretcon.other.utils.ArrowReferenceHelper;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.traits.traits.abst.AdditionalDisplayTrait;
 import com.google.common.collect.ImmutableList;
 
@@ -42,6 +43,7 @@ public class Receptive extends AdditionalDisplayTrait implements IProjectileTrai
 	public Receptive() {
 		super(MiscUtils.createNonConflictiveName("receptive"), 0);
 		MinecraftForge.EVENT_BUS.register(this);
+		ReequipHack.registerIgnoredKey(getModifierIdentifier());
 	}
 
 	@Override

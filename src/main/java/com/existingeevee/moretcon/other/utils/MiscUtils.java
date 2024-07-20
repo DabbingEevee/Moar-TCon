@@ -34,6 +34,7 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -367,11 +368,19 @@ public class MiscUtils {
 	
 	public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double maxRange, List<Entity> exclude, boolean affectedByBlocks) {
 		Vec3d start = entityLiving.getPositionEyes(0.5f);
-		Vec3d lookVec = entityLiving.getLook(0.5f);
-		Vec3d end = start.addVector(lookVec.x * maxRange, lookVec.y * maxRange, lookVec.z * maxRange);
-		RayTraceResult firstTrace = affectedByBlocks ? entityLiving.world.rayTraceBlocks(start, end, false, false, true) : null;
+		Vec3d lookVec = entityLiving.getLookVec();
+
+		exclude = exclude == null ? new ArrayList<>() : new ArrayList<>(exclude);
+		exclude.add(entityLiving);
+
+		return rayTrace(start, lookVec, entityLiving.world, maxRange, exclude, affectedByBlocks, false);
+	}
+	
+	public static RayTraceResult rayTrace(Vec3d start, Vec3d direction, World world, double maxRange, List<Entity> exclude, boolean affectedByBlocks, boolean ignoreNoBounding) {
+		Vec3d end = start.add(direction.scale(maxRange));
+		RayTraceResult firstTrace = affectedByBlocks ? world.rayTraceBlocks(start, end, false, ignoreNoBounding, true) : null;
 		AxisAlignedBB area = new AxisAlignedBB(start, firstTrace != null ? firstTrace.hitVec : end);
-		List<Entity> entities = entityLiving.world.getEntitiesWithinAABBExcludingEntity(entityLiving, area);
+		List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(null, area);
 
 		Entity closestValid = null;
 		double closestDistSq = Double.MAX_VALUE;
@@ -379,10 +388,7 @@ public class MiscUtils {
 		for (Entity e : entities) {
 			if (!(e instanceof EntityLivingBase))
 				continue;
-
-			if (e.equals(entityLiving))
-				continue;
-
+			
 			if (exclude != null && exclude.contains(e))
 				continue;
 						
@@ -399,8 +405,11 @@ public class MiscUtils {
 
 		if (closestValid != null) {
 			return new RayTraceResult(closestValid);
-		} else {
+		} else if (firstTrace != null) {
 			return firstTrace;
+		} else {
+			return new RayTraceResult(RayTraceResult.Type.MISS, end, EnumFacing.DOWN, new BlockPos(end));
 		}
 	}
+
 }

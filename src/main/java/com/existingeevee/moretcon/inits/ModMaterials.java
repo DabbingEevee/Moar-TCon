@@ -163,6 +163,10 @@ public class ModMaterials implements MaterialTypes {
 			MiscUtils.createNonConflictiveName("vengeance"), 0x3a454a, "tconstruct:sign_head",
 			"tconstruct:battlesign");
 
+	public static final UniqueMaterial materialDematerializer = new UniqueMaterial(
+			MiscUtils.createNonConflictiveName("dematerializer"), 0xbae7ff, "tconstruct:bow_limb",
+			"tconstruct:longbow");
+	
 	private static void initMats() {
 		BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
 		
@@ -717,6 +721,10 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialZracohlium, new ExtraMaterialStats(90));
 			TinkerRegistry.addMaterialStats(materialZracohlium, new ArrowShaftMaterialStats(1.5f, 125));
 			TinkerRegistry.addMaterialStats(materialZracohlium, new BowMaterialStats(1.2f, 1.3f, 0.8f));
+			
+			TinkerRegistry.addMaterialStats(materialDematerializer, new BowMaterialStats(1f, 3.2f, 7f)); 
+			TinkerRegistry.addMaterialStats(materialDematerializer, new HeadMaterialStats(2069, 10f, 8f, 6));
+			materialDematerializer.addTrait(ModTraits.dematerializing);
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -1076,6 +1084,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialSanguiseelium).toolforge();
 			ModMaterials.registerMaterial(materialAutoloader, null);
 			ModMaterials.registerMaterial(materialVengeance, null);
+			ModMaterials.registerMaterial(materialDematerializer, null);
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl, null);

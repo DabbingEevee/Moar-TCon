@@ -214,6 +214,20 @@ public class UniqueToolpartRecipes {
 								Pair.of('S', new TinkerPartIngredient(TinkerMaterials.steel, "tconstruct:knife_blade")),
 								Pair.of('I', new TinkerPartIngredient(ModMaterials.materialIrradium, "tconstruct:sign_head"))));
 			}
+			
+			if (canRegisterUniqueRecipe(ModMaterials.materialDematerializer)) {
+				event.getRegistry().register(
+						RecipeHelper.createRecipe("dematerializer_recipe", ModMaterials.materialDematerializer.getUniqueToolPart(),
+								new String[] {
+										" LE",
+										"LRS",
+										"ES "
+								},
+								Pair.of('L', Ingredient.fromItem(ModItems.solidLightning)),
+								Pair.of('S', new OreIngredient("netherStar")),
+								Pair.of('E', new TinkerPartIngredient(ModMaterials.materialElectarite, "tconstruct:bow_limb")),
+								Pair.of('R',  Ingredient.fromStacks(new ItemStack(Blocks.END_ROD)))));
+			}
 		}
 	}
 

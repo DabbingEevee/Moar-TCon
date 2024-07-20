@@ -30,6 +30,7 @@ import com.existingeevee.moretcon.other.utils.ArrowReferenceHelper;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 import com.existingeevee.moretcon.proxy.CommonProxy;
@@ -56,6 +57,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ranged.IProjectile;
+import slimeknights.tconstruct.library.utils.Tags;
 import thebetweenlands.common.handler.OverworldItemHandler;
 
 @Mod(modid = ModInfo.MODID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = ModInfo.DEPENDANCY)
@@ -99,7 +101,7 @@ public class MoreTCon {
 
 		proxy.preInit();
 
-	}
+	} //BowCore
 	
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> event) {
@@ -172,6 +174,7 @@ public class MoreTCon {
 	@EventHandler
 	public void loadComplete(FMLLoadCompleteEvent event) {
 		MiscUtils.init();
+		ReequipHack.registerIgnoredKey(Tags.TOOL_DATA);
 	}
 	
 	private static void blackListTinkerTools() {

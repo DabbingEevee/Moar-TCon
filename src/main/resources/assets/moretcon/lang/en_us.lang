@@ -106,6 +106,7 @@ item.moretcon.gemvoidspar.name=Void Spar
 item.moretcon.gemelectarite.name=Electarite
 
 item.moretcon.hydrogenrichredstonepowder.name=Hydrogen Rich Redstone Powder
+item.moretcon.solidlightning.name=Solid Lightning
 
 item.moretcon.ingotarkenium.name=Arkenium Ingot
 item.moretcon.ingotatronium.name=Atronium Ingot
@@ -380,6 +381,8 @@ modifier.moretcon.searing.name=Searing
 modifier.moretcon.searing.desc=§oHarness the Smeltery!§r\nYour tool mines meltable blocks such as stone and metal ores faster.
 modifier.moretcon.eulers_wrath.name=Euler's Wrath
 modifier.moretcon.eulers_wrath.desc=§oHes upset because you rounded it to 3...§r\nYour tool is approximately 2.1718x as effective, approximately 1 in 2.1718 times.
+modifier.moretcon.dematerializing.name=Dematerializing
+modifier.moretcon.dematerializing.desc=§oYour intermolecular cohesion privileges have been revoked§r\nYour tool will atomize arrows and turn them into a beam that obliterates anything in its path when fully drawn.
 
 
 moretcon.bloodgodsblessing=Blood God's Blessing
@@ -513,6 +516,7 @@ uniquetoolpart.moretcon.cryosplinters.name=Cryosplinters
 uniquetoolpart.moretcon.autoloader.name=Autoloader
 uniquetoolpart.moretcon.vengeance.name=Vengeance
 uniquetoolpart.moretcon.skybolt.name=Skybolt
+uniquetoolpart.moretcon.dematerializer.name=Dematerializer
 
 booltracker.active.name=Active
 booltracker.inactive.name=Inactive
