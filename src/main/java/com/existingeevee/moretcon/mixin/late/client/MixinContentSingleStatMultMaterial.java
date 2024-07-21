@@ -30,9 +30,7 @@ import slimeknights.tconstruct.library.traits.ITrait;
 public class MixinContentSingleStatMultMaterial {
 
 	@Inject(method = "addStatsDisplay", at = @At("HEAD"), remap = false, cancellable = true)
-	private void moretcon$HEAD_Inject$addStatsDisplay(int x, int y, int w, ArrayList<BookElement> list, Material material, LinkedHashSet<ITrait> allTraits, String stattype, CallbackInfo ci) {
-		System.out.println("sugma");
-		
+	private void moretcon$HEAD_Inject$addStatsDisplay(int x, int y, int w, ArrayList<BookElement> list, Material material, LinkedHashSet<ITrait> allTraits, String stattype, CallbackInfo ci) {		
 		if (material instanceof UniqueMaterial) {
 			UniqueMaterial umat = (UniqueMaterial) material;
 			IMaterialStats stats = material.getStats(stattype);
