@@ -28,12 +28,13 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.events.ProjectileEvent.OnLaunch;
+import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
 import slimeknights.tconstruct.library.tools.ranged.BowCore;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
+import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
-import xyz.phanta.tconevo.util.ToolUtils;
 
 public class Dematerializing extends AbstractTrait {
 
@@ -134,7 +135,7 @@ public class Dematerializing extends AbstractTrait {
 
 			int arrowColor = 0xffffff;
 			if (arrow instanceof EntityProjectileBase) {
-				arrowColor = ToolUtils.getToolMaterials(((EntityProjectileBase) arrow).tinkerProjectile.getItemStack()).get(1).materialTextColor;
+				arrowColor = getToolMaterials(((EntityProjectileBase) arrow).tinkerProjectile.getItemStack()).get(1).materialTextColor;
 			} else if (arrow instanceof EntityTippedArrow) {
 				arrowColor = ((EntityTippedArrow) arrow).getColor();
 			} else if (arrow instanceof EntitySpectralArrow) {
@@ -153,4 +154,8 @@ public class Dematerializing extends AbstractTrait {
 			}
 		}
 	}
+	
+    public static List<Material> getToolMaterials(ItemStack stack) {
+        return TinkerUtil.getMaterialsFromTagList(TagUtil.getBaseMaterialsTagList(stack));
+    }
 }
