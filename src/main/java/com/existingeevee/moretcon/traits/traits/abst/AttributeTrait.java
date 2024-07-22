@@ -38,10 +38,10 @@ public class AttributeTrait extends AbstractTrait {
 		boolean inRight = this.isToolWithTrait(event.getEntityLiving().getHeldItemMainhand()) && this.shouldApply(event.getEntityLiving().getHeldItemMainhand(), event.getEntity().world, event.getEntityLiving());
 		if (inRight || inLeft && worksInOffhand()) {
 			if (!attr.hasModifier(modifier))
-				event.getEntityLiving().getAttributeMap().getAttributeInstance(type).applyModifier(modifier);
+				attr.applyModifier(modifier);
 		} else {
 			if (attr.hasModifier(modifier))
-				event.getEntityLiving().getAttributeMap().getAttributeInstance(type).removeModifier(modifier);
+				attr.removeModifier(modifier);
 		}
 	}
 	
@@ -52,7 +52,7 @@ public class AttributeTrait extends AbstractTrait {
 	public boolean worksInOffhand() {
 		return worksInOffhand;
 	}
-
+	
 	public AttributeTrait setWorksInOffhand(boolean worksInOffhand) {
 		this.worksInOffhand = worksInOffhand;
 		return this;
