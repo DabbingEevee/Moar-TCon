@@ -9,17 +9,16 @@ import com.existingeevee.moretcon.traits.ModTraits;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
+import slimeknights.mantle.util.TagHelper;
 import slimeknights.tconstruct.library.tools.ToolNBT;
 import slimeknights.tconstruct.library.tools.ranged.IProjectile;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.ToolBuilder;
-import slimeknights.tconstruct.library.utils.ToolHelper;
 import thebetweenlands.common.entity.EntityBLLightningBolt;
 
 public class EventWatcherBL {
@@ -51,13 +50,12 @@ public class EventWatcherBL {
 							EntityItem item = ((EntityItem) entity);
 							ItemStack stack = item.getItem();
 							if (stack.getItem() instanceof IProjectile) {
-								if (ModTraits.modShocking.canApplyCustom(stack) && !ToolHelper.getTraits(stack).contains(ModTraits.modShocking) && TagUtil.getToolStats(stack).modifiers >= 1) {
-									item.setEntityInvulnerable(true);
+								if (ModTraits.modShocked.canApplyCustom(stack) && TagUtil.getToolStats(stack).modifiers >= 1) {
+									ModTraits.modShocked.apply(stack);
+									/* TileToolForge
 									ToolNBT toolnbt = TagUtil.getToolStats(stack);
 									toolnbt.modifiers--;
-									TagUtil.setToolTag(stack.serializeNBT().getCompoundTag("tag"), toolnbt.get());
-									stack.serializeNBT().getCompoundTag("tag").getCompoundTag("TinkerData").getTagList("Modifiers", 8).appendTag(new NBTTagString(ModTraits.modShocking.getModifierIdentifier()));
-									ToolBuilder.addTrait(stack.serializeNBT().getCompoundTag("tag"), ModTraits.modShocking, ModTraits.modShocking.getColor());
+									TagUtil.setToolTag(stack, toolnbt.get());*/
 								}
 							}
 						}

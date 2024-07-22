@@ -15,7 +15,7 @@ import com.existingeevee.moretcon.traits.modifiers.Debug;
 import com.existingeevee.moretcon.traits.modifiers.Gem;
 import com.existingeevee.moretcon.traits.modifiers.MatterReconstructionGel;
 import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
-import com.existingeevee.moretcon.traits.modifiers.Shocking;
+import com.existingeevee.moretcon.traits.modifiers.Shocked;
 import com.existingeevee.moretcon.traits.modifiers.Tarred;
 import com.existingeevee.moretcon.traits.modifiers.Valonite;
 import com.existingeevee.moretcon.traits.modifiers.internal.ModExtraTraitDisplay2;
@@ -164,7 +164,6 @@ public class ModTraits {
 	public static Searing searing2 = new Searing(2);
 	public static EulersWrath eularsWrath = new EulersWrath();
 
-	
 	public static MatterReconstructionGel repair;
 
 	public static AntiGravity antigravity;
@@ -172,7 +171,7 @@ public class ModTraits {
 	public static Gem modRedGem;
 	public static Gem modGreenGem;
 	public static Gem modBlueGem;
-	public static Shocking modShocking;
+	public static Shocked modShocked; 
 	public static Valonite modValonite;
 	public static Tarred modTarred;
 	public static Betweenified modBetweenified;
@@ -225,7 +224,7 @@ public class ModTraits {
 			modRedGem = new Gem(CircleGemType.CRIMSON, ItemRegistry.CRIMSON_MIDDLE_GEM, 0xFF0000);
 			modGreenGem = new Gem(CircleGemType.GREEN, ItemRegistry.GREEN_MIDDLE_GEM, 0x00FF00);
 			modBlueGem = new Gem(CircleGemType.AQUA, ItemRegistry.AQUA_MIDDLE_GEM, 0x0000FF);
-			modShocking = new Shocking();
+			modShocked = new Shocked();
 			modValonite = new Valonite();
 			modTarred = new Tarred();
 			registerModifier(
@@ -234,7 +233,7 @@ public class ModTraits {
 					modBlueGem,
 					modValonite,
 					modTarred,
-					modShocking);
+					modShocked);
 
 		}
 	}

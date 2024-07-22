@@ -50,7 +50,7 @@ public class ContentLigntningModifier extends TinkerPage {
 	public static final transient ImageData IMG_SLOT_5 = new ImageData(ClientProxy.BOOK_MODIFY, 0, 141, 58, 41, TEX_SIZE, TEX_SIZE);
 	public static final transient ImageData IMG_TABLE = new ImageData(BOOK_MODIFY, 214, 0, 42, 46, TEX_SIZE, TEX_SIZE);
 
-	private transient IModifier modifier = ModTraits.modShocking;
+	private transient IModifier modifier = ModTraits.modShocked;
 	private transient List<Item> tool;
 
 	public TextData[] text;
@@ -59,7 +59,7 @@ public class ContentLigntningModifier extends TinkerPage {
 	public String instruction = "";
 	
 	@SerializedName("modifier")
-	public String modifierName = ModTraits.modShocking.getIdentifier();
+	public String modifierName = ModTraits.modShocked.getIdentifier();
 	public String[] demoTool = new String[] { Util.getResource("pickaxe").toString() };
 
 	public ContentLigntningModifier() {
