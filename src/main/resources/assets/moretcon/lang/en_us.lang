@@ -392,7 +392,7 @@ modifier.moretcon.reforgeheavy.flavor=§oDo you even lift??
 modifier.moretcon.reforgeheavy.desc=Your tool will be 15% more effective in terms of damage and mining speed, at the cost of 15% less movement speed and swing speed.
 modifier.moretcon.reforgesharpened.name=Sharpened
 modifier.moretcon.reforgesharpened.flavor=§oow, I cut myself :c
-modifier.moretcon.reforgesharpened.desc=Your tool will be 20% more effective in terms of damage and mining speed with above 95% durability, and 10% when not.
+modifier.moretcon.reforgesharpened.desc=Your tool will gain a 20% bonus to damage and mining speed when above 95% durability, and a 10% bonus otherwise.
 
 
 moretcon.bloodgodsblessing=Blood God's Blessing
