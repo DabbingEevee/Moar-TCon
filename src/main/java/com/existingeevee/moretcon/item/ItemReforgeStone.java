@@ -22,21 +22,24 @@ public class ItemReforgeStone extends ItemBase {
 	final Supplier<AbstractReforge> reforge;
 
 	public ItemReforgeStone(String itemName, Supplier<AbstractReforge> reforge, GlowType type, int hex) {
-		super(itemName, type, hex); // ToolCore
+		super(itemName, type, hex); 
 		this.reforge = reforge;
 		this.maxStackSize = 1;
+		this.setTab(null);
 	}
 
 	public ItemReforgeStone(String itemName, Supplier<AbstractReforge> reforge, int hex) {
 		super(itemName, hex);
 		this.reforge = reforge;
 		this.maxStackSize = 1;
+		this.setTab(null);
 	}
 
 	public ItemReforgeStone(String itemName, Supplier<AbstractReforge> reforge) {
 		super(itemName);
 		this.reforge = reforge;
 		this.maxStackSize = 1;
+		this.setTab(null);
 	}
 
 	public AbstractReforge getReforge() {

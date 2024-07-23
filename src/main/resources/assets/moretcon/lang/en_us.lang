@@ -171,6 +171,7 @@ item.moretcon.sulfurbucketsyrmorite.name=Syrmorite Bucket (Sulfur)
 itemGroup.moarTConMaterials=Moar TCon: Materials
 itemGroup.moarTConMisc=Moar TCon: Misc
 itemGroup.uniqueToolParts=Unique Toolparts
+itemGroup.reforgeStones=Reforge Stones
 
 material.moretcon.anglertooth.name=Angler Tooth
 material.moretcon.atronium.name=Atronium
