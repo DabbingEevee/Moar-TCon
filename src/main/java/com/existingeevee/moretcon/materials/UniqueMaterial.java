@@ -9,6 +9,7 @@ import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -232,10 +233,10 @@ public class UniqueMaterial extends Material {
 						int i = 1;
 						event.getToolTip().add(i++, "");
 						if (!(getPartResLoc().equals(event.getItemStack().getItem().getRegistryName().toString()))) {
-							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable"));
+							event.getToolTip().add(i++, "" + ChatFormatting.RED + ChatFormatting.BOLD + I18n.translateToLocal("text.err.unique.unobtainable"));
 							event.getToolTip().add(i++, "");
 						}
-						event.getToolTip().add(i++, "§7" + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getLocalizedName()));
+						event.getToolTip().add(i++, ChatFormatting.GRAY + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getLocalizedName()));
 						event.getToolTip().add(i++, "");
 
 					}

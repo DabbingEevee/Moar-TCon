@@ -10,11 +10,13 @@ import com.existingeevee.moretcon.inits.ModFluids;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.inits.ModPotions;
+import com.existingeevee.moretcon.inits.ModReforges;
 import com.existingeevee.moretcon.inits.misc.ModSponges;
 import com.existingeevee.moretcon.inits.misc.OreDictionaryManager;
 import com.existingeevee.moretcon.inits.recipes.FurnaceInit;
 import com.existingeevee.moretcon.inits.recipes.MiscRecipes;
 import com.existingeevee.moretcon.inits.recipes.OreRecipes;
+import com.existingeevee.moretcon.inits.recipes.ReforgeRecipes;
 import com.existingeevee.moretcon.inits.recipes.SmelteryInit;
 import com.existingeevee.moretcon.inits.recipes.UniqueToolpartRecipes;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
@@ -34,6 +36,7 @@ import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 import com.existingeevee.moretcon.proxy.CommonProxy;
+import com.existingeevee.moretcon.reforges.ReforgeHandler;
 import com.existingeevee.moretcon.traits.ModTraits;
 import com.existingeevee.moretcon.world.MoreTConWorldGen;
 //import net.minecraftforge.fml.common.event.;
@@ -95,8 +98,10 @@ public class MoreTCon {
 		MaterialUtils.completeReadds();
 		MinecraftForge.EVENT_BUS.register(CustomFireHelper.class);
 		MinecraftForge.EVENT_BUS.register(ArrowReferenceHelper.class);
+		MinecraftForge.EVENT_BUS.register(ReforgeHandler.class);
 		ModTraits.init();
-
+		ModReforges.init();
+		
 		OreDictionaryManager.preInit(); 
 
 		proxy.preInit();
@@ -119,6 +124,7 @@ public class MoreTCon {
 		
 		OreRecipes.init(event);
 		UniqueToolpartRecipes.init(event);
+		ReforgeRecipes.init(event);
 		
 		SpongeRegistry.registerRecipes(event);
 		

@@ -42,8 +42,11 @@ item.moretcon.betweenifiedmodifier.desc=Adding this to any tool will allow for i
 item.moretcon.crushingmodifier.desc=Adding this to any tool will convert 1% of its damage to true damage per level.
 item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage or 10% of the durability on it, whichever is greater.
 item.moretcon.repitem.desc=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
+item.reforgestone.desc=When applied to a tool:
 
 item.moretcon.repitem.name=-{-name-}- Composite
+item.reforgestone.name=Reforge Stone
+
 item.moretcon.betweeniccore.name=Betweenic Core
 item.moretcon.crushingmodifier.name=Crushing Modifier
 item.moretcon.betweenifiedmodifier.name=Betweenified Modifier
@@ -382,7 +385,13 @@ modifier.moretcon.searing.desc=§oHarness the Smeltery!§r\nYour tool mines melt
 modifier.moretcon.eulers_wrath.name=Euler's Wrath
 modifier.moretcon.eulers_wrath.desc=§oHes upset because you rounded it to 3...§r\nYour tool is approximately 2.1718x as effective, approximately 1 in 2.1718 times.
 modifier.moretcon.dematerializing.name=Dematerializing
-modifier.moretcon.dematerializing.desc=§oYour intermolecular cohesion privileges have been revoked§r\nYour tool will atomize arrows and turn them into a beam that obliterates anything in its path when fully drawn.
+modifier.moretcon.dematerializing.desc=§oYour intermolecular cohesion privileges have been revoked :3§r\nYour tool will atomize arrows and turn them into a beam that obliterates anything in its path when fully drawn.
+modifier.moretcon.reforgeheavy.name=Heavy
+modifier.moretcon.reforgeheavy.flavor=§oDo you even lift??
+modifier.moretcon.reforgeheavy.desc=Your tool will be 15% more effective in terms of damage and mining speed, at the cost of 15% less movement speed and swing speed.
+modifier.moretcon.reforgesharpened.name=Sharpened
+modifier.moretcon.reforgesharpened.flavor=§oow, I cut myself :c
+modifier.moretcon.reforgesharpened.desc=Your tool will be 20% more effective in terms of damage and mining speed with above 95% durability, and 10% when not.
 
 
 moretcon.bloodgodsblessing=Blood God's Blessing
@@ -399,6 +408,7 @@ text.err.unique.unobtainable=WARNING: THIS ITEM IS NOT SUPPOSED TO BE OBTAINABLE
 text.err.unique.only_make=This part can only be used to create a __s__
 text.err.middle_gem_only_once=Middle Gem modifiers can only be applied once.
 text.misc.one_of=a(n) 
+text.reforge_marker=Reforged
 
 tile.moretcon.betweensludge.name=Between Sludge
 tile.moretcon.blockarkenium.name=Block of Arkenium

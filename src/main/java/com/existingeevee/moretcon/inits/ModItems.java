@@ -5,6 +5,7 @@ import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
 import com.existingeevee.moretcon.item.ItemDebugTool;
 import com.existingeevee.moretcon.item.ItemNonflamable;
+import com.existingeevee.moretcon.item.ItemReforgeStone;
 import com.existingeevee.moretcon.other.ICustomSlotRenderer.GlowType;
 import com.existingeevee.moretcon.other.ModTabs;
 import com.existingeevee.moretcon.other.utils.CompatManager;
@@ -141,6 +142,10 @@ public class ModItems {
 	public static final Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
 	public static final Item crushingModifier = new ItemBase("crushingModifier").setTab(ModTabs.moarTConMisc);
 
+	//Reforge stones
+	public static final Item reforgeHeavy = new ItemReforgeStone("reforgeheavy", () -> ModReforges.reforgeHeavy);
+	public static final Item reforgeSharpened = new ItemReforgeStone("reforgesharpened", () -> ModReforges.reforgeSharpened);
+	
 	/*---------------------------------------*/
 
 	public static void registerItems(Item... items) {
@@ -219,7 +224,11 @@ public class ModItems {
 					rawSteel,
 					spaceTimeDisruptionPowder,
 					hydrogenRichRedstonePowder,
-					solidLightning
+					solidLightning,
+					
+					reforgeHeavy,
+					reforgeSharpened
+					
 
 			/**-------------------------------------**/
 

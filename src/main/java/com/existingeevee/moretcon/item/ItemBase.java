@@ -40,12 +40,6 @@ public class ItemBase extends Item implements ICustomSlotRenderer {
 		setTab(ModTabs.moarTConMaterials);
 	}
 
-	public ItemBase(String itemName, CreativeTabs tab) {
-		super();
-		setupItem(this, itemName.toLowerCase());
-		setTab(tab);
-	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldRender(ItemStack stack) {

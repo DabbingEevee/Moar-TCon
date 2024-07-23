@@ -18,6 +18,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.HarvestCheck;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -33,7 +34,7 @@ public class Pyrophoric extends AbstractTrait {
 		MinecraftForge.EVENT_BUS.register(this);
 		// TODO Your tool will randomly ignite, granting a bonus to attack speed, attack
 		// damage, harvest level, and mining speed
-	} // PlayerEvent
+	} 
 
 	@Override
 	public void getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack, Multimap<String, AttributeModifier> attributeMap) {
@@ -100,13 +101,15 @@ public class Pyrophoric extends AbstractTrait {
 	}
 
 	public boolean isOnCooldown(ItemStack tool) {
+		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_BYTE))
+			return false;
 		NBTTagCompound data = tool.getOrCreateSubCompound(this.getModifierIdentifier());
 		return data.getInteger("CooldownTime") > 0;
 	}
 
 	public boolean isBurning(ItemStack tool) {
-		// if (true)
-		// return true;
+		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_BYTE))
+			return false;
 		NBTTagCompound data = tool.getOrCreateSubCompound(this.getModifierIdentifier());
 		return data.getInteger("BurningTime") > 0;
 	}

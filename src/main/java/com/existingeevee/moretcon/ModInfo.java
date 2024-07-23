@@ -3,7 +3,7 @@ package com.existingeevee.moretcon;
 public class ModInfo {
     public static final String MODID = "moretcon";
     public static final String NAME = "Moar TCon";
-    public static final String VERSION = "V13b8";
+    public static final String VERSION = "V13b9";
     public static final boolean BETA = VERSION.contains("b") || VERSION.contains("rc");
     public static final String DEPENDANCY =
     		"required-after:tconstruct;" +

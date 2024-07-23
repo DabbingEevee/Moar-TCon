@@ -34,6 +34,5 @@ public class MixinProjectileCore {
 	@Inject(at = @At(value = "RETURN"), method = "getProjectileStack", remap = false)
 	protected void moretcon$RETURN_Inject$getProjectileStack(ItemStack itemStack, World world, EntityPlayer player, boolean usedAmmo, CallbackInfoReturnable<ItemStack> ci) {
 		ArrowReferenceHelper.saveProjectileStack(ci.getReturnValue(), StaticVars.lastArrowFired.get());
-		//StaticVars.lastArrowFired.set(ItemStack.EMPTY);
 	}
 }
