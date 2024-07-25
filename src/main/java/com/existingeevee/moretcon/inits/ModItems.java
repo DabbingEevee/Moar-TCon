@@ -145,6 +145,7 @@ public class ModItems {
 	//Reforge stones
 	public static final Item reforgeHeavy = new ItemReforgeStone("reforgeheavy", () -> ModReforges.reforgeHeavy);
 	public static final Item reforgeSharpened = new ItemReforgeStone("reforgesharpened", () -> ModReforges.reforgeSharpened);
+	public static final Item reforgeConsistant = new ItemReforgeStone("reforgeconsistant", () -> ModReforges.reforgeConsistant);
 	
 	/*---------------------------------------*/
 
@@ -227,8 +228,8 @@ public class ModItems {
 					solidLightning,
 					
 					reforgeHeavy,
-					reforgeSharpened
-					
+					reforgeSharpened,
+					reforgeConsistant	
 
 			/**-------------------------------------**/
 

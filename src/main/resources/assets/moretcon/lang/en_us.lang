@@ -393,6 +393,9 @@ modifier.moretcon.reforgeheavy.desc=Your tool will be 15% more effective in term
 modifier.moretcon.reforgesharpened.name=Sharpened
 modifier.moretcon.reforgesharpened.flavor=§oow, I cut myself :c
 modifier.moretcon.reforgesharpened.desc=Your tool will gain a 20% bonus to damage and mining speed when above 95% durability, and a 10% bonus otherwise.
+modifier.moretcon.reforgeconsistant.name=Consistant
+modifier.moretcon.reforgeconsistant.flavor=§oConsistancy is key
+modifier.moretcon.reforgeconsistant.desc=Your tool will gain stacking bonuses while repeatedly mining the same block type or attacking the same mob type, up to a bonus of 50% extra damage and 2.5 extra mining speed.
 
 
 moretcon.bloodgodsblessing=Blood God's Blessing
