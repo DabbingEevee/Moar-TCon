@@ -101,14 +101,14 @@ public class Pyrophoric extends AbstractTrait {
 	}
 
 	public boolean isOnCooldown(ItemStack tool) {
-		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_BYTE))
+		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND))
 			return false;
 		NBTTagCompound data = tool.getOrCreateSubCompound(this.getModifierIdentifier());
 		return data.getInteger("CooldownTime") > 0;
 	}
 
 	public boolean isBurning(ItemStack tool) {
-		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_BYTE))
+		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND))
 			return false;
 		NBTTagCompound data = tool.getOrCreateSubCompound(this.getModifierIdentifier());
 		return data.getInteger("BurningTime") > 0;
