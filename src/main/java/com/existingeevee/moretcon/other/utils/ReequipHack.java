@@ -15,7 +15,6 @@ public class ReequipHack {
 	private static final Set<String> IGNORED_NBT = new HashSet<>();
 
 	public static void registerIgnoredKey(String string) {
-		System.out.println(IGNORED_NBT);
 		IGNORED_NBT.add(string);
 	}
 
