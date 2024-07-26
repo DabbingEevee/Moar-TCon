@@ -1,17 +1,20 @@
 package com.existingeevee.moretcon.traits.traits.unique;
 
 import java.util.List;
-import java.util.Random;
 
+import javax.annotation.Nullable;
+
+import com.existingeevee.moretcon.client.actions.FieryPillarAction;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -26,13 +29,26 @@ public class AerialFlame extends AbstractProjectileTrait {
 		super(MiscUtils.createNonConflictiveName("AerialFlame".toLowerCase()), 0);
 	}
 
-	private static final Random rand = new Random();
+	@Override
+	public void onLaunch(EntityProjectileBase projectileBase, World world, @Nullable EntityLivingBase shooter) {
+		NBTTagCompound tag = projectileBase.getEntityData().getCompoundTag(this.getModifierIdentifier());
+		tag.setDouble("LaunchX", projectileBase.posX);
+		tag.setDouble("LaunchY", projectileBase.posY);
+		tag.setDouble("LaunchZ", projectileBase.posZ);
+		projectileBase.getEntityData().setTag(this.getModifierIdentifier(), tag);
+	}
 
 	@Override
-	public void onProjectileUpdate(EntityProjectileBase entity, World world, ItemStack toolStack) {
-		if (entity.serializeNBT().getBoolean("inGround")) {
+	public void onMovement(EntityProjectileBase entity, World world, double slowdown) {
+		NBTTagCompound tag = entity.getEntityData().getCompoundTag(this.getModifierIdentifier());
+		
+		double x = tag.getDouble("LaunchX"), y = tag.getDouble("LaunchY"), z = tag.getDouble("LaunchZ");
+		double distSq = entity.getDistanceSq(x, y, z);
+		
+		if (entity.inGround || distSq > 96 * 96 || distSq < 2 * 2) //no in ground, not too far, and def not too close
 			return;
-		}
+
+		ItemStack toolStack = entity.tinkerProjectile.getItemStack();
 
 		int lowY = entity.getPosition().getY();
 		int i = 0;
@@ -44,14 +60,13 @@ public class AerialFlame extends AbstractProjectileTrait {
 			} else {
 				lowY--;
 				i++;
-				if (world.isRemote) {
-					for (int in = 0; in < 2; in++) {
-						entity.world.spawnParticle(rand.nextBoolean() || rand.nextBoolean() ? EnumParticleTypes.FLAME : EnumParticleTypes.LAVA, true, entity.posX + (rand.nextDouble() * 0.5 - 0.25), (lowY + 0.5 + (rand.nextDouble() * 1.5 - 0.75)) - 0.05, entity.posZ + (rand.nextDouble() * 0.5 - 0.25), 0, 0, 0);
-					}
-				}
 			}
-
 		}
+
+		if (!world.isRemote) {
+			FieryPillarAction.INSTANCE.run(world, entity.posX, entity.posY, entity.posZ, new NBTTagInt(lowY));
+		}
+
 		AxisAlignedBB hitbox = new AxisAlignedBB(entity.posX - 0.75, entity.posY, entity.posZ - 0.75, entity.lastTickPosX + 0.75, lowY - 1, entity.lastTickPosZ + 0.75);
 		List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(entity.shootingEntity, hitbox);
 
@@ -63,33 +78,36 @@ public class AerialFlame extends AbstractProjectileTrait {
 			if (e == entity)
 				continue;
 
-			float dmg = 5;
-			e.setFire(10);
+			if (entity.shootingEntity instanceof EntityLivingBase && e.hurtResistantTime < ((EntityLivingBase) e).maxHurtResistantTime / 2) {
+				float dmg = 5;
+				e.setFire(10);
 
-			if (e.isImmuneToFire()) {
-				dmg = 2.5f;
-			}
-			if (entity.shootingEntity instanceof EntityLivingBase) {
-				//Proc traits and all
+				if (e.isImmuneToFire()) {
+					dmg = 2.5f;
+				}
+				
+				// Proc traits and all
 				List<ITrait> traits = TinkerUtil.getTraitsOrdered(entity.tinkerProjectile.getItemStack());
 
 				float dmgOrig = dmg;
-				
+
 				for (ITrait t : traits) {
 					if (e instanceof EntityLivingBase) {
 						dmg = t.damage(toolStack, (EntityLivingBase) entity.shootingEntity, (EntityLivingBase) e, dmgOrig, dmg, false);
 					}
 				}
-				
-				float hpBefore = ((EntityLivingBase) e).getHealth();
-				boolean wasHit = e.attackEntityFrom(source, dmg);
-				
+
 				for (ITrait t : traits) {
 					if (e instanceof EntityLivingBase) {
 						t.onHit(toolStack, (EntityLivingBase) entity.shootingEntity, (EntityLivingBase) e, dmg, false);
 					}
 				}
-				
+
+				e.hurtResistantTime = 0;
+
+				float hpBefore = ((EntityLivingBase) e).getHealth();
+				boolean wasHit = e.attackEntityFrom(source, dmg);
+
 				for (ITrait t : traits) {
 					if (e instanceof EntityLivingBase) {
 						t.afterHit(toolStack, (EntityLivingBase) entity.shootingEntity, (EntityLivingBase) e, hpBefore - ((EntityLivingBase) e).getHealth(), false, wasHit);

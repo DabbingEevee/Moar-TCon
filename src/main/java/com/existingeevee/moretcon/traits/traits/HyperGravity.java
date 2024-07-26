@@ -44,6 +44,8 @@ public class HyperGravity extends AbstractTrait {
 		if (target instanceof EntityPlayerMP) {
 			((EntityPlayerMP) target).connection.sendPacket(new SPacketEntityVelocity(target));
 		}
+		
+		lastHypergravityKB.set(0f);
 	}
 
 	@Override
