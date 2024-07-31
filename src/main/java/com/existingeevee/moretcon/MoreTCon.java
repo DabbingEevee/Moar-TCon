@@ -160,7 +160,12 @@ public class MoreTCon {
 		if (CompatManager.thebetweenlands && ConfigHandler.weakenToolsInBetweenLands) {
 			blackListTinkerTools();
 		}
+		
 		SmelteryInit.init();
+		if (CompatManager.thebetweenlands) {
+			BLRecipes.postInit();
+		}
+		
 		if (CompatManager.thebetweenlands) {
 			MinecraftForge.EVENT_BUS.register(new EventWatcherBL());
 		}
