@@ -55,7 +55,7 @@ public class AerialFlame extends AbstractProjectileTrait {
 		while (true) {
 			BlockPos next = new BlockPos(entity.getPosition().getX(), lowY, entity.getPosition().getZ());
 			IBlockState state = world.getChunkFromBlockCoords(next).getBlockState(next);
-			if (state.isFullBlock() || lowY == 0 || i > 50) {
+			if (state.isFullBlock() || i > 50) {
 				break;
 			} else {
 				lowY--;

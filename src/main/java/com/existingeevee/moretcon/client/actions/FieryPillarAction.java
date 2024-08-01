@@ -26,6 +26,5 @@ public class FieryPillarAction extends ClientAction {
 		}
 		
 		Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleFieryPillar(world, x, y, z, minY));
-		//Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleFieryPillar(world, x, y, z, minY));
 	}
 }
