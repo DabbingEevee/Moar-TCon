@@ -34,7 +34,7 @@ import slimeknights.tconstruct.library.traits.IProjectileTrait;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-public class Mirroring extends AbstractProjectileTrait {
+public class Mirroring extends AbstractProjectileTrait { //TODO rework using mixins
 
 	public Mirroring() {
 		super(MiscUtils.createNonConflictiveName("mirroring"), 0);
