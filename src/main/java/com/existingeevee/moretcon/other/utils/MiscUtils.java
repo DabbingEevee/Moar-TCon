@@ -45,7 +45,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -314,7 +313,7 @@ public class MiscUtils {
 				.setRegistryName("od_" + odLarge + "_to_" + odSmall));
 	}
 
-	public static void executeInNTicks(Executor executor, int executeIn) {
+	public static void executeInNTicks(Runnable runnable, int executeIn) {
 		new Object() {
 			private int ticks = 0;
 			private float waitTicks;
@@ -327,28 +326,17 @@ public class MiscUtils {
 			@SubscribeEvent
 			public void tick(TickEvent.ServerTickEvent event) {
 				if (event.phase == TickEvent.Phase.END) {
-					this.ticks += 1;
-					if (this.ticks >= this.waitTicks) {
+					if (this.ticks++ >= this.waitTicks) {
 						run();
 						MinecraftForge.EVENT_BUS.unregister(this);
 					}
 				}
 			}
 
-			@SubscribeEvent
-			public void onWorldStarted(WorldEvent.Load e) {
-				MinecraftForge.EVENT_BUS.unregister(this);
-			}
-
 			private void run() {
-				executor.execute();
+				runnable.run();
 			}
 		}.start(executeIn);
-	}
-
-	@FunctionalInterface
-	public static interface Executor {
-		void execute();
 	}
 
 	public static double randomN1T1() {

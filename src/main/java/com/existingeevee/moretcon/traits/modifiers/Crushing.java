@@ -60,9 +60,3 @@ public class Crushing extends ModifierTrait {
 		return ImmutableList.of(Util.translateFormatted(loc, Util.dfPercent.format(amount)));
 	}
 }
-
-//Misc.executeInNTicks(() -> {
-//int d = target.hurtResistantTime;
-//target.hurtResistantTime = 0;
-//target.hurtResistantTime = d;
-//}, 1);
