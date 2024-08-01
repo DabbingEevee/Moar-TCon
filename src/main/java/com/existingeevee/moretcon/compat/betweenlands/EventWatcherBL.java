@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 import slimeknights.tconstruct.library.tools.ranged.IProjectile;
@@ -27,10 +28,17 @@ public class EventWatcherBL {
 		lightningInstances = new ArrayList<EntityBLLightningBolt>();
 	}
 
+	
+	
 	@SubscribeEvent
 	public void onWorldTick(WorldTickEvent w) {
 		for (Entity e : new ArrayList<>(w.world.loadedEntityList)) {
 			if (e instanceof EntityBLLightningBolt) {
+				
+				boolean effectOnly = ObfuscationReflectionHelper.getPrivateValue(EntityBLLightningBolt.class, (EntityBLLightningBolt) e, "effectOnly");
+				if (effectOnly)
+					continue;
+				
 				if (!EventWatcherBL.lightningInstances.contains((EntityBLLightningBolt) e)) {
 					EventWatcherBL.lightningInstances.add((EntityBLLightningBolt) e);
 				}
