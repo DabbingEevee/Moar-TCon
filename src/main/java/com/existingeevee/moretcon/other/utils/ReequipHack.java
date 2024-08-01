@@ -44,18 +44,18 @@ public class ReequipHack {
 	public static boolean similarStackForActionBar(ItemStack from, ItemStack to) {
 		from = getProcessedStack(from);
 		to = getProcessedStack(to);
-		
+
 		return !from.isEmpty() && to.getItem() == from.getItem() && ItemStack.areItemStackTagsEqual(to, from) && (to.isItemStackDamageable() || to.getMetadata() == from.getMetadata());
 	}
 
-	private static final Map<String,ItemStack> SAVED_STACKS = Maps.newHashMap();
-	
+	private static final Map<String, ItemStack> SAVED_STACKS = Maps.newHashMap();
+
 	public static ItemStack getProcessedStack(ItemStack stack) {
 		if (stack.hasTagCompound()) { // Boring ahh item. We ignore
 			ItemStack copy = stack.copy(); // We dont want to mess anything up otherwise
 			for (String s : IGNORED_NBT) {
 				if (copy.getTagCompound().hasKey(s)) {
-					copy.getTagCompound().removeTag(s);			
+					copy.getTagCompound().removeTag(s);
 					String stackKey = copy.serializeNBT().toString();
 					stack = SAVED_STACKS.computeIfAbsent(stackKey, str -> copy); // Okay yeah we need to take action
 				}
