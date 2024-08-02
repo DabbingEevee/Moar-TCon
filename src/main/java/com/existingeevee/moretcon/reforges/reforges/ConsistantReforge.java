@@ -42,19 +42,21 @@ public class ConsistantReforge extends AbstractReforge {
 	}
 
 	String getResonanceAction(ItemStack tool) {
-		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND))
+		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND)) {
 			return "none";
+		}
 		NBTTagCompound data = tool.getOrCreateSubCompound(this.getModifierIdentifier());
 		return data.getString("Action");
 	}
-	
+
 	int getResonanceLevel(ItemStack tool) {
-		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND))
+		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND)) {
 			return 0;
+		}
 		NBTTagCompound data = tool.getOrCreateSubCompound(this.getModifierIdentifier());
 		return data.getInteger("Level");
 	}
-	
+
 	void incrResonanceLevel(ItemStack tool, String action) {
 		String prev = this.getResonanceAction(tool);
 		int prevLevel = this.getResonanceLevel(tool);

@@ -15,17 +15,23 @@ public class BasicPotionTrait extends AbstractTrait {
 	private Equation amplifier = new Monomial(1, 0);
 	private Equation duration = new Monomial(1, 0);
 	private Potion potion = null;
-	
+
 	public BasicPotionTrait(Equation amplifierCalc, Equation durationCalc, Potion pot, String id, int col) {
 		super(MiscUtils.createNonConflictiveName(id), col);
-		if (amplifierCalc != null) this.amplifier = amplifierCalc;
-		if (durationCalc != null) this.duration = durationCalc;
+		if (amplifierCalc != null) {
+			this.amplifier = amplifierCalc;
+		}
+		if (durationCalc != null) {
+			this.duration = durationCalc;
+		}
 		this.potion = pot;
 	}
-	
+
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (potion == null || !wasHit) return;
+		if (potion == null || !wasHit) {
+			return;
+		}
 		target.addPotionEffect(new PotionEffect(potion, (int) amplifier.evaluate(damageDealt) , (int) duration.evaluate(damageDealt)));
 	}
 }

@@ -57,7 +57,7 @@ public class ContentLigntningModifier extends TinkerPage {
 	public String[] effects;
 
 	public String instruction = "";
-	
+
 	@SerializedName("modifier")
 	public String modifierName = ModTraits.modShocked.getIdentifier();
 	public String[] demoTool = new String[] { Util.getResource("pickaxe").toString() };
@@ -153,7 +153,7 @@ public class ContentLigntningModifier extends TinkerPage {
 		ItemStackList demo = getDemoTools(inputItems);
 
 		list.add(new ElementText(10, imgY + 3, GuiBook.PAGE_WIDTH / 2 + 5, GuiBook.PAGE_HEIGHT - h - 20, instruction));
-		
+
 		ElementTinkerItem toolItem = new ElementTinkerItem(imgX + 3, imgY + 3, 1f, demo);
 		toolItem.noTooltip = true;
 

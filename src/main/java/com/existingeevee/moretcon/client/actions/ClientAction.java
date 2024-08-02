@@ -67,13 +67,14 @@ public abstract class ClientAction {
 		}
 
 		private static final Set<String> BROKEN = new HashSet<>();
-		
+
 		@Override
 		@SuppressWarnings("unchecked")
 		public IMessage onMessage(SentClientActionMessage message, MessageContext ctx) {
-			if (BROKEN.contains(message.classPath))
+			if (BROKEN.contains(message.classPath)) {
 				return null;
-			
+			}
+
 			Minecraft.getMinecraft().addScheduledTask(() -> {
 				try {
 					Class<? extends ClientAction> c = (Class<? extends ClientAction>) Class.forName(message.classPath);
@@ -120,8 +121,9 @@ public abstract class ClientAction {
 			buf.writeCharSequence(this.classPath, StandardCharsets.UTF_8);
 
 			NBTTagCompound payload = new NBTTagCompound();
-			if (this.tag != null)
+			if (this.tag != null) {
 				payload.setTag("data", this.tag);
+			}
 			String payloadString = payload.toString();
 			buf.writeInt(payloadString.length());
 			buf.writeCharSequence(payloadString, StandardCharsets.UTF_8);

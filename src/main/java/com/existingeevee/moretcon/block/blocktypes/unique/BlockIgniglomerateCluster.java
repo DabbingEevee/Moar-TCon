@@ -31,12 +31,12 @@ public class BlockIgniglomerateCluster extends BlockOre {
 
 		super.onEntityWalk(worldIn, pos, entityIn);
 	}
-	
+
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
 		worldIn.scheduleUpdate(pos, this, 1);
 	}
-	
+
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));

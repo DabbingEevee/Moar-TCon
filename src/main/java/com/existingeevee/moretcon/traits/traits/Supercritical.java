@@ -23,14 +23,14 @@ public class Supercritical extends AbstractTraitLeveled {
 
 		if (index > -1 && isCritical) {
 			ModifierNBT modifier = ModifierNBT.readTag(tagList.getCompoundTagAt(index));
-			
+
 			return newDamage + newDamage * (modifier.level * 0.25f);
 		}
 		return newDamage;
 	}
-	
+
 	@Override
 	public int getPriority() {
-		return -2; //we need this to run last. 
+		return -2; //we need this to run last.
 	}
 }

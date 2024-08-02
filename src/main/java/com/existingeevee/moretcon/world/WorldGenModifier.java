@@ -17,11 +17,11 @@ import net.minecraft.world.gen.IChunkGenerator;
 public abstract class WorldGenModifier {
 
 	public abstract void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx);
-	
+
 	public static void runGenerator(IBlockState blockToGen, int blockAmount, int chancesToSpawn, int minHeight, int maxHeight, Predicate<IBlockState> blockToReplace, boolean spawnExposed, WorldgenContext ctx) {
 		runGenerator(new IBlockStateProvider.ConstantBlockStateProvider(blockToGen), blockAmount, chancesToSpawn, minHeight, maxHeight, blockToReplace, spawnExposed, ctx);
 	}
-	
+
 	public static void runGenerator(IBlockState blockToGen, int blockAmount, int chancesToSpawn, int minHeight, int maxHeight, Predicate<IBlockState> blockToReplace, WorldgenContext ctx) {
 		runGenerator(new IBlockStateProvider.ConstantBlockStateProvider(blockToGen), blockAmount, chancesToSpawn, minHeight, maxHeight, blockToReplace, true, ctx);
 	}
@@ -31,7 +31,7 @@ public abstract class WorldGenModifier {
 		try {
 			Field field = Random.class.getDeclaredField("seed");
 			field.setAccessible(true);
-			theSeed = (((AtomicLong) field.get(rand)).get() ^ 0x5DEECE66DL); 
+			theSeed = (((AtomicLong) field.get(rand)).get() ^ 0x5DEECE66DL);
 		} catch (Exception e) {
 		}
 		return new Random(theSeed);
@@ -40,12 +40,13 @@ public abstract class WorldGenModifier {
 	public static int peekNextInt(Random rand, int bound) {
 		return cloneRandom(rand).nextInt(bound);
 	}
-	
+
 	public static void runGenerator(IBlockStateProvider blockToGen, int blockAmount, int chancesToSpawn, int minHeight, int maxHeight, Predicate<IBlockState> blockToReplace, boolean spawnExposed, WorldgenContext ctx) {
 		if (!ConfigHandler.disableOreGen) {
 
-			if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
+			if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight) {
 				throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
+			}
 
 			int heightdiff = maxHeight - minHeight + 1;
 			for (int m = 0; m < chancesToSpawn; m++) {
@@ -54,23 +55,23 @@ public abstract class WorldGenModifier {
 				int z = ctx.chunkZ * 16 + ctx.rand.nextInt(16);
 
 				BlockPos position = new BlockPos(x, y, z);
-				
+
 				float f = ctx.rand.nextFloat() * (float) Math.PI;
-				double d0 = (double) ((float) (position.getX() + 8) + MathHelper.sin(f) * blockAmount / 8.0F);
-				double d1 = (double) ((float) (position.getX() + 8) - MathHelper.sin(f) * blockAmount / 8.0F);
-				double d2 = (double) ((float) (position.getZ() + 8) + MathHelper.cos(f) * blockAmount / 8.0F);
-				double d3 = (double) ((float) (position.getZ() + 8) - MathHelper.cos(f) * blockAmount / 8.0F);
-				double d4 = (double) (position.getY() + ctx.rand.nextInt(3) - 2);
-				double d5 = (double) (position.getY() + ctx.rand.nextInt(3) - 2);
+				double d0 = position.getX() + 8 + MathHelper.sin(f) * blockAmount / 8.0F;
+				double d1 = position.getX() + 8 - MathHelper.sin(f) * blockAmount / 8.0F;
+				double d2 = position.getZ() + 8 + MathHelper.cos(f) * blockAmount / 8.0F;
+				double d3 = position.getZ() + 8 - MathHelper.cos(f) * blockAmount / 8.0F;
+				double d4 = position.getY() + ctx.rand.nextInt(3) - 2;
+				double d5 = position.getY() + ctx.rand.nextInt(3) - 2;
 
 				for (int i = 0; i < blockAmount; ++i) {
 					float f1 = (float) i / (float) blockAmount;
-					double d6 = d0 + (d1 - d0) * (double) f1;
-					double d7 = d4 + (d5 - d4) * (double) f1;
-					double d8 = d2 + (d3 - d2) * (double) f1;
-					double d9 = ctx.rand.nextDouble() * (double) blockAmount / 16.0D;
-					double d10 = (double) (MathHelper.sin((float) Math.PI * f1) + 1.0F) * d9 + 1.0D;
-					double d11 = (double) (MathHelper.sin((float) Math.PI * f1) + 1.0F) * d9 + 1.0D;
+					double d6 = d0 + (d1 - d0) * f1;
+					double d7 = d4 + (d5 - d4) * f1;
+					double d8 = d2 + (d3 - d2) * f1;
+					double d9 = ctx.rand.nextDouble() * blockAmount / 16.0D;
+					double d10 = (MathHelper.sin((float) Math.PI * f1) + 1.0F) * d9 + 1.0D;
+					double d11 = (MathHelper.sin((float) Math.PI * f1) + 1.0F) * d9 + 1.0D;
 					int j = MathHelper.floor(d6 - d10 / 2.0D);
 					int k = MathHelper.floor(d7 - d11 / 2.0D);
 					int l = MathHelper.floor(d8 - d10 / 2.0D);
@@ -79,15 +80,15 @@ public abstract class WorldGenModifier {
 					int k1 = MathHelper.floor(d8 + d10 / 2.0D);
 
 					for (int l1 = j; l1 <= i1; ++l1) {
-						double d12 = ((double) l1 + 0.5D - d6) / (d10 / 2.0D);
+						double d12 = (l1 + 0.5D - d6) / (d10 / 2.0D);
 
 						if (d12 * d12 < 1.0D) {
 							for (int i2 = k; i2 <= j1; ++i2) {
-								double d13 = ((double) i2 + 0.5D - d7) / (d11 / 2.0D);
+								double d13 = (i2 + 0.5D - d7) / (d11 / 2.0D);
 
 								if (d12 * d12 + d13 * d13 < 1.0D) {
 									for (int j2 = l; j2 <= k1; ++j2) {
-										double d14 = ((double) j2 + 0.5D - d8) / (d10 / 2.0D);
+										double d14 = (j2 + 0.5D - d8) / (d10 / 2.0D);
 
 										if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D) {
 											BlockPos blockpos = new BlockPos(l1, i2, j2);
@@ -103,9 +104,10 @@ public abstract class WorldGenModifier {
 														}
 													}
 												}
-												
-												if (shouldSpawn)
+
+												if (shouldSpawn) {
 													ctx.world.setBlockState(blockpos, blockToGen.getNextBlock(ctx.rand), 2);
+												}
 											}
 										}
 									}

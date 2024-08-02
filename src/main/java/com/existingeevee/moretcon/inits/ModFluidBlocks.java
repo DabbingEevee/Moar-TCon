@@ -64,16 +64,16 @@ public class ModFluidBlocks {
 			blockLiquidGravitonium = new BlockFluid("liquidgravitonium", ModFluids.liquidGravitonium, Material.LAVA);
 			blockLiquidTrichromadentium = new BlockFluid("liquidtrichromadentium", ModFluids.liquidTrichromadentium, Material.LAVA);
 			blockLiquidAtronium = new BlockFluid("liquidatronium", ModFluids.liquidAtronium, Material.LAVA);
-			blockLiquidEbonite = new BlockFluid("liquidebonite", ModFluids.liquidEbonite, Material.LAVA);			
-			blockLiquidValasium = new BlockFluid("liquidvalasium", ModFluids.liquidValasium, Material.LAVA);			
-			blockLiquidHallowsite = new CustomFireBlockFluid("liquidhallowsite", ModFluids.liquidHallowsite, CustomFireEffect.SPIRIT_FIRE, Material.LAVA).setSource(new DamageSource("haunted").setFireDamage());			
-			blockLiquidBlightsteel = new BlockFluid("liquidblightsteel", ModFluids.liquidBlightsteel, Material.LAVA);			
-			blockLiquidSanguiseelium = new BlockFluid("liquidsanguiseelium", ModFluids.liquidSanguiseelium, Material.LAVA);			
-			blockLiquidZracohlium = new BlockFluid("liquidzracohlium", ModFluids.liquidZracohlium, Material.LAVA);			
-			
-			blockLiquidFusionLava = new CustomFireBlockFluid("liquidfusionlava", ModFluids.liquidFusionLava, CustomFireEffect.COLD_FIRE, Material.LAVA).setSource(new DamageSource("coldfire").setFireDamage());			
-			blockLiquifiedSouls = new BlockFluid("liquifiedsouls", ModFluids.liquidLiquifiedSouls, Material.WATER);			
-			
+			blockLiquidEbonite = new BlockFluid("liquidebonite", ModFluids.liquidEbonite, Material.LAVA);
+			blockLiquidValasium = new BlockFluid("liquidvalasium", ModFluids.liquidValasium, Material.LAVA);
+			blockLiquidHallowsite = new CustomFireBlockFluid("liquidhallowsite", ModFluids.liquidHallowsite, CustomFireEffect.SPIRIT_FIRE, Material.LAVA).setSource(new DamageSource("haunted").setFireDamage());
+			blockLiquidBlightsteel = new BlockFluid("liquidblightsteel", ModFluids.liquidBlightsteel, Material.LAVA);
+			blockLiquidSanguiseelium = new BlockFluid("liquidsanguiseelium", ModFluids.liquidSanguiseelium, Material.LAVA);
+			blockLiquidZracohlium = new BlockFluid("liquidzracohlium", ModFluids.liquidZracohlium, Material.LAVA);
+
+			blockLiquidFusionLava = new CustomFireBlockFluid("liquidfusionlava", ModFluids.liquidFusionLava, CustomFireEffect.COLD_FIRE, Material.LAVA).setSource(new DamageSource("coldfire").setFireDamage());
+			blockLiquifiedSouls = new BlockFluid("liquifiedsouls", ModFluids.liquidLiquifiedSouls, Material.WATER);
+
 		    ModFluidBlocks.registerBlocks(
 /* ------------------------------------- */
 				blockLiquidFusionite,
@@ -129,7 +129,7 @@ public class ModFluidBlocks {
 			blockMummySludge = new BlockFluid("mummysludge", ModFluids.liquidMummySludge, Material.WATER);
 			blockBetweenSludge = new BlockFluid("betweensludge", ModFluids.liquidBetweenSludge, Material.WATER);
 			blockLiquidAncientAlloy = new BlockFluid("liquidancientalloy", ModFluids.liquidAncientAlloy, Material.LAVA);
-			
+
 			ModFluidBlocks.registerBlocks(
 /* ------------------------------------- */
 					blockBurningSulfurFlow,

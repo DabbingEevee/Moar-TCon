@@ -80,13 +80,14 @@ public class BetweenAxe extends AoeToolCore implements ICorrodible, IAnimatorRep
 	@Override
 	public void setCorrosion(ItemStack stack, int corrosion) {
 		boolean bad = this.getCorrosion(stack) < corrosion;
-		
-		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite)) {
 			return;
+		}
 		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
 		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
 	}
-	
+
 	@Override
 	public boolean isEffective(IBlockState state) {
 		return effective_materials.contains(state.getMaterial()) || EFFECTIVE_ON.contains(state.getBlock());
@@ -111,7 +112,7 @@ public class BetweenAxe extends AoeToolCore implements ICorrodible, IAnimatorRep
 	public float knockback() {
 		return 1.3f;
 	}
-	
+
 	@Override
 	public void afterBlockBreak(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase player, int damage, boolean wasEffective) {
 		// breaking leaves does not reduce durability

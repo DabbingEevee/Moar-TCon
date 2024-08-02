@@ -14,18 +14,18 @@ import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 public interface IAdditionalTraitMethods {
 
 	default void onPickup(EntityProjectileBase projectileBase, ItemStack ammo, EntityLivingBase entity) {
-		
+
 	}
-	
+
 	default void onAmmoConsumed(ItemStack ammo, @Nullable EntityLivingBase entity) {
-		
+
 	}
-	
-	default List<String> getAdditionalInfo(ItemStack toolOrPart) { //this is called for both the tool AND the part. 
+
+	default List<String> getAdditionalInfo(ItemStack toolOrPart) { //this is called for both the tool AND the part.
 		return Lists.newArrayList();
 	}
-	
+
     default void onLeftClick(EntityPlayer player, ItemStack stack) {
-    	
+
     }
 }

@@ -20,14 +20,14 @@ public class ParticleFieryPillar extends Particle {
 
 	double minY = 0;
 	double rOff = 0;
-	
+
 	public ParticleFieryPillar(World worldIn, double x, double y, double z, double minY) {
 		super(worldIn, x, y, z, 0, 0, 0);
 		this.minY = minY - 1;
 		this.particleMaxAge = 20 + (int) (Math.random() * 20);
-		
+
 		this.rOff = Math.random() * 20;
-		
+
 		this.motionX = 0;
 		this.motionY = 0;
 		this.motionZ = 0;
@@ -73,7 +73,7 @@ public class ParticleFieryPillar extends Particle {
 			double ageRatioInv = 1 - (this.particleAge + partialTicks) / this.particleMaxAge;
 			double mult = Math.max(0, ageRatioInv * ageRatioInv);
 			double size = 0.5 + 0.5 * ageRatio;
-			
+
 			int lightCoords = this.getBrightnessForRender(partialTicks);
 
 			Minecraft.getMinecraft().getTextureManager().bindTexture(FIRE_INNER);
@@ -90,24 +90,24 @@ public class ParticleFieryPillar extends Particle {
 
 		int lj = lightCoord >> 16 & 65535;
 		int lk = lightCoord & 65535;
-		        
+
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferbuilder = tessellator.getBuffer();
 
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
         GlStateManager.alphaFunc(516, 0.003921569F);
-		
+
 		float f5 = (float) -((age + partial + rOffset) * 0.01F * speedMult);
-		float f6 = (float) (length / 32.0F - ((float) age + partial + rOffset) * 0.01F * speedMult);
+		float f6 = (float) (length / 32.0F - (age + partial + rOffset) * 0.01F * speedMult);
 
 		bufferbuilder.begin(5, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP);
 
 		for (int j = 0; j <= 8; ++j) {
-			float cirX = MathHelper.sin((float) (j % 8) * ((float) Math.PI * 2F) / 8.0F) * 0.75F;
-			float cirZ = MathHelper.cos((float) (j % 8) * ((float) Math.PI * 2F) / 8.0F) * 0.75F;
-	        
-			float f9 = (float) (j % 8) / 8.0F;
+			float cirX = MathHelper.sin(j % 8 * ((float) Math.PI * 2F) / 8.0F) * 0.75F;
+			float cirZ = MathHelper.cos(j % 8 * ((float) Math.PI * 2F) / 8.0F) * 0.75F;
+
+			float f9 = j % 8 / 8.0F;
 			bufferbuilder.pos(dx + cirX * radMult, dy + 0, dz + cirZ * radMult).tex(f9, f5).color(1f, 1f, 1f, alpha).lightmap(lj, lk).endVertex();
 			bufferbuilder.pos(dx + cirX * radMult, dy + length, dz + cirZ * radMult).tex(f9, f6).color(1f, 1f, 1f, alpha).lightmap(lj, lk).endVertex();
 		}
@@ -117,6 +117,6 @@ public class ParticleFieryPillar extends Particle {
         GlStateManager.depthMask(true);
         GlStateManager.disableBlend();
         GlStateManager.alphaFunc(516, 0.1F);
-        
+
 	}
 }

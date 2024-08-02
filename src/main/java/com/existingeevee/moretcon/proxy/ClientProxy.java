@@ -4,7 +4,6 @@ import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.compat.betweenlands.BLItems;
 import com.existingeevee.moretcon.entity.EntityInit;
 import com.existingeevee.moretcon.inits.ModTools;
-import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.MaterialClient;
 import com.existingeevee.moretcon.other.ContentLigntningModifier;
@@ -38,22 +37,22 @@ public class ClientProxy extends CommonProxy {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onTexturesStitch(TextureStitchEvent.Pre event) {
-		event.getMap().registerSprite(ItemBase.CIRCLE_GLOW);
-		event.getMap().registerSprite(ItemBase.OVAL_GLOW);
-		event.getMap().registerSprite(ItemBase.BIG_CIRCLE_GLOW);
-		event.getMap().registerSprite(ItemBase.EXTREME_GLOW);
+		event.getMap().registerSprite(ICustomSlotRenderer.CIRCLE_GLOW);
+		event.getMap().registerSprite(ICustomSlotRenderer.OVAL_GLOW);
+		event.getMap().registerSprite(ICustomSlotRenderer.BIG_CIRCLE_GLOW);
+		event.getMap().registerSprite(ICustomSlotRenderer.EXTREME_GLOW);
 	}
-	
+
 	@Override
 	public void preInit() {
 		super.preInit();
 		MinecraftForge.EVENT_BUS.register(this);
-		
+
 		MaterialClient.init();
 		EntityInit.initClient();
-		
+
 		OBJLoader.INSTANCE.addDomain(ModInfo.MODID);
-		
+
 		SlotRendererRegistry.register(ModTraits.luminescent::isToolWithTrait, (stack, x, y, bakedmodel) -> ICustomSlotRenderer.simpleRender(stack, x, y, bakedmodel, GlowType.CIRCLE_BIG, ModTraits.luminescent.calculateColor(stack)));
 		SlotRendererRegistry.register(s -> s.getItem() instanceof MaterialItem && ((MaterialItem) s.getItem()).getMaterial(s).getAllTraits().contains(ModTraits.luminescent), (stack, x, y, bakedmodel) -> ICustomSlotRenderer.simpleRender(stack, x, y, bakedmodel, GlowType.CIRCLE_BIG, ModTraits.luminescent.calculateColor(stack)));
 	}
@@ -78,26 +77,26 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void postInit() {
 		super.postInit();
-		
+
 		BookLoader.registerPageType(ContentLigntningModifier.ID, ContentLigntningModifier.class);
-		
+
 		TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendTools(
 				new FileRepository("tconstruct:book"), RegisterHelper.moreTConTools));
 
 		TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
 				new FileRepository("tconstruct:book"), RegisterHelper.moreTConModifiers));
 	}
-	
+
 	@Override
 	public void clientRun(Runnable r) {
 		r.run();
 	}
-	
-	@Override 
+
+	@Override
 	public boolean isClient() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean isClientSneaking() {
 		EntityPlayerSP p = Minecraft.getMinecraft().player;

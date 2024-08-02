@@ -8,5 +8,5 @@ import net.minecraft.item.ItemStack;
 public interface ITriggerableTrait {
 
 	void trigger(ItemStack tool, EntityLivingBase wielder, TraitTrigger trigger);
-	
+
 }

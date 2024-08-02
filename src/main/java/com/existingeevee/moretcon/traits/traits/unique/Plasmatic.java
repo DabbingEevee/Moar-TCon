@@ -37,8 +37,9 @@ public class Plasmatic extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (!wasHit || IS_ALREADY_PROCING.get() || !(player instanceof EntityPlayer))
+		if (!wasHit || IS_ALREADY_PROCING.get() || !(player instanceof EntityPlayer)) {
 			return;
+		}
 		this.proc((EntityPlayer) player, target);
 	}
 
@@ -60,14 +61,12 @@ public class Plasmatic extends AbstractTrait {
 		List<Entity> entities = player.world.getEntitiesWithinAABBExcludingEntity(player, area);
 
 		for (Entity e : entities) {
-			if (!(e instanceof EntityLivingBase))
+			if (!(e instanceof EntityLivingBase) || e.equals(player) || e == player.getRidingEntity() || e == ignore) {
 				continue;
-
-			if (e.equals(player) || e == player.getRidingEntity() || e == ignore)
-				continue;
+			}
 
 			RayTraceResult intercept = e.getEntityBoundingBox().calculateIntercept(start, end);
-			
+
 			if (intercept != null) {
 				try {
 					IS_ALREADY_PROCING.set(true);

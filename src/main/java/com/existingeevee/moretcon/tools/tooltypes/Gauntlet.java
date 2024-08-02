@@ -172,9 +172,9 @@ public class Gauntlet extends TinkerToolCore {
 	/*
 	 * @Override public void onWornTick(ItemStack itemstack, EntityLivingBase
 	 * player) { if (player instanceof EntityPlayer) {
-	 * 
+	 *
 	 * List<Material> mats = Misc.getMaterials(itemstack);
-	 * 
+	 *
 	 * for (ITrait t : ToolHelper.getTraits(itemstack)) { t.onArmorTick(itemstack,
 	 * player.getEntityWorld(), (EntityPlayer) player); t.onUpdate(itemstack,
 	 * player.getEntityWorld(), player, -1,

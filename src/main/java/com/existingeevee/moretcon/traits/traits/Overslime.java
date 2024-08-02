@@ -18,13 +18,14 @@ public class Overslime extends DurabilityShieldTrait {
 	@Override
 	public int getNumberMax(ItemStack stack) {
 		int amount = (Math.max(10, ToolHelper.getCurrentDurability(stack) / 10) + 40);
-		if (ModTraits.overcast.isToolWithTrait(stack))
+		if (ModTraits.overcast.isToolWithTrait(stack)) {
 			amount *= 2;
+		}
 		return amount;
 	}
 
 	@Override
-	public boolean isToolWithTrait(ItemStack itemStack) { 
+	public boolean isToolWithTrait(ItemStack itemStack) {
 		return super.isToolWithTrait(itemStack);
 	}
 }

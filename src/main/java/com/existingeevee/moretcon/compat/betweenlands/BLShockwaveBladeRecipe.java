@@ -2,7 +2,6 @@ package com.existingeevee.moretcon.compat.betweenlands;
 
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
-import com.existingeevee.moretcon.materials.UniqueMaterial;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -39,7 +38,7 @@ public class BLShockwaveBladeRecipe extends AnimatorRecipe {
 
 	@Override
 	public ItemStack getResult(ItemStack stack) {
-		return ((UniqueMaterial) ModMaterials.materialShockwave).getUniqueToolPart();
+		return ModMaterials.materialShockwave.getUniqueToolPart();
 	}
 
 	@Override

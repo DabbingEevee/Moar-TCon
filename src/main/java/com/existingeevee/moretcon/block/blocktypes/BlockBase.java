@@ -70,10 +70,7 @@ public class BlockBase extends Block implements ISimpleBlockItemProvider {
 
 	@Override
 	public SoundType getSoundType(IBlockState state, World world, BlockPos pos, @Nullable Entity entity) {
-		if (state.getBlock() == ModBlocks.blockCragravel) {
-			return SoundType.GROUND;
-		}
-		if (state.getBlock() == ModBlocks.blockSiltClay) {
+		if ((state.getBlock() == ModBlocks.blockCragravel) || (state.getBlock() == ModBlocks.blockSiltClay)) {
 			return SoundType.GROUND;
 		}
 		return super.getSoundType(state, world, pos, entity);
@@ -90,9 +87,10 @@ public class BlockBase extends Block implements ISimpleBlockItemProvider {
 
 	@Override
 	public ItemBlock createBlockItem() {
-		if (this.canBurn)
-			return new ItemBlock((Block) this);
-		return new ItemBlock((Block) this) {
+		if (this.canBurn) {
+			return new ItemBlock(this);
+		}
+		return new ItemBlock(this) {
 			@Override
 			public boolean onEntityItemUpdate(EntityItem entityItem) {
 				FireproofItemUtil.onUpdateSafe(entityItem);

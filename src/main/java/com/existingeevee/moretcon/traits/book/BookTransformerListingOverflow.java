@@ -15,7 +15,7 @@ import slimeknights.tconstruct.library.book.sectiontransformer.SectionTransforme
 public class BookTransformerListingOverflow extends SectionTransformer {
 
     private static final MirrorUtils.IField<List<TextData>> fContentListingEntries = MirrorUtils.reflectField(ContentListing.class, "entries");
-	
+
     public BookTransformerListingOverflow(String sectionName) {
         super(sectionName);
     }

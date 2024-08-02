@@ -6,7 +6,7 @@ import java.util.function.LongFunction;
 public abstract class Equation implements DoubleFunction<Double>, LongFunction<Long> {
 
 	public abstract double evaluate(double x);
-	
+
 	public long evaluate(long x) {
 		return (long) evaluate((double) x);
 	}

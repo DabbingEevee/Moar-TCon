@@ -20,7 +20,7 @@ public class TraitClient {
 			register(ModTraits.modValonite);
 			register(ModTraits.modTarred);
 			register(ModTraits.modBetweenified);
-			
+
 			register(TinkerModifiers.modFiery);
 			register(TinkerModifiers.modLuck);
 			register(TinkerModifiers.modEmerald);

@@ -36,7 +36,7 @@ public class KineticBattery extends NumberTrackerTrait {
 		if (this.getNumber(tool) > 0 && player.isSneaking() && wasHit) {
 			player.world.playSound(null, player.getPosition(), SoundHandler.SWOOSH_EXPLOSION, SoundCategory.PLAYERS, 1, 1);
 			this.setNumber(tool, 0);
-			
+
 			if (player.world instanceof WorldServer) {
 				SPacketParticles spacketparticles = new SPacketParticles(EnumParticleTypes.EXPLOSION_LARGE, true, (float) target.getPositionVector().x, (float) target.getPositionVector().y, (float) target.getPositionVector().z, 0, 0, 0, 0, 1);
 				for (EntityPlayerMP p : player.world.getPlayers(EntityPlayerMP.class, p -> true)) {

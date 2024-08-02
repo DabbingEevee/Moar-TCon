@@ -25,8 +25,9 @@ public class TripleShot extends AbstractProjectileTrait {
 
 	@Override
 	public void onLaunch(EntityProjectileBase projectileBase, World world, EntityLivingBase shooter) {
-		if (IS_ALREADY_PROCING.get())
+		if (IS_ALREADY_PROCING.get()) {
 			return;
+		}
 
 		if (projectileBase != null && shooter != null) {
 			TinkerProjectileHandler ticProjectile = projectileBase.tinkerProjectile;

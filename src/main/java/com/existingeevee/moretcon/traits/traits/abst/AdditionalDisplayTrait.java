@@ -27,8 +27,9 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 
 	@Override
 	public String getTooltip(NBTTagCompound modifierTag, boolean detailed) {
-		if (!showDisplay)
+		if (!showDisplay) {
 			return super.getTooltip(modifierTag, detailed);
+		}
 
 		StringBuilder sb = new StringBuilder();
 
@@ -39,8 +40,9 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 			sb.append(" ");
 			sb.append(TinkerUtil.getRomanNumeral(data.level));
 		}
-		if (!detailed)
+		if (!detailed) {
 			sb.append(": -{-toreplace.moretcon.display." + data.identifier + "-}-");
+		}
 
 		return sb.toString();
 	}
@@ -48,17 +50,19 @@ public abstract class AdditionalDisplayTrait extends AbstractTraitLeveled {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onItemTooltipEvent(ItemTooltipEvent event) {
-		if (!showDisplay) 
+		if (!showDisplay) {
 			return;
-		
+		}
+
 		ItemStack tool = event.getItemStack();
-		if (!this.isToolWithTrait(tool))
+		if (!this.isToolWithTrait(tool)) {
 			return;
-		
+		}
+
 		for (int i = 0; i < event.getToolTip().size(); i++) {
 			String str = event.getToolTip().get(i);
 			String[] splitString = str.split(": ");
-			
+
 			if (splitString.length >= 2 && splitString[1].equals("-{-toreplace.moretcon.display." + this.getModifierIdentifier() + "-}-")) {
 				String toRender = this.getStringToRender(tool);
 				if (toRender != null) {

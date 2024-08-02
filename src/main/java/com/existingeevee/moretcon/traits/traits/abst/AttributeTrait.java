@@ -18,16 +18,16 @@ public class AttributeTrait extends AbstractTrait {
 
 	private final AttributeModifier modifier;
 	private final IAttribute type;
-	
+
 	private boolean worksInOffhand = false;
-	
+
 	public AttributeTrait(String id, int color, AttributeModifier modifier, IAttribute type) {
 		super(MiscUtils.createNonConflictiveName(id), color);
 		this.modifier = modifier.setSaved(false);
 		this.type = type;
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void handleWeightless(LivingUpdateEvent event) {
 		IAttributeInstance attr = event.getEntityLiving().getAttributeMap().getAttributeInstance(type);
@@ -37,14 +37,16 @@ public class AttributeTrait extends AbstractTrait {
 		boolean inLeft = this.isToolWithTrait(event.getEntityLiving().getHeldItemOffhand()) && this.shouldApply(event.getEntityLiving().getHeldItemOffhand(), event.getEntity().world, event.getEntityLiving());
 		boolean inRight = this.isToolWithTrait(event.getEntityLiving().getHeldItemMainhand()) && this.shouldApply(event.getEntityLiving().getHeldItemMainhand(), event.getEntity().world, event.getEntityLiving());
 		if (inRight || inLeft && worksInOffhand()) {
-			if (!attr.hasModifier(modifier))
+			if (!attr.hasModifier(modifier)) {
 				attr.applyModifier(modifier);
+			}
 		} else {
-			if (attr.hasModifier(modifier))
+			if (attr.hasModifier(modifier)) {
 				attr.removeModifier(modifier);
+			}
 		}
 	}
-	
+
 	public boolean shouldApply(ItemStack tool, World world, EntityLivingBase entity) {
 		return true;
 	}
@@ -52,7 +54,7 @@ public class AttributeTrait extends AbstractTrait {
 	public boolean worksInOffhand() {
 		return worksInOffhand;
 	}
-	
+
 	public AttributeTrait setWorksInOffhand(boolean worksInOffhand) {
 		this.worksInOffhand = worksInOffhand;
 		return this;

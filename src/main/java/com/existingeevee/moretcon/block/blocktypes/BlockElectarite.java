@@ -20,8 +20,9 @@ public class BlockElectarite extends BlockBase {
 
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		if (pos.getY() >= 245)
+		if (pos.getY() >= 245) {
 			worldIn.scheduleUpdate(pos, this, (int) (Math.random() * 60 + this.tickRate(worldIn)));
+		}
 	}
 
 	@Override
@@ -44,6 +45,7 @@ public class BlockElectarite extends BlockBase {
 		}
 	}
 
+	@Override
 	public int tickRate(World worldIn) {
 		return 200;
 	}

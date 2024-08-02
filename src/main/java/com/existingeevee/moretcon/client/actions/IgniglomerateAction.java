@@ -28,7 +28,7 @@ public class IgniglomerateAction extends ClientAction {
 	public static class Provider implements ParticleProvider {
 
 		public static final Provider INSTANCE = new Provider();
-		
+
 		private Provider() {
 		}
 

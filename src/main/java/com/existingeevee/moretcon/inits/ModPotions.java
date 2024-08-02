@@ -8,7 +8,7 @@ import com.existingeevee.moretcon.other.utils.CompatManager;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-public class ModPotions {	
+public class ModPotions {
 	public static Potion corrosive;
 	public static Potion bloodgodsblessing;
 
@@ -19,8 +19,8 @@ public class ModPotions {
 	public static void init() {
 		//coldflames = new PotionColdFlames();
 		bloodgodsblessing = new PotionBloodGodsBlessing();
-		bleeding = new PotionBleeding();	
-		hyperflames = new PotionHyperflames();	
+		bleeding = new PotionBleeding();
+		hyperflames = new PotionHyperflames();
 		if (CompatManager.loadMain) {
 			ForgeRegistries.POTIONS.registerAll(
 						bleeding,

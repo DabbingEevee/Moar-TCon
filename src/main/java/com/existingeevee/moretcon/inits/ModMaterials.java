@@ -166,10 +166,10 @@ public class ModMaterials implements MaterialTypes {
 	public static final UniqueMaterial materialDematerializer = new UniqueMaterial(
 			MiscUtils.createNonConflictiveName("dematerializer"), 0xbae7ff, "tconstruct:bow_limb",
 			"tconstruct:longbow");
-	
+
 	private static void initMats() {
 		BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
-		
+
 		if (CompatManager.tic3backport) {
 			materialNahuatl.setCastable(false);
 			materialNahuatl.setCraftable(false);
@@ -721,8 +721,8 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialZracohlium, new ExtraMaterialStats(90));
 			TinkerRegistry.addMaterialStats(materialZracohlium, new ArrowShaftMaterialStats(1.5f, 125));
 			TinkerRegistry.addMaterialStats(materialZracohlium, new BowMaterialStats(1.2f, 1.3f, 0.8f));
-			
-			TinkerRegistry.addMaterialStats(materialDematerializer, new BowMaterialStats(1f, 3.2f, 7f)); 
+
+			TinkerRegistry.addMaterialStats(materialDematerializer, new BowMaterialStats(1f, 3.2f, 7f));
 			TinkerRegistry.addMaterialStats(materialDematerializer, new HeadMaterialStats(2069, 10f, 8f, 6));
 			materialDematerializer.addTrait(ModTraits.dematerializing);
 		}
@@ -1041,7 +1041,7 @@ public class ModMaterials implements MaterialTypes {
 
 	public static void init() {
 		initMats();
-		
+
 		if (CompatManager.plustic) {
 			ModMaterials.registerMaterial(materialCrimson);
 		}
@@ -1089,7 +1089,7 @@ public class ModMaterials implements MaterialTypes {
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl, null);
 			ModMaterials.registerMaterial(materialSlimewood, null);
-			ModMaterials.registerMaterial(materialSearedStone, null);	
+			ModMaterials.registerMaterial(materialSearedStone, null);
 		}
 
 		if (CompatManager.twilightforest) {

@@ -57,19 +57,22 @@ public class Dematerializing extends AbstractTrait {
 		EntityLivingBase shooter = event.shooter;
 		World world = arrow.world;
 
-		if (!isToolWithTrait(event.launcher) || arrow == null || event.shooter == null || !(event.launcher.getItem() instanceof BowCore) || !(event.shooter instanceof EntityPlayer))
+		if (!isToolWithTrait(event.launcher) || arrow == null || event.shooter == null || !(event.launcher.getItem() instanceof BowCore) || !(event.shooter instanceof EntityPlayer)) {
 			return;
+		}
 
 		BowCore bow = (BowCore) event.launcher.getItem();
 		float progress = ((BowCore) event.launcher.getItem()).getDrawbackProgress(event.launcher, event.shooter);
 
 		boolean fullyDrawn = progress >= 1;
 
-		if (!fullyDrawn)
+		if (!fullyDrawn) {
 			return;
+		}
 
-		if (!((EntityPlayer) shooter).capabilities.isCreativeMode)
+		if (!((EntityPlayer) shooter).capabilities.isCreativeMode) {
 			ToolHelper.damageTool(event.launcher, 1, shooter);
+		}
 		event.setCanceled(true);
 
 		Vec3d heading = new Vec3d(arrow.motionX, arrow.motionY, arrow.motionZ).normalize();
@@ -99,16 +102,14 @@ public class Dematerializing extends AbstractTrait {
 		}
 
 		float power = ItemBow.getArrowVelocity(20) * baseSpeed;
-		power *= launcherData.range; 
+		power *= launcherData.range;
 
 		Function<Double, Double> aimAssist = d -> Math.max(0, d < 36.3636 ? 0.0125 * d : -0.125 * (d - 40));
 
 		for (Entity e : entities) {
-			if (!(e instanceof EntityLivingBase))
+			if (!(e instanceof EntityLivingBase) || e == shooter || e == shooter.getRidingEntity()) {
 				continue;
-
-			if (e == shooter || e == shooter.getRidingEntity())
-				continue;
+			}
 
 			RayTraceResult intercept = e.getEntityBoundingBox().grow(aimAssist.apply(e.getDistance(start.x, start.y, start.z))).calculateIntercept(start, end);
 
@@ -130,8 +131,9 @@ public class Dematerializing extends AbstractTrait {
 		}
 
 		if (!arrow.world.isRemote) {
-			if (hitBlock)
+			if (hitBlock) {
 				world.createExplosion(shooter, end.x, end.y, end.z, 0.5f, false);
+			}
 
 			int arrowColor = 0xffffff;
 			if (arrow instanceof EntityProjectileBase) {
@@ -154,7 +156,7 @@ public class Dematerializing extends AbstractTrait {
 			}
 		}
 	}
-	
+
     public static List<Material> getToolMaterials(ItemStack stack) {
         return TinkerUtil.getMaterialsFromTagList(TagUtil.getBaseMaterialsTagList(stack));
     }

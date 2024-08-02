@@ -78,11 +78,13 @@ public class MiscUtils {
 	public static final Method checkTotemDeathProtection$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_190628_d", boolean.class, DamageSource.class);
 
 	public static void trueDamage(EntityLivingBase entity, float amount, DamageSource src, boolean bypassChecks) {
-		if (entity.getHealth() <= 0 || ((entity instanceof EntityPlayer) && ((EntityPlayer) entity).capabilities.isCreativeMode))
+		if (entity.getHealth() <= 0 || ((entity instanceof EntityPlayer) && ((EntityPlayer) entity).capabilities.isCreativeMode)) {
 			return;
+		}
 		if (!bypassChecks) {
-			if (entity.isEntityInvulnerable(src))
+			if (entity.isEntityInvulnerable(src)) {
 				return;
+			}
 		}
 		float health = entity.getHealth();
 		entity.getCombatTracker().trackDamage(src, health, amount);
@@ -144,9 +146,9 @@ public class MiscUtils {
 	}
 
 	public static Vec3d convertToEntityPos(BlockPos blockpos) {
-		double entityPosX = (((double) ((int) (blockpos.getX()))) + 0.5);
-		double entityPosY = ((double) ((int) (blockpos.getY())));
-		double entityPosZ = (((double) ((int) (blockpos.getZ()))) + 0.5);
+		double entityPosX = blockpos.getX() + 0.5;
+		double entityPosY = blockpos.getY();
+		double entityPosZ = blockpos.getZ() + 0.5;
 		return new Vec3d(entityPosX, entityPosY, entityPosZ);
 	}
 
@@ -242,7 +244,7 @@ public class MiscUtils {
 	public static List<Material> getMaterials(ItemStack stack) {
 		NBTTagList list = TagUtil.getBaseMaterialsTagList(stack);
 
-		List<Material> retList = new ArrayList<Material>();
+		List<Material> retList = new ArrayList<>();
 		for (NBTBase base : list) {
 			NBTTagString string = (NBTTagString) base;
 			Material mat = TinkerRegistry.getMaterial(string.getString());
@@ -353,7 +355,7 @@ public class MiscUtils {
 		return rayTrace(entityLiving, maxRange, exclude, true);
 	}
 
-	
+
 	public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double maxRange, List<Entity> exclude, boolean affectedByBlocks) {
 		Vec3d start = entityLiving.getPositionEyes(0.5f);
 		Vec3d lookVec = entityLiving.getLookVec();
@@ -363,7 +365,7 @@ public class MiscUtils {
 
 		return rayTrace(start, lookVec, entityLiving.world, maxRange, exclude, affectedByBlocks, false);
 	}
-	
+
 	public static RayTraceResult rayTrace(Vec3d start, Vec3d direction, World world, double maxRange, List<Entity> exclude, boolean affectedByBlocks, boolean ignoreNoBounding) {
 		Vec3d end = start.add(direction.scale(maxRange));
 		RayTraceResult firstTrace = affectedByBlocks ? world.rayTraceBlocks(start, end, false, ignoreNoBounding, true) : null;
@@ -374,14 +376,12 @@ public class MiscUtils {
 		double closestDistSq = Double.MAX_VALUE;
 
 		for (Entity e : entities) {
-			if (!(e instanceof EntityLivingBase))
+			if (!(e instanceof EntityLivingBase) || (exclude != null && exclude.contains(e))) {
 				continue;
-			
-			if (exclude != null && exclude.contains(e))
-				continue;
-						
+			}
+
 			RayTraceResult intercept = e.getEntityBoundingBox().calculateIntercept(start, end);
-						
+
 			if (intercept != null) {
 				double distSq = intercept.hitVec.squareDistanceTo(start);
 				if (closestDistSq > distSq) {

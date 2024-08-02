@@ -113,7 +113,7 @@ public class ModTraits {
 	public static Autoloading autoloading = new Autoloading();
 	public static Boltforged boltforged = new Boltforged();
 	public static Dematerializing dematerializing = new Dematerializing();
-	
+
 	public static KineticBattery kineticBattery = new KineticBattery();
 	public static Hyperheat hyperheat = new Hyperheat();
 	public static ColdFire coldFire = new ColdFire();
@@ -142,7 +142,7 @@ public class ModTraits {
 	public static DummyTrait overcast = new DummyTrait("overcast", 0);
 	public static Overgrowth overgrowth = new Overgrowth(1);
 	public static Overgrowth overgrowth2 = new Overgrowth(2);
-	public static Fireslime fireslime = new Fireslime();;
+	public static Fireslime fireslime = new Fireslime();
 	public static Electrified electrified = new Electrified();
 	public static Haunted haunted = new Haunted();
 	public static Soulforged soulforged = new Soulforged(1);
@@ -171,17 +171,17 @@ public class ModTraits {
 	public static Gem modRedGem;
 	public static Gem modGreenGem;
 	public static Gem modBlueGem;
-	public static Shocked modShocked; 
+	public static Shocked modShocked;
 	public static Valonite modValonite;
 	public static Tarred modTarred;
 	public static Betweenified modBetweenified;
 
 	public static Corroding corroding;
-	
+
 	public static Crushing modCrushing;
 
 	public static Debug modDebug;
-	
+
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
 	public static Oxide oxide;
@@ -209,7 +209,7 @@ public class ModTraits {
 		for (IModifier i : mod) {
 			RegisterHelper.registerModifier(i);
 		}
-	} 
+	}
 
 	public static void init() {
 		if (CompatManager.loadMain) {
@@ -245,7 +245,7 @@ public class ModTraits {
 		}
 	}
 
-	
+
 	private static Map<String, ModExtraTrait2> extraTraitLookup = new HashMap<>();
 	public static List<Modifier> extraTraitMods;
 

@@ -13,7 +13,7 @@ public class AetherOreGenerator extends WorldGenModifier {
 
 	@Override
 	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {
-		runGenerator(ModBlocks.oreArkenium.getDefaultState(), 8, 3, 5, 250, BlockMatcher.forBlock(BlocksAether.holystone), ctx);		
+		runGenerator(ModBlocks.oreArkenium.getDefaultState(), 8, 3, 5, 250, BlockMatcher.forBlock(BlocksAether.holystone), ctx);
 	}
 
 }

@@ -25,28 +25,31 @@ public class BottomsEnd extends AbstractTrait {
 	@SubscribeEvent
 	public void bedrockHarvestEvent(BlockEvent.HarvestDropsEvent event) {
 		IBlockState state = event.getState();
-		
+
 		if (event.getHarvester() != null) {
-			
+
 			ItemStack tool = event.getHarvester().getHeldItemMainhand();
 			int harvestLevel = tool.getItem().getHarvestLevel(tool, "pickaxe", event.getHarvester(), state);
 			boolean silkTouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, tool) > 0;
-			
-			if (!this.isToolWithTrait(tool) || ToolHelper.isBroken(tool))
+
+			if (!this.isToolWithTrait(tool) || ToolHelper.isBroken(tool)) {
 				return;
-			
+			}
+
 			if (state.getBlock() == Blocks.BEDROCK) {
-				if (harvestLevel >= 4)
+				if (harvestLevel >= 4) {
 					if (silkTouch && ConfigHandler.unfracturedBedrockObtainable) {
 						event.getDrops().add(new ItemStack(Blocks.BEDROCK));
 					} else {
 						event.getDrops().add(new ItemStack(ModBlocks.blockCobbledBedrock));
 					}
+				}
 			}
 
 			if (state.getBlock().getRegistryName().toString().equals("thebetweenlands:betweenlands_bedrock")) {
-				if (harvestLevel < 4)
+				if (harvestLevel < 4) {
 					event.getDrops().clear();
+				}
 
 				if (!silkTouch || !ConfigHandler.unfracturedBedrockObtainable) {
 					event.getDrops().clear();
@@ -64,7 +67,7 @@ public class BottomsEnd extends AbstractTrait {
 	public boolean isStackBroken(ItemStack is) {
 		return ToolHelper.isBroken(is);
 	}
-	
+
 	public Class<ToolCore> getToolCoreClass() {
 		return ToolCore.class;
 	}

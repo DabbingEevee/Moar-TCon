@@ -16,11 +16,11 @@ public class Pulsating extends AbstractTrait {
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		NBTTagCompound comp = tool.getOrCreateSubCompound(this.getModifierIdentifier());
-		
+
 		float x = comp.getFloat("x");
 		float ed = (Math.round(20 * Math.sin(x += 0.2)) + 20) / 10;
 		comp.setFloat("x", Math.round(x * 10f) / 10f);
-		
+
 		return newDamage + ed;
 	}
 

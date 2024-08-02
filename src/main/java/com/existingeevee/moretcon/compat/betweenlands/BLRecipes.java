@@ -67,8 +67,8 @@ public class BLRecipes {
 							Pair.of('A', new TinkerPartIngredient(ModMaterials.materialSwampSteel, "tconstruct:arrow_head"))));
 		}
 
-		GameRegistry.addSmelting(new ItemStack(ModItems.sulfurBucketSyrmorite, (int) (1)), new ItemStack(BLItems.blFilledMoltenSulfur, 1, 1), 0f);
-		GameRegistry.addSmelting(new ItemStack(ModItems.sulfurBucketIron, (int) (1)), FluidUtil.getFilledBucket(new FluidStack(ModFluids.liquidBurningSulfurFlow, 1000)), 0F);
+		GameRegistry.addSmelting(new ItemStack(ModItems.sulfurBucketSyrmorite, 1), new ItemStack(BLItems.blFilledMoltenSulfur, 1, 1), 0f);
+		GameRegistry.addSmelting(new ItemStack(ModItems.sulfurBucketIron, 1), FluidUtil.getFilledBucket(new FluidStack(ModFluids.liquidBurningSulfurFlow, 1000)), 0F);
 
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_BATTLE_AXE, 1), new ItemStack(ModItems.itemAncientSlag, 2), 0f);
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.ANCIENT_GREATSWORD, 1), new ItemStack(ModItems.itemAncientSlag, 2), 0f);
@@ -88,10 +88,10 @@ public class BLRecipes {
 			GameRegistry.addSmelting(new ItemStack(ModBlocks.blockCobbledBetweenBedrock, 1), new ItemStack(BlockRegistry.BETWEENLANDS_BEDROCK, 1), 0F);
 		}
 		blAPI.registerAnimatorRecipe(new AnimatorRecipe(new ItemStack(BlockRegistry.ANCIENT_REMNANT_BLOCK), 10, 30, new ItemStack(ModItems.itemAncientScrap)));
-		event.getRegistry().register(new ShapelessRecipes(ModInfo.MODID, new ItemStack(ModItems.itemAncientScrap, 3), 
-				NonNullList.from(Ingredient.fromStacks(ItemStack.EMPTY), 
-						Ingredient.fromStacks(new ItemStack(ModItems.itemAncientSlag, 1)), 
-						Ingredient.fromStacks(EnumItemMisc.ANCIENT_REMNANT.create(1)), 
+		event.getRegistry().register(new ShapelessRecipes(ModInfo.MODID, new ItemStack(ModItems.itemAncientScrap, 3),
+				NonNullList.from(Ingredient.fromStacks(ItemStack.EMPTY),
+						Ingredient.fromStacks(new ItemStack(ModItems.itemAncientSlag, 1)),
+						Ingredient.fromStacks(EnumItemMisc.ANCIENT_REMNANT.create(1)),
 						Ingredient.fromStacks(EnumItemMisc.ANCIENT_REMNANT.create(1))
 						)).setRegistryName("slag_to_scrap"));
 
@@ -120,7 +120,9 @@ public class BLRecipes {
 				            if (itemstack != null && !itemstack.isEmpty() && itemstack.getItem().equals(ItemRegistry.BL_BUCKET) && itemstack.getMetadata() == 1) {
 				            	try {
 				            		FluidStack fluidStack = FluidStack.loadFluidStackFromNBT(itemstack.serializeNBT().getCompoundTag("tag").getCompoundTag("Fluid"));
-					            	if (fluidStack == null) continue;
+					            	if (fluidStack == null) {
+										continue;
+									}
 					            	return false;
 				            	} catch (ClassCastException | NullPointerException e) {
 				            		continue;
@@ -132,10 +134,10 @@ public class BLRecipes {
 		        return super.matches(inv, worldIn);
 		    }
 		}.setRegistryName("syrmoritesulfur"));
-		
+
 		blAPI.registerPestleAndMortarRecipe(new BLCragravelRecipe());
 	}
-	
+
 	public static void postInit() {
 		TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidRotiron, 1), new FluidStack(ModFluids.liquidRottenSludge, 1), new FluidStack(ModFluids.liquidSyrmorite, 3));
     	TinkerRegistry.registerEntityMelting(EntityDreadfulMummy.class, new FluidStack(ModFluids.liquidMummySludge, 16));

@@ -92,7 +92,7 @@ public class OreDictionaryManager {
 			registerOre("blockSanguiseelium", ModBlocks.blockSanguiseelium);
 			registerOre("ingotSanguiseelium", ModItems.ingotSanguiseelium);
 			registerOre("nuggetSanguiseelium", ModItems.nuggetSanguiseelium);
-			
+
 			registerOre("blockVoidSpar", ModBlocks.blockVoidSpar);
 			registerOre("gemVoidSpar", ModItems.gemVoidSpar);
 			registerOre("oreVoidSpar", ModBlocks.oreVoidSpar);
@@ -151,7 +151,7 @@ public class OreDictionaryManager {
 				registerOre("dustZracohlium", ModItems.dustZracohlium);
 			}
 		}
-		
+
 		if (CompatManager.twilightforest) {
 			registerOre("blockPenguinite", ModBlocks.blockPenguinite);
 			registerOre("ingotPenguinite", ModItems.ingotPenguinite);
@@ -163,7 +163,7 @@ public class OreDictionaryManager {
 				registerOre("dustKnightmetal", ModItems.dustKnightmetal);
 			}
 		}
-		
+
 		if (CompatManager.thebetweenlands && Loader.isModLoaded("thebetweenlands")) {
 			registerOre("blockSwampsteel", ModBlocks.blockSwampSteel);
 			registerOre("ingotSwampsteel", ModItems.ingotSwampSteel);
@@ -189,7 +189,7 @@ public class OreDictionaryManager {
 				registerOre("dustAncientAlloy", ModItems.dustAncientAlloy);
 			}
 		}
-		
+
 		if (CompatManager.aether_legacy) {
 			registerOre("blockArkenium", ModBlocks.blockArkenium);
 			registerOre("oreArkenium", ModBlocks.oreArkenium);

@@ -21,11 +21,11 @@ public class ModItems {
 	public static final Item nuggetHallowsite = new ItemBase("nuggetHallowsite");
 	public static final Item ingotHallowsite = new ItemBase("ingotHallowsite");
 	public static final Item dustHallowsite = new ItemBase("dustHallowsite");
-	
+
 	public static final Item nuggetSanguiseelium = new ItemBase("nuggetSanguiseelium");
 	public static final Item ingotSanguiseelium = new ItemBase("ingotSanguiseelium");
 	public static final Item dustSanguiseelium = new ItemBase("dustSanguiseelium");
-	
+
 	public static final Item nuggetFusionite = new ItemBase("nuggetFusionite", 0x0000ff);
 	public static final Item ingotFusionite = new ItemBase("ingotFusionite", GlowType.OVAL, 0x0000ff);
 	public static final Item dustFusionite = new ItemBase("dustFusionite", GlowType.CIRCLE_BIG, 0x0000ff);
@@ -33,7 +33,7 @@ public class ModItems {
 	public static final Item nuggetValasium = new ItemBase("nuggetValasium");
 	public static final Item ingotValasium = new ItemBase("ingotValasium");
 	public static final Item dustValasium = new ItemBase("dustValasium");
-	
+
 	public static final Item nuggetRotiron = new ItemBase("nuggetRotiron");
 	public static final Item ingotRotiron = new ItemBase("ingotRotiron");
 	public static final Item dustRotiron = new ItemBase("dustRotiron");
@@ -82,7 +82,7 @@ public class ModItems {
 	public static final Item nuggetEbonite = new ItemBase("nuggetEbonite", 0x270339);
 	public static final Item dustEbonite = new ItemBase("dustEbonite", GlowType.CIRCLE_BIG, 0x270339);
 
-	public static final Item carbonPile = new ItemBase("carbonPile").setTab(ModTabs.moarTConMisc);;
+	public static final Item carbonPile = new ItemBase("carbonPile").setTab(ModTabs.moarTConMisc);
 	public static final Item ingotSteel = new ItemBase("ingotSteel");
 	public static final Item nuggetSteel = new ItemBase("nuggetSteel");
 	public static final Item dustSteel = new ItemBase("dustSteel");
@@ -105,7 +105,7 @@ public class ModItems {
 	public static final Item dustAncientAlloy = new ItemBase("dustAncientAlloy");
 	public static final Item itemAncientScrap = new ItemBase("itemAncientScrap");
 	public static final Item itemAncientSlag = new ItemBase("itemAncientSlag");
-	
+
 	public static final Item dustIronwood = new ItemBase("dustIronwood");
 
 	public static final Item dustFiery = new ItemBase("dustFiery");
@@ -124,8 +124,8 @@ public class ModItems {
 	public static final Item gemEchostone = new ItemBase("gemEchostone", 0x00725a);
 	public static final Item gemIgniglomerate = new ItemNonflamable("gemIgniglomerate").withColor(0xda6540).withType(GlowType.EXTREME);
 	public static final Item gemErythynite = new ItemBase("gemErythynite", GlowType.CIRCLE_BIG, 0x32ff00);
-	public static final Item gemEtherstone = new ItemBase("gemEtherstone", GlowType.CIRCLE_BIG, 0xffff00);;
-	public static final Item gemElectarite = new ItemBase("gemElectarite", GlowType.CIRCLE_BIG, 0x6666ff);;
+	public static final Item gemEtherstone = new ItemBase("gemEtherstone", GlowType.CIRCLE_BIG, 0xffff00);
+	public static final Item gemElectarite = new ItemBase("gemElectarite", GlowType.CIRCLE_BIG, 0x6666ff);
 
 	//Ingriedients
 	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);
@@ -146,7 +146,7 @@ public class ModItems {
 	public static final Item reforgeHeavy = new ItemReforgeStone("reforgeheavy", () -> ModReforges.reforgeHeavy);
 	public static final Item reforgeSharpened = new ItemReforgeStone("reforgesharpened", () -> ModReforges.reforgeSharpened);
 	public static final Item reforgeConsistant = new ItemReforgeStone("reforgeconsistant", () -> ModReforges.reforgeConsistant);
-	
+
 	/*---------------------------------------*/
 
 	public static void registerItems(Item... items) {
@@ -160,7 +160,7 @@ public class ModItems {
 				new ItemCompositeRep(),
 				new ItemDebugTool()
 		);
-		
+
 		if (CompatManager.loadMain) {
 			ModItems.registerItems(
 					/**-------------------------------------**/
@@ -169,7 +169,7 @@ public class ModItems {
 
 					ingotValasium,
 					nuggetValasium,
-					
+
 					ingotIrradium,
 					nuggetIrradium,
 
@@ -199,16 +199,16 @@ public class ModItems {
 
 					ingotHallowsite,
 					nuggetHallowsite,
-					
+
 					ingotBlightsteel,
 					nuggetBlightsteel,
 
 					ingotSanguiseelium,
 					nuggetSanguiseelium,
-					
+
 					ingotZracohlium,
 					nuggetZracohlium,
-					
+
 					gemVoidSpar,
 					gemEnderal,
 					gemGarstone,
@@ -218,7 +218,7 @@ public class ModItems {
 					gemErythynite,
 					gemEtherstone,
 					gemElectarite,
-					
+
 					crushingModifier,
 					matterReconstructionGel,
 					carbonPile,
@@ -226,10 +226,10 @@ public class ModItems {
 					spaceTimeDisruptionPowder,
 					hydrogenRichRedstonePowder,
 					solidLightning,
-					
+
 					reforgeHeavy,
 					reforgeSharpened,
-					reforgeConsistant	
+					reforgeConsistant
 
 			/**-------------------------------------**/
 
@@ -279,7 +279,7 @@ public class ModItems {
 					nuggetAncientAlloy,
 					itemAncientScrap,
 					itemAncientSlag,
-					
+
 					itemSiltClay,
 					crushedShockwaveSword,
 
@@ -297,7 +297,7 @@ public class ModItems {
 						dustRotiron,
 						dustSwampSteel,
 						dustAncientAlloy
-						
+
 						);
 			}
 

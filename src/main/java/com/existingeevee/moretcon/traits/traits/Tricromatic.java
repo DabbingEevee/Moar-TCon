@@ -36,8 +36,12 @@ public class Tricromatic extends AbstractTrait {
 	}
 
 	private void red(EntityPlayer entity) {
-		if (entity.isSneaking()) entity.sendStatusMessage(new TextComponentString("§cRed"), true);
-		if (entity.world.isRemote) entity.world.spawnParticle(EnumParticleTypes.REDSTONE, true, entity.getPositionVector().x, entity.getPositionVector().y + 0.05, entity.getPositionVector().z, 0, 0, 0);
+		if (entity.isSneaking()) {
+			entity.sendStatusMessage(new TextComponentString("§cRed"), true);
+		}
+		if (entity.world.isRemote) {
+			entity.world.spawnParticle(EnumParticleTypes.REDSTONE, true, entity.getPositionVector().x, entity.getPositionVector().y + 0.05, entity.getPositionVector().z, 0, 0, 0);
+		}
 
 		Potion effect = Potion.REGISTRY.getObject(ConfigHandler.trichromicRed);
 
@@ -47,8 +51,12 @@ public class Tricromatic extends AbstractTrait {
 	}
 
 	private void green(EntityPlayer entity) {
-		if (entity.isSneaking()) entity.sendStatusMessage(new TextComponentString("§aGreen"), true);
-		if (entity.world.isRemote) entity.world.spawnParticle(EnumParticleTypes.REDSTONE, true, entity.getPositionVector().x, entity.getPositionVector().y + 0.05, entity.getPositionVector().z, -1, 1, 0);
+		if (entity.isSneaking()) {
+			entity.sendStatusMessage(new TextComponentString("§aGreen"), true);
+		}
+		if (entity.world.isRemote) {
+			entity.world.spawnParticle(EnumParticleTypes.REDSTONE, true, entity.getPositionVector().x, entity.getPositionVector().y + 0.05, entity.getPositionVector().z, -1, 1, 0);
+		}
 
 		Potion effect = Potion.REGISTRY.getObject(ConfigHandler.trichromicGreen);
 
@@ -62,8 +70,12 @@ public class Tricromatic extends AbstractTrait {
 	}
 
 	private void blue(EntityPlayer entity) {
-		if (entity.isSneaking()) entity.sendStatusMessage(new TextComponentString("§9Blue"), true);
-		if (entity.world.isRemote) entity.world.spawnParticle(EnumParticleTypes.REDSTONE, true, entity.getPositionVector().x, entity.getPositionVector().y + 0.05, entity.getPositionVector().z, -1, 0, 1);
+		if (entity.isSneaking()) {
+			entity.sendStatusMessage(new TextComponentString("§9Blue"), true);
+		}
+		if (entity.world.isRemote) {
+			entity.world.spawnParticle(EnumParticleTypes.REDSTONE, true, entity.getPositionVector().x, entity.getPositionVector().y + 0.05, entity.getPositionVector().z, -1, 0, 1);
+		}
 
 		Potion effect = Potion.REGISTRY.getObject(ConfigHandler.trichromicBlue);
 
@@ -78,8 +90,12 @@ public class Tricromatic extends AbstractTrait {
 	private int calculateChunkColor(Entity entity) {
 		long seed = new Random(Integer.toString(((int) entity.posX) / 16).hashCode() + Integer.toString(((int) entity.posZ) / 16).hashCode()).nextInt(10000);
 		float rngNum = new Random(seed).nextFloat();
-		if (rngNum < (1f/3f)) return 0;
-		if (rngNum < (2f/3f)) return 1;
+		if (rngNum < (1f/3f)) {
+			return 0;
+		}
+		if (rngNum < (2f/3f)) {
+			return 1;
+		}
 		return 2;
 	}
 

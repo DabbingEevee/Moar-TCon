@@ -234,8 +234,9 @@ public class Receptive extends AdditionalDisplayTrait implements IProjectileTrai
 
 	@Override
 	public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective) {
-		if (random.nextInt(10) == 0)
+		if (random.nextInt(10) == 0) {
 			this.addMining(tool);
+		}
 	}
 
 	@Override

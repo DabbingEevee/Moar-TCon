@@ -2,8 +2,8 @@ package com.existingeevee.moretcon.traits.traits.unique;
 
 import javax.annotation.Nullable;
 
-import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.ArrowReferenceHelper;
+import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 import com.existingeevee.moretcon.traits.traits.abst.BooleanTrackerTrait;
 import com.existingeevee.moretcon.traits.traits.abst.IAdditionalTraitMethods;
@@ -55,8 +55,9 @@ public class Hailshot extends BooleanTrackerTrait implements IProjectileTrait, I
 			world.playSound(null, projectile.posX, projectile.posY, projectile.posZ, SoundHandler.ICY_EXPLOSION, SoundCategory.PLAYERS, 3, 0.5f);
 
 			for (Entity e : world.getEntitiesInAABBexcluding(target, projectile.getEntityBoundingBox().grow(2), e -> e != attacker && e != projectile && e != target)) {
-				if (!(e instanceof EntityLivingBase))
+				if (!(e instanceof EntityLivingBase)) {
 					continue;
+				}
 
 				float origPower = projectile.tinkerProjectile.getPower();
 				float damageMultiplier = (float) (0.5 * Math.pow(Math.E, -0.25 * target.getDistanceSq(e)) + 0.25);

@@ -112,7 +112,7 @@ public class FireproofItemUtil {
 				entity.noClip = (boolean) pushOutOfBlocks.invoke(entity, entity.posX,
 						(entity.getEntityBoundingBox().minY + entity.getEntityBoundingBox().maxY) / 2.0D, entity.posZ);
 			}
-			
+
 			move(entity, MoverType.SELF, entity.motionX, entity.motionY, entity.motionZ);
 			// entity.move(MoverType.SELF, entity.motionX, entity.motionY, entity.motionZ);
 			boolean flag = (int) entity.prevPosX != (int) entity.posX || (int) entity.prevPosY != (int) entity.posY
@@ -133,9 +133,9 @@ public class FireproofItemUtil {
 				f = underState.getBlock().getSlipperiness(underState, entity.world, underPos, entity) * 0.98F;
 			}
 
-			entity.motionX *= (double) f;
+			entity.motionX *= f;
 			entity.motionY *= 0.98D;
-			entity.motionZ *= (double) f;
+			entity.motionZ *= f;
 
 			if (entity.onGround) {
 				entity.motionY *= -0.5D;
@@ -162,10 +162,11 @@ public class FireproofItemUtil {
 
 			if (!entity.world.isRemote && age.getInt(entity) >= entity.lifespan) {
 				int hook = net.minecraftforge.event.ForgeEventFactory.onItemExpire(entity, item);
-				if (hook < 0)
+				if (hook < 0) {
 					entity.setDead();
-				else
+				} else {
 					entity.lifespan += hook;
+				}
 			}
 			if (item.isEmpty()) {
 				entity.setDead();
@@ -325,7 +326,7 @@ public class FireproofItemUtil {
 			if ((type == MoverType.SELF || type == MoverType.PLAYER) && en.onGround && en.isSneaking()
 					&& en instanceof EntityPlayer) {
 				for (; x != 0.0D && en.world
-						.getCollisionBoxes(en, en.getEntityBoundingBox().offset(x, (double) (-en.stepHeight), 0.0D))
+						.getCollisionBoxes(en, en.getEntityBoundingBox().offset(x, (-en.stepHeight), 0.0D))
 						.isEmpty(); d2 = x) {
 					if (x < 0.05D && x >= -0.05D) {
 						x = 0.0D;
@@ -337,7 +338,7 @@ public class FireproofItemUtil {
 				}
 
 				for (; z != 0.0D && en.world
-						.getCollisionBoxes(en, en.getEntityBoundingBox().offset(0.0D, (double) (-en.stepHeight), z))
+						.getCollisionBoxes(en, en.getEntityBoundingBox().offset(0.0D, (-en.stepHeight), z))
 						.isEmpty(); d4 = z) {
 					if (z < 0.05D && z >= -0.05D) {
 						z = 0.0D;
@@ -351,7 +352,7 @@ public class FireproofItemUtil {
 				for (; x != 0.0D && z != 0.0D
 						&& en.world
 								.getCollisionBoxes(en,
-										en.getEntityBoundingBox().offset(x, (double) (-en.stepHeight), z))
+										en.getEntityBoundingBox().offset(x, (-en.stepHeight), z))
 								.isEmpty(); d4 = z) {
 					if (x < 0.05D && x >= -0.05D) {
 						x = 0.0D;
@@ -380,7 +381,7 @@ public class FireproofItemUtil {
 				int k = 0;
 
 				for (int l = list1.size(); k < l; ++k) {
-					y = ((AxisAlignedBB) list1.get(k)).calculateYOffset(en.getEntityBoundingBox(), y);
+					y = list1.get(k).calculateYOffset(en.getEntityBoundingBox(), y);
 				}
 
 				en.setEntityBoundingBox(en.getEntityBoundingBox().offset(0.0D, y, 0.0D));
@@ -390,7 +391,7 @@ public class FireproofItemUtil {
 				int j5 = 0;
 
 				for (int l5 = list1.size(); j5 < l5; ++j5) {
-					x = ((AxisAlignedBB) list1.get(j5)).calculateXOffset(en.getEntityBoundingBox(), x);
+					x = list1.get(j5).calculateXOffset(en.getEntityBoundingBox(), x);
 				}
 
 				if (x != 0.0D) {
@@ -402,7 +403,7 @@ public class FireproofItemUtil {
 				int k5 = 0;
 
 				for (int i6 = list1.size(); k5 < i6; ++k5) {
-					z = ((AxisAlignedBB) list1.get(k5)).calculateZOffset(en.getEntityBoundingBox(), z);
+					z = list1.get(k5).calculateZOffset(en.getEntityBoundingBox(), z);
 				}
 
 				if (z != 0.0D) {
@@ -418,7 +419,7 @@ public class FireproofItemUtil {
 				double d7 = z;
 				AxisAlignedBB axisalignedbb1 = en.getEntityBoundingBox();
 				en.setEntityBoundingBox(axisalignedbb);
-				y = (double) en.stepHeight;
+				y = en.stepHeight;
 				List<AxisAlignedBB> list = en.world.getCollisionBoxes(en, en.getEntityBoundingBox().expand(d2, y, d4));
 				AxisAlignedBB axisalignedbb2 = en.getEntityBoundingBox();
 				AxisAlignedBB axisalignedbb3 = axisalignedbb2.expand(d2, 0.0D, d4);
@@ -426,7 +427,7 @@ public class FireproofItemUtil {
 				int j1 = 0;
 
 				for (int k1 = list.size(); j1 < k1; ++j1) {
-					d8 = ((AxisAlignedBB) list.get(j1)).calculateYOffset(axisalignedbb3, d8);
+					d8 = list.get(j1).calculateYOffset(axisalignedbb3, d8);
 				}
 
 				axisalignedbb2 = axisalignedbb2.offset(0.0D, d8, 0.0D);
@@ -434,7 +435,7 @@ public class FireproofItemUtil {
 				int l1 = 0;
 
 				for (int i2 = list.size(); l1 < i2; ++l1) {
-					d18 = ((AxisAlignedBB) list.get(l1)).calculateXOffset(axisalignedbb2, d18);
+					d18 = list.get(l1).calculateXOffset(axisalignedbb2, d18);
 				}
 
 				axisalignedbb2 = axisalignedbb2.offset(d18, 0.0D, 0.0D);
@@ -442,7 +443,7 @@ public class FireproofItemUtil {
 				int j2 = 0;
 
 				for (int k2 = list.size(); j2 < k2; ++j2) {
-					d19 = ((AxisAlignedBB) list.get(j2)).calculateZOffset(axisalignedbb2, d19);
+					d19 = list.get(j2).calculateZOffset(axisalignedbb2, d19);
 				}
 
 				axisalignedbb2 = axisalignedbb2.offset(0.0D, 0.0D, d19);
@@ -451,7 +452,7 @@ public class FireproofItemUtil {
 				int l2 = 0;
 
 				for (int i3 = list.size(); l2 < i3; ++l2) {
-					d20 = ((AxisAlignedBB) list.get(l2)).calculateYOffset(axisalignedbb4, d20);
+					d20 = list.get(l2).calculateYOffset(axisalignedbb4, d20);
 				}
 
 				axisalignedbb4 = axisalignedbb4.offset(0.0D, d20, 0.0D);
@@ -459,7 +460,7 @@ public class FireproofItemUtil {
 				int j3 = 0;
 
 				for (int k3 = list.size(); j3 < k3; ++j3) {
-					d21 = ((AxisAlignedBB) list.get(j3)).calculateXOffset(axisalignedbb4, d21);
+					d21 = list.get(j3).calculateXOffset(axisalignedbb4, d21);
 				}
 
 				axisalignedbb4 = axisalignedbb4.offset(d21, 0.0D, 0.0D);
@@ -467,7 +468,7 @@ public class FireproofItemUtil {
 				int l3 = 0;
 
 				for (int i4 = list.size(); l3 < i4; ++l3) {
-					d22 = ((AxisAlignedBB) list.get(l3)).calculateZOffset(axisalignedbb4, d22);
+					d22 = list.get(l3).calculateZOffset(axisalignedbb4, d22);
 				}
 
 				axisalignedbb4 = axisalignedbb4.offset(0.0D, 0.0D, d22);
@@ -489,7 +490,7 @@ public class FireproofItemUtil {
 				int j4 = 0;
 
 				for (int k4 = list.size(); j4 < k4; ++j4) {
-					y = ((AxisAlignedBB) list.get(j4)).calculateYOffset(en.getEntityBoundingBox(), y);
+					y = list.get(j4).calculateYOffset(en.getEntityBoundingBox(), y);
 				}
 
 				en.setEntityBoundingBox(en.getEntityBoundingBox().offset(0.0D, y, 0.0D));
@@ -556,10 +557,10 @@ public class FireproofItemUtil {
 					block.onEntityWalk(en.world, blockpos, en);
 				}
 
-				en.distanceWalkedModified = (float) ((double) en.distanceWalkedModified
-						+ (double) MathHelper.sqrt(d15 * d15 + d17 * d17) * 0.6D);
-				en.distanceWalkedOnStepModified = (float) ((double) en.distanceWalkedOnStepModified
-						+ (double) MathHelper.sqrt(d15 * d15 + d16 * d16 + d17 * d17) * 0.6D);
+				en.distanceWalkedModified = (float) (en.distanceWalkedModified
+						+ MathHelper.sqrt(d15 * d15 + d17 * d17) * 0.6D);
+				en.distanceWalkedOnStepModified = (float) (en.distanceWalkedOnStepModified
+						+ MathHelper.sqrt(d15 * d15 + d16 * d16 + d17 * d17) * 0.6D);
 
 				if (en.distanceWalkedOnStepModified > nextStepDistance.getInt(en)
 						&& iblockstate.getMaterial() != Material.AIR) {

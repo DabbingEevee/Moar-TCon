@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 import net.minecraft.block.material.MapColor;
 
 public class MapHelper {
-	
+
 	public static MapColor getMapColor(int color) {
 		int i;
 		for (i = 0; i < 64; i ++) {
@@ -17,7 +17,7 @@ public class MapHelper {
 			}
 		}
 		if (i > 63) {
-			return MapColor.TNT;			
+			return MapColor.TNT;
 		}
 		try {
 			Constructor<MapColor> mp = MapColor.class.getDeclaredConstructor(int.class, int.class);
@@ -26,9 +26,9 @@ public class MapHelper {
 		} catch (Exception e) {
 			return MapColor.TNT;
 		}
-				
+
 	}
-	
+
 	private static boolean colorCompare(int c1, int c2) {
 		if (c1 == c2) {
 			return true;
@@ -42,7 +42,7 @@ public class MapHelper {
 		if (Math.abs(r1 - r2) < 40 & Math.abs(g1 - g2) < 40 & Math.abs(b1 - b2) < 40) {
 			return true;
 		}
-		
+
 		return false;
 	}
 }

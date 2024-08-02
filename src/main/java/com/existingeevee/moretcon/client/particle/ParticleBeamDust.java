@@ -15,8 +15,9 @@ public class ParticleBeamDust extends ParticleRedstone {
 			float red, float green, float blue, float alpha) {
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, red, green, blue);
 		this.particleAlpha = alpha;
-		if (life >= 0)
+		if (life >= 0) {
 			this.particleMaxAge = life;
+		}
 		this.commonSetup();
 	}
 

@@ -32,12 +32,13 @@ public class Corroding extends AbstractTrait {
 				tool.getTagCompound().setInteger("CorrodingPriorCorrosionValue", corrodible.getCorrosion(tool));
 			} else {
 				int prevCorrosion = tool.getTagCompound().getInteger("CorrodingPriorCorrosionValue");
-				
+
 				if (corrodible.getCorrosion(tool) > prevCorrosion) {
-					if (random.nextInt(2) == 0) 
+					if (random.nextInt(2) == 0) {
 						corrodible.setCoating(tool, corrodible.getCoating(tool) + random.nextInt(3) + 1);
+					}
 				}
-				
+
 				if (corrodible.getCorrosion(tool) != prevCorrosion) {
 					tool.getTagCompound().setInteger("CorrodingPriorCorrosionValue", corrodible.getCorrosion(tool));
 				}

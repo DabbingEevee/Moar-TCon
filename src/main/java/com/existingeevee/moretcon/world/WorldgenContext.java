@@ -15,8 +15,8 @@ public class WorldgenContext {
 	}
 
 	public final World world;
-	
+
 	public final int chunkX, chunkZ;
-	
+
 	public final Random rand;
 }

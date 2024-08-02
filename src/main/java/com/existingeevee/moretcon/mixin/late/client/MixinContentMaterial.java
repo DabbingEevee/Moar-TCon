@@ -64,7 +64,7 @@ public abstract class MixinContentMaterial {
 
 		return tp.hasUseForStat(string);
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "unlikely-arg-type" })
 	@Inject(method = "addDisplayItems", at = @At("HEAD"), remap = false, cancellable = true)
 	private void moretcon$HEAD_Inject$addDisplayItems(ArrayList<BookElement> list, int x, CallbackInfo ci) throws IllegalAccessException {
@@ -73,11 +73,11 @@ public abstract class MixinContentMaterial {
 		int y = 10;
 
 		boolean shouldUseDefaultBehavior = true;
-		
+
 		List<ElementItem> displayTools = Lists.newArrayList();
 
 		if (!material.getRepresentativeItem().isEmpty()) {
-			displayTools.add(new ElementTinkerItem(material.getRepresentativeItem())); 
+			displayTools.add(new ElementTinkerItem(material.getRepresentativeItem()));
 		}
 
 		if (material instanceof UniqueMaterial) {
@@ -115,15 +115,14 @@ public abstract class MixinContentMaterial {
 		if (shouldUseDefaultBehavior) {
 			return;
 		}
-		
-		if (material instanceof UniqueMaterial) { 
+
+		if (material instanceof UniqueMaterial) {
 			UniqueMaterial unique = (UniqueMaterial) material;
 			ToolCore tool = UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(unique.getToolResLoc()));
 			if (tool != null) {
 				boolean added = false;
 				ImmutableList.Builder<Material> builder = ImmutableList.builder();
-				for (int i = 0; i < tool.getRequiredComponents().size(); i++) {
-					PartMaterialType pmt = tool.getRequiredComponents().get(i);
+				for (PartMaterialType pmt : tool.getRequiredComponents()) {
 					Set<IToolPart> neededPart = (Set<IToolPart>) field$neededPart.get(pmt);
 					if (!added && neededPart.contains(unique.getUniqueToolPart().getItem())) {
 						builder.add(material);

@@ -9,6 +9,7 @@ import net.minecraftforge.common.crafting.IConditionFactory;
 import net.minecraftforge.common.crafting.JsonContext;
 
 public class ConditionBLInstalled implements IConditionFactory {
+	@Override
 	public BooleanSupplier parse(JsonContext context, JsonObject json) {
 		return () -> CompatManager.thebetweenlands;
 	}

@@ -77,8 +77,9 @@ public class ReforgeHelper {
 		boolean modifiedBaseModifiers = false;
 		for (int i = 0; i < modifierTagList.tagCount(); i++) {
 			NBTBase tag = baseModifiersTagList.get(i);
-			if (!(tag instanceof NBTTagString))
+			if (!(tag instanceof NBTTagString)) {
 				continue;
+			}
 			String identifier = ((NBTTagString) tag).getString();
 			IModifier modifier = TinkerRegistry.getModifier(identifier);
 			if (modifier instanceof AbstractReforge) {

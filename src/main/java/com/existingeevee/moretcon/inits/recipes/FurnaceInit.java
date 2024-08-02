@@ -15,11 +15,11 @@ import twilightforest.item.TFItems;
 
 public class FurnaceInit {
 	public static void init() {
-		
+
 		for (BiValue<Block, ItemStack> val : RegisterHelper.oreDrops) {
 			GameRegistry.addSmelting(val.getA(), val.getB(), 10);
 		}
-				
+
 		if (CompatManager.twilightforest) {
 			initTF();
 		}
@@ -30,7 +30,7 @@ public class FurnaceInit {
 			initAL();
 		}
 	}
-	
+
 	public static void initTF() {
 		if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustKnightmetal, 1), new ItemStack(TFItems.knightmetal_ingot, 1), 0F);
@@ -39,7 +39,7 @@ public class FurnaceInit {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustIronwood, 1), new ItemStack(TFItems.ironwood_ingot, 1), 0F);
 		}
 	}
-	
+
 	public static void initMain() {
 		if (ConfigHandler.shouldLoadDust) {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustFusionite, 1), new ItemStack(ModItems.ingotFusionite, 1), 0F);
@@ -62,7 +62,7 @@ public class FurnaceInit {
 		GameRegistry.addSmelting(new ItemStack(ModItems.rawSteel, 1), new ItemStack(ModItems.ingotSteel, 1), 0F);
 		GameRegistry.addSmelting(new ItemStack(ModBlocks.oreGravitoniumDense, 1), new ItemStack(ModItems.ingotGravitonium, 4), 0F);
 	}
-	
+
 	public static void initAL() {
 		if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 			GameRegistry.addSmelting(new ItemStack(ModItems.dustArkenium, 1), new ItemStack(ModItems.ingotArkenium, 1), 0F);

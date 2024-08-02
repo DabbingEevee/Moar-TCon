@@ -33,5 +33,5 @@ public class MixinItemStack {
 		}
 		return item.onItemUse(player, worldIn, pos, hand, side, hitX, hitY, hitZ);
 	}
-	
+
 }

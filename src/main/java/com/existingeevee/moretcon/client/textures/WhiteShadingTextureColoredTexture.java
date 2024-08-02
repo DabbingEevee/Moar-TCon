@@ -105,7 +105,7 @@ public class WhiteShadingTextureColoredTexture extends AbstractColoredTexture {
 	      texCoord = texY * addTextureWidth + texX;
 	    }
 	    int c = textureData[texCoord];
-	    	    
+
 	    // multiply in the color
 	    int r = RenderUtil.red(c);
 	    int b = RenderUtil.blue(c);

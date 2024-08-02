@@ -17,11 +17,12 @@ public final class MoreTConMixinPlugin implements IMixinConfigPlugin {
 		if (mixinClassName.startsWith(START)) {
 			String[] modids = mixinClassName.replaceFirst(START, "").split("\\.")[0].split("$");
 			for (String modid : modids) {
-				if (!Loader.isModLoaded(modid))
+				if (!Loader.isModLoaded(modid)) {
 					return false;
+				}
 			}
 			return true;
-		} 
+		}
 		return true;
 	}
 
@@ -49,12 +50,12 @@ public final class MoreTConMixinPlugin implements IMixinConfigPlugin {
 
 	@Override
 	public void preApply(String targetClassName, org.objectweb.asm.tree.ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-		
+
 	}
 
 	@Override
 	public void postApply(String targetClassName, org.objectweb.asm.tree.ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-		
+
 	}
 
 }

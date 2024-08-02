@@ -64,8 +64,9 @@ public class ItemBase extends Item implements ICustomSlotRenderer {
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (I18n.canTranslate(stack.getItem().getUnlocalizedName() + ".desc")) {
 			String translation = I18n.translateToLocal(stack.getItem().getUnlocalizedName() + ".desc");
-			if (!translation.contains("--null"))
+			if (!translation.contains("--null")) {
 				TextHelper.smartSplitString(translation, 35).forEach(tooltip::add);
+			}
 		}
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}

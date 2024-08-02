@@ -24,11 +24,11 @@ public class MixinBlockEnergyBarrier {
 
 	@Unique
 	private static Entity entityStatic;
-	
+
 	@ModifyVariable(method = { "onEntityCollidedWithBlock", "onEntityCollision", "func_180634_a" }, at = @At("STORE"), ordinal = 0, remap = false)
 	public EnumHand moretcon$STORE_ModifyVariable$onEntityCollidedWithBlock(EnumHand handOrig) {
 		Entity entity = entityStatic;
-		
+
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 			ItemStack stack = player.getHeldItem(EnumHand.MAIN_HAND);
@@ -38,7 +38,7 @@ public class MixinBlockEnergyBarrier {
 		}
 		return handOrig;
 	}
-	
+
 	@Inject(at = @At(value = "HEAD"), method = { "onEntityCollidedWithBlock", "onEntityCollision", "func_180634_a" }, remap = false)
 	public void moretcon$HEAD_Inject$onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity, CallbackInfo ci) {
 		entityStatic = entity;

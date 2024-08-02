@@ -61,12 +61,13 @@ public class StackDelagateTrait extends AbstractTrait {
 		this.onUpdate = true;
 		return this;
 	}
-	
+
 	private ItemStack lazyLoadStack;
 
 	protected ItemStack getItemStack() {
-		if (!lazyLoad)
+		if (!lazyLoad) {
 			return supplier.get();
+		}
 
 		if (lazyLoadStack == null) {
 			lazyLoadStack = supplier.get();

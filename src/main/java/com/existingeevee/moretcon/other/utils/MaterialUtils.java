@@ -50,7 +50,7 @@ public class MaterialUtils {
 		ObfuscationReflectionHelper.setPrivateValue(Material.class, material, repItem, "representativeItem");
 		return material;
 	}
-	
+
 	public static Material forceSetFluid(Fluid fluid, Material material) {
 		ObfuscationReflectionHelper.setPrivateValue(Material.class, material, fluid, "fluid");
 		return material;

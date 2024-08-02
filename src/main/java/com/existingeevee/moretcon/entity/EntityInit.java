@@ -16,10 +16,10 @@ public class EntityInit {
 	public static void init() {
 		registerEntity("decaying_effect", EntityDecayingEffect.class, ConfigHandler.decayingEffectEntityID, 50);
 	}
-	
+
 	public static void initClient() {
 		registerRenderer(EntityDecayingEffect.class, RenderDecayingEffect::new);
-	} 
+	}
 
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range) {
 		EntityRegistry.registerModEntity(new ResourceLocation(ModInfo.MODID + ":" + name), entity,
@@ -35,7 +35,7 @@ public class EntityInit {
 		EntityRegistry.registerModEntity(new ResourceLocation(ModInfo.MODID + ":" + name), entity,
 				name + "_" + ModInfo.MODID, id, MoreTCon.instance, 64, 10, true);
 	}*/
-	
+
 	public static <T extends Entity> void registerRenderer(Class<T> entity, IRenderFactory<T> renderFactory) {
 		RenderingRegistry.registerEntityRenderingHandler(entity, renderFactory);
 	}

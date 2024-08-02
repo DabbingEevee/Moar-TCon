@@ -11,11 +11,11 @@ import slimeknights.tconstruct.library.client.RenderUtil;
 public class ColoredDustAction extends ClientAction {
 
 	public static final ColoredDustAction INSTANCE = new ColoredDustAction();
-	
+
 	private ColoredDustAction() {
-		
+
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void runAsClient(World world, double x, double y, double z, NBTBase data) {
@@ -23,11 +23,11 @@ public class ColoredDustAction extends ClientAction {
 		if (data instanceof NBTTagInt) {
 			color = ((NBTTagInt) data).getInt();
 		}
-		
+
 		float r = RenderUtil.red(color) / 255f;
 		float g = RenderUtil.green(color) / 255f;
 		float b = RenderUtil.blue(color) / 255f;
-		
-		world.spawnParticle(EnumParticleTypes.REDSTONE, true, x, y, z, r == 0 ? 0.0001f : r, g, b);	
+
+		world.spawnParticle(EnumParticleTypes.REDSTONE, true, x, y, z, r == 0 ? 0.0001f : r, g, b);
 	}
 }

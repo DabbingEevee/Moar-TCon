@@ -14,18 +14,18 @@ import net.minecraftforge.oredict.OreIngredient;
 public class FallbackIngredient extends Ingredient {
 
 	private Ingredient[] ingredients = new Ingredient[0];
-	
+
 	public FallbackIngredient(Block lastResort, String... oreIngredients) {
 		this(Ingredient.fromStacks(new ItemStack(lastResort)), oreIngredients);
 	}
 	public FallbackIngredient(Item lastResort, String... oreIngredients) {
 		this(Ingredient.fromStacks(new ItemStack(lastResort)), oreIngredients);
 	}
-	
+
 	public FallbackIngredient(ItemStack lastResort, String... oreIngredients) {
 		this(Ingredient.fromStacks(lastResort), oreIngredients);
 	}
-	
+
 	public FallbackIngredient(Ingredient lastResort, String... oreIngredients) {
 		ingredients = new Ingredient[oreIngredients.length + 1];
 		int i = 0;
@@ -34,19 +34,22 @@ public class FallbackIngredient extends Ingredient {
 		}
 		ingredients[i++] = lastResort;
 	}
-	
+
 	public FallbackIngredient(Ingredient... ingredients) {
 		this.ingredients = ingredients;
 	}
 
+	@Override
 	public ItemStack[] getMatchingStacks() {
 		return getFirstValidIngredient().getMatchingStacks();
 	}
 
+	@Override
 	public boolean apply(@Nullable ItemStack p_apply_1_) {
 		return getFirstValidIngredient().apply(p_apply_1_);
 	}
 
+	@Override
 	public IntList getValidItemStacksPacked() {
 		return getFirstValidIngredient().getValidItemStacksPacked();
 	}
@@ -59,7 +62,8 @@ public class FallbackIngredient extends Ingredient {
 		}
 		return Ingredient.EMPTY;
 	}
-	
+
+	@Override
 	public boolean isSimple() {
 		return getFirstValidIngredient().isSimple();
 	}

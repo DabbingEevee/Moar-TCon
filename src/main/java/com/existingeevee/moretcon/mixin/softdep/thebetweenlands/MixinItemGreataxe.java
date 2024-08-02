@@ -65,13 +65,13 @@ public class MixinItemGreataxe {
 
 	@ModifyVariable(method = { "onUpdate", "func_77663_a" }, at = @At("STORE"), ordinal = 0, remap = false)
 	public IBlockState moretcon$STORE_ModifyVariable$onUpdate(IBlockState state) {
-		
+
 		ItemStack stack = stackStatic;
 		EntityPlayerMP player = playerStatic;
 		BlockPos pos = blockPosStatic;
 		List<BlockPos> toCheck = toCheckStatic;
-		
-		if (stack != null && stack.getItem() instanceof ToolCore) {	
+
+		if (stack != null && stack.getItem() instanceof ToolCore) {
 			if (Thread.currentThread().getStackTrace()[2].getLineNumber() > CUTOFF) {
 				return state;
 			}

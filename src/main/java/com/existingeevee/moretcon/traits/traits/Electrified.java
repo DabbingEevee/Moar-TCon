@@ -28,7 +28,7 @@ public class Electrified extends AbstractTrait {
 
 		if (!target.world.isRemote) {
 			Vec3d center = MiscUtils.getCenter(target.getEntityBoundingBox());
-			
+
 			NBTTagCompound tagCompound = new NBTTagCompound();
 			tagCompound.setBoolean("big", amount >= 10);
 			tagCompound.setDouble("speed", amount * 0.05);

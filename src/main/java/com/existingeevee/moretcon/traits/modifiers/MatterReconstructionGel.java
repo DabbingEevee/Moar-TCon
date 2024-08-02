@@ -67,7 +67,7 @@ public class MatterReconstructionGel extends Modifier {
 			int fixAmount = Math.round(toRepair * Math.max(256, maxDamage / 10f));
 			ToolHelper.repairTool(event.getItemStack(), fixAmount);
 			NBTTagList list = comp.getCompoundTag("TinkerData").getTagList("Modifiers", NBT.TAG_STRING);
-			ArrayList<Integer> toRemove = new ArrayList<Integer>();
+			ArrayList<Integer> toRemove = new ArrayList<>();
 			int i = 0;
 			for (NBTBase base : list) {
 				if (((NBTTagString) base).getString().equals(this.getIdentifier())) {

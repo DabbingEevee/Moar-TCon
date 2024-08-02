@@ -15,11 +15,11 @@ public class MagicallyReactive extends AbstractTrait {
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		int amount = 0;
-		
+
 		for (ItemStack stack : target.getEquipmentAndArmor()) {
 			amount += stack.isItemEnchanted() ? 1 : 0;
 		}
-		
+
 		return newDamage * (1 + 0.5f * amount);
 	}
 }

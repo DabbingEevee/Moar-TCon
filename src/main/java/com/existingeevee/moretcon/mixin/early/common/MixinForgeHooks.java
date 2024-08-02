@@ -68,8 +68,9 @@ public abstract class MixinForgeHooks {
 
 	@Inject(method = "canContinueUsing", at = @At("HEAD"), cancellable = true, remap = false)
 	private static void moretcon$HEAD_Inject$canContinueUsing(ItemStack from, ItemStack to, CallbackInfoReturnable<Boolean> ci) {
-		if (ReequipHack.HAS_PROCESSED.get())
+		if (ReequipHack.HAS_PROCESSED.get()) {
 			return;
+		}
 		ci.setReturnValue(ReequipHack.canContinueUsing(from, to));
 	}
 }

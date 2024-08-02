@@ -8,5 +8,5 @@ public class LambdaHelper {
 	public static boolean runBooleanSupplier(Supplier<Boolean> supp) {
 		return supp == null ? false : supp.get();
 	}
-	
+
 }

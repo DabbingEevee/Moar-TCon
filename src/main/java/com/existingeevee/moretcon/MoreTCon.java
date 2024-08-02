@@ -65,18 +65,18 @@ import thebetweenlands.common.handler.OverworldItemHandler;
 
 @Mod(modid = ModInfo.MODID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = ModInfo.DEPENDANCY)
 public class MoreTCon {
-	
+
 	@Instance
 	public static MoreTCon instance;
-	
+
 	@SidedProxy(serverSide = "com.existingeevee.moretcon.proxy.CommonProxy", clientSide = "com.existingeevee.moretcon.proxy.ClientProxy")
-	public static CommonProxy proxy; 
+	public static CommonProxy proxy;
 
 	static {
 		CustomFireEffect.init();
 		MinecraftForge.EVENT_BUS.register(MoreTCon.class);
 	}
-	
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		CompatManager.init();
@@ -101,13 +101,13 @@ public class MoreTCon {
 		MinecraftForge.EVENT_BUS.register(ReforgeHandler.class);
 		ModTraits.init();
 		ModReforges.init();
-		
-		OreDictionaryManager.preInit(); 
+
+		OreDictionaryManager.preInit();
 
 		proxy.preInit();
 
 	} //BowCore
-	
+
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
@@ -117,26 +117,26 @@ public class MoreTCon {
 	}
 
 	@SubscribeEvent
-	public static void registerRecipes(Register<IRecipe> event) {				
-		OreDictionaryManager.init(); 
-		
+	public static void registerRecipes(Register<IRecipe> event) {
+		OreDictionaryManager.init();
+
 		IForgeRegistry<IRecipe> registry = event.getRegistry();
-		
+
 		OreRecipes.init(event);
 		UniqueToolpartRecipes.init(event);
 		ReforgeRecipes.init(event);
-		
+
 		SpongeRegistry.registerRecipes(event);
-		
+
 		if (CompatManager.thebetweenlands) {
 			BLRecipes.init(event);
 		}
-		
+
 		// add the tool forge recipes from all integrations
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
 			integration.registerToolForgeRecipe(registry);
 		}
-		
+
 		MiscRecipes.init(event);
 	}
 
@@ -144,13 +144,13 @@ public class MoreTCon {
 	public void init(FMLInitializationEvent event) {
 		FurnaceInit.init();
 		SpongeRegistry.postInit();
-		
+
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
 			if (integration instanceof MTMaterialIntegration) {
 				((MTMaterialIntegration) integration).refreshFluid();
 			}
 		}
-		
+
 		proxy.init();
 	}
 
@@ -160,12 +160,12 @@ public class MoreTCon {
 		if (CompatManager.thebetweenlands && ConfigHandler.weakenToolsInBetweenLands) {
 			blackListTinkerTools();
 		}
-		
+
 		SmelteryInit.init();
 		if (CompatManager.thebetweenlands) {
 			BLRecipes.postInit();
 		}
-		
+
 		if (CompatManager.thebetweenlands) {
 			MinecraftForge.EVENT_BUS.register(new EventWatcherBL());
 		}
@@ -178,7 +178,7 @@ public class MoreTCon {
 		}
 		UniqueMaterial.onPostInit();
 		CompositeRegistry.onPostInit();
-		
+
 		ModTraits.postInit();
 	}
 
@@ -187,7 +187,7 @@ public class MoreTCon {
 		MiscUtils.init();
 		ReequipHack.registerIgnoredKey(Tags.TOOL_DATA);
 	}
-	
+
 	private static void blackListTinkerTools() {
 		OverworldItemHandler.TOOL_BLACKLIST.put(new ResourceLocation(ModInfo.MODID, "tinker_blacklist"), stack -> {
 			if (stack.getItem() instanceof ToolCore) {

@@ -41,12 +41,13 @@ public class AerialFlame extends AbstractProjectileTrait {
 	@Override
 	public void onMovement(EntityProjectileBase entity, World world, double slowdown) {
 		NBTTagCompound tag = entity.getEntityData().getCompoundTag(this.getModifierIdentifier());
-		
+
 		double x = tag.getDouble("LaunchX"), y = tag.getDouble("LaunchY"), z = tag.getDouble("LaunchZ");
 		double distSq = entity.getDistanceSq(x, y, z);
-		
-		if (entity.inGround || distSq > 96 * 96 || distSq < 2 * 2) //no in ground, not too far, and def not too close
+
+		if (entity.inGround || distSq > 96 * 96 || distSq < 2 * 2) { //no in ground, not too far, and def not too close
 			return;
+		}
 
 		ItemStack toolStack = entity.tinkerProjectile.getItemStack();
 
@@ -75,8 +76,9 @@ public class AerialFlame extends AbstractProjectileTrait {
 		DamageSource source = new EntityDamageSource("pillar_of_fire", entity.shootingEntity).setFireDamage();
 
 		for (Entity e : entities) {
-			if (e == entity)
+			if (e == entity) {
 				continue;
+			}
 
 			if (entity.shootingEntity instanceof EntityLivingBase && e.hurtResistantTime < ((EntityLivingBase) e).maxHurtResistantTime / 2) {
 				float dmg = 5;
@@ -85,7 +87,7 @@ public class AerialFlame extends AbstractProjectileTrait {
 				if (e.isImmuneToFire()) {
 					dmg = 2.5f;
 				}
-				
+
 				// Proc traits and all
 				List<ITrait> traits = TinkerUtil.getTraitsOrdered(entity.tinkerProjectile.getItemStack());
 

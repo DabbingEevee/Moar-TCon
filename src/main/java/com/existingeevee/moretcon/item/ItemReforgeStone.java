@@ -22,7 +22,7 @@ public class ItemReforgeStone extends ItemBase {
 	final Supplier<AbstractReforge> reforge;
 
 	public ItemReforgeStone(String itemName, Supplier<AbstractReforge> reforge, GlowType type, int hex) {
-		super(itemName, type, hex); 
+		super(itemName, type, hex);
 		this.reforge = reforge;
 		this.maxStackSize = 1;
 		this.setTab(null);

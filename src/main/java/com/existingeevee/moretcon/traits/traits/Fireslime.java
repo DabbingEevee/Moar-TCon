@@ -21,12 +21,13 @@ public class Fireslime extends AbstractTrait {
 		if (!world.isRemote && entity instanceof EntityLivingBase) {
 
 			EntityLivingBase living = (EntityLivingBase) entity;
-			if (living.getActiveItemStack() == tool || !ModTraits.overslime.isToolWithTrait(tool))
+			if (living.getActiveItemStack() == tool || !ModTraits.overslime.isToolWithTrait(tool)) {
 				return;
+			}
 
 			int current = ModTraits.overslime.getNumber(tool);
 			int cap = ModTraits.overslime.getNumberMax(tool);
-							
+
 			if (current < cap && random.nextFloat() < 0.05 && entity.isBurning()) {
 				ModTraits.overslime.addNumber(tool, 1);
 			}
@@ -34,7 +35,7 @@ public class Fireslime extends AbstractTrait {
 	}
 
 	@Override
-	public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {		
+	public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
 		if (event.getEntity().isBurning()) {
 			event.setNewSpeed(event.getNewSpeed() * 3f);
 		}
@@ -42,8 +43,9 @@ public class Fireslime extends AbstractTrait {
 
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
-		if (player.isBurning())
+		if (player.isBurning()) {
 			newDamage *= 1.5;
+		}
 		return newDamage;
 	}
 }

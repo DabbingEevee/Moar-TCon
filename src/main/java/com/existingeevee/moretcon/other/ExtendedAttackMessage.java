@@ -31,9 +31,10 @@ public class ExtendedAttackMessage implements IMessage, IMessageHandler<Extended
 		EntityPlayer sender = ctx.getServerHandler().player;
 		Entity target = world.getEntityByID(message.entID);
 
-		if (sender.getDistanceSq(target) > 25 * 25 || message.entID < 0 || target == null)
+		if (sender.getDistanceSq(target) > 25 * 25 || message.entID < 0 || target == null) {
 			return null;
-		
+		}
+
 		world.getMinecraftServer().addScheduledTask(() -> sender.attackTargetEntityWithCurrentItem(target));
 		return null;
 	}

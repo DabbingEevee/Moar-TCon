@@ -21,31 +21,32 @@ import thebetweenlands.common.entity.EntityBLLightningBolt;
 
 public class EventWatcherBL {
 
-	private static List<EntityBLLightningBolt> lightningInstances = new ArrayList<EntityBLLightningBolt>();
+	private static List<EntityBLLightningBolt> lightningInstances = new ArrayList<>();
 
 	@SubscribeEvent
 	public void onWorldStarted(WorldEvent.Load e) {
-		lightningInstances = new ArrayList<EntityBLLightningBolt>();
+		lightningInstances = new ArrayList<>();
 	}
 
-	
-	
+
+
 	@SubscribeEvent
 	public void onWorldTick(WorldTickEvent w) {
 		for (Entity e : new ArrayList<>(w.world.loadedEntityList)) {
 			if (e instanceof EntityBLLightningBolt) {
-				
+
 				boolean effectOnly = ObfuscationReflectionHelper.getPrivateValue(EntityBLLightningBolt.class, (EntityBLLightningBolt) e, "effectOnly");
-				if (effectOnly)
+				if (effectOnly) {
 					continue;
-				
-				if (!EventWatcherBL.lightningInstances.contains((EntityBLLightningBolt) e)) {
+				}
+
+				if (!EventWatcherBL.lightningInstances.contains(e)) {
 					EventWatcherBL.lightningInstances.add((EntityBLLightningBolt) e);
 				}
 			}
 		}
 		try {
-			for (EntityBLLightningBolt e : new ArrayList<EntityBLLightningBolt>(EventWatcherBL.lightningInstances)) {
+			for (EntityBLLightningBolt e : new ArrayList<>(EventWatcherBL.lightningInstances)) {
 				if (!e.isEntityAlive() && e.getEntityWorld().equals(w.world)) {
 					BlockPos pos = e.getPosition();
 					double range = 5.0D;

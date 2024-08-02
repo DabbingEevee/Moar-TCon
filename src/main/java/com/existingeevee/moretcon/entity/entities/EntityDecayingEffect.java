@@ -39,7 +39,7 @@ public class EntityDecayingEffect extends EntityLiving {
 	private int ticker, frame;
 	private UUID attacker;
 	private boolean hasSliced;
-	
+
 	public EntityDecayingEffect(World worldIn) {
 		this(worldIn, EnumDecayingEffectType.DEFAULT, 4, 1.5f, UUID.nameUUIDFromBytes("dummy".getBytes()));
 	}
@@ -60,19 +60,19 @@ public class EntityDecayingEffect extends EntityLiving {
 		this.ticker = 0;
 		this.frame = 0;
 		this.hasSliced = false;
-		this.setSize((float) radius * 2, 0.6F);
+		this.setSize(radius * 2, 0.6F);
 		this.setNoAI(true);
 	}
-	
+
 	protected EntityDecayingEffect setRadius(float radius) {
 		this.dataManager.set(RADIUS, radius);
 		return this;
 	}
-	
+
 	public float getRadius() {
 		return this.dataManager.get(RADIUS);
 	}
-	
+
 	@Override
 	public boolean isMovementBlocked() {
 		return true;
@@ -88,6 +88,7 @@ public class EntityDecayingEffect extends EntityLiving {
 		return true;
 	}
 
+	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		return false;
 	}
@@ -110,28 +111,32 @@ public class EntityDecayingEffect extends EntityLiving {
 
 	public int getMaxFrame() {
 		EnumDecayingEffectType type = this.getType();
-		if (type == null)
+		if (type == null) {
 			type = EnumDecayingEffectType.DEFAULT;
+		}
 		return type.getMaxFrame();
 	}
 
 	public int getTicksPerFrame() {
 		EnumDecayingEffectType type = this.getType();
-		if (type == null)
+		if (type == null) {
 			type = EnumDecayingEffectType.DEFAULT;
+		}
 		return type.getTicksPerFrame();
 	}
 
 	public EnumDecayingEffectType getType() {
 		EnumDecayingEffectType type = EnumDecayingEffectType.valueOf(this.dataManager.get(TYPE));
-		if (type == null)
+		if (type == null) {
 			type = EnumDecayingEffectType.DEFAULT;
+		}
 		return type;
 	}
 
 	public EntityDecayingEffect setType(EnumDecayingEffectType type) {
-		if (type == null)
+		if (type == null) {
 			type = EnumDecayingEffectType.DEFAULT;
+		}
 		this.dataManager.set(TYPE, type.name());
 		return this;
 	}
@@ -161,14 +166,14 @@ public class EntityDecayingEffect extends EntityLiving {
 		if (attackerEntity == null) {
 			attackerEntity = this.world.getEntities(EntityLivingBase.class, e -> e.getUniqueID().equals(attacker)).stream().findAny().orElse(null);
 		}
-		
+
 		if (attackerEntity instanceof EntityPlayer) {
 			return DamageSource.causePlayerDamage((EntityPlayer) attackerEntity);
 		} else {
 			return DamageSource.GENERIC;
 		}
 	}
-	
+
 	@Override
 	public void onUpdate() {
 		if (!hasSliced) {
@@ -185,7 +190,7 @@ public class EntityDecayingEffect extends EntityLiving {
 		}
 
 		this.setSize(this.getRadius() * 2, 0.6f);
-		
+
 		if (this.ticker > this.getTicksPerFrame()) {
 			if (this.frame >= this.getMaxFrame() - 1) {
 				this.setPosition(0, -Integer.MIN_VALUE, 0);
@@ -323,7 +328,7 @@ public class EntityDecayingEffect extends EntityLiving {
 
 	@Override
 	public Iterable<ItemStack> getArmorInventoryList() {
-		return new ArrayList<ItemStack>();
+		return new ArrayList<>();
 	}
 
 	@Override

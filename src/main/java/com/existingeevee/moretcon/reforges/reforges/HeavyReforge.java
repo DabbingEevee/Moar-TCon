@@ -34,8 +34,9 @@ public class HeavyReforge extends AbstractReforge {
 
 	@Override
 	public void getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack, Multimap<String, AttributeModifier> attributeMap) {
-		if (slot != EntityEquipmentSlot.MAINHAND)
+		if (slot != EntityEquipmentSlot.MAINHAND) {
 			return;
+		}
 
 		attributeMap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(HEAVY_SLOW, "slow modifier", -0.1, 2));
 		attributeMap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(HEAVY_SPED, "sped modifier", -0.1, 2));

@@ -4,7 +4,7 @@ public class Monomial extends Equation {
 
 	private double multiplier = 0;
 	private double exponential = 0;
-	
+
 	public Monomial(double multiplier, double exponential) {
 		this.multiplier = multiplier;
 		this.exponential = exponential;
@@ -14,9 +14,9 @@ public class Monomial extends Equation {
 	public double evaluate(double x) {
 		return Math.pow(x, this.exponential) * multiplier;
 	}
-	
+
 	public static Monomial valueOf(double val) {
 		return new Monomial(val, 0);
 	}
-	
+
 }

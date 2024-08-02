@@ -22,22 +22,20 @@ import thebetweenlands.common.registries.ItemRegistry;
 public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 
 	//I promise to not do too much of these invasive mixins
-	
+
 	@Unique
 	@Override
 	public boolean shouldUseBigSwingAnimation(ItemStack stack) {
-		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) {
-			return false; //this is a simple tool. nope
-		}
-		if (MoreTCon.proxy.isClientSneaking() || ToolHelper.isBroken(stack))
+		if ((ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(stack.getItem())) || MoreTCon.proxy.isClientSneaking() || ToolHelper.isBroken(stack)) {
 			return false;
-		
+		}
+
 		boolean isMelee = false;
 		if (stack.getItem() instanceof ToolCore) {
 			ToolCore tool = (ToolCore) stack.getItem();
 			isMelee = !tool.hasCategory(Category.NO_MELEE);
 		}
-		
+
 		return  isMelee && ModTraits.inertia.isToolWithTrait(stack);
 	}
 
@@ -50,22 +48,24 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 		if (!ModTraits.inertia.isToolWithTrait(stack) || entity.isSneaking() || ToolHelper.isBroken(stack)) {
 			return 1;
 		}
-		
+
 		boolean isTool = true;
 		boolean isMelee = true;
-		
+
 		if (stack.getItem() instanceof ToolCore) {
 			ToolCore tool = (ToolCore) stack.getItem();
 			isTool = tool.hasCategory(Category.HARVEST);
 			isMelee = !tool.hasCategory(Category.NO_MELEE);
 		}
-		
-		if (!isMelee)
+
+		if (!isMelee) {
 			return 1;
-		
-		if (isTool)
+		}
+
+		if (isTool) {
 			return 0.225f;
-		
+		}
+
 		return 0.35f;
 	}
 
@@ -74,7 +74,7 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 	public double getReach() {
 		return 1; //Hooopefully nothing bad happens
 	}
-	
+
 	@Unique
 	@Override
 	public void onLeftClick(EntityPlayer player, ItemStack stack) {
@@ -84,7 +84,7 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 		if (!ModTraits.inertia.isToolWithTrait(stack) || player.isSneaking() || ToolHelper.isBroken(stack)) {
 			return;
 		}
-		
+
 		boolean isTool = true;
 		boolean isMelee = true;
 		if (stack.getItem() instanceof ToolCore) {
@@ -92,9 +92,10 @@ public class MixinToolCore implements IBigSwingAnimation, IExtendedReach {
 			isTool = tool.hasCategory(Category.HARVEST);
 			isMelee = !tool.hasCategory(Category.NO_MELEE);
 		}
-		if (!isMelee)
+		if (!isMelee) {
 			return;
-		
+		}
+
 		if (isTool) {
 			((IExtendedReach) ItemRegistry.ANCIENT_BATTLE_AXE).onLeftClick(player, stack);
 		} else {

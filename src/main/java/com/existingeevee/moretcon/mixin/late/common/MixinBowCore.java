@@ -23,8 +23,9 @@ public abstract class MixinBowCore {
 
 	@Inject(method = "getAmmoToRender", at = @At("HEAD"), cancellable = true, remap = false)
 	public void moretcon$HEAD_Inject$getAmmoToRender(ItemStack weapon, EntityLivingBase player, CallbackInfoReturnable<ItemStack> ci) {
-		if (player == null)
+		if (player == null) {
 			return;
+		}
 
 		boolean isPulling = player.isHandActive() && player.getActiveItemStack() == weapon;
 		boolean canApplyTrait = ModTraits.dematerializing.isToolWithTrait(weapon) && !ToolHelper.isBroken(weapon);

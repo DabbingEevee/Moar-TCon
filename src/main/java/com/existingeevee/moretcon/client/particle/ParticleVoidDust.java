@@ -14,15 +14,16 @@ public class ParticleVoidDust extends ParticleRedstone {
 	private boolean inner = false;
 
 	private boolean spinDir = false;
-	
+
 	private static final Random rand = new Random();
-	
+
 	public ParticleVoidDust(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, int life,
 			float red, float green, float blue, float alpha, boolean inner) {
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, red, green, blue);
 		this.particleAlpha = alpha;
-		if (life >= 0)
+		if (life >= 0) {
 			this.particleMaxAge = life;
+		}
 		this.commonSetup();
 		this.inner = inner;
 		if (inner) {
@@ -108,12 +109,12 @@ public class ParticleVoidDust extends ParticleRedstone {
 		rotationXY = 0;
 		rotationXZ = -1;
 
-		float f0 = ((float) this.particleAge + partialTicks) / (float) this.particleMaxAge * 32.0F;
+		float f0 = (this.particleAge + partialTicks) / this.particleMaxAge * 32.0F;
 		f0 = MathHelper.clamp(f0, 0.0F, 1.0F);
 
-		float f = (float) this.particleTextureIndexX / 16.0F;
+		float f = this.particleTextureIndexX / 16.0F;
 		float f1 = f + 0.0624375F;
-		float f2 = (float) this.particleTextureIndexY / 16.0F;
+		float f2 = this.particleTextureIndexY / 16.0F;
 		float f3 = f2 + 0.0624375F;
 		float f4 = 0.1F * this.particleScale;
 
@@ -124,30 +125,30 @@ public class ParticleVoidDust extends ParticleRedstone {
 			f3 = this.particleTexture.getMaxV();
 		}
 
-		float f5 = (float) (this.prevPosX + (this.posX - this.prevPosX) * (double) partialTicks - interpPosX);
-		float f6 = (float) (this.prevPosY + (this.posY - this.prevPosY) * (double) partialTicks - interpPosY);
-		float f7 = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * (double) partialTicks - interpPosZ);
+		float f5 = (float) (this.prevPosX + (this.posX - this.prevPosX) * partialTicks - interpPosX);
+		float f6 = (float) (this.prevPosY + (this.posY - this.prevPosY) * partialTicks - interpPosY);
+		float f7 = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * partialTicks - interpPosZ);
 		int i = this.getBrightnessForRender(partialTicks);
 		int j = i >> 16 & 65535;
 		int k = i & 65535;
-		Vec3d[] avec3d = new Vec3d[] { new Vec3d((double) (-rotationX * f4 - rotationXY * f4), (double) (-rotationZ * f4), (double) (-rotationYZ * f4 - rotationXZ * f4)), new Vec3d((double) (-rotationX * f4 + rotationXY * f4), (double) (rotationZ * f4), (double) (-rotationYZ * f4 + rotationXZ * f4)), new Vec3d((double) (rotationX * f4 + rotationXY * f4), (double) (rotationZ * f4), (double) (rotationYZ * f4 + rotationXZ * f4)),
-				new Vec3d((double) (rotationX * f4 - rotationXY * f4), (double) (-rotationZ * f4), (double) (rotationYZ * f4 - rotationXZ * f4)) };
+		Vec3d[] avec3d = new Vec3d[] { new Vec3d(-rotationX * f4 - rotationXY * f4, -rotationZ * f4, -rotationYZ * f4 - rotationXZ * f4), new Vec3d(-rotationX * f4 + rotationXY * f4, rotationZ * f4, -rotationYZ * f4 + rotationXZ * f4), new Vec3d(rotationX * f4 + rotationXY * f4, rotationZ * f4, rotationYZ * f4 + rotationXZ * f4),
+				new Vec3d(rotationX * f4 - rotationXY * f4, -rotationZ * f4, rotationYZ * f4 - rotationXZ * f4) };
 
 		if (this.particleAngle != 0.0F) {
 			float f8 = this.particleAngle + (this.particleAngle - this.prevParticleAngle) * partialTicks;
 			float f9 = MathHelper.cos(f8 * 0.5F);
 			float f11 = MathHelper.sin(f8 * 0.5F);
-			Vec3d vec3d = new Vec3d(0, (double) f11, 0);
+			Vec3d vec3d = new Vec3d(0, f11, 0);
 
 			for (int l = 0; l < 4; ++l) {
-				avec3d[l] = vec3d.scale(2.0D * avec3d[l].dotProduct(vec3d)).add(avec3d[l].scale((double) (f9 * f9) - vec3d.dotProduct(vec3d))).add(vec3d.crossProduct(avec3d[l]).scale((double) (2.0F * f9)));
+				avec3d[l] = vec3d.scale(2.0D * avec3d[l].dotProduct(vec3d)).add(avec3d[l].scale(f9 * f9 - vec3d.dotProduct(vec3d))).add(vec3d.crossProduct(avec3d[l]).scale(2.0F * f9));
 			}
 		}
 
-		buffer.pos((double) f5 + avec3d[0].x, (double) f6 + avec3d[0].y, (double) f7 + avec3d[0].z).tex((double) f1, (double) f3).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-		buffer.pos((double) f5 + avec3d[1].x, (double) f6 + avec3d[1].y, (double) f7 + avec3d[1].z).tex((double) f1, (double) f2).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-		buffer.pos((double) f5 + avec3d[2].x, (double) f6 + avec3d[2].y, (double) f7 + avec3d[2].z).tex((double) f, (double) f2).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-		buffer.pos((double) f5 + avec3d[3].x, (double) f6 + avec3d[3].y, (double) f7 + avec3d[3].z).tex((double) f, (double) f3).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
+		buffer.pos(f5 + avec3d[0].x, f6 + avec3d[0].y, f7 + avec3d[0].z).tex(f1, f3).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
+		buffer.pos(f5 + avec3d[1].x, f6 + avec3d[1].y, f7 + avec3d[1].z).tex(f1, f2).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
+		buffer.pos(f5 + avec3d[2].x, f6 + avec3d[2].y, f7 + avec3d[2].z).tex(f, f2).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
+		buffer.pos(f5 + avec3d[3].x, f6 + avec3d[3].y, f7 + avec3d[3].z).tex(f, f3).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
 	}
 
 	public void addMotion(double x, double y, double z) {

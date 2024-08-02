@@ -6,7 +6,7 @@ import java.util.List;
 public class TextHelper {
 
 	public static List<String> smartSplitString(String toSplit, int max) {
-		List<String> ret = new ArrayList<String>();
+		List<String> ret = new ArrayList<>();
 		String temp = "";
 		for (String s : toSplit.split(" ")) {
 			if (temp.replace("%s%", " ").length() + s.replace("%s%", " ").length() > max) {
@@ -23,8 +23,9 @@ public class TextHelper {
 	public static boolean allEqualLength(String[] array) {
 		int i;
 		for (i = 0; i < array.length - 1; i++) {
-			if (array[i].length() != array[i + 1].length())
+			if (array[i].length() != array[i + 1].length()) {
 				return false;
+			}
 		}
 		return true;
 	}

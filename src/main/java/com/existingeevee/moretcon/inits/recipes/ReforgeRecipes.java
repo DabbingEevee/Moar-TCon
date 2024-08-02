@@ -25,7 +25,7 @@ public class ReforgeRecipes {
 							Pair.of('C', new OreIngredient("cobblestone")),
 							Pair.of('S', new OreIngredient("stone")),
 							Pair.of('O', new OreIngredient("obsidian"))));
-			
+
 			event.getRegistry().register(
 					RecipeHelper.createRecipe("reforgesharpened", new ItemStack(ModItems.reforgeSharpened),
 							new String[] {

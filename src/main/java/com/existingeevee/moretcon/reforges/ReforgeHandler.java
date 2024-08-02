@@ -18,15 +18,16 @@ public class ReforgeHandler {
 	public static void onToolTip(ItemTooltipEvent event) {
 		if (event.getItemStack().getItem() instanceof ToolCore) {
 			AbstractReforge reforge = ReforgeHelper.getReforge(event.getItemStack());
-			
-			if (reforge == null)
-				return; 
-			
+
+			if (reforge == null) {
+				return;
+			}
+
 			String name = CustomFontColor.encodeColor(reforge.getColor()) + reforge.getLocalizedPrefix() + ChatFormatting.RESET;
-			
+
 			List<String> tooltip = event.getToolTip();
 			tooltip.set(0, name + " " + tooltip.get(0));
 		}
 	}
-	
+
 }

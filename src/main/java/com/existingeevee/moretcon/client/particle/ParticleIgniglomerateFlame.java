@@ -10,8 +10,9 @@ public class ParticleIgniglomerateFlame extends ParticleFlame {
 
 	public ParticleIgniglomerateFlame(World worldIn, double x, double y, double z, int life) {
 		super(worldIn, x, y, z, 0, 0, 0);
-		if (life >= 0)
+		if (life >= 0) {
 			this.particleMaxAge = life;
+		}
 		commonSetup();
 	}
 

@@ -56,33 +56,45 @@ public class PotionBleeding extends Potion {
 
 	@Override
 	public void performEffect(EntityLivingBase entity, int amplifier) {
-		if (entity.world.isRemote)
+		if (entity.world.isRemote) {
 			return;
+		}
 		amplifier++;
 		int duration = entity.getActivePotionEffect(this).getDuration();
 		int cnt = entity.getEntityData().getInteger(ModInfo.MODID + ".bleeding.timer");
-		if (duration >= 400)
+		if (duration >= 400) {
 			cnt++;
-		if (duration >= 300)
+		}
+		if (duration >= 300) {
 			cnt++;
-		if (duration >= 250)
+		}
+		if (duration >= 250) {
 			cnt++;
-		if (duration >= 200)
+		}
+		if (duration >= 200) {
 			cnt++;
-		if (duration >= 170)
+		}
+		if (duration >= 170) {
 			cnt++;
-		if (duration >= 150)
+		}
+		if (duration >= 150) {
 			cnt++;
-		if (duration >= 110)
+		}
+		if (duration >= 110) {
 			cnt++;
-		if (duration >= 90)
+		}
+		if (duration >= 90) {
 			cnt++;
-		if (duration >= 50)
+		}
+		if (duration >= 50) {
 			cnt++;
-		if (duration >= 10)
+		}
+		if (duration >= 10) {
 			cnt++;
-		if (duration >= 1)
+		}
+		if (duration >= 1) {
 			cnt++;
+		}
 
 		if (cnt >= 60) {
 			cnt = 0;
@@ -143,21 +155,24 @@ public class PotionBleeding extends Potion {
 		public IMessage onMessage(BleedingEffectMessage message, MessageContext ctx) {
 			Minecraft.getMinecraft().addScheduledTask(() -> {
 
-				for (int i = 0; i < 25; i++)
+				for (int i = 0; i < 25; i++) {
 					Minecraft.getMinecraft().world.spawnParticle(EnumParticleTypes.BLOCK_DUST, message.x, message.y + Math.random() * 2,
 							message.z, (Math.random() - 0.5) * 0.2, (Math.random() - 0.5) * 0.4, (Math.random() - 0.5) * 0.2,
 							Block.getStateId(Blocks.REDSTONE_BLOCK.getDefaultState()));
+				}
 
-				for (int i = 0; i < 30; i++)
+				for (int i = 0; i < 30; i++) {
 					Minecraft.getMinecraft().world.spawnParticle(EnumParticleTypes.FALLING_DUST,
 							message.x + (Math.random() - 0.5) / 2, message.y + Math.random() * 2, message.z + (Math.random() - 0.5) / 2,
 							(Math.random() - 0.5) * 0.2, (Math.random() - 0.5) * 0.4, (Math.random() - 0.5) * 0.2,
 							Block.getStateId(
 									Blocks.WOOL.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.RED)));
+				}
 
-				for (int i = 0; i < 10; i++)
+				for (int i = 0; i < 10; i++) {
 					Minecraft.getMinecraft().world.spawnParticle(EnumParticleTypes.REDSTONE, message.x, message.y + Math.random() * 2,
 							message.z, 0, 0, 0);
+				}
 			});
 			return null;
 		}

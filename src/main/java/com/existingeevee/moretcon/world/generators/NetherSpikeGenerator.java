@@ -23,16 +23,13 @@ public class NetherSpikeGenerator extends WorldGenModifier {
 	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {
 		World world = ctx.world;
 		Random random = ctx.rand;
-		
-		if (world.provider.getDimensionType().getId() != DimensionType.NETHER.getId()) {
+
+		if ((world.provider.getDimensionType().getId() != DimensionType.NETHER.getId()) || !(peekNextInt(random, 25) == 0)) {
 			return;
 		}
-		if (!(peekNextInt(random, 25) == 0)) {
-			return;
-		}
-		
+
 		IBlockStateProvider provider = provider(random);
-		
+
 		BlockPos origin = new BlockPos(random.nextInt(16) + ctx.chunkX * 16 + 8, 128, random.nextInt(16) + ctx.chunkZ * 16 + 8);
 
 		BlockPos position = origin.up(random.nextInt(4));
@@ -44,14 +41,14 @@ public class NetherSpikeGenerator extends WorldGenModifier {
 		}
 
 		for (int k = 0; k < i; ++k) {
-			float f = (1.0F - (float) k / (float) i) * (float) j;
+			float f = (1.0F - (float) k / (float) i) * j;
 			int l = MathHelper.ceil(f);
 
 			for (int i1 = -l; i1 <= l; ++i1) {
-				float f1 = (float) MathHelper.abs(i1) - 0.25F;
+				float f1 = MathHelper.abs(i1) - 0.25F;
 
 				for (int j1 = -l; j1 <= l; ++j1) {
-					float f2 = (float) MathHelper.abs(j1) - 0.25F;
+					float f2 = MathHelper.abs(j1) - 0.25F;
 
 					if ((i1 == 0 && j1 == 0 || f1 * f1 + f2 * f2 <= f * f)
 							&& (i1 != -l && i1 != l && j1 != -l && j1 != l || random.nextFloat() <= 0.75F)) {

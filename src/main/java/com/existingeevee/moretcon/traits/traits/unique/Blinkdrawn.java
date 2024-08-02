@@ -19,7 +19,7 @@ public class Blinkdrawn extends AbstractTrait {
 
 	@Override
 	public int onToolDamage(ItemStack tool, int damage, int newDamage, EntityLivingBase entity) {
-		return newDamage + 3; 
+		return newDamage + 3;
 	}
 
 	@Override

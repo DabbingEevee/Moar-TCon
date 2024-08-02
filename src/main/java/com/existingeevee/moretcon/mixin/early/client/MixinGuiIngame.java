@@ -29,7 +29,7 @@ public class MixinGuiIngame {
     protected String displayedTitle;
 	@Shadow
     protected String displayedSubTitle;
-	
+
 	@Overwrite
 	public void updateTick() {
 		if (this.overlayMessageTime > 0) {

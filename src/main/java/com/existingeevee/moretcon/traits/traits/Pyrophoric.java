@@ -34,12 +34,13 @@ public class Pyrophoric extends AbstractTrait {
 		MinecraftForge.EVENT_BUS.register(this);
 		// TODO Your tool will randomly ignite, granting a bonus to attack speed, attack
 		// damage, harvest level, and mining speed
-	} 
+	}
 
 	@Override
 	public void getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack, Multimap<String, AttributeModifier> attributeMap) {
-		if (slot != EntityEquipmentSlot.MAINHAND || !this.isBurning(stack))
+		if (slot != EntityEquipmentSlot.MAINHAND || !this.isBurning(stack)) {
 			return;
+		}
 
 		attributeMap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(SPEED_MODIFIER, "atk speed modifier", 1, 1));
 	}
@@ -54,8 +55,9 @@ public class Pyrophoric extends AbstractTrait {
 	@SubscribeEvent
 	public void onHarvestCheck(HarvestCheck event) {
 		ItemStack tool = event.getEntityPlayer().getHeldItemMainhand();
-		if (!this.isBurning(tool))
+		if (!this.isBurning(tool)) {
 			return;
+		}
 		int toolLevel = tool.getItem().getHarvestLevel(tool, "pickaxe", event.getEntityPlayer(), event.getTargetBlock()) + 1; // We get a bonus!! WAHOO
 		event.setCanHarvest(event.canHarvest() || toolLevel >= event.getTargetBlock().getBlock().getHarvestLevel(event.getTargetBlock()));
 	}
@@ -80,7 +82,9 @@ public class Pyrophoric extends AbstractTrait {
 		this.update(tool);
 
 		if (!isSelected || (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getActiveItemStack() == tool) || world.isRemote)
+		 {
 			return; // we only want things to execute if theyre holding it.
+		}
 
 		if (this.isBurning(tool)) {
 			if (world instanceof WorldServer) {
@@ -101,15 +105,17 @@ public class Pyrophoric extends AbstractTrait {
 	}
 
 	public boolean isOnCooldown(ItemStack tool) {
-		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND))
+		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND)) {
 			return false;
+		}
 		NBTTagCompound data = tool.getOrCreateSubCompound(this.getModifierIdentifier());
 		return data.getInteger("CooldownTime") > 0;
 	}
 
 	public boolean isBurning(ItemStack tool) {
-		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND))
+		if (!tool.hasTagCompound() || !tool.getTagCompound().hasKey(this.getModifierIdentifier(), NBT.TAG_COMPOUND)) {
 			return false;
+		}
 		NBTTagCompound data = tool.getOrCreateSubCompound(this.getModifierIdentifier());
 		return data.getInteger("BurningTime") > 0;
 	}

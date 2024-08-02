@@ -9,13 +9,13 @@ import net.minecraft.world.World;
 public class ParticleSpawner extends Particle {
 
 	private ParticleProvider particleSupplier;
-	
+
 	public ParticleSpawner(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, int life, ParticleProvider particleSupplier) {
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, 0, 0, 0);
 		this.particleSupplier = particleSupplier;
 		this.particleMaxAge = life;
 		this.commonSetup();
-		
+
 	}
 
 	private void commonSetup() {
@@ -26,6 +26,7 @@ public class ParticleSpawner extends Particle {
 		this.particleGravity = 0;
 	}
 
+	@Override
 	public void onUpdate() {
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
@@ -34,19 +35,19 @@ public class ParticleSpawner extends Particle {
 		if (this.particleAge++ >= this.particleMaxAge) {
 			this.setExpired();
 		}
-		
+
 		Minecraft.getMinecraft().effectRenderer.addEffect(particleSupplier.provide(this.world, this.posX, this.posY, this.posZ));
-		
-		this.motionY -= 0.04D * (double) this.particleGravity;
+
+		this.motionY -= 0.04D * this.particleGravity;
 		this.move(this.motionX, this.motionY, this.motionZ);
-		
+
 	}
 
 	@Override
 	public void renderParticle(BufferBuilder buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
 		//does not render
 	}
-		
+
 	@FunctionalInterface
 	public static interface ParticleProvider {
 		Particle provide(World world, double x, double y, double z);

@@ -39,7 +39,7 @@ public class InvertedTextureColoredTexture extends AbstractColoredTexture {
 			return sprite;
 		}
 	}
-	
+
 	protected final ResourceLocation addTextureLocation;
 	protected TextureAtlasSprite addTexture;
 	protected int[] textureData;

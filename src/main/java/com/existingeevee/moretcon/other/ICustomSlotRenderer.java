@@ -21,20 +21,21 @@ public interface ICustomSlotRenderer {
 	default boolean shouldRender(ItemStack stack) {
 		return true;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	void render(ItemStack stack, int x, int y, IBakedModel bakedmodel);
-	
+
 	public static final ResourceLocation CIRCLE_GLOW = new ResourceLocation(ModInfo.MODID, "other/bg_glow_circle");
 	public static final ResourceLocation EXTREME_GLOW = new ResourceLocation(ModInfo.MODID, "other/bg_glow_extreme");
 	public static final ResourceLocation BIG_CIRCLE_GLOW = new ResourceLocation(ModInfo.MODID, "other/bg_glow_circle_big");
 	public static final ResourceLocation OVAL_GLOW = new ResourceLocation(ModInfo.MODID, "other/bg_glow_oval");
-	
+
 	@SideOnly(Side.CLIENT)
-	public static void simpleRender(ItemStack stack, int x, int y, IBakedModel bakedmodel, GlowType type, int hex) {		
-		if (hex == Integer.MIN_VALUE)
+	public static void simpleRender(ItemStack stack, int x, int y, IBakedModel bakedmodel, GlowType type, int hex) {
+		if (hex == Integer.MIN_VALUE) {
 			return;
-				
+		}
+
 		float ticks = (float) ((Minecraft.getMinecraft().world.getTotalWorldTime()
 				+ Minecraft.getMinecraft().getRenderPartialTicks()) % (40 * Math.PI));
 
@@ -50,9 +51,9 @@ public interface ICustomSlotRenderer {
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);
 		GlStateManager.disableAlpha();
-		
+
 		GlStateManager.disableLighting();
-		
+
 		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
 		TextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(CIRCLE_GLOW.toString());
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
@@ -65,7 +66,7 @@ public interface ICustomSlotRenderer {
 		}
 
 		GlStateManager.enableLighting();
-		
+
 		GlStateManager.enableAlpha();
 		GlStateManager.depthMask(true);
 		GlStateManager.enableDepth();

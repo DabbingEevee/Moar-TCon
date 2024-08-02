@@ -27,7 +27,7 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		worldIn.scheduleUpdate(pos, this, 1); 
+		worldIn.scheduleUpdate(pos, this, 1);
 	}
 
 	@Override
@@ -36,11 +36,11 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 
 		IBlockState above = worldIn.getBlockState(pos.up());
 		IBlockState below = worldIn.getBlockState(pos.down());
-		
+
 		if (!above.getBlock().isAir(above, worldIn, pos.up()) && !below.getBlock().isAir(below, worldIn, pos.down())) {
 			return; //No need to check if both is filled.
 		}
-		
+
 		boolean topActive = isTopActive(worldIn, pos);
 		boolean bottomActive = isBottomActive(worldIn, pos);
 
@@ -51,7 +51,7 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 		if (bottomActive && above.getBlock().isAir(above, worldIn, pos.up())) {
 			new VoidPrismBottomAction().run(worldIn, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5, null);
 		}
-		
+
 		if (bottomActive && checkForTop(worldIn, pos)) {
 			worldIn.setBlockState(pos.up(3), ModBlocks.blockVoidCore.getDefaultState());
 		}
@@ -64,7 +64,7 @@ public class BlockVoidColumn extends BlockBase implements VoidConductor {
 			IBlockState state = worldIn.getBlockState(ipos);
 			Block block = state.getBlock();
 
-			if (block == ModBlocks.blockVoidCore && i == 3) { 
+			if (block == ModBlocks.blockVoidCore && i == 3) {
 				continue;
 			} else if (!block.isAir(state, worldIn, ipos)) {
 				return false;

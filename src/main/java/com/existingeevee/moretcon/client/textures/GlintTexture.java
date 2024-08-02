@@ -25,9 +25,9 @@ public class GlintTexture extends AbstractColoredTexture {
 	}
 
 	public static class RenderInfo extends AbstractMaterialRenderInfo {
-		
+
 		int borderTop, border, glint, bright, mid, dark;
-		
+
 		public RenderInfo(int borderTop, int border, int glint, int bright, int mid, int dark) {
 			this.borderTop = borderTop;
 			this.border = border;
@@ -36,7 +36,7 @@ public class GlintTexture extends AbstractColoredTexture {
 			this.mid = mid;
 			this.dark = dark;
 		}
-		
+
 		@Override
 		public TextureAtlasSprite getTexture(ResourceLocation baseTexture, String location) {
 			GlintTexture texture = new GlintTexture(baseTexture, location);
@@ -136,7 +136,7 @@ public class GlintTexture extends AbstractColoredTexture {
 					return RenderUtil.compose(RenderUtil.red(borderC), RenderUtil.green(borderC), RenderUtil.blue(borderC), a);
 				}
 			} else {
-				
+
 				if (a == 0) {
 					return pixel;
 				}
@@ -150,10 +150,12 @@ public class GlintTexture extends AbstractColoredTexture {
 					int x = getX(pxCoord);
 
 					boolean nextToTop = false;
-					if (y - 1 > 0 && onTop[coord(x, y - 1)])
+					if (y - 1 > 0 && onTop[coord(x, y - 1)]) {
 						nextToTop = true;
-					if (x - 1 > 0 && onTop[coord(x - 1, y)])
+					}
+					if (x - 1 > 0 && onTop[coord(x - 1, y)]) {
 						nextToTop = true;
+					}
 
 					c = nextToTop ? glint : bright;
 				}

@@ -34,8 +34,9 @@ public class JeiHideBadToolparts extends JeiCustomContainer {
 			}
 
 			ToolPart part = UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(mat.getValue().getA().getPartResLoc()));
-			if (part != null)
+			if (part != null) {
 				blacklist.removeIngredientFromBlacklist(part.getItemstackWithMaterial(mat.getValue().getA()));
+			}
 
 			for (ToolCore tool : TinkerRegistry.getTools()) {
 				NonNullList<ItemStack> stacks = NonNullList.create();

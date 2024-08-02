@@ -37,8 +37,9 @@ public class Reaching extends AbstractTraitLeveled {
 
 	@Override
 	public void getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack, Multimap<String, AttributeModifier> attributeMap) {
-		if (slot != EntityEquipmentSlot.MAINHAND)
+		if (slot != EntityEquipmentSlot.MAINHAND) {
 			return;
+		}
 
 		NBTTagList tagList = TagUtil.getModifiersTagList(stack);
 		int index = TinkerUtil.getIndexInCompoundList(tagList, getModifierIdentifier());
@@ -66,8 +67,9 @@ public class Reaching extends AbstractTraitLeveled {
 			List<Entity> exclude = player.getRidingEntity() == null ? null : Lists.newArrayList(player.getRidingEntity());
 			RayTraceResult result = MiscUtils.rayTrace(player, 4 + 2 * modifier.level, exclude);
 			if (result != null && result.entityHit != null) {
-				if (!player.isCreative())
+				if (!player.isCreative()) {
 					ToolHelper.damageTool(stack, 1, player);
+				}
 				NetworkHandler.HANDLER.sendToServer(new ExtendedAttackMessage(result.entityHit));
 			}
 		}

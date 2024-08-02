@@ -50,7 +50,7 @@ public class BlockEtheralOre extends BlockEtheralBase {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public int quantityDropped(Random random) {
 		if (this.minDropAmount > this.maxDropAmount) {

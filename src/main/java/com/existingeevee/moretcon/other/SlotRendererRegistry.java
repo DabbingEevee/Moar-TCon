@@ -24,27 +24,29 @@ public class SlotRendererRegistry {
 	public static void register(Predicate<ItemStack> item, ICustomSlotRenderer renderer) {
 		PREDICATES.add(Pair.of(item, renderer));
 	}
-		
+
 	public static Collection<ICustomSlotRenderer> get(ItemStack item) {
 		List<ICustomSlotRenderer> list = Lists.newArrayList();
-		if (item.getItem() instanceof ICustomSlotRenderer)
+		if (item.getItem() instanceof ICustomSlotRenderer) {
 			list.add((ICustomSlotRenderer) item.getItem());
-		
+		}
+
 		for(Pair<Predicate<ItemStack>, ICustomSlotRenderer> p : PREDICATES) {
 			if (p.getKey().test(item)) {
 				list.add(p.getValue());
 			}
 		}
-		
+
 		return list;
 	}
-	
+
 	public static void render(ItemStack stack, int x, int y, IBakedModel bakedmodel) {
 		Collection<ICustomSlotRenderer> renderers = get(stack);
 
 		for (ICustomSlotRenderer renderer : renderers) {
-			if (renderer.shouldRender(stack))
+			if (renderer.shouldRender(stack)) {
 				renderer.render(stack, x, y, bakedmodel);
+			}
 		}
 	}
 

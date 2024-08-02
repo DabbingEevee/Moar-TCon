@@ -40,7 +40,7 @@ public class Autoloading extends AbstractTrait {
 			if (stack.getItem() instanceof BowCore) {
 				BowCore core = (BowCore) stack.getItem();
 				boolean fullyDrawn = core.getDrawbackProgress(stack, event.getEntityLiving()) >= 1;
-				
+
 				if (fullyDrawn) {
 					event.getEntityLiving().stopActiveHand();
 				}

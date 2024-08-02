@@ -26,8 +26,9 @@ public class Crushing extends ModifierTrait {
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		float actualDMG = newDamage;
-		if (player instanceof EntityPlayer)
+		if (player instanceof EntityPlayer) {
 			actualDMG *= ((EntityPlayer) player).getCooledAttackStrength(0.5f);
+		}
 
 		target.getEntityData().setFloat(getModifierIdentifier(), actualDMG);
 
@@ -47,7 +48,7 @@ public class Crushing extends ModifierTrait {
 	public static float getPercentage(NBTTagCompound tag) {
 		return 0.01f * new ModifierNBT(tag).level;
 	}
-	
+
 	@Override
 	public int getPriority() {
 		return Integer.MAX_VALUE / 2; // we need this to run last. divide by 2 to prevent wierd overflow issues

@@ -12,11 +12,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class FieryPillarAction extends ClientAction {
 
 	public static final FieryPillarAction INSTANCE = new FieryPillarAction();
-	
+
 	private FieryPillarAction() {
-		
+
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void runAsClient(World world, double x, double y, double z, NBTBase data) {
@@ -24,7 +24,7 @@ public class FieryPillarAction extends ClientAction {
 		if (data instanceof NBTTagInt) {
 			minY = ((NBTTagInt) data).getInt();
 		}
-		
+
 		Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleFieryPillar(world, x, y, z, minY));
 	}
 }

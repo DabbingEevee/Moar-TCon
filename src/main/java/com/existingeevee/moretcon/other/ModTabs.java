@@ -30,6 +30,7 @@ public class ModTabs {
 				return new ItemStack(ModItems.ingotFusionite, 1);
 			}
 
+			@Override
 			@SideOnly(Side.CLIENT)
 			public void displayAllRelevantItems(NonNullList<ItemStack> items) {
 				super.displayAllRelevantItems(items);
@@ -74,9 +75,10 @@ public class ModTabs {
 			public ItemStack getTabIconItem() {
 				for (Entry<String, BiValue<UniqueMaterial, String>> e : UniqueMaterial.uniqueMaterials.entrySet()) {
 					ItemStack part = e.getValue().getA().getUniqueToolPart();
-					if (part.isEmpty())
+					if (part.isEmpty()) {
 						continue;
-					
+					}
+
 					return part;
 				}
 				return new ItemStack(ModItems.ingotGravitonium, 1);

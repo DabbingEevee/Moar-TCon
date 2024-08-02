@@ -56,9 +56,9 @@ public final class Quaternion {
 
 	public static Quaternion fromYXZ(float pY, float pX, float pZ) {
 		Quaternion quaternion = ONE.copy();
-		quaternion.mul(new Quaternion(0.0F, (float) Math.sin((double) (pY / 2.0F)), 0.0F, (float) Math.cos((double) (pY / 2.0F))));
-		quaternion.mul(new Quaternion((float) Math.sin((double) (pX / 2.0F)), 0.0F, 0.0F, (float) Math.cos((double) (pX / 2.0F))));
-		quaternion.mul(new Quaternion(0.0F, 0.0F, (float) Math.sin((double) (pZ / 2.0F)), (float) Math.cos((double) (pZ / 2.0F))));
+		quaternion.mul(new Quaternion(0.0F, (float) Math.sin(pY / 2.0F), 0.0F, (float) Math.cos(pY / 2.0F)));
+		quaternion.mul(new Quaternion((float) Math.sin(pX / 2.0F), 0.0F, 0.0F, (float) Math.cos(pX / 2.0F)));
+		quaternion.mul(new Quaternion(0.0F, 0.0F, (float) Math.sin(pZ / 2.0F), (float) Math.cos(pZ / 2.0F)));
 		return quaternion;
 	}
 
@@ -85,7 +85,7 @@ public final class Quaternion {
 		float f3 = k() * k();
 		float f4 = f + f1 + f2 + f3;
 		float f5 = 2.0F * r() * i() - 2.0F * j() * k();
-		float f6 = (float) Math.asin((double) (f5 / f4));
+		float f6 = (float) Math.asin(f5 / f4);
 		return Math.abs(f5) > 0.999F * f4 ? new Vec3d(2.0F * Math.atan2(i(), r()), f6, 0.0F) : new Vec3d(Math.atan2((2.0F * j() * k() + 2.0F * i() * r()), f - f1 - f2 + f3), f6, Math.atan2(2.0F * i() * j() + 2.0F * r() * k(), f + f1 - f2 - f3));
 	}
 
@@ -101,7 +101,7 @@ public final class Quaternion {
 		float f3 = k() * k();
 		float f4 = f + f1 + f2 + f3;
 		float f5 = 2.0F * r() * i() - 2.0F * j() * k();
-		float f6 = (float) Math.asin((double) (f5 / f4));
+		float f6 = (float) Math.asin(f5 / f4);
 		return Math.abs(f5) > 0.999F * f4 ? new Vec3d(f6, 2.0F * Math.atan2(j(), r()), 0.0F) : new Vec3d(f6, Math.atan2((2.0F * i() * k() + 2.0F * j() * r()), f - f1 - f2 + f3), Math.atan2(2.0F * i() * j() + 2.0F * r() * k(), f - f1 + f2 - f3));
 	}
 
@@ -110,6 +110,7 @@ public final class Quaternion {
 		return new Vec3d(Math.toDegrees(vector3f.x), Math.toDegrees(vector3f.y), Math.toDegrees(vector3f.z));
 	}
 
+	@Override
 	public boolean equals(Object pOther) {
 		if (this == pOther) {
 			return true;
@@ -129,6 +130,7 @@ public final class Quaternion {
 		}
 	}
 
+	@Override
 	public int hashCode() {
 		int r = Float.floatToIntBits(i);
 		r = 31 * r + Float.floatToIntBits(j);
@@ -136,6 +138,7 @@ public final class Quaternion {
 		return 31 * r + Float.floatToIntBits(r);
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder stringbuilder = new StringBuilder();
 		stringbuilder.append("Quaternion[").append(r()).append(" + ");
@@ -197,11 +200,11 @@ public final class Quaternion {
 	}
 
 	private static float cos(float pAngle) {
-		return (float) Math.cos((double) pAngle);
+		return (float) Math.cos(pAngle);
 	}
 
 	private static float sin(float pAngle) {
-		return (float) Math.sin((double) pAngle);
+		return (float) Math.sin(pAngle);
 	}
 
 	public void normalize() {

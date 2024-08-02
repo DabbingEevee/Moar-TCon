@@ -214,7 +214,7 @@ public class UniqueToolpartRecipes {
 								Pair.of('S', new TinkerPartIngredient(TinkerMaterials.steel, "tconstruct:knife_blade")),
 								Pair.of('I', new TinkerPartIngredient(ModMaterials.materialIrradium, "tconstruct:sign_head"))));
 			}
-			
+
 			if (canRegisterUniqueRecipe(ModMaterials.materialDematerializer)) {
 				event.getRegistry().register(
 						RecipeHelper.createRecipe("dematerializer_recipe", ModMaterials.materialDematerializer.getUniqueToolPart(),
@@ -232,13 +232,7 @@ public class UniqueToolpartRecipes {
 	}
 
 	public static boolean canRegisterUniqueRecipe(UniqueMaterial umat) {
-		if (umat == null) {
-			return false;
-		}
-		if (umat.getUniqueToolPart().isEmpty()) {
-			return false;
-		}
-		if (!TinkerRegistry.getAllMaterials().contains(umat)) {
+		if ((umat == null) || umat.getUniqueToolPart().isEmpty() || !TinkerRegistry.getAllMaterials().contains(umat)) {
 			return false;
 		}
 		for (String s : ConfigHandler.removeUniqueToolpartRecipes) {

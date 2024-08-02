@@ -24,17 +24,18 @@ public class ItemDebugTool extends ItemBase {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		if (debugFunction(worldIn, playerIn))
-			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
-				
+		if (debugFunction(worldIn, playerIn)) {
+			return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+		}
+
 		if (worldIn.isRemote) {
 			if (playerIn.isSneaking()) {
 				List<Entity> entities = worldIn.getEntitiesWithinAABBExcludingEntity(playerIn, playerIn.getEntityBoundingBox().expand(5.0D, 5.0D, 5.0D).expand(-5, -5, -5));
-				BiValue<Entity, Double> dval = new BiValue<Entity, Double>(null, Double.MAX_VALUE);
+				BiValue<Entity, Double> dval = new BiValue<>(null, Double.MAX_VALUE);
 				for (Entity e : entities) {
 					double distance = e.getPositionVector().distanceTo(playerIn.getPositionVector());
 					if (distance < dval.getB()) {
-						dval = new BiValue<Entity, Double>(e, distance);
+						dval = new BiValue<>(e, distance);
 					}
 				}
 				if (dval.getA() != null) {
@@ -47,7 +48,7 @@ public class ItemDebugTool extends ItemBase {
 		}
 
 		playerIn.getCooldownTracker().setCooldown(this, 5);
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+		return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 	}
 
 	protected boolean debugFunction(World worldIn, EntityPlayer playerIn) { //this is used by me to test stuff.

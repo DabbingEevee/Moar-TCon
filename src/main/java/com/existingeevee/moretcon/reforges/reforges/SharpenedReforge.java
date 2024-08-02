@@ -12,7 +12,7 @@ public class SharpenedReforge extends AbstractReforge {
 	public SharpenedReforge() {
 		super(MiscUtils.createNonConflictiveName("reforgesharpened"), 0xc8d6e3);
 	}
-	
+
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		return newDamage + damage * (isBarelyDamaged(tool) ? 0.2f : 0.1f);
@@ -22,7 +22,7 @@ public class SharpenedReforge extends AbstractReforge {
 	public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
 		event.setNewSpeed(event.getOriginalSpeed() * (isBarelyDamaged(tool) ? 0.2f : 0.1f) + event.getNewSpeed());
 	}
-	
+
 	boolean isBarelyDamaged(ItemStack tool) {
 		return tool.getItemDamage() <= tool.getMaxDamage() * 0.05f;
 	}

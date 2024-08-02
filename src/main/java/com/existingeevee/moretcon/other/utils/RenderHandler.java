@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class RenderHandler {
-	
+
 	@SideOnly(Side.CLIENT)
 	public static void registerFluidCustomMeshesAndStates(Block blockIn) {
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(blockIn), new ItemMeshDefinition() {
@@ -42,14 +42,14 @@ public class RenderHandler {
 	@SideOnly(Side.CLIENT)
 	public static void registerSponge(GravitoniumSpongeItem item) {
 		ResourceLocation gsLocation = ModSponges.gravitoniumSponge.getRegistryName();
-		
+
 		for (int i = 2; i <= item.recipe.steps.length; i++) {
 			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(new ResourceLocation(gsLocation.getResourceDomain(), "partial" + gsLocation.getResourcePath()), "inventory"));
 		}
 		ModelLoader.setCustomModelResourceLocation(item, 1, new ModelResourceLocation(new ResourceLocation(gsLocation.getResourceDomain(), gsLocation.getResourcePath()), "inventory"));
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(new ResourceLocation(gsLocation.getResourceDomain(), "complete" + gsLocation.getResourcePath()), "inventory"));
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static void registerItemModel(Item item) {
 		ModelResourceLocation model = new ModelResourceLocation(ModInfo.MODID + ":" + item.getUnlocalizedName().replaceFirst("item." + ModInfo.MODID + ".", ""), "inventory");

@@ -72,14 +72,10 @@ public class CompositeRegistry {
 	public static void onPostInit() {
 		for (CompositeData d : data) {
 			for (IToolPart t : TinkerRegistry.getToolParts()) {
-				if (!t.canUseMaterial(d.getFrom()) || !t.canUseMaterial(d.getResult())) {
+				if (!t.canUseMaterial(d.getFrom()) || !t.canUseMaterial(d.getResult()) || (t == TinkerTools.arrowShaft)) {
 					continue;
 				}
 
-				if (t == TinkerTools.arrowShaft) {
-					continue;
-				}
-				
 				if (t instanceof BoltCore) {
 					List<Material> fluidWithHead = TinkerRegistry.getAllMaterials().stream()
 							.filter(mat -> mat.hasStats(MaterialTypes.HEAD))
@@ -105,8 +101,9 @@ public class CompositeRegistry {
 				TinkerRegistry.registerTableCasting(new CastingRecipe(output, rm, d.getCatalyst(), d.onlyOne ? Material.VALUE_Ingot : t.getCost(), true, false));
 			}
 
-			if (d.shouldGenIcon())
+			if (d.shouldGenIcon()) {
 				MaterialUtils.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
+			}
 		}
 	}
 

@@ -34,7 +34,9 @@ public class BiValue<A,B> {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof BiValue)) return super.equals(obj);
+		if (!(obj instanceof BiValue)) {
+			return super.equals(obj);
+		}
 		BiValue<?, ?> dValObj = (BiValue<?, ?>) obj;
 		return (dValObj.getA().equals(this.getA()) && dValObj.getB().equals(this.getB()));
 	}

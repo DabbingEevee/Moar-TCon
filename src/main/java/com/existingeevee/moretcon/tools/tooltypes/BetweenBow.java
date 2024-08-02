@@ -74,17 +74,18 @@ public class BetweenBow extends BowCore implements ICorrodible, IAnimatorRepaira
 			addDefaultSubItems(subItems, null, null, TinkerMaterials.string);
 		}
 	}
-	
+
 	@Override
 	public void setCorrosion(ItemStack stack, int corrosion) {
 		boolean bad = this.getCorrosion(stack) < corrosion;
-		
-		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite)) {
 			return;
+		}
 		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
 		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
 	}
-	
+
 	/* Tic Tool Stuff */
 
 	@Override
@@ -236,6 +237,7 @@ public class BetweenBow extends BowCore implements ICorrodible, IAnimatorRepaira
 		playShootSound(power, worldIn, player);
 	}
 
+	@Override
 	public EntityArrow getProjectileEntity(ItemStack ammo, ItemStack bow, World world, EntityPlayer player, float power, float inaccuracy, float progress, boolean usedAmmo) {
 		if (ammo.getItem() instanceof IAmmo) {
 			return ((IAmmo) ammo.getItem()).getProjectile(ammo, bow, world, player, power, inaccuracy, progress, usedAmmo);

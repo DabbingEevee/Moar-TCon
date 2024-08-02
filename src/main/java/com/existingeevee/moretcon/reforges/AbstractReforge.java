@@ -76,14 +76,15 @@ public abstract class AbstractReforge extends Modifier implements ITrait {
 	public String getLocalizedDescWithoutFlavor() {
 		return Util.translate(LOC_Desc, getIdentifier());
 	}
-	
+
 	@Override
 	public boolean isHidden() {
 		// This is janky, but we need the thing to only show in the tool station
 		StackTraceElement[] trace = Thread.currentThread().getStackTrace();
 		try {
-			if (trace[2].getClassName().endsWith("GuiToolStation") && trace[2].getMethodName().equals("updateDisplay"))
+			if (trace[2].getClassName().endsWith("GuiToolStation") && trace[2].getMethodName().equals("updateDisplay")) {
 				return false;
+			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 		}
 		return true;
@@ -223,9 +224,9 @@ public abstract class AbstractReforge extends Modifier implements ITrait {
 	}
 
 	public void cleanUp(NBTTagCompound root) {
-		
+
 	}
-	
+
 	public int getColor() {
 		return color;
 	}
@@ -233,7 +234,7 @@ public abstract class AbstractReforge extends Modifier implements ITrait {
 	public static class ReforgeStoneRecipeMatch extends RecipeMatch {
 
 		final AbstractReforge reforge;
-		
+
 		public ReforgeStoneRecipeMatch(AbstractReforge reforge) {
 			super(1, 1);
 			this.reforge = reforge;
