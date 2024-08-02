@@ -119,7 +119,7 @@ public class CustomFireHelper {
 						CustomFireInfo info = customBurning.get(entity.getEntityId());
 						if (info == null || info.effect == null)
 							continue;
-						if (!info.effect.effect(entity)) {
+						if (!info.effect.effect(entity, info.time)) {
 							info.forcedInvalid = true;
 						}
 					}
@@ -161,7 +161,7 @@ public class CustomFireHelper {
 					CustomFireInfo info = customBurning.get(entity.getEntityId());
 					if (info.effect == null)
 						continue;
-					if (!info.effect.effect(entity)) {
+					if (!info.effect.effect(entity, info.time)) {
 						info.forcedInvalid = true;
 					}
 				}
