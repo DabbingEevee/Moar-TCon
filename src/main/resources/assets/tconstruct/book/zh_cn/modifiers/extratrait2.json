@@ -1,0 +1,18 @@
+{
+  "modifier": "moretcon.extratrait2",
+  "text": [
+    {
+      "text": "它和通常的刻印一样，但你可以再进行一次。"
+    }
+  ],
+  "effects": [
+    "获取部件属性",
+    "效果类似部件替换",
+    "刻印强化是永久的，无法被改变",
+    "需未做变更",
+    "与已有的刻印兼容"
+  ],
+  "demoTool": [
+    "tconstruct:pickaxe"
+  ]
+}
