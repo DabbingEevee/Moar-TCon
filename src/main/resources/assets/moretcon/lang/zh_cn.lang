@@ -42,9 +42,10 @@ item.moretcon.betweenifiedmodifier.desc=将它给任何工具进行强化，都�
 item.moretcon.crushingmodifier.desc=为任何工具添加这一强化都会将其 5% 的伤害转化为真实伤害。
 item.moretcon.matterreconstructiongel.desc=将其添加到任何工具中都将修复工具 256 耐久或是相当于其总耐久的 10% 。以两者修复较多者为准。
 item.moretcon.repitem.desc=这种材料是一种复合材料。先制作基础工具部件，然后在浇铸台将合金添加物倒在上面。
+item.reforgestone.desc=施加在工具上时：
 
 item.moretcon.repitem.name=-{-name-}- 合金
-item.reforgestone.name=Reforge Stone
+item.reforgestone.name=重铸石
 
 item.moretcon.betweeniccore.name=交错核心
 item.moretcon.crushingmodifier.name=粉碎强化
@@ -108,6 +109,7 @@ item.moretcon.gemvoidspar.name=虚空晶体
 item.moretcon.gemelectarite.name=雷电石
 
 item.moretcon.hydrogenrichredstonepowder.name=富氢红石粉
+item.moretcon.solidlightning.name=固态闪电
 
 item.moretcon.ingotarkenium.name=阿肯钢锭
 item.moretcon.ingotatronium.name=阿特尼亚锭
@@ -153,6 +155,8 @@ item.moretcon.nuggetvalasium.name=维拉西恩粒
 item.moretcon.nuggethallowsite.name=神圣石粒
 item.moretcon.nuggetancientalloy.name=远古合金粒
 item.moretcon.nuggetblightsteel.name=枯萎钢粒
+item.moretcon.nuggetsanguiseelium.name=Sanguiseelium粒
+item.moretcon.nuggetzracohlium.name=Zracohlium粒
 
 item.moretcon.rawsteel.name=粗钢
 item.moretcon.ring.name=戒指
@@ -167,6 +171,7 @@ item.moretcon.sulfurbucketsyrmorite.name=赛摩铜硫磺桶
 itemGroup.moarTConMaterials=更多匠魂材料丨材料
 itemGroup.moarTConMisc=更多匠魂材料丨杂项
 itemGroup.uniqueToolParts=独特的工具零件
+itemGroup.reforgeStones=重铸石
 
 material.moretcon.anglertooth.name=鮟鱇牙齿
 material.moretcon.atronium.name=阿特尼亚
@@ -260,7 +265,7 @@ modifier.moretcon.helpful_radiation.desc=§o噢呀，我一只手就能数到 10
 modifier.moretcon.helpful_radiation.name=有益辐射
 modifier.moretcon.hypergravity.desc=§oF=G[(m1×m2)/(r²)]§r\n你的工具将能把实体拉近，而非击退实体。
 modifier.moretcon.hypergravity.name=超重力
-modifier.moretcon.hyperheat.desc=火焰，但很热。是的。§r\n你的工具会点燃对手。这把火会造成额外的乘算伤害，具体取决于工具的原始伤害。
+modifier.moretcon.hyperheat.desc=§o火焰，但很热。是的。§r\n你的工具会点燃对手。这把火会造成额外的乘算伤害，具体取决于工具的原始伤害。
 modifier.moretcon.hyperheat.name=高温
 modifier.moretcon.leeching.desc=§o100% 转基因血液。残忍的自由。§r\n你的工具每命中敌人大约 3 次，就会给你治疗所受伤害的 10%。
 modifier.moretcon.leeching.name=水蛭
@@ -485,17 +490,17 @@ tile.moretcon.orebloodstone.name=血石矿石
 tile.moretcon.oreetherstone.name=以太石矿石
 tile.moretcon.oreechostone.name=回音石矿石
 tile.moretcon.oreenderal.name=末影晶体矿石
-tile.moretcon.orebedrockfusionite.name=聚变基岩矿
-tile.moretcon.orefusionite.name=聚变矿
+tile.moretcon.orebedrockfusionite.name=聚变基岩矿石
+tile.moretcon.orefusionite.name=聚变矿石
 tile.moretcon.oregallium.name=镓矿石
 tile.moretcon.oregarstone.name=过载水晶矿石
 tile.moretcon.oregravitonium.name=重力鎓矿石
 tile.moretcon.oregravitoniumdense.name=富集重力鎓矿石
 tile.moretcon.oreigniglomerate.name=焱晶矿簇
 tile.moretcon.oreirradium.name=铱镭矿石
-tile.moretcon.orenaturalvoidspar.name=基岩虚空晶体矿石
+tile.moretcon.orenaturalvoidspar.name=虚空晶体基岩矿石
 tile.moretcon.orevoidspar.name=虚空晶体矿石
-tile.moretcon.oreebonite.name=硬胶矿
+tile.moretcon.oreebonite.name=硬胶矿石
 tile.moretcon.oreerythynite.name=永恒石矿石
 tile.moretcon.oreelectarite.name=雷电石矿石
 tile.moretcon.orehallowsite.name=神圣石矿石

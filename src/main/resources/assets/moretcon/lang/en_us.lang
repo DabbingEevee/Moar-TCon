@@ -265,7 +265,7 @@ modifier.moretcon.helpful_radiation.desc=§ooi i can count to 10 on one hand§r\
 modifier.moretcon.helpful_radiation.name=Helpful Radiation
 modifier.moretcon.hypergravity.desc=§oF=G[(m1 * m2)/(r ^ 2)]§r\nYour tool will pull entities back instead of knocking them forwards.
 modifier.moretcon.hypergravity.name=Hypergravity
-modifier.moretcon.hyperheat.desc=Fire, but hot. YEs.§r\nYour tool will set opponents on fire. This fire will do additional multiplicative damage depending on your tool's original damage
+modifier.moretcon.hyperheat.desc=§oFire, but hot. YEs.§r\nYour tool will set opponents on fire. This fire will do additional multiplicative damage depending on your tool's original damage
 modifier.moretcon.hyperheat.name=Hyperheat
 modifier.moretcon.leeching.desc=100% GMO Blood. Cruelty free-ish§r\nYour tool will heal you 10% of the dealt damage every approximately 3 hits
 modifier.moretcon.leeching.name=Leeching
