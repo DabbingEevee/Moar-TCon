@@ -2,12 +2,12 @@
   "modifier": "moretcon.modvalonite",
   "text": [
     {
-      "text": "我讨厌减少耐久和腐蚀，这应该可以修复它。。。"
+      "text": "我讨厌耐久损伤和腐蚀，它应该能解决这个问题……"
     }
   ],
   "effects": [
-    "一半的概率可防止减少耐久和腐蚀。",
-    "单个等级"
+    "有一半几率不消耗耐久和磨损系数。",
+    "只能强化一次"
   ],
   "demoTool": [
     "moretcon:blsword"
