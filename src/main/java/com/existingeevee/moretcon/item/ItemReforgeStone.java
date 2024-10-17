@@ -53,6 +53,7 @@ public class ItemReforgeStone extends ItemBase {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack) {
 		return I18n.translateToLocal("item.reforgestone.name") + " (" + CustomFontColor.encodeColor(getReforge().getColor()) + getReforge().getLocalizedPrefix() + ChatFormatting.RESET + ")";
 	}

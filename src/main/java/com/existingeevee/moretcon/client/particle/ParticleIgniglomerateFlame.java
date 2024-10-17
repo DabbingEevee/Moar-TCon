@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.client.particle;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.ParticleFlame;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -30,7 +31,12 @@ public class ParticleIgniglomerateFlame extends ParticleFlame {
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
 
-		IBlockState state = this.world.getBlockState(new BlockPos(this.posX, this.posY, this.posZ));
+		BlockPos pos = new BlockPos(this.posX, this.posY, this.posZ);
+		
+		IBlockState state = Blocks.AIR.getDefaultState();
+		if (world.isBlockLoaded(pos)) {
+			state = this.world.getBlockState(pos);
+		}
 
 		boolean flag = state.getMaterial() == Material.LAVA;
 		boolean flag2 = !flag && state.getMaterial().blocksMovement();
