@@ -2,6 +2,7 @@ package com.existingeevee.moretcon.traits.traits.unique;
 
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,11 +20,13 @@ public class Offense extends AbstractTrait {
 
 	@Override
 	public void onBlock(ItemStack tool, EntityPlayer player, LivingHurtEvent event) {
-		if (tool.getItem() instanceof ToolCore) {
+		Entity entity = event.getSource().getImmediateSource();
+		
+		if (tool.getItem() instanceof ToolCore && entity != null) {
 			int ticksSinceLastSwing = ObfuscationReflectionHelper.getPrivateValue(EntityLivingBase.class, player, "field_184617_aD");
 			ObfuscationReflectionHelper.setPrivateValue(EntityLivingBase.class, player, Integer.MAX_VALUE, "field_184617_aD");
-			event.getSource().getImmediateSource().hurtResistantTime = 0;
-			ToolHelper.attackEntity(tool, (ToolCore) tool.getItem(), player, event.getSource().getImmediateSource(), null, false);
+			entity.hurtResistantTime = 0;
+			ToolHelper.attackEntity(tool, (ToolCore) tool.getItem(), player, entity, null, false);
 			ObfuscationReflectionHelper.setPrivateValue(EntityLivingBase.class, player, ticksSinceLastSwing, "field_184617_aD");
 		}
 	}
