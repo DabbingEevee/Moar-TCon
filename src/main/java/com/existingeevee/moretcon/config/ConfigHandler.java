@@ -44,6 +44,7 @@ public class ConfigHandler {
 	public static int maxToolDurability = (int) Math.pow(2, 15) - 1;
 
 	public static int decayingEffectEntityID = 8690001;
+	public static int plasmaBoltEntityID = 8690002;
 
 	public static boolean shouldDurabilityCapNonProjectiles = true;
 
@@ -142,7 +143,7 @@ public class ConfigHandler {
 		category = "IDs";
 		config.addCustomCategoryComment(category, "A category dedicated to a list of ID's of various things which may cause errors if they are not unique");
 		ConfigHandler.decayingEffectEntityID = config.getInt("decayingEffectEntityID".toLowerCase(), category, 8690001, Integer.MIN_VALUE, Integer.MAX_VALUE, "Decaying Effect Entity ID");
-
+		ConfigHandler.plasmaBoltEntityID = config.getInt("plasmaBoltEntityID".toLowerCase(), category, 8690002, Integer.MIN_VALUE, Integer.MAX_VALUE, "Plasma Bolt Entity ID");
 		config.save();
 
 		MoreTConLogger.log("Finished Reading Config.");

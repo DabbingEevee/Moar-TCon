@@ -12,6 +12,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.tuple.Pair;
+
+import com.existingeevee.math.Quaternion;
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.traits.ModTraits;
@@ -355,7 +358,6 @@ public class MiscUtils {
 		return rayTrace(entityLiving, maxRange, exclude, true);
 	}
 
-
 	public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double maxRange, List<Entity> exclude, boolean affectedByBlocks) {
 		Vec3d start = entityLiving.getPositionEyes(0.5f);
 		Vec3d lookVec = entityLiving.getLookVec();
@@ -400,4 +402,41 @@ public class MiscUtils {
 		}
 	}
 
+	public static double quadraticArc(double initialSlope, double endpoint, double x) {
+		double a = -initialSlope / endpoint;
+		return a * x * (x - endpoint);
+	}
+
+	public static Pair<Double, Double> getPitchYaw(Vec3d vec) {
+		if (vec.lengthSquared() != 1) {
+			vec = vec.normalize();
+		}
+		
+		double pitch = Math.asin(-vec.y);
+		double yaw = Math.atan2(vec.z, vec.z);
+
+		return Pair.of(pitch, yaw);
+	}
+
+	public static Vec3d fromPitchYaw(double pitch, double yaw) {
+		double f = Math.cos(-yaw - Math.PI);
+		double f1 = Math.sin(-yaw - Math.PI);
+		double f2 = -Math.cos(-pitch);
+		double f3 = Math.sin(-pitch);
+		return new Vec3d(f1 * f2, f3, f * f2);
+	}
+
+	public static Vec3d rotateVec3d(Vec3d original, Vec3d axis, float theta) {
+		Quaternion quaternion = new Quaternion(axis.normalize(), theta, false);
+		return quaternion.transformVector(original);
+
+		/*
+		 * axis = axis.normalize();
+		 * 
+		 * double cos = Math.cos(theta); double sin = Math.sin(theta);
+		 * 
+		 * return original.scale(cos) .add(axis.crossProduct(original).scale(sin))
+		 * .add(axis.scale(axis.dotProduct(original) * (1 - cos)));
+		 */
+	}
 }

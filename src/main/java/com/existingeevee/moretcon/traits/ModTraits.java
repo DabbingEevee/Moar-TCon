@@ -48,6 +48,7 @@ import com.existingeevee.moretcon.traits.traits.Overgrowth;
 import com.existingeevee.moretcon.traits.traits.Overslime;
 import com.existingeevee.moretcon.traits.traits.Oxide;
 import com.existingeevee.moretcon.traits.traits.Penetrant;
+import com.existingeevee.moretcon.traits.traits.PlasmaMissiles;
 import com.existingeevee.moretcon.traits.traits.Pulsating;
 import com.existingeevee.moretcon.traits.traits.Pyrophoric;
 import com.existingeevee.moretcon.traits.traits.Reaching;
@@ -163,7 +164,8 @@ public class ModTraits {
 	public static Searing searing = new Searing(1);
 	public static Searing searing2 = new Searing(2);
 	public static EulersWrath eularsWrath = new EulersWrath();
-
+	public static PlasmaMissiles plasmaMissiles = new PlasmaMissiles();
+	
 	public static MatterReconstructionGel repair;
 
 	public static AntiGravity antigravity;

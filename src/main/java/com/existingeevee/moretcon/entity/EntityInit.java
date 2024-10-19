@@ -4,7 +4,9 @@ import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.MoreTCon;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.entity.entities.EntityDecayingEffect;
+import com.existingeevee.moretcon.entity.entities.EntityPlasmaBolt;
 import com.existingeevee.moretcon.entity.renderers.RenderDecayingEffect;
+import com.existingeevee.moretcon.entity.renderers.RenderPlasmaBolt;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -15,10 +17,12 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 public class EntityInit {
 	public static void init() {
 		registerEntity("decaying_effect", EntityDecayingEffect.class, ConfigHandler.decayingEffectEntityID, 50);
+		registerEntity("plasma_bolt", EntityPlasmaBolt.class, ConfigHandler.plasmaBoltEntityID, 50);
 	}
 
 	public static void initClient() {
 		registerRenderer(EntityDecayingEffect.class, RenderDecayingEffect::new);
+		registerRenderer(EntityPlasmaBolt.class, RenderPlasmaBolt::new);
 	}
 
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range) {
