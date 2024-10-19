@@ -58,6 +58,7 @@ public class MaterialClient {
 		ModMaterials.materialValasium.setRenderInfo(new GlintTexture.RenderInfo(0x646681, 0x646681, 0xb3c3cb, 0x959cb3, 0x959cb3, 0x959cb3));
 		ModMaterials.materialSanguiseelium.setRenderInfo(new SanguiseeliumTexture.RenderInfo());
 		ModMaterials.materialSearedStone.setRenderInfo(new MaterialRenderInfo.Default(0x4f4f4f));
+		ModMaterials.materialIoximite.setRenderInfo(new GlintTexture.RenderInfo(0x725ee3, 0x674fe1, 0xd7d3fc, 0xb1aaf1, 0x978cea, 0x8374e6));
 	}
 
 	private static void setCustomRender(Material mat) {

@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.item;
 import java.util.List;
 
 import com.existingeevee.moretcon.entity.entities.EntityPlasmaBolt;
+import com.existingeevee.moretcon.materials.MaterialClient;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.ModTabs;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
@@ -57,17 +58,6 @@ public class ItemDebugTool extends ItemBase {
 	}
 
 	protected boolean debugFunction(World worldIn, EntityPlayer playerIn) { //this is used by me to test stuff.
-		if (!worldIn.isRemote) {
-			RayTraceResult result = MiscUtils.rayTrace(playerIn, 25, Lists.newArrayList(playerIn));			
-			if (result.entityHit instanceof EntityLivingBase) {
-				EntityPlasmaBolt bolt = new EntityPlasmaBolt(worldIn, playerIn, (EntityLivingBase) result.entityHit, playerIn.getHeldItemOffhand()).setImpactTime(20);
-				//EntityPig pig = new EntityPig(worldIn);
-				bolt.setPosition(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
-				System.out.println(worldIn.spawnEntity(bolt));
-			}
-		}
-		
-		
-		return true;
+		return false;
 	}
 }

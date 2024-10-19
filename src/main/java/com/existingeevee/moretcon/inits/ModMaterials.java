@@ -86,6 +86,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialBlightsteel = new Material(MiscUtils.createNonConflictiveName("blightsteel"), 0x243c5a);
 	public static final Material materialSanguiseelium = new Material(MiscUtils.createNonConflictiveName("sanguiseelium"), 0x6b1313);
 	public static final Material materialZracohlium = new Material(MiscUtils.createNonConflictiveName("zracohlium"), 0x444c2a);
+	public static final Material materialIoximite = new Material(MiscUtils.createNonConflictiveName("ioximite"), 0x978cea);
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -725,6 +726,17 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialDematerializer, new BowMaterialStats(1f, 3.2f, 7f));
 			TinkerRegistry.addMaterialStats(materialDematerializer, new HeadMaterialStats(2069, 10f, 8f, 6));
 			materialDematerializer.addTrait(ModTraits.dematerializing);
+			
+			materialIoximite.setCastable(false);
+			materialIoximite.setCraftable(false);
+			materialIoximite.addTrait(ModTraits.plasmaMissiles);
+			materialIoximite.addTrait(TinkerTraits.unnatural);
+			TinkerRegistry.addMaterialStats(materialIoximite, new HeadMaterialStats(1350, 7.5f, 10f, 7));
+			TinkerRegistry.addMaterialStats(materialIoximite, new HandleMaterialStats(1.75f, 85));
+			TinkerRegistry.addMaterialStats(materialIoximite, new ExtraMaterialStats(45));
+			TinkerRegistry.addMaterialStats(materialIoximite, new ArrowShaftMaterialStats(1.1f, 16));
+			TinkerRegistry.addMaterialStats(materialIoximite, new BowMaterialStats(2f, 0.9f, 5f));
+			CompositeRegistry.registerComposite(() -> materialVoidSpar, () -> materialIoximite, () -> ModFluids.liquidFusionite);
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -1085,6 +1097,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialAutoloader, null);
 			ModMaterials.registerMaterial(materialVengeance, null);
 			ModMaterials.registerMaterial(materialDematerializer, null);
+			ModMaterials.registerMaterial(materialIoximite, null);
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl, null);
