@@ -2,21 +2,15 @@ package com.existingeevee.moretcon.item;
 
 import java.util.List;
 
-import com.existingeevee.moretcon.entity.entities.EntityPlasmaBolt;
-import com.existingeevee.moretcon.materials.MaterialClient;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.ModTabs;
-import com.existingeevee.moretcon.other.utils.MiscUtils;
-import com.google.common.collect.Lists;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
