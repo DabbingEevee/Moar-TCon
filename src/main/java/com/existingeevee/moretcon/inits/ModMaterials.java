@@ -729,13 +729,21 @@ public class ModMaterials implements MaterialTypes {
 			
 			materialIoximite.setCastable(false);
 			materialIoximite.setCraftable(false);
+			materialIoximite.addTrait(ModTraits.voidic, HEAD);
+			materialIoximite.addTrait(ModTraits.bottomsEnd, HEAD);
+			materialIoximite.addTrait(ModTraits.plasmaMissiles,HEAD);
 			materialIoximite.addTrait(ModTraits.plasmaMissiles);
 			materialIoximite.addTrait(TinkerTraits.unnatural);
-			TinkerRegistry.addMaterialStats(materialIoximite, new HeadMaterialStats(1350, 7.5f, 10f, 7));
-			TinkerRegistry.addMaterialStats(materialIoximite, new HandleMaterialStats(1.75f, 85));
-			TinkerRegistry.addMaterialStats(materialIoximite, new ExtraMaterialStats(45));
-			TinkerRegistry.addMaterialStats(materialIoximite, new ArrowShaftMaterialStats(1.1f, 16));
-			TinkerRegistry.addMaterialStats(materialIoximite, new BowMaterialStats(2f, 0.9f, 5f));
+			materialIoximite.addTrait(TinkerTraits.alien);
+			TinkerRegistry.addMaterialStats(materialIoximite, new HeadMaterialStats(1350, 7.5f, 11f, 6));
+			TinkerRegistry.addMaterialStats(materialIoximite, new HandleMaterialStats(2.5f, 85));
+			TinkerRegistry.addMaterialStats(materialIoximite, new ExtraMaterialStats(30));
+			TinkerRegistry.addMaterialStats(materialIoximite, new ArrowShaftMaterialStats(2.5f, 85));
+			TinkerRegistry.addMaterialStats(materialIoximite, new BowMaterialStats(2f, 1.2f, 3f));
+			if (CompatManager.plustic) {
+				TinkerRegistry.addMaterialStats(materialIoximite, new LaserMediumMaterialStats(10, 20));
+				TinkerRegistry.addMaterialStats(materialIoximite, new BatteryCellMaterialStats(100000));
+			}
 			CompositeRegistry.registerComposite(() -> materialVoidSpar, () -> materialIoximite, () -> ModFluids.liquidFusionite);
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
