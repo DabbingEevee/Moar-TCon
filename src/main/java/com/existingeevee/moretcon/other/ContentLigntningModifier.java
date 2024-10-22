@@ -84,6 +84,7 @@ public class ContentLigntningModifier extends TinkerPage {
 			TinkerModifiers.log.error("MOdifier " + modifierName + " not found");
 			return;
 		}
+		
 		int color = 0xdddddd;
 		int inCount = 1;
 		ItemStack[][] inputItems = null;
@@ -139,7 +140,7 @@ public class ContentLigntningModifier extends TinkerPage {
 
 			list.add(new ElementText(10, 30 + h, GuiBook.PAGE_WIDTH / 2 + 5, GuiBook.PAGE_HEIGHT - h - 20, effectData));
 		}
-//
+
 		ImageData img = IMG_SLOT_1;
 
 		int imgX = GuiBook.PAGE_WIDTH / 2 + 20;
