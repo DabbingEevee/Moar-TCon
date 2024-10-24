@@ -16,11 +16,11 @@ public class TraitClient {
 			register(ModTraits.modRedGem);
 			register(ModTraits.modGreenGem);
 			register(ModTraits.modBlueGem);
-			register(ModTraits.modShocking);
+			register(ModTraits.modShocked);
 			register(ModTraits.modValonite);
 			register(ModTraits.modTarred);
 			register(ModTraits.modBetweenified);
-			
+
 			register(TinkerModifiers.modFiery);
 			register(TinkerModifiers.modLuck);
 			register(TinkerModifiers.modEmerald);

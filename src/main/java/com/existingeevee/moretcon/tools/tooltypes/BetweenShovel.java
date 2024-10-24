@@ -73,13 +73,14 @@ public class BetweenShovel extends AoeToolCore implements ICorrodible, IAnimator
 	@Override
 	public void setCorrosion(ItemStack stack, int corrosion) {
 		boolean bad = this.getCorrosion(stack) < corrosion;
-		
-		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite)) {
 			return;
+		}
 		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
 		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
 	}
-	
+
 	protected BetweenShovel(PartMaterialType... requiredComponents) {
 		super(requiredComponents);
 

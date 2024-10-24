@@ -8,7 +8,8 @@
   ],
   "key": {
     "0": {
-      "item": "moretcon:ingotgravitonium"
+       "type": "forge:ore_dict",
+       "ore": "ingotGravitonium"
     },
     "1": {
       "item": "minecraft:sponge",
@@ -17,6 +18,6 @@
   },
   "result": {
     "item": "moretcon:gravitoniumsponge",
-    "count": 1
+    "count": 4
   }
 }

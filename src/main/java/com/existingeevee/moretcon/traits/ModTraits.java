@@ -15,22 +15,22 @@ import com.existingeevee.moretcon.traits.modifiers.Debug;
 import com.existingeevee.moretcon.traits.modifiers.Gem;
 import com.existingeevee.moretcon.traits.modifiers.MatterReconstructionGel;
 import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
-import com.existingeevee.moretcon.traits.modifiers.Shocking;
+import com.existingeevee.moretcon.traits.modifiers.Shocked;
 import com.existingeevee.moretcon.traits.modifiers.Tarred;
 import com.existingeevee.moretcon.traits.modifiers.Valonite;
 import com.existingeevee.moretcon.traits.modifiers.internal.ModExtraTraitDisplay2;
 import com.existingeevee.moretcon.traits.traits.Aetheric;
 import com.existingeevee.moretcon.traits.traits.Afterimage;
 import com.existingeevee.moretcon.traits.traits.AntiGravity;
-import com.existingeevee.moretcon.traits.traits.AttributeTrait;
 import com.existingeevee.moretcon.traits.traits.Blighted;
 import com.existingeevee.moretcon.traits.traits.BottomsEnd;
 import com.existingeevee.moretcon.traits.traits.Burning;
 import com.existingeevee.moretcon.traits.traits.ColdFire;
 import com.existingeevee.moretcon.traits.traits.Corroding;
 import com.existingeevee.moretcon.traits.traits.Darkened;
-import com.existingeevee.moretcon.traits.traits.DummyTrait;
 import com.existingeevee.moretcon.traits.traits.Electrified;
+import com.existingeevee.moretcon.traits.traits.EulersWrath;
+import com.existingeevee.moretcon.traits.traits.Fireslime;
 import com.existingeevee.moretcon.traits.traits.Hardcore;
 import com.existingeevee.moretcon.traits.traits.Haunted;
 import com.existingeevee.moretcon.traits.traits.HelpfulRadiation;
@@ -48,26 +48,36 @@ import com.existingeevee.moretcon.traits.traits.Overgrowth;
 import com.existingeevee.moretcon.traits.traits.Overslime;
 import com.existingeevee.moretcon.traits.traits.Oxide;
 import com.existingeevee.moretcon.traits.traits.Penetrant;
+import com.existingeevee.moretcon.traits.traits.PlasmaMissiles;
 import com.existingeevee.moretcon.traits.traits.Pulsating;
+import com.existingeevee.moretcon.traits.traits.Pyrophoric;
 import com.existingeevee.moretcon.traits.traits.Reaching;
+import com.existingeevee.moretcon.traits.traits.Receptive;
 import com.existingeevee.moretcon.traits.traits.Resilient;
 import com.existingeevee.moretcon.traits.traits.Rootplicating;
 import com.existingeevee.moretcon.traits.traits.Rotten;
+import com.existingeevee.moretcon.traits.traits.Searing;
 import com.existingeevee.moretcon.traits.traits.SkysBlessing;
 import com.existingeevee.moretcon.traits.traits.Slicing;
 import com.existingeevee.moretcon.traits.traits.Soulforged;
+import com.existingeevee.moretcon.traits.traits.Supercritical;
 import com.existingeevee.moretcon.traits.traits.Treetap;
 import com.existingeevee.moretcon.traits.traits.Tricromatic;
 import com.existingeevee.moretcon.traits.traits.Voidic;
 import com.existingeevee.moretcon.traits.traits.Withered;
+import com.existingeevee.moretcon.traits.traits.abst.AttributeTrait;
+import com.existingeevee.moretcon.traits.traits.abst.DummyTrait;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
 import com.existingeevee.moretcon.traits.traits.unique.Autoloading;
 import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
 import com.existingeevee.moretcon.traits.traits.unique.BloodGodsBlessing;
 import com.existingeevee.moretcon.traits.traits.unique.BloodyArc;
+import com.existingeevee.moretcon.traits.traits.unique.Boltforged;
+import com.existingeevee.moretcon.traits.traits.unique.Dematerializing;
 import com.existingeevee.moretcon.traits.traits.unique.EssentialObliteration;
 import com.existingeevee.moretcon.traits.traits.unique.Hailshot;
 import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
+import com.existingeevee.moretcon.traits.traits.unique.Offense;
 import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
 import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
@@ -98,6 +108,12 @@ public class ModTraits {
 	public static BloodyArc bloodyArc = new BloodyArc();
 	public static AerialFlame aerialFlames = new AerialFlame();
 	public static Blinkdrawn blinkdrawn = new Blinkdrawn();
+	public static Mirroring mirroring = new Mirroring();
+	public static Seismishock seismishock = new Seismishock();
+	public static Hailshot hailshot = new Hailshot();
+	public static Autoloading autoloading = new Autoloading();
+	public static Boltforged boltforged = new Boltforged();
+	public static Dematerializing dematerializing = new Dematerializing();
 
 	public static KineticBattery kineticBattery = new KineticBattery();
 	public static Hyperheat hyperheat = new Hyperheat();
@@ -109,14 +125,8 @@ public class ModTraits {
 	public static Liquid liquid = new Liquid();
 	public static Resilient resilient = new Resilient();
 	public static Magical magical = new Magical();
-	public static Reaching reaching;
-	public static Aetheric aetheric = new Aetheric();
-	public static Rootplicating rootplicating = new Rootplicating();
-	public static SkysBlessing blessed = new SkysBlessing();
-	public static Treetap treetap = new Treetap();
 	public static Hardcore hardcore = new Hardcore();
 	public static HyperGravity hypergravity = new HyperGravity();
-	public static Mirroring mirroring = new Mirroring();
 	public static BottomsEnd bottomsEnd = new BottomsEnd();
 	public static Slicing slicing = new Slicing();
 	public static Leeching leeching = new Leeching();
@@ -133,16 +143,28 @@ public class ModTraits {
 	public static DummyTrait overcast = new DummyTrait("overcast", 0);
 	public static Overgrowth overgrowth = new Overgrowth(1);
 	public static Overgrowth overgrowth2 = new Overgrowth(2);
+	public static Fireslime fireslime = new Fireslime();
 	public static Electrified electrified = new Electrified();
 	public static Haunted haunted = new Haunted();
 	public static Soulforged soulforged = new Soulforged(1);
 	public static Soulforged soulforged2 = new Soulforged(2);
-	public static Soulforged soulforged3 = new Soulforged(3);
-	public static Seismishock seismishock = new Seismishock();;
-	public static Hailshot hailshot = new Hailshot();;
-	public static Autoloading autoloading = new Autoloading();;
-	public static Withered withered = new Withered();;
-	public static Blighted blighted = new Blighted();;
+	public static Withered withered = new Withered();
+	public static Blighted blighted = new Blighted();
+	public static Receptive receptive = new Receptive();
+	public static Offense offense = new Offense();
+	public static Reaching reaching = new Reaching(1);
+	public static Reaching reaching2 = new Reaching(2);
+	public static Supercritical supercritical1 = new Supercritical(1);
+	public static Supercritical supercritical2 = new Supercritical(2);
+	public static Aetheric aetheric = new Aetheric();
+	public static Rootplicating rootplicating = new Rootplicating();
+	public static SkysBlessing blessed = new SkysBlessing();
+	public static Treetap treetap = new Treetap();
+	public static Pyrophoric pyrophoric = new Pyrophoric();
+	public static Searing searing = new Searing(1);
+	public static Searing searing2 = new Searing(2);
+	public static EulersWrath eularsWrath = new EulersWrath();
+	public static PlasmaMissiles plasmaMissiles = new PlasmaMissiles();
 	
 	public static MatterReconstructionGel repair;
 
@@ -151,16 +173,17 @@ public class ModTraits {
 	public static Gem modRedGem;
 	public static Gem modGreenGem;
 	public static Gem modBlueGem;
-	public static Shocking modShocking;
+	public static Shocked modShocked;
 	public static Valonite modValonite;
 	public static Tarred modTarred;
 	public static Betweenified modBetweenified;
 
 	public static Corroding corroding;
-	
+
 	public static Crushing modCrushing;
 
 	public static Debug modDebug;
+
 	public static Shockwaving shockwaving;
 	public static Rotten rotten;
 	public static Oxide oxide;
@@ -181,7 +204,6 @@ public class ModTraits {
 		}
 		if (CompatManager.aether_legacy) {
 			antigravity = new AntiGravity();
-			reaching = new Reaching();
 		}
 	}
 
@@ -189,7 +211,7 @@ public class ModTraits {
 		for (IModifier i : mod) {
 			RegisterHelper.registerModifier(i);
 		}
-	} 
+	}
 
 	public static void init() {
 		if (CompatManager.loadMain) {
@@ -204,7 +226,7 @@ public class ModTraits {
 			modRedGem = new Gem(CircleGemType.CRIMSON, ItemRegistry.CRIMSON_MIDDLE_GEM, 0xFF0000);
 			modGreenGem = new Gem(CircleGemType.GREEN, ItemRegistry.GREEN_MIDDLE_GEM, 0x00FF00);
 			modBlueGem = new Gem(CircleGemType.AQUA, ItemRegistry.AQUA_MIDDLE_GEM, 0x0000FF);
-			modShocking = new Shocking();
+			modShocked = new Shocked();
 			modValonite = new Valonite();
 			modTarred = new Tarred();
 			registerModifier(
@@ -213,7 +235,7 @@ public class ModTraits {
 					modBlueGem,
 					modValonite,
 					modTarred,
-					modShocking);
+					modShocked);
 
 		}
 	}
@@ -225,7 +247,7 @@ public class ModTraits {
 		}
 	}
 
-	
+
 	private static Map<String, ModExtraTrait2> extraTraitLookup = new HashMap<>();
 	public static List<Modifier> extraTraitMods;
 

@@ -25,12 +25,12 @@ public class VoidPrismBottomAction extends ClientAction {
 		p.addMotion(0, .45, 0);
 		return p;
 	};
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void runAsClient(World world, double x, double y, double z, NBTBase data) {
 		Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleSpawner(world, x, y, z, 10, outerSupplier));
-		Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleSpawner(world, x, y, z, 10, innerSupplier));	
+		Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleSpawner(world, x, y, z, 10, innerSupplier));
 	}
 
 }

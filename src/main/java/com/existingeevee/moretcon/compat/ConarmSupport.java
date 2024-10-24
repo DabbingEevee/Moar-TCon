@@ -7,8 +7,8 @@ import c4.conarm.lib.materials.ArmorMaterialType;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
 
-/** 
- * 
+/**
+ *
  * @author ExistingEevee
  *
  * @apiNote Moving all conarm api calls to a separate class for it to not fuck itself with class-not-founds

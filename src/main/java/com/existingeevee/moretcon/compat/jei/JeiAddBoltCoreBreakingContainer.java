@@ -62,8 +62,9 @@ public class JeiAddBoltCoreBreakingContainer extends JeiCustomContainer {
 			List<ItemStack> listInput = new ArrayList<>();
 			List<ItemStack> listOutput = new ArrayList<>();
 			for (Material m : TinkerRegistry.getAllMaterials()) {
-				if (!m.hasStats(MaterialTypes.SHAFT))
+				if (!m.hasStats(MaterialTypes.SHAFT)) {
 					continue;
+				}
 
 				listInput.add(BoltCore.getItemstackWithMaterials(m, TinkerMaterials.iron));
 				listOutput.add(TinkerTools.arrowShaft.getItemstackWithMaterial(m));
@@ -74,11 +75,10 @@ public class JeiAddBoltCoreBreakingContainer extends JeiCustomContainer {
 		}
 
 		@Override
-		@SuppressWarnings("deprecation")
 		public void setRecipe(IRecipeLayout recipeLayout, IIngredients ingredients) {
 		    List<ItemStack> inputs = ingredients.getInputs(ItemStack.class).get(0);
 		    List<ItemStack> outputs = ingredients.getOutputs(ItemStack.class).get(0);
-			
+
 			IFocus<?> ifocus = recipeLayout.getFocus();
 			if (ifocus == null) {
 				recipeLayout.getItemStacks().set(0, outputs);
@@ -91,7 +91,7 @@ public class JeiAddBoltCoreBreakingContainer extends JeiCustomContainer {
 				ItemStack focus = ((ItemStack) focusObj).copy();
 				focus.setCount(1);
 				IFocus.Mode mode = ifocus.getMode();
-				
+
 				if (mode == IFocus.Mode.INPUT) {
 					recipeLayout.getItemStacks().set(5, focus);
 					recipeLayout.getItemStacks().set(0, TinkerTools.arrowShaft.getItemstackWithMaterial(TinkerTools.boltCore.getMaterial(focus)));

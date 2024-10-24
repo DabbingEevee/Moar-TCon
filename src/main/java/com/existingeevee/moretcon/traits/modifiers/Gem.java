@@ -22,13 +22,12 @@ import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.tools.modifiers.ToolModifier;
 import thebetweenlands.common.capability.circlegem.CircleGemType;
 
-@SuppressWarnings("deprecation")
 public class Gem extends ToolModifier {
 
 	private final CircleGemType type;
-	
+
 	private static boolean registered = false;
-	
+
 	public Gem(CircleGemType type, Item item, int color) {
 		super(MiscUtils.createNonConflictiveName("mod" + type.name().toLowerCase() + "gem"), color);
 		this.addItem(item);
@@ -40,7 +39,7 @@ public class Gem extends ToolModifier {
 		this.type = type;
 		if (!registered) {
 			MinecraftForge.EVENT_BUS.register(Gem.class);
-			registered = true;	
+			registered = true;
 		}
 	}
 
@@ -58,7 +57,7 @@ public class Gem extends ToolModifier {
 		}
 		return super.canApplyCustom(stack);
 	}
-	
+
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	@SideOnly(value = Side.CLIENT)
 	public static void handleToolTips(ItemTooltipEvent event) {
@@ -76,8 +75,9 @@ public class Gem extends ToolModifier {
                         break;
                     }
                 }
-                if (found)
-                    break;
+                if (found) {
+					break;
+				}
             }
         }
 	}

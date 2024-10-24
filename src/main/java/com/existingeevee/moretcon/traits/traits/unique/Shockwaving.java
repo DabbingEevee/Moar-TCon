@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 import thebetweenlands.common.entity.EntityShockwaveBlock;
 import thebetweenlands.common.registries.SoundRegistry;
 
@@ -34,8 +35,9 @@ public class Shockwaving extends NumberTrackerTrait {
 	public void onRightClick(OverrideItemUseEvent event) {
 		ItemStack stack = event.getItemStack();
 
-		if (!isToolWithTrait(stack))
+		if (!isToolWithTrait(stack) || ToolHelper.isBroken(stack)) {
 			return;
+		}
 
 		if (stack.getItemDamage() == stack.getMaxDamage()) {
 			stack.getTagCompound().setInteger("cooldown", 0);
@@ -52,7 +54,7 @@ public class Shockwaving extends NumberTrackerTrait {
 				double direction = Math.toRadians(event.getEntityPlayer().rotationYaw);
 				Vec3d diag = new Vec3d(Math.sin(direction + Math.PI / 2.0D), 0, Math.cos(direction + Math.PI / 2.0D))
 						.normalize();
-				List<BlockPos> spawnedPos = new ArrayList<BlockPos>();
+				List<BlockPos> spawnedPos = new ArrayList<>();
 				for (int distance = -1; distance <= 16; distance++) {
 					for (int distance2 = -distance; distance2 <= distance; distance2++) {
 						for (int yo = -1; yo <= 1; yo++) {
@@ -63,8 +65,9 @@ public class Shockwaving extends NumberTrackerTrait {
 									+ diag.z * distance2 * 0.25D);
 							BlockPos origin = new BlockPos(originX, originY, originZ);
 
-							if (spawnedPos.contains(origin))
+							if (spawnedPos.contains(origin)) {
 								continue;
+							}
 
 							spawnedPos.add(origin);
 
@@ -111,16 +114,20 @@ public class Shockwaving extends NumberTrackerTrait {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
-		if (!stack.hasTagCompound())
+		if (!stack.hasTagCompound()) {
 			stack.setTagCompound(new NBTTagCompound());
-		if (!stack.getTagCompound().hasKey("cooldown"))
+		}
+		if (!stack.getTagCompound().hasKey("cooldown")) {
 			stack.getTagCompound().setInteger("cooldown", 0);
-		if (!stack.getTagCompound().hasKey("uses"))
+		}
+		if (!stack.getTagCompound().hasKey("uses")) {
 			stack.getTagCompound().setInteger("uses", 0);
+		}
 
 		if (stack.getTagCompound().getInteger("uses") == 3) {
-			if (stack.getTagCompound().getInteger("cooldown") < 60)
+			if (stack.getTagCompound().getInteger("cooldown") < 60) {
 				stack.getTagCompound().setInteger("cooldown", stack.getTagCompound().getInteger("cooldown") + 1);
+			}
 			if (stack.getTagCompound().getInteger("cooldown") >= 60) {
 				stack.getTagCompound().setInteger("cooldown", 60);
 				stack.getTagCompound().setInteger("uses", 0);

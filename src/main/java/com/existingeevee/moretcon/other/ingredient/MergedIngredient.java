@@ -15,13 +15,14 @@ import net.minecraft.item.crafting.Ingredient;
 public class MergedIngredient extends Ingredient {
 
 	private Ingredient[] ingredients = new Ingredient[0];
-	
+
 	private IntList matchingStacksPacked = null;
 
 	public MergedIngredient(Ingredient... ingredients) {
 		this.ingredients = ingredients;
 	}
 
+	@Override
 	public ItemStack[] getMatchingStacks() {
 		List<ItemStack> stacks = new ArrayList<>();
 		for (Ingredient i : ingredients) {
@@ -30,6 +31,7 @@ public class MergedIngredient extends Ingredient {
 		return stacks.stream().toArray(ItemStack[]::new);
 	}
 
+	@Override
 	public boolean apply(@Nullable ItemStack p_apply_1_) {
 		if (p_apply_1_ == null) {
 			return false;
@@ -43,15 +45,16 @@ public class MergedIngredient extends Ingredient {
 		}
 	}
 
+	@Override
 	public IntList getValidItemStacksPacked() {
 		if (this.matchingStacksPacked == null) {
-			
+
 			List<Integer> list = new ArrayList<>();
-			
+
 			for (Ingredient i : ingredients) {
 				list.addAll(i.getValidItemStacksPacked());
 			}
-			
+
 			this.matchingStacksPacked = new IntArrayList(list);
 			this.matchingStacksPacked.sort(IntComparators.NATURAL_COMPARATOR);
 		}
@@ -59,10 +62,12 @@ public class MergedIngredient extends Ingredient {
 		return this.matchingStacksPacked;
 	}
 
+	@Override
 	protected void invalidate() {
 		this.matchingStacksPacked = null;
 	}
 
+	@Override
 	public boolean isSimple() {
 		boolean isSimple = true;
 		for (Ingredient i : ingredients) {

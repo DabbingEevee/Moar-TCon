@@ -34,13 +34,13 @@ import slimeknights.tconstruct.library.traits.IProjectileTrait;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-public class Mirroring extends AbstractProjectileTrait {
+public class Mirroring extends AbstractProjectileTrait { //TODO rework using mixins
 
 	public Mirroring() {
 		super(MiscUtils.createNonConflictiveName("mirroring"), 0);
         MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	private static final Random rand = new Random();
 
 	@Override
@@ -57,28 +57,28 @@ public class Mirroring extends AbstractProjectileTrait {
 		traits.removeIf(t -> !(t instanceof IProjectileTrait));
 		traits.forEach(t -> ((IProjectileTrait) t).onProjectileUpdate(entity, world, toolStat));
 	}
-	
+
 	@Override
 	public void onMovement(EntityProjectileBase projectile, World world, double slowdown) {
 		List<ITrait> traits = getNeededTraits(projectile);
 		traits.removeIf(t -> !(t instanceof IProjectileTrait));
 		traits.forEach(t -> ((IProjectileTrait) t).onMovement(projectile, world, slowdown));
 	}
-	
+
 	@Override
 	public void afterHit(EntityProjectileBase projectile, World world, ItemStack ammoStack, EntityLivingBase attacker, Entity target, double impactSpeed) {
 		List<ITrait> traits = getNeededTraits(projectile);
 		traits.removeIf(t -> !(t instanceof IProjectileTrait));
 		traits.forEach(t -> ((IProjectileTrait) t).afterHit(projectile, world, ammoStack, attacker, target, impactSpeed));
 	}
-	
+
 	@Override
 	public void onLaunch(EntityProjectileBase projectileBase, World world, EntityLivingBase shooter) {
 		List<ITrait> traits = getNeededTraits(projectileBase);
 		traits.removeIf(t -> !(t instanceof IProjectileTrait));
 		traits.forEach(t -> ((IProjectileTrait) t).onLaunch(projectileBase, world, shooter));
 	}
-	
+
 	private static final Method getStatTraits$Material = ObfuscationReflectionHelper.findMethod(Material.class, "getStatTraits", List.class, String.class);
 
 	@SubscribeEvent
@@ -90,16 +90,16 @@ public class Mirroring extends AbstractProjectileTrait {
 			EntityPlayer player = ((EntityPlayer) e.getSource().getTrueSource());
 			ItemStack arrow = projectile.getItemStack();
 			ItemStack launcher = projectile.getLaunchingStack();
-			
+
 			if (!ToolHelper.getTraits(arrow).contains(this)) {
 				return;
 			}
-			
-			List<Material> materials = new ArrayList<Material>();
+
+			List<Material> materials = new ArrayList<>();
 
 			materials.addAll(MiscUtils.getMaterials(launcher));
 			materials.addAll(MiscUtils.getEmbossments(launcher));
-			
+
 			materials = new ArrayList<>(new HashSet<>(materials));
 			List<ITrait> traits = getNeededTraits(((EntityProjectileBase) source.getImmediateSource()));
 			// players base damage (includes tools damage stat)
@@ -113,7 +113,7 @@ public class Mirroring extends AbstractProjectileTrait {
 			// calculate if it's a critical hit
 			boolean isCritical = player.fallDistance > 0.0F && !player.onGround && !player.isOnLadder()
 					&& !player.isInWater() && !player.isPotionActive(MobEffects.BLINDNESS) && !player.isRiding();
-			
+
 			for (ITrait trait : traits) {
 				if (trait.isCriticalHit(arrow, player, e.getEntityLiving())) {
 					isCritical = true;
@@ -132,7 +132,7 @@ public class Mirroring extends AbstractProjectileTrait {
 			if (isCritical) {
 				damage *= 1.5f;
 			}
-			
+
 			if(e.getEntityLiving() != null) {
 				int hurtResistantTime = e.getEntityLiving().hurtResistantTime;
 				for(ITrait trait : traits) {
@@ -140,16 +140,16 @@ public class Mirroring extends AbstractProjectileTrait {
 					e.getEntityLiving().hurtResistantTime = hurtResistantTime;
 				}
 			}
-			
+
 			Item arrowItem = arrow.getItem();
 			// calculate cutoff
 			if (arrowItem instanceof ToolCore) {
 				damage = ToolHelper.calcCutoffDamage(damage, ((ToolCore) arrowItem).damageCutoff());
 			}
-			
+
 			e.setAmount(damage);
-			
-			ArrayList<ITrait> finalTraits = new ArrayList<ITrait>(traits);
+
+			ArrayList<ITrait> finalTraits = new ArrayList<>(traits);
 			float hp = e.getEntityLiving().getHealth();
 			boolean crit = isCritical;
 			MiscUtils.executeInNTicks(() -> {
@@ -160,17 +160,17 @@ public class Mirroring extends AbstractProjectileTrait {
 			}, 1);
 		}
 	}
-		
+
 	@SuppressWarnings("unchecked")
 	private static List<ITrait> getNeededTraits(EntityProjectileBase projectileBase) {
-		List<ITrait> traits = new ArrayList<ITrait>();
+		List<ITrait> traits = new ArrayList<>();
 
 		TinkerProjectileHandler projectile = projectileBase.tinkerProjectile;
-		
+
 		ItemStack launcherStack = projectile.getLaunchingStack();
 		ItemStack arrowStack = projectile.getItemStack();
-		
-		List<Material> materials = new ArrayList<Material>();
+
+		List<Material> materials = new ArrayList<>();
 		materials.addAll(MiscUtils.getMaterials(launcherStack));
 		materials.addAll(MiscUtils.getEmbossments(launcherStack));
 
@@ -179,7 +179,7 @@ public class Mirroring extends AbstractProjectileTrait {
 			try {
 				traits.addAll((List<ITrait>) getStatTraits$Material.invoke(material, MaterialTypes.PROJECTILE));
 				traits.addAll(material.getDefaultTraits());
-			} catch (IllegalAccessException | InvocationTargetException ignored) { 
+			} catch (IllegalAccessException | InvocationTargetException ignored) {
 			}
 		}
 		traits = new ArrayList<>(new HashSet<>(traits));

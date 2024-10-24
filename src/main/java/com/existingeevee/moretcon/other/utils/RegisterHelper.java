@@ -40,11 +40,11 @@ import slimeknights.tconstruct.library.tools.ToolPart;
 
 public class RegisterHelper {
 
-	public static List<MaterialIntegration> moreTConIntegrations = new ArrayList<MaterialIntegration>();
+	public static List<MaterialIntegration> moreTConIntegrations = new ArrayList<>();
 
-	public static List<ToolCore> moreTConTools = new ArrayList<ToolCore>();
+	public static List<ToolCore> moreTConTools = new ArrayList<>();
 
-	public static List<Modifier> moreTConModifiers = new ArrayList<Modifier>();
+	public static List<Modifier> moreTConModifiers = new ArrayList<>();
 
 	public static List<BiValue<Block, ItemStack>> oreDrops = new ArrayList<>();
 
@@ -67,13 +67,13 @@ public class RegisterHelper {
 		}
 
 		if (block instanceof BlockOre) {
-			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockOre) block).getOreDrop()));
+			oreDrops.add(new BiValue<>(block, ((BlockOre) block).getOreDrop()));
 		} else if (block instanceof BlockOreMetal) {
-			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockOreMetal) block).getOreDrop()));
+			oreDrops.add(new BiValue<>(block, ((BlockOreMetal) block).getOreDrop()));
 		} else if (block instanceof BlockEtheralOre) {
-			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockEtheralOre) block).getOreDrop()));
+			oreDrops.add(new BiValue<>(block, ((BlockEtheralOre) block).getOreDrop()));
 		} else if (block instanceof BlockEtheralOreMetal) {
-			oreDrops.add(new BiValue<Block, ItemStack>(block, ((BlockEtheralOreMetal) block).getOreDrop()));
+			oreDrops.add(new BiValue<>(block, ((BlockEtheralOreMetal) block).getOreDrop()));
 		}
 	}
 

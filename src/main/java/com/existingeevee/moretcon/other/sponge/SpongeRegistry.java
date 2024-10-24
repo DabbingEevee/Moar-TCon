@@ -28,41 +28,41 @@ import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 
-@SuppressWarnings("deprecation")
 public class SpongeRegistry {
 	private SpongeRegistry() {
 	}
 
-	private static final Map<String, SpongeRecipe> RECIPES = new HashMap<String, SpongeRecipe>();
+	private static final Map<String, SpongeRecipe> RECIPES = new HashMap<>();
 
 	public static void registerRecipes(Register<IRecipe> event) {
 		for (Entry<String, SpongeRecipe> s : RECIPES.entrySet()) {
 			String id = "spongerecipe_" + s.getKey();
-			IRecipe recipe = new ShapelessRecipes(id, new ItemStack(s.getValue().result, 1, 1), 
+			IRecipe recipe = new ShapelessRecipes(id, new ItemStack(s.getValue().result, 1, 1),
 					NonNullList.from(
-							Ingredient.fromStacks(ItemStack.EMPTY), 
+							Ingredient.fromStacks(ItemStack.EMPTY),
 							Ingredient.fromStacks(new ItemStack(ModSponges.gravitoniumSponge)),
 							s.getValue().getSeed()
-					));			
+					));
 			event.getRegistry().register(recipe.setRegistryName(new ResourceLocation(ModInfo.MODID, id)));
 		}
 	}
-	
+
 	public static void postInit() {
 		for (Entry<String, SpongeRecipe> s : RECIPES.entrySet()) {
-			
+
 			for (String ore : s.getValue().resultOreDict) {
 				OreDictionaryManager.registerOre(ore, s.getValue().result);
 			}
-			
+
 			GameRegistry.addSmelting(new ItemStack(s.getValue().result, 1), s.getValue().smeltResult.copy(), 0F);
 			int i = 1;
-			
+
 			for (SpongeStep s2 : s.getValue().steps) {
 				ItemStack input = new ItemStack(s.getValue().result, 1, i);
 				ItemStack output = new ItemStack(s.getValue().result, 1, 0);
-				if (i != s.getValue().steps.length)
+				if (i != s.getValue().steps.length) {
 					output = new ItemStack(s.getValue().result, 1, i + 1);
+				}
 				TinkerRegistry.registerBasinCasting(new CastingRecipe(output, RecipeMatch.of(input, 1), s2.getFluidStack(), 200, true, true));
 				i++;
 			}
@@ -80,7 +80,7 @@ public class SpongeRegistry {
 	public static SpongeRecipe createSpongeRecipe(String recipeName, String resultOreDict, ItemStack smeltResult, Ingredient seed, SpongeStep... steps) {
 		return new SpongeRecipe(recipeName, resultOreDict, smeltResult, seed, steps);
 	}
-	
+
 	public static SpongeStep createSpongeStep(Supplier<Fluid> fluid, int amount) {
 		return new SpongeStep(fluid, amount);
 	}
@@ -125,13 +125,13 @@ public class SpongeRegistry {
 		public boolean isSeed(ItemStack input) {
 			return seed.test(input);
 		}
-		
+
 		public Ingredient getSeed() {
 			return seed;
 		}
 
 		public ArrayList<SpongeStep> getSteps() {
-			ArrayList<SpongeStep> steps = new ArrayList<SpongeStep>();
+			ArrayList<SpongeStep> steps = new ArrayList<>();
 			steps.addAll(steps);
 			return steps;
 		}
@@ -153,7 +153,7 @@ public class SpongeRegistry {
 		public int getAmount() {
 			return amount;
 		}
-		
+
 		public FluidStack getFluidStack() {
 			return new FluidStack(fluid.get(), amount);
 		}
@@ -185,15 +185,18 @@ public class SpongeRegistry {
 
 		@Override
 		public String getItemStackDisplayName(ItemStack stack) {
-			if (stack.getMetadata() == 0)
+			if (stack.getMetadata() == 0) {
 				return I18n.translateToLocal("spongestatus.completed.name") + " " + I18n.translateToLocal("spongerecipe." + recipe.recipeName + ".name") + " " + I18n.translateToLocal(ModSponges.gravitoniumSponge.getUnlocalizedName() + ".name");
-			
-			if (stack.getMetadata() == 1)
+			}
+
+			if (stack.getMetadata() == 1) {
 				return I18n.translateToLocal("spongestatus.empty.name") + " " + I18n.translateToLocal("spongerecipe." + recipe.recipeName + ".name") + " " + I18n.translateToLocal(ModSponges.gravitoniumSponge.getUnlocalizedName() + ".name");
+			}
 
 			return I18n.translateToLocal("spongestatus.partial.name") + " (" + I18n.translateToLocal("sponge.step.name") + " " + (stack.getMetadata() - 1) + ") " + I18n.translateToLocal("spongerecipe." + recipe.recipeName + ".name") + " " + I18n.translateToLocal(ModSponges.gravitoniumSponge.getUnlocalizedName() + ".name");
 		}
 
+		@Override
 		public CreativeTabs getTab() {
 			return tab;
 		}

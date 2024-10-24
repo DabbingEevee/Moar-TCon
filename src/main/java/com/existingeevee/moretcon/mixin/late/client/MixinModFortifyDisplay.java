@@ -17,5 +17,5 @@ public class MixinModFortifyDisplay {
 	private void moretcon$RETURN_Inject$__init__(CallbackInfo info) {
 		TraitClient.register((IModifier) this);
 	}
-	
+
 }

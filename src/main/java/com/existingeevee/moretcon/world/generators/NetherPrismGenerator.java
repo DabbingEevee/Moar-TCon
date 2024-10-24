@@ -22,11 +22,8 @@ public class NetherPrismGenerator extends WorldGenModifier {
 	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {
 		World world = ctx.world;
 		Random random = ctx.rand;
-		
-		if (world.provider.getDimensionType().getId() != DimensionType.NETHER.getId()) {
-			return;
-		}
-		if (!(peekNextInt(random, 25) == 0)) {
+
+		if ((world.provider.getDimensionType().getId() != DimensionType.NETHER.getId()) || !(peekNextInt(random, 25) == 0)) {
 			return;
 		}
 
@@ -39,8 +36,9 @@ public class NetherPrismGenerator extends WorldGenModifier {
 		int sqRad = 0;
 
 		for (int i = 0; i < size / 2; i++) {
-			if (i % 2 == 0 && i != 0)
+			if (i % 2 == 0 && i != 0) {
 				sqRad++;
+			}
 			for (int j = -sqRad; j < sqRad + 1; j++) {
 				for (int k = -sqRad; k < sqRad + 1; k++) {
 					BlockPos pos = origin.add(j, i, k);
@@ -55,8 +53,9 @@ public class NetherPrismGenerator extends WorldGenModifier {
 			}
 		}
 		for (int i = 0; i < size / 2; i++) {
-			if (i % 2 == 0)
+			if (i % 2 == 0) {
 				sqRad--;
+			}
 			for (int j = -sqRad; j < sqRad + 1; j++) {
 				for (int k = -sqRad; k < sqRad + 1; k++) {
 					BlockPos pos = origin.add(j, i + size / 2, k);

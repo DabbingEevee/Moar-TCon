@@ -20,12 +20,10 @@ public class IgniglomerateGenerator extends WorldGenModifier {
 	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {
 		World world = ctx.world;
 		Random random = ctx.rand;
-		
-		if (!(world.provider.getDimensionType().getId() == DimensionType.NETHER.getId()))
-			return;
 
-		if (!(peekNextInt(random, 4) == 0))
+		if (!(world.provider.getDimensionType().getId() == DimensionType.NETHER.getId()) || !(peekNextInt(random, 4) == 0)) {
 			return;
+		}
 
 		int x = ctx.chunkX * 16 + random.nextInt(16);
 		int y = random.nextInt(15) + 20;
@@ -34,10 +32,11 @@ public class IgniglomerateGenerator extends WorldGenModifier {
 		BlockPos pos = new BlockPos(x, y, z);
 
 		if (world.getBlockState(pos).getMaterial().equals(Material.LAVA)) {
-			
+
 			for (EnumFacing facing : EnumFacing.values()) {
-				if (!world.getBlockState(pos.offset(facing)).getMaterial().equals(Material.LAVA))
+				if (!world.getBlockState(pos.offset(facing)).getMaterial().equals(Material.LAVA)) {
 					return;
+				}
 			}
 
 			world.setBlockState(pos, ModBlocks.oreIgniglomerate.getDefaultState(), 2);

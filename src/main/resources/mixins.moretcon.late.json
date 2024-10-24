@@ -9,6 +9,7 @@
   	"late.common.MixinProjectileCore",
   	"late.common.MixinTinkerProjectileHandler",
   	"late.common.MixinEntityProjectileBase",
+  	"late.common.MixinBowCore",
   	
   	"softdep.thebetweenlands.MixinBlockEnergyBarrier",
   	"softdep.thebetweenlands.MixinEntityFortressBossProjectile",
@@ -18,7 +19,10 @@
   ],
   "client": [
   	"late.client.MixinContentMaterial",
-  	"late.client.MixinModFortifyDisplay"
+  	"late.client.MixinModFortifyDisplay",
+  	"late.client.MixinContentSingleStatMultMaterial",
+  	
+  	"softdep.codechickenlib.MixinCCRenderItem"
   ],
   "server": [
   ]

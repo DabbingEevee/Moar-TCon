@@ -17,7 +17,7 @@ public class MixinItemRenderer {
 
 	@Shadow
     Minecraft mc;
-	
+
 	@Inject(method = "renderOverlays(F)V", at = @At(value = "TAIL"))
 	public void moretcon$INVOKE_Inject$renderOverlays(float partialTicks, CallbackInfo ci) {
 		GlStateManager.disableAlpha();

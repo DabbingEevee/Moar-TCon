@@ -46,8 +46,9 @@ public class BlockBedrockOre extends BlockOre {
 	@SubscribeEvent
 	public void onBlockStrength(PlayerEvent.BreakSpeed event) {
 		if (event.getState().getBlock().equals(this)) {
-			if (ToolHelper.isBroken(event.getEntityPlayer().getHeldItemMainhand()))
+			if (ToolHelper.isBroken(event.getEntityPlayer().getHeldItemMainhand())) {
 				return;
+			}
 
 			if (ToolHelper.getTraits(event.getEntityPlayer().getHeldItemMainhand()).stream()
 					.anyMatch(t -> t.getIdentifier().equals(ModTraits.bottomsEnd.identifier))) {

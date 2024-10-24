@@ -25,7 +25,7 @@ public class BlockEtheralBase extends BlockBase {
 	public static final AxisAlignedBB EMPTY_AABB = new AxisAlignedBB(-100.0D, -100.0D, -100.0D, -100.0D, -100.0D, -100.0D);
 
 	protected boolean canBeReplaced = true;
-	
+
 	public BlockEtheralBase(String itemName, Material material, int harvestLevel) {
 		super(itemName, material, harvestLevel);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -58,10 +58,10 @@ public class BlockEtheralBase extends BlockBase {
 		return canBeReplaced;
 	}
 
-	
+
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-		return false; 
+		return false;
 	}
 
 	@Override
@@ -77,8 +77,9 @@ public class BlockEtheralBase extends BlockBase {
 	@SubscribeEvent
 	public void onBlockStrength(PlayerEvent.BreakSpeed event) {
 		if (event.getState().getBlock().equals(this)) {
-			if (ToolHelper.isBroken(event.getEntityPlayer().getHeldItemMainhand()))
+			if (ToolHelper.isBroken(event.getEntityPlayer().getHeldItemMainhand())) {
 				return;
+			}
 
 			if (ToolHelper.getTraits(event.getEntityPlayer().getHeldItemMainhand()).stream()
 					.anyMatch(t -> t.getIdentifier().equals(ModTraits.etheralHarvest.identifier))) {

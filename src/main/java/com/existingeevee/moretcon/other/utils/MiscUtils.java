@@ -12,6 +12,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.tuple.Pair;
+
+import com.existingeevee.math.Quaternion;
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.traits.ModTraits;
@@ -22,6 +25,7 @@ import com.google.gson.GsonBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -33,16 +37,17 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -76,11 +81,13 @@ public class MiscUtils {
 	public static final Method checkTotemDeathProtection$EntityLivingBase = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_190628_d", boolean.class, DamageSource.class);
 
 	public static void trueDamage(EntityLivingBase entity, float amount, DamageSource src, boolean bypassChecks) {
-		if (entity.getHealth() <= 0 || ((entity instanceof EntityPlayer) && ((EntityPlayer) entity).capabilities.isCreativeMode))
+		if (entity.getHealth() <= 0 || ((entity instanceof EntityPlayer) && ((EntityPlayer) entity).capabilities.isCreativeMode)) {
 			return;
+		}
 		if (!bypassChecks) {
-			if (entity.isEntityInvulnerable(src))
+			if (entity.isEntityInvulnerable(src)) {
 				return;
+			}
 		}
 		float health = entity.getHealth();
 		entity.getCombatTracker().trackDamage(src, health, amount);
@@ -142,9 +149,9 @@ public class MiscUtils {
 	}
 
 	public static Vec3d convertToEntityPos(BlockPos blockpos) {
-		double entityPosX = (((double) ((int) (blockpos.getX()))) + 0.5);
-		double entityPosY = ((double) ((int) (blockpos.getY())));
-		double entityPosZ = (((double) ((int) (blockpos.getZ()))) + 0.5);
+		double entityPosX = blockpos.getX() + 0.5;
+		double entityPosY = blockpos.getY();
+		double entityPosZ = blockpos.getZ() + 0.5;
 		return new Vec3d(entityPosX, entityPosY, entityPosZ);
 	}
 
@@ -196,7 +203,7 @@ public class MiscUtils {
 	private static Map<String, ModExtraTrait> extratrait = new HashMap<>();
 	private static Map<String, ModExtraTrait2> extratrait2 = new HashMap<>();
 
-	public static void init() { //we have to init this
+	public static void init() { // we have to init this
 		for (Modifier m : TinkerModifiers.extraTraitMods) {
 			extratrait.put(m.getIdentifier(), (ModExtraTrait) m);
 		}
@@ -240,7 +247,7 @@ public class MiscUtils {
 	public static List<Material> getMaterials(ItemStack stack) {
 		NBTTagList list = TagUtil.getBaseMaterialsTagList(stack);
 
-		List<Material> retList = new ArrayList<Material>();
+		List<Material> retList = new ArrayList<>();
 		for (NBTBase base : list) {
 			NBTTagString string = (NBTTagString) base;
 			Material mat = TinkerRegistry.getMaterial(string.getString());
@@ -311,7 +318,7 @@ public class MiscUtils {
 				.setRegistryName("od_" + odLarge + "_to_" + odSmall));
 	}
 
-	public static void executeInNTicks(Executor executor, int executeIn) {
+	public static void executeInNTicks(Runnable runnable, int executeIn) {
 		new Object() {
 			private int ticks = 0;
 			private float waitTicks;
@@ -324,28 +331,17 @@ public class MiscUtils {
 			@SubscribeEvent
 			public void tick(TickEvent.ServerTickEvent event) {
 				if (event.phase == TickEvent.Phase.END) {
-					this.ticks += 1;
-					if (this.ticks >= this.waitTicks) {
+					if (this.ticks++ >= this.waitTicks) {
 						run();
 						MinecraftForge.EVENT_BUS.unregister(this);
 					}
 				}
 			}
 
-			@SubscribeEvent
-			public void onWorldStarted(WorldEvent.Load e) {
-				MinecraftForge.EVENT_BUS.unregister(this);
-			}
-
 			private void run() {
-				executor.execute();
+				runnable.run();
 			}
 		}.start(executeIn);
-	}
-
-	@FunctionalInterface
-	public static interface Executor {
-		void execute();
 	}
 
 	public static double randomN1T1() {
@@ -356,5 +352,91 @@ public class MiscUtils {
 		if (isClient()) {
 			ObfuscationReflectionHelper.setPrivateValue(Minecraft.class, Minecraft.getMinecraft(), 0, "field_71467_ac");
 		}
+	}
+
+	public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double maxRange, List<Entity> exclude) {
+		return rayTrace(entityLiving, maxRange, exclude, true);
+	}
+
+	public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double maxRange, List<Entity> exclude, boolean affectedByBlocks) {
+		Vec3d start = entityLiving.getPositionEyes(0.5f);
+		Vec3d lookVec = entityLiving.getLookVec();
+
+		exclude = exclude == null ? new ArrayList<>() : new ArrayList<>(exclude);
+		exclude.add(entityLiving);
+
+		return rayTrace(start, lookVec, entityLiving.world, maxRange, exclude, affectedByBlocks, false);
+	}
+
+	public static RayTraceResult rayTrace(Vec3d start, Vec3d direction, World world, double maxRange, List<Entity> exclude, boolean affectedByBlocks, boolean ignoreNoBounding) {
+		Vec3d end = start.add(direction.scale(maxRange));
+		RayTraceResult firstTrace = affectedByBlocks ? world.rayTraceBlocks(start, end, false, ignoreNoBounding, true) : null;
+		AxisAlignedBB area = new AxisAlignedBB(start, firstTrace != null ? firstTrace.hitVec : end);
+		List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(null, area);
+
+		Entity closestValid = null;
+		double closestDistSq = Double.MAX_VALUE;
+
+		for (Entity e : entities) {
+			if (!(e instanceof EntityLivingBase) || (exclude != null && exclude.contains(e))) {
+				continue;
+			}
+
+			RayTraceResult intercept = e.getEntityBoundingBox().calculateIntercept(start, end);
+
+			if (intercept != null) {
+				double distSq = intercept.hitVec.squareDistanceTo(start);
+				if (closestDistSq > distSq) {
+					closestValid = e;
+					closestDistSq = distSq;
+				}
+			}
+		}
+
+		if (closestValid != null) {
+			return new RayTraceResult(closestValid);
+		} else if (firstTrace != null) {
+			return firstTrace;
+		} else {
+			return new RayTraceResult(RayTraceResult.Type.MISS, end, EnumFacing.DOWN, new BlockPos(end));
+		}
+	}
+
+	public static double quadraticArc(double initialSlope, double endpoint, double x) {
+		double a = -initialSlope / endpoint;
+		return a * x * (x - endpoint);
+	}
+
+	public static Pair<Double, Double> getPitchYaw(Vec3d vec) {
+		if (vec.lengthSquared() != 1) {
+			vec = vec.normalize();
+		}
+		
+		double pitch = Math.asin(-vec.y);
+		double yaw = Math.atan2(vec.z, vec.z);
+
+		return Pair.of(pitch, yaw);
+	}
+
+	public static Vec3d fromPitchYaw(double pitch, double yaw) {
+		double f = Math.cos(-yaw - Math.PI);
+		double f1 = Math.sin(-yaw - Math.PI);
+		double f2 = -Math.cos(-pitch);
+		double f3 = Math.sin(-pitch);
+		return new Vec3d(f1 * f2, f3, f * f2);
+	}
+
+	public static Vec3d rotateVec3d(Vec3d original, Vec3d axis, float theta) {
+		Quaternion quaternion = new Quaternion(axis.normalize(), theta, false);
+		return quaternion.transformVector(original);
+
+		/*
+		 * axis = axis.normalize();
+		 * 
+		 * double cos = Math.cos(theta); double sin = Math.sin(theta);
+		 * 
+		 * return original.scale(cos) .add(axis.crossProduct(original).scale(sin))
+		 * .add(axis.scale(axis.dotProduct(original) * (1 - cos)));
+		 */
 	}
 }

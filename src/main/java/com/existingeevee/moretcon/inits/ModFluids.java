@@ -78,10 +78,15 @@ public class ModFluids {
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
 	public static Fluid liquidBlightsteel = new LiquidFluid("liquidblightsteel").setCColor(0x243c5a).setLuminosity(15)
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
+	public static Fluid liquidSanguiseelium = new LiquidFluid("liquidSanguiseelium").setCColor(0xFF0000).setLuminosity(15)
+			.setDensity(1000).setViscosity(800).setTemperature(1100);
+
 	public static Fluid liquidFusionLava = new LiquidFluid("liquidfusionlava",
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidfusionlava_still"), //were gonna just use the solsteel textures for now until i have more time
 			new ResourceLocation(ModInfo.MODID + ":blocks/fluids/liquidfusionlava_flowing")).setCColor(0x00ffff).setLuminosity(15)
 			.setDensity(8000).setViscosity(1500).setTemperature(2000);
+	public static Fluid liquidLiquifiedSouls = new LiquidFluid("liquifiedSouls".toLowerCase()).setCColor(0xffffff).setLuminosity(0)
+			.setDensity(1000).setViscosity(800).setTemperature(0);
 
 	public static Fluid liquidSwampSteel = new LiquidFluid("liquidSwampSteel".toLowerCase()).setCColor(0x001100).setLuminosity(13)
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
@@ -96,9 +101,12 @@ public class ModFluids {
 
 	public static Fluid liquidGoldenAmber = new LiquidFluid("liquidGoldenAmber".toLowerCase()).setCColor(0xeaee57).setLuminosity(0)
 			.setDensity(1000).setViscosity(800).setTemperature(0);
-	
+
 	public static Fluid liquidAncientAlloy = new LiquidFluid("liquidAncientAlloy".toLowerCase()).setCColor(0x9fc1c0).setLuminosity(13)
 			.setDensity(1000).setViscosity(800).setTemperature(1100);
+
+	public static Fluid liquidZracohlium = new LiquidFluid("liquidZracohlium".toLowerCase()).setCColor(0x696942).setLuminosity(12)
+			.setDensity(1000).setViscosity(800).setTemperature(1500);
 	/** ------------------------------------- **/
 
 	private static void registerFluids(Fluid... fluid) {
@@ -122,12 +130,15 @@ public class ModFluids {
 					liquidAtronium,
 					liquidEbonite,
 					liquidFusionLava,
-					liquidValasium, 
+					liquidValasium,
 					liquidHallowsite,
-					liquidBlightsteel
+					liquidBlightsteel,
+					liquidSanguiseelium,
+					liquidLiquifiedSouls,
+					liquidZracohlium
 			/** ------------------------------------- **/
 			);
-		}
+		} //CustomModelRenderCoreHooks
 		if (CompatManager.twilightforest) {
 			ModFluids.registerFluids(
 					liquidPenguinite,
@@ -155,7 +166,7 @@ public class ModFluids {
 					liquidValkyrieMetal,
 					liquidGoldenAmber);
 		}
-		if (CompatManager.jokes) {
+		if (CompatManager.easterEggs) {
 
 		}
 

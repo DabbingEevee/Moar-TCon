@@ -9,6 +9,6 @@ import net.minecraft.item.ItemStack;
 public class StaticVars {
 
 	public static final ThreadLocal<ItemStack> lastArrowPickup = ThreadLocal.withInitial(() -> ItemStack.EMPTY);
-	
-	public static final ThreadLocal<Float> lastHypergravityKB = ThreadLocal.withInitial(() -> 0f);
+
+	public static final ThreadLocal<ItemStack> lastArrowFired = ThreadLocal.withInitial(() -> ItemStack.EMPTY);
 }

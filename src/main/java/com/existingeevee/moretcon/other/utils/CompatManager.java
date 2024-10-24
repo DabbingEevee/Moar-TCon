@@ -10,7 +10,7 @@ public class CompatManager {
 	public static boolean twilightforest;
 	public static boolean iceandfire;
 	public static boolean plustic;
-	public static boolean jokes;
+	public static boolean easterEggs;
 	public static boolean thebetweenlands;
 	public static boolean loadMain;
 	public static boolean aether_legacy;
@@ -27,7 +27,7 @@ public class CompatManager {
 		CompatManager.aether_legacy = (Loader.isModLoaded("aether_legacy") && ConfigHandler.shouldAllowAether);
 		CompatManager.baubles = (Loader.isModLoaded("baubles") && ConfigHandler.shouldAllowBaubles);
 		CompatManager.conarm = (Loader.isModLoaded("conarm") && ConfigHandler.shouldAllowConstructsArmory);
-		CompatManager.jokes = ConfigHandler.shouldAllowJokeItems;
+		CompatManager.easterEggs = ConfigHandler.shouldAllowEasterEggItems;
 		CompatManager.loadMain = ConfigHandler.shouldAllowMainContent;
 		CompatManager.oredict = ConfigHandler.shouldAllowOreDictionary;
 		CompatManager.tic3backport = ConfigHandler.shouldAllowTiC3ContentBackport;

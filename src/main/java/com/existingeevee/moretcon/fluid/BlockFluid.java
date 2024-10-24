@@ -52,6 +52,7 @@ public class BlockFluid extends BlockFluidClassic implements ISimpleBlockItemPro
 		return new Vec3d(red, green, blue);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (this.equals(ModFluidBlocks.blockLiquidEmber) && rand.nextBoolean()) {
@@ -64,8 +65,9 @@ public class BlockFluid extends BlockFluidClassic implements ISimpleBlockItemPro
 		if (entityIn instanceof EntityLivingBase) {
 			if (state.getBlock().equals(ModFluidBlocks.blockLiquidGallium)) {
 				entityIn.extinguish();
-				if (!((EntityLivingBase) entityIn).isPotionActive(MobEffects.FIRE_RESISTANCE))
+				if (!((EntityLivingBase) entityIn).isPotionActive(MobEffects.FIRE_RESISTANCE)) {
 					((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 1, 0, true, false));
+				}
 			}
 		}
 	}

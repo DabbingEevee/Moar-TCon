@@ -75,12 +75,13 @@ public class RecipeHelper {
 	private static boolean allEqualLength(String[] array) {
 		int i;
 		for (i = 0; i < array.length - 1; i++) {
-			if (array[i].length() != array[i + 1].length())
+			if (array[i].length() != array[i + 1].length()) {
 				return false;
+			}
 		}
 		return true;
 	}
-	
+
 	@SafeVarargs
 	public static IRecipe createRecipe(String name, ItemStack out, final Pair<Integer, Ingredient>... values) {
 		if (values.length > 9 || values.length <= 0) {

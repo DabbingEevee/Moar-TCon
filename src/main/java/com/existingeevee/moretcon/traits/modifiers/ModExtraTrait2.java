@@ -158,7 +158,7 @@ public class ModExtraTrait2 extends ToolModifier {
 		if (expensive.isEmpty()) {
 			expensive = new ItemStack(Items.NETHER_STAR);
 		}
-		
+
 		return ImmutableList.of(green, blue, red, expensive);
 	}
 }

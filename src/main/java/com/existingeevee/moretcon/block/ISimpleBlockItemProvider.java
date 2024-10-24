@@ -8,5 +8,5 @@ public interface ISimpleBlockItemProvider {
 	default public ItemBlock createBlockItem() {
 		return new ItemBlock((Block) this);
 	}
-	
+
 }

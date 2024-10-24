@@ -17,9 +17,9 @@ public class MixinEntity {
 	@Inject(method = "setOnFireFromLava", at = @At("HEAD"), cancellable = true)
 	protected void moretcon$HEAD_Inject$setOnFireFromLava(CallbackInfo ci) {
 		Entity $this = (Entity) (Object) this;
-		
+
 		CustomFireBlockFluid fluid = MiscUtils.getBlockTypeInBB($this.world, $this.getEntityBoundingBox().grow(-0.1D, -0.4D, -0.1D), CustomFireBlockFluid.class);
-		
+
 		if (fluid != null && $this instanceof EntityLivingBase) {
 			fluid.handle((EntityLivingBase) $this);
 			ci.cancel();

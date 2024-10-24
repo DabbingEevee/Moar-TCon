@@ -9,7 +9,7 @@ public abstract class NumberTrackerTrait extends AdditionalDisplayTrait {
 	public NumberTrackerTrait(String identifier, int color, int lvlmax, int lvl) {
 		super(identifier, color, lvlmax, lvl);
 	}
-	
+
 	public NumberTrackerTrait(String identifier, int color) {
 		super(identifier, color);
 	}
@@ -26,7 +26,7 @@ public abstract class NumberTrackerTrait extends AdditionalDisplayTrait {
 		comp.setInteger("remaining", amount);
 		return amount;
 	}
-	
+
 	public int addNumber(ItemStack stack, int amount) {
 		return setNumber(stack, Math.max(0, Math.min(this.getNumberMax(stack), getNumber(stack) + amount)));
 	}
@@ -38,7 +38,7 @@ public abstract class NumberTrackerTrait extends AdditionalDisplayTrait {
 	public int getDefaultNumber(ItemStack stack) {
 		return 0;
 	}
-	
+
 	@Override
 	public String getStringToRender(ItemStack tool) {
 		return getNumber(tool) + "/" + getNumberMax(tool);

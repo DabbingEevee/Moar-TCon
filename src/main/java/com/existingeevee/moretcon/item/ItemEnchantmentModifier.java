@@ -2,7 +2,6 @@ package com.existingeevee.moretcon.item;
 
 import com.existingeevee.moretcon.other.utils.FireproofItemUtil;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 
@@ -10,10 +9,6 @@ public class ItemEnchantmentModifier extends ItemBase {
 
 	public ItemEnchantmentModifier(String itemName) {
 		super(itemName);//TODO maybe
-	}
-
-	public ItemEnchantmentModifier(String itemName, CreativeTabs tab) {
-		super(itemName, tab);
 	}
 
 	@Override

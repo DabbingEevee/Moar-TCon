@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "moretcon:blocks/orezracohlium",
+    "up": "moretcon:blocks/orezracohlium",
+    "north": "moretcon:blocks/orezracohlium",
+    "east": "moretcon:blocks/orezracohlium",
+    "south": "moretcon:blocks/orezracohlium",
+    "west": "moretcon:blocks/orezracohlium",
+    "particle": "moretcon:blocks/orezracohlium"
+  }
+}

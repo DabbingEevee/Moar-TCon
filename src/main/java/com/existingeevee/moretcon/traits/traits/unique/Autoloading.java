@@ -13,6 +13,7 @@ import slimeknights.tconstruct.library.tools.ranged.BowCore;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class Autoloading extends AbstractTrait {
 
@@ -35,11 +36,11 @@ public class Autoloading extends AbstractTrait {
 	public void onUseTick(LivingUpdateEvent event) {
 		ItemStack stack = event.getEntityLiving().getActiveItemStack();
 
-		if (this.isToolWithTrait(stack)) {
+		if (this.isToolWithTrait(stack) && !ToolHelper.isBroken(stack)) {
 			if (stack.getItem() instanceof BowCore) {
 				BowCore core = (BowCore) stack.getItem();
 				boolean fullyDrawn = core.getDrawbackProgress(stack, event.getEntityLiving()) >= 1;
-				
+
 				if (fullyDrawn) {
 					event.getEntityLiving().stopActiveHand();
 				}

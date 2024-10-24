@@ -1,38 +1,53 @@
 package com.existingeevee.moretcon.other;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.apache.commons.lang3.tuple.Pair;
 
+import com.google.common.collect.Lists;
+
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class SlotRendererRegistry {
 
-	private static final Map<Item, ICustomSlotRenderer> MAP = new HashMap<>();
-	private static final List<Pair<Predicate<ItemStack>, ICustomSlotRenderer>> PREDICATE = new ArrayList<>();
+	private static final List<Pair<Predicate<ItemStack>, ICustomSlotRenderer>> PREDICATES = new ArrayList<>();
 
-	public static void register(Item item, ICustomSlotRenderer renderers) {
-		MAP.put(item, renderers);
+	public static void register(Item item, ICustomSlotRenderer renderer) {
+		register(s -> s.getItem() == item, renderer);
 	}
 
-	public static void register(Predicate<ItemStack> item, ICustomSlotRenderer renderers) {
-		PREDICATE.add(Pair.of(item, renderers));
+	public static void register(Predicate<ItemStack> item, ICustomSlotRenderer renderer) {
+		PREDICATES.add(Pair.of(item, renderer));
 	}
-	
-	public static ICustomSlotRenderer get(ItemStack item) {
-		if (MAP.containsKey(item.getItem())) {
-			return MAP.get(item.getItem());
-		} else if (item.getItem() instanceof ICustomSlotRenderer) {
-			return (ICustomSlotRenderer) item.getItem();
+
+	public static Collection<ICustomSlotRenderer> get(ItemStack item) {
+		List<ICustomSlotRenderer> list = Lists.newArrayList();
+		if (item.getItem() instanceof ICustomSlotRenderer) {
+			list.add((ICustomSlotRenderer) item.getItem());
 		}
-		Optional<Pair<Predicate<ItemStack>, ICustomSlotRenderer>> optional = PREDICATE.stream().filter(e -> e.getKey().test(item)).findFirst();
-		return optional.isPresent() ? optional.get().getValue() : null;
+
+		for(Pair<Predicate<ItemStack>, ICustomSlotRenderer> p : PREDICATES) {
+			if (p.getKey().test(item)) {
+				list.add(p.getValue());
+			}
+		}
+
+		return list;
+	}
+
+	public static void render(ItemStack stack, int x, int y, IBakedModel bakedmodel) {
+		Collection<ICustomSlotRenderer> renderers = get(stack);
+
+		for (ICustomSlotRenderer renderer : renderers) {
+			if (renderer.shouldRender(stack)) {
+				renderer.render(stack, x, y, bakedmodel);
+			}
+		}
 	}
 
 }

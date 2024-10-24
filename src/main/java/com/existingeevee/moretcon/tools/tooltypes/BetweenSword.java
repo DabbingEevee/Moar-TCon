@@ -65,17 +65,18 @@ public class BetweenSword extends SwordCore implements ICorrodible, IAnimatorRep
 	public double attackSpeed() {
 		return 1.6d; // default vanilla sword speed
 	}
-	
+
 	@Override
 	public void setCorrosion(ItemStack stack, int corrosion) {
 		boolean bad = this.getCorrosion(stack) < corrosion;
-		
-		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite))
+
+		if (bad && Math.random() < 0.5 && ToolHelper.getTraits(stack).contains(ModTraits.modValonite)) {
 			return;
+		}
 		NBTTagCompound nbt = NBTHelper.getStackNBTSafe(stack);
 		nbt.setInteger(CorrosionHelper.ITEM_CORROSION_NBT_TAG, corrosion);
 	}
-	
+
 	// sword sweep attack
 	@Override
 	public boolean dealDamage(ItemStack stack, EntityLivingBase player, Entity entity, float damage) {
@@ -86,22 +87,22 @@ public class BetweenSword extends SwordCore implements ICorrodible, IAnimatorRep
 			// sweep code from EntityPlayer#attackTargetEntityWithCurrentItem()
 			// basically: no crit, no sprinting and has to stand on the ground for sweep.
 			// Also has to move regularly slowly
-			double d0 = (double) (player.distanceWalkedModified - player.prevDistanceWalkedModified);
+			double d0 = player.distanceWalkedModified - player.prevDistanceWalkedModified;
 			boolean flag = true;
 			if (player instanceof EntityPlayer) {
 				flag = ((EntityPlayer) player).getCooledAttackStrength(0.5F) > 0.9f;
 			}
 			boolean flag2 = player.fallDistance > 0.0F && !player.onGround && !player.isOnLadder()
 					&& !player.isInWater() && !player.isPotionActive(MobEffects.BLINDNESS) && !player.isRiding();
-			if (flag && !player.isSprinting() && !flag2 && player.onGround && d0 < (double) player.getAIMoveSpeed()) {
+			if (flag && !player.isSprinting() && !flag2 && player.onGround && d0 < player.getAIMoveSpeed()) {
 				for (EntityLivingBase entitylivingbase : player.getEntityWorld().getEntitiesWithinAABB(
 						EntityLivingBase.class, entity.getEntityBoundingBox().expand(1.0D, 0.25D, 1.0D))) {
 					if (entitylivingbase != player && entitylivingbase != entity
 							&& !player.isOnSameTeam(entitylivingbase)
 							&& player.getDistanceSq(entitylivingbase) < 9.0D) {
 						entitylivingbase.knockBack(player, 0.4F,
-								(double) MathHelper.sin(player.rotationYaw * 0.017453292F),
-								(double) (-MathHelper.cos(player.rotationYaw * 0.017453292F)));
+								MathHelper.sin(player.rotationYaw * 0.017453292F),
+								(-MathHelper.cos(player.rotationYaw * 0.017453292F)));
 						super.dealDamage(stack, player, entitylivingbase, 1f);
 					}
 				}

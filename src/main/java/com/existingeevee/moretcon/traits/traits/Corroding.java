@@ -1,7 +1,5 @@
 package com.existingeevee.moretcon.traits.traits;
 
-import java.util.Random;
-
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
@@ -33,10 +31,15 @@ public class Corroding extends AbstractTrait {
 				tool.getTagCompound().setBoolean("NeedAdditonalCorrodingData", false);
 				tool.getTagCompound().setInteger("CorrodingPriorCorrosionValue", corrodible.getCorrosion(tool));
 			} else {
-				if (corrodible.getCorrosion(tool) > tool.getTagCompound().getInteger("CorrodingPriorCorrosionValue")) {
-					tool.getTagCompound().setInteger("CorrodingPriorCorrosionValue", corrodible.getCorrosion(tool));
-					if (new Random().nextInt(2) == 0) corrodible.setCoating(tool, (int) (corrodible.getCoating(tool) + new Random().nextInt(3) + 1));
-				} else if (corrodible.getCorrosion(tool) < tool.getTagCompound().getInteger("CorrodingPriorCorrosionValue")) {
+				int prevCorrosion = tool.getTagCompound().getInteger("CorrodingPriorCorrosionValue");
+
+				if (corrodible.getCorrosion(tool) > prevCorrosion) {
+					if (random.nextInt(2) == 0) {
+						corrodible.setCoating(tool, corrodible.getCoating(tool) + random.nextInt(3) + 1);
+					}
+				}
+
+				if (corrodible.getCorrosion(tool) != prevCorrosion) {
 					tool.getTagCompound().setInteger("CorrodingPriorCorrosionValue", corrodible.getCorrosion(tool));
 				}
 			}

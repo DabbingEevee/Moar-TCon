@@ -12,16 +12,18 @@ import slimeknights.tconstruct.library.utils.Tags;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class ExtremeToolDurabilityFix {
-	
+
 	@SubscribeEvent
 	public void onTinkerCraftingEvent(TinkerCraftingEvent e) {
 		int cap = ConfigHandler.maxToolDurability;
-		if (cap < 0) return;
+		if (cap < 0) {
+			return;
+		}
 		if (e.getItemStack().getItem() instanceof ToolCore) {
 			if (e.getItemStack().getItem() instanceof IAmmo || ConfigHandler.shouldDurabilityCapNonProjectiles) {
 				int max = ToolHelper.getMaxDurability(e.getItemStack());
 				NBTTagCompound comp = TagUtil.getToolTag(e.getItemStack());
-				comp.setInteger(Tags.DURABILITY, Math.min(max, cap));	
+				comp.setInteger(Tags.DURABILITY, Math.min(max, cap));
 			}
 		}
 	}

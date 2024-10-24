@@ -25,7 +25,9 @@ public class Rootplicating extends AbstractTrait {
 	@Override
 	public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase entity, boolean wasEffective) {
 		if(entity instanceof EntityPlayer && (tool.getDestroySpeed(world.getBlockState(pos)) > 1.0f || ForgeHooks.isToolEffective(world, pos, tool))) {
-			if(!state.getProperties().containsKey(PropertyBool.create(Aether.doubleDropNotifier()))) return;
+			if(!state.getProperties().containsKey(PropertyBool.create(Aether.doubleDropNotifier()))) {
+				return;
+			}
 			if(state.getValue(PropertyBool.create(Aether.doubleDropNotifier())) && !world.isRemote) {
 				NonNullList<ItemStack> blockDrop = NonNullList.create();
 				state.getBlock().getDrops(blockDrop, world, pos, state, 0);

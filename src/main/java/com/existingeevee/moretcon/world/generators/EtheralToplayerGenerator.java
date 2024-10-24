@@ -18,10 +18,10 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 
 	@Override
 	public void generate(IChunkGenerator chunkGenerator, IChunkProvider chunkProvider, WorldgenContext ctx) {
-		World world = ctx.world;		
+		World world = ctx.world;
 		int chunkX = ctx.chunkX;
 		int chunkZ = ctx.chunkZ;
-		
+
 		if (!(world.provider.getDimensionType().getId() == DimensionType.THE_END.getId())) {
 			return;
 		}
@@ -31,11 +31,12 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 				int x = i + chunkX * 16 + 8;
 				int z = j + chunkZ * 16 + 8;
 
-				if (x * x + z * z < 500 * 500)
+				if (x * x + z * z < 500 * 500) {
 					continue;
+				}
 
 				double d = ETHERAL_GENERATOR.generateOctavedSimplexNoise(x, z, world.getSeed());
-				
+
 				if (d > 0.5) {
 					BlockPos pos = new BlockPos(i + chunkX * 16 + 8, 200, j + chunkZ * 16 + 8);
 					if (isAir(world, pos)) {
@@ -48,7 +49,7 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 					if (isAir(world, pos)) {
 						world.setBlockState(pos, ModBlocks.blockOtherstone.getDefaultState(), 2);
 					}
-					
+
 					pos = new BlockPos(i + chunkX * 16 + 8, 199, j + chunkZ * 16 + 8);
 					world.setBlockState(new BlockPos(i + chunkX * 16 + 8, 199, j + chunkZ * 16 + 8), ModBlocks.blockOtherstone.getDefaultState(), 2);
 					if (isAir(world, pos)) {
@@ -58,7 +59,7 @@ public class EtheralToplayerGenerator extends WorldGenModifier {
 			}
 		}
 	}
-	
+
 	private static boolean isAir(World world, BlockPos pos) {
 		IBlockState iblockstate = world.getBlockState(pos);
 		Block block = iblockstate.getBlock();

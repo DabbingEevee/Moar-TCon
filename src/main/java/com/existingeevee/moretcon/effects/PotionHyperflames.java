@@ -34,7 +34,7 @@ public class PotionHyperflames extends Potion {
 			event.setAmount(event.getAmount() * (event.getEntityLiving().getActivePotionEffect(this).getAmplifier() + 1));
 		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean isBeneficial() {

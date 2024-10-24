@@ -18,18 +18,19 @@ public class Overgrowth extends AbstractTraitLeveled {
 	}
 
 	@Override
-	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {		
+	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
 		if (!world.isRemote && world.getWorldTime() % 20 == 0 && entity instanceof EntityLivingBase) {
-			
+
 			EntityLivingBase living = (EntityLivingBase) entity;
-			if (living.getActiveItemStack() == tool || !ModTraits.overslime.isToolWithTrait(tool)) 
+			if (living.getActiveItemStack() == tool || !ModTraits.overslime.isToolWithTrait(tool)) {
 				return;
+			}
 
 			int current = ModTraits.overslime.getNumber(tool);
 			int cap = ModTraits.overslime.getNumberMax(tool);
-		
+
 			ModifierNBT tag = ModifierNBT.readTag(TinkerUtil.getModifierTag(tool, this.getModifierIdentifier()));
-			
+
 			if (current < cap && random.nextFloat() < (tag.level * 0.05)) {
 				ModTraits.overslime.addNumber(tool, 1);
 			}

@@ -24,36 +24,37 @@ public class Wormed extends NumberTrackerTrait implements IAdditionalTraitMethod
 	}
 
 	@Override
-	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {		
+	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
 		if (!world.isRemote && world.getWorldTime() % 20 == 0 && entity instanceof EntityLivingBase) {
-			
+
 			EntityLivingBase living = (EntityLivingBase) entity;
-			if (living.getActiveItemStack() == tool) 
+			if (living.getActiveItemStack() == tool) {
 				return;
+			}
 
 			int current = getNumber(tool);
 			int cap = getNumberMax(tool);
-		
+
 			if (current < cap && random.nextFloat() < 0.025) {
 				addNumber(tool, 1);
 			}
 		}
 	}
-	
+
 	@Override
 	public void onPickup(EntityProjectileBase projectileBase, ItemStack ammo, EntityLivingBase entity) {
 		if (getNumber(ammo) < getNumberMax(ammo) && projectileBase.getTags().contains(this.getModifierIdentifier() + ".active")) {
 			addNumber(ammo, 1);
 		}
 	}
-	
+
 	@Override
 	public void onLaunch(EntityProjectileBase projectileBase, World world, @Nullable EntityLivingBase shooter) {
 		if (getNumber(projectileBase.tinkerProjectile.getItemStack()) > 0 && (shooter == null ? true : shooter.isSneaking())) {
 			projectileBase.getTags().add(this.getModifierIdentifier() + ".active");
 		}
 	}
-	
+
 	@Override
 	public void onAmmoConsumed(ItemStack ammo, @Nullable EntityLivingBase entity) {
 		if (getNumber(ammo) > 0 && (entity == null ? true : entity.isSneaking())) {
@@ -84,7 +85,7 @@ public class Wormed extends NumberTrackerTrait implements IAdditionalTraitMethod
 	public int getDefaultNumber(ItemStack stack) {
 		return getNumberMax(stack);
 	}
-	
+
 	@Override
 	public void onProjectileUpdate(EntityProjectileBase projectile, World world, ItemStack toolStack) {
 		//donbcar

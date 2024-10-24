@@ -17,7 +17,6 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.materials.Material;
 
-@SuppressWarnings("deprecation")
 public class ItemCompositeRep extends ItemBase {
 
 	private static ItemCompositeRep itemInstance;
@@ -65,7 +64,7 @@ public class ItemCompositeRep extends ItemBase {
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		List<CompositeData> data = CompositeRegistry.getData().stream().filter(d -> d.shouldGenIcon()).collect(Collectors.toList());
-		
+
 		if (this.isInCreativeTab(tab)) {
 			for (int i = 0; i < data.size(); i++) {
 				items.add(new ItemStack(this, 1, i));
@@ -95,7 +94,7 @@ public class ItemCompositeRep extends ItemBase {
 			tooltip.add(translation);
 		}
 	}
-	
+
 	public static ItemCompositeRep getItemInstance() {
 		return itemInstance;
 	}

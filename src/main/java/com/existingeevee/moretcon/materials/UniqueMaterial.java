@@ -8,6 +8,8 @@ import java.util.function.Supplier;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.traits.modifiers.ModExtraTrait2;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -34,17 +36,16 @@ import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.modifiers.ModExtraTrait;
 
-@SuppressWarnings("deprecation")
 public class UniqueMaterial extends Material {
 
-	public static final Map<String, BiValue<UniqueMaterial, String>> uniqueMaterials = new HashMap<String, BiValue<UniqueMaterial, String>>();
+	public static final Map<String, BiValue<UniqueMaterial, String>> uniqueMaterials = new HashMap<>();
 
 	private String toolResLoc;
 	private String partResLoc;
 
 	private Supplier<ItemStack> crafterSupplier = () -> new ItemStack(Blocks.CRAFTING_TABLE);
 	private String craftingDescKey = "crafting_table";
-	
+
 	public UniqueMaterial(String identifier, int color, ToolPart part, ToolCore tool, Supplier<ItemStack> crafterSupplier, String craftingDescKey) {
 		this(identifier, color, part, tool);
 		this.crafterSupplier = crafterSupplier;
@@ -56,19 +57,19 @@ public class UniqueMaterial extends Material {
 		this.crafterSupplier = crafterSupplier;
 		this.craftingDescKey = craftingDescKey;
 	}
-	
+
 	public UniqueMaterial(String identifier, int color, ToolPart part, ToolCore tool) {
 		this(identifier, color);
 		this.partResLoc = part.getRegistryName().toString();
 		this.toolResLoc = tool.getRegistryName().toString();
-		uniqueMaterials.put(this.identifier, new BiValue<UniqueMaterial, String>(this, part.getRegistryName().toString()));
+		uniqueMaterials.put(this.identifier, new BiValue<>(this, part.getRegistryName().toString()));
 	}
 
 	public UniqueMaterial(String identifier, int color, String part, String tool) {
 		this(identifier, color);
 		this.partResLoc = new ResourceLocation(part).toString();
 		this.toolResLoc = new ResourceLocation(tool).toString();
-		uniqueMaterials.put(this.identifier, new BiValue<UniqueMaterial, String>(this, part));
+		uniqueMaterials.put(this.identifier, new BiValue<>(this, part));
 	}
 
 	private UniqueMaterial(String identifier, int color) {
@@ -79,14 +80,7 @@ public class UniqueMaterial extends Material {
 	}
 
 	public ItemStack getUniqueToolPart() {
-		if (TinkerRegistry.getMaterial(this.identifier) == null) {
-			return ItemStack.EMPTY;
-		}
-		if (TinkerRegistry.getMaterial(this.identifier).getIdentifier().equals(Material.UNKNOWN.getIdentifier())) {
-			return ItemStack.EMPTY;
-		}
-
-		if (UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(toolResLoc)) == null) {
+		if ((TinkerRegistry.getMaterial(this.identifier) == null) || TinkerRegistry.getMaterial(this.identifier).getIdentifier().equals(Material.UNKNOWN.getIdentifier()) || (UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(toolResLoc)) == null)) {
 			return ItemStack.EMPTY;
 		}
 
@@ -100,21 +94,24 @@ public class UniqueMaterial extends Material {
 	public ToolPart getPartType() {
 		return UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(partResLoc));
 	}
-	
+
 	@Override
 	public String getLocalizedName() {
 		try {
 			StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
-			if (stacktrace[3].getClassName().equals(AbstractMaterialSectionTransformer.class.getName()) && stacktrace[3].getMethodName().equals("transform")) {
-				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
-			}
-			if (stacktrace[3].getClassName().equals(ContentMaterial.class.getName()) && stacktrace[3].getMethodName().equals("build")) {
+			if ((stacktrace[3].getClassName().equals(AbstractMaterialSectionTransformer.class.getName()) && stacktrace[3].getMethodName().equals("transform")) || (stacktrace[3].getClassName().equals(ContentMaterial.class.getName()) && stacktrace[3].getMethodName().equals("build"))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
 			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedDesc")) {
 				return I18n.translateToLocal("text.misc.one_of") + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + " " + I18n.translateToLocal(UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(this.partResLoc)).getUnlocalizedName() + ".name");
 			}
 			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedName")) {
+				return I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name");
+			}
+			if (stacktrace[2].getClassName().equals(ModExtraTrait2.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedDesc")) {
+				return I18n.translateToLocal("text.misc.one_of") + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + " " + I18n.translateToLocal(UniqueMaterial.getToolPartFromResourceLocation(new ResourceLocation(this.partResLoc)).getUnlocalizedName() + ".name");
+			}
+			if (stacktrace[2].getClassName().equals(ModExtraTrait2.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedName")) {
 				return I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name");
 			}
 			if (stacktrace[3].getClassName().equals(ToolPart.class.getName()) && (stacktrace[3].getMethodName().equals("getItemStackDisplayName") || stacktrace[3].getMethodName().equals("func_77653_i"))) {
@@ -134,7 +131,7 @@ public class UniqueMaterial extends Material {
 	public static ToolPart getToolPart(String res) {
 		return getToolPartFromResourceLocation(new ResourceLocation(res));
 	}
-	
+
 	public static ToolPart getToolPartFromResourceLocation(ResourceLocation res) {
 		for (IToolPart part : TinkerRegistry.getToolParts()) {
 			if (part instanceof ToolPart) {
@@ -158,15 +155,17 @@ public class UniqueMaterial extends Material {
 	public static void onPostInit() {
 		for (BiValue<UniqueMaterial, String> mat : uniqueMaterials.values()) {
 			if (mat.getA() instanceof UniqueMaterial && !TinkerRegistry.getMaterial(mat.getA().getIdentifier()).getIdentifier().equals(Material.UNKNOWN.getIdentifier())) {
-				MaterialUtils.forceSetRepItem(((UniqueMaterial) mat.getA()).getUniqueToolPart(), mat.getA());
+				MaterialUtils.forceSetRepItem(mat.getA().getUniqueToolPart(), mat.getA());
 			}
 		}
 	}
 
+	@Override
 	public final boolean isCraftable() {
 		return false;
 	}
 
+	@Override
 	public final boolean isCastable() {
 		return false;
 	}
@@ -174,7 +173,7 @@ public class UniqueMaterial extends Material {
 	public ItemStack getCrafter() {
 		return crafterSupplier.get();
 	}
-	
+
 	public String getCrafterString() {
 		return craftingDescKey;
 	}
@@ -186,7 +185,7 @@ public class UniqueMaterial extends Material {
 	public String getPartResLoc() {
 		return partResLoc;
 	}
-	
+
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void handleUniqueToolParts(ToolCraftingEvent event) {
 		for (ItemStack part : event.getToolParts()) {
@@ -204,18 +203,19 @@ public class UniqueMaterial extends Material {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void handleToolModifyEvent(ToolModifyEvent event) {
 		List<UniqueMaterial> pre = MiscUtils.getUniqueEmbossments(event.getToolBeforeModification());
 		List<UniqueMaterial> post = MiscUtils.getUniqueEmbossments(event.getItemStack());
-		
+
 		if (!pre.contains(this) && post.contains(this)) {
-			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getRegistryName().equals(event.getItemStack().getItem().getRegistryName()))
+			if (!UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getRegistryName().equals(event.getItemStack().getItem().getRegistryName())) {
 				event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
+			}
 		}
 	}
-	
+
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	@SideOnly(value = Side.CLIENT)
 	public void handleToolTips(ItemTooltipEvent event) {
@@ -226,10 +226,10 @@ public class UniqueMaterial extends Material {
 						int i = 1;
 						event.getToolTip().add(i++, "");
 						if (!(getPartResLoc().equals(event.getItemStack().getItem().getRegistryName().toString()))) {
-							event.getToolTip().add(i++, "§4§l" + I18n.translateToLocal("text.err.unique.unobtainable"));
+							event.getToolTip().add(i++, "" + ChatFormatting.RED + ChatFormatting.BOLD + I18n.translateToLocal("text.err.unique.unobtainable"));
 							event.getToolTip().add(i++, "");
 						}
-						event.getToolTip().add(i++, "§7" + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getLocalizedName()));
+						event.getToolTip().add(i++, ChatFormatting.GRAY + I18n.translateToLocal("text.err.unique.only_make").replace("__s__", UniqueMaterial.getToolFromResourceLocation(new ResourceLocation(getToolResLoc())).getLocalizedName()));
 						event.getToolTip().add(i++, "");
 
 					}

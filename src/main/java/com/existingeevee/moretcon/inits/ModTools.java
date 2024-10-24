@@ -25,7 +25,7 @@ public class ModTools {
 	public static ToolPart betweenSwordBlade;
 	public static ToolPart betweenBowLimb;
 	public static ToolPart smallPlate;
-	
+
 	public static ToolCore toolBetweenAxe;
 	public static ToolCore toolBetweenSword;
 	public static ToolCore toolBetweenPick;
@@ -33,26 +33,26 @@ public class ModTools {
 	public static ToolCore toolBetweenBow;
 	public static ToolCore toolGauntlet;
 	public static ToolCore toolRing;
-	
+
 	public static void init() {
 		init(false);
 	}
 
-	
+
 	public static void init(boolean isClient) {
 		smallPlate = (ToolPart) new ToolPart(Material.VALUE_Ingot * 1).setUnlocalizedName(MiscUtils.createNonConflictiveName("smallplate"));
 		RegisterHelper.registerItem(smallPlate);
-		
+
 		if (CompatManager.aether_legacy && ConfigHandler.enableGauntlet) {
 			toolGauntlet = tryMakeToolInstance("Gauntlet"); //new Gauntlet();
 			RegisterHelper.registerItem(toolGauntlet);
 		}
-		
+
 		if (CompatManager.baubles && ConfigHandler.enableRing) {
 			toolRing = tryMakeToolInstance("Ring");
 			RegisterHelper.registerItem(toolRing);
 		}
-		
+
 		if (CompatManager.thebetweenlands && ConfigHandler.registerBetweenTinkerTools) {
 			betweenAxeHead = (ToolPart) new ToolPart(Material.VALUE_Ingot * 2).setUnlocalizedName(MiscUtils.createNonConflictiveName("blaxehead"));
 			RegisterHelper.registerItem(betweenAxeHead);
@@ -84,16 +84,16 @@ public class ModTools {
 			toolBetweenBow = tryMakeToolInstance("BetweenBow");// = new BetweenBow();
 			RegisterHelper.registerItem(toolBetweenBow);
 		}
-		
+
 		registerStencils();
-		
+
 		if (isClient) {
 			registerToolGui();
 		}
 	}
-	
+
 	private static void registerStencils() {
-		TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), smallPlate));		
+		TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), smallPlate));
 	}
 
 
@@ -105,14 +105,14 @@ public class ModTools {
 			gauntletInfo.addSlotPosition(12, 62);
 			gauntletInfo.addSlotPosition(30, 44);
 			gauntletInfo.addSlotPosition(48, 26);
-			
-			TinkerRegistryClient.addToolBuilding(gauntletInfo);	
+
+			TinkerRegistryClient.addToolBuilding(gauntletInfo);
 		}
 		if (CompatManager.baubles && ConfigHandler.enableRing) {
 			ToolBuildGuiInfo ringInfo = new ToolBuildGuiInfo(toolRing);
 			ringInfo.addSlotPosition(33, 42 - 9);
 			ringInfo.addSlotPosition(33, 42 + 9);
-			TinkerRegistryClient.addToolBuilding(ringInfo);	
+			TinkerRegistryClient.addToolBuilding(ringInfo);
 		}
 		if (CompatManager.thebetweenlands && ConfigHandler.registerBetweenTinkerTools) {
 			ToolBuildGuiInfo blaxeInfo = new ToolBuildGuiInfo(toolBetweenAxe);
@@ -120,25 +120,25 @@ public class ModTools {
 			blaxeInfo.addSlotPosition(31, 22);
 			blaxeInfo.addSlotPosition(51, 34);
 			TinkerRegistryClient.addToolBuilding(blaxeInfo);
-	
+
 			ToolBuildGuiInfo blswordInfo = new ToolBuildGuiInfo(toolBetweenSword);
 			blswordInfo.addSlotPosition(12, 62);
 			blswordInfo.addSlotPosition(48, 26);
 			blswordInfo.addSlotPosition(30, 44);
 			TinkerRegistryClient.addToolBuilding(blswordInfo);
-	
+
 			ToolBuildGuiInfo blshovelInfo = new ToolBuildGuiInfo(toolBetweenShovel);
 			blshovelInfo.addSlotPosition(33, 42);
 			blshovelInfo.addSlotPosition(51, 24);
 			blshovelInfo.addSlotPosition(13, 62);
 			TinkerRegistryClient.addToolBuilding(blshovelInfo);
-	
+
 			ToolBuildGuiInfo blpickInfo = new ToolBuildGuiInfo(toolBetweenPick);
 			blpickInfo.addSlotPosition(15, 60);
 			blpickInfo.addSlotPosition(53, 22);
 			blpickInfo.addSlotPosition(33, 42);
 			TinkerRegistryClient.addToolBuilding(blpickInfo);
-	
+
 			ToolBuildGuiInfo blbowInfo = new ToolBuildGuiInfo(toolBetweenBow);
 			blbowInfo.addSlotPosition(36, 41 - 18); // top limb
 			blbowInfo.addSlotPosition(32 - 18, 45); // left limb
@@ -146,7 +146,7 @@ public class ModTools {
 			TinkerRegistryClient.addToolBuilding(blbowInfo);
 		}
 	}
-	
+
 	private static ToolCore tryMakeToolInstance(String toolName) {
 		return (ToolCore) tryMakeInstance("com.existingeevee.moretcon.tools.tooltypes." + toolName);
 	}

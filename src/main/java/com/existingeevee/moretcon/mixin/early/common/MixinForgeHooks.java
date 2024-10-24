@@ -8,13 +8,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.existingeevee.moretcon.block.blocktypes.BlockCobbledBedrock;
 import com.existingeevee.moretcon.other.OverrideItemUseEvent;
+import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.traits.ModTraits;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -44,14 +47,30 @@ public abstract class MixinForgeHooks {
 	@Inject(method = "blockStrength", at = @At("HEAD"), cancellable = true, remap = false)
 	private static void moretcon$HEAD_Inject$blockStrength(@Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull World world, @Nonnull BlockPos pos, CallbackInfoReturnable<Float> ci) {
 		if (ModTraits.bottomsEnd.getToolCoreClass().isInstance(player.getHeldItemMainhand().getItem())) {
-			float hardness = state.getBlockHardness(world, pos);
+			float hardness = -1;
 			boolean isBedrock = state.getBlock() == Blocks.BEDROCK || state.getBlock().getRegistryName().toString().equals("thebetweenlands:betweenlands_bedrock");
-			boolean hasTrait = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand());
 
-			if (isBedrock && hasTrait) {
+			boolean isSoftBedrock = state.getBlock() instanceof BlockCobbledBedrock;
+
+			boolean hasTrait = ModTraits.bottomsEnd.isToolWithTrait(player.getHeldItemMainhand()) && !ModTraits.bottomsEnd.isStackBroken(player.getHeldItemMainhand());
+
+			if (isSoftBedrock) {
+				hardness = 30;
+			} else if (isBedrock) {
 				hardness = 50;
+			}
+
+			if (hardness >= 0 && hasTrait) {
 				ci.setReturnValue(player.getDigSpeed(state, pos) / hardness / 30F);
 			}
 		}
+	}
+
+	@Inject(method = "canContinueUsing", at = @At("HEAD"), cancellable = true, remap = false)
+	private static void moretcon$HEAD_Inject$canContinueUsing(ItemStack from, ItemStack to, CallbackInfoReturnable<Boolean> ci) {
+		if (ReequipHack.HAS_PROCESSED.get()) {
+			return;
+		}
+		ci.setReturnValue(ReequipHack.canContinueUsing(from, to));
 	}
 }

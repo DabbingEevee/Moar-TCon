@@ -28,7 +28,7 @@ public class LightningEffectAction extends ClientAction {
 			big = ((NBTTagCompound) data).getBoolean("big");
 			speedModifier = ((NBTTagCompound) data).getDouble("speed");
 		}
-		
+
 		if (big) {
 			try {
 				Minecraft.getMinecraft().effectRenderer.addEffect(__init__$Overlay.newInstance(world, x, y, z));

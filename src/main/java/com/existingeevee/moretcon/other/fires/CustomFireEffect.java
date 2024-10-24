@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.existingeevee.moretcon.ModInfo;
 
-import akka.japi.Predicate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -41,12 +40,12 @@ public class CustomFireEffect {
 
 	public static final CustomFireEffect COLD_FIRE = new CustomFireEffect("cold_fire",
 			new ResourceLocation(ModInfo.MODID, "other/fire/cold_0"),
-			new ResourceLocation(ModInfo.MODID, "other/fire/cold_1"), e -> {
+			new ResourceLocation(ModInfo.MODID, "other/fire/cold_1"), (e, t) -> {
 				e.motionX *= 0.25D;
 				e.motionY *= e.isSneaking() ? 0.75D : 0.5D;
 				e.motionZ *= 0.25D;
 
-				if (!e.world.isRemote && (e.world.getWorldTime() + e.getUniqueID().hashCode()) % 10 == 0) {
+				if (!e.world.isRemote && t % 10 == 0) {
 					e.attackEntityFrom(new DamageSource("coldfire").setFireDamage(), 4);
 				}
 				return true;
@@ -54,15 +53,16 @@ public class CustomFireEffect {
 
 	public static final CustomFireEffect SPIRIT_FIRE = new CustomFireEffect("spirit_fire",
 			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_0"),
-			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_1"), e -> {
-				if (e.isImmuneToFire())
+			new ResourceLocation(ModInfo.MODID, "other/fire/spirit_1"), (e, t) -> {
+				if (e.isImmuneToFire()) {
 					return false;
+				}
 				if (e.isInWater()) {
 					e.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 1);
 					return false;
 				}
 
-				if (!e.world.isRemote && (e.world.getWorldTime() + e.getUniqueID().hashCode()) % 20 == 0) {
+				if (!e.world.isRemote && t % 20 == 0) {
 					int hurt = e.hurtResistantTime;
 					e.hurtResistantTime = 0;
 					e.attackEntityFrom(new DamageSource("haunted").setFireDamage(), e.isImmuneToFire() ? 1 : 4);
@@ -76,15 +76,15 @@ public class CustomFireEffect {
 	final ResourceLocation one;
 	final ResourceLocation two;
 
-	final Predicate<EntityLivingBase> effect;
+	final FireEffect effect;
 
 	boolean fullbright = true;
 
 	public CustomFireEffect(String id, ResourceLocation one, ResourceLocation two) {
-		this(id, one, two, e -> true);
+		this(id, one, two, (e, t) -> true);
 	}
 
-	public CustomFireEffect(String id, ResourceLocation one, ResourceLocation two, Predicate<EntityLivingBase> effect) {
+	public CustomFireEffect(String id, ResourceLocation one, ResourceLocation two, FireEffect effect) {
 		this.one = one;
 		this.two = two;
 		this.id = id;
@@ -94,8 +94,8 @@ public class CustomFireEffect {
 		registeredEffects.put(id, this);
 	}
 
-	public boolean effect(EntityLivingBase entity) {
-		return effect.test(entity);
+	public boolean effect(EntityLivingBase entity, int timeLeft) {
+		return effect.run(entity, timeLeft);
 	}
 
 	public boolean isFullbright() {
@@ -130,7 +130,7 @@ public class CustomFireEffect {
 		float f3 = event.getEntity().height / f;
 		float f4 = (float) (event.getEntity().posY - event.getEntity().getEntityBoundingBox().minY);
 		GlStateManager.rotate(-event.getRenderer().getRenderManager().playerViewY, 0.0F, 1.0F, 0.0F);
-		GlStateManager.translate(0.0F, 0.0F, -0.3F + (float) ((int) f3) * 0.02F);
+		GlStateManager.translate(0.0F, 0.0F, -0.3F + ((int) f3) * 0.02F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		float f5 = 0.0F;
 		int i = 0;
@@ -150,13 +150,13 @@ public class CustomFireEffect {
 				f6 = f10;
 			}
 
-			bufferbuilder.pos((double) (f1 - 0.0F), (double) (0.0F - f4), (double) f5).tex((double) f8, (double) f9)
+			bufferbuilder.pos(f1 - 0.0F, 0.0F - f4, f5).tex(f8, f9)
 					.endVertex();
-			bufferbuilder.pos((double) (-f1 - 0.0F), (double) (0.0F - f4), (double) f5).tex((double) f6, (double) f9)
+			bufferbuilder.pos(-f1 - 0.0F, 0.0F - f4, f5).tex(f6, f9)
 					.endVertex();
-			bufferbuilder.pos((double) (-f1 - 0.0F), (double) (1.4F - f4), (double) f5).tex((double) f6, (double) f7)
+			bufferbuilder.pos(-f1 - 0.0F, 1.4F - f4, f5).tex(f6, f7)
 					.endVertex();
-			bufferbuilder.pos((double) (f1 - 0.0F), (double) (1.4F - f4), (double) f5).tex((double) f8, (double) f7)
+			bufferbuilder.pos(f1 - 0.0F, 1.4F - f4, f5).tex(f8, f7)
 					.endVertex();
 			f3 -= 0.45F;
 			f4 -= 0.45F;
@@ -164,12 +164,17 @@ public class CustomFireEffect {
 			f5 += 0.03F;
 			++i;
 		}
-		if (fullbright)
+		if (fullbright) {
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
+		}
 
 		tessellator.draw();
 		GlStateManager.popMatrix();
 		GlStateManager.enableLighting();
 	}
 
+	@FunctionalInterface
+	public static interface FireEffect {
+		boolean run(EntityLivingBase entity, int fireTime);
+	}
 }

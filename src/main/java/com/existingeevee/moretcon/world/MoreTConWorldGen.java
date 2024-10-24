@@ -20,12 +20,14 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class MoreTConWorldGen implements IWorldGenerator {
-	
-	private static final List<WorldGenModifier> modifiers = new ArrayList<WorldGenModifier>();
-	
+
+	private static final List<WorldGenModifier> modifiers = new ArrayList<>();
+
 	public MoreTConWorldGen() {
-		if (ConfigHandler.disableOreGen) return;
-		
+		if (ConfigHandler.disableOreGen) {
+			return;
+		}
+
 		if (CompatManager.aether_legacy) {
 			modifiers.add(new AetherOreGenerator());
 		}
@@ -41,13 +43,14 @@ public class MoreTConWorldGen implements IWorldGenerator {
 			modifiers.add(new NetherPrismGenerator());
 		}
 	}
-	
+
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		WorldgenContext ctx = new WorldgenContext(world, chunkX, chunkZ, random);
-		
-		if (ConfigHandler.disableOreGen) 
+
+		if (ConfigHandler.disableOreGen) {
 			return;
+		}
 		modifiers.forEach(w -> w.generate(chunkGenerator, chunkProvider, ctx));
 	}
 }

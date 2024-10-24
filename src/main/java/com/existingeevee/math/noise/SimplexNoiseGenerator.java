@@ -3,7 +3,7 @@ package com.existingeevee.math.noise;
 import java.util.Random;
 
 public class SimplexNoiseGenerator {
-		
+
 	private double scale;
 	private double roughness;
 	private int octaves;
@@ -87,7 +87,7 @@ public class SimplexNoiseGenerator {
 			Random rand = new Random(seed);
 			xin += rand.nextDouble() * 1000000000d;
 			yin += rand.nextDouble() * 1000000000d;
-			
+
 			double n0, n1, n2; // Noise contributions from the three corners
 			// Skew the input space to determine which simplex cell we're in
 			double s = (xin + yin) * F2; // Hairy factor for 2D
@@ -124,23 +124,23 @@ public class SimplexNoiseGenerator {
 			int gi2 = permMod12[ii + 1 + perm[jj + 1]];
 			// Calculate the contribution from the three corners
 			double t0 = 0.5 - x0 * x0 - y0 * y0;
-			if (t0 < 0)
+			if (t0 < 0) {
 				n0 = 0.0;
-			else {
+			} else {
 				t0 *= t0;
 				n0 = t0 * t0 * dot(grad3[gi0], x0, y0); // (x,y) of grad3 used for 2D gradient
 			}
 			double t1 = 0.5 - x1 * x1 - y1 * y1;
-			if (t1 < 0)
+			if (t1 < 0) {
 				n1 = 0.0;
-			else {
+			} else {
 				t1 *= t1;
 				n1 = t1 * t1 * dot(grad3[gi1], x1, y1);
 			}
 			double t2 = 0.5 - x2 * x2 - y2 * y2;
-			if (t2 < 0)
+			if (t2 < 0) {
 				n2 = 0.0;
-			else {
+			} else {
 				t2 *= t2;
 				n2 = t2 * t2 * dot(grad3[gi2], x2, y2);
 			}
@@ -156,7 +156,7 @@ public class SimplexNoiseGenerator {
 			xin += rand.nextDouble() * 1000000000d;
 			yin += rand.nextDouble() * 1000000000d;
 			zin += rand.nextDouble() * 1000000000d;
-			
+
 			double n0, n1, n2, n3; // Noise contributions from the four corners
 			// Skew the input space to determine which simplex cell we're in
 			double s = (xin + yin + zin) * F3; // Very nice and simple skew factor for 3D
@@ -248,30 +248,30 @@ public class SimplexNoiseGenerator {
 			int gi3 = permMod12[ii + 1 + perm[jj + 1 + perm[kk + 1]]];
 			// Calculate the contribution from the four corners
 			double t0 = 0.6 - x0 * x0 - y0 * y0 - z0 * z0;
-			if (t0 < 0)
+			if (t0 < 0) {
 				n0 = 0.0;
-			else {
+			} else {
 				t0 *= t0;
 				n0 = t0 * t0 * dot(grad3[gi0], x0, y0, z0);
 			}
 			double t1 = 0.6 - x1 * x1 - y1 * y1 - z1 * z1;
-			if (t1 < 0)
+			if (t1 < 0) {
 				n1 = 0.0;
-			else {
+			} else {
 				t1 *= t1;
 				n1 = t1 * t1 * dot(grad3[gi1], x1, y1, z1);
 			}
 			double t2 = 0.6 - x2 * x2 - y2 * y2 - z2 * z2;
-			if (t2 < 0)
+			if (t2 < 0) {
 				n2 = 0.0;
-			else {
+			} else {
 				t2 *= t2;
 				n2 = t2 * t2 * dot(grad3[gi2], x2, y2, z2);
 			}
 			double t3 = 0.6 - x3 * x3 - y3 * y3 - z3 * z3;
-			if (t3 < 0)
+			if (t3 < 0) {
 				n3 = 0.0;
-			else {
+			} else {
 				t3 *= t3;
 				n3 = t3 * t3 * dot(grad3[gi3], x3, y3, z3);
 			}

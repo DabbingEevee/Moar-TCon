@@ -28,9 +28,10 @@ public class MixinItemStack {
 		if (event.getUseItem() == Result.ALLOW) {
 			return EnumActionResult.SUCCESS;
 		}
-		if (event.getUseItem() == Result.DENY) { 
+		if (event.getUseItem() == Result.DENY) {
 			return EnumActionResult.FAIL;
 		}
 		return item.onItemUse(player, worldIn, pos, hand, side, hitX, hitY, hitZ);
 	}
+
 }

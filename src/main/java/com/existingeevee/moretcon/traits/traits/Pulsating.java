@@ -4,6 +4,7 @@ import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class Pulsating extends AbstractTrait {
@@ -14,10 +15,13 @@ public class Pulsating extends AbstractTrait {
 
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
-		float x = tool.getOrCreateSubCompound(this.getModifierIdentifier()).getFloat("x");
+		NBTTagCompound comp = tool.getOrCreateSubCompound(this.getModifierIdentifier());
+
+		float x = comp.getFloat("x");
 		float ed = (Math.round(20 * Math.sin(x += 0.2)) + 20) / 10;
-		tool.getOrCreateSubCompound("moretcon.pulsating").setFloat("x", Math.round(x * 10f) / 10f);
-		return super.damage(tool, player, target, damage, newDamage + ed, isCritical);
+		comp.setFloat("x", Math.round(x * 10f) / 10f);
+
+		return newDamage + ed;
 	}
 
 }

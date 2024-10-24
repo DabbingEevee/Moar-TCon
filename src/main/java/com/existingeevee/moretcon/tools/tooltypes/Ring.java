@@ -70,8 +70,9 @@ public class Ring extends TinkerToolCore implements IBauble {
 				ToolHelper.damageTool(itemstack, 1, player);
 			}
 
-			if (!shouldTick(player) || ToolHelper.isBroken(itemstack))
+			if (!shouldTick(player) || ToolHelper.isBroken(itemstack)) {
 				return;
+			}
 			for (ITrait t : ToolHelper.getTraits(itemstack)) {
 				t.onArmorTick(itemstack, player.getEntityWorld(), (EntityPlayer) player);
 				t.onUpdate(itemstack, player.getEntityWorld(), player, -1, true);

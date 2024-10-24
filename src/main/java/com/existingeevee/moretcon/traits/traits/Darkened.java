@@ -16,7 +16,10 @@ public class Darkened extends AbstractTrait {
 
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
-		return newDamage + 8f - player.world.getLight(player.getPosition()) / 2f;
+    	float multiplier = (16f - player.world.getLight(player.getPosition())) / 16f;
+    	float multExtraDmg = newDamage * multiplier;
+    	float addExtraDmg = 8f - player.world.getLight(player.getPosition()) / 2f;
+		return newDamage + Math.max(multExtraDmg, addExtraDmg);
 	}
 
     @Override

@@ -33,12 +33,13 @@ public class CompositeRegistry {
 		return new ArrayList<>(data);
 	}
 
-	public static void registerComposite(CompositeData compData) {
+	public static CompositeData registerComposite(CompositeData compData) {
 		data.add(compData);
+		return compData;
 	}
 
-	public static void registerComposite(Supplier<Material> from, Supplier<Material> to, Supplier<Fluid> catalyst) {
-		data.add(new CompositeData(from, to, catalyst, false));
+	public static CompositeData registerComposite(Supplier<Material> from, Supplier<Material> to, Supplier<Fluid> catalyst) {
+		return registerComposite(new CompositeData(from, to, catalyst, false));
 	}
 
 	public static Optional<CompositeData> getComposite(Material mat) {
@@ -63,7 +64,7 @@ public class CompositeRegistry {
 
 		for (int i = 0; i < data.size(); i++) {
 			ModelLoader.setCustomModelResourceLocation(ItemCompositeRep.getItemInstance(), i, new ModelResourceLocation(
-					ModInfo.MODID + ":" + "repitem" + data.get(i).getResult().identifier, "inventory"));
+					ModInfo.MODID + ":repitem" + data.get(i).getResult().identifier, "inventory"));
 		}
 	}
 
@@ -71,14 +72,10 @@ public class CompositeRegistry {
 	public static void onPostInit() {
 		for (CompositeData d : data) {
 			for (IToolPart t : TinkerRegistry.getToolParts()) {
-				if (!t.canUseMaterial(d.getFrom()) || !t.canUseMaterial(d.getResult())) {
+				if (!t.canUseMaterial(d.getFrom()) || !t.canUseMaterial(d.getResult()) || (t == TinkerTools.arrowShaft)) {
 					continue;
 				}
 
-				if (t == TinkerTools.arrowShaft) {
-					continue;
-				}
-				
 				if (t instanceof BoltCore) {
 					List<Material> fluidWithHead = TinkerRegistry.getAllMaterials().stream()
 							.filter(mat -> mat.hasStats(MaterialTypes.HEAD))
@@ -104,8 +101,9 @@ public class CompositeRegistry {
 				TinkerRegistry.registerTableCasting(new CastingRecipe(output, rm, d.getCatalyst(), d.onlyOne ? Material.VALUE_Ingot : t.getCost(), true, false));
 			}
 
-			if (d.shouldGenIcon())
+			if (d.shouldGenIcon()) {
 				MaterialUtils.forceSetRepItem(ItemCompositeRep.getItem(d.getResult()), d.getResult());
+			}
 		}
 	}
 

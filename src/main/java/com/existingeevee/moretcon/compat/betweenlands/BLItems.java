@@ -19,7 +19,7 @@ public class BLItems {
 
 		blFilledMoltenSulfur = new ItemSpecificBucket(ModFluids.liquidBurningSulfurFlow).setUnlocalizedName(MiscUtils.createNonConflictiveName("blFilledMoltenSulfur").toLowerCase());
 		RegisterHelper.registerItem(blFilledMoltenSulfur);
-		
+
 
 		if (isClient) {
 			ModelLoader.setCustomModelResourceLocation(BLItems.blFilledMoltenSulfur, 0, new ModelResourceLocation(BLItems.blFilledMoltenSulfur.getRegistryName() + "_weedwood", "inventory"));

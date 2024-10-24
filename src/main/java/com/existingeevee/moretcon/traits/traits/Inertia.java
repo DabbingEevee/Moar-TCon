@@ -38,7 +38,7 @@ public class Inertia extends AbstractTrait {
 		if (ConfigHandler.inertiaOnlyWorksOnAdvancedTools && TinkerRegistry.getToolStationCrafting().contains(tool.getItem())) {
 			return; //this is a simple tool. nope
 		}
-		
+
 		boolean isTool = true;
 
 		if (tool.getItem() instanceof ToolCore) {

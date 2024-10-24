@@ -31,17 +31,17 @@ public class BlockIgniglomerateCluster extends BlockOre {
 
 		super.onEntityWalk(worldIn, pos, entityIn);
 	}
-	
+
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
 		worldIn.scheduleUpdate(pos, this, 1);
 	}
-	
+
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 		IBlockState above = worldIn.getBlockState(pos.up());
-		if (above.getMaterial() == Material.LAVA) {
+		if (above.getMaterial() == Material.LAVA && !worldIn.isRemote) {
 			IgniglomerateAction.INSTANCE.run(worldIn, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5, null);
 		}
 	}

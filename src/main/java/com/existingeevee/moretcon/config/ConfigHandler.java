@@ -16,7 +16,7 @@ public class ConfigHandler {
 
 	public static Configuration config;
 
-	public static boolean shouldAllowJokeItems = true;
+	public static boolean shouldAllowEasterEggItems = true;
 	public static boolean shouldAllowTwilightForest = true;
 	public static boolean shouldAllowIceAndFire = false;
 	public static boolean shouldAllowPlusTiC = true;
@@ -44,6 +44,7 @@ public class ConfigHandler {
 	public static int maxToolDurability = (int) Math.pow(2, 15) - 1;
 
 	public static int decayingEffectEntityID = 8690001;
+	public static int plasmaBoltEntityID = 8690002;
 
 	public static boolean shouldDurabilityCapNonProjectiles = true;
 
@@ -62,8 +63,10 @@ public class ConfigHandler {
 	public static boolean enableGauntlet = true;
 	public static boolean enableRing = true;
 
+	public static boolean unfracturedBedrockObtainable = true;
+
 	public static boolean inertiaOnlyWorksOnAdvancedTools = false;
-	
+
 	public static void initConfig(File file) {
 		config = new Configuration(file, ModInfo.VERSION);
 
@@ -77,7 +80,7 @@ public class ConfigHandler {
 		ConfigHandler.shouldAllowIceAndFire = config.getBoolean("iceandfire", category, true, "[NYI] Set to \"false\" if you don't want to allow Ice and Fire compatibility to load.");
 		ConfigHandler.shouldAllowPlusTiC = config.getBoolean("plustic", category, true, "Set to \"false\" if you don't want to allow PlusTiC compatibility to load.");
 		ConfigHandler.shouldAllowBetweenLands = config.getBoolean("thebetweenlands", category, true, "Set to \"false\" if you don't want to allow Betweenlands compatibility to load.");
-		ConfigHandler.shouldAllowJokeItems = config.getBoolean("jokes", category, true, "Set to \"false\" if you don't want to allow Easter Eggs and Jokes to load.");
+		ConfigHandler.shouldAllowEasterEggItems = config.getBoolean("jokes", category, true, "Set to \"false\" if you don't want to allow Easter Eggs and Jokes to load.");
 		ConfigHandler.shouldAllowCrossCompat = config.getBoolean("crosscompat", category, true, "[NYI] Set to \"false\" if you don't want to allow cross compatibility between mods to load.");
 		ConfigHandler.shouldAllowMainContent = config.getBoolean("main", category, true, "Set to \"false\" if you don't want to allow things from the main mod to load.");
 		ConfigHandler.shouldAllowAether = config.getBoolean("aether_legacy", category, true, "Set to \"false\" if you don't want to allow Aether compatibility to load.");
@@ -87,7 +90,7 @@ public class ConfigHandler {
 
 		category = "Misc";
 		config.addCustomCategoryComment(category, "Tweak the miscellaneous values/content of the mod");
-		ConfigHandler.shouldLoadDust = config.getBoolean("allowdust", category, false, "Set to \"true\" if you want to load dust.");
+		ConfigHandler.shouldLoadDust = config.getBoolean("allowdust", category, true, "Set to \"true\" if you want to load dust.");
 		ConfigHandler.enableGauntlet = config.getBoolean("enablegauntlet", category, true, "Set to \"false\" if you want to disable the gauntlet tool.");
 		ConfigHandler.enableRing = config.getBoolean("enablering", category, true, "Set to \"false\" if you want to disable the ring tool.");
 		ConfigHandler.shouldLoadDustForCompatability = config.getBoolean("compatdust", category, true, "Set to \"false\" if you do not want to load dust for other mods.");
@@ -98,7 +101,8 @@ public class ConfigHandler {
 		String triRed = config.getString("trichromic_red", category, "minecraft:strength;1", "Set to a potion effect to affect trichromic color effect.");
 		String triGreen = config.getString("trichromic_green", category, "none;0", "Set to a potion effect to affect trichromic color effect, or \"none\" for default effect.");
 		String triBlue = config.getString("trichromic_blue", category, "none;0", "Set to a potion effect to affect trichromic color effect, or \"none\" for default effect.");
-		
+
+		unfracturedBedrockObtainable = config.getBoolean("unfracturedbedrockobtainable", category, unfracturedBedrockObtainable, "Whether or not regular (typically unbreakable) bedrock should be obtainable.");
 		ConfigHandler.inertiaOnlyWorksOnAdvancedTools = config.getBoolean("inertiaOnlyWorksOnAdvancedTools".toLowerCase(), category, false, "Set to \"true\" if you do not want inertia (betweenlands greataxe/greatsword trait) to function on basic tools.");
 
 		try {
@@ -139,7 +143,7 @@ public class ConfigHandler {
 		category = "IDs";
 		config.addCustomCategoryComment(category, "A category dedicated to a list of ID's of various things which may cause errors if they are not unique");
 		ConfigHandler.decayingEffectEntityID = config.getInt("decayingEffectEntityID".toLowerCase(), category, 8690001, Integer.MIN_VALUE, Integer.MAX_VALUE, "Decaying Effect Entity ID");
-
+		ConfigHandler.plasmaBoltEntityID = config.getInt("plasmaBoltEntityID".toLowerCase(), category, 8690002, Integer.MIN_VALUE, Integer.MAX_VALUE, "Plasma Bolt Entity ID");
 		config.save();
 
 		MoreTConLogger.log("Finished Reading Config.");

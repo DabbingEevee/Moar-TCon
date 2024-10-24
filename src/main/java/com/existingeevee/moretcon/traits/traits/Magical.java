@@ -17,7 +17,9 @@ public class Magical extends AbstractTrait {
 
 	@Override
 	public float knockBack(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float knockback, float newKnockback, boolean isCritical) {
-		if (random.nextBoolean() || random.nextBoolean()) return newKnockback;
+		if (random.nextBoolean() || random.nextBoolean()) {
+			return newKnockback;
+		}
 		target.setVelocity(target.motionX, target.motionY + 2 * newKnockback, target.motionZ);
         if (target instanceof EntityPlayerMP) {
             ((EntityPlayerMP)target).connection.sendPacket(new SPacketEntityVelocity(target));

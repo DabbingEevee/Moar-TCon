@@ -1,8 +1,8 @@
 package com.existingeevee.moretcon.client.actions;
 
 import com.existingeevee.moretcon.client.particle.ParticleSpawner;
-import com.existingeevee.moretcon.client.particle.ParticleVoidDust;
 import com.existingeevee.moretcon.client.particle.ParticleSpawner.ParticleProvider;
+import com.existingeevee.moretcon.client.particle.ParticleVoidDust;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTBase;
@@ -26,5 +26,5 @@ public class VoidCoreAction extends ClientAction {
 	private static double rOff() {
 		return (Math.random() - 0.5) * 0.2;
 	}
-	
+
 }

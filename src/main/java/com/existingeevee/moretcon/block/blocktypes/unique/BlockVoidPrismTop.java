@@ -31,8 +31,9 @@ public class BlockVoidPrismTop extends BlockBase {
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 		IBlockState below = worldIn.getBlockState(pos.down());
-		if (isActive(worldIn, pos) && state.getBlock().isAir(below, worldIn, pos.down()))
+		if (isActive(worldIn, pos) && state.getBlock().isAir(below, worldIn, pos.down())) {
 			new VoidPrismTopAction().run(worldIn, pos.getX() + 0.5, pos.getY() - .1, pos.getZ() + 0.5, null);
+		}
 	}
 
 	public boolean isActive(World worldIn, BlockPos pos) {

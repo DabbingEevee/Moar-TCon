@@ -5,51 +5,48 @@ buildscript {
         maven { url = "https://repo.spongepowered.org/maven" }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'eclipse'
 
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
-version = getVersionFromJava() //"0.0.0_0" //default version, gets overrode later
-group = "com.existingeevee.moretcon" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "moretcon"
+version = getVersionFromJava()
+group = mod_group
+archivesBaseName = mod_id
 
-sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
-compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
+configurations.configureEach {
+    exclude group: "net.minecraftforge", module: "mergetool"
 }
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
 minecraft {
-    version = "1.12.2-14.23.5.2816"
-    runDir = "run"
-    // the mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   snapshot are built nightly.
-    // stable_#            stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20171003"
-    makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    mappings channel: mappings_channel, version: mappings_version
+    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    accessTransformer = file('src/main/resources/META-INF/at_deps.cfg')
+	    
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+            arg '-torg.spongepowered.asm.launch.MixinTweaker'
+        }
 
-    String resolved_core_plugin = mod_core_plugin.replace('${mod_group}', mod_group).replace('${mod_id}', mod_id)
-    clientJvmArgs += "-Dfml.coreMods.load=${resolved_core_plugin}"
-    serverJvmArgs += "-Dfml.coreMods.load=${resolved_core_plugin}"
-    String resolved_core_config = mod_mixin_configs.replace('${mod_id}', mod_id)
-    clientRunArgs += "--mixin ${resolved_core_config}"
-    serverRunArgs += "--mixin ${resolved_core_config}"
-
-}
-
-def getDate() {
-    return "_" + Long.toHexString(Long.parseLong(new Date().format('yyyyMMddHHmmss')))
+        server {
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+            arg '-torg.spongepowered.asm.launch.MixinTweaker'
+        }
+    }
 }
 
 //Returns the current version by reading directly from the ModInfo.java file
-
-
 def getVersionFromJava() {
 	String versionPrefix = 'public static final String VERSION = "';
 
@@ -64,58 +61,11 @@ def getVersionFromJava() {
 	}
 	
 	return version;
-	
-	/*
-	String mega = '0';
-	String major = '0';
-	String revision = '0';
-	String patch = '0';
-	boolean beta = false;
-	boolean patchFound = false;
-	String betaPrefix = 'public static final boolean BETA = ';
-	File file = file('src/main/java/com/existingeevee/moretcon/ModInfo.java')
-	file.eachLine { String s ->
-		s = s.trim();
-		if (s.startsWith(versionPrefix)) {
-			s = s.substring(versionPrefix.length(), s.length() - 2);
-			String[] pts = s.split('\\.');
-
-			mega = pts[0];
-			major = pts[1];
-			revision = pts[2].split('\\_')[0];
-
-			if (pts[2].split('\\_').length > 1) {
-				patch = pts[2].split('\\_')[1];
-				patchFound = true;
-			}
-		}
-	    if (s.startsWith(betaPrefix)) {
-			s = s.substring(betaPrefix.length(), s.length() - 1);
-			beta = s.equals("true");
-		}
-	}
-
-	System.out.println("")
-	System.out.println("Mega Version: " + "$mega")
-	System.out.println("Major Version: " + "$major")
-	System.out.println("Revision Version: " + "$revision")
-	System.out.println("Patch Version: " + "$patch")
-	System.out.println("Beta: " + (beta ? ("b" + getDate()) : "N"))
-	System.out.println("")
-
-	if (patchFound) {
-	    return "$mega.$major.$revision" + "_" + "$patch" + (beta ? ("-b" + getDate()) : "");
-	}
-	return "$mega.$major.$revision" + (beta ? ("-b" + getDate()) : "");*/
 }
 
 repositories {
     mavenCentral()
     maven { url = "https://repo.spongepowered.org/maven" }
-    //maven {
-    //    name 'DVS1 Maven FS'
-    //    url 'http://dvs1.progwml6.com/files/maven/'
-    //}
     maven {
         name "CurseMaven"
         url "https://www.cursemaven.com"
@@ -132,6 +82,9 @@ repositories {
         name "ChickenBones"
         url "http://chickenbones.net/maven/"
     }
+    flatDir {
+        dir 'libs'
+    }
 }
 
 configurations {
@@ -140,31 +93,34 @@ configurations {
 }
 
 dependencies {
-    embed('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    
+    embed('org.spongepowered:mixin:0.8.3-SNAPSHOT') {
         exclude module: 'guava'
         exclude module: 'commons-io'
         exclude module: 'gson'
     }
 
-    //deobfCompile 'slimeknights.mantle:Mantle:1.12-1.3.3.55'
-    //deobfCompile 'slimeknights:TConstruct:1.12.2-2.13.0.190'
-    deobfCompile 'curse.maven:mantle-74924:2713386'
-    deobfCompile 'curse.maven:tinkers-construct-74072:2902483'
+    implementation  'curse.maven:mantle-74924:2713386'
+    implementation  'curse.maven:tinkers-construct-74072:2902483'
 
+    implementation  'com.azanor.baubles:Baubles:1.12-1.5.2'
+    implementation  'curse.maven:plusticminusbad-376903:3648592'
 
-    deobfProvided 'com.azanor.baubles:Baubles:1.12-1.5.2'
-    deobfCompile 'curse.maven:plusticminusbad-376903:3648592'
+    implementation  'curse.maven:aether-255308:3280119'
+    implementation  'curse.maven:angry-pixel-the-betweenlands-mod-243363:4479688'
+    implementation  'curse.maven:the-twilight-forest-227639:3051450'
 
-    provided 'curse.maven:aether-255308:3280119'
-    provided 'curse.maven:angry-pixel-the-betweenlands-mod-243363:4479688'
-    provided 'curse.maven:the-twilight-forest-227639:3051450'
+    implementation  'curse.maven:libnine-322344:3509087'
+    implementation  'curse.maven:tinkers-evolution-384589:3362723'
+    implementation  'curse.maven:constructs-armory-287683:3174535'
 
-    provided 'curse.maven:libnine-322344:3509087'
-    provided 'curse.maven:tinkers-evolution-384589:3362723'
-    provided 'curse.maven:constructs-armory-287683:3174535'
+    implementation  'curse.maven:jei-238222:4538010'
 
-    deobfProvided 'curse.maven:jei-238222:4538010'
-    //provided "mezz.jei:jei_1.12.2:4.15.0.268"
+    implementation  'codechicken:CodeChickenLib:1.12.2-3.2.3_devfix.1-universal'
+
+	implementation ("net.minecraftforge:mergetool:0.2.3.3") { force = true }
+
     /*
     note that to properly build this, the following jars will need to be placed in the ./run/mods/ folder
     
@@ -174,18 +130,15 @@ dependencies {
 }
 
 processResources {
-    //project.version = project.getVersionFromJava()
-    // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
-
-    inputs.property "mcversion", project.minecraft.version
+    inputs.property "mcversion", minecraft_version
 
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
 
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version':project.version, 'mcversion':minecraft_version
     }
 
     // copy everything else except the mcmod.info
@@ -194,9 +147,14 @@ processResources {
     }
 }
 
+sourceSets {
+    main {
+        refMap = mod_mixin_refmap.replace('${mod_id}', mod_id)
+    }
+}
+
 mixin {
-    add sourceSets.main, mod_mixin_refmap.replace('${mod_id}', mod_id)
-    //add sourceSets.main, mod_mixin_refmap.replace('${mod_id}', mod_id + ".late")
+    config mod_mixin_configs.replace('${mod_id}', mod_id)
 }
 
 jar {
@@ -206,12 +164,12 @@ jar {
         exclude "LICENSE.txt", "META-INF/MANIFSET.MF", "META-INF/maven/**", "META-INF/*.RSA", "META-INF/*.SF"
     }
 
-    manifest {
-        attributes "FMLCorePlugin": mod_core_plugin.replace('${mod_group}', mod_group).replace('${mod_id}', mod_id)
-        attributes "FMLCorePluginContainsFMLMod": "false"
-        attributes "ForceLoadAsMod": "true"
-        attributes "TweakClass": "org.spongepowered.asm.launch.MixinTweaker"
-        attributes "TweakOrder": "0"
-        attributes "MixinConfigs": mod_mixin_configs.replace('${mod_id}', mod_id)
-    }
+    manifest.attributes(
+            'ForceLoadAsMod': 'true',
+            'FMLCorePluginContainsFMLMod': 'true',
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'TweakOrder': '0'
+    )
 } 
+
+jar.finalizedBy('reobfJar')

@@ -2,6 +2,8 @@ package com.existingeevee.moretcon.client.actions;
 
 import java.lang.reflect.Constructor;
 import java.nio.charset.StandardCharsets;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.existingeevee.moretcon.MoreTCon;
 import com.existingeevee.moretcon.NetworkHandler;
@@ -64,17 +66,29 @@ public abstract class ClientAction {
 			}
 		}
 
+		private static final Set<String> BROKEN = new HashSet<>();
+
 		@Override
 		@SuppressWarnings("unchecked")
 		public IMessage onMessage(SentClientActionMessage message, MessageContext ctx) {
+			if (BROKEN.contains(message.classPath)) {
+				return null;
+			}
+
 			Minecraft.getMinecraft().addScheduledTask(() -> {
 				try {
 					Class<? extends ClientAction> c = (Class<? extends ClientAction>) Class.forName(message.classPath);
-					Constructor<? extends ClientAction> constructor = c.getConstructor();
+					Constructor<? extends ClientAction> constructor;
+					try {
+						constructor = c.getDeclaredConstructor();
+					} catch (Exception e) {
+						e.printStackTrace();
+						BROKEN.add(message.classPath);
+						return;
+					}
 					constructor.setAccessible(true);
 					constructor.newInstance().run(message.x, message.y, message.z, message.tag);
 				} catch (Throwable e) {
-					e.printStackTrace();
 				}
 			});
 			return null;
@@ -107,8 +121,9 @@ public abstract class ClientAction {
 			buf.writeCharSequence(this.classPath, StandardCharsets.UTF_8);
 
 			NBTTagCompound payload = new NBTTagCompound();
-			if (this.tag != null)
+			if (this.tag != null) {
 				payload.setTag("data", this.tag);
+			}
 			String payloadString = payload.toString();
 			buf.writeInt(payloadString.length());
 			buf.writeCharSequence(payloadString, StandardCharsets.UTF_8);

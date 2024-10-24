@@ -6,6 +6,7 @@ import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.gildedgames.the_aether.items.ItemsAether;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -20,6 +21,7 @@ public class SmelteryInit {
 	public static void init() {
 		if (CompatManager.loadMain) {
 			TinkerRegistry.registerMelting(ModItems.hydrogenRichRedstonePowder, ModFluids.liquidHydrogen, Material.VALUE_Ingot);
+			TinkerRegistry.registerMelting(Blocks.SOUL_SAND, ModFluids.liquidLiquifiedSouls, Material.VALUE_Ingot / 16);
 			TinkerRegistry.registerMelting(ModItems.rawSteel, TinkerFluids.steel, Material.VALUE_Ingot);
 			TinkerRegistry.registerMelting(ModBlocks.oreGravitoniumDense, ModFluids.liquidGravitonium, Material.VALUE_Ore() * 4);
 			TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidRuneSteel, 1), new FluidStack(TinkerFluids.obsidian, 1), new FluidStack(TinkerFluids.ardite, 9), new FluidStack(TinkerFluids.steel, 9), new FluidStack(TinkerFluids.gold, 2));

@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Level;
 import com.existingeevee.moretcon.other.MoreTConLogger;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 
@@ -30,7 +32,7 @@ public class MaterialUtils {
 					break;
 				}
 			}
-			readd.put(entry.getKey(), entry.getValue());
+			READDS.put(entry.getKey(), entry.getValue());
 
 			if (!success) {
 				MoreTConLogger.log("Unable to readd material \"" + material.identifier + "\" as it was never registered",
@@ -45,21 +47,15 @@ public class MaterialUtils {
 	}
 
 	public static Material forceSetRepItem(ItemStack repItem, Material material) {
-		Field f = null;
-		try {
-			for (Field pF : Material.class.getDeclaredFields()) {
-				if (pF.getName().equals("representativeItem")) {
-					f = pF;
-					break;
-				}
-			}
-			f.setAccessible(true);
-			f.set(material, repItem);
-		} catch (NullPointerException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
-			e1.printStackTrace();
-		}
+		ObfuscationReflectionHelper.setPrivateValue(Material.class, material, repItem, "representativeItem");
 		return material;
 	}
+
+	public static Material forceSetFluid(Fluid fluid, Material material) {
+		ObfuscationReflectionHelper.setPrivateValue(Material.class, material, fluid, "fluid");
+		return material;
+	}
+
 	public static boolean removeTinkerMaterial(Material material) {
 		return removeTinkerMaterial(material.getIdentifier());
 	}
@@ -85,18 +81,11 @@ public class MaterialUtils {
 		return success;
 	}
 
-	public static Map<String, Material> readd = new LinkedHashMap<>();
+	public static final Map<String, Material> READDS = new LinkedHashMap<>();
+	public static final Map<String, Material> materials$TinkerRegistry = ObfuscationReflectionHelper.getPrivateValue(TinkerRegistry.class, null, "materials");
 
 	public static void completeReadds() {
-		try {
-			Field mat = TinkerRegistry.class.getDeclaredField("materials");
-			mat.setAccessible(true);
-			@SuppressWarnings("unchecked")
-			Map<String, Material> fieldValue = (Map<String, Material>) mat.get(TinkerRegistry.class);
-			readd.forEach((s, m) -> fieldValue.remove(s));
-			fieldValue.putAll(readd);
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-
-		}
+		READDS.forEach((s, m) -> materials$TinkerRegistry.remove(s));
+		materials$TinkerRegistry.putAll(READDS);
 	}
 }

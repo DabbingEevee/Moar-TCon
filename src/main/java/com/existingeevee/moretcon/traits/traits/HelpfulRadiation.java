@@ -16,8 +16,9 @@ public class HelpfulRadiation extends AbstractTrait {
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (target.world.isRemote || !wasHit)
+		if (target.world.isRemote || !wasHit) {
 			return;
+		}
 		if (random.nextBoolean()) {
 			target.addPotionEffect(new PotionEffect(MobEffects.GLOWING, Math.round(damageDealt) * 8, 0));
 			target.addPotionEffect(new PotionEffect(MobEffects.WITHER, Math.round(damageDealt) * 8, 1));

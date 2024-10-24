@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 //TODO
 public class ChaosVeil extends AbstractTrait {
 
-	public ChaosVeil() { 
+	public ChaosVeil() {
 		super(MiscUtils.createNonConflictiveName("chaos_veil"), 0);
 	}
 

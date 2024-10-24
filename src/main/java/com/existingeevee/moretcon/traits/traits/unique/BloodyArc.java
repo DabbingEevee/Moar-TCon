@@ -32,15 +32,14 @@ public class BloodyArc extends AbstractTrait {
 	@SubscribeEvent
 	public void onMouseClick(PlayerInteractEvent.RightClickItem e) {
 		ItemStack stack = e.getEntityPlayer().getHeldItemMainhand();
-		if (!e.getEntityPlayer().isSneaking())
-			return;
-		if (e.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem())) {
+		if (!e.getEntityPlayer().isSneaking() || e.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem()) || ToolHelper.isBroken(stack)) {
 			return;
 		}
 		if (isToolWithTrait(stack)) {
 			e.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 15);
-			if (!e.getEntityPlayer().world.isRemote)
+			if (!e.getEntityPlayer().world.isRemote) {
 				spawn(e.getEntityPlayer(), ToolHelper.getActualDamage(stack, e.getEntityPlayer()), stack);
+			}
 			e.getEntityPlayer().playSound(SoundHandler.BLOODY_SLASH, 1, 1);
 			e.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
 		}
@@ -49,15 +48,14 @@ public class BloodyArc extends AbstractTrait {
 	@SubscribeEvent
 	public void onMouseClick(PlayerInteractEvent.RightClickBlock e) {
 		ItemStack stack = e.getEntityPlayer().getHeldItemMainhand();
-		if (!e.getEntityPlayer().isSneaking())
-			return;
-		if (e.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem())) {
+		if (!e.getEntityPlayer().isSneaking() || e.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem()) || ToolHelper.isBroken(stack)) {
 			return;
 		}
 		if (isToolWithTrait(stack)) {
 			e.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 15);
-			if (!e.getEntityPlayer().world.isRemote)
+			if (!e.getEntityPlayer().world.isRemote) {
 				spawn(e.getEntityPlayer(), ToolHelper.getActualDamage(stack, e.getEntityPlayer()), stack);
+			}
 			e.getEntityPlayer().playSound(SoundHandler.BLOODY_SLASH, 1, 1);
 			e.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
 		}
@@ -66,18 +64,15 @@ public class BloodyArc extends AbstractTrait {
 	@SubscribeEvent
 	public void onMouseClick(EntityInteract e) {
 		ItemStack stack = e.getEntityPlayer().getHeldItemMainhand();
-		if (!e.getEntityPlayer().isSneaking())
-			return;
-		if (e.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem())) {
+		if (!e.getEntityPlayer().isSneaking() || e.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem()) || ToolHelper.isBroken(stack)) {
 			return;
 		}
-		if (ToolHelper.isBroken(stack))
-			return;
 
 		if (isToolWithTrait(stack)) {
 			e.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 15);
-			if (!e.getEntityPlayer().world.isRemote)
+			if (!e.getEntityPlayer().world.isRemote) {
 				spawn(e.getEntityPlayer(), ToolHelper.getActualDamage(stack, e.getEntityPlayer()), stack);
+			}
 			e.getEntityPlayer().playSound(SoundHandler.BLOODY_SLASH, 1, 1);
 			e.getEntityPlayer().swingArm(EnumHand.MAIN_HAND);
 		}

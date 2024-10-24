@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class CustomFireHelper {
 
-	private static Map<Integer, CustomFireInfo> customBurning = new HashMap<Integer, CustomFireInfo>();
+	private static Map<Integer, CustomFireInfo> customBurning = new HashMap<>();
 
 	private static boolean dirty = false;
 
@@ -59,8 +59,9 @@ public class CustomFireHelper {
 		if (event.getEntity().world.isRemote) {
 			if (customBurning.get(event.getEntity().getEntityId()) != null) {
 				CustomFireInfo info = customBurning.get(event.getEntity().getEntityId());
-				if (info == null || info.isInvalid())
+				if (info == null || info.isInvalid()) {
 					return;
+				}
 				info.effect.render(event);
 			}
 		}
@@ -70,8 +71,9 @@ public class CustomFireHelper {
 		if (Minecraft.getMinecraft().player != null && Minecraft.getMinecraft().world != null) {
 			if (customBurning.get(Minecraft.getMinecraft().player.getEntityId()) != null) {
 				CustomFireInfo info = customBurning.get(Minecraft.getMinecraft().player.getEntityId());
-				if (info.isInvalid())
+				if (info.isInvalid()) {
 					return;
+				}
 
 				Tessellator tessellator = Tessellator.getInstance();
 				BufferBuilder bufferbuilder = tessellator.getBuffer();
@@ -89,13 +91,13 @@ public class CustomFireHelper {
 					float f2 = textureatlassprite.getMaxU();
 					float f3 = textureatlassprite.getMinV();
 					float f4 = textureatlassprite.getMaxV();
-					GlStateManager.translate((float) (-(i * 2 - 1)) * 0.24F, -0.3F, 0.0F);
-					GlStateManager.rotate((float) (i * 2 - 1) * 10.0F, 0.0F, 1.0F, 0.0F);
+					GlStateManager.translate((-(i * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+					GlStateManager.rotate((i * 2 - 1) * 10.0F, 0.0F, 1.0F, 0.0F);
 					bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-					bufferbuilder.pos(-0.5D, -0.5D, -0.5D).tex((double) f2, (double) f4).endVertex();
-					bufferbuilder.pos(0.5D, -0.5D, -0.5D).tex((double) f1, (double) f4).endVertex();
-					bufferbuilder.pos(0.5D, 0.5D, -0.5D).tex((double) f1, (double) f3).endVertex();
-					bufferbuilder.pos(-0.5D, 0.5D, -0.5D).tex((double) f2, (double) f3).endVertex();
+					bufferbuilder.pos(-0.5D, -0.5D, -0.5D).tex(f2, f4).endVertex();
+					bufferbuilder.pos(0.5D, -0.5D, -0.5D).tex(f1, f4).endVertex();
+					bufferbuilder.pos(0.5D, 0.5D, -0.5D).tex(f1, f3).endVertex();
+					bufferbuilder.pos(-0.5D, 0.5D, -0.5D).tex(f2, f3).endVertex();
 					tessellator.draw();
 					GlStateManager.popMatrix();
 				}
@@ -117,9 +119,10 @@ public class CustomFireHelper {
 					EntityLivingBase entity = (EntityLivingBase) e;
 					if (customBurning.get(entity.getEntityId()) != null) {
 						CustomFireInfo info = customBurning.get(entity.getEntityId());
-						if (info == null || info.effect == null)
+						if (info == null || info.effect == null) {
 							continue;
-						if (!info.effect.effect(entity)) {
+						}
+						if (!info.effect.effect(entity, info.time)) {
 							info.forcedInvalid = true;
 						}
 					}
@@ -142,8 +145,9 @@ public class CustomFireHelper {
 
 	@SubscribeEvent
 	public static void finishTicking(TickEvent.ServerTickEvent event) {
-		if (event.phase != Phase.END)
+		if (event.phase != Phase.END) {
 			return;
+		}
 
 		customBurning.keySet().retainAll(validList);
 		validList = new HashSet<>();
@@ -151,25 +155,28 @@ public class CustomFireHelper {
 
 	@SubscribeEvent
 	public static void onEntityTick(TickEvent.WorldTickEvent event) {
-		if (event.phase != Phase.END)
+		if (event.phase != Phase.END) {
 			return;
+		}
 
 		for (Entity e : new ArrayList<>(event.world.loadedEntityList)) {
 			if (e instanceof EntityLivingBase) {
 				EntityLivingBase entity = (EntityLivingBase) e;
 				if (customBurning.get(entity.getEntityId()) != null) {
 					CustomFireInfo info = customBurning.get(entity.getEntityId());
-					if (info.effect == null)
+					if (info.effect == null) {
 						continue;
-					if (!info.effect.effect(entity)) {
+					}
+					if (!info.effect.effect(entity, info.time)) {
 						info.forcedInvalid = true;
 					}
 				}
 			}
 		}
 
-		if (event.world.isRemote)
+		if (event.world.isRemote) {
 			return;
+		}
 
 		for (Entity e : new ArrayList<>(event.world.loadedEntityList)) {
 			if (e instanceof EntityLivingBase) {
@@ -218,7 +225,7 @@ public class CustomFireHelper {
 	}
 
 	public static class SyncCustomFiresMessage implements IMessage, IMessageHandler<SyncCustomFiresMessage, IMessage> {
-		Map<Integer, CustomFireInfo> customBurningData = new HashMap<Integer, CustomFireInfo>();
+		Map<Integer, CustomFireInfo> customBurningData = new HashMap<>();
 
 		@Override
 		public IMessage onMessage(SyncCustomFiresMessage message, MessageContext ctx) {
@@ -228,7 +235,7 @@ public class CustomFireHelper {
 
 		@Override
 		public void fromBytes(ByteBuf buf) {
-			Map<Integer, CustomFireInfo> newCustomBurningData = new HashMap<Integer, CustomFireInfo>();
+			Map<Integer, CustomFireInfo> newCustomBurningData = new HashMap<>();
 			try {
 				int len = buf.readInt();
 				for (int i = 0; i < len; i++) {
@@ -251,8 +258,9 @@ public class CustomFireHelper {
 			int len = customBurningData.entrySet().stream().filter(p -> !p.getValue().isInvalid()).mapToInt(i -> 1) .sum();
 			buf.writeInt(len);
 			for (Entry<Integer, CustomFireInfo> e : customBurningData.entrySet()) {
-				if (e.getValue().isInvalid())
+				if (e.getValue().isInvalid()) {
 					continue;
+				}
 				buf.writeInt(e.getKey());
 				buf.writeInt(e.getValue().time);
 				buf.writeByte(e.getValue().getEffect().id.length());

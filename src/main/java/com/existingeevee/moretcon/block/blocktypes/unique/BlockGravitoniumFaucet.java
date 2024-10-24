@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.smeltery.block.BlockFaucet;
 
-@SuppressWarnings("deprecation")
 public class BlockGravitoniumFaucet extends BlockFaucet implements ISimpleBlockItemProvider {
 
 	public BlockGravitoniumFaucet() {

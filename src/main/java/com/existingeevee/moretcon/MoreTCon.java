@@ -10,14 +10,17 @@ import com.existingeevee.moretcon.inits.ModFluids;
 import com.existingeevee.moretcon.inits.ModItems;
 import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.inits.ModPotions;
+import com.existingeevee.moretcon.inits.ModReforges;
 import com.existingeevee.moretcon.inits.misc.ModSponges;
 import com.existingeevee.moretcon.inits.misc.OreDictionaryManager;
 import com.existingeevee.moretcon.inits.recipes.FurnaceInit;
 import com.existingeevee.moretcon.inits.recipes.MiscRecipes;
 import com.existingeevee.moretcon.inits.recipes.OreRecipes;
+import com.existingeevee.moretcon.inits.recipes.ReforgeRecipes;
 import com.existingeevee.moretcon.inits.recipes.SmelteryInit;
 import com.existingeevee.moretcon.inits.recipes.UniqueToolpartRecipes;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
+import com.existingeevee.moretcon.materials.MTMaterialIntegration;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
 import com.existingeevee.moretcon.other.EventWatcherMain;
 import com.existingeevee.moretcon.other.ModTabs;
@@ -25,12 +28,15 @@ import com.existingeevee.moretcon.other.fires.CustomFireEffect;
 import com.existingeevee.moretcon.other.fires.CustomFireHelper;
 import com.existingeevee.moretcon.other.fixes.ExtremeToolDurabilityFix;
 import com.existingeevee.moretcon.other.sponge.SpongeRegistry;
+import com.existingeevee.moretcon.other.utils.ArrowReferenceHelper;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.MaterialUtils;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
+import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
 import com.existingeevee.moretcon.proxy.CommonProxy;
+import com.existingeevee.moretcon.reforges.ReforgeHandler;
 import com.existingeevee.moretcon.traits.ModTraits;
 import com.existingeevee.moretcon.world.MoreTConWorldGen;
 //import net.minecraftforge.fml.common.event.;
@@ -54,22 +60,23 @@ import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ranged.IProjectile;
+import slimeknights.tconstruct.library.utils.Tags;
 import thebetweenlands.common.handler.OverworldItemHandler;
 
 @Mod(modid = ModInfo.MODID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = ModInfo.DEPENDANCY)
 public class MoreTCon {
-	
+
 	@Instance
 	public static MoreTCon instance;
-	
+
 	@SidedProxy(serverSide = "com.existingeevee.moretcon.proxy.CommonProxy", clientSide = "com.existingeevee.moretcon.proxy.ClientProxy")
-	public static CommonProxy proxy; 
+	public static CommonProxy proxy;
 
 	static {
 		CustomFireEffect.init();
 		MinecraftForge.EVENT_BUS.register(MoreTCon.class);
 	}
-	
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		CompatManager.init();
@@ -90,14 +97,17 @@ public class MoreTCon {
 		}
 		MaterialUtils.completeReadds();
 		MinecraftForge.EVENT_BUS.register(CustomFireHelper.class);
+		MinecraftForge.EVENT_BUS.register(ArrowReferenceHelper.class);
+		MinecraftForge.EVENT_BUS.register(ReforgeHandler.class);
 		ModTraits.init();
+		ModReforges.init();
 
-		OreDictionaryManager.init(); //TODO LOOK AT
+		OreDictionaryManager.preInit();
 
 		proxy.preInit();
 
-	}
-	
+	} //BowCore
+
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
@@ -107,23 +117,26 @@ public class MoreTCon {
 	}
 
 	@SubscribeEvent
-	public static void registerRecipes(Register<IRecipe> event) {				
+	public static void registerRecipes(Register<IRecipe> event) {
+		OreDictionaryManager.init();
+
 		IForgeRegistry<IRecipe> registry = event.getRegistry();
-		
+
 		OreRecipes.init(event);
 		UniqueToolpartRecipes.init(event);
-		
+		ReforgeRecipes.init(event);
+
 		SpongeRegistry.registerRecipes(event);
-		
+
 		if (CompatManager.thebetweenlands) {
 			BLRecipes.init(event);
 		}
-		
+
 		// add the tool forge recipes from all integrations
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
 			integration.registerToolForgeRecipe(registry);
 		}
-		
+
 		MiscRecipes.init(event);
 	}
 
@@ -131,7 +144,13 @@ public class MoreTCon {
 	public void init(FMLInitializationEvent event) {
 		FurnaceInit.init();
 		SpongeRegistry.postInit();
-		
+
+		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
+			if (integration instanceof MTMaterialIntegration) {
+				((MTMaterialIntegration) integration).refreshFluid();
+			}
+		}
+
 		proxy.init();
 	}
 
@@ -141,7 +160,12 @@ public class MoreTCon {
 		if (CompatManager.thebetweenlands && ConfigHandler.weakenToolsInBetweenLands) {
 			blackListTinkerTools();
 		}
+
 		SmelteryInit.init();
+		if (CompatManager.thebetweenlands) {
+			BLRecipes.postInit();
+		}
+
 		if (CompatManager.thebetweenlands) {
 			MinecraftForge.EVENT_BUS.register(new EventWatcherBL());
 		}
@@ -154,15 +178,16 @@ public class MoreTCon {
 		}
 		UniqueMaterial.onPostInit();
 		CompositeRegistry.onPostInit();
-		
+
 		ModTraits.postInit();
 	}
 
 	@EventHandler
 	public void loadComplete(FMLLoadCompleteEvent event) {
 		MiscUtils.init();
+		ReequipHack.registerIgnoredKey(Tags.TOOL_DATA);
 	}
-	
+
 	private static void blackListTinkerTools() {
 		OverworldItemHandler.TOOL_BLACKLIST.put(new ResourceLocation(ModInfo.MODID, "tinker_blacklist"), stack -> {
 			if (stack.getItem() instanceof ToolCore) {
@@ -181,7 +206,5 @@ public class MoreTCon {
 }
 
 //ally of both trait
-//make g-sponges not hell
 //move recipes away from fusionite
-
-
+//swee is bozo

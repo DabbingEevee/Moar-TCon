@@ -21,32 +21,33 @@ public class BloodGodsBlessing extends AbstractTrait implements IAdditionalTrait
 
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-		if (!wasHit) 
+		if (!wasHit) {
 			return;
-		
+		}
+
 		if (target.isDead || target.getHealth() >= 0) {
 			int lvl = -1;
-			
+
 			if (player.isPotionActive(ModPotions.bloodgodsblessing)) {
 				lvl = player.getActivePotionEffect(ModPotions.bloodgodsblessing).getAmplifier();
 				player.removeActivePotionEffect(ModPotions.bloodgodsblessing);
 			}
-			
+
 			player.addPotionEffect(new PotionEffect(ModPotions.bloodgodsblessing, 5 * 20, lvl + 1, false, false));
 		}
 	}
-	
+
 	@Override
 	public List<String> getAdditionalInfo(ItemStack tool) {
-		
+
 		List<String> list = Lists.newArrayList();
-	
+
 		list.add("");
-		
+
 		list.add(CustomFontColor.encodeColor(0xea8f8c) + "He may be gone, but he will always live in our hearts.");
 		list.add(CustomFontColor.encodeColor(0xea8f8c) + "RIP Technoblade (1999-2022)");
 		list.add("");
-		
+
 		return list;
 	}
 }

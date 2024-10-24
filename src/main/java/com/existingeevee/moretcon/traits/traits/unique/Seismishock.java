@@ -30,12 +30,13 @@ public class Seismishock extends AbstractTrait {
 				target.getEntityWorld().spawnEntity(decayingEffect);
 
 				for (Entity e : decayingEffect.getAffectedEntities()) {
-					
-					if (!(e instanceof EntityLivingBase))
+
+					if (!(e instanceof EntityLivingBase)) {
 						continue;
-					
+					}
+
 					EntityLivingBase entity = (EntityLivingBase) e;
-					
+
 					List<ITrait> traits = TinkerUtil.getTraitsOrdered(stack);
 
 					float dmg = damage * 0.5f;
