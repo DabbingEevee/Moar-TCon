@@ -26,11 +26,6 @@ public class Plasmatic extends AbstractTrait {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	@Override
-	public void onHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical) {
-		target.setFire(5);
-	}
-
 	public static final ThreadLocal<Boolean> IS_ALREADY_PROCING = ThreadLocal.withInitial(() -> false);
 
 	private static final Field ticksSinceLastAtt = ObfuscationReflectionHelper.findField(EntityLivingBase.class, "field_184617_aD");
