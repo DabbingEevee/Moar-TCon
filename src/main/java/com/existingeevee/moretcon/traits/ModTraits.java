@@ -22,6 +22,7 @@ import com.existingeevee.moretcon.traits.modifiers.internal.ModExtraTraitDisplay
 import com.existingeevee.moretcon.traits.traits.Aetheric;
 import com.existingeevee.moretcon.traits.traits.Afterimage;
 import com.existingeevee.moretcon.traits.traits.AntiGravity;
+import com.existingeevee.moretcon.traits.traits.Approximate;
 import com.existingeevee.moretcon.traits.traits.Blighted;
 import com.existingeevee.moretcon.traits.traits.BottomsEnd;
 import com.existingeevee.moretcon.traits.traits.Burning;
@@ -67,6 +68,7 @@ import com.existingeevee.moretcon.traits.traits.Voidic;
 import com.existingeevee.moretcon.traits.traits.Withered;
 import com.existingeevee.moretcon.traits.traits.abst.AttributeTrait;
 import com.existingeevee.moretcon.traits.traits.abst.DummyTrait;
+import com.existingeevee.moretcon.traits.traits.internal.PolyshotProj;
 import com.existingeevee.moretcon.traits.traits.unique.AerialFlame;
 import com.existingeevee.moretcon.traits.traits.unique.Autoloading;
 import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
@@ -79,6 +81,7 @@ import com.existingeevee.moretcon.traits.traits.unique.Hailshot;
 import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
 import com.existingeevee.moretcon.traits.traits.unique.Offense;
 import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
+import com.existingeevee.moretcon.traits.traits.unique.Polyshot;
 import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
 import com.existingeevee.moretcon.traits.traits.unique.TripleShot;
@@ -165,6 +168,11 @@ public class ModTraits {
 	public static Searing searing2 = new Searing(2);
 	public static EulersWrath eularsWrath = new EulersWrath();
 	public static PlasmaMissiles plasmaMissiles = new PlasmaMissiles();
+	public static Approximate approximate = new Approximate(1);
+	public static Approximate approximate2 = new Approximate(2);
+	public static Polyshot polyshot = new Polyshot();
+
+	public static PolyshotProj polyshotProj = new PolyshotProj();
 	
 	public static MatterReconstructionGel repair;
 

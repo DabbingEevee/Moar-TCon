@@ -168,6 +168,10 @@ public class ModMaterials implements MaterialTypes {
 			MiscUtils.createNonConflictiveName("dematerializer"), 0xbae7ff, "tconstruct:bow_limb",
 			"tconstruct:longbow");
 
+	public static final UniqueMaterial materialShotgun = new UniqueMaterial(
+			MiscUtils.createNonConflictiveName("shotgun"), 0xefefef, "tconstruct:tough_binding",
+			"tconstruct:crossbow");
+	
 	private static void initMats() {
 		BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
 
@@ -745,6 +749,9 @@ public class ModMaterials implements MaterialTypes {
 				TinkerRegistry.addMaterialStats(materialIoximite, new BatteryCellMaterialStats(100000));
 			}
 			CompositeRegistry.registerComposite(() -> materialVoidSpar, () -> materialIoximite, () -> ModFluids.liquidFusionite);
+
+			TinkerRegistry.addMaterialStats(materialShotgun, new ExtraMaterialStats(1024));
+			materialShotgun.addTrait(ModTraits.polyshot); 
 		}
 		if (CompatManager.aether_legacy) { // TODO add unique toolparts for various aether artifacts
 			materialZanite.addItem("gemZanite", 1, Material.VALUE_Ingot);
@@ -1043,7 +1050,7 @@ public class ModMaterials implements MaterialTypes {
 
 			TinkerRegistry.addMaterialStats(materialWormed, new HeadMaterialStats(1024, 1f, 4f, 1));
 			materialWormed.addTrait(ModTraits.wormed);
-
+			
 			materialAncientAlloy.setFluid(ModFluids.liquidAncientAlloy);
 			materialAncientAlloy.addCommonItems("AncientAlloy");
 			materialAncientAlloy.setCastable(true);
@@ -1106,6 +1113,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialVengeance, null);
 			ModMaterials.registerMaterial(materialDematerializer, null);
 			ModMaterials.registerMaterial(materialIoximite, null);
+			ModMaterials.registerMaterial(materialShotgun, null);
 		}
 		if (CompatManager.tic3backport) {
 			ModMaterials.registerMaterial(materialNahuatl, null);

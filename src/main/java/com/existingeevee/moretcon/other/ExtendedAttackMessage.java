@@ -12,8 +12,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ExtendedAttackMessage implements IMessage, IMessageHandler<ExtendedAttackMessage, IMessage> {
 
-	static final String ticksSinceLastSwing = "field_184617_aD";
-
 	int entID = -1;
 
 	public ExtendedAttackMessage() {
