@@ -9,6 +9,8 @@ import com.existingeevee.moretcon.block.ISimpleBlockItemProvider;
 import com.existingeevee.moretcon.block.ore.IBedrockMineable;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.inits.ModItems;
+import com.existingeevee.moretcon.item.ItemIonstoneBlock;
+import com.existingeevee.moretcon.item.ItemVacuuiteBlock;
 import com.existingeevee.moretcon.other.ClusterTickingHandler;
 import com.existingeevee.moretcon.other.ClusterTickingHandler.IClusterType;
 import com.existingeevee.moretcon.other.ClusterTickingHandler.IClusterable;
@@ -133,6 +135,14 @@ public class BlockBase extends Block implements ISimpleBlockItemProvider, IBedro
 
 	@Override
 	public ItemBlock createBlockItem() {
+		if (this == ModBlocks.blockIonstone) {
+			return new ItemIonstoneBlock(this);
+		}
+		
+		if (this == ModBlocks.blockVacuuite) {
+			return new ItemVacuuiteBlock(this);
+		}
+		
 		if (this == ModBlocks.blockErythynite || this == ModBlocks.oreErythynite) {
 			return new ItemBlock(this) {
 				@Override
@@ -195,7 +205,6 @@ public class BlockBase extends Block implements ISimpleBlockItemProvider, IBedro
 		return this;
 	}
 
-//CUTOUT_MIPPED 
 	@Override
 	public IClusterType getType() {
 		if (this instanceof ISimpleClusterable)

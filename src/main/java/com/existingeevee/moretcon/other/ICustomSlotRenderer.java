@@ -25,6 +25,10 @@ public interface ICustomSlotRenderer {
 	@SideOnly(Side.CLIENT)
 	void render(ItemStack stack, int x, int y, IBakedModel bakedmodel);
 
+	@SideOnly(Side.CLIENT)
+	default void postRender(ItemStack stack, int x, int y, IBakedModel bakedmodel) {
+	}
+	
 	public static final ResourceLocation CIRCLE_GLOW = new ResourceLocation(ModInfo.MODID, "other/bg_glow_circle");
 	public static final ResourceLocation EXTREME_GLOW = new ResourceLocation(ModInfo.MODID, "other/bg_glow_extreme");
 	public static final ResourceLocation BIG_CIRCLE_GLOW = new ResourceLocation(ModInfo.MODID, "other/bg_glow_circle_big");

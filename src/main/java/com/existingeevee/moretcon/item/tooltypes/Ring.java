@@ -70,7 +70,7 @@ public class Ring extends TinkerToolCore implements IBauble {
 				ToolHelper.damageTool(itemstack, 1, player);
 			}
 
-			if (!shouldTick(player) || ToolHelper.isBroken(itemstack)) {
+			if (!shouldTick(player, itemstack) || ToolHelper.isBroken(itemstack)) {
 				return;
 			}
 			for (ITrait t : ToolHelper.getTraits(itemstack)) {
@@ -81,15 +81,21 @@ public class Ring extends TinkerToolCore implements IBauble {
 		}
 	}
 
-	private boolean shouldTick(EntityLivingBase player) {
+	private boolean shouldTick(EntityLivingBase player, ItemStack stack) {
 		if (player instanceof EntityPlayer) {
 			IBaublesItemHandler handler = BaublesApi.getBaublesHandler((EntityPlayer) player);
 			int count = 0;
+			boolean found = false;
 			for (int i = 0; i < handler.getSlots(); i++) {
 				if (handler.getStackInSlot(i).getItem() instanceof Ring) {
+					if (handler.getStackInSlot(i) == stack)
+						found = true;
 					count++;
 				}
 			}
+			if (!found) //make sure its actually in the bauble inventory
+				return false;
+			
 			return player.getEntityWorld().getWorldTime() % (count * count) == 0;
 		}
 		return false;

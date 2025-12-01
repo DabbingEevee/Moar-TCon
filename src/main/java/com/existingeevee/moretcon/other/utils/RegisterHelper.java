@@ -83,6 +83,9 @@ public class RegisterHelper {
 	}
 
 	public static void registerItem(Item item) {
+		if (item == null) {
+			return; // Skip registration if item is null
+		}
 		String name = item.getUnlocalizedName().replaceFirst("item." + ModInfo.MODID + ".", "");
 		if (item instanceof ItemBase) {
 			item.setCreativeTab(((ItemBase) item).getTab());

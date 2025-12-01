@@ -21,7 +21,7 @@ import slimeknights.tconstruct.library.tools.IToolPart;
 public class ModExtraArmorTraitDisplay2 extends Modifier implements IModifierDisplay {
 
 	public ModExtraArmorTraitDisplay2() {
-		super(ModExtraTrait2.EXTRA_TRAIT_IDENTIFIER);
+		super(ModExtraTrait2.EXTRA_TRAIT_IDENTIFIER + "_armor");
 	}
 
 	@Override

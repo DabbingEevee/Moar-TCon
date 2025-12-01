@@ -49,7 +49,8 @@ fluid.moretcon.liquidgeodesium=Molten Geodesium
 item.moretcon.betweenifiedmodifier.desc=Betweenified Modifier
 item.moretcon.crushingmodifier.desc=Crushing Modifier
 item.moretcon.autocritmodifier.desc=Autocrit Modifier
-item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage or 10% of the durability on it, whichever is greater.
+item.moretcon.matterreconstructiongel.desc=Adding this to any tool will repair 256 damage or 50% of the durability on it, whichever is greater.
+item.moretcon.matterdeconstructiongel.desc=Adding this to any tool will damage it down to 1 durability.
 item.moretcon.repitem.desc=This material is a composite. Craft the base toolparts, and then pour the catalyst on using a casting table.
 item.reforgestone.desc=When applied to a tool:
 
@@ -138,6 +139,9 @@ item.moretcon.gemvoidspar.name=Void Spar
 item.moretcon.gemelectarite.name=Electarite
 item.moretcon.gemmonolite.name=Monolite
 item.moretcon.gemperimidum.name=Perimidum
+item.moretcon.gemanthracite.name=Anthracite
+item.moretcon.gemionstone.name=Ionstone
+item.moretcon.gemvacuuite.name=Vacuuite
 
 item.moretcon.hydrogenrichredstonepowder.name=Hydrogen Rich Redstone Powder
 item.moretcon.solidlightning.name=Solid Lightning
@@ -171,6 +175,8 @@ item.moretcon.ingotgeodesium.name=Geodesium Ingot
 item.moretcon.itemsiltclay.name=Silt Clay
 item.moretcon.lightning.name=Lightning
 item.moretcon.matterreconstructiongel.name=Matter Reconstruction Gel
+item.moretcon.matterdeconstructiongel.name=Matter Deconstruction Gel
+
 item.moretcon.nuggetarkenium.name=Arkenium Nugget
 item.moretcon.nuggetatronium.name=Atronium Nugget
 item.moretcon.nuggetfusionite.name=Fusionite Nugget
@@ -263,6 +269,9 @@ material.moretcon.porksteel.name=Porksteel
 material.moretcon.perimidum.name=Perimidum
 material.moretcon.geodesium.name=Geodesium
 material.moretcon.brinkstone.name=Brinkstone
+material.moretcon.anthracite.name=Anthracite
+material.moretcon.ionstone.name=Ionstone
+material.moretcon.vacuuite.name=Vacuuite
 
 material.uniquetoolpart.name=Unique
 
@@ -384,6 +393,7 @@ modifier.moretcon.weightless.name=Weightless
 modifier.moretcon.shielding.desc=§omoar Armor? Lets gooooo!!!§r\nYour tool provides +4 armor when held or worn on an armor slot.
 modifier.moretcon.shielding.name=Warding
 modifier.moretcon.extratrait2.name=Embossment II
+modifier.moretcon.extratrait2_armor.name=Embossment II
 modifier.moretcon.extratrait2.desc=§oIf embossment is so good why isn't there an embossment 2§r\nEmbossed with the power of %s, obtaining some of its traits.
 modifier.moretcon.electrified.name=Electrified
 modifier.moretcon.electrified.desc=§oUNLIMITED POWAH!!!!!!§r\nYour tool can build up and eventually discharge damaging amounts of electric current in targets.
@@ -459,6 +469,12 @@ modifier.moretcon.reforged_projectile.name=Reforged
 modifier.moretcon.reforged_projectile.desc=§oWHAT??! WHY??§r\nYour projectile will gain stat bonuses of any ranged reforges on your launcher. 
 modifier.moretcon.stormcaller.name=Stormcaller 
 modifier.moretcon.stormcaller.desc=§oZEUS!! GIVE ME POWAHHH!!§r\nYour tool will call down lightning during rain, granting a massive overall boost.
+modifier.moretcon.embering.name=Embering 
+modifier.moretcon.embering.desc=§oFrom a single spark...§r\nYour tool will retain embers. Embers collected grant additional fire damage on attack and blocking.
+modifier.moretcon.voltrend.name=Voltrend 
+modifier.moretcon.voltrend.desc=§oOne coulumb of electrons, ionize this man.§r\nYour tool will occasionally cause targets to become electrically charged, dealing damage over time as well as amplifying incoming damage.
+modifier.moretcon.nulltouched.name=Nulltouched 
+modifier.moretcon.nulltouched.desc=§oVisions of the beyond...§r\nYour tool deal additional void damage.
 
 modifier.moretcon.galvanized_armor.name=Galvanized 
 modifier.moretcon.galvanized_armor.desc=§oMORE DAMAGEEEEE§r\nYour armor will grant you additional attack damage.
@@ -745,6 +761,10 @@ tile.moretcon.blockmonolite.name=Block of Monolite
 tile.moretcon.blockporksteel.name=Block of Porksteel
 tile.moretcon.blockperimidum.name=Block of Perimidum
 tile.moretcon.blockgeodesium.name=Block of Geodesium
+tile.moretcon.blockanthracite.name=Block of Anthracite
+tile.moretcon.blockionstone.name=Block of Ionstone
+tile.moretcon.blockvacuuite.name=Block of Vacuuite
+
 tile.moretcon.blockreforgestation.name=Reforge Station
 tile.moretcon.blockcobbledbedrock.name=Cobbled Bedrock
 tile.moretcon.blockcobbledbetweenbedrock.name=Cobbled Betweenlands Bedrock
@@ -814,6 +834,10 @@ tile.moretcon.orezracohlium.name=Zracohlium Ore
 tile.moretcon.oremonolite.name=Monolite Ore
 tile.moretcon.oreperimidum.name=Perimidum Cluster
 tile.moretcon.oregeodesium.name=Geodesium Ore
+tile.moretcon.oreanthracite.name=Anthracite Ore
+tile.moretcon.oreionstone.name=Ionstone Ore
+tile.moretcon.oregalliumethereal.name=Ethereal Gallium Ore
+tile.moretcon.orevacuuite.name=Vacuuite Ore
 
 tile.moretcon.rottensludge.name=Rotten Sludge
 
@@ -844,6 +868,38 @@ uniquetoolpart.moretcon.inertial_redirector.name=Inertial Redirector
 gui.moretcon.reforgestation.name=Reforge Station
 gui.moretcon.reforgestation.info=Here you can reforge your tools for a small additional boost in power!\n\nTo reforge a tool, simply place it into the left slot with some material it can be repaired with. You can optionally add a reforge stone to get unusual reforges too!  
 gui.error.invalid_reforge_material=This tool cannot be reforged using %s!
+
+jei_info.melt_mummy.desc=Obtained by melting down a Dreadful Peat Mummy.
+
+jei_info.orefusionite.desc=Found extremely rarely in all stonebearing dimensions from y = 1 <-> 6.
+jei_info.orefusionitebedrock.desc=Found extremely rarely in all bedrockbearing dimensions  in the lower bedrock layer. \n\nMust be mined with a tool with "Bottom's End".
+jei_info.oreirradium.desc=Found more or less commonly in all stonebearing dimensions from y = 12 <-> 32.
+jei_info.orevoidspar.desc=Found rare-ish-ly in all stonebearing dimensions from y = 1 <-> 3.
+jei_info.orevoidsparbedrock.desc=Found rare-ish-ly commonly in all bedrockbearing dimensions in the lower bedrock layer. \n\nBedrock varient must be mined with a tool with "Bottom's End".
+jei_info.oreenderal.desc=Found rare-ish-ly in all endstone-bearing dimensions from y = 12 <-> 32.
+jei_info.oregallium.desc=Found very rarely in all stonebearing dimensions from y = 12 <-> 24.
+jei_info.oreechostone.desc=Found rare-ish-ly in all endstone-bearing dimensions from y = 12 <-> 48 or in floating shards. Shards are generated approx. one in 750 chunks within the end.
+jei_info.oregarstone.desc=Found extremely rarely in all stonebearing dimensions from y = 75 <-> 100.
+jei_info.oregravitonium.desc=Found astronomically rarely in the end inside of floating asteroids. Asteroids are generated approx. one in 125 chunks.
+jei_info.oreigniglomerate.desc=Found rarely in The Nether within the lava lake.
+jei_info.orebloodstone.desc=Found commonly in The Nether above the bedrock roof. \n\nMust be mined with a tool with "Bottom's End".
+jei_info.oreebonite.desc=Found very rarely in all bedrockbearing dimensions in the lower bedrock layer. \n\nMust be mined with a tool with "Bottom's End".
+jei_info.oreerythynite.desc=Found very rarely in The Nether in nether prisms which generates from y = 160 <-> 224
+jei_info.oreetherstone.desc=Found rarely in The End within the otherstone layer from y = 199 <-> 201. \n\nMust be mined with a tool with "Etheral Harvest".
+jei_info.oreelectarite.desc=Found more or less commonly in all stonebearing dimensions from y = 24 <-> 48. \n\nDoes not spawn exposed to air.
+jei_info.orehallowsite.desc=Found more or less commonly in all netherrack-bearing dimensions from y = 45 <-> 90.
+jei_info.orezracohlium.desc=Found rare-ish-ly in all endstone-bearing dimensions from y = 24 <-> 72. \n\nDoes not spawn exposed to air.
+jei_info.oremonolite.desc=Found astronomically rarely in the end inside of floating shards. Shards are generated approx. one in 750 chunks.
+jei_info.oreperimidum.desc=Found rarely in the helltop isles on The Nether's roof in glowing crystals crystals.
+jei_info.oregeodesium.desc=Found rare-ish-ly within the stone of the helltop isles on The Nether's roof.
+jei_info.oreanthracite.desc=Found more or less commonly within the stone of the helltop isles on The Nether's roof.
+jei_info.oreionstone.desc=Found extremely rarely in The End in the ethereal stone from y = 199 <-> 201. \n\nMust be mined with a tool with "Etheral Harvest".
+jei_info.oregalliumethereal.desc=Found extremely rarely in The End in the ethereal stone from y = 199 <-> 201. \n\nMust be mined with a tool with "Etheral Harvest".
+jei_info.orearkenium.desc=Found rarely in all holystone-bearing dimensions from y = 5 <-> 250.
+
+
+jei_info.solid_lightning.desc=Created by placing an Electarite Block above y = 245 during a thunderstorm...
+jei_info.orefusionite.desc=
 
 booltracker.active.name=Active
 booltracker.inactive.name=Inactive

@@ -4,6 +4,7 @@ import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.compat.betweenlands.BLItems;
 import com.existingeevee.moretcon.entity.EntityInit;
 import com.existingeevee.moretcon.inits.ModTools;
+import com.existingeevee.moretcon.item.ItemMDGel;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.MaterialClient;
 import com.existingeevee.moretcon.other.BookTransformerAppendTools;
@@ -43,6 +44,7 @@ public class ClientProxy extends CommonProxy {
 		event.getMap().registerSprite(ICustomSlotRenderer.OVAL_GLOW);
 		event.getMap().registerSprite(ICustomSlotRenderer.BIG_CIRCLE_GLOW);
 		event.getMap().registerSprite(ICustomSlotRenderer.EXTREME_GLOW);
+		event.getMap().registerSprite(ItemMDGel.MDGelGuiParticleRenderer.DOT);
 	}
 
 	@Override

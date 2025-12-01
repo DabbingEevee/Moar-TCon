@@ -21,6 +21,6 @@ public class JeiInformationContainer<T> extends JeiCustomContainer {
 
 	@Override
 	public void onRun(IModRegistry r) {
-		r.addIngredientInfo(stack, ingredient, information);
+		r.addIngredientInfo(stack, ingredient, "jei_info." + information + ".desc");
 	}
 }

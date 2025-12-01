@@ -1,3 +1,12 @@
 {
-  "parent": "moretcon:block/blockotherstone"
+  "parent": "moretcon:block/blockotherstone",
+  "textures": {
+    "down": "moretcon:blocks/blockotherstoneitem",
+    "up": "moretcon:blocks/blockotherstoneitem",
+    "north": "moretcon:blocks/blockotherstoneitem",
+    "east": "moretcon:blocks/blockotherstoneitem",
+    "south": "moretcon:blocks/blockotherstoneitem",
+    "west": "moretcon:blocks/blockotherstoneitem",
+    "particle": "moretcon:blocks/blockotherstoneitem"
+  }
 }

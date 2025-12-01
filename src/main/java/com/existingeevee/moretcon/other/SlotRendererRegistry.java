@@ -2,6 +2,8 @@ package com.existingeevee.moretcon.other;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -31,7 +33,7 @@ public class SlotRendererRegistry {
 			list.add((ICustomSlotRenderer) item.getItem());
 		}
 
-		for(Pair<Predicate<ItemStack>, ICustomSlotRenderer> p : PREDICATES) {
+		for (Pair<Predicate<ItemStack>, ICustomSlotRenderer> p : PREDICATES) {
 			if (p.getKey().test(item)) {
 				list.add(p.getValue());
 			}
@@ -40,14 +42,40 @@ public class SlotRendererRegistry {
 		return list;
 	}
 
+	public static final ThreadLocal<LinkedList<ICustomSlotRenderer>> RENDERED = new ThreadLocal<>();
+
 	public static void render(ItemStack stack, int x, int y, IBakedModel bakedmodel) {
 		Collection<ICustomSlotRenderer> renderers = get(stack);
+
+		LinkedList<ICustomSlotRenderer> rendered = new LinkedList<>();
+		boolean renderedAny = false;
 
 		for (ICustomSlotRenderer renderer : renderers) {
 			if (renderer.shouldRender(stack)) {
 				renderer.render(stack, x, y, bakedmodel);
+				rendered.add(renderer);
+				renderedAny = true;
 			}
+		}
+
+		if (renderedAny) {
+			RENDERED.set(rendered);
 		}
 	}
 
+	public static void postRender(ItemStack stack, int x, int y, IBakedModel bakedmodel) {
+		LinkedList<ICustomSlotRenderer> rendered = RENDERED.get();
+
+		if (rendered == null) {
+			return;
+		}
+
+		RENDERED.remove();
+
+		Iterator<ICustomSlotRenderer> it = rendered.descendingIterator();
+
+		while (it.hasNext()) {
+			it.next().postRender(stack, x, y, bakedmodel);
+		}
+	}
 }

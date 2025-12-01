@@ -33,8 +33,7 @@ public class OreDictionaryInit {
 		
 		if (CompatManager.loadMain) {
 			registerOre("blockFusionite", ModBlocks.blockFusionite);
-			registerOre("oreFusionite", ModBlocks.oreFusionite);
-			registerOre("oreFusionite", ModBlocks.oreBedrockFusionite);
+			registerOre("oreFusionite", ModBlocks.oreFusionite, ModBlocks.oreBedrockFusionite);
 			registerOre("ingotFusionite", ModItems.ingotFusionite);
 			registerOre("nuggetFusionite", ModItems.nuggetFusionite);
 
@@ -61,7 +60,7 @@ public class OreDictionaryInit {
 			registerOre("nuggetSteel", ModItems.nuggetSteel);
 
 			registerOre("blockGallium", ModBlocks.blockGallium);
-			registerOre("oreGallium", ModBlocks.oreGallium);
+			registerOre("oreGallium", ModBlocks.oreGallium, ModBlocks.oreGalliumEthereal);
 			registerOre("ingotGallium", ModItems.ingotGallium);
 			registerOre("nuggetGallium", ModItems.nuggetGallium);
 
@@ -110,8 +109,7 @@ public class OreDictionaryInit {
 
 			registerOre("blockVoidSpar", ModBlocks.blockVoidSpar);
 			registerOre("gemVoidSpar", ModItems.gemVoidSpar);
-			registerOre("oreVoidSpar", ModBlocks.oreVoidSpar);
-			registerOre("oreVoidSpar", ModBlocks.oreNaturalVoidSpar);
+			registerOre("oreVoidSpar", ModBlocks.oreVoidSpar, ModBlocks.oreNaturalVoidSpar);
 
 			registerOre("blockBloodstone", ModBlocks.blockBloodstone);
 			registerOre("gemBloodstone", ModItems.gemBloodstone);
@@ -162,6 +160,14 @@ public class OreDictionaryInit {
 			registerOre("blockAnthracite", ModBlocks.blockAnthracite);
 			registerOre("gemAnthracite", ModItems.gemAnthracite);
 			registerOre("oreAnthracite", ModBlocks.oreAnthracite);
+			
+			registerOre("blockIonstone", ModBlocks.blockIonstone);
+			registerOre("gemIonstone", ModItems.gemIonstone);
+			registerOre("oreIonstone", ModBlocks.oreIonstone);
+			
+			registerOre("blockVacuuite", ModBlocks.blockVacuuite);
+			registerOre("gemVacuuite", ModItems.gemVacuuite);
+			registerOre("oreVacuuite", ModBlocks.oreVacuuite);
 			
 			registerOre("stone", ModBlocks.blockBrinkstone, ModBlocks.blockDarkBrinkstone);
 			registerOre("brinkstone", ModBlocks.blockBrinkstone, ModBlocks.blockDarkBrinkstone);

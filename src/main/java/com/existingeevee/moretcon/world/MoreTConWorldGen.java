@@ -8,6 +8,7 @@ import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.world.generators.AetherOreGenerator;
 import com.existingeevee.moretcon.world.generators.AsteroidGenerator;
+import com.existingeevee.moretcon.world.generators.EtheralBottomlayerGenerator;
 import com.existingeevee.moretcon.world.generators.EtheralToplayerGenerator;
 import com.existingeevee.moretcon.world.generators.HelltopIslandsGenerator;
 import com.existingeevee.moretcon.world.generators.IgniglomerateGenerator;
@@ -37,6 +38,7 @@ public class MoreTConWorldGen implements IWorldGenerator {
 			// Loaded first
 			if (ConfigHandler.invasiveWorldgen) {
 				modifiers.add(new EtheralToplayerGenerator());
+				modifiers.add(new EtheralBottomlayerGenerator());
 			}
 
 			// Order dosent really matter at this point

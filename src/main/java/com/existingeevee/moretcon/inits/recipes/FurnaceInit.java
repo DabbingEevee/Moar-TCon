@@ -3,14 +3,18 @@ package com.existingeevee.moretcon.inits.recipes;
 import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.inits.ModBlocks;
 import com.existingeevee.moretcon.inits.ModItems;
+import com.existingeevee.moretcon.inits.ModMaterials;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.utils.CompatManager;
 import com.existingeevee.moretcon.other.utils.RegisterHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import slimeknights.tconstruct.library.tools.ToolPart;
 import twilightforest.item.TFItems;
 
 public class FurnaceInit {
@@ -74,6 +78,24 @@ public class FurnaceInit {
 		GameRegistry.addSmelting(new ItemStack(ModItems.rawPorksteel, 1), new ItemStack(ModItems.cookedPorksteel, 1), 0F);
 		GameRegistry.addSmelting(new ItemStack(ModItems.cookedPorksteel, 1), new ItemStack(ModItems.ingotPorksteel, 1), 0F);
 		GameRegistry.addSmelting(new ItemStack(ModBlocks.oreGravitoniumDense, 1), new ItemStack(ModItems.ingotGravitonium, 4), 0F);
+		
+		GameRegistry.registerFuelHandler(new IFuelHandler() {
+			@Override
+			public int getBurnTime(ItemStack fuel) { 
+ 				if (fuel.getItem() == ModItems.gemAnthracite) {
+ 					return 4000;
+ 				}
+ 				if (fuel.getItem() == Item.getItemFromBlock(ModBlocks.blockAnthracite)) {
+ 					return 40000;
+ 				}
+ 				
+ 				if (fuel.getItem() instanceof ToolPart && ((ToolPart) fuel.getItem()).getMaterial(fuel) == ModMaterials.materialAnthracite) {
+ 					return Math.round(((ToolPart) fuel.getItem()).getCost() / 144f * 4000);
+ 				}
+ 				
+				return -1;
+			}
+		});
 	}
 
 	public static void initAL() {

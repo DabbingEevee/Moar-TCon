@@ -81,7 +81,7 @@ public class MoreTCon {
 	}
 	
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event) {		
 		CompatManager.init();
 		SoundHandler.registerInit();
 		NetworkHandler.init();

@@ -33,7 +33,6 @@ public class ModExtraArmorTrait2 extends ArmorModifier {
     public final Set<ArmorCore> armorCores;
     private final Collection<ITrait> traits;
 
-
     public ModExtraArmorTrait2(Material material, Collection<ITrait> traits) {
         this(material, traits, generateIdentifier(material, traits));
     }

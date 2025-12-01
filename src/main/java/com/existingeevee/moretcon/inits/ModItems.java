@@ -4,9 +4,11 @@ import com.existingeevee.moretcon.config.ConfigHandler;
 import com.existingeevee.moretcon.devtools.ItemDebugTool;
 import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.item.ItemCompositeRep;
+import com.existingeevee.moretcon.item.ItemMDGel;
 import com.existingeevee.moretcon.item.ItemNoGravity;
 import com.existingeevee.moretcon.item.ItemNonflamable;
 import com.existingeevee.moretcon.item.ItemReforgeStone;
+import com.existingeevee.moretcon.item.ItemShakeRender;
 import com.existingeevee.moretcon.other.ICustomSlotRenderer.GlowType;
 import com.existingeevee.moretcon.other.ModTabs;
 import com.existingeevee.moretcon.other.utils.CompatManager;
@@ -146,17 +148,20 @@ public class ModItems {
 	public static final Item gemMonolite = new ItemBase("gemMonolite", GlowType.CIRCLE_BIG, 0x4a74f0);
 	public static final Item gemPerimidum = new ItemBase("gemPerimidum", GlowType.CIRCLE_BIG, 0xdfd3ff);
 	public static final Item gemAnthracite = new ItemBase("gemAnthracite");
+	public static final Item gemIonstone = new ItemShakeRender("gemIonstone", GlowType.CIRCLE_BIG, 0xb4e5ff).withShakeIntensity(0.5f);
+	public static final Item gemVacuuite = new ItemBase("gemVacuuite", 0x300a6a);
 
 	//Ingriedients
 	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);
-	public static final Item spaceTimeDisruptionPowder = new ItemBase("spaceTimeDisruptionPowder", GlowType.CIRCLE_BIG, 0).setTab(ModTabs.moarTConMisc);
+	public static final Item spaceTimeDisruptionPowder = new ItemShakeRender("spaceTimeDisruptionPowder", GlowType.CIRCLE_BIG, 0).withSpinSpeed(12.5f).setTab(ModTabs.moarTConMisc);
 	public static final Item hydrogenRichRedstonePowder = new ItemBase("hydrogenRichRedstonePowder", GlowType.CIRCLE_BIG, 0xff0000).setTab(ModTabs.moarTConMisc);
 	public static final Item crushedShockwaveSword = new ItemBase("crushedShockwaveSword").setTab(ModTabs.moarTConMisc);
 	public static final Item matterReconstructionGel = new ItemBase("matterReconstructionGel").setTab(ModTabs.moarTConMisc);
+	public static final Item matterDeconstructionGel = new ItemMDGel().setTab(ModTabs.moarTConMisc).withType(GlowType.CIRCLE_BIG).withColor(0x460000);
 	public static final Item sulfurBucketSyrmorite = new ItemBase("sulfurBucketSyrmorite").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item sulfurBucketIron = new ItemBase("sulfurBucketIron").setTab(ModTabs.moarTConMisc).setMaxStackSize(1);
 	public static final Item betweenicCore = new ItemBase("betweenicCore", 0x3a2f24).setTab(ModTabs.moarTConMisc);
-	public static final Item solidLightning = new ItemBase("solidLightning", 0xb4e5ff).setTab(ModTabs.moarTConMisc);
+	public static final Item solidLightning = new ItemShakeRender("solidLightning", 0xb4e5ff).withShakeIntensity(0.5f).setTab(ModTabs.moarTConMisc);
 
 	//Modifier items
 	public static final Item betweenifiedModifier = new ItemBase("betweenifiedModifier").setTab(ModTabs.moarTConMisc);
@@ -260,10 +265,13 @@ public class ModItems {
 					gemMonolite,
 					gemPerimidum,
 					gemAnthracite,
+					gemIonstone,
+					gemVacuuite,
 
 					crushingModifier,
 					autocritModifier,
 					matterReconstructionGel,
+					matterDeconstructionGel,
 					carbonPile,
 					rawSteel,
 					rawPorksteel, 

@@ -34,7 +34,7 @@ public class Weightless extends AbstractArmorTrait implements IAdditionalTraitMe
 	public void onLivingUpdateEvent(LivingUpdateEvent e) {
 		EntityLivingBase entity = e.getEntityLiving();
 
-		if (entity.isElytraFlying() || (entity instanceof EntityPlayer && ((EntityPlayer) entity).capabilities.isFlying))
+		if (entity.isElytraFlying() || (entity instanceof EntityPlayer && ((EntityPlayer) entity).capabilities.isFlying) || entity.onGround)
 			return;
 		
 		double gravity = WorldGravityUtils.getWorldGravitiationalAcceleration(e.getEntityLiving().world, entity.getPositionVector());

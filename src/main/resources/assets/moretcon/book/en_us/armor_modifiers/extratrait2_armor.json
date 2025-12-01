@@ -1,0 +1,18 @@
+{
+  "armormodifier": "moretcon.extratrait2_armor",
+  "text": [
+    {
+      "text": "This is like a regular embossment, but you can do it again. "
+    }
+  ],
+  "effects": [
+    "Adds traits of another part",
+    "Same as regular embossments",
+    "But also compatible with regular embossments",
+    "Requires no modifier",
+    "Insanely epic :3"
+  ],
+  "demoArmor": [
+    "conarm:chestplate"
+  ]
+}

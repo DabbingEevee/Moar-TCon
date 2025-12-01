@@ -63,17 +63,23 @@ public class ModTools {
 			RegisterHelper.registerItem(explosiveCharge);
 
 			toolBomb = tryMakeToolInstance("Bomb");
-			RegisterHelper.registerItem(toolBomb);
+			if (toolBomb != null) {
+				RegisterHelper.registerItem(toolBomb);
+			}
 		}
 
 		if (CompatManager.aether_legacy && ConfigHandler.enableGauntlet) {
 			toolGauntlet = tryMakeToolInstance("Gauntlet"); // new Gauntlet();
-			RegisterHelper.registerItem(toolGauntlet);
+			if (toolGauntlet != null) {
+				RegisterHelper.registerItem(toolGauntlet);
+			}
 		}
 
 		if (CompatManager.baubles && ConfigHandler.enableRing) {
 			toolRing = tryMakeToolInstance("Ring");
-			RegisterHelper.registerItem(toolRing);
+			if (toolRing != null) {
+				RegisterHelper.registerItem(toolRing);
+			}
 		}
 
 		if (CompatManager.thebetweenlands && ConfigHandler.registerBetweenTinkerTools) {
@@ -93,19 +99,29 @@ public class ModTools {
 			RegisterHelper.registerItem(betweenBowLimb);
 
 			toolBetweenAxe = tryMakeToolInstance("BetweenAxe");// = new BetweenAxe();
-			RegisterHelper.registerItem(toolBetweenAxe);
+			if (toolBetweenAxe != null) {
+				RegisterHelper.registerItem(toolBetweenAxe);
+			}
 
 			toolBetweenSword = tryMakeToolInstance("BetweenSword");// = new BetweenSword();
-			RegisterHelper.registerItem(toolBetweenSword);
+			if (toolBetweenSword != null) {
+				RegisterHelper.registerItem(toolBetweenSword);
+			}
 
 			toolBetweenShovel = tryMakeToolInstance("BetweenShovel");// = new BetweenShovel();
-			RegisterHelper.registerItem(toolBetweenShovel);
+			if (toolBetweenShovel != null) {
+				RegisterHelper.registerItem(toolBetweenShovel);
+			}
 
 			toolBetweenPick = tryMakeToolInstance("BetweenPickaxe");// = new BetweenPickaxe();
-			RegisterHelper.registerItem(toolBetweenPick);
+			if (toolBetweenPick != null) {
+				RegisterHelper.registerItem(toolBetweenPick);
+			}
 
 			toolBetweenBow = tryMakeToolInstance("BetweenBow");// = new BetweenBow();
-			RegisterHelper.registerItem(toolBetweenBow);
+			if (toolBetweenBow != null) {
+				RegisterHelper.registerItem(toolBetweenBow);
+			}
 		}
 
 		registerStencils();

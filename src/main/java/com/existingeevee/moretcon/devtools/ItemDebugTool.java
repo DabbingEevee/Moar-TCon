@@ -5,8 +5,8 @@ import java.util.List;
 import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.ModTabs;
+import com.existingeevee.moretcon.traits.ModTraits;
 
-import c4.conarm.lib.book.ArmoryBook;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,8 +15,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import slimeknights.mantle.client.book.data.BookData;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ItemDebugTool extends ItemBase {
 
@@ -64,11 +63,15 @@ public class ItemDebugTool extends ItemBase {
 				
 				//System.out.println(TinkerRegistry.getModifier("moretcon.extratrait2_armor"));
 				
-				ObfuscationReflectionHelper.setPrivateValue(BookData.class, ArmoryBook.INSTANCE, false, "initialized");
+				//((ItemShakeRender) ModItems.matterDeconstructionGel);
+				
+				MinecraftForge.EVENT_BUS.register(ModTraits.depair);
+				
+				//ObfuscationReflectionHelper.setPrivateValue(BookData.class, ArmoryBook.INSTANCE, false, "initialized");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return false;
+		return true;
 	}
 }

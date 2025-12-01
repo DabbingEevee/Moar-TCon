@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.existingeevee.moretcon.config.ConfigHandler;
+import com.existingeevee.moretcon.inits.ModBlocks;
 import com.google.common.base.Predicate;
 
 import net.minecraft.block.state.IBlockState;
@@ -106,7 +107,10 @@ public abstract class WorldGenModifier {
 												}
 
 												if (shouldSpawn) {
-													ctx.world.setBlockState(blockpos, blockToGen.getNextBlock(ctx.rand), 2);
+													IBlockState state1 = blockToGen.getNextBlock(ctx.rand);
+													if (state1.getBlock() == ModBlocks.oreVacuuite)
+														System.out.println(blockpos);
+													ctx.world.setBlockState(blockpos, state1, 2);
 												}
 											}
 										}

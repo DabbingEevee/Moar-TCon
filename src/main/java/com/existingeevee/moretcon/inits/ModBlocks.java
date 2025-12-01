@@ -22,6 +22,7 @@ import com.existingeevee.moretcon.block.blocktypes.unique.BlockVoidPrismTop;
 import com.existingeevee.moretcon.block.ore.BlockBedrockOre;
 import com.existingeevee.moretcon.block.ore.BlockBedrockOreMetal;
 import com.existingeevee.moretcon.block.ore.BlockEtherealOre;
+import com.existingeevee.moretcon.block.ore.BlockEtherealOreMetal;
 import com.existingeevee.moretcon.block.ore.BlockOre;
 import com.existingeevee.moretcon.block.ore.BlockOreMetal;
 import com.existingeevee.moretcon.other.ClusterTickingHandler.IClusterType;
@@ -57,6 +58,7 @@ public class ModBlocks {
 	public static final Block blockRuneSteel = ((BlockBase) new BlockRunesteel("blockRuneSteel", Material.IRON, 5).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block blockGallium = ((BlockBase) new BlockBase("blockGallium", Material.IRON, 5).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block oreGallium = ((BlockBase) new BlockOreMetal("oreGallium", 5, ModItems.ingotGallium).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
+	public static final Block oreGalliumEthereal = ((BlockBase) new BlockEtherealOreMetal("oreGalliumEthereal", 5, ModItems.ingotGallium).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static final Block oreArkenium = ((BlockBase) new BlockOreMetal("oreArkenium", 2, ModItems.ingotArkenium).setHardness(7.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);
 	public static final Block blockArkenium = ((BlockBase) new BlockBase("blockArkenium", Material.IRON, 2).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block blockSteel = ((BlockBase) new BlockBase("blockSteel", Material.IRON, 1).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
@@ -98,9 +100,13 @@ public class ModBlocks {
 	public static final Block orePerimidum = ((BlockBase) new BlockPerimidumOre().setHardness(9.5f).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false).setLightLevel(1);
 	public static final Block blockPerimidum = ((BlockBase) new BlockBase("blockPerimidum", Material.IRON, 5).setClusterDate(() -> (IClusterType) orePerimidum, 2).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	public static final Block blockGeodesium = ((BlockBase) new BlockBase("blockGeodesium", Material.IRON, 6).setLightLevel(1).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
-	public static final Block oreGeodesium = ((BlockBase) new BlockOreMetal("oreGeodesium", 6, ModItems.ingotGeodesium).setHardness(9.5f).setLightLevel(8).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);  
+	public static final Block oreGeodesium = ((BlockBase) new BlockOreMetal("oreGeodesium", 6, ModItems.ingotGeodesium).setHardness(9.5f).setLightLevel(12).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(false);  
 	public static final Block oreAnthracite = (new BlockOre("oreAnthracite", 5, ModItems.gemAnthracite).setHardness(12).setResistance(10).setCreativeTab(ModTabs.moarTConMaterials));
 	public static final Block blockAnthracite = ((BlockBase) new BlockBase("blockAnthracite", Material.IRON, 5).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
+	public static final Block oreIonstone = (new BlockEtherealOre("oreIonstone", 8, ModItems.gemIonstone).setHardness(40).setCreativeTab(ModTabs.moarTConMaterials));
+	public static final Block blockIonstone = ((BlockBase) new BlockBase("blockIonstone", Material.IRON, 8).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true).setLightLevel(0.5f);
+	public static final Block oreVacuuite = (new BlockEtherealOre("oreVacuuite", 8, ModItems.gemVacuuite).setHardness(40).setCreativeTab(ModTabs.moarTConMaterials));
+	public static final Block blockVacuuite = ((BlockBase) new BlockBase("blockVacuuite", Material.IRON, 8).setHardness(12).setResistance(20).setCreativeTab(ModTabs.moarTConMaterials)).canBeBeacon(true);
 	
 	public static final Block blockOtherstone = (new BlockEtherealBase("blockOtherstone", Material.ROCK, 1).setHardness(30).setCreativeTab(ModTabs.moarTConWorld));
 	public static final Block blockCobbledBedrock = (new BlockBase("blockCobbledBedrock", Material.ROCK, 4).setResistance(Float.MAX_VALUE).setHardness(40).setCreativeTab(ModTabs.moarTConWorld));
@@ -205,6 +211,11 @@ public class ModBlocks {
 					blockGeodesium,
 					oreAnthracite,
 					blockAnthracite,
+					oreIonstone,
+					blockIonstone,
+					oreGalliumEthereal,
+					oreVacuuite,
+					blockVacuuite,
 					/**-------------------------------------**/
 					blockCobbledBedrock,
 					blockBrinkstone,

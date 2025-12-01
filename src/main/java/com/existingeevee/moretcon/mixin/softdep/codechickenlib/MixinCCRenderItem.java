@@ -27,6 +27,16 @@ public abstract class MixinCCRenderItem {
 		SlotRendererRegistry.render(stack, x, y, bakedmodel);
 	}
 
+	@SideOnly(Side.CLIENT)
+	@Inject(at = @At("TAIL"), method = "renderItemModelIntoGUI", cancellable = true)
+	protected void moretcon$TAIL_Inject$renderItemModelIntoGUI(ItemStack stack, int x, int y, IBakedModel bakedmodel, CallbackInfo ci) {
+		if (!this.isValidModel(bakedmodel)) { // We only have this execute IF chickenlib is handling it
+			return; // Otherwise its handled in the vanilla RenderItem
+		}
+		
+		SlotRendererRegistry.postRender(stack, x, y, bakedmodel);
+	}
+	
 	@Shadow(remap = false)
 	abstract boolean isValidModel(IBakedModel model);
 }

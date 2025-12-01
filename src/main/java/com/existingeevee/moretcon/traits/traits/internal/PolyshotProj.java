@@ -60,7 +60,7 @@ public class PolyshotProj extends AbstractProjectileTrait {
 			if (!world.isRemote && ticProjectile.getItemStack().getItem() instanceof ProjectileCore) {
 				IS_ALREADY_PROCING.set(true);
 
-				int toShoot = random.nextInt(3) + 4;
+				int toShoot = random.nextInt(3) + 5;
 
 				UUID volleyId = UUID.randomUUID();
 

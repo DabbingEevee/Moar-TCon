@@ -247,7 +247,9 @@ public class UniqueToolpartRecipes {
 								Pair.of('L', Ingredient.fromItem(ModItems.solidLightning)),
 								Pair.of('S', new OreIngredient("netherStar")),
 								Pair.of('E', new TinkerPartIngredient(ModMaterials.materialElectarite, "tconstruct:bow_limb")),
-								Pair.of('R', Ingredient.fromStacks(new ItemStack(Blocks.END_ROD)))));
+								Pair.of('R', new TinkerPartIngredient(ModMaterials.materialIonstone, "tconstruct:tough_tool_rod"))
+							
+								));
 			}
 
 			if (canRegisterUniqueRecipe(ModMaterials.materialShotgun)) {
