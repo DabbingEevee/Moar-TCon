@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Level;
 
 import com.existingeevee.moretcon.other.MoreTConLogger;
 
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.FluidStack;
 import slimeknights.tconstruct.library.TinkerAPIException;
 import slimeknights.tconstruct.library.events.TinkerRegisterEvent;

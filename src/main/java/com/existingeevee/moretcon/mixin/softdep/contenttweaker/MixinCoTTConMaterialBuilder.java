@@ -23,7 +23,7 @@ import slimeknights.tconstruct.library.materials.Material;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.util.Pair;
 
-@Mixin(CoTTConMaterialBuilder.class)
+@Mixin(value = CoTTConMaterialBuilder.class, remap = false)
 public class MixinCoTTConMaterialBuilder {
 
 	@Shadow
