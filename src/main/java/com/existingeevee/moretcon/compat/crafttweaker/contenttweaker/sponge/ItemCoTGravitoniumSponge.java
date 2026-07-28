@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemCoTGravitoniumSponge extends ItemGravitoniumSponge implements IHasModel {
 
 	IBaseMod mod;
-	
+
 	public ItemCoTGravitoniumSponge(SpongeRecipe recipe) {
 		super(recipe);
 		this.setUnlocalizedName("item" + recipe.getRecipeName() + "sponge");
@@ -37,11 +37,14 @@ public class ItemCoTGravitoniumSponge extends ItemGravitoniumSponge implements I
 	public void setMod(IBaseMod mod) {
 		this.mod = mod;
 	}
-	
+
 	@Override
-    @SideOnly(Side.CLIENT)
-    public List<ModelResourceLocation> getModelResourceLocations(List<ModelResourceLocation> models) {
+	@SideOnly(Side.CLIENT)
+	public List<ModelResourceLocation> getModelResourceLocations(List<ModelResourceLocation> models) {
+		// yes ik that CoT has its own model system
+		// im choosing to use my own because CoT's doesnt really handle damages well
+		// mrow
 		ModelRegistryHelper.registerSponge(this);
-        return models;
-    }
+		return models;
+	}
 }

@@ -25,7 +25,7 @@ public class ItemReforgeStone extends ItemBase {
 		super(itemName, type, hex);
 		this.reforge = reforge;
 		this.maxStackSize = 1;
-		this.setTab(null);
+		this.setTab(null); 
 	}
 
 	public ItemReforgeStone(String itemName, Supplier<AbstractReforge> reforge, int hex) {

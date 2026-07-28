@@ -9,10 +9,10 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 import com.existingeevee.moretcon.compat.crafttweaker.misc.CrTAlloyRecipe;
+import com.existingeevee.moretcon.compat.crafttweaker.misc.CrTCompositeData;
 import com.existingeevee.moretcon.item.ItemCatalyst;
 import com.existingeevee.moretcon.item.ItemCatalyst.CatalyzedAlloyRegisterEvent;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
-import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
@@ -22,6 +22,7 @@ import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.TinkerRegistry;
@@ -45,7 +46,7 @@ public class CrTClassMoreTCon {
 	}
 
 	@ZenMethod
-	public static void registerComposite(String fromMaterial, String toMaterial, ILiquidStack fluid, @Optional boolean onlyOne) {
+	public static void addComposite(String toMaterial, String fromMaterial, ILiquidStack fluid, @Optional boolean onlyOne) {
 		CraftTweakerAPI.apply(new IAction() {
 			@Override
 			public void apply() {
@@ -58,12 +59,54 @@ public class CrTClassMoreTCon {
 					throw new NoSuchElementException("Unknown material: " + toMaterial);
 				}
 
-				CompositeRegistry.registerComposite(new CompositeData(() -> from, () -> to, () -> CraftTweakerMC.getFluid(fluid.getDefinition()), onlyOne));
+				CompositeRegistry.registerComposite(new CrTCompositeData(() -> from, () -> to, () -> CraftTweakerMC.getFluid(fluid.getDefinition()), onlyOne));
 			}
 
 			@Override
 			public String describe() {
 				return String.format("Registered composite material recipe for %s.", toMaterial);
+			}
+		});
+	}
+	
+	@ZenMethod
+	public static void removeComposite(String toMaterial, @Optional String fromMaterial, @Optional ILiquidStack fluid) {
+		CraftTweakerAPI.apply(new IAction() {
+			@Override
+			public void apply() {
+				Material from;
+				if (fromMaterial != null) {
+					from = TinkerRegistry.getMaterial(fromMaterial);
+					if (from == null) {
+						throw new NoSuchElementException("Unknown material: " + fromMaterial);
+					}
+				} else {
+					from = null;
+				}
+
+				Material to = TinkerRegistry.getMaterial(toMaterial);
+				if (to == null) {
+					throw new NoSuchElementException("Unknown material: " + toMaterial);
+				}
+				
+				CompositeRegistry.addCompositeBlacklist(d -> {
+					Fluid mcFluid = fluid == null ? null : CraftTweakerMC.getFluid(fluid.getDefinition());
+					if (d.getResult() == to) {
+						if (mcFluid != null && d.getCatalyst() != mcFluid) {
+							return false;
+						}
+						if (from != null && d.getFrom() != from) {
+							return false;
+						}
+						return true;
+					}
+					return false;
+				});
+			}
+
+			@Override
+			public String describe() {
+				return String.format("Removed composite material recipe for %s.", toMaterial);
 			}
 		});
 	}
@@ -91,7 +134,7 @@ public class CrTClassMoreTCon {
 		});
 	}
 
-	public static final Map<ItemCatalyst, Map<ILiquidStack, List<ILiquidStack>>> REMOVED_RECIPES = new HashMap<>();
+	public static final Map<ItemCatalyst, Map<ILiquidStack, List<ILiquidStack>>> REMOVED_CAT_ALLOY_RECIPES = new HashMap<>();
 
 	@ZenMethod
 	public static void removeCatalyzedAlloy(IItemStack catalyst, ILiquidStack output, @Optional ILiquidStack[] input) {
@@ -112,7 +155,7 @@ public class CrTClassMoreTCon {
 					throw new NoSuchElementException("Not a catalyst item: " + item.getRegistryName());
 				}
 
-				REMOVED_RECIPES.computeIfAbsent((ItemCatalyst) item, i -> new LinkedHashMap<>()).put(output, in);
+				REMOVED_CAT_ALLOY_RECIPES.computeIfAbsent((ItemCatalyst) item, i -> new LinkedHashMap<>()).put(output, in);
 			}
 
 			@Override
@@ -128,7 +171,7 @@ public class CrTClassMoreTCon {
 			return;
 		}
 
-		for (Map.Entry<ILiquidStack, List<ILiquidStack>> entry : REMOVED_RECIPES.getOrDefault(event.catalyst, new LinkedHashMap<>()).entrySet()) {
+		for (Map.Entry<ILiquidStack, List<ILiquidStack>> entry : REMOVED_CAT_ALLOY_RECIPES.getOrDefault(event.catalyst, new LinkedHashMap<>()).entrySet()) {
 
 			if (event.getRecipe().getResult().isFluidEqual(((FluidStack) entry.getKey().getInternal()))) {
 				if (entry.getValue() != null) {

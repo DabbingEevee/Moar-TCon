@@ -3,6 +3,7 @@ package com.existingeevee.moretcon.materials;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -20,6 +21,7 @@ import slimeknights.tconstruct.tools.ranged.item.BoltCore;
 public class CompositeRegistry {
 
 	private static List<CompositeData> data = new ArrayList<>();
+	private static List<Predicate<CompositeData>> filters = new ArrayList<>();
 
 	public static List<CompositeData> getData() {
 		return new ArrayList<>(data);
@@ -41,6 +43,11 @@ public class CompositeRegistry {
 	//DO NOT CALL
 	public static void onPostInit() {
 		for (CompositeData d : data) {
+			for (Predicate<CompositeData> filter : filters) {
+				if (filter.test(d))
+					continue;
+			}
+			
 			for (IToolPart t : TinkerRegistry.getToolParts()) {
 				if (!t.canUseMaterial(d.getFrom()) || !t.canUseMaterial(d.getResult()) || (t == TinkerTools.arrowShaft)) {
 					continue;
@@ -117,5 +124,9 @@ public class CompositeRegistry {
 			this.multiplier = multiplier;
 			return this;
 		}
+	}
+
+	public static void addCompositeBlacklist(Predicate<CompositeData> shouldRemove) {
+		filters.add(shouldRemove);
 	}
 }
