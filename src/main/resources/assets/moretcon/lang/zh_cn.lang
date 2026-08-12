@@ -452,7 +452,7 @@ modifier.moretcon.eulers_wrath.desc=§o因为你将它四舍五入到 3，他很
 modifier.moretcon.dematerializing.name=去物质化
 modifier.moretcon.dematerializing.desc=§o你的分子间内聚力权限已被取消 :3§r\n你的工具会将箭矢雾化为光束，完全蓄力后它将湮灭路径上的任何东西。
 modifier.moretcon.plasma_missiles.name=等离子导弹
-modifier.moretcon.plasma_missiles.desc=§o去吧，我的导弹!!!!§r\n你的工具会在命中时可能发射追踪导弹，此特质有20%的几率被触发。
+modifier.moretcon.plasma_missiles.desc=§o去吧，我的导弹!!!!§r/n你的工具会在命中时可能发射追踪导弹，此特质有20%的几率被触发。
 modifier.moretcon.macrocrystaline.name=巨晶体
 modifier.moretcon.macrocrystaline.desc=§o如此完美...§r\n你的工具喜爱完美的2的幂数，又或者其耐久可被二整除
 modifier.moretcon.macrocrystaline.extra=巨晶体：%s
@@ -788,8 +788,8 @@ tile.moretcon.blockgravitoniumfaucet.name=重力鎓浇注口
 tile.moretcon.blockcatalyzationchamber.desc=将其放置在有效的控制器下，用以催化异域配方
 tile.moretcon.blockcatalyzationchamber.name=催化室
 
-tile.moretcon.blockcobbledbedrock.name=基石
-tile.moretcon.blockcobbledbetweenbedrock.name=交错基石
+tile.moretcon.blockcobbledbedrock.name=基岩圆石
+tile.moretcon.blockcobbledbetweenbedrock.name=交错基岩圆石
 tile.moretcon.blockotherstone.name=它石
 tile.moretcon.blockbrinkstone.name=世际石
 tile.moretcon.blockdarkbrinkstone.name=暗化世际石
@@ -918,7 +918,7 @@ jei_info.orehallowsite.desc=在所有含下界岩的维度中生成，常见，�
 jei_info.orezracohlium.desc=在所有含有末影石的维度中偶尔可见，主要分布在 y = 24 <-> 72. \n\n不会生成在与空气直接接触的地方。
 jei_info.oremonolite.desc=在漂浮的碎片内部生成，罕见。碎片生成概率约为每750个区块出现一次。
 jei_info.oreperimidum.desc=在下界的顶层基岩之上，小概率生成水晶簇。
-jei_info.oregeodesium.desc=在下界岛屿的岩层中生成，偶尔可见
+jei_info.oregeodesium.desc=在下界顶层群系的岩层中生成，偶尔可见
 jei_info.oreanthracite.desc=在下界岛屿的岩层中生成，常见
 jei_info.oreionstone.desc=在末地的以太石矿石中生成，罕见，主要分布在 y = 199 <-> 201. \n\n必须使用带有 以太收割 特性的工具挖掘。
 jei_info.oregalliumethereal.desc=在末地的以太石矿石中生成，罕见，主要分布在 y = 199 <-> 201。 \n\n必须使用带有 以太收割 特性的工具挖掘。
