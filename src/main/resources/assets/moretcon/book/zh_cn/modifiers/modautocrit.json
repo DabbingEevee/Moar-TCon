@@ -1,0 +1,17 @@
+{
+  "modifier": "moretcon.modautocrit",
+  "text": [
+    {
+      "text": "哎呦，你(不是我)的骨头！"
+    }
+  ],
+  "effects": [
+    "即使不在空中，攻击也有几率对目标造成暴击",
+    "不是，哥们，你是怎么做到的？！",
+    "多个级别",
+    "无情！"
+  ],
+  "demoTool": [
+    "moretcon:blsword"
+  ]
+}

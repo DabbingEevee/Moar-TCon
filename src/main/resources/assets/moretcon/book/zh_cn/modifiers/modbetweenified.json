@@ -2,13 +2,13 @@
   "modifier": "moretcon.modbetweenified",
   "text": [
     {
-      "text": "好吧，我会自己完成它。"
+      "text": "你敢不让我用我的工具？好吧，我自己来"
     }
   ],
   "effects": [
     "允许非交错次元工具在交错次元中正常使用",
     "只能强化一次",
-    "需要 3 个强化槽"
+    "消耗 3 个强化槽"
   ],
   "demoTool": [
     "tconstruct:broadsword"
