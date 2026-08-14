@@ -29,7 +29,7 @@ public class Anguish extends AbstractTrait {
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		float x = ToolHelper.getActualDamage(tool, player);
-		float quarticComponent = Math.min(80, 0.0000007f * x * x * x * x);
+		float quarticComponent = Math.min(80, 7e-7f * x * x * x * x);
 		float naturalLogComponent = (float) Math.max(0, Math.log(x));
 		return newDamage + quarticComponent + naturalLogComponent;
 	}
