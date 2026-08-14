@@ -232,6 +232,10 @@ public class ModMaterials implements MaterialTypes {
 
 		Material.UNKNOWN.addStats(new ExplosiveMaterialStats(0.25, 1));
 
+		if (CompatManager.tinkersAntique) {
+			CompositeRegistry.registerComposite(new CompositeData(() -> TinkerMaterials.bone, () -> TinkerMaterials.bloodbone, () -> TinkerFluids.blood, false).setMultiplier(250));
+		}
+		
 		if (ConfigHandler.enableBomb) {
 			TinkerRegistry.addMaterialStats(materialGunpowder, new ExplosiveMaterialStats(3, 20));
 
