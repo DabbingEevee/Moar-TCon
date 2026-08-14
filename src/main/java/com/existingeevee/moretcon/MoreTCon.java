@@ -95,9 +95,9 @@ public class MoreTCon {
 		ModFluids.init();
 		ModFluidBlocks.init();
 		ModBlocks.init();
-		ModMaterials.init();
 		ModItems.init();
 		ModSponges.init();
+		ModMaterials.init();
 		for (MaterialIntegration integration : RegisterHelper.moreTConIntegrations) {
 			integration.preInit();
 		}
