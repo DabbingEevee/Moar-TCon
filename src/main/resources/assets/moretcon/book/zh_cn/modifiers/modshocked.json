@@ -7,8 +7,10 @@
   ],
   "effects": [
     "当弹射物落地时，电击附近的敌人",
-    "只能强化一次"
-  ],
+    "只能强化一次",
+    "滋滋！"
+  ], 
+  "instruction": "用交错次元的闪电来攻击",
   "demoTool": [
     "tconstruct:bolt",
     "tconstruct:shuriken",

@@ -1,13 +1,12 @@
 {
-  "modifier": "moretcon.modbluegem",
+  "modifier": "moretcon.modaquagem",
   "text": [
     {
       "text": "水蓝元素宝石似乎在匠魂工具上也能很好地运作……"
     }
   ],
   "effects": [
-    "在工具上：攻击时有机率削弱敌人",
-    "在护甲上：受到攻击时有几率获得防御",
+    "攻击时有机率削弱敌人",
     "与其他交错之地宝石强化不兼容",
     "只能强化一次"
   ],

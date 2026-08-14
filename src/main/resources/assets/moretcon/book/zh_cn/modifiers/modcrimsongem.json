@@ -1,13 +1,12 @@
 {
-  "modifier": "moretcon.modredgem",
+  "modifier": "moretcon.modcrimsongem",
   "text": [
     {
       "text": "猩红元素宝石似乎在匠魂工具上也能很好地运作……"
     }
   ],
   "effects": [
-    "在工具上：攻击时有机率获得力量",
-    "在护甲上：受到攻击时有几率伤害敌人",
+    "攻击时有机率获得力量",
     "与其他交错之地宝石强化不兼容",
     "只能强化一次"
   ],

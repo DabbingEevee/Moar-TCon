@@ -1,0 +1,18 @@
+{
+  "modifier": "moretcon.modcelebratory",
+  "text": [
+    {
+      "text": "放烟花庆祝咯！（当然是庆祝他们被打残了）"
+    }
+  ],
+  "effects": [
+    "命中时发生爆炸",
+    "冷却为两秒",
+    "多个等级",
+    "哇哦",
+    "等会，那是临界辐金吗？？？？"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword"
+  ]
+}
