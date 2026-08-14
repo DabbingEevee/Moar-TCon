@@ -1,12 +1,17 @@
 package com.existingeevee.moretcon.traits.traits.unique;
 
+import com.existingeevee.moretcon.other.utils.MirrorUtils;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
 import slimeknights.tconstruct.library.tools.ranged.BowCore;
@@ -53,6 +58,28 @@ public class Autoloading extends AbstractTrait {
 				event.getEntityLiving().stopActiveHand();
 			}
 		}
+	}
+	
+	private static final MirrorUtils.IField<Integer> rightClickDelayTimer$Minecraft = MirrorUtils.reflectObfusField(Minecraft.class, "field_71467_ac");
+	
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void onClientTick(TickEvent.ClientTickEvent event) {
+	    Minecraft mc = Minecraft.getMinecraft();
+
+	    if (mc.player == null) {
+	        return;
+	    }
+
+	    ItemStack stack = mc.player.getHeldItemMainhand();
+
+	    if (this.isToolWithTrait(stack)) {
+	        int delay = rightClickDelayTimer$Minecraft.get(mc);
+	        
+	        if (delay > 1) {
+	        	rightClickDelayTimer$Minecraft.set(mc, 1);
+	        }
+	    }
 	}
 }
 
