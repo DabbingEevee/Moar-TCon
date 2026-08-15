@@ -27,6 +27,9 @@ public class SmelteryInit {
 		
 		if (CompatManager.tic3backport) {
 			TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidSlimesteel, 288), new FluidStack(TinkerFluids.iron, 72), new FluidStack(TinkerFluids.blueslime, 125), new FluidStack(TinkerFluids.searedStone, 144));
+
+			TinkerRegistry.registerBasinCasting(new CastingRecipe(new ItemStack(ModBlocks.compositeSlimewood, 1), RecipeMatch.of("plankWood"), CompatManager.tinkersAntique ? TinkerFluids.greenSlime : TinkerFluids.blueslime, 144, true, false));
+			TinkerRegistry.registerBasinCasting(new CastingRecipe(new ItemStack(ModBlocks.compositeNahuatl, 1), RecipeMatch.of("plankWood"), TinkerFluids.obsidian, 144, true, false));
 		}
 		
 		if (CompatManager.loadMain) {
@@ -43,9 +46,16 @@ public class SmelteryInit {
 			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.matterDeconstructionGel, 1), RecipeMatch.of(new ItemStack(ModItems.hydrogenRichRedstonePowder)), ModFluids.liquidEbonite, Material.VALUE_Ingot * 2, true, false));
 			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.rawSteel, 1), RecipeMatch.of(new ItemStack(ModItems.carbonPile)), TinkerFluids.iron, Material.VALUE_Ingot, true, false));
 			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.rawPorksteel, 1), RecipeMatch.of(new ItemStack(ModItems.carbonPile)), TinkerFluids.pigIron, Material.VALUE_Ingot, true, false));
+
+			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.compositeEnderexamite, 1), RecipeMatch.of("gemEnderal"), TinkerFluids.knightslime, Material.VALUE_Ingot, true, false));
+			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.compositeShadowglass, 1), RecipeMatch.of("gemPerimidum"), ModFluids.liquidEbonite, Material.VALUE_Ingot, true, false));
+			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.compositeIoximite, 1), RecipeMatch.of("gemVoidSpar"), ModFluids.liquidFusionite, Material.VALUE_Ingot, true, false));
+
 		}
 		if(CompatManager.twilightforest) {
 	    	TinkerRegistry.registerEntityMelting(EntityTFPenguin.class, new FluidStack(ModFluids.liquidPenguinite, 16));
+
+	    	TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.compositeFerroherb, 1), RecipeMatch.of("ingotSteeleaf"), ModFluids.liquidIronwood, Material.VALUE_Ingot, true, false));
 		}
 		if(CompatManager.thebetweenlands) {
 			TinkerRegistry.registerMelting("gemSulfur", ModFluids.liquidBurningSulfurFlow, Material.VALUE_Ingot);
@@ -54,6 +64,8 @@ public class SmelteryInit {
 
 			TinkerRegistry.registerSmelteryFuel(new FluidStack(ModFluids.liquidBurningSulfurFlow, 8), 4);
 			TinkerRegistry.registerSmelteryFuel(new FluidStack(ModFluids.liquidEmber, 1), 64);
+			
+			TinkerRegistry.registerTableCasting(new CastingRecipe(new ItemStack(ModItems.compositeEmberlight, 1), RecipeMatch.of("gemValonite"), ModFluids.liquidEmber, Material.VALUE_Ingot, true, false));
 		}
 		if(CompatManager.aether_legacy) {
 			TinkerRegistry.registerMelting(new ItemStack(ItemsAether.valkyrie_boots, 1, 0), ModFluids.liquidValkyrieMetal, Material.VALUE_Ingot * 4);
@@ -65,6 +77,8 @@ public class SmelteryInit {
 			TinkerRegistry.registerMelting(new ItemStack(ItemsAether.valkyrie_pickaxe, 1, 0), ModFluids.liquidValkyrieMetal, Material.VALUE_Ingot * 3);
 
 			TinkerRegistry.registerMelting(new ItemStack(ItemsAether.golden_amber, 1, 0), ModFluids.liquidGoldenAmber, Material.VALUE_Ingot);
+			
+			TinkerRegistry.registerBasinCasting(new CastingRecipe(new ItemStack(ModBlocks.compositeAmberwood, 1), RecipeMatch.of("plankWood"), ModFluids.liquidGoldenAmber, 144, true, false));
 		}
 	}
 }
