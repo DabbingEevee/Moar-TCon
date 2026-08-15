@@ -914,6 +914,7 @@ public class ModMaterials implements MaterialTypes {
 
 			materialShadowglass.setCastable(false);
 			materialShadowglass.setCraftable(true);
+			materialShadowglass.materialTextColor = 0x2e4969;
 			materialShadowglass.addItem(ModItems.compositeShadowglass, 1, Material.VALUE_Ingot);
 			materialShadowglass.setRepresentativeItem(ModItems.compositeShadowglass);
 			materialShadowglass.addTrait(TinkerTraits.jagged, HEAD);
