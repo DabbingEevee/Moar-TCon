@@ -152,6 +152,13 @@ public class ModItems {
 	public static final Item gemVacuuite = new ItemBase("gemVacuuite", 0x300a6a);
 	public static final Item gemMalithyst = new ItemBase("gemMalithyst");
 
+	//Composites
+	public static final Item compositeEnderexamite = new ItemBase("compositeEnderexamite");
+	public static final Item compositeShadowglass = new ItemBase("compositeShadowglass");
+	public static final Item compositeIoximite = new ItemBase("compositeIoximite");
+	public static final Item compositeFerroherb = new ItemBase("compositeFerroherb");
+	public static final Item compositeEmberlight = new ItemBase("compositeEmberlight");
+	
 	//Ingriedients
 	public static final Item itemSiltClay = new ItemBase("itemSiltClay").setTab(ModTabs.moarTConMisc);
 	public static final Item spaceTimeDisruptionPowder = new ItemShakeRender("spaceTimeDisruptionPowder", GlowType.CIRCLE_BIG, 0).withSpinSpeed(12.5f).setTab(ModTabs.moarTConMisc);
@@ -271,6 +278,10 @@ public class ModItems {
 					gemVacuuite,
 					gemMalithyst,
 
+					compositeEnderexamite,
+					compositeShadowglass,
+					compositeIoximite,
+					
 					crushingModifier,
 					autocritModifier,
 					matterReconstructionGel,
@@ -314,7 +325,10 @@ public class ModItems {
 		if (CompatManager.twilightforest) {
 			ModItems.registerItems(
 					nuggetPenguinite,
-					ingotPenguinite);
+					ingotPenguinite,
+					
+					compositeFerroherb
+					);
 			if (ConfigHandler.shouldLoadDust && ConfigHandler.shouldLoadDustForCompatability) {
 				ModItems.registerItems(
 						dustPenguinite,
@@ -337,6 +351,8 @@ public class ModItems {
 					itemAncientScrap,
 					itemAncientSlag,
 
+					compositeEmberlight,
+					
 					itemSiltClay,
 					crushedShockwaveSword,
 

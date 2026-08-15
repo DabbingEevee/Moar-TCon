@@ -253,8 +253,10 @@ public class ModMaterials implements MaterialTypes {
 		}
 
 		if (CompatManager.tic3backport) {
-			materialNahuatl.setCastable(false);
-			materialNahuatl.setCraftable(false);
+			materialNahuatl.setCastable(false); 
+			materialNahuatl.setCraftable(true);
+			materialNahuatl.addItem(new ItemStack(ModBlocks.compositeNahuatl), 1, Material.VALUE_Ingot);
+			materialNahuatl.setRepresentativeItem(ModBlocks.compositeNahuatl);
 			materialNahuatl.addTrait(ModTraits.slicing, HEAD);
 			materialNahuatl.addTrait(ModTraits.darkened, HEAD);
 			materialNahuatl.addTrait(TinkerTraits.ecological, HEAD);
@@ -280,7 +282,9 @@ public class ModMaterials implements MaterialTypes {
 			}
 
 			materialSlimewood.setCastable(false);
-			materialSlimewood.setCraftable(false);
+			materialSlimewood.setCraftable(true);
+			materialSlimewood.addItem(new ItemStack(ModBlocks.compositeSlimewood), 1, Material.VALUE_Ingot);
+			materialSlimewood.setRepresentativeItem(ModBlocks.compositeSlimewood);
 			materialSlimewood.addTrait(ModTraits.overgrowth, HEAD);
 			materialSlimewood.addTrait(ModTraits.overslime, HEAD);
 			materialSlimewood.addTrait(TinkerTraits.ecological, HEAD);
@@ -883,6 +887,8 @@ public class ModMaterials implements MaterialTypes {
 
 			materialEnderexamite.setCastable(false);
 			materialEnderexamite.setCraftable(false);
+			materialEnderexamite.addItem(ModItems.compositeEnderexamite, 1, Material.VALUE_Ingot);
+			materialEnderexamite.setRepresentativeItem(ModItems.compositeEnderexamite);
 			materialEnderexamite.addTrait(TinkerTraits.slimeyBlue, HEAD);
 			materialEnderexamite.addTrait(ModTraits.pulsating, HEAD);
 			materialEnderexamite.addTrait(ModTraits.warding, HEAD);
@@ -907,7 +913,9 @@ public class ModMaterials implements MaterialTypes {
 			}
 
 			materialShadowglass.setCastable(false);
-			materialShadowglass.setCraftable(false);
+			materialShadowglass.setCraftable(true);
+			materialShadowglass.addItem(ModItems.compositeShadowglass, 1, Material.VALUE_Ingot);
+			materialShadowglass.setRepresentativeItem(ModItems.compositeShadowglass);
 			materialShadowglass.addTrait(TinkerTraits.jagged, HEAD);
 			materialShadowglass.addTrait(ModTraits.darkened, HEAD);
 			materialShadowglass.addTrait(TinkerTraits.unnatural);
@@ -1152,7 +1160,9 @@ public class ModMaterials implements MaterialTypes {
 			materialDematerializer.addTrait(ModTraits.dematerializing);
 
 			materialIoximite.setCastable(false);
-			materialIoximite.setCraftable(false);
+			materialIoximite.setCraftable(true);
+			materialIoximite.addItem(ModItems.compositeIoximite, 1, Material.VALUE_Ingot);
+			materialIoximite.setRepresentativeItem(ModItems.compositeIoximite);
 			materialIoximite.addTrait(ModTraits.voidic, HEAD);
 			materialIoximite.addTrait(ModTraits.bottomsEnd, HEAD);
 			materialIoximite.addTrait(ModTraits.plasmaMissiles, HEAD);
@@ -1412,7 +1422,9 @@ public class ModMaterials implements MaterialTypes {
 			}
 
 			materialAmberwood.setCastable(false);
-			materialAmberwood.setCraftable(false);
+			materialAmberwood.setCraftable(true);
+			materialAmberwood.addItem(new ItemStack(ModBlocks.compositeAmberwood), 1, Material.VALUE_Ingot);
+			materialAmberwood.setRepresentativeItem(ModBlocks.compositeAmberwood);
 			materialAmberwood.addTrait(ModTraits.aetheric);
 			materialAmberwood.addTrait(ModTraits.rootplicating, HEAD);
 			materialAmberwood.addTrait(ModTraits.treetap, HEAD);
@@ -1540,7 +1552,9 @@ public class ModMaterials implements MaterialTypes {
 			}
 
 			materialFerroherb.setCastable(false);
-			materialFerroherb.setCraftable(false);
+			materialFerroherb.setCraftable(true);
+			materialFerroherb.addItem(ModItems.compositeFerroherb, 1, Material.VALUE_Ingot);
+			materialFerroherb.setRepresentativeItem(ModItems.compositeFerroherb);
 			materialFerroherb.addTrait(TConstruct.synergy);
 			materialFerroherb.addTrait(TConstruct.twilit);
 			materialFerroherb.addTrait(TinkerTraits.ecological);
@@ -1675,7 +1689,9 @@ public class ModMaterials implements MaterialTypes {
 			}
 
 			materialEmberlight.setCastable(false);
-			materialEmberlight.setCraftable(false);
+			materialEmberlight.setCraftable(true);
+			materialEmberlight.addItem(ModItems.compositeEmberlight, 1, Material.VALUE_Ingot);
+			materialEmberlight.setRepresentativeItem(ModItems.compositeEmberlight);
 			materialEmberlight.addTrait(TinkerTraits.dense);
 			materialEmberlight.addTrait(TinkerTraits.sharp);
 			materialEmberlight.addTrait(ModTraits.hardcore);

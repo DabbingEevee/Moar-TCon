@@ -121,6 +121,10 @@ public class ModBlocks {
 	public static final Block blockPerimishroom = (new BlockBrinkstonePlant("blockPerimishroom").setLightLevel(1).setCreativeTab(ModTabs.moarTConWorld));
 	public static final Block blockDarkBrinkstone = (new BlockBase("blockDarkBrinkstone", Material.ROCK, 3).setHardness(15).setLightLevel(1).setCreativeTab(ModTabs.moarTConWorld));
 
+	public static final Block compositeNahuatl = new BlockBase("compositeNahuatl", Material.WOOD, 3).setSoundType(SoundType.STONE).setHardness(8).setResistance(69);
+	public static final Block compositeSlimewood = new BlockBase("compositeSlimewood", Material.WOOD, 3).setSoundType(SoundType.WOOD).setHardness(2).setResistance(5); 
+	public static final Block compositeAmberwood = new BlockBase("compositeAmberwood", Material.WOOD, 3).setSoundType(SoundType.WOOD).setHardness(2).setResistance(5); 
+	
 	public static final Block blockGravitoniumFaucet = new BlockGravitoniumFaucet();
 	public static final Block blockCatalyzationChamber = new BlockCatalyzationChamber();
 	public static final Block blockCragravel = ((BlockBase) new BlockFallingBase("blockCragravel", Material.GROUND, 0).setHarvestLevelC("shovel", 0).setHardness(0.6f).setResistance(0.6f)).canBeBeacon(false).setCreativeTab(ModTabs.moarTConMisc);
@@ -157,7 +161,10 @@ public class ModBlocks {
 		
 		if (CompatManager.tic3backport) {
 			ModBlocks.registerBlocks(
-					blockSlimesteel
+					blockSlimesteel,
+					
+					compositeNahuatl,
+					compositeSlimewood
 			);
 		}
 
@@ -270,7 +277,8 @@ public class ModBlocks {
 					oreArkenium,
 					blockArkenium,
 					blockGravitite,
-					blockValkyrieMetal
+					blockValkyrieMetal,
+					compositeAmberwood
 			/**-------------------------------------**/
 			);
 		}
