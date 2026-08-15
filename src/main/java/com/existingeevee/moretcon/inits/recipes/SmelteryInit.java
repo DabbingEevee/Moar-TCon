@@ -29,7 +29,6 @@ public class SmelteryInit {
 			TinkerRegistry.registerAlloy(new FluidStack(ModFluids.liquidSlimesteel, 288), new FluidStack(TinkerFluids.iron, 72), new FluidStack(TinkerFluids.blueslime, 125), new FluidStack(TinkerFluids.searedStone, 144));
 		}
 		
-		
 		if (CompatManager.loadMain) {
 			TinkerRegistry.registerMelting(ModItems.hydrogenRichRedstonePowder, ModFluids.liquidHydrogen, Material.VALUE_Ingot);
 			TinkerRegistry.registerMelting(Blocks.SOUL_SAND, ModFluids.liquidLiquifiedSouls, Material.VALUE_Ingot / 16);

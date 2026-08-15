@@ -296,7 +296,7 @@ public class ModMaterials implements MaterialTypes {
 			TinkerRegistry.addMaterialStats(materialSlimewood, new ExtraMaterialStats(75));
 			TinkerRegistry.addMaterialStats(materialSlimewood, new BowMaterialStats(1f, 0.95f, 2f));
 			TinkerRegistry.addMaterialStats(materialSlimewood, new ArrowShaftMaterialStats(1.2f, 28));
-			CompositeRegistry.registerComposite(() -> TinkerMaterials.wood, () -> materialSlimewood, () -> TinkerFluids.blueslime);
+			CompositeRegistry.registerComposite(() -> TinkerMaterials.wood, () -> materialSlimewood, () -> CompatManager.tinkersAntique ? TinkerFluids.greenSlime : TinkerFluids.blueslime);
 			if (CompatManager.conarm) {
 				TinkerRegistry.addMaterialStats(materialSlimewood, new CoreMaterialStats(13.7f, 3.4f));
 				TinkerRegistry.addMaterialStats(materialSlimewood, new PlatesMaterialStats(1.3f, 8.1f, 0));
