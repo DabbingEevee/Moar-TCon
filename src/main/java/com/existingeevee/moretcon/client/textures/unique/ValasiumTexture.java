@@ -53,8 +53,9 @@ public class ValasiumTexture extends AbstractColoredTexture { // FieryTexture
 		this.tickCounter = 0;
 
 		TextureAtlasSprite baseTexture = textureGetter.apply(backupTextureLocation);
-		if (baseTexture == null || baseTexture.getFrameCount() <= 0) { // FieryTConTexture
-			this.width = 1; // needed so we don't crash
+
+		if (baseTexture == null || baseTexture.getFrameCount() <= 0) {
+			this.width = 1;
 			this.height = 1;
 			// failure
 			return false;
@@ -64,15 +65,20 @@ public class ValasiumTexture extends AbstractColoredTexture { // FieryTexture
 
 		this.copyFrom(baseTexture);
 
+		int[][] original = baseTexture.getFrameTextureData(0);
+
+		if (original == null || original.length == 0 || original[0] == null) {
+			this.width = 1;
+			this.height = 1;
+			return false;
+		}
+
 		ArrayList<int[][]> datas = Lists.newArrayList();
 
 		for (int i = 0; i < 4; i++) {
 			state = i;
-			// todo: do this for every frame for animated textures and remove the old animation classes
-			// get the base texture to work on - aka copy the texture data into this texture
-			int[][] data;
-			int[][] original = baseTexture.getFrameTextureData(0);
-			data = new int[original.length][];
+
+			int[][] data = new int[original.length][];
 			data[0] = Arrays.copyOf(original[0], original[0].length);
 
 			// do the transformation on the data for mipmap level 0
@@ -82,11 +88,16 @@ public class ValasiumTexture extends AbstractColoredTexture { // FieryTexture
 			datas.add(data);
 		}
 
-		if (this.framesTextureData.isEmpty()) {
-			datas.forEach(this.framesTextureData::add);
-		}
+		this.framesTextureData.addAll(datas);
 
-		this.animationMetadata = new AnimationMetadataSection(IntStream.range(0, 4).mapToObj(AnimationFrame::new).collect(Collectors.toList()), width, height, 2, false);
+		this.animationMetadata = new AnimationMetadataSection(
+				IntStream.range(0, datas.size())
+						.mapToObj(AnimationFrame::new)
+						.collect(Collectors.toList()),
+				width,
+				height,
+				2,
+				false);
 
 		return false;
 	}
