@@ -9,6 +9,7 @@ import com.existingeevee.moretcon.traits.traits.abst.ISimpleArmorTrait;
 import c4.conarm.common.armor.utils.ArmorHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketParticles;
@@ -32,11 +33,14 @@ public class Evasive extends AbstractTraitLeveled implements ISimpleArmorTrait {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onLivingAtkEvent(LivingAttackEvent event) {
-		if (event.getEntity().world.isRemote)
-			return;
+		if (event.getEntity().world.isRemote || event.getAmount() <= 0 || event.isCanceled())
+			return; 
 
+		if (event.getSource().isFireDamage() && event.getEntityLiving().isPotionActive(MobEffects.FIRE_RESISTANCE)) 
+			return;
+		
 		int total = 0;
 
 		List<ItemStack> stacks = new ArrayList<>();
