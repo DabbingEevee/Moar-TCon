@@ -38,7 +38,7 @@ public class Evasive extends AbstractTraitLeveled implements ISimpleArmorTrait {
 		if (event.getEntity().world.isRemote || event.getAmount() <= 0 || event.isCanceled())
 			return; 
 
-		if (event.getSource().isFireDamage() && event.getEntityLiving().isPotionActive(MobEffects.FIRE_RESISTANCE)) 
+		if (event.getSource().isFireDamage() && (event.getEntityLiving().isPotionActive(MobEffects.FIRE_RESISTANCE) || event.getEntityLiving().isImmuneToFire())) 
 			return;
 		
 		int total = 0;
