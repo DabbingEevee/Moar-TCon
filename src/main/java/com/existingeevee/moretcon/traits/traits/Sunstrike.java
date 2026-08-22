@@ -24,7 +24,7 @@ public class Sunstrike extends AbstractTrait {
 			return;
 		}
 
-		if (!player.world.isRemote && random.nextInt(1) == 0) {
+		if (!player.world.isRemote && random.nextInt(10) == 0) {
 			PersistantTickerInstance inst = new PersistantTickerInstance(TICKER, target.posX, target.posZ, player, tool.serializeNBT(), new NBTTagCompound());
 			PersistantTickingHandler.addPersistantTicker(target.world, inst);
 		}
