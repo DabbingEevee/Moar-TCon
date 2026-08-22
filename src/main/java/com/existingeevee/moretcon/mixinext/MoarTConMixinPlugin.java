@@ -21,7 +21,6 @@ public final class MoarTConMixinPlugin implements IMixinConfigPlugin {
 					return false;
 				}
 			}
-			return true;
 		}
 		return true;
 	}
