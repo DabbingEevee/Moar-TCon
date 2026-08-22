@@ -541,6 +541,7 @@ public class ModMaterials implements MaterialTypes {
 			materialSolsteel.setRepresentativeItem("ingotSolarsteel");
 			materialSolsteel.addTrait(TinkerTraits.flammable, HEAD);
 			materialSolsteel.addTrait(TinkerTraits.autosmelt, HEAD);
+			materialSolsteel.addTrait(ModTraits.sunstrike, HEAD);
 			materialSolsteel.addTrait(ModTraits.burning, HEAD);
 			materialSolsteel.addTrait(ModTraits.burning);
 			materialSolsteel.addTrait(TinkerTraits.superheat);

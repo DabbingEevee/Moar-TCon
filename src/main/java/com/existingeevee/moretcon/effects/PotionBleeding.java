@@ -101,7 +101,7 @@ public class PotionBleeding extends Potion {
 			int resTime = entity.hurtResistantTime;
 			entity.hurtResistantTime = 0;
 			entity.attackEntityFrom(new DamageSource("bleeding"), amplifier);
-			NetworkHandler.HANDLER.sendToDimension(new BleedingEffectMessage(entity.posX, entity.posY, entity.posZ), entity.dimension);
+			NetworkHandler.HANDLE.sendToDimension(new BleedingEffectMessage(entity.posX, entity.posY, entity.posZ), entity.dimension);
 			entity.hurtResistantTime = resTime;
 			// public void spawnParticle(EnumParticleTypes.BLOCK_DUST, entity.posX,
 			// entity.posY, entity.posZ, 25, double xOffset, double yOffset, double zOffset,

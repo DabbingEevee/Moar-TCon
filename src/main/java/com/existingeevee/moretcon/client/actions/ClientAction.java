@@ -34,7 +34,7 @@ public abstract class ClientAction {
 			if (MoreTCon.proxy.isClient())
 				r.run();
 		} else {
-			NetworkHandler.HANDLER.sendToDimension(new SentClientActionMessage(this.getClass().getName(), x, y, z, data), world.provider.getDimension());
+			NetworkHandler.HANDLE.sendToDimension(new SentClientActionMessage(this.getClass().getName(), x, y, z, data), world.provider.getDimension());
 		}
 	}
 

@@ -480,4 +480,17 @@ public class MiscUtils {
 	public static AxisAlignedBB vectorBound(Vec3d a, Vec3d b) {
 		return new AxisAlignedBB(a.x, a.y, a.z, b.x, b.y, b.z);
 	}
+
+	public static double clamp(double val, double max, double min) {
+		return Math.min(Math.max(val, min), max);
+	}
+
+	public static int clamp(int val, int max, int min) {
+		return Math.min(Math.max(val, min), max);
+	}
+	
+	public static double clamp1(double d) {
+		return clamp(d, 1, 0);
+	}
+
 }

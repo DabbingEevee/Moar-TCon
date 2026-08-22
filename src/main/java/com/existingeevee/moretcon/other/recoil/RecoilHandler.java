@@ -32,7 +32,7 @@ public class RecoilHandler {
 			this.cameraRecoil = angle;
 			this.progressCameraRecoil = 0F;
 		} else if (player instanceof EntityPlayerMP) {
-			NetworkHandler.HANDLER.sendTo(new MessageSendRecoil(angle), (EntityPlayerMP) player);
+			NetworkHandler.HANDLE.sendTo(new MessageSendRecoil(angle), (EntityPlayerMP) player);
 		}
 	}
 

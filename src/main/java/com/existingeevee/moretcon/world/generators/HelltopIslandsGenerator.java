@@ -71,7 +71,7 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 
 			boolean inHelltop = event.world.provider.getDimensionType().getId() == DimensionType.NETHER.getId() && player.posY + player.eyeHeight >= 128 && player.posY + player.eyeHeight < 170 && noise > -0.4;
 
-			NetworkHandler.HANDLER.sendTo(new HelltopStatusMessage(inHelltop), (EntityPlayerMP) player);
+			NetworkHandler.HANDLE.sendTo(new HelltopStatusMessage(inHelltop), (EntityPlayerMP) player);
 		}
 	}
 

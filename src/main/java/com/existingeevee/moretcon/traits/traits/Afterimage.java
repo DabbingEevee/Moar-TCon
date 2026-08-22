@@ -62,7 +62,7 @@ public class Afterimage extends AbstractTrait {
 			}
 			AfterimageMessage msg = new AfterimageMessage();
 			msg.t = 1;
-			NetworkHandler.HANDLER.sendTo(msg, ((EntityPlayerMP) player));
+			NetworkHandler.HANDLE.sendTo(msg, ((EntityPlayerMP) player));
 
 			return (newDamage + 2) * 1.5f;
 		}
@@ -91,7 +91,7 @@ public class Afterimage extends AbstractTrait {
 			
 			target.getEntityData().setLong("afterimaged", player.world.getTotalWorldTime() + 40);
 			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 2);
-			NetworkHandler.HANDLER.sendTo(new AfterimageMessage(), ((EntityPlayerMP) player));
+			NetworkHandler.HANDLE.sendTo(new AfterimageMessage(), ((EntityPlayerMP) player));
 		}
 	}
 

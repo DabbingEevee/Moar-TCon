@@ -2,6 +2,7 @@ package com.existingeevee.moretcon.devtools;
 
 import java.util.List;
 
+import com.existingeevee.moretcon.inits.MaterialClient;
 import com.existingeevee.moretcon.item.ItemBase;
 import com.existingeevee.moretcon.other.BiValue;
 import com.existingeevee.moretcon.other.ModTabs;
@@ -69,7 +70,10 @@ public class ItemDebugTool extends ItemBase {
 			}
 		} else {
 			try {
+				System.out.println();
 
+				MaterialClient.init();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -210,7 +210,7 @@ public class CustomFireHelper {
 			dirty = false;
 			SyncCustomFiresMessage msg = new SyncCustomFiresMessage();
 			msg.customBurningData = customBurning;
-			NetworkHandler.HANDLER.sendToAll(msg);
+			NetworkHandler.HANDLE.sendToAll(msg);
 		}
 	}
 

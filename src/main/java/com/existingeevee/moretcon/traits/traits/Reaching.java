@@ -77,7 +77,7 @@ public class Reaching extends AbstractTraitLeveled {
 				if (!player.isCreative()) {
 					ToolHelper.damageTool(stack, 1, player);
 				}
-				NetworkHandler.HANDLER.sendToServer(new ExtendedAttackMessage(result.entityHit));
+				NetworkHandler.HANDLE.sendToServer(new ExtendedAttackMessage(result.entityHit));
 			}
 		}
 	}
