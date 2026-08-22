@@ -42,44 +42,55 @@ public class Overload extends NumberTrackerTrait implements IArmorTrait {
 		return 25;
 	}
 
+	public static final ThreadLocal<Boolean> REENTRANT = ThreadLocal.withInitial(() -> false);
+
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
-		double totalMax = 0, total = 0;
-
-		for (ItemStack stack : event.getEntityLiving().getArmorInventoryList()) {
-			if (this.isToolWithTrait(stack) && !ToolHelper.isBroken(stack)) {
-				totalMax += this.getNumberMax(stack);
-				total += this.addNumber(stack, Math.round(event.getAmount()));
-			}
+		if (REENTRANT.get()) {
+			return;
 		}
 
-		if (totalMax > 0 && totalMax - total < 1e-6) {
-			Team team = event.getEntityLiving().getTeam();
+		REENTRANT.set(true);
+		try {
+			double totalMax = 0, total = 0;
 
-			EntityLivingBase player = event.getEntityLiving();
-			
-			player.world.playSound(null, player.getPosition(), SoundHandler.SWOOSH_EXPLOSION, SoundCategory.PLAYERS, 1, 1);
+			for (ItemStack stack : event.getEntityLiving().getArmorInventoryList()) {
+				if (this.isToolWithTrait(stack) && !ToolHelper.isBroken(stack)) {
+					totalMax += this.getNumberMax(stack);
+					total += this.addNumber(stack, Math.round(event.getAmount()));
+				}
+			}
 
-			if (player.world instanceof WorldServer) {
-				SPacketParticles spacketparticles = new SPacketParticles(EnumParticleTypes.EXPLOSION_LARGE, true, (float) player.posX, (float) player.posY + 0.5f, (float) player.posZ, 0, 0, 0, 0, 1);
-				for (EntityPlayerMP p : player.world.getPlayers(EntityPlayerMP.class, p -> true)) {
-					if (p.getPositionVector().squareDistanceTo(player.getPositionVector()) < 100 * 100) {
-						p.connection.sendPacket(spacketparticles);
+			if (totalMax > 0 && totalMax - total < 1e-6) {
+				Team team = event.getEntityLiving().getTeam();
+
+				EntityLivingBase player = event.getEntityLiving();
+
+				player.world.playSound(null, player.getPosition(), SoundHandler.SWOOSH_EXPLOSION, SoundCategory.PLAYERS, 1, 1);
+
+				if (player.world instanceof WorldServer) {
+					SPacketParticles spacketparticles = new SPacketParticles(EnumParticleTypes.EXPLOSION_LARGE, true, (float) player.posX, (float) player.posY + 0.5f, (float) player.posZ, 0, 0, 0, 0, 1);
+					for (EntityPlayerMP p : player.world.getPlayers(EntityPlayerMP.class, p -> true)) {
+						if (p.getPositionVector().squareDistanceTo(player.getPositionVector()) < 100 * 100) {
+							p.connection.sendPacket(spacketparticles);
+						}
+					}
+				}
+
+				for (Entity e : event.getEntityLiving().world.getEntitiesInAABBexcluding(event.getEntityLiving(), MiscUtils.vectorBound(event.getEntityLiving().getPositionVector(), event.getEntityLiving().getPositionVector()).grow(totalMax / 10.), e -> e instanceof EntityLivingBase)) {
+					if (team == null || team.getAllowFriendlyFire() || e.getTeam() != team) {
+						e.attackEntityFrom(event.getEntityLiving() instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) event.getEntityLiving()) : DamageSource.causeMobDamage(event.getEntityLiving()), (float) (totalMax / 4 * Math.exp(1 / (totalMax / 10. * totalMax / 10.) * -player.getPositionVector().squareDistanceTo(e.getPositionVector()))));
+					}
+				}
+
+				for (ItemStack stack : event.getEntityLiving().getArmorInventoryList()) {
+					if (this.isToolWithTrait(stack)) {
+						this.setNumber(stack, 0);
 					}
 				}
 			}
-			
-			for (Entity e : event.getEntityLiving().world.getEntitiesInAABBexcluding(event.getEntityLiving(), MiscUtils.vectorBound(event.getEntityLiving().getPositionVector(), event.getEntityLiving().getPositionVector()).grow(totalMax / 10.), e -> e instanceof EntityLivingBase)) {
-				if (team == null || team.getAllowFriendlyFire() || e.getTeam() != team) {
-					e.attackEntityFrom(event.getEntityLiving() instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) event.getEntityLiving()) : DamageSource.causeMobDamage(event.getEntityLiving()), (float) (totalMax / 4 * Math.exp(1 / (totalMax / 10. * totalMax / 10.) * -player.getPositionVector().squareDistanceTo(e.getPositionVector()))));
-				}
-			}
-			
-			for (ItemStack stack : event.getEntityLiving().getArmorInventoryList()) {
-				if (this.isToolWithTrait(stack)) {
-					this.setNumber(stack, 0);
-				}
-			}
+		} finally {
+			REENTRANT.remove();
 		}
 	}
 
