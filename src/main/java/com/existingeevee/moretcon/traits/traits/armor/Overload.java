@@ -1,5 +1,6 @@
 package com.existingeevee.moretcon.traits.traits.armor;
 
+import com.existingeevee.moretcon.other.TempInvulnerability;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.other.utils.ReequipHack;
 import com.existingeevee.moretcon.other.utils.SoundHandler;
@@ -77,10 +78,15 @@ public class Overload extends NumberTrackerTrait implements IArmorTrait {
 					}
 				}
 
-				for (Entity e : event.getEntityLiving().world.getEntitiesInAABBexcluding(event.getEntityLiving(), MiscUtils.vectorBound(event.getEntityLiving().getPositionVector(), event.getEntityLiving().getPositionVector()).grow(totalMax / 10.), e -> e instanceof EntityLivingBase)) {
-					if (team == null || team.getAllowFriendlyFire() || e.getTeam() != team) {
-						e.attackEntityFrom(event.getEntityLiving() instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) event.getEntityLiving()) : DamageSource.causeMobDamage(event.getEntityLiving()), (float) (totalMax / 4 * Math.exp(1 / (totalMax / 10. * totalMax / 10.) * -player.getPositionVector().squareDistanceTo(e.getPositionVector()))));
+				TempInvulnerability.add(player); //prevent thorns or other effects from proccing and hurting the player.
+				try {
+					for (Entity e : event.getEntityLiving().world.getEntitiesInAABBexcluding(event.getEntityLiving(), MiscUtils.vectorBound(event.getEntityLiving().getPositionVector(), event.getEntityLiving().getPositionVector()).grow(totalMax / 10.), e -> e instanceof EntityLivingBase)) {
+						if (team == null || team.getAllowFriendlyFire() || e.getTeam() != team) {
+							e.attackEntityFrom(event.getEntityLiving() instanceof EntityPlayer ? DamageSource.causePlayerDamage((EntityPlayer) event.getEntityLiving()) : DamageSource.causeMobDamage(event.getEntityLiving()), (float) (totalMax / 4 * Math.exp(1 / (totalMax / 10. * totalMax / 10.) * -player.getPositionVector().squareDistanceTo(e.getPositionVector()))));
+						}
 					}
+				} finally {
+					TempInvulnerability.remove(player);
 				}
 
 				for (ItemStack stack : event.getEntityLiving().getArmorInventoryList()) {
