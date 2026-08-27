@@ -279,7 +279,6 @@ public class ModMaterials implements MaterialTypes {
 				ArmorMaterials.addArmorTrait(materialNahuatl, ArmorTraits.dense);
 				materialNahuatl.addTrait(ModTraits.darkened, CORE);
 				materialNahuatl.addTrait(ModArmorTraits.serrated, CORE);
-
 			}
 
 			materialSlimewood.setCastable(false);
@@ -304,7 +303,6 @@ public class ModMaterials implements MaterialTypes {
 				TinkerRegistry.addMaterialStats(materialSlimewood, new TrimMaterialStats(3.75f));
 
 				ArmorMaterials.addArmorTrait(materialSlimewood, ArmorTraits.slimeyGreen);
-
 			}
 
 			// Overslime for the win!
