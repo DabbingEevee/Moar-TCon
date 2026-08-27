@@ -917,7 +917,7 @@ gui.jei.cata_alloy.title=Catalyzed Alloying
 jei_info.melt_mummy.desc=Obtained by melting down a Dreadful Peat Mummy.
 
 jei_info.orefusionite.desc=Found extremely rarely in all stonebearing dimensions from y = 1 <-> 6.
-jei_info.orefusionitebedrock.desc=Found extremely rarely in all bedrockbearing dimensions  in the lower bedrock layer. \n\nMust be mined with a tool with "Bottom's End".
+jei_info.orefusionitebedrock.desc=Found extremely rarely in all bedrockbearing dimensions in the lower bedrock layer. \n\nMust be mined with a tool with "Bottom's End".
 jei_info.oreirradium.desc=Found more or less commonly in all stonebearing dimensions from y = 12 <-> 32.
 jei_info.orevoidspar.desc=Found rare-ish-ly in all stonebearing dimensions from y = 1 <-> 3.
 jei_info.orevoidsparbedrock.desc=Found rare-ish-ly commonly in all bedrockbearing dimensions in the lower bedrock layer. \n\nBedrock varient must be mined with a tool with "Bottom's End".
