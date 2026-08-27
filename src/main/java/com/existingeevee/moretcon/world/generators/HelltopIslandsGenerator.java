@@ -96,7 +96,7 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 				return;
 			
 			int time = entity.getEntityData().getInteger(ModInfo.MODID + ".mossification");
-			if (time >= 10 * 60 * 20) { // 10 mins 
+			if (time >= 5 * 60 * 20) { // 5 mins 
 			    NBTTagCompound tag = stack.getTagCompound();
 			    tag.setString(Tags.PART_MATERIAL, ModMaterials.materialMossyBrinkstone.identifier);
 			    stack.setTagCompound(tag);
