@@ -53,6 +53,7 @@ import com.existingeevee.moretcon.traits.traits.Liquid;
 import com.existingeevee.moretcon.traits.traits.Macrocrystaline;
 import com.existingeevee.moretcon.traits.traits.Magical;
 import com.existingeevee.moretcon.traits.traits.MagicallyReactive;
+import com.existingeevee.moretcon.traits.traits.Mosstacular;
 import com.existingeevee.moretcon.traits.traits.Nulltouched;
 import com.existingeevee.moretcon.traits.traits.Overdrive;
 import com.existingeevee.moretcon.traits.traits.Overgrowth;
@@ -214,6 +215,8 @@ public class ModTraits {
 	public static PolyshotProj polyshotProj = new PolyshotProj();
 	public static ReforgeProj reforgeProj = new ReforgeProj();
 	public static Stormcaller stormcaller = new Stormcaller();
+
+	public static Mosstacular mosstacular = new Mosstacular();
 
 	public static AntiGravity antigravity;
 

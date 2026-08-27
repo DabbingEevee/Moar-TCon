@@ -7,6 +7,7 @@ import com.existingeevee.moretcon.item.ItemCatalyst;
 import com.existingeevee.moretcon.item.ItemMDGel;
 import com.existingeevee.moretcon.item.ItemNoGravity;
 import com.existingeevee.moretcon.item.ItemNonflamable;
+import com.existingeevee.moretcon.item.ItemPerimimoss;
 import com.existingeevee.moretcon.item.ItemReforgeStone;
 import com.existingeevee.moretcon.item.ItemShakeRender;
 import com.existingeevee.moretcon.other.ICustomSlotRenderer.GlowType;
@@ -133,7 +134,7 @@ public class ModItems {
 
 	public static final Item dustSyrmorite = new ItemBase("dustSyrmorite");
 
-	public static final Item perimimoss = new ItemBase("perimimoss").setTab(ModTabs.moarTConWorld);
+	public static final Item perimimoss = new ItemPerimimoss();
 
 	//Gems
 	public static final Item gemVoidSpar = new ItemBase("gemVoidSpar", 0x7e15ff);

@@ -10,6 +10,8 @@ import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
 import com.existingeevee.moretcon.materials.DelagateFluidMaterial;
 import com.existingeevee.moretcon.materials.MTMaterialIntegration;
 import com.existingeevee.moretcon.materials.UniqueMaterial;
+import com.existingeevee.moretcon.other.CustomBookCraftingDisplay;
+import com.existingeevee.moretcon.other.CustomBookCraftingDisplay.SimpleDisplayData;
 import com.existingeevee.moretcon.other.MoreTConLogger;
 import com.existingeevee.moretcon.other.slotrender.ColoredGlowTicRender;
 import com.existingeevee.moretcon.other.slotrender.ShakeTicRender;
@@ -113,6 +115,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialVacuuite = new Material(MiscUtils.createNonConflictiveName("vacuuite"), 0x300a6a);
 	public static final Material materialMalithyst = new Material(MiscUtils.createNonConflictiveName("malithyst"), 0x00df00);
 	public static final Material materialShatterglass = new Material(MiscUtils.createNonConflictiveName("shatterglass"), 0x362f36);
+	public static final Material materialMossyBrinkstone = new Material(MiscUtils.createNonConflictiveName("mossybrinkstone"), 0xfcf0fc);
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -448,6 +451,28 @@ public class ModMaterials implements MaterialTypes {
 				ArmorMaterials.addArmorTrait(materialBrinkstone, ArmorTraits.steady);
 			}
 
+			materialMossyBrinkstone.setCastable(false);
+			materialMossyBrinkstone.setCraftable(false);
+			MaterialUtils.forceSetRepItem(new ItemStack(ModItems.perimimoss), materialMossyBrinkstone);
+			CustomBookCraftingDisplay.register(materialMossyBrinkstone, new SimpleDisplayData("text.mossy_helltop_isles", () -> new ItemStack(ModBlocks.blockMossyBrinkstone)));
+			materialMossyBrinkstone.addTrait(TinkerTraits.stonebound);
+			materialMossyBrinkstone.addTrait(TinkerTraits.ecological);
+			materialMossyBrinkstone.addTrait(ModTraits.bottomsEnd, HEAD);
+			materialMossyBrinkstone.addTrait(ModTraits.mosstacular, HEAD);
+			materialMossyBrinkstone.addTrait(TinkerTraits.hellish, HEAD);
+			TinkerRegistry.addMaterialStats(materialMossyBrinkstone, new HeadMaterialStats(600, 4f, 9f, 3));
+			TinkerRegistry.addMaterialStats(materialMossyBrinkstone, new HandleMaterialStats(1.2f, -20));
+			TinkerRegistry.addMaterialStats(materialMossyBrinkstone, new ExtraMaterialStats(50));
+			TinkerRegistry.addMaterialStats(materialMossyBrinkstone, whyWouldYouMakeABowOutOfThis);
+			TinkerRegistry.addMaterialStats(materialMossyBrinkstone, new ArrowShaftMaterialStats(1.2f, 30));
+			if (CompatManager.conarm) {
+				TinkerRegistry.addMaterialStats(materialMossyBrinkstone, new CoreMaterialStats(17.3f, 22.4f));
+				TinkerRegistry.addMaterialStats(materialMossyBrinkstone, new PlatesMaterialStats(1.2f, -1.3f, 0.4f));
+				TinkerRegistry.addMaterialStats(materialMossyBrinkstone, new TrimMaterialStats(2.5f));
+
+				ArmorMaterials.addArmorTrait(materialMossyBrinkstone, ArmorTraits.steady);
+			}
+			
 			// MinecraftMixin TextureManager TextureAtlasSprite
 
 			materialValasium.addItem("oreValasium", 1, Material.VALUE_Ore());
@@ -540,7 +565,7 @@ public class ModMaterials implements MaterialTypes {
 			materialSolsteel.setRepresentativeItem("ingotSolarsteel");
 			materialSolsteel.addTrait(TinkerTraits.flammable, HEAD);
 			materialSolsteel.addTrait(TinkerTraits.autosmelt, HEAD);
-			materialSolsteel.addTrait(ModTraits.sunstrike, HEAD);
+			materialSolsteel.addTrait(ModTraits.sunstrike, HEAD);//TinkerTraits
 			materialSolsteel.addTrait(ModTraits.burning, HEAD);
 			materialSolsteel.addTrait(ModTraits.burning);
 			materialSolsteel.addTrait(TinkerTraits.superheat);
@@ -1887,6 +1912,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialGasVials, null);
 			ModMaterials.registerMaterial(materialMalithyst).toolforge();
 			ModMaterials.registerMaterial(materialShatterglass);
+			ModMaterials.registerMaterial(materialMossyBrinkstone);
 		}
 
 		if (CompatManager.tic3backport) {

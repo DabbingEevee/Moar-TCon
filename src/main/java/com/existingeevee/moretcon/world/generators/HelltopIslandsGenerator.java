@@ -3,8 +3,11 @@ package com.existingeevee.moretcon.world.generators;
 import java.awt.Color;
 
 import com.existingeevee.math.noise.SimplexNoiseGenerator;
+import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.NetworkHandler;
 import com.existingeevee.moretcon.inits.ModBlocks;
+import com.existingeevee.moretcon.inits.ModMaterials;
+import com.existingeevee.moretcon.other.EntityItemUpdateEvent;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 import com.existingeevee.moretcon.world.WorldGenModifier;
 import com.existingeevee.moretcon.world.WorldgenContext;
@@ -15,10 +18,15 @@ import net.minecraft.block.BlockBush;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
@@ -36,6 +44,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.tools.ToolPart;
+import slimeknights.tconstruct.library.utils.Tags;
 
 public class HelltopIslandsGenerator extends WorldGenModifier {
 
@@ -62,17 +74,54 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 
 			double x = player.posX, z = player.posZ;
 
-			double noise = HELLTOP_ISLANDS_GENERATOR.generateOctavedSimplexNoise(x, z, event.world.getSeed()) * 1d;
-
-			double expFactor = -1.0e-6; // -(2/1000)^2
-			double mulFactor = -50;
-
-			noise += mulFactor * Math.pow(Math.E, expFactor * (x * x + z * z));
-
-			boolean inHelltop = event.world.provider.getDimensionType().getId() == DimensionType.NETHER.getId() && player.posY + player.eyeHeight >= 128 && player.posY + player.eyeHeight < 170 && noise > -0.4;
-
-			NetworkHandler.HANDLE.sendTo(new HelltopStatusMessage(inHelltop), (EntityPlayerMP) player);
+			NetworkHandler.HANDLE.sendTo(new HelltopStatusMessage(isInHelltop(x, player.posY + player.eyeHeight, z, player.world)), (EntityPlayerMP) player);
 		}
+	}
+
+	@SubscribeEvent
+	public static void onEntityItemUpdate(EntityItemUpdateEvent event) {
+		EntityItem entity = event.getEntityItem();
+		ItemStack stack = entity.getItem();
+
+		if (stack.getItem() instanceof ToolPart) {
+			ToolPart part = (ToolPart) stack.getItem();
+
+			if (part.getMaterial(stack) != ModMaterials.materialBrinkstone)
+				return;
+			
+			if (!part.canUseMaterial(ModMaterials.materialMossyBrinkstone) || TinkerRegistry.getMaterial(ModMaterials.materialMossyBrinkstone.identifier) == Material.UNKNOWN)
+				return;
+			
+			if (!entity.onGround || entity.world.getBlockState(entity.getPosition().down()).getBlock() != ModBlocks.blockMossyBrinkstone)
+				return;
+			
+			int time = entity.getEntityData().getInteger(ModInfo.MODID + ".mossification");
+			if (time >= 10 * 60 * 20) { // 10 mins 
+			    NBTTagCompound tag = stack.getTagCompound();
+			    tag.setString(Tags.PART_MATERIAL, ModMaterials.materialMossyBrinkstone.identifier);
+			    stack.setTagCompound(tag);
+			    entity.motionY += 0.1f;
+			    entity.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, entity.posX, entity.posY, entity.posZ, 0, 0, 0);
+			    entity.world.playSound(null, entity.getPosition(), SoundEvents.ENTITY_ZOMBIE_VILLAGER_CURE, SoundCategory.BLOCKS, 3, 0.6f);
+			} else {
+				if (entity.lifespan < 20 * 60 * 20) {
+					entity.lifespan = 20 * 60 * 20;
+				}
+				entity.getEntityData().setInteger(ModInfo.MODID + ".mossification", time + 1);
+			    entity.world.spawnParticle(EnumParticleTypes.END_ROD, entity.posX, entity.posY, entity.posZ, MiscUtils.randomN1T1() * 0.2, MiscUtils.randomN1T1() * 0.2, MiscUtils.randomN1T1() * 0.2);
+			}
+		}
+	}
+
+	public static boolean isInHelltop(double x, double y, double z, World world) {
+		double noise = HELLTOP_ISLANDS_GENERATOR.generateOctavedSimplexNoise(x, z, world.getSeed()) * 1d;
+
+		double expFactor = -1.0e-6; // ~-(2/1000)^2
+		double mulFactor = -50;
+
+		noise += mulFactor * Math.pow(Math.E, expFactor * (x * x + z * z));
+
+		return world.provider.getDimensionType().getId() == DimensionType.NETHER.getId() && y >= 128 && y < 170 && noise > -0.4;
 	}
 
 	public static final Color FOG_COLOR = new Color(0xe8e0ff);
@@ -94,15 +143,15 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 
 		if (curWorld != mc.world) {
 			curWorld = mc.world;
-			
+
 			inHelltopIslandRegion = false;
 			prevFogP = 0;
 			curFogP = 0;
 		}
-		
+
 		if (!inHelltopIslandRegion)
 			return;
-		
+
 		for (int i = 0; i < 10; i++) {
 			double rX = MiscUtils.randomN1T1() * 15;
 			double rY = MiscUtils.randomN1T1() * 15;
@@ -142,14 +191,14 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 
 		if (renderFogP < 1e-6)
 			return;
-				
-        GlStateManager.setFog(GlStateManager.FogMode.EXP2);
-		
+
+		GlStateManager.setFog(GlStateManager.FogMode.EXP2);
+
 		event.setDensity(Math.max(0.025f, 0.15f * renderFogP));
 		event.setCanceled(true);
 	}
-	
-	public static final char[][][] CRYSTAL_LAYOUT_BASE = { //MC CV
+
+	public static final char[][][] CRYSTAL_LAYOUT_BASE = { // MC CV
 			{
 					{ '-', 'S', '-' },
 					{ 'S', 'S', 'S' },
@@ -223,30 +272,30 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 	};
 
 	public static final char[][][][] CRYSTAL_LAYOUTS = { CRYSTAL_LAYOUT_BASE, {}, {}, {} };
-	
+
 	static {
 		for (int r = 1; r < 4; r++) {
 			char[][][] newLayout = new char[CRYSTAL_LAYOUT_BASE.length][0][0];
 			for (int y = 0; y < CRYSTAL_LAYOUT_BASE.length; y++) {
-				
+
 				char[][] layer = CRYSTAL_LAYOUT_BASE[y];
-				
+
 				switch (r) {
-				case 3:
-					layer = rotateCW(layer);
-				case 2:
-					layer = rotateCW(layer);
-				case 1:
-					layer = rotateCW(layer);
+					case 3:
+						layer = rotateCW(layer);
+					case 2:
+						layer = rotateCW(layer);
+					case 1:
+						layer = rotateCW(layer);
 				}
-				
+
 				newLayout[y] = layer;
 			}
-			
+
 			CRYSTAL_LAYOUTS[r] = newLayout;
 		}
 	}
-	
+
 	public static char getCrystalBlock(int x, int y, int z, int r) {
 		if (x < -1 || x > 1 || y < 0 || y >= CRYSTAL_LAYOUT_BASE.length || z < -1 || z > 1)
 			return '-';
@@ -259,7 +308,7 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 
 		return getCrystalBlock(x, layer, z);
 	}
-	
+
 	public static char getCrystalBlock(int x, char[][] layer, int z) {
 		if (x < -1 || x > 1 || z < -1 || z > 1)
 			return '-';
@@ -328,15 +377,15 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 									for (int cx = -1; cx < 2; cx++) {
 										for (int cz = -1; cz < 2; cz++) {
 											switch (getCrystalBlock(cx, cy, cz, r)) {
-											case 'M':
-											case 'S':
-												world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), ModBlocks.blockDarkBrinkstone.getDefaultState(), 2);
-												break;
-											case 'T':
-											case 'V':
-											case 'C':
-												world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), ModBlocks.orePerimidum.getDefaultState(), 2);
-												break;
+												case 'M':
+												case 'S':
+													world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), ModBlocks.blockDarkBrinkstone.getDefaultState(), 2);
+													break;
+												case 'T':
+												case 'V':
+												case 'C':
+													world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), ModBlocks.orePerimidum.getDefaultState(), 2);
+													break;
 											}
 										}
 									}
@@ -347,13 +396,13 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 							if (ctx.rand.nextInt(100) == 0 && y > 131) { // crystal
 								int cy = 0;
 								int r = ctx.rand.nextInt(4);
-								
+
 								Block block = ModBlocks.blockDarkBrinkstone;
 
 								if (ctx.rand.nextInt(3) == 0) {
 									block = ctx.rand.nextBoolean() ? Blocks.BEDROCK : ModBlocks.blockBrinkstone;
 								}
-								
+
 								boolean spawnMalithyst = ctx.rand.nextInt(20) == 0;
 								boolean hollow = ctx.rand.nextInt(3) == 0;
 								for (char[][] layer : CRYSTAL_LAYOUT_BASE) {
@@ -361,24 +410,24 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 									for (int cx = -1; cx < 2; cx++) {
 										for (int cz = -1; cz < 2; cz++) {
 											switch (getCrystalBlock(cx, cy, cz, r)) {
-											case 'T':
-												if (block == ModBlocks.blockBrinkstone) {
-													world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), ModBlocks.blockMossyBrinkstone.getDefaultState(), 2);
-													break;
-												}
-											case 'S':
-											case 'C':
-												world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), block.getDefaultState(), 2);
-												break;
-											case 'M':
-											case 'V':
-												if (spawnMalithyst && block == ModBlocks.blockDarkBrinkstone) {
-													world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), ModBlocks.oreMalithyst.getDefaultState(), 2);
-													break;	
-												} else if (!hollow) {
+												case 'T':
+													if (block == ModBlocks.blockBrinkstone) {
+														world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), ModBlocks.blockMossyBrinkstone.getDefaultState(), 2);
+														break;
+													}
+												case 'S':
+												case 'C':
 													world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), block.getDefaultState(), 2);
 													break;
-												}
+												case 'M':
+												case 'V':
+													if (spawnMalithyst && block == ModBlocks.blockDarkBrinkstone) {
+														world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), ModBlocks.oreMalithyst.getDefaultState(), 2);
+														break;
+													} else if (!hollow) {
+														world.setBlockState(new BlockPos(x + cx, cy + y - 3, z + cz), block.getDefaultState(), 2);
+														break;
+													}
 											}
 										}
 									}
