@@ -100,15 +100,14 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 			    NBTTagCompound tag = stack.getTagCompound();
 			    tag.setString(Tags.PART_MATERIAL, ModMaterials.materialMossyBrinkstone.identifier);
 			    stack.setTagCompound(tag);
-			    entity.motionY += 0.1f;
-			    entity.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, entity.posX, entity.posY, entity.posZ, 0, 0, 0);
-			    entity.world.playSound(null, entity.getPosition(), SoundEvents.ENTITY_ZOMBIE_VILLAGER_CURE, SoundCategory.BLOCKS, 3, 0.6f);
+			    entity.motionY += 0.25f; 
+			    entity.world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, entity.posX, entity.posY + entity.getEyeHeight(), entity.posZ, 1.6, 1.6, 1.6);
+			    entity.world.playSound(null, entity.getPosition(), SoundEvents.ENTITY_ZOMBIE_VILLAGER_CURE, SoundCategory.BLOCKS, 1, 2f);
 			} else {
-				if (entity.lifespan < 20 * 60 * 20) {
-					entity.lifespan = 20 * 60 * 20;
-				}
+				if (entity.lifespan < 10 * 60 * 20) 
+					entity.lifespan = 10 * 60 * 20;
 				entity.getEntityData().setInteger(ModInfo.MODID + ".mossification", time + 1);
-			    entity.world.spawnParticle(EnumParticleTypes.END_ROD, entity.posX, entity.posY, entity.posZ, MiscUtils.randomN1T1() * 0.2, MiscUtils.randomN1T1() * 0.2, MiscUtils.randomN1T1() * 0.2);
+			    entity.world.spawnParticle(EnumParticleTypes.END_ROD, entity.posX + MiscUtils.randomN1T1() * 0.1, entity.posY + entity.getEyeHeight() + MiscUtils.randomN1T1() * 0.1, entity.posZ + MiscUtils.randomN1T1() * 0.1, MiscUtils.randomN1T1() * 0.1, MiscUtils.randomN1T1() * 0.1 - 0.07, MiscUtils.randomN1T1() * 0.1);
 			}
 		}
 	}
