@@ -1400,15 +1400,15 @@ public class ModMaterials implements MaterialTypes {
 			materialShatterglass.addTrait(ModTraits.bottomsEnd, HEAD);
 			materialShatterglass.addTrait(ModTraits.fragile, HEAD);
 			materialShatterglass.addTrait(TinkerTraits.fractured);
-			TinkerRegistry.addMaterialStats(materialShatterglass, new HeadMaterialStats(750, 8.5f, 9.25f, 7));
-			TinkerRegistry.addMaterialStats(materialShatterglass, new HandleMaterialStats(1.3f, 50));
+			TinkerRegistry.addMaterialStats(materialShatterglass, new HeadMaterialStats(250, 8.5f, 9.25f, 7));
+			TinkerRegistry.addMaterialStats(materialShatterglass, new HandleMaterialStats(1.1f, 50));
 			TinkerRegistry.addMaterialStats(materialShatterglass, new ExtraMaterialStats(30));
 			TinkerRegistry.addMaterialStats(materialShatterglass, new ArrowShaftMaterialStats(1.2f, 13));
 			TinkerRegistry.addMaterialStats(materialShatterglass, whyWouldYouMakeABowOutOfThis);
 			if (CompatManager.conarm) {
 				TinkerRegistry.addMaterialStats(materialShatterglass, new CoreMaterialStats(14.6f, 18f));
-				TinkerRegistry.addMaterialStats(materialShatterglass, new PlatesMaterialStats(1.8f, 3.6f, 1.1f));
-				TinkerRegistry.addMaterialStats(materialShatterglass, new TrimMaterialStats(0.9f));
+				TinkerRegistry.addMaterialStats(materialShatterglass, new PlatesMaterialStats(1.8f, 1.6f, 1.1f));
+				TinkerRegistry.addMaterialStats(materialShatterglass, new TrimMaterialStats(0.4f));
 
 				ArmorMaterials.addArmorTrait(materialShatterglass, ModArmorTraits.serrated);
 			}
