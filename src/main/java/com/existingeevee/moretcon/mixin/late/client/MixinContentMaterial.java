@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,10 +14,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.existingeevee.moretcon.materials.CompositeRegistry;
 import com.existingeevee.moretcon.materials.CompositeRegistry.CompositeData;
 import com.existingeevee.moretcon.materials.IUniqueMaterial;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import com.existingeevee.moretcon.other.CustomBookCraftingDisplay;
+import com.existingeevee.moretcon.other.CustomBookCraftingDisplay.DisplayData;
+import com.llamalad7.mixinextras.expression.Definition;
+import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
+import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
@@ -31,11 +36,6 @@ import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.smeltery.block.BlockCasting;
-import slimeknights.tconstruct.tools.TinkerTools;
-import slimeknights.tconstruct.tools.common.block.BlockToolTable;
-import slimeknights.tconstruct.tools.harvest.TinkerHarvestTools;
-import slimeknights.tconstruct.tools.melee.TinkerMeleeWeapons;
-import slimeknights.tconstruct.tools.ranged.TinkerRangedWeapons;
 
 @Mixin(ContentMaterial.class)
 public abstract class MixinContentMaterial {
@@ -47,27 +47,30 @@ public abstract class MixinContentMaterial {
 	private boolean moretcon$INVOKE_Redirect$addStatsDisplay(IToolPart tp, String string, Operation<Boolean> original) {
 		if (material instanceof IUniqueMaterial) {
 			IUniqueMaterial unique = (IUniqueMaterial) material;
-			if (((Item) tp).getRegistryName().equals(unique.getPartResLoc())) {
-				return true;
-			}
-			return false;
+			return ((Item) tp).getRegistryName().equals(unique.getPartResLoc());
 		}
 
 		return original.call(tp, string);
 	}
 
-	@Inject(method = "addDisplayItems", at = @At("HEAD"), remap = false, cancellable = true)
-	private void moretcon$HEAD_Inject$addDisplayItems(ArrayList<BookElement> list, int x, CallbackInfo ci) throws IllegalAccessException {
-		ContentMaterial $this = (ContentMaterial) (Object) this;
+	@Inject(method = "addDisplayItems", at = @At(value = "FIELD", target = "Lslimeknights/tconstruct/tools/harvest/TinkerHarvestTools;pickaxe:Lslimeknights/tconstruct/library/tools/ToolCore;", opcode = Opcodes.GETSTATIC, shift = At.Shift.BEFORE), remap = false)
+	private void moretcon$FIELD_Inject$addDisplayItems(ArrayList<BookElement> list, int x, CallbackInfo ci, @Local List<ElementItem> displayTools) {
+		if (CompositeRegistry.getComposite(material).isPresent()) {
+			CompositeData data = CompositeRegistry.getComposite(material).get();
+			ItemStack casting = new ItemStack(TinkerSmeltery.castingBlock, 1, BlockCasting.CastingType.TABLE.getMeta());
+			ElementItem elementItem = new ElementTinkerItem(casting);
+			String text = I18n.format("text.composite").replace("__s__", data.getFrom().getLocalizedName()).replace("__l__", data.getCatalyst().getLocalizedName(new FluidStack(data.getCatalyst(), 0)));
+			elementItem.tooltip = Arrays.asList(text.split("__n__"));
+			displayTools.add(elementItem);
+		}
 
-		int y = 10;
-
-		boolean shouldUseDefaultBehavior = true;
-
-		List<ElementItem> displayTools = Lists.newArrayList();
-
-		if (!material.getRepresentativeItem().isEmpty()) {
-			displayTools.add(new ElementTinkerItem(material.getRepresentativeItem()));
+		if (CustomBookCraftingDisplay.has(material)) {
+			for (DisplayData data : CustomBookCraftingDisplay.getData(material)) {
+				ElementItem elementItem = new ElementTinkerItem(data.getRenderedStack());
+				String text = data.getRenderedString();
+				elementItem.tooltip = Arrays.asList(text.split("__n__"));
+				displayTools.add(elementItem);
+			}
 		}
 
 		if (material instanceof IUniqueMaterial) {
@@ -75,74 +78,17 @@ public abstract class MixinContentMaterial {
 			ElementItem elementItem = new ElementTinkerItem(unique.getCrafter());
 			elementItem.tooltip = Arrays.asList(I18n.format("text.uniquely_crafted." + unique.getCrafterString()).split("__n__"));
 			displayTools.add(elementItem);
-			shouldUseDefaultBehavior = false;
 		}
-		if (CompositeRegistry.getComposite(material).isPresent()) {
-			CompositeData data = CompositeRegistry.getComposite(material).get();
-			ItemStack casting = new ItemStack(TinkerSmeltery.castingBlock, 1, BlockCasting.CastingType.TABLE.getMeta());
-			ElementItem elementItem = new ElementTinkerItem(casting);
-			String text = I18n.format("text.composite")
-					.replace("__s__", data.getFrom().getLocalizedName())
-					.replace("__l__", data.getCatalyst().getLocalizedName(new FluidStack(data.getCatalyst(), 0)));
-			elementItem.tooltip = Arrays.asList(text.split("__n__"));
-			displayTools.add(elementItem);
-			shouldUseDefaultBehavior = false;
-		}
-		if (material.isCraftable()) {
-			ItemStack partbuilder = new ItemStack(TinkerTools.toolTables, 1, BlockToolTable.TableTypes.PartBuilder.meta);
-			ElementItem elementItem = new ElementTinkerItem(partbuilder);
-			elementItem.tooltip = ImmutableList.of($this.parent.translate("material.craft_partbuilder"));
-			displayTools.add(elementItem);
-		}
-		if (material.isCastable()) {
-			ItemStack basin = new ItemStack(TinkerSmeltery.castingBlock, 1, BlockCasting.CastingType.BASIN.getMeta());
-			ElementItem elementItem = new ElementTinkerItem(basin);
-			String text = $this.parent.translate("material.craft_casting");
-			elementItem.tooltip = ImmutableList.of(String.format(text, material.getFluid().getLocalizedName(new FluidStack(material.getFluid(), 0))));
-			displayTools.add(elementItem);
-		}
+	}
 
-		if (shouldUseDefaultBehavior) {
-			return; 
-		}
-
-		if (material instanceof IUniqueMaterial) {
+	@Definition(id = "tools", local = @Local(type = ToolCore[].class), remap = false)
+	@Expression("@(tools)")
+	@Inject(method = "addDisplayItems", at = @At("MIXINEXTRAS:EXPRESSION"), remap = false)
+	private void moretcon$EXPRESSION_tools_Inject$addDisplayItems(ArrayList<BookElement> list, int x, CallbackInfo ci, @Local List<ElementItem> displayTools, @Local LocalRef<ToolCore[]> tools) {
+		if (material instanceof IUniqueMaterial && tools.get().length > 0) {
 			IUniqueMaterial unique = (IUniqueMaterial) material;
 			displayTools.add(new ElementTinkerItem(unique.buildSampleTool()));
-		} else {
-			ToolCore[] tools = new ToolCore[] { TinkerHarvestTools.pickaxe, TinkerHarvestTools.mattock, TinkerMeleeWeapons.broadSword,
-					TinkerHarvestTools.hammer, TinkerMeleeWeapons.cleaver, TinkerRangedWeapons.shuriken,
-					TinkerMeleeWeapons.fryPan, TinkerHarvestTools.lumberAxe, TinkerMeleeWeapons.battleSign };
-
-			for (ToolCore tool : tools) {
-				if (tool == null) {
-					continue;
-				}
-				ImmutableList.Builder<Material> builder = ImmutableList.builder();
-				for (int i = 0; i < tool.getRequiredComponents().size(); i++) {	
-					builder.add(material);
-				}
-				ItemStack builtTool = tool.buildItem(builder.build());
-				if (tool.hasValidMaterials(builtTool)) {
-					displayTools.add(new ElementTinkerItem(builtTool));
-				}
-
-				if (displayTools.size() == 9) {
-					break;
-				}
-			}
+			tools.set(new ToolCore[0]);
 		}
-
-		// built tools
-		if (!displayTools.isEmpty()) {
-			for (ElementItem element : displayTools) {
-				element.x = x;
-				element.y = y;
-				element.scale = 1f;
-				y += ElementItem.ITEM_SIZE_HARDCODED;
-				list.add(element);
-			}
-		}
-		ci.cancel();
 	}
 }
