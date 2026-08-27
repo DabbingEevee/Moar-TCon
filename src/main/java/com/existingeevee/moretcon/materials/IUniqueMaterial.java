@@ -1,9 +1,11 @@
 package com.existingeevee.moretcon.materials;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
@@ -45,7 +47,7 @@ public interface IUniqueMaterial {
 
 	public static final Set<IUniqueMaterial> uniqueMaterials = new HashSet<>();
 	public static final ThreadLocal<Boolean> reentrant = ThreadLocal.withInitial(() -> false);
-	
+
 	default ItemStack getUniqueToolPart() {
 		if ((TinkerRegistry.getMaterial(((Material) this).identifier) == null) || TinkerRegistry.getMaterial(((Material) this).getIdentifier()).getIdentifier().equals(Material.UNKNOWN.getIdentifier()) || (UniqueMaterial.getToolFromResourceLocation(getToolResLoc()) == null)) {
 			return ItemStack.EMPTY;
@@ -63,36 +65,35 @@ public interface IUniqueMaterial {
 	default ToolPart getPartType() {
 		return UniqueMaterial.getToolPartFromResourceLocation(getPartResLoc());
 	}
-	
+
 	default String getUniqueLocName(@Nullable String defName) {
 
 		if (defName == null) {
 			defName = I18n.translateToLocal("uniquetoolpart." + ((Material) this).getIdentifier() + ".name");
 		}
-		
+
 		String partName = UniqueMaterial.getToolPartFromResourceLocation(this.getPartResLoc()).getUnlocalizedName() + ".name";
-		
+
 		try {
 			StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
 
-			//embossment
+			// embossment
 			if ((stacktrace[3].getClassName().equals(ModExtraTrait.class.getName()) || stacktrace[3].getClassName().equals(ModExtraTrait2.class.getName())) && stacktrace[3].getMethodName().equals("getLocalizedDesc")) {
 				return I18n.translateToLocal("text.misc.one_of") + defName + " " + partName;
 			}
 			if ((stacktrace[3].getClassName().equals(ModExtraTrait.class.getName()) || stacktrace[3].getClassName().equals(ModExtraTrait2.class.getName())) && stacktrace[3].getMethodName().equals("getLocalizedName")) {
 				return defName;
 			}
-			
-			//book
+
+			// book
 			if ((stacktrace[4].getClassName().equals("slimeknights.tconstruct.library.book.sectiontransformer.AbstractMaterialSectionTransformer") && stacktrace[4].getMethodName().equals("transform")) ||
 					(stacktrace[4].getClassName().equals("slimeknights.tconstruct.library.book.sectiontransformer.BowMaterialSectionTransformer") && (stacktrace[4].getMethodName().equals("generateContent"))) ||
 					(stacktrace[4].getClassName().equals("slimeknights.tconstruct.library.book.content.ContentSingleStatMultMaterial") && (stacktrace[4].getMethodName().equals("build"))) ||
-					(stacktrace[4].getClassName().equals("slimeknights.tconstruct.library.book.content.ContentMaterial") && (stacktrace[4].getMethodName().equals("build")))
-					) {
+					(stacktrace[4].getClassName().equals("slimeknights.tconstruct.library.book.content.ContentMaterial") && (stacktrace[4].getMethodName().equals("build")))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + defName + ")";
 			}
-			
-			//bolts
+
+			// bolts
 			if (stacktrace[4].getClassName().equals(BoltCore.class.getName()) && (stacktrace[4].getMethodName().equals("getItemStackDisplayName") || stacktrace[4].getMethodName().equals("func_77653_i"))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + defName + ")";
 			}
@@ -100,18 +101,18 @@ public interface IUniqueMaterial {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + defName + ")";
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
-		} 
+		}
 
 		return I18n.translateToLocal("material.uniquetoolpart.name");
 	}
-	
+
 	default String getUniqueLocItemName(@Nullable String defName, String itemName) {
 		if (defName == null) {
 			defName = I18n.translateToLocal("uniquetoolpart." + ((Material) this).getIdentifier() + ".name");
 		}
 		return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + defName + ") " + itemName;
 	}
-	
+
 	ItemStack getCrafter();
 
 	String getCrafterString();
@@ -119,10 +120,12 @@ public interface IUniqueMaterial {
 	ResourceLocation getToolResLoc();
 
 	ResourceLocation getPartResLoc();
-	
 
 	static final IField<Set<IToolPart>> field$neededPart = MirrorUtils.reflectField(PartMaterialType.class, "neededPart");
-	static final Material[] standardMats = { TinkerRegistry.getMaterial(TinkerMaterials.iron.identifier), TinkerRegistry.getMaterial(TinkerMaterials.wood.identifier), TinkerRegistry.getMaterial(TinkerMaterials.feather.identifier) };
+	static final List<Supplier<Material>> standardMats = Arrays.asList(
+			() -> TinkerRegistry.getMaterial(TinkerMaterials.iron.identifier), 
+			() -> TinkerRegistry.getMaterial(TinkerMaterials.wood.identifier), 
+			() -> TinkerRegistry.getMaterial(TinkerMaterials.feather.identifier));
 
 	@SuppressWarnings("unlikely-arg-type")
 	default ItemStack buildSampleTool() {
@@ -138,9 +141,9 @@ public interface IUniqueMaterial {
 					added = true;
 				} else {
 					boolean found = false;
-					for (Material m : standardMats) {
-						if (pmt.isValidMaterial(m)) {
-							builder.add(m);
+					for (Supplier<Material> m : standardMats) {
+						if (m.get() != Material.UNKNOWN && pmt.isValidMaterial(m.get())) {
+							builder.add(m.get());
 							found = true;
 							break;
 						}
@@ -165,7 +168,7 @@ public interface IUniqueMaterial {
 		}
 		return ItemStack.EMPTY;
 	}
-	
+
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void handleUniqueToolParts(ToolCraftingEvent event) {
 		for (ItemStack part : event.getToolParts()) {
@@ -190,11 +193,11 @@ public interface IUniqueMaterial {
 	public static void handleToolModifyEvent(ToolModifyEvent event) {
 		List<IUniqueMaterial> pre = MiscUtils.getUniqueEmbossments(event.getToolBeforeModification());
 		List<IUniqueMaterial> post = MiscUtils.getUniqueEmbossments(event.getItemStack());
-		
+
 		if (!pre.containsAll(post)) {
 			List<IUniqueMaterial> diff = new ArrayList<>(post);
 			diff.retainAll(pre);
-			
+
 			for (IUniqueMaterial mat : diff) {
 				if (UniqueMaterial.getToolFromResourceLocation(mat.getToolResLoc()) != event.getItemStack().getItem()) {
 					event.setCanceled(I18n.translateToLocal("text.err.unique.not_correct_tool"));
@@ -213,11 +216,11 @@ public interface IUniqueMaterial {
 				if (mat instanceof IUniqueMaterial) {
 					ResourceLocation partResLoc = ((IUniqueMaterial) mat).getPartResLoc();
 					ResourceLocation toolResLoc = ((IUniqueMaterial) mat).getToolResLoc();
-										
+
 					if (UniqueMaterial.getToolFromResourceLocation(toolResLoc) instanceof ToolCore) {
 						ToolCore tool = UniqueMaterial.getToolFromResourceLocation(toolResLoc);
 						Item part = UniqueMaterial.getToolPartFromResourceLocation(partResLoc);
-												
+
 						int i = 1;
 						event.getToolTip().add(i++, "");
 						if (part != event.getItemStack().getItem()) {
@@ -233,12 +236,12 @@ public interface IUniqueMaterial {
 		} catch (NullPointerException e) {
 		}
 	}
-	
+
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void materialRegister(MaterialRegisterEvent e) {
-		if (e.isCanceled() || !(e.material instanceof IUniqueMaterial)) 
+		if (e.isCanceled() || !(e.material instanceof IUniqueMaterial))
 			return;
-		
+
 		uniqueMaterials.add((IUniqueMaterial) e.material);
 	}
 }
