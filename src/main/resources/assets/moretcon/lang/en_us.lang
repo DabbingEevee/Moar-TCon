@@ -750,7 +750,7 @@ text.err.middle_gem_only_once=Middle Gem modifiers can only be applied once.
 text.misc.one_of=a(n) 
 text.reforge_marker=Reforged
 text.new_reforge_marker=New
-text.mossy_helltop_isles=Can be created by letting a Mossy Brinkstone__n__block consume a Brinkstone tool part on top of the__n__Helltop Isles within The Nether.
+text.mossy_helltop_isles=Can be created by letting a Mossy Brinkstone__n__block consume a Brinkstone tool part on top__n__of the Helltop Isles within The Nether.
 
 tile.moretcon.betweensludge.name=Between Sludge
 tile.moretcon.blockarkenium.name=Block of Arkenium
