@@ -37,13 +37,13 @@ import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.smeltery.block.BlockCasting;
 
-@Mixin(ContentMaterial.class)
+@Mixin(value = ContentMaterial.class, remap = false)
 public abstract class MixinContentMaterial {
 
-	@Shadow(remap = false)
+	@Shadow
 	private transient Material material;
 
-	@WrapOperation(method = "addStatsDisplay", at = @At(value = "INVOKE", ordinal = 0, target = "Lslimeknights/tconstruct/library/tools/IToolPart;hasUseForStat(Ljava/lang/String;)Z"), remap = false)
+	@WrapOperation(method = "addStatsDisplay", at = @At(value = "INVOKE", ordinal = 0, target = "Lslimeknights/tconstruct/library/tools/IToolPart;hasUseForStat(Ljava/lang/String;)Z"))
 	private boolean moretcon$INVOKE_Redirect$addStatsDisplay(IToolPart tp, String string, Operation<Boolean> original) {
 		if (material instanceof IUniqueMaterial) {
 			IUniqueMaterial unique = (IUniqueMaterial) material;
@@ -53,7 +53,7 @@ public abstract class MixinContentMaterial {
 		return original.call(tp, string);
 	}
 
-	@Inject(method = "addDisplayItems", at = @At(value = "FIELD", target = "Lslimeknights/tconstruct/tools/harvest/TinkerHarvestTools;pickaxe:Lslimeknights/tconstruct/library/tools/ToolCore;", opcode = Opcodes.GETSTATIC, shift = At.Shift.BEFORE), remap = false)
+	@Inject(method = "addDisplayItems", at = @At(value = "FIELD", target = "Lslimeknights/tconstruct/tools/harvest/TinkerHarvestTools;pickaxe:Lslimeknights/tconstruct/library/tools/ToolCore;", opcode = Opcodes.GETSTATIC, shift = At.Shift.BEFORE))
 	private void moretcon$FIELD_Inject$addDisplayItems(ArrayList<BookElement> list, int x, CallbackInfo ci, @Local List<ElementItem> displayTools) {
 		if (CompositeRegistry.getComposite(material).isPresent()) {
 			CompositeData data = CompositeRegistry.getComposite(material).get();
@@ -81,9 +81,9 @@ public abstract class MixinContentMaterial {
 		}
 	}
 
-	@Definition(id = "tools", local = @Local(type = ToolCore[].class), remap = false)
+	@Definition(id = "tools", local = @Local(type = ToolCore[].class))
 	@Expression("@(tools)")
-	@Inject(method = "addDisplayItems", at = @At("MIXINEXTRAS:EXPRESSION"), remap = false)
+	@Inject(method = "addDisplayItems", at = @At("MIXINEXTRAS:EXPRESSION"))
 	private void moretcon$EXPRESSION_tools_Inject$addDisplayItems(ArrayList<BookElement> list, int x, CallbackInfo ci, @Local List<ElementItem> displayTools, @Local LocalRef<ToolCore[]> tools) {
 		if (material instanceof IUniqueMaterial && tools.get().length > 0) {
 			IUniqueMaterial unique = (IUniqueMaterial) material;
