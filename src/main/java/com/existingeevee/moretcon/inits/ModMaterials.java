@@ -112,6 +112,7 @@ public class ModMaterials implements MaterialTypes {
 	public static final Material materialIonstone = new Material(MiscUtils.createNonConflictiveName("ionstone"), 0x05a8f3);
 	public static final Material materialVacuuite = new Material(MiscUtils.createNonConflictiveName("vacuuite"), 0x300a6a);
 	public static final Material materialMalithyst = new Material(MiscUtils.createNonConflictiveName("malithyst"), 0x00df00);
+	public static final Material materialShatterglass = new Material(MiscUtils.createNonConflictiveName("shatterglass"), 0x362f36);
 
 	public static final Material materialNahuatl = new Material(MiscUtils.createNonConflictiveName("nahuatl"), 0x3B2754);
 	public static final Material materialSlimewood = new Material(MiscUtils.createNonConflictiveName("slimewood"), 0x96dd8f);
@@ -1370,6 +1371,24 @@ public class ModMaterials implements MaterialTypes {
 				ArmorMaterials.addArmorTrait(materialMalithyst, ModArmorTraits.woeful);
 			}
 			
+			materialShatterglass.setCastable(false);
+			materialShatterglass.setCraftable(true);
+//			materialShatterglass.setRepresentativeItem("gemMalithyst");
+			materialShatterglass.addTrait(ModTraits.bottomsEnd, HEAD);
+			materialShatterglass.addTrait(ModTraits.fragile, HEAD);
+			materialShatterglass.addTrait(TinkerTraits.fractured);
+			TinkerRegistry.addMaterialStats(materialShatterglass, new HeadMaterialStats(750, 8.5f, 9.25f, 7));
+			TinkerRegistry.addMaterialStats(materialShatterglass, new HandleMaterialStats(1.3f, 50));
+			TinkerRegistry.addMaterialStats(materialShatterglass, new ExtraMaterialStats(30));
+			TinkerRegistry.addMaterialStats(materialShatterglass, new ArrowShaftMaterialStats(1.2f, 13));
+			TinkerRegistry.addMaterialStats(materialShatterglass, whyWouldYouMakeABowOutOfThis);
+			if (CompatManager.conarm) {
+				TinkerRegistry.addMaterialStats(materialShatterglass, new CoreMaterialStats(14.6f, 18f));
+				TinkerRegistry.addMaterialStats(materialShatterglass, new PlatesMaterialStats(1.8f, 3.6f, 1.1f));
+				TinkerRegistry.addMaterialStats(materialShatterglass, new TrimMaterialStats(0.9f));
+
+				ArmorMaterials.addArmorTrait(materialShatterglass, ModArmorTraits.serrated);
+			}
 			
 			materialImpulseConcentrator.addTrait(ModTraits.velocibliteration);
 			ColoredGlowTicRender.MATERIAL_COLORS.put(materialImpulseConcentrator, null);
@@ -1869,7 +1888,7 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialImpulseConcentrator, null);
 			ModMaterials.registerMaterial(materialGasVials, null);
 			ModMaterials.registerMaterial(materialMalithyst).toolforge();
-			
+			ModMaterials.registerMaterial(materialShatterglass);
 		}
 
 		if (CompatManager.tic3backport) {

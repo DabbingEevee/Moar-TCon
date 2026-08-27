@@ -39,6 +39,7 @@ import com.existingeevee.moretcon.traits.traits.EulersWrath;
 import com.existingeevee.moretcon.traits.traits.Executor;
 import com.existingeevee.moretcon.traits.traits.Fireslime;
 import com.existingeevee.moretcon.traits.traits.Flashbang;
+import com.existingeevee.moretcon.traits.traits.Fragile;
 import com.existingeevee.moretcon.traits.traits.Frostburn;
 import com.existingeevee.moretcon.traits.traits.Hardcore;
 import com.existingeevee.moretcon.traits.traits.Haunted;
@@ -151,6 +152,7 @@ public class ModTraits {
 	public static Hardcore hardcore = new Hardcore();
 	public static Hypergravity hypergravity = new Hypergravity();
 	public static BottomsEnd bottomsEnd = new BottomsEnd();
+	public static Fragile fragile = new Fragile();
 	public static Slicing slicing = new Slicing();
 	public static Leeching leeching = new Leeching();
 	public static Afterimage afterimage = new Afterimage();
