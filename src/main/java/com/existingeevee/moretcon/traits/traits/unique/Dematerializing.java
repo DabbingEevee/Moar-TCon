@@ -28,10 +28,12 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.events.ProjectileEvent;
 import slimeknights.tconstruct.library.events.ProjectileEvent.OnLaunch;
+import slimeknights.tconstruct.library.events.TinkerToolEvent.OnBowShoot;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
 import slimeknights.tconstruct.library.tools.ranged.BowCore;
@@ -55,6 +57,27 @@ public class Dematerializing extends AbstractTrait {
 	public static final Method onHit$EntityArrow = ObfuscationReflectionHelper.findMethod(EntityArrow.class, "func_184549_a", void.class, RayTraceResult.class);
 	public static final Method baseProjectileSpeed$BowCore = ObfuscationReflectionHelper.findMethod(BowCore.class, "baseProjectileSpeed", float.class);
 
+	public static final ThreadLocal<Integer> ARROW_COUNT = ThreadLocal.withInitial(() -> 1);
+	
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public void onBowShoot(OnBowShoot event) {
+		if (!isToolWithTrait(event.itemStack) || event.entityPlayer == null) {
+			return;
+		}
+		
+		BowCore bow = event.bowCore;
+		float progress = bow.getDrawbackProgress(event.itemStack, event.entityPlayer);
+
+		boolean fullyDrawn = progress >= 1;
+
+		if (!fullyDrawn) {
+			return;
+		}		
+		
+		ARROW_COUNT.set(event.projectileCount);
+		event.setProjectileCount(1);
+	}
+	
 	@SubscribeEvent
 	public void onLaunch(OnLaunch event) {
 		EntityArrow arrow = event.projectileEntity instanceof EntityArrow ? (EntityArrow) event.projectileEntity : null;
@@ -116,7 +139,7 @@ public class Dematerializing extends AbstractTrait {
 		this.shoot(world, posStart, arrowLastFired, shooter, arrowToShoot, dist, progress, event.launcher, volleyID, true, false);
 		DamageScalar.pop();
 
-		for (int i = 1; i < 4; i++) {
+		for (int i = 1; i < 4 + ARROW_COUNT.get() - 1; i++) {
 			EntityArrow arrowToShoot2 = bow.getProjectileEntity(arrowLastFired, event.launcher, world, (EntityPlayer) shooter, power, 0, progress, false);
 			arrowToShoot2.setPosition(posStart.x, posStart.y, posStart.z);
 			arrowToShoot2.setSilent(true);
@@ -131,6 +154,8 @@ public class Dematerializing extends AbstractTrait {
 				DamageScalar.pop();
 			}, 3 * i);
 		}
+		
+		ARROW_COUNT.remove();
 	}
 
 	public void shoot(World world, Vec3d posStart, ItemStack arrowLastFired, EntityLivingBase shooter, EntityArrow arrow, double dist, float progress, ItemStack bow, long volleyId, boolean firstVolley, boolean silent) {
