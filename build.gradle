@@ -144,13 +144,6 @@ dependencies {
 	
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     annotationProcessor "io.github.llamalad7:mixinextras-common:0.5.0-rc.1"	
-
-    /*
-    note that to properly run this, the following jars will need to be placed in the ./run/mods/ folder
-    
-    TheBetweenlands-3.8.1-core.jar - this can be obtained from extracting the betweenlands jar
-
-    */
 }
 
 processResources {
@@ -171,11 +164,83 @@ processResources {
     }
 }
 
-//sourceSets {
-//    main {
-//        refMap = mod_mixin_refmap.replace('${mod_id}', mod_id)
-//    }
-//}
+import java.security.MessageDigest
+
+def sha1 = { File file ->
+	def digest = MessageDigest.getInstance("SHA-1")
+
+	file.withInputStream { input ->
+		byte[] buffer = new byte[8192]
+		int read
+
+		while ((read = input.read(buffer)) != -1) {
+			digest.update(buffer, 0, read)
+		}
+	}
+
+	digest.digest().collect { String.format("%02x", it) }.join()
+}
+
+// we need the core jar from the betweenlands. 
+// we simply extract it out
+task extractBetweenlandsCore {
+	doLast {
+		def dependency = configurations.runtimeClasspath.resolvedConfiguration.resolvedArtifacts.find {
+			it.moduleVersion.id.group == "curse.maven" &&
+			it.name == "angry-pixel-the-betweenlands-mod-243363"
+		}
+
+		if (dependency == null) {
+			throw new GradleException("Unable to find betweenlands artifact.")
+		}
+
+		def sourceJar = dependency.file
+		def modsDir = file("$projectDir/run/mods")
+		modsDir.mkdirs()
+
+		def coreEntry = zipTree(sourceJar).matching {
+			include "**/TheBetweenlands-*-core.jar"
+		}.files.find()
+
+		if (coreEntry == null) {
+			throw new GradleException("TheBetweenlands-*-core.jar does not exist in the betweenlands artifact: ${sourceJar.name}")
+		}
+
+		def target = new File(modsDir, coreEntry.name)
+
+		modsDir.listFiles()?.findAll {
+			it.name.startsWith("TheBetweenlands-") && it.name.endsWith("-core.jar") && it != target
+		}?.each {
+			println "Deleting outdated Betweenlands core: ${it.name}"
+			it.delete()
+		}
+
+		if (!target.exists() || sha1(target) != sha1(coreEntry)) {
+			if (target.exists()) {
+				println "Replacing outdated Betweenlands core: ${target.name}"
+				target.delete()
+			} else {
+				println "Extracting Betweenlands core: ${target.name}"
+			}
+
+			copy {
+				from coreEntry
+				into modsDir
+			}
+		}
+	}
+}
+
+//yep we need those
+tasks.matching { 
+	it.name == "runClient" || 	
+	it.name == "runServer" || 	
+	it.name == "genEclipseRuns" || 	
+	it.name == "genIntellijRuns" || 	
+	it.name == "genVSCodeRuns" 
+}.all {	
+	dependsOn extractBetweenlandsCore
+}
 
 mixin {
     add sourceSets.main, "refmap.${mod_id}.json"
