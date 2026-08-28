@@ -107,7 +107,7 @@ public class HelltopIslandsGenerator extends WorldGenModifier {
 				if (entity.lifespan < 10 * 60 * 20) 
 					entity.lifespan = 10 * 60 * 20;
 				entity.getEntityData().setInteger(ModInfo.MODID + ".mossification", time + 1);
-			    entity.world.spawnParticle(EnumParticleTypes.END_ROD, entity.posX + MiscUtils.randomN1T1() * 0.1, entity.posY + entity.getEyeHeight() + MiscUtils.randomN1T1() * 0.1, entity.posZ + MiscUtils.randomN1T1() * 0.1, MiscUtils.randomN1T1() * 0.1, MiscUtils.randomN1T1() * 0.1 - 0.07, MiscUtils.randomN1T1() * 0.1);
+			    entity.world.spawnParticle(EnumParticleTypes.END_ROD, entity.posX + MiscUtils.randomN1T1() * 0.1, entity.posY + entity.getEyeHeight() + 0.5 + MiscUtils.randomN1T1() * 0.1, entity.posZ + MiscUtils.randomN1T1() * 0.1, MiscUtils.randomN1T1() * 0.1, MiscUtils.randomN1T1() * 0.1 - 0.07, MiscUtils.randomN1T1() * 0.1);
 			}
 		}
 	}
