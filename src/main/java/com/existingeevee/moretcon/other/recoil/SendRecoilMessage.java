@@ -8,15 +8,15 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageSendRecoil implements IMessage, IMessageHandler<MessageSendRecoil, IMessage> {
+public class SendRecoilMessage implements IMessage, IMessageHandler<SendRecoilMessage, IMessage> {
 	
 	public float recoilAngle = 0;
 
-	public MessageSendRecoil() {
+	public SendRecoilMessage() {
 
 	}
 
-	public MessageSendRecoil(float recoilAngle) {
+	public SendRecoilMessage(float recoilAngle) {
 		this.recoilAngle = recoilAngle;
 	}
 
@@ -31,7 +31,7 @@ public class MessageSendRecoil implements IMessage, IMessageHandler<MessageSendR
 	}
 
 	@Override
-	public IMessage onMessage(MessageSendRecoil message, MessageContext ctx) {
+	public IMessage onMessage(SendRecoilMessage message, MessageContext ctx) {
 		Minecraft.getMinecraft().addScheduledTask(() -> {
 			recoil(message.recoilAngle);
 		});

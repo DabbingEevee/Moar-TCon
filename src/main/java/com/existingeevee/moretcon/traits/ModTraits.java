@@ -86,6 +86,7 @@ import com.existingeevee.moretcon.traits.traits.Withered;
 import com.existingeevee.moretcon.traits.traits.abst.AttributeTrait;
 import com.existingeevee.moretcon.traits.traits.abst.DummyTrait;
 import com.existingeevee.moretcon.traits.traits.internal.PolyshotProj;
+import com.existingeevee.moretcon.traits.traits.internal.PumpChargedProj;
 import com.existingeevee.moretcon.traits.traits.internal.ReforgeProj;
 import com.existingeevee.moretcon.traits.traits.unique.Autoloading;
 import com.existingeevee.moretcon.traits.traits.unique.Blinkdrawn;
@@ -214,6 +215,8 @@ public class ModTraits {
 
 	public static PolyshotProj polyshotProj = new PolyshotProj();
 	public static ReforgeProj reforgeProj = new ReforgeProj();
+	public static PumpChargedProj pumpChargedProj = new PumpChargedProj();
+	
 	public static Stormcaller stormcaller = new Stormcaller();
 
 	public static Mosstacular mosstacular = new Mosstacular();

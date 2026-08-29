@@ -31,7 +31,7 @@ import slimeknights.tconstruct.library.traits.AbstractProjectileTrait;
 public class PolyshotProj extends AbstractProjectileTrait {
 
 	public PolyshotProj() {
-		super(MiscUtils.createNonConflictiveName("polyshot_projectile"), 0);
+		super(MiscUtils.createNonConflictiveName("pump_charged_projectile"), 0);
 		MinecraftForge.EVENT_BUS.register(this);
 		TinkerRegistry.addTrait(this);
 	}
