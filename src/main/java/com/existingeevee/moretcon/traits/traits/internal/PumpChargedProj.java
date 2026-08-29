@@ -1,14 +1,11 @@
 package com.existingeevee.moretcon.traits.traits.internal;
 
-import java.util.UUID;
-
 import com.existingeevee.moretcon.ModInfo;
 import com.existingeevee.moretcon.other.utils.MiscUtils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -49,20 +46,9 @@ public class PumpChargedProj extends AbstractProjectileTrait {
 			RayTraceResult result = event.getRayTraceResult();
 			if (result != null && result.entityHit != null) {
 				LAST_PROJ.set((EntityProjectileBase) event.getEntity());
-
-				NBTTagCompound comp = result.entityHit.getEntityData().getCompoundTag(this.getModifierIdentifier());
-
-				UUID uuid = comp.getUniqueId(this.getIdentifier() + ".LastVolley");
-				UUID volleyID = event.getEntity().getEntityData().getUniqueId(this.getIdentifier() + ".Volley");
-
-				if (uuid == volleyID) {
-					result.entityHit.hurtResistantTime = 0;
-				}
 			}
 		}
 	}
-
-	public static final double DSQ_SCALAR = 0.125 / Math.sqrt(-Math.log(0.5));
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onLivingDamage(LivingHurtEvent event) {
