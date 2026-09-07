@@ -9,6 +9,7 @@ before next release
 polish sunstrike to not be total ass
 shatterglass texture and block
 damage test and balance perimossy
+emberlight. might leave ferroherb as a homage.
 
 ================================================================
 
@@ -45,6 +46,8 @@ Equivalence ? Matterburn Rapier - "E = mc^2.\nYour tool causes matter to unravel
 Shuriken Slash ? Thrownedge Cleaver - "think fast, chucklenuts!\nYour tool ejects a shuriken from your inventory when swung"
 Froststich ? Needleice Rapier - "§oA bad stitch meets a sharp and cold end.§r\n Your tool will sew icy stiches onto your enemies that slow the enemy down and increases incoming damage. This tool will hit enemies affected by 4 more more stiches twice."
 custom gui effects for all uniques
+overpump shortbow
+baconball frypan - shoots a flying porkchop in left click. right click hit turns it into a hitscan
 
 T1 -> vanilla tcon
 T2 -> B.E. tools (opens roof and bedrock ores) + catalytic processing
