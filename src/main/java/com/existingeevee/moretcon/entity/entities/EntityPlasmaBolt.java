@@ -124,6 +124,7 @@ public class EntityPlasmaBolt extends Entity {
 
 		List<ITrait> traits = new ArrayList<>(TinkerUtil.getTraitsOrdered(sourceStack));
 		traits.remove(ModTraits.plasmaMissiles);
+		traits.remove(ModTraits.plasmatic); //infinite recursive hitting aaarrggg
 		
 		traits.removeIf(p -> rand.nextInt(2) != 0);
 		
