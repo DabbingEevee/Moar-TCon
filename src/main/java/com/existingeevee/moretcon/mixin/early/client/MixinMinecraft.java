@@ -29,7 +29,7 @@ public class MixinMinecraft {
 	EntityPlayerSP player;
 
 	@Inject(method = "clickMouse()V", at = @At("HEAD"))
-	private void eevees_arsenal$HEAD_Inject$clickMouse(CallbackInfo ci) {
+	private void moretcon$HEAD_Inject$clickMouse(CallbackInfo ci) {
 		if (this.leftClickCounter <= 0) {
 			if (this.objectMouseOver != null && !this.player.isRowingBoat()) {
 				EntityPlayer player = Minecraft.getMinecraft().player;

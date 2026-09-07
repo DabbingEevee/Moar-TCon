@@ -23,6 +23,7 @@
     "early.client.MixinRenderItem",
     "early.client.MixinItemRenderer",
     "early.client.MixinGuiIngame",
+    "early.client.MixinMinecraft",
     "early.client.MixinDynSurroundPleaseStopThisNonesense"
   ],
 

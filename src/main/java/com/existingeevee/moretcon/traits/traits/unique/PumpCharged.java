@@ -11,8 +11,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.capability.projectile.TinkerProjectileHandler;
+import slimeknights.tconstruct.library.events.TinkerToolEvent.OnBowShoot;
 
 public class PumpCharged extends NumberTrackerTrait implements IAdditionalTraitMethods {
 
@@ -23,12 +25,14 @@ public class PumpCharged extends NumberTrackerTrait implements IAdditionalTraitM
 
 	@Override
 	public boolean modifyLauncherProjectile(ItemStack launchingStack, ItemStack parent, ItemStack copy, TinkerProjectileHandler tinkerProjectileHandler) {
-		int pumps = launchingStack.hasTagCompound() ? this.getNumber(launchingStack) : 0;
+		int pumps = launchingStack.hasTagCompound() ? this.getNumber(launchingStack) : 0;		
 		if (pumps > 0) {
-			ModTraits.pumpChargedProj.apply(parent);
 
 			NBTTagCompound comp = parent.hasTagCompound() ? parent.getTagCompound() : new NBTTagCompound();
 			comp.setInteger(ModInfo.MODID + ".Pumps", pumps);
+			parent.setTagCompound(comp);
+
+			ModTraits.pumpChargedProj.apply(parent);
 			return true;
 		}
 		return false;
@@ -40,13 +44,17 @@ public class PumpCharged extends NumberTrackerTrait implements IAdditionalTraitM
 	}
 
 	@SubscribeEvent
-	public void onLeftClick(LeftClickEvent event) {
+	public void onLeftClick(LeftClickEvent event) {		
 		if (!event.getEntityPlayer().isSneaking() || event.getEntity().world.isRemote)
 			return;
 
 		ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
 
+		if (event.getEntityPlayer().getCooldownTracker().hasCooldown(stack.getItem()))
+			return;
+		
 		if (this.isToolWithTrait(stack)) {
+			event.getEntityPlayer().getCooldownTracker().setCooldown(stack.getItem(), 10);
 			this.addNumber(stack, 1);
 		}
 	}
@@ -56,5 +64,12 @@ public class PumpCharged extends NumberTrackerTrait implements IAdditionalTraitM
 		if (!isSelected && this.getNumber(tool) != 0) {
 			this.setNumber(tool, 0);
 		}
+	}
+	
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public void onBowShoot(OnBowShoot event) {
+//		if (this.isToolWithTrait(event.itemStack) && this.getNumber(event.itemStack) >= this.getNumberMax(event.itemStack)) {
+//			event.setProjectileCount(0);
+//		}		//handle in finish shooting
 	}
 }

@@ -102,6 +102,7 @@ import com.existingeevee.moretcon.traits.traits.unique.Mirroring;
 import com.existingeevee.moretcon.traits.traits.unique.Offense;
 import com.existingeevee.moretcon.traits.traits.unique.Plasmatic;
 import com.existingeevee.moretcon.traits.traits.unique.Polyshot;
+import com.existingeevee.moretcon.traits.traits.unique.PumpCharged;
 import com.existingeevee.moretcon.traits.traits.unique.Ricoshot;
 import com.existingeevee.moretcon.traits.traits.unique.Seismishock;
 import com.existingeevee.moretcon.traits.traits.unique.Shockwaving;
@@ -212,6 +213,7 @@ public class ModTraits {
 	public static Executor executor = new Executor();
 	public static Anguish anguish = new Anguish();
 	public static Sunstrike sunstrike = new Sunstrike();
+	public static PumpCharged pumpCharged = new PumpCharged();
 
 	public static PolyshotProj polyshotProj = new PolyshotProj();
 	public static ReforgeProj reforgeProj = new ReforgeProj();
