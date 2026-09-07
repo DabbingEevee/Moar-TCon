@@ -51,6 +51,7 @@ public class Plasmatic extends AbstractTrait {
 
 	public void proc(EntityPlayer player, EntityLivingBase origTarget) {
 		double maxRange = 4.0D;
+		boolean needsDamage = origTarget == null;
 
 		Vec3d start = player.getPositionEyes(0.5f);
 		Vec3d lookVec = player.getLook(0.5f);
@@ -78,10 +79,17 @@ public class Plasmatic extends AbstractTrait {
 				int orig = ticksSinceLastAtt.getInt(player);
 				try {
 					ItemStack stack = player.getHeldItemMainhand();
+					Integer damage = stack.isItemStackDamageable() || !needsDamage ? null : stack.getItemDamage();					
+					
 					if (stack.getItem() instanceof ToolCore) {
 						ToolHelper.attackEntity(stack, (ToolCore) stack.getItem(), player, e, null, true);
 					} else {
 						player.attackTargetEntityWithCurrentItem(e);
+					}
+
+					if (damage != null) {
+						stack.setItemDamage(damage);
+						needsDamage = false;
 					}
 				} catch (Exception er) {
 					// even if a buggy hit happens i think its okay to skip it.
