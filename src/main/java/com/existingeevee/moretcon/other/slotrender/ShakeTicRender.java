@@ -100,6 +100,26 @@ public class ShakeTicRender {
 		public float getSpinSpeed() {
 			return spinSpeed;
 		}
+
+		public MaterialShakeData setShakeIntensity(float i) {
+			this.shakeIntensity = i;
+			return this;
+		}
+		
+		public MaterialShakeData setPulseMin(float i) {
+			this.pulseMin = i;
+			return this;
+		}
+		
+		public MaterialShakeData setPulseSpeed(float i) {
+			this.pulseStr = i;
+			return this;
+		}
+		
+		public MaterialShakeData setSpinSpeed(float i) {
+			this.spinSpeed = i;
+			return this;
+		}
 	}
 	
 	public static MaterialShakeData calculateShakePart(ItemStack stack) {

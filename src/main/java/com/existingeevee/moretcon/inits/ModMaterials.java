@@ -230,6 +230,10 @@ public class ModMaterials implements MaterialTypes {
 			MiscUtils.createNonConflictiveName("gas_vials"), 0x009400, "moretcon:shrapnel",
 			"moretcon:bomb");
 	
+	public static final UniqueMaterial materialCapacitor = new UniqueMaterial(
+			MiscUtils.createNonConflictiveName("capacitor"), 0x009400, "tconstruct:bow_limb",
+			"tconstruct:shortbow");
+	
 	private static void initMats() {
 		BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
 		HeadMaterialStats thankYouTinkersForNeedingAHeadMat = new HeadMaterialStats(700, 6f, 4f, 5);
@@ -685,10 +689,15 @@ public class ModMaterials implements MaterialTypes {
 			materialSpaceTimeDisruption.addTrait(TinkerTraits.dense);
 			materialSpaceTimeDisruption.addTrait(ModTraits.blinkdrawn);
 			ColoredGlowTicRender.MATERIAL_COLORS.put(materialSpaceTimeDisruption, null);
-			ShakeTicRender.MATERIAL_SHAKE.put(materialSpaceTimeDisruption, new MaterialShakeData((ItemShakeRender) ModItems.spaceTimeDisruptionPowder));
+			ShakeTicRender.MATERIAL_SHAKE.put(materialSpaceTimeDisruption, new MaterialShakeData((ItemShakeRender) ModItems.spaceTimeDisruptionPowder).setSpinSpeed(0));
 			TinkerRegistry.addMaterialStats(materialSpaceTimeDisruption, new BowMaterialStats(Float.MAX_VALUE, 3f, 3f)); // big
 			TinkerRegistry.addMaterialStats(materialSpaceTimeDisruption, new HeadMaterialStats(500, 10f, 8f, 6));
 
+			materialCapacitor.addTrait(ModTraits.pumpCharged);
+			ShakeTicRender.MATERIAL_SHAKE.put(materialCapacitor, new MaterialShakeData(0.4f, 0.9f, 0.2f, 0));
+			TinkerRegistry.addMaterialStats(materialCapacitor, new BowMaterialStats(1.1f, 3f, 4f)); 
+			TinkerRegistry.addMaterialStats(materialCapacitor, new HeadMaterialStats(750, 10f, 8f, 6));
+			
 			materialVoidSpar.addItem("gemVoidSpar", 1, Material.VALUE_Ingot);
 			materialVoidSpar.addItem("blockVoidSpar", 1, Material.VALUE_Block);
 			materialVoidSpar.setCastable(false);
@@ -1913,6 +1922,8 @@ public class ModMaterials implements MaterialTypes {
 			ModMaterials.registerMaterial(materialMalithyst).toolforge();
 			ModMaterials.registerMaterial(materialShatterglass);
 			ModMaterials.registerMaterial(materialMossyBrinkstone);
+			ModMaterials.registerMaterial(materialCapacitor);
+			
 		}
 
 		if (CompatManager.tic3backport) {
