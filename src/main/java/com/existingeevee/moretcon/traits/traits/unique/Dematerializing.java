@@ -128,6 +128,12 @@ public class Dematerializing extends AbstractTrait {
 		ItemStack arrowLastFired = StaticVars.lastArrowFired.get().copy();
 		
 		EntityArrow arrowToShoot = bow.getProjectileEntity(arrowLastFired.copy(), event.launcher, world, (EntityPlayer) shooter, power, 0, progress, false);
+		
+		for (String key : arrow.getEntityData().getKeySet()) {
+			arrowToShoot.getEntityData().setTag(key, arrow.getEntityData().getTag(key));
+		}
+		arrowToShoot.getTags().addAll(arrow.getTags());
+		
 		arrowToShoot.setPosition(posStart.x, posStart.y, posStart.z);
 		arrowToShoot.setSilent(true);
 		
@@ -143,6 +149,11 @@ public class Dematerializing extends AbstractTrait {
 			EntityArrow arrowToShoot2 = bow.getProjectileEntity(arrowLastFired, event.launcher, world, (EntityPlayer) shooter, power, 0, progress, false);
 			arrowToShoot2.setPosition(posStart.x, posStart.y, posStart.z);
 			arrowToShoot2.setSilent(true);
+			
+			for (String key : arrow.getEntityData().getKeySet()) {
+				arrowToShoot2.getEntityData().setTag(key, arrow.getEntityData().getTag(key));
+			}
+			arrowToShoot2.getTags().addAll(arrow.getTags());
 			
 			arrowToShoot2.motionX = motionX;
 			arrowToShoot2.motionY = motionY;
@@ -223,8 +234,15 @@ public class Dematerializing extends AbstractTrait {
 
 			if (intercept != null) {
 				EntityArrow arrowToHit = ((BowCore) bow.getItem()).getProjectileEntity(arrowLastFired.copy(), bow, world, (EntityPlayer) shooter, power, 0, progress, false);
+				
+				for (String key : arrow.getEntityData().getKeySet()) {
+					arrowToHit.getEntityData().setTag(key, arrow.getEntityData().getTag(key));
+				}
+				
+				arrowToHit.getTags().addAll(arrow.getTags());
+				
 				arrowToHit.setPosition(intercept.hitVec.x, intercept.hitVec.y, intercept.hitVec.z);
-				arrowToHit.setSilent(true);
+				arrowToHit.setSilent(true); 
 								
 				arrow.getTags().forEach(arrowToHit::addTag);
 				
